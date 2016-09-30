@@ -60,7 +60,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-    <script src='image.js'></script>
+    <script src="image.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>  </head>
@@ -164,24 +164,24 @@
         </div>
       </div>
       <div class="espacio_seccion"></div>
-      <div class="row">
+      <div class="row" id="mapa">
           <div class="col s12">
             <div id="map"></div>
             <div class="row">
-	            <div class="col s10 center-align">
+	            <div class="col s8 center-align">
 	            	<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
 	            </div>
-	            <div class="col s2">
-                    <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modal1">Comparte este mapa</a>
+	            <div class="col s4">
+                    <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
 	            </div>
             </div>
           </div>
       </div>
       <br><br><br>
-      <div class="row">
+      <div class="row" id="grafica">
         <div class="col s12">
           <h3 class="fuerte t_principal">Comparación de indicadores en el tiempo</h3>
           <li class="divider"></li>
@@ -189,7 +189,7 @@
           <div id="chart"></div>
 
           <div class="col s4 offset-s8">
-                <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modal1" style="width: 250px;">Comparte esta gráfica</a>
+                <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
           </div>
 
 
@@ -276,7 +276,7 @@
 
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+  <div id="modalMapa" class="modal">
     <div class="modal-content">
       <h5>Compartir</h5>
       <div class="row">
@@ -297,15 +297,15 @@
       <div class="row">
         <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
         <div class="input-field col s12">
-         <input placeholder="Placeholder" id="first_name" type="text" class="validate" value='<script src="http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton/embed.js"></script>'>
-         <label for="first_name">Copia este código para insertar el mapa en una página HTML</label>
+         <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton/embed.js'></script>">
+         <label for="">Copia este código para insertar el mapa en una página HTML</label>
        </div>
       </div>
 
       <div class="row">
       <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
         <div class="input-field col s12">
-            <input placeholder="Placeholder" id="first_name" type="text" class="validate" value='http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton'>
+            <input placeholder="Placeholder" id="" type="text" class="validate" value="http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton">
        </div>
       </div>
 
@@ -315,11 +315,66 @@
             <a class="waves-effect btn color claro">Descargar PDF</a>
        </div>
       </div>
-
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
     </div>
   </div>
+</div>
+
+
+
+
+
+
+
+<!-- Modal Grafica -->
+<div id="modalGrafica" class="modal">
+  <div class="modal-content">
+    <h5>Compartir</h5>
+    <div class="row">
+      <b>Redes Sociales</b>
+      <ul class="cuadrosSocial">
+        <li>
+
+          <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
+
+        </li>
+
+        <li>
+          <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="row">
+      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+      <div class="input-field col s12">
+       <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton/embed.js'></script>">
+       <label for="">Copia este código para insertar el mapa en una página HTML</label>
+     </div>
+    </div>
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+      <div class="input-field col s12">
+          <input placeholder="Placeholder" id="" type="text" class="validate" value="http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton">
+     </div>
+    </div>
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+      <div class="input-field col s12">
+          <a class="waves-effect btn color claro">Descargar PDF</a>
+     </div>
+    </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>
+</div>
+
+
+
 
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <script type="text/javascript" src="entidad.json"></script>
@@ -332,7 +387,7 @@
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
-    <script type="text/javascript">
+  <script type="text/javascript">
 	$(document).ready(function() {
 
 
@@ -843,5 +898,6 @@ var chart = c3.generate({
 
         });
     </script>
+
   </body>
 </html>
