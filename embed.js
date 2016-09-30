@@ -6,4 +6,4 @@ var scripts = document.getElementsByTagName('script'),
     hash_m = src.match(/(#!.*)/),
     hash = hash_m ? hash_m[1] : '';
 
-document.write('<iframe src="http://104.236.211.149/ods/compara.html#grafica' + hash + '" width="600" height="500" scrolling="no" frameborder="0" style="width=1px;min-width:100%;max-width:100%"></iframe>');
+document.write('<iframe src="http://104.236.211.149/ods/compartirMapa.html#mapa' + hash + '" width="600" height="500" scrolling="no" frameborder="0" style="width=1px;min-width:100%;max-width:100%"></iframe>');
