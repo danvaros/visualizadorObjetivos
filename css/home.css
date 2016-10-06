@@ -612,3 +612,7 @@ stroke-dasharray:0 !important;
 {
 fill: rgb(226, 204, 6);
 }
+
+.mActive{
+  color:#0c406c;
+}
