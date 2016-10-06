@@ -59,6 +59,17 @@
 {
   width: 295px;
 }
+
+.infos
+{
+  box-shadow: 0 0 0 0 !important;
+}
+
+td
+{
+  padding: 1px !important;
+  border-radius: 0 !important;
+}
 </style>
 
 
@@ -171,7 +182,40 @@
       <div class="espacio_seccion"></div>
       <div class="row" id="mapa">
           <div class="col s12">
-            <div id="map"></div>
+            <div id="map">
+              <div class="leaflet-top leaflet-right" style="top:139px;">
+                <div id="colrs" class="info2 legend leaflet-control hide">
+                  <table id="legend-colors">
+                    <tbody>
+                      <tr>
+                        <td class="legend-breaks legend-breaks-b-0">74.4 - 117.2</td>
+                        <td class="legend-color legend-color-00 tooltipped" data-container="body" onmouseover="highlightFromLegend('cA3')" onmouseout="clearHighlight();" style="background-color: #64acbe;" data-position="top" data-tooltip="9.2 - 16.1 / 74.4 - 117.2"></td>
+                        <td class="legend-color legend-color-01 tooltipped" data-container="body" onmouseover="highlightFromLegend('cB3')" onmouseout="clearHighlight();" style="background-color: #627f8c;" data-position="top" data-tooltip="16.1 - 21.2 / 74.4 - 117.2"></td>
+                        <td class="legend-color legend-color-02 tooltipped" data-container="body" onmouseover="highlightFromLegend('cC3')" onmouseout="clearHighlight();" style="background-color: #574249;" data-position="top" data-tooltip="21.2 - 33.5 / 74.4 - 117.2"></td>
+                      </tr>
+                      <tr>
+                        <td class="legend-breaks legend-breaks-b-1">39.6 - 74.4</td>
+                        <td class="legend-color legend-color-10 tooltipped" data-container="body" onmouseover="highlightFromLegend('cA2')" onmouseout="clearHighlight();" style="background-color: #b0d5df;" data-position="top" data-tooltip="9.2 - 16.1 / 39.6 - 74.4"></td>
+                        <td class="legend-color legend-color-11 tooltipped" data-container="body" onmouseover="highlightFromLegend('cB2')" onmouseout="clearHighlight();" style="background-color: #ad9ea5;" data-position="top" data-tooltip="16.1 - 21.2 / 39.6 - 74.4"></td>
+                        <td class="legend-color legend-color-12 tooltipped" data-container="body" onmouseover="highlightFromLegend('cC2')" onmouseout="clearHighlight();" style="background-color: #985356;" data-position="top" data-tooltip="21.2 - 33.5 / 39.6 - 74.4"></td>
+                      </tr>
+                      <tr>
+                        <td class="legend-breaks legend-breaks-b-2">2.6 - 39.6</td>
+                        <td class="legend-color legend-color-20 tooltipped" data-container="body" onmouseover="highlightFromLegend('cA1')" onmouseout="clearHighlight();" style="background-color: #e8e8e8;" data-position="top" data-tooltip="9.2 - 16.1 / 2.6 - 39.6"></td>
+                        <td class="legend-color legend-color-21 tooltipped" data-container="body" onmouseover="highlightFromLegend('cB1')" onmouseout="clearHighlight();" style="background-color: #e4acac;" data-position="top" data-tooltip="16.1 - 21.2 / 2.6 - 39.6"></td>
+                        <td class="legend-color legend-color-22 tooltipped" data-container="body" onmouseover="highlightFromLegend('cC1')" onmouseout="clearHighlight();" style="background-color: #c85a5a;" data-position="top" data-tooltip="21.2 - 33.5/ 2.6 - 39.6"></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td class="legend-breaks legend-breaks-0">9.2 - 16.1</td>
+                        <td class="legend-breaks legend-breaks-1">16.1 - 21.2</td>
+                        <td class="legend-breaks legend-breaks-2">21.2 - 33.5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
             <div class="row">
 	            <div class="col s8 center-align">
 	            	<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
@@ -406,6 +450,9 @@
       $('.collapsible').collapsible({
         accordion : true
       });
+      $(document).ready(function(){
+        $('.tooltipped').tooltip({delay: 50});
+      });
 
       console.log($('#objetivos').find('li.active').children().children());
     });
@@ -510,23 +557,46 @@
       };
 
 
-
+      var flag=null;
 
       info.update = function (props) {
-	     //this._div = L.DomUtil.create('div', 'infos');
-	     $('.infos').removeClass('hide');
-	     $('.info2').removeClass('hide');
-       $('.info3').removeClass('hide');
-	     if(props != undefined)
-	     {
-		      this._div.innerHTML='<div class="infoPadre" ><h5 style="font-weight:bold">' + props.nom_ent + '</h5>'+
-                                ' <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + props.density + '</b></p>' +
-                                ' <p style="position: absolute; top: 25%; left: 35%;">Porcentaje de aguas<br>residuales tratadas</p>'+
-                                ' <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #D500F9;">' + props.rezago + '</b></p>' +
-                                '</b></p><p style="position: absolute; top: 55%; left: 35%;">Proporción de la población con rezago educativo (2012)</p></div>';
+	         //this._div = L.DomUtil.create('div', 'infos');
+    	     $('.infos').removeClass('hide');
+    	    //  $('.info2').removeClass('hide');
+          //  $('.info3').removeClass('hide');
+          //console.log(document.getElementsByClassName('infos'));
+          if(document.getElementsByClassName('infos').length != 0)
+          {
+            flag=true;
+            var classList = document.getElementsByClassName('infos')[0].className.split(/\s+/);
+            for (var i = 0; i < classList.length; i++)
+            {
+                //console.log('entro')
+                if (classList[i] === 'hide')
+                {
+                    flag=false;
+                }
+            }
+            // if(flag)
+            // {
+            //     $('#colrs').removeClass('hide');
+            // }
+          }
+          //console.log(flag);
+          if(flag != null && flag == true)
+          {
+              $('#colrs').removeClass('hide');
+          }
+    	     if(props != undefined)
+    	     {
+    		      this._div.innerHTML='<div class="infoPadre" ><h5 style="font-weight:bold">' + props.nom_ent + '</h5>'+
+                                    ' <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + props.density + '</b></p>' +
+                                    ' <p style="position: absolute; top: 25%; left: 35%;">Porcentaje de aguas<br>residuales tratadas</p>'+
+                                    ' <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #c85a5a;">' + props.rezago + '</b></p>' +
+                                    '</b></p><p style="position: absolute; top: 55%; left: 35%;">Proporción de la población con rezago educativo (2012)</p></div>';
 
-			  //gen(estados[props.cve]);
-	     }
+    			  //gen(estados[props.cve]);
+    	     }
 /*
         this._div.innerHTML = '<div><h4>Aguas tratadas</h4>' +  (props ?
           '<b>' + props.nom_ent + '</b><br />' + props.density + '% avance</div>'
@@ -550,11 +620,32 @@
       // 	                  '#FFEDA0';
       // }
 
-      function getColor(d) {
-        return d > 100 ? '#004b67' :
-               d > 50  ? '#007dab' :
-               d > 20  ? '#01baff' :
-                         '#45ccff';
+      function getColor(d)
+      {
+        //console.log(d);
+        switch(d)
+        {
+          case 'A3': return '#64acbe';
+          case 'B3': return '#627f8c';
+          case 'C3': return '#574249';
+          case 'A2': return '#b0d5df';
+          case 'B2': return '#ad9ea5';
+          case 'C2': return '#985356';
+          case 'A1': return '#e8e8e8';
+          case 'B1': return '#e4acac';
+          case 'C1': return '#c85a5a';
+
+        }
+        // return d.localeCompare('A3') ? '#64acbe' :
+        //        d.localeCompare('B3')  ? '#627f8c' :
+        //        d.localeCompare('C3')  ? '#574249' :
+        //        d.localeCompare('A2') ? '#b0d5df' :
+        //        d.localeCompare('B2')  ? '#ad9ea5' :
+        //        d.localeCompare('C2')  ? '#985356' :
+        //        d.localeCompare('A1') ? '#e8e8e8' :
+        //        d.localeCompare('B1')  ? '#e4acac' :
+        //        d.localeCompare('C1')  ? '#c85a5a' :
+        //                  '#fff';
       }
 
       function getColoR(number)
@@ -567,8 +658,45 @@
 	       return bre.getColorInRange(number);
 	    }
 
-      function style(feature) {
-	    var res=String(getColoR(feature.properties.density+feature.properties.rezago)).split(",");
+      function style(feature)
+      {
+	      //  var res = String(getColoR (feature.properties.density+feature.properties.rezago)).split(",");
+        var res='lasn';
+        var letra;
+        var numero;
+        if(feature.properties.rezago >= 16.1 && feature.properties.rezago <= 21.2)
+        {
+          letra ='B';
+        }
+        else if(feature.properties.rezago < 16.1)
+        {
+          letra='A';
+        }
+        else if(feature.properties.rezago > 21.2)
+        {
+          letra='C';
+        }
+        else
+        {
+          letra='D';
+        }
+        if(feature.properties.density >= 39.6 && feature.properties.density <= 74.4)
+        {
+          numero ='2';
+        }
+        else if(feature.properties.density < 39.6)
+        {
+          numero='1';
+        }
+        else if(feature.properties.density > 74.4)
+        {
+          numero='3';
+        }
+        else
+        {
+          numero='4';
+        }
+        // console.log(letra,'->',numero);
 	    //console.log("hola->",res[1]);
         return {
           weight: 0.5,
@@ -576,8 +704,10 @@
           color: '#000',
           dashArray: '1',
           fillOpacity: 0.6,
-          fillColor: getColoR(feature.properties.density+feature.properties.rezago),
-           className: "c"+res[1]
+          // fillColor: getColoR(feature.properties.density),
+          fillColor: getColor(letra.concat(numero)),
+          //  className: "c"+res[1]
+          className: "c"+letra+numero
         };
       }
       function highlightFeature(e) {
@@ -674,12 +804,12 @@
 		var values = [];
 		for (var i = 0; i < statesData.features.length; i++)
     {
-			if (statesData.features[i].properties.rezago == null && statesData.features[i].properties.density == null) continue;
-			values.push(statesData.features[i].properties.density+statesData.features[i].properties.rezago);
+			if (statesData.features[i].properties.density == null) continue;
+			values.push(statesData.features[i].properties.density);
 		}
 		brew.setSeries(values);
-		brew.setNumClasses(9);
-		brew.setColorCode("RdBu");
+		brew.setNumClasses(3);
+		brew.setColorCode("Blues");
 		brew.classify('jenks');
 
     var bre = new classyBrew();
@@ -691,7 +821,7 @@
 		}
 		bre.setSeries(val);
 		bre.setNumClasses(3);
-		bre.setColorCode("BuGn");
+		bre.setColorCode("Reds");
 		bre.classify('jenks');
 /*
       geojson = L.geoJson(statesData, {
@@ -738,7 +868,7 @@
           var res=String(getColoR(from + 1)).split(",");
           //console.log(res[1]);
           labels.push(
-            '<div style="float:left; text-align: center; width:33.3333%;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from + 1) + '"></i><br></div>');
+            '<div style="float:left; text-align: center; width:33.3333%;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from + 1) + '"></i><br>' + from + (to ? '&ndash;' + to : '+')+'</div>');
             /*' + from + (to ? '&ndash;' + to : '+')+'*/
         }
         div.innerHTML = labels.join('');
@@ -747,25 +877,25 @@
       legend.addTo(map);
 
 
-      // var legend = L.control();
-      // legend.onAdd = function (map) {
-      //   var div = L.DomUtil.create('div', 'info2 legend hide'),
-      //     grades = bre.getBreaks(),//[0, 20, 50, 100],
-      //     labels = [],
-      //     from, to;
-      //   for (var i = 0; i < grades.length-1; i++) {
-      //     from = grades[i];
-      //     to = grades[i + 1];
-      //     var res=String(getColoO(from + 1)).split(",");
-      //     //console.log(res[1]);
-      //     labels.push(
-      //       '<div style="float:left; text-align: center; width:33.333333%;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoO(from + 1) + '"></i><br>' +
-      //       from + (to ? '&ndash;' + to : '+')+'</div>');
-      //   }
-      //   div.innerHTML = labels.join('');
-      //   return div;
-      // };
-      // legend.addTo(map);
+      var legend = L.control();
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info3 legend hide'),
+          grades = bre.getBreaks(),//[0, 20, 50, 100],
+          labels = [],
+          from, to;
+        for (var i = 0; i < grades.length-1; i++) {
+          from = grades[i];
+          to = grades[i + 1];
+          var res=String(getColoO(from + 1)).split(",");
+          //console.log(res[1]);
+          labels.push(
+            '<div style="float:left; text-align: center; width:33.333333%;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoO(from + 1) + '"></i><br>' +
+            from + (to ? '&ndash;' + to : '+')+'</div>');
+        }
+        div.innerHTML = labels.join('');
+        return div;
+      };
+      legend.addTo(map);
     </script>
     <script>
         $(document).ready(function() {
