@@ -21,6 +21,8 @@ html
 {
   width: 60%;
   height: auto;
+  max-width: 350px;
+  max-height: 400px;
 }
 #esp:hover , #ing:hover
 {
