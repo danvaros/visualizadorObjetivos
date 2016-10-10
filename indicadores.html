@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Indicadore</title>
+    	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
+	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,300,600italic,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/home.css">
+    <style media="screen">
+      .headerObje{
+        background-color: #d7ad3a;
+        height: 150px;
+        color: #fff;
+      }
+
+      .headerObje .container{
+        background-color: #d7ad3a;
+        margin-top: 0%;
+      }
+
+      .headerObje .container .row{
+        padding-top: 30px;
+      }
+      .regreso{
+        padding-top: 20px;
+      }
+
+      .regreso a{
+        color: #fff;
+        transition: color .5s;
+      }
+
+      .regreso a:hover{
+        color: #ccc;
+      }
+      .t_sec2{
+        color: #083362;
+        font-size: 24px;
+        font-weight: 300;
+      }
+
+    </style>
+
+
+	<!-- Load c3.css -->
+	<link href="lib/c3.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="image.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>  </head>
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt="" style="width:50%; margin-top: 18%; margin-left: 50%;"/></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
+            <li class="tam t_sm"><a class="t_sm mActive" href="objetivos.html">OBJETIVOS</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="explora.html">EXPLORA</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="compara.html">COMPARA</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="#!">¿C&Oacute;MO VAMOS?</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="headerObje">
+      <div class="container">
+        <div class="row">
+          <div class="col s2">
+              <img class="ico_obj" src="img/ods-02.png" alt="">
+          </div>
+          <div class="col s7">
+              <h5>2- Hambre cero</h5>
+              Indicador: propoción de la población con ingreso inferior a 1.25 dolares diarios
+              <hr>
+
+          </div>
+          <div class="col s3 right-align">
+            <div class="regreso">
+              <a href="#">Regresar a Objetivos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="fuerte t_principal">Meta 1 .A. Reducir a la mitad, entre 1990 y 2015, el porcentaje de personas cuyos ingresos sean inferiores a 1.25 dólares por día,</h3>
+          <li class="divider"></li>
+          <br>
+          <p class="t_sec2"> 1.1. Proporción de la población coin ingresos per cápital inferiores a 1.25 dólares diarios (Paridad de Poder de Compra respecto al dólar) - Lista oficial de la ONU </p>
+          <p class="gris t_sm">
+          Esta sección permite llevar a cabo el cruce de dos indicadores seleccionados por el usuario, a fin de que pueda analizar de manera sencillas y visual la correlación existente entre dos variables. Igualmente se puede llevar a cabo un seguimiento del comportamiento de los dos indicadores seleccionados en el tiempo por medio de un gráfico y exportar la información, mapas y gráficos para su uso.
+
+          <p class="gris t_sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum ipsa eius quam impedit ex nihil debitis quo laudantium aperiam, corrupti nam sit at corporis, accusamus aliquid. Ullam, a? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+      <div class="row" id="grafica">
+        <div class="col s12">
+          <div id="chart"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 center-align">
+          <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">INDICADOR</a>
+          <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">METADATO</a>
+          <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0">SERIE HISTÓRICA</a>
+          <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">DATOS PARA EL CÁLCULO</a>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col s12">
+          <h3 class="fuerte t_principal">Datos</h3>
+          <li class="divider"></li>
+          <div class="row">
+          	<div class="col s10 offset-s1">
+          		<div class="row">
+          			<div class="col s8">
+          				<p class="fuerte t_normal">Nombre</p>
+		  			</div>
+		  			<div class="col s2">
+          				<p class="fuerte t_normal">Institución</p>
+		  			</div>
+		  			<div class="col s2">
+          				<p class="fuerte t_normal">Formato</p>
+		  			</div>
+		  			<div class="col s12">
+          				<li class="divider griss"></li>
+		  			</div>
+		  			<div class="col s8">
+          				<p class="gris t_sm">Indicadores Objetivo 1 ODS</p>
+		  			</div>
+		  			<div class="col s2">
+          				<p class="gris t_sm">ODS</p>
+		  			</div>
+		  			<div class="col s2" style="margin-top: 10px;">
+          				<a class="icn">CSV</a><a class="icns">SHP</a>
+		  			</div>
+		  			<div class="col s12">
+          				<li class="divider griss"></li>
+		  			</div>
+		  			<div class="col s8">
+          				<p class="gris t_sm">Indicadores Objetivo 2 ODS</p>
+		  			</div>
+		  			<div class="col s2">
+          				<p class="gris t_sm">ODS</p>
+		  			</div>
+		  			<div class="col s2" style="margin-top: 10px;">
+          				<a class="icn">CSV</a><a class="icns">SHP</a>
+		  			</div>
+          		</div>
+          	</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-footer id">
+      <div class="container">
+        <div class="row" id="fot">
+          <div class="col l3 s12">
+            <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
+            <br>
+            <br>
+            <div class="" style="display:inline;">
+              <a href="https://www.facebook.com" style="margin-right: 12%;"><img src="img/fill2.png" alt="" style="width:3%;"/></a>
+              <a href="https://twitter.com" style="margin-right: 12%;"><img src="img/fill1.png" alt="" style="width:7%;"/></a>
+              <a href="#"><img src="img/fill3.png" alt="" style="width:7%;"/></a>
+            </div>
+          </div>
+          <div class="col l5 offset-l1 s12">
+            <ul class="fuerte">
+              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
+              <li><a class="fuerte t_sm" href="#!">Explora</a></li>
+              <li><a class="fuerte t_sm" href="#!">Compara</a></li>
+              <li><a class="fuerte t_sm" href="#!">¿Como vamos?</a></li>
+              <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
+              <li><a class="fuerte t_sm" href="#!">Recursos</a></li>
+            </ul>
+          </div>
+          <div class="col l3 s12" style="display:inline;">
+            <a href="https://www.gob.mx" target="_blank"><img src="img/logoPR.png" alt="" style="width: 45%; margin-right: 15%;"/></a>
+            <a href="http://www.inegi.org.mx" target="_blank"><img src="img/logoINEGI.png" alt="" style="width:25%;"/></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright light-blue">
+      </div>
+    </footer>
+
+
+  <!-- Modal Structure -->
+  <div id="modalMapa" class="modal">
+    <div class="modal-content">
+      <h5>Compartir</h5>
+      <div class="row">
+        <b>Redes Sociales</b>
+        <ul class="cuadrosSocial">
+          <li>
+            <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
+          </li>
+          <li>
+            <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+        <div class="input-field col s12">
+         <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+         <label for="">Copia este código para insertar el mapa en una página HTML</label>
+       </div>
+      </div>
+
+      <div class="row">
+      <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+        <div class="input-field col s12">
+            <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
+       </div>
+      </div>
+
+      <div class="row">
+      <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+        <div class="input-field col s12">
+            <a class="waves-effect btn color claro">Descargar PDF</a>
+       </div>
+      </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Grafica -->
+<div id="modalGrafica" class="modal">
+  <div class="modal-content">
+    <h5>Compartir</h5>
+    <div class="row">
+      <b>Redes Sociales</b>
+      <ul class="cuadrosSocial">
+        <li>
+
+          <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
+
+        </li>
+
+        <li>
+          <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="row">
+      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+      <div class="input-field col s12">
+       <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+       <label for="">Copia este código para insertar el mapa en una página HTML</label>
+     </div>
+    </div>
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+      <div class="input-field col s12">
+          <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#grafica">
+     </div>
+    </div>
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+      <div class="input-field col s12">
+          <a class="waves-effect btn color claro">Descargar PDF</a>
+     </div>
+    </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>
+</div>
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <!-- <script type="text/javascript" src="entidad.json"></script> -->
+    <script type="text/javascript" src="entidadCompara.json"></script>
+    <!-- <script type="text/javascript" src="entidad2.json"></script> -->
+    <!-- <script type="text/javascript" src="municipio.json"></script>
+    <script type="text/javascript" src="nacion.json"></script> -->
+
+    <!-- Load d3.js and c3.js -->
+  <script src="lib/d3.v3.min.js" charset="utf-8"></script>
+  <script src="lib/c3.min.js"></script>
+  <script src="classybrew/build/classybrew.min.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function() {
+
+
+
+    $('.modal-trigger').leanModal();
+
+
+    	$('select').material_select();
+  	});
+    $(document).ready(function(){
+      $('.collapsible').collapsible({
+        accordion : true
+      });
+      $(document).ready(function(){
+        $('.tooltipped').tooltip({delay: 50});
+      });
+
+      console.log($('#objetivos').find('li.active').children().children());
+    });
+    </script>
+
+
+
+  <script>
+	function gen(props)
+	{
+	  // var chart = c3.generate({
+		// 		bindto: '.info',
+		// 		padding: {
+		// 			top: 10,
+		// 	        left: 30,
+		// 	        right: 10
+		// 	    },
+		// 	    data: {
+		// 	        x: 'x',
+		// 			columns: [
+	  //           ['x', '2009-01-01', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01'],
+	  //           props
+		//         ]
+    //
+    //
+		// 	    },
+		// 	    axis: {
+		// 	        x: {
+		// 	            type: 'timeseries',
+		// 	            tick: {
+		//                		 format: function (x) { return x.getFullYear(); }
+		// 	            }
+		// 	        },
+		// 	        y : {
+		// 	            tick: {
+		// 	                format: d3.format(".2s")
+		// 	            }
+		// 	        }
+		// 	    },
+		// 	    color: {
+		// 	        pattern: ['#00AEEF']
+		// 	    },
+		// 	    size: {
+		// 	        width: 260,
+		// 	        height: 160
+		// 	    },
+		// 	    legend: {
+		// 	        show: false
+		// 	    },
+		// 	    grid: {
+		// 	        x: {
+		// 	            show: false
+		// 	        },
+		// 	        y: {
+		// 	            show: true
+		// 	        }
+		// 	    }
+    //
+		// });
+	}
+  </script>
+
+
+    <script type="text/javascript">
+
+    //variable de mapa
+      var img;
+      var data_url;
+      var locked=false;
+      var map = L.map('map' ,
+      {
+	        scrollWheelZoom: false,
+	        maxZoom: 14,
+			minZomm:5,
+			//zoomControl:false,
+			//dragging: false
+      }).setView([24.8, -100], 5);
+
+    //implementacion de mapa estandar y ubicacion haci como zoom
+ //     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+	 	L.tileLayer('http://{s}.google.com/vt/?hl=es&x={x}&y={y}&z={z}&s={s}&apistyle=s.t%3A5|p.l%3A53%2Cs.t%3A1314|p.v%3Aoff%2Cp.s%3A-100%2Cs.t%3A3|p.v%3Aon%2Cs.t%3A2|p.v%3Aoff%2Cs.t%3A4|p.v%3Aoff%2Cs.t%3A3|s.e%3Ag.f|p.w%3A1|p.l%3A100%2Cs.t%3A18|p.v%3Aoff%2Cs.t%3A49|s.e%3Ag.s|p.v%3Aon|p.s%3A-19|p.l%3A24%2Cs.t%3A50|s.e%3Ag.s|p.v%3Aon|p.l%3A15&style=47,37', {
+		subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
+        maxZoom: 14,
+        minZomm:5,
+        attribution: '',
+        id: 'mapbox.light',
+      }).addTo(map);
+
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) )
+      {
+			map.dragging.disable();
+	  }
+
+
+
+      // control that shows state info on hover
+      var info = L.control();
+      info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'infos hide');
+        this.update();
+        return this._div;
+      };
+
+
+      var flag=null;
+
+      info.update = function (props) {
+	         //this._div = L.DomUtil.create('div', 'infos');
+    	     $('.infos').removeClass('hide');
+    	    //  $('.info2').removeClass('hide');
+          //  $('.info3').removeClass('hide');
+          //console.log(document.getElementsByClassName('infos'));
+          if(document.getElementsByClassName('infos').length != 0)
+          {
+            flag=true;
+            var classList = document.getElementsByClassName('infos')[0].className.split(/\s+/);
+            for (var i = 0; i < classList.length; i++)
+            {
+                //console.log('entro')
+                if (classList[i] === 'hide')
+                {
+                    flag=false;
+                }
+            }
+            // if(flag)
+            // {
+            //     $('#colrs').removeClass('hide');
+            // }
+          }
+          //console.log(flag);
+          if(flag != null && flag == true)
+          {
+              $('#colrs').removeClass('hide');
+          }
+    	     if(props != undefined)
+    	     {
+    		      this._div.innerHTML='<div class="infoPadre" ><h5 style="font-weight:bold">' + props.nom_ent + '</h5>'+
+                                    ' <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + props.density + '</b></p>' +
+                                    ' <p style="position: absolute; top: 25%; left: 35%;">Porcentaje de aguas<br>residuales tratadas</p>'+
+                                    ' <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #c85a5a;">' + props.rezago + '</b></p>' +
+                                    '</b></p><p style="position: absolute; top: 55%; left: 35%;">Proporción de la población con rezago educativo (2012)</p></div>';
+
+    			  //gen(estados[props.cve]);
+    	     }
+/*
+        this._div.innerHTML = '<div><h4>Aguas tratadas</h4>' +  (props ?
+          '<b>' + props.nom_ent + '</b><br />' + props.density + '% avance</div>'
+          : 'Situate sobre un estado')+'<div class="info"></div>';
+          if(props != undefined)
+		  {
+
+		  }
+*/
+      };
+      info.addTo(map);
+      // get color depending on population density value
+      // function getColor(d) {
+      // 	return d > 1000 ? '#800026' :
+      // 	       d > 500  ? '#BD0026' :
+      // 	       d > 200  ? '#E31A1C' :
+      // 	       d > 100  ? '#FC4E2A' :
+      // 	       d > 50   ? '#FD8D3C' :
+      // 	       d > 20   ? '#FEB24C' :
+      // 	       d > 10   ? '#FED976' :
+      // 	                  '#FFEDA0';
+      // }
+
+      function getColor(d)
+      {
+        //console.log(d);
+        switch(d)
+        {
+          case 'A3': return '#64acbe';
+          case 'B3': return '#627f8c';
+          case 'C3': return '#574249';
+          case 'A2': return '#b0d5df';
+          case 'B2': return '#ad9ea5';
+          case 'C2': return '#985356';
+          case 'A1': return '#e8e8e8';
+          case 'B1': return '#e4acac';
+          case 'C1': return '#c85a5a';
+
+        }
+        // return d.localeCompare('A3') ? '#64acbe' :
+        //        d.localeCompare('B3')  ? '#627f8c' :
+        //        d.localeCompare('C3')  ? '#574249' :
+        //        d.localeCompare('A2') ? '#b0d5df' :
+        //        d.localeCompare('B2')  ? '#ad9ea5' :
+        //        d.localeCompare('C2')  ? '#985356' :
+        //        d.localeCompare('A1') ? '#e8e8e8' :
+        //        d.localeCompare('B1')  ? '#e4acac' :
+        //        d.localeCompare('C1')  ? '#c85a5a' :
+        //                  '#fff';
+      }
+
+      function getColoR(number)
+      {
+	       return brew.getColorInRange(number);
+	    }
+
+      function getColoO(number)
+      {
+	       return bre.getColorInRange(number);
+	    }
+
+      function style(feature)
+      {
+	      //  var res = String(getColoR (feature.properties.density+feature.properties.rezago)).split(",");
+        var res='lasn';
+        var letra;
+        var numero;
+        if(feature.properties.rezago >= 16.1 && feature.properties.rezago <= 21.2)
+        {
+          letra ='B';
+        }
+        else if(feature.properties.rezago < 16.1)
+        {
+          letra='A';
+        }
+        else if(feature.properties.rezago > 21.2)
+        {
+          letra='C';
+        }
+        else
+        {
+          letra='D';
+        }
+        if(feature.properties.density >= 39.6 && feature.properties.density <= 74.4)
+        {
+          numero ='2';
+        }
+        else if(feature.properties.density < 39.6)
+        {
+          numero='1';
+        }
+        else if(feature.properties.density > 74.4)
+        {
+          numero='3';
+        }
+        else
+        {
+          numero='4';
+        }
+        // console.log(letra,'->',numero);
+	    //console.log("hola->",res[1]);
+        return {
+          weight: 0.5,
+          opacity: 1,
+          color: '#000',
+          dashArray: '1',
+          fillOpacity: 0.6,
+          // fillColor: getColoR(feature.properties.density),
+          fillColor: getColor(letra.concat(numero)),
+          //  className: "c"+res[1]
+          className: "c"+letra+numero
+        };
+      }
+      function highlightFeature(e) {
+	     if(locked == false)
+	     {
+	        var layer = e.target;
+	        layer.setStyle({
+	          weight: 2,
+	          color: '#ccc',
+	          dashArray: '',
+	          fillOpacity: 0.7
+	        });
+	        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+	          layer.bringToFront();
+	        }
+	        info.update(layer.feature.properties);
+	     }
+      }
+      var geojson;
+      function resetHighlight(e) {
+/*
+	     if(locked == false)
+	     {
+*/
+		     geojson.resetStyle(e.target);
+			 info.update();
+// 	 	 }
+      }
+      function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+      }
+      function onEachFeature(feature, layer) {
+        layer.on({
+          mouseover: highlightFeature,
+          mouseout: resetHighlight,
+          mousedown: function(e)
+          {
+			if (locked == true) {
+				locked = false;
+				(function ($) {
+								 $(".info2").css("border","none");
+								 $(".infos").css("border","none");
+							   }(jQuery));
+			}
+			else {
+				locked = true;
+				(function ($) {
+							//	$(".info2").css("border","5px solid #00cc99");
+								$(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+								$(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+								$(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+								$(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+								$(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+								$(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+//								$(".infos").css("border","5px solid #00cc99");
+							   }(jQuery));
+			}
+// 			resetHighlight(e);
+		 },
+//          click: zoomToFeature
+        });
+      }
+
+      function highlightFromLegend(e)
+      	{
+	      	//console.log(e);
+			(function ($) {
+				$("svg path."+e).addClass("highlighted");
+				var r=$("svg path."+e);
+				for(var i=0;i<r.length;i++)
+				{
+					r[i].classList.add("highlighted");
+					//console.log(r[i]);
+				}
+				//console.log($("svg path."+e));
+			}(jQuery));
+		}
+
+		function clearHighlight() {
+			(function ($) {
+
+				$("path").removeClass("highlighted");
+				var r=$("path");
+				for(var i=0;i<r.length;i++)
+				{
+					r[i].classList.remove("highlighted");
+				}
+				//console.log(r);
+			}(jQuery));
+		}
+
+
+		var brew = new classyBrew();
+		var values = [];
+		for (var i = 0; i < statesData.features.length; i++)
+    {
+			if (statesData.features[i].properties.density == null) continue;
+			values.push(statesData.features[i].properties.density);
+		}
+		brew.setSeries(values);
+		brew.setNumClasses(3);
+		brew.setColorCode("Blues");
+		brew.classify('jenks');
+
+    var bre = new classyBrew();
+		var val = [];
+		for (var i = 0; i < statesData.features.length; i++)
+    {
+			if (statesData.features[i].properties.rezago == null) continue;
+			val.push(statesData.features[i].properties.rezago);
+		}
+		bre.setSeries(val);
+		bre.setNumClasses(3);
+		bre.setColorCode("Reds");
+		bre.classify('jenks');
+/*
+      geojson = L.geoJson(statesData, {
+        style: style,
+        onEachFeature: onEachFeature
+      }).addTo(map);
+*/
+
+/*
+	  geojson = L.geoJson(municipio, {
+        style: style,
+        onEachFeature: onEachFeature
+      }).addTo(map);
+
+	  geojson = L.geoJson(entidad, {
+        style: style,
+        onEachFeature: onEachFeature
+      }).addTo(map);
+*/
+
+      geojson = L.geoJson(statesData, {
+        style: style,
+        onEachFeature: onEachFeature
+      }).addTo(map);
+
+/*
+      geojson = L.geoJson(nacion, {
+        style: style,
+        onEachFeature: onEachFeature
+      }).addTo(map);
+*/
+
+      map.attributionControl.addAttribution('');
+      var legend = L.control();
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info2 legend hide'),
+          grades = brew.getBreaks(),//[0, 20, 50, 100],
+          labels = [],
+          from, to;
+        for (var i = 0; i < grades.length-1; i++)
+        {
+          from = grades[i];
+          to = grades[i + 1];
+          var res=String(getColoR(from + 1)).split(",");
+          //console.log(res[1]);
+          labels.push(
+            '<div style="float:left; text-align: center; width:33.3333%;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from + 1) + '"></i><br>' + from + (to ? '&ndash;' + to : '+')+'</div>');
+            /*' + from + (to ? '&ndash;' + to : '+')+'*/
+        }
+        div.innerHTML = labels.join('');
+        return div;
+      };
+      legend.addTo(map);
+
+
+      var legend = L.control();
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info3 legend hide'),
+          grades = bre.getBreaks(),//[0, 20, 50, 100],
+          labels = [],
+          from, to;
+        for (var i = 0; i < grades.length-1; i++) {
+          from = grades[i];
+          to = grades[i + 1];
+          var res=String(getColoO(from + 1)).split(",");
+          //console.log(res[1]);
+          labels.push(
+            '<div style="float:left; text-align: center; width:33.333333%;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoO(from + 1) + '"></i><br>' +
+            from + (to ? '&ndash;' + to : '+')+'</div>');
+        }
+        div.innerHTML = labels.join('');
+        return div;
+      };
+      legend.addTo(map);
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.tooltip').tooltipster({
+				contentCloning: true,
+				animation: 'fade',
+				delay: 200,
+				theme: 'tooltipster-light',
+				trigger: 'hover'
+            });
+
+
+
+var chart = c3.generate({
+    data: {
+        xs: {
+            setosa: 'setosa_x',
+        },
+        // iris data from R
+        columns: [
+            ["setosa_x", 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3],
+
+            ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
+
+        ],
+        type: 'scatter'
+    },
+    axis: {
+        x: {
+            label: 'Sepal.Width',
+            tick: {
+                fit: false
+            }
+        },
+        y: {
+            label: 'Petal.Width'
+        }
+    }
+});
+
+
+
+
+
+
+
+        });
+    </script>
+
+  </body>
+</html>
