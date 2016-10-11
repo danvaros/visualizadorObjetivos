@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,300,600italic,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/fakeLoader.css">
     <link rel="stylesheet" href="css/home.css">
 	<!-- Load c3.css -->
 	<link href="lib/c3.css" rel="stylesheet" type="text/css">
@@ -18,12 +19,14 @@
 
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="lib/fakeLoader.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src='image.js'></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+
 
     <style>
   		#map {
@@ -87,6 +90,7 @@
   	</style>
   </head>
   <body>
+    <div id="fakeloader"></div>
     <div class="full">
       <div class="header">
         <div class="imagen">
@@ -788,6 +792,17 @@
   <script src="classybrew/build/classybrew.min.js"></script>
 
   <script type="text/javascript">
+
+
+  $("#fakeloader").fakeLoader({
+      timeToHide:5200, //Time in milliseconds for fakeLoader disappear
+      zIndex:"999",//Default zIndex
+      spinner:"spinner1",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+      bgColor:"#fff", //Hex, RGB or RGBA colors
+      imagePath:"img/logorueda.gif" //If you want can you insert your custom image
+    });
+
+
 	  function commaSeparateNumber(x){var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");}
 
 
@@ -1356,16 +1371,3 @@ var estados =[
 
   </body>
 </html>
-
-
-
-<!--
-
-/*
-				width: "70%",
-			    opacity: 0.4,
-			    marginLeft: "0.6in",
-			    fontSize: "3em",
-			    borderWidth: "10px",
-*/
--->

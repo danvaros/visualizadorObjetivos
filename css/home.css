@@ -618,3 +618,55 @@ fill: rgb(226, 204, 6);
 .mActive{
   color:#0c406c;
 }
+
+.infoPadre{
+  width: 276px;
+}
+
+.cuadrosSocial li {
+  display: inline;
+}
+
+.cuadrosSocial li a{
+border: 1px solid #ccc;
+padding: 10px;
+transition: all 1.0s ease;
+width: 40px;
+}
+
+
+.cuadrosSocial li a:hover {
+background-color: #ccc;
+
+}
+
+.select-dropdown{
+padding-left: 10px !important;
+}
+
+
+.select-wrapper span.caret{
+padding-right: 10px;
+font-size: 14px;
+color: #666;
+}
+
+.espacio_seccion{
+height: 40px;
+}
+
+.leaflet-right
+{
+width: 295px;
+}
+
+.infos
+{
+box-shadow: 0 0 0 0 !important;
+}
+
+td
+{
+padding: 1px !important;
+border-radius: 0 !important;
+}
