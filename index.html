@@ -26,7 +26,39 @@
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+    <script type="text/javascript">
 
+      $(window).load(function(){
+        $('#loader').delay(2000).fadeOut("slow");
+      });
+
+
+    </script>
+    <style media="screen">
+      #loader{
+        display: block;
+        background: #fff;
+        color: white;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+      }
+      #loader p{
+        display: block;
+        width: 100px;
+        height: 30px;
+        font-size: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+    </style>
 
     <style>
   		#map {
@@ -90,8 +122,7 @@
   	</style>
   </head>
   <body>
-    
-    <div id="fakeloader"></div>
+    <span id="loader"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
     <div class="full">
       <div class="header">
         <div class="imagen">
@@ -793,15 +824,6 @@
   <script src="classybrew/build/classybrew.min.js"></script>
 
   <script type="text/javascript">
-
-
-  $("#fakeloader").fakeLoader({
-      timeToHide:5200, //Time in milliseconds for fakeLoader disappear
-      zIndex:"999",//Default zIndex
-      spinner:"spinner1",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-      bgColor:"#fff", //Hex, RGB or RGBA colors
-      imagePath:"img/logorueda.gif" //If you want can you insert your custom image
-    });
 
 
 	  function commaSeparateNumber(x){var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");}

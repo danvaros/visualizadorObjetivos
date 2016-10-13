@@ -670,3 +670,72 @@ td
 padding: 1px !important;
 border-radius: 0 !important;
 }
+
+
+
+/******************** indicadores *******************/
+/******************** indicadores paneles *******************/
+.tablaPadding{
+  padding: 30px;
+}
+
+.indicadores-taps
+{
+  margin-right: -5px;
+  border-color: #ccc;
+  border-width: 1px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.indicadores-taps:hover{
+  background-color: rgba(181, 174, 174, 0.2);
+}
+.indicadores-taps-active
+{
+  background-color: #d8ae2b;
+  color: #fff;
+}
+
+.indicadores-taps-active:hover{
+  background-color: #bb9621;
+  color: #fff;
+}
+
+#metadato-panel, #indicador-panel, #serie-panel{
+  display: none;
+}
+
+
+.headerObje{
+  background-color: #d7ad3a;
+  height: 150px;
+  color: #fff;
+}
+
+
+/**************************** cabezera indicadores **************************/
+.headerObje .container{
+  background-color: #d7ad3a;
+  margin-top: 0%;
+}
+
+.headerObje .container .row{
+  padding-top: 30px;
+}
+.regreso{
+  padding-top: 20px;
+}
+
+.regreso a{
+  color: #fff;
+  transition: color .5s;
+}
+
+.regreso a:hover{
+  color: #ccc;
+}
+.t_sec2{
+  color: #083362;
+  font-size: 24px;
+  font-weight: 300;
+}
