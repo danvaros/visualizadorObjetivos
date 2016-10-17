@@ -23,9 +23,9 @@
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src='image.js'></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
+    <!-- <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> -->
     <script type="text/javascript">
 
       $(window).load(function(){
@@ -183,12 +183,19 @@
 
         <nav id="normal">
           <div class="nav-wrapper">
-            <a href="home.html" id="imago" class="brand-logo"><img src="img/logo.png" alt="" style="width:1%; margin-top: 18%; margin-left: 50%;"/></a>
+            <a href="index.html" id="imago" class="brand-logo"><img src="img/logo.png" alt=""/></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down nav_stick nab">
               <li class="tam t_sm"><a href="objetivos.html">OBJETIVOS</a></li>
               <li class="tam t_sm"><a href="explora.html">EXPLORA</a></li>
               <li class="tam t_sm"><a href="compara.html">COMPARA</a></li>
               <li class="tam t_sm"><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="objetivos.html">OBJETIVOS</a></li>
+              <li><a href="explora.html">EXPLORA</a></li>
+              <li><a href="compara.html">COMPARA</a></li>
+              <li><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
             </ul>
           </div>
         </nav>
@@ -1268,6 +1275,7 @@ var estados =[
        $(document).ready(function(){
 		    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 		    $('.modal-trigger').leanModal();
+        $(".button-collapse").sideNav();
 		  });
       $(document).ready(function()
       {

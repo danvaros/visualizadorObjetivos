@@ -17,12 +17,19 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt="" style="width:50%; margin-top: 18%; margin-left: 50%;"/></a>
+          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt=""/></a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">OBJETIVOS</a></li>
             <li class="tam t_sm"><a class="t_sm" href="#!">EXPLORA</a></li>
             <li class="tam t_sm"><a class="t_sm" href="#!">COMPARA</a></li>
             <li class="tam t_sm"><a class="t_sm" href="#!">¿C&Oacute;MO VAMOS?</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="objetivos.html">OBJETIVOS</a></li>
+            <li><a href="explora.html">EXPLORA</a></li>
+            <li><a href="compara.html">COMPARA</a></li>
+            <li><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
           </ul>
         </div>
       </nav>
@@ -112,6 +119,7 @@ México reafirma su compromiso como actor con responsabilidad global y asume el 
     </footer>
     <script type="text/javascript">
     $(document).ready(function(){
+      $(".button-collapse").sideNav();
       $('.collapsible').collapsible({
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });

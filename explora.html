@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Objetivos de Desarrollo Sostenible</title>
 
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -87,12 +88,19 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt="" style="width:50%; margin-top: 18%; margin-left: 50%;"/></a>
+          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt=""/></a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">OBJETIVOS</a></li>
             <li class="tam t_sm mActive "><a class="t_sm mActive" href="explora.html">EXPLORA</a></li>
             <li class="tam t_sm"><a class="t_sm" href="compara.html">COMPARA</a></li>
             <li class="tam t_sm"><a class="t_sm" href="#!">¿C&Oacute;MO VAMOS?</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="objetivos.html">OBJETIVOS</a></li>
+            <li><a href="explora.html">EXPLORA</a></li>
+            <li><a href="compara.html">COMPARA</a></li>
+            <li><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
           </ul>
         </div>
       </nav>
@@ -445,6 +453,8 @@
   <script type="text/javascript">
     $(document).ready(function()
     {
+      $(".button-collapse").sideNav();
+
       var nacional =  false;
 
       $('.modal-trigger').leanModal();
