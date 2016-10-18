@@ -2,9 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Objetivos de Desarrollo Sostenible</title>
-    	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
-	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
+	  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
@@ -84,12 +85,19 @@ td
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt="" style="width:50%; margin-top: 18%; margin-left: 50%;"/></a>
+          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">OBJETIVOS</a></li>
             <li class="tam t_sm"><a class="t_sm" href="explora.html">EXPLORA</a></li>
             <li class="tam t_sm"><a class="t_sm mActive" href="compara.html">COMPARA</a></li>
             <li class="tam t_sm"><a class="t_sm" href="#!">¿C&Oacute;MO VAMOS?</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="objetivos.html">OBJETIVOS</a></li>
+            <li><a href="explora.html">EXPLORA</a></li>
+            <li><a href="compara.html">COMPARA</a></li>
+            <li><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
           </ul>
         </div>
       </nav>
@@ -105,23 +113,22 @@ td
           </p>
         </div>
       </div>
+      <!--  -->
       <div class="row">
-        <div class="col s6" style="display: flex;">
-          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 20px;">1. Desagregación</p>
-          <div class="input-field col s12 caja_s">
-            <select>
-              <option value="" disabled selected>Elige una opción</option>
-              <option value="1">Nacional</option>
-              <option value="2">Estatal</option>
-              <option value="3">Municipal</option>
-            </select>
-          </div>
+        <p class="claro t_sm col s12 m1" style="margin-top: 25px; width: 123px;">1. Desagregación</p>
+        <div class="input-field col s12 m4 caja_s">
+          <select>
+            <option value="" disabled selected>Elige una opción</option>
+            <option value="1">Nacional</option>
+            <option value="2">Estatal</option>
+            <option value="3">Municipal</option>
+          </select>
         </div>
       </div>
       <div class="row">
-        <div class="col s6" style="display: flex;">
-          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">2. Objetivo</p>
-          <div class="input-field col s12 caja_s">
+
+          <p class="claro col s12 m1 t_sm" style="margin-top: 25px; width: 123px;">2. Objetivo</p>
+          <div class="input-field col s12  m4 caja_s">
             <select>
               <option value="" disabled selected>Elige una opción</option>
               <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
@@ -136,10 +143,11 @@ td
               <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>
             </select>
           </div>
-        </div>
-        <div class="col s6" style="display: flex;">
-          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 20px; margin-left: 20px; color:#2e4367;">Indicador</p>
-          <div class="input-field col s12 caja_s">
+
+
+
+          <p class="claro col s12 m1 offset-m1 t_sm" style="margin-left:10px; margin-top: 25px; width: 123px; color:#2e4367;">Indicador</p>
+          <div class="input-field col s12 m4 caja_s">
             <select>
               <option value="" disabled selected>Elige un opción</option>
               <option value="1">Porcentaje de la población con servicio eléctrico</option>
@@ -147,12 +155,12 @@ td
               <option value="3">Viviendas con disponibilidad de focos ahorradores</option>
             </select>
           </div>
-        </div>
+
       </div>
       <div class="row">
-        <div class="col s6" style="display: flex;">
-          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">3. Objetivo</p>
-            <div class="input-field col s12 caja_s">
+
+          <p class="claro col s12 m1 t_sm" style="margin-top: 25px; width: 123px;">3. Objetivo</p>
+          <div class="input-field col s12 m4 caja_s">
             <select>
               <option value="" disabled selected>Elige una opcion</option>
               <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
@@ -166,10 +174,10 @@ td
               <option value="2">Reducir la desigualdad en y entre los países</option>
               <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>				    </select>
           </div>
-        </div>
-        <div class="col s6" style="display: flex;">
-          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 20px; margin-left: 20px; color:#2e4367;">Indicador</p>
-          <div class="input-field col s12 caja_s">
+
+
+          <p class="claro col s12 m1 offset-m1 t_sm" style="margin-left:10px; margin-top: 25px; width: 123px; color:#2e4367;">Indicador</p>
+          <div class="input-field col s12 m4 caja_s">
             <select>
               <option value="" disabled selected>Elige un opción</option>
               <option value="1">Porcentaje de la población con servicio eléctrico</option>
@@ -177,7 +185,7 @@ td
               <option value="3">Viviendas con disponibilidad de focos ahorradores</option>
             </select>
           </div>
-        </div>
+
       </div>
       <div class="espacio_seccion"></div>
       <div class="row" id="mapa">
@@ -320,9 +328,9 @@ td
           <div class="col l5 offset-l1 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm" href="#!">Explora</a></li>
-              <li><a class="fuerte t_sm" href="#!">Compara</a></li>
-              <li><a class="fuerte t_sm" href="#!">¿Como vamos?</a></li>
+              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
+              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+              <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
               <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
               <li><a class="fuerte t_sm" href="#!">Recursos</a></li>
             </ul>
@@ -440,7 +448,7 @@ td
 	$(document).ready(function() {
 
 
-
+    $(".button-collapse").sideNav();
     $('.modal-trigger').leanModal();
 
 

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Objetivos de Desarrollo Sostenible</title>
 
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -87,12 +88,19 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt="" style="width:50%; margin-top: 18%; margin-left: 50%;"/></a>
+          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt=""/></a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">OBJETIVOS</a></li>
             <li class="tam t_sm mActive "><a class="t_sm mActive" href="explora.html">EXPLORA</a></li>
             <li class="tam t_sm"><a class="t_sm" href="compara.html">COMPARA</a></li>
             <li class="tam t_sm"><a class="t_sm" href="#!">¿C&Oacute;MO VAMOS?</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="objetivos.html">OBJETIVOS</a></li>
+            <li><a href="explora.html">EXPLORA</a></li>
+            <li><a href="compara.html">COMPARA</a></li>
+            <li><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
           </ul>
         </div>
       </nav>
@@ -104,7 +112,7 @@
           <li class="divider"></li>
           <br>
           <p class="gris t_sm">
-          Esta sección permite visuallizar los indicadores de los cuales se dispone información para 11 de los 17 objetivos de la Agenda 2030 para el Desarrollo Sostenible. Igualmente ofrece la posiblilidad de filtrat la información por tipo de desagregación y unidades territoriales menores, en el caso de que esta se encuentre disponible, y exportarla para su manipulacion al igual que los materiales graficos que se generen por el usuario.
+          Esta sección permite visuallizar los indicadores de los cuales se dispone información para 11 de los 17 objetivos de la Agenda 2030 para el Desarrollo Sostenible. Igualmente ofrece la posiblilidad de filtrar la información por tipo de desagregación y unidades territoriales menores, en el caso de que esta se encuentre disponible, y exportarla para su manipulacion al igual que los materiales graficos que se generen por el usuario.
           </p>
         </div>
       </div>
@@ -326,9 +334,9 @@
           <div class="col l5 offset-l1 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm mActive" href="#!">Explora</a></li>
-              <li><a class="fuerte t_sm" href="#!">Compara</a></li>
-              <li><a class="fuerte t_sm" href="#!">¿Como vamos?</a></li>
+              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
+              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+              <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
               <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
               <li><a class="fuerte t_sm" href="#!">Recursos</a></li>
             </ul>
@@ -445,6 +453,8 @@
   <script type="text/javascript">
     $(document).ready(function()
     {
+      $(".button-collapse").sideNav();
+
       var nacional =  false;
 
       $('.modal-trigger').leanModal();

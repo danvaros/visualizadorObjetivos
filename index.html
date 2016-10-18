@@ -23,9 +23,9 @@
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src='image.js'></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
+    <!-- <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> -->
     <script type="text/javascript">
 
       $(window).load(function(){
@@ -183,12 +183,19 @@
 
         <nav id="normal">
           <div class="nav-wrapper">
-            <a href="home.html" id="imago" class="brand-logo"><img src="img/logo.png" alt="" style="width:1%; margin-top: 18%; margin-left: 50%;"/></a>
+            <a href="index.html" id="imago" class="brand-logo"><img src="img/logo.png" alt=""/></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down nav_stick nab">
               <li class="tam t_sm"><a href="objetivos.html">OBJETIVOS</a></li>
               <li class="tam t_sm"><a href="explora.html">EXPLORA</a></li>
               <li class="tam t_sm"><a href="compara.html">COMPARA</a></li>
               <li class="tam t_sm"><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="objetivos.html">OBJETIVOS</a></li>
+              <li><a href="explora.html">EXPLORA</a></li>
+              <li><a href="compara.html">COMPARA</a></li>
+              <li><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
             </ul>
           </div>
         </nav>
@@ -197,14 +204,14 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col s12 m9">
+          <div class="col s12 m9 l9">
             <div class="card-panel id posicion">
               <h5 class="white-text t_normal">Objetivos</h5>
               <span class="white-text texto-abajo describe t_sm">2016 presenta una oportunidad sin precedentes para que los paises y los cuidadanos del mundo emprenda un nuevo camino para mejorar las vidas de las personas en todas partes. Los paises han adoptado un nuevo programa de desarrollo sostenible y un nuevo acuerdo mundial sobre el cambio climatico. Explore este sitio para obtener mas informacion sobre los esfuerzos de la ONU y sus socios para construir un mundo mejor, en el que nadie se quede atras.
               </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m3 l3">
             <div class="card-panel id_1 posicion">
               <div class="row">
                 <div class="col s6">
@@ -219,7 +226,7 @@
               </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_2 posicion">
               <div class="row">
                 <div class="col s6">
@@ -234,7 +241,7 @@
               </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_3 tres posicion">
               <div class="row">
                 <div class="col s6">
@@ -249,7 +256,7 @@
               </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_4 cuatro posicion">
               <div class="row">
                 <div class="col s6">
@@ -263,7 +270,7 @@
               <span class="white-text descrip texto-abajo t_sm">Garantizar educación inclusiva, equitativa, de calidad que promueva oportunidades de aprendizaje para todas y todos.              </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_5 posicion">
               <div class="row">
                 <div class="col s6">
@@ -277,7 +284,7 @@
               <span class="white-text descrip texto-abajo t_sm">Lograr la igualdad entre los géneros y empoderar a todas las mujeres y niñas.</span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_6 seis posicion">
               <div class="row">
                 <div class="col s6">
@@ -291,7 +298,7 @@
               <span class="white-text descrip texto-abajo t_sm">Asegurar la disponibilidad de agua postable, su gestión sostenible y saneamiento para todos y todas.</span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_7 siete posicion">
               <div class="row">
                 <div class="col s6">
@@ -305,7 +312,7 @@
               <span class="white-text descrip texto-abajo t_sm">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos y todas.              </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_8 posicion">
               <div class="row">
                 <div class="col s6">
@@ -319,7 +326,7 @@
               <span class="white-text descrip texto-abajo t_sm">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos.</span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_9 nueve posicion">
               <div class="row">
                 <div class="col s6">
@@ -333,7 +340,7 @@
               <span class="white-text descrip texto-abajo t_sm">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación.                          </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_10 posicion">
               <div class="row">
                 <div class="col s6">
@@ -347,7 +354,7 @@
               <span class="white-text descrip texto-abajo t_sm">Reducir la desigualdad en y entre los países.                          </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_11 posicion">
               <div class="row">
                 <div class="col s6">
@@ -361,7 +368,7 @@
               <span class="white-text descrip texto-abajo t_sm">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles.              </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_12 doce posicion">
               <div class="row">
                 <div class="col s6">
@@ -375,7 +382,7 @@
               <span class="white-text descrip texto-abajo t_sm">Garantizar modalidades de consumo y producción sostenibles.                          </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_13 posicion">
               <div class="row">
                 <div class="col s6">
@@ -389,7 +396,7 @@
               <span class="white-text descrip texto-abajo t_sm">Adoptar medidas urgentes para combatir el cambio climático y sus efectos.                          </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_14 catorce posicion">
               <div class="row">
                 <div class="col s6">
@@ -403,7 +410,7 @@
               <span class="white-text descrip texto-abajo t_sm">Conservar y utilizar en forma sostenible los océanos, los mares y los recursos marinos para el desarrollo sostenible.                          </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_15 quince posicion">
               <div class="row">
                 <div class="col s6">
@@ -417,7 +424,7 @@
               <span class="white-text descrip texto-abajo t_sm">Promover el uso sostenible de los ecosistemas terrestres, luchar contra la desertificación, detener y revertir la degradación de las tierras y frenar la pérdida de la diversidad biológica.                          </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_16 posicion">
               <div class="row">
                 <div class="col s6">
@@ -431,7 +438,7 @@
               <span class="white-text descrip texto-abajo t_sm">Promover sociedades pacíficas e inclusivas para el desarrollo sostenible, facilitar el acceso a la justicia para todos y crear instituciones eficaces, responsables e inclusivas a todos los niveles.                          </span>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m6 l3">
             <div class="card-panel id_17 posicion">
               <div class="row">
                 <div class="col s6">
@@ -451,7 +458,7 @@
             <h3 class="fuerte t_principal">C&Oacute;MO VAMOS</h3>
             <li class="divider"></li>
             <p class="t_sm gris">
-              Esta sección permite visualizar el avance de los indicadores de los cuales se dispone información para XX de los 17 objetivos de la Agenda 2030 para el Desarrollo Sostenible.
+              Esta sección permite visualizar el avance de los indicadores de los cuales se dispone información para 11 de 17 objetivos de la Agenda 2030 para el Desarrollo Sostenible.
             </p>
           </div>
         </div>
@@ -798,9 +805,9 @@
           <div class="col l5 offset-l1 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm" href="#!">Explora</a></li>
-              <li><a class="fuerte t_sm" href="#!">Compara</a></li>
-              <li><a class="fuerte t_sm" href="#!">¿Cómo vamos?</a></li>
+              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
+              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+              <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
               <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
               <li><a class="fuerte t_sm" href="#!">Recursos</a></li>
             </ul>
@@ -1268,6 +1275,7 @@ var estados =[
        $(document).ready(function(){
 		    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 		    $('.modal-trigger').leanModal();
+        $(".button-collapse").sideNav();
 		  });
       $(document).ready(function()
       {

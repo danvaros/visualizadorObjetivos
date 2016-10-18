@@ -73,6 +73,7 @@ html
 {
 	border-bottom: none !important;
 	margin: 0 !important;
+  width: 85%;
 }
 .dropdown-content li>span
 {
@@ -738,4 +739,25 @@ border-radius: 0 !important;
   color: #083362;
   font-size: 24px;
   font-weight: 300;
+}
+
+
+/************************ mernu  y mobile *************************************/
+
+  nav .button-collapse {
+    float: right;
+  }
+
+  nav .brand-logo img{
+    width: 50%;
+    margin-top: 18%;
+    margin-left: 60%;
+  }
+
+@media only screen and (max-width: 992px){
+nav .brand-logo {
+  left: 0%;
+}
+
+
 }
