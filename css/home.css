@@ -741,6 +741,10 @@ border-radius: 0 !important;
   font-weight: 300;
 }
 
+.leaflet-top, .leaflet-bottom {
+    position: absolute;
+    z-index: 900;
+}
 
 /************************ mernu  y mobile *************************************/
 
