@@ -1,3 +1,11 @@
+ <!--
+   Menú de selección
+   Mapa
+   Gráfica
+   Descarga de datos
+  -->
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,13 +20,20 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,300,600italic,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/home.css">
 
 
 
-	<!-- Load c3.css -->
-	<link href="lib/c3.css" rel="stylesheet" type="text/css">
+  	<!-- Load c3.css -->
+  	<link href="lib/c3.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
+
+
+
+
+
+
 <style media="screen">
   .infoPadre{
     width: 276px;
@@ -80,12 +95,16 @@ td
     <script src="image.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>  </head>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
+
+   </head>
   <body>
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">OBJETIVOS</a></li>
@@ -103,7 +122,7 @@ td
       </nav>
     </div>
     <div class="container">
-      <div class="row">
+      <div class="row scrollable-section" data-section-title="Menú de selección">
         <div class="col s12">
           <h3 class="fuerte t_principal">COMPARA</h3>
           <li class="divider"></li>
@@ -119,7 +138,6 @@ td
         <div class="input-field col s12 m4 caja_s">
           <select>
             <option value="" disabled selected>Elige una opción</option>
-            <option value="1">Nacional</option>
             <option value="2">Estatal</option>
             <option value="3">Municipal</option>
           </select>
@@ -188,7 +206,7 @@ td
 
       </div>
       <div class="espacio_seccion"></div>
-      <div class="row" id="mapa">
+      <div class="row scrollable-section" id="mapa" data-section-title="Mapa">
           <div class="col s12">
             <div id="map">
               <div class="leaflet-top leaflet-right" style="top:139px;">
@@ -238,7 +256,7 @@ td
           </div>
       </div>
       <br><br><br>
-      <div class="row" id="grafica">
+      <div class="row scrollable-section" id="grafica" data-section-title="Gráfica">
         <div class="col s12">
           <h3 class="fuerte t_principal">Comparación de indicadores en el tiempo</h3>
           <li class="divider"></li>
@@ -266,7 +284,7 @@ td
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
           <h3 class="fuerte t_principal">Datos</h3>
           <li class="divider"></li>
@@ -447,6 +465,7 @@ td
   <script type="text/javascript">
 	$(document).ready(function() {
 
+    $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
 
     $(".button-collapse").sideNav();
     $('.modal-trigger').leanModal();

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,7 +31,12 @@
     <script type="text/javascript">
 
       $(window).load(function(){
-        $('#loader').delay(2000).fadeOut("slow");
+        if (sessionStorage.getItem('dontLoad') == null){
+          $('#loader').show();
+          $('#loader').delay(2000).fadeOut("slow");
+        	sessionStorage.setItem('dontLoad', 'true');
+          console.log(sessionStorage.getItem('dontLoad'));
+        }
       });
 
 
@@ -122,7 +129,7 @@
   	</style>
   </head>
   <body>
-    <span id="loader"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
+    <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
     <div class="full">
       <div class="header">
         <div class="imagen">
@@ -150,6 +157,62 @@
               <div class="col s6 left-align pad_l">
                 <a href="http://www.inegi.org.mx" target="_blank"><img class="logo2" src="img/logoINEGI.png" alt="" /></a>
               </div>
+              <div class='icon-scroll'></div>
+                <style media="screen">
+                    .icon-scroll,
+                    .icon-scroll:before {
+                      position: absolute;
+                      left: 50%;
+                    }
+
+                    .icon-scroll {
+                    width: 40px;
+                    height: 70px;
+                    margin-left: -20px;
+                    bottom: 28%;
+                    margin-top: -35px;
+                    box-shadow: inset 0 0 0 1px #FFF;
+                    border-radius: 25px;
+                    }
+
+                    .icon-scroll:before {
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background: #FFF;
+                    margin-left: -4px;
+                    top: 8px;
+                    border-radius: 4px;
+                    -webkit-animation-duration: 1.5s;
+                    animation-duration: 1.5s;
+                    -webkit-animation-iteration-count: infinite;
+                    animation-iteration-count: infinite;
+                    -webkit-animation-name: scroll;
+                    animation-name: scroll;
+                    }
+
+                    @-webkit-keyframes scroll {
+                    0% {
+                      opacity: 1;
+                    }
+                    100% {
+                      opacity: 0;
+                      -webkit-transform: translateY(46px);
+                      transform: translateY(46px);
+                    }
+                    }
+
+                    @keyframes scroll {
+                    0% {
+                      opacity: 1;
+                    }
+                    100% {
+                      opacity: 0;
+                      -webkit-transform: translateY(46px);
+                      transform: translateY(46px);
+                    }
+                    }
+                </style>
 <!--
               <div class="col s12 marg_top">
                 <a class="claro t_sm modal-trigger" href="#modal1">VER VIDEO</a>
@@ -735,7 +798,8 @@
               Porcentaje de aguas residuales tratadas
             </p>
             <div>
-	            <div id="chart2"></div>
+              <div id="map"></div>
+	            <!-- <div id="chart2"></div> -->
 	            <div><img style="margin-left: 35px;" width="147" height="25" src="img/promedio.png"></div>
 <!-- 	            <img src="img/graficaexplora.png" alt="" style="width:100%;"/></div> -->
             <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A EXPLORA</a>
@@ -748,7 +812,7 @@
             <p class="t_sm gris">
               Porcentaje de aguas residuales tratadas
             </p>
-            <div id="map"></div>
+              <div id="map_compara"></div>
             <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A COMPARA</a>
           </div>
         </div>
