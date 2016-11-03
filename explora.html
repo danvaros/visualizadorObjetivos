@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="css/home.css">
     <!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
+
 
 
 
@@ -83,12 +85,15 @@
     <script src="image.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>  </head>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
+  </head>
   <body>
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="home.html" class="brand-logo"><img src="img/logo.png" alt=""/></a>
+          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt=""/></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">OBJETIVOS</a></li>
@@ -106,7 +111,7 @@
       </nav>
     </div>
     <div class="container">
-      <div class="row">
+      <div class="row scrollable-section" data-section-title="Menú de selección" >
         <div class="col s12">
           <h3 class="fuerte t_principal">EXPLORA</h3>
           <li class="divider"></li>
@@ -175,7 +180,7 @@
         </div>
       </div>
       <div class="espacio_seccion"></div>
-      <div class="row" id="mapa">
+      <div class="row scrollable-section" data-section-title="Mapa" id="mapa">
           <div class="col s12">
             <div id="map"></div>
             <div class="row">
@@ -192,7 +197,7 @@
           </div>
       </div>
       <br><br><br>
-      <div class="row" id="grafica">
+      <div class="row scrollable-section" data-section-title="Gráfica" id="grafica">
         <div class="col s12">
           <h3 class="fuerte t_principal">Comparación de indicadores en el tiempo</h3>
           <li class="divider"></li>
@@ -206,7 +211,7 @@
 
 
       <div id="datosEstatal">
-        <div class="row">
+        <div class="row scrollable-section" data-section-title="Tablas" >
           <div class="col s12">
             <h3 class="fuerte t_principal">Top 3 estados</h3>
             <li class="divider"></li>
@@ -281,7 +286,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
           <h3 class="fuerte t_principal">Datos</h3>
           <li class="divider"></li>
@@ -932,13 +937,14 @@ var estados =[
     </script>
     <script>
         $(document).ready(function() {
+            $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
             $('.tooltip').tooltipster({
-				contentCloning: true,
-				animation: 'fade',
-				delay: 200,
-				theme: 'tooltipster-light',
-				trigger: 'hover'
-            });
+    				contentCloning: true,
+    				animation: 'fade',
+    				delay: 200,
+    				theme: 'tooltipster-light',
+    				trigger: 'hover'
+                });
         });
     </script>
 
