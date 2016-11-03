@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Indicadore</title>
+    	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
+	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,300,600italic,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/home.css">
+
+
+
+	<!-- Load c3.css -->
+	<link href="lib/c3.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="image.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>  </head>
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" style="width:50%; margin-top: 18%; margin-left: 50%;"/></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
+            <li class="tam t_sm"><a class="t_sm mActive" href="objetivos.html">OBJETIVOS</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="explora.html">EXPLORA</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="compara.html">COMPARA</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="#!">¿C&Oacute;MO VAMOS?</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="headerObje">
+      <div class="container">
+        <div class="row">
+          <div class="col s2">
+              <img class="ico_obj" src="img/ods-02.png" alt="">
+          </div>
+          <div class="col s7">
+              <h5>2- Hambre cero</h5>
+              Indicador: propoción de la población con ingreso inferior a 1.25 dolares diarios
+              <hr>
+
+          </div>
+          <div class="col s3 right-align">
+            <div class="regreso">
+              <a href="#">Regresar a Objetivos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="fuerte t_principal">Meta 1 .A. Reducir a la mitad, entre 1990 y 2015, el porcentaje de personas cuyos ingresos sean inferiores a 1.25 dólares por día,</h3>
+          <li class="divider"></li>
+          <br>
+          <p class="t_sec2"> 1.1. Proporción de la población coin ingresos per cápital inferiores a 1.25 dólares diarios (Paridad de Poder de Compra respecto al dólar) - Lista oficial de la ONU </p>
+          <p class="gris t_sm">
+          Esta sección permite llevar a cabo el cruce de dos indicadores seleccionados por el usuario, a fin de que pueda analizar de manera sencillas y visual la correlación existente entre dos variables. Igualmente se puede llevar a cabo un seguimiento del comportamiento de los dos indicadores seleccionados en el tiempo por medio de un gráfico y exportar la información, mapas y gráficos para su uso.
+
+          <p class="gris t_sm">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum ipsa eius quam impedit ex nihil debitis quo laudantium aperiam, corrupti nam sit at corporis, accusamus aliquid. Ullam, a? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+      <div class="row" id="grafica">
+        <div class="col s12">
+          <div id="chart"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 center-align">
+          <a id="indicador" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 5px 0px 0px 5px;">INDICADOR</a>
+          <a id="metadato" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0;">METADATO</a>
+          <a id="serie" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0">SERIE HISTÓRICA</a>
+          <a id="datos" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps indicadores-taps-active" style =" border-radius: 0px 5px 5px 0px;">DATOS PARA EL CÁLCULO</a>
+        </div>
+      </div>
+
+
+
+      <div class="row card tablaPadding" id="datos-panel">
+          <div class="col s6">PERIODO</div>
+          <div class="col s6">Proporcion del consumo nacional que corresponde</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <hr>
+          <div class="col s6">2000</div>
+          <div class="col s6">6.3</div>
+          <br>
+          <br>
+          <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
+          Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+      </div>
+
+      <div class="row card tablaPadding" id="serie-panel">
+        <div class="col s12">
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>Entidad Federativa</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+                <th>2012</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nacional</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Aguascalientes</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Baja California</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Baja California Sur</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Campeche</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Chiapas</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+                <td>6.3</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
+          Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+        </div>
+      </div>
+
+
+      <div class="row card tablaPadding" id="metadato-panel">
+        <div class="col s12">
+          <table class="bordered">
+
+            <tbody>
+            <tr>
+              <th>Definición</th>
+              <td><p>Es el porcentaje de la población que en el año del cálculo viene con menos del equivaliente a 1.25 dólares diarios a precios de 2005, según la paridad del poder adquisitivo.</p></td>
+            </tr>
+            <tr>
+              <th>Algoritmo</th>
+              <td>
+                  <p>Significado de las siglas o abreviaturas:</p>
+                  PPIDt: Porsentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>
+                  qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>
+                  nt: Número de personas
+              </td>
+            </tr>
+            <tr>
+              <th>Fuente generadora de la informacón estadística utilizada para el cálculo del indicador:oritmo</th>
+              <td>
+            Instituto Nacional de Estadística y Geografia (INEGI). Índice Nacional de Precios al Consumidor.<br>
+            http://www.inigi.org.mx/est/contenidos/proyectos/inp/inoc.aspx<br>
+            Consejo Nacional de Evaluación de la Politica de Desarrollo Social (CONEVAL). Medicón de la pobreza por ingresos.<br>
+            Banco Mundia (BM). Global Purchasing Power Paraties and Real Expenditures. 2005 International Comparison Program.<br>
+            http://www.worldbank.org/data/icp.<br>
+            Instituto Nacional de Estadística y Geografia (INEGI). Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 1992-2012<br>
+            y Banco de Información Económica (BIE). Serie de datos para PIB y Consumi Privado.<br>
+            Para entidad federativa: Instituto Nacional de Estadística y Geografia (INEGI). Módulo de condiciones<br>
+            Socioeconómicas de la ENIGH (MCS-ENIGH) 2008, 2010, 2012 y 2014.
+
+             </td>
+            </tr>
+            </tbody>
+          </table>
+          <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
+          Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+        </div>
+      </div>
+
+      <div class="row card tablaPadding" id="indicador-panel">
+        <div class="col s5">
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>Entidad Federativa</th>
+                <th>2016</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aguascalientes</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Baja California</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Baja California Sur</td>
+                <td>6.3</td>
+              </tr>
+          </table>
+        </div>
+        <div class="col s1"></div>
+        <div class="col s5">
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>Entidad Federativa</th>
+                <th>2016</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aguascalientes</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Baja California</td>
+                <td>6.3</td>
+              </tr>
+              <tr>
+                <td>Baja California Sur</td>
+                <td>6.3</td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+<!-- Chihuahua
+Coahuila
+Colima
+Distrito Federal
+Durango
+Estado de México
+Guanajuato
+Guerrero
+Hidalgo
+Jalisco
+Michoacán
+Morelos
+Nayarit
+Nuevo León
+Oaxaca
+Puebla
+Querétaro
+Quintana Roo
+San Luis Potosí
+Sinaloa
+Sonora
+Tabasco
+Tamaulipas
+Tlaxcala
+Veracruz
+Yucatán
+Zacatecas -->
+
+
+
+
+    <footer class="page-footer id">
+      <div class="container">
+        <div class="row" id="fot">
+          <div class="col l3 s12">
+            <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
+            <br>
+            <br>
+            <div class="" style="display:inline;">
+              <a href="https://www.facebook.com" style="margin-right: 12%;"><img src="img/fill2.png" alt="" style="width:3%;"/></a>
+              <a href="https://twitter.com" style="margin-right: 12%;"><img src="img/fill1.png" alt="" style="width:7%;"/></a>
+              <a href="#"><img src="img/fill3.png" alt="" style="width:7%;"/></a>
+            </div>
+          </div>
+          <div class="col l5 offset-l1 s12">
+            <ul class="fuerte">
+              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
+              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
+              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+              <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
+              <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
+              <li><a class="fuerte t_sm" href="#!">Recursos</a></li>
+            </ul>
+          </div>
+          <div class="col l3 s12" style="display:inline;">
+            <a href="https://www.gob.mx" target="_blank"><img src="img/logoPR.png" alt="" style="width: 45%; margin-right: 15%;"/></a>
+            <a href="http://www.inegi.org.mx" target="_blank"><img src="img/logoINEGI.png" alt="" style="width:25%;"/></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright light-blue">
+      </div>
+    </footer>
+
+
+
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <!-- <script type="text/javascript" src="entidad.json"></script> -->
+    <script type="text/javascript" src="entidadCompara.json"></script>
+    <!-- <script type="text/javascript" src="entidad2.json"></script> -->
+    <!-- <script type="text/javascript" src="municipio.json"></script>
+    <script type="text/javascript" src="nacion.json"></script> -->
+
+    <!-- Load d3.js and c3.js -->
+  <script src="lib/d3.v3.min.js" charset="utf-8"></script>
+  <script src="lib/c3.min.js"></script>
+  <script src="classybrew/build/classybrew.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+          // select de metadatos
+          $('#indicador').click(function(){
+                $('#metadato-panel').hide();
+                $('#indicador-panel').show();
+                $('#serie-panel').hide();
+                $('#datos-panel').hide();
+
+                $('#indicador').addClass('indicadores-taps-active');
+                $('#serie').removeClass('indicadores-taps-active');
+                $('#datos').removeClass('indicadores-taps-active');
+                $('#metadato').removeClass('indicadores-taps-active');
+          });
+
+          $('#serie').click(function(){
+                $('#metadato-panel').hide();
+                $('#indicador-panel').hide();
+                $('#serie-panel').show();
+                $('#datos-panel').hide();
+
+                $('#indicador').removeClass('indicadores-taps-active');
+                $('#serie').addClass('indicadores-taps-active');
+                $('#datos').removeClass('indicadores-taps-active');
+                $('#metadato').removeClass('indicadores-taps-active');
+          });
+
+          $('#datos').click(function(){
+                $('#metadato-panel').hide();
+                $('#indicador-panel').hide();
+                $('#serie-panel').hide();
+                $('#datos-panel').show();
+
+
+                $('#indicador').removeClass('indicadores-taps-active');
+                $('#serie').removeClass('indicadores-taps-active');
+                $('#datos').addClass('indicadores-taps-active');
+                $('#metadato').removeClass('indicadores-taps-active');
+          });
+
+          $('#metadato').click(function(){
+                $('#metadato-panel').show();
+                $('#indicador-panel').hide();
+                $('#serie-panel').hide();
+                $('#datos-panel').hide();
+
+
+                $('#indicador').removeClass('indicadores-taps-active');
+                $('#serie').removeClass('indicadores-taps-active');
+                $('#datos').removeClass('indicadores-taps-active');
+                $('#metadato').addClass('indicadores-taps-active');
+          });
+
+          var chart = c3.generate({
+              data: {
+                  x: 'x',
+          //        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+                  columns: [
+                      ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+          //            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
+                      ['data1', 30, 200, 100, 400, 150, 250],
+                      ['data2', 130, 340, 200, 500, 250, 350]
+                  ]
+              },
+              axis: {
+                  x: {
+                      type: 'timeseries',
+                      tick: {
+                          format: '%Y-%m-%d'
+                      }
+                  }
+              }
+          });
+
+          setTimeout(function () {
+              chart.load({
+                  columns: [
+                      ['data3', 400, 500, 450, 700, 600, 500]
+                  ]
+              });
+          }, 1000);
+    });
+  </script>
+
+
+
+
+
+  </body>
+</html>
