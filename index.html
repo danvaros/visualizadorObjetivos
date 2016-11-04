@@ -32,8 +32,8 @@
 
       $(window).load(function(){
         if (sessionStorage.getItem('dontLoad') == null){
-          $('#loader').show();
-          $('#loader').delay(2000).fadeOut("slow");
+          // $('#loader').show();
+          // $('#loader').delay(2000).fadeOut("slow");
         	sessionStorage.setItem('dontLoad', 'true');
           console.log(sessionStorage.getItem('dontLoad'));
         }
