@@ -28,16 +28,17 @@
     <!-- <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> -->
+    <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
     <script type="text/javascript">
 
-      $(window).load(function(){
+      //$(window).load(function(){
         if (sessionStorage.getItem('dontLoad') == null){
-          // $('#loader').show();
-          // $('#loader').delay(2000).fadeOut("slow");
+          $('#loader').show();
+          $('#loader').delay(2000).fadeOut("slow");
         	sessionStorage.setItem('dontLoad', 'true');
           console.log(sessionStorage.getItem('dontLoad'));
         }
-      });
+      //});
 
 
     </script>
@@ -138,7 +139,7 @@
   	</style>
   </head>
   <body>
-    <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
+    <!-- <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span> -->
     <div class="full">
       <div class="header">
         <div class="imagen">
@@ -1676,7 +1677,7 @@ var estados =[
     //variable de mapa
       var img;
       var data_url;
-      var locked=false;
+      var locked_compara=false;
       var map_compara = L.map('map_compara' ,
       {
           scrollWheelZoom: false,
@@ -1867,7 +1868,7 @@ var estados =[
         };
       }
       function highlightFeature(e) {
-       if(locked == false)
+       if(locked_compara == false)
        {
           var layer = e.target;
           layer.setStyle({
@@ -1901,15 +1902,15 @@ var estados =[
           mouseout: resetHighlight,
           mousedown: function(e)
           {
-      if (locked == true) {
-        locked = false;
+      if (locked_compara == true) {
+        locked_compara = false;
         (function ($) {
                  $(".info2").css("border","none");
                  $(".infos").css("border","none");
                  }(jQuery));
       }
       else {
-        locked = true;
+        locked_compara = true;
         (function ($) {
               //	$(".info2").css("border","5px solid #00cc99");
                 $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
