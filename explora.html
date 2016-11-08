@@ -201,14 +201,14 @@
       <div class="row scrollable-section" data-section-title="Mapa" id="mapa">
           <div class="col s12">
             <div id="map"></div>
-            <div class="row">
+            <div class="row" id="footmap">
 	            <div class="col s8 center-align">
 	            	<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
 	            </div>
-	            <div class="col s4">
+	            <div class="col s4" >
                     <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
 	            </div>
             </div>
@@ -493,7 +493,8 @@
       $('#agregacion').on('change', function (e)
       {
           if(this.value == 1){
-            $('#mapa').slideToggle("slow" );
+            $('#footmap').slideToggle("slow");
+            $('#map').slideToggle("slow");
             $('#datosEstatal').slideToggle();
             $('#datosNacional').slideToggle();
             nacional =  true ;
@@ -501,7 +502,8 @@
           else{
             if(nacional)
             {
-              $('#mapa').slideToggle("slow" );
+              $('#footmap').slideToggle("slow");
+              $('#map').slideToggle("slow");
               $('#datosEstatal').slideToggle( );
               $('#datosNacional').slideToggle( );
               nacional =  false ;
