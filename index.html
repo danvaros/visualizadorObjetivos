@@ -995,6 +995,12 @@
         </div>
       </div>
     </footer>
+
+
+
+
+
+
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <script type="text/javascript" src="entidad.json"></script>
     <script type="text/javascript" src="entidad2.json"></script>
@@ -1007,6 +1013,48 @@
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
 
+
+
+
+
+<script type="text/javascript">
+var num_fondo = 0;
+var myVar = setInterval(myTimer, 5000);
+
+function myTimer() {
+  if(num_fondo ==  0){
+    $('.imagen').css("background-image", "url(img/fondo2.png)");
+    num_fondo++;
+  }else if(num_fondo == 1){
+    $('.imagen').css("background-image", "url(img/fondo3.png)");
+    num_fondo++;
+  }else{
+    $('.imagen').css("background-image", "url(img/fondo1.png)");
+    num_fondo=0;
+  }
+
+
+}
+window.onload = function() {
+
+  var idioma = navigator.language || navigator.userLanguage;
+  console.log("The language is: " + idioma);
+
+var ln = x = window.navigator.language||navigator.browserLanguage;
+console.log(ln);
+if(ln == 'en' ){
+  console.log('en');
+}else if(ln == 'es' || ln == 'es-419'){
+  console.log('es');
+}else{
+  console.log('diferente');
+}
+}
+
+
+
+
+</script>
   <script type="text/javascript">
 
 
