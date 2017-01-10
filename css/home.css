@@ -580,12 +580,12 @@ nav
     background-color: #ffd907;
     border-style: none;
     padding: 5px 1rem;
-    margin-right: 5px;
+    margin-right: 2px;
     border-radius: 4px;
 }
 .icns
 {
-	text-decoration: none;
+	  text-decoration: none;
     color: #fff;
     text-align: center;
     letter-spacing: .5px;
@@ -594,8 +594,41 @@ nav
     background-color: #4caf50;
     border-style: none;
     padding: 5px 1rem;
+    margin-right: 2px;
     border-radius: 4px;
 }
+
+.icnPDF
+{
+	  text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+    background-color: #a8361a;
+    border-style: none;
+    padding: 5px 1rem;
+    margin-right: 2px;
+    border-radius: 4px;
+}
+
+.icnSDMX
+{
+	  text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+    background-color: #4fa0c8;
+    border-style: none;
+    padding: 5px 1rem;
+    margin-right: 2px;
+    border-radius: 4px;
+}
+
+
 .dropdown-content
 {
 	z-index: 4000;

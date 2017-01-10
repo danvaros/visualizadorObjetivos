@@ -1035,6 +1035,23 @@ function myTimer() {
 
 
 }
+window.onload = function() {
+
+  var idioma = navigator.language || navigator.userLanguage;
+  alert ("The language is: " + idioma);
+
+var ln = x = window.navigator.language||navigator.browserLanguage;
+console.log(ln);
+if(ln == 'en' ){
+  console.log('en');
+}else if(ln == 'es' || ln == 'es-419'){
+  console.log('es');
+}else{
+  console.log('diferente');
+}
+}
+
+
 
 
 </script>
