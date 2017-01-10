@@ -995,6 +995,12 @@
         </div>
       </div>
     </footer>
+
+
+<a class="btn" id="cambia">boton cambia fondo</a>
+
+
+
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <script type="text/javascript" src="entidad.json"></script>
     <script type="text/javascript" src="entidad2.json"></script>
@@ -1007,6 +1013,41 @@
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
 
+
+
+
+
+<script type="text/javascript">
+var num_fondo = 0;
+$(document).ready(
+  function(){
+
+    $('#cambia').click(function(){
+      console.log('cambia') ;
+      // $('.imagen').css("background-image", "url(img/fondo2.png)");
+      var myVar = setInterval(myTimer, 5000);
+    });
+  }
+);
+
+
+function myTimer() {
+  if(num_fondo ==  0){
+    $('.imagen').css("background-image", "url(img/fondo2.png)");
+    num_fondo++;
+  }else if(num_fondo == 1){
+    $('.imagen').css("background-image", "url(img/fondo3.png)");
+    num_fondo++;
+  }else{
+    $('.imagen').css("background-image", "url(img/fondo1.png)");
+    num_fondo=0;
+  }
+
+
+}
+
+
+</script>
   <script type="text/javascript">
 
 
