@@ -5,7 +5,7 @@ html
 .imagen
 {
   height: 700px;
-  background: url('../img/fondo1.png') no-repeat center;
+  background:  no-repeat center; 
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

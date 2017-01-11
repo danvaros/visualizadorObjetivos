@@ -1018,23 +1018,16 @@
 
 
 <script type="text/javascript">
-var num_fondo = 0;
-var myVar = setInterval(myTimer, 5000);
 
-function myTimer() {
-  if(num_fondo ==  0){
-    $('.imagen').css("background-image", "url(img/fondo2.png)");
-    num_fondo++;
-  }else if(num_fondo == 1){
-    $('.imagen').css("background-image", "url(img/fondo3.png)");
-    num_fondo++;
-  }else{
-    $('.imagen').css("background-image", "url(img/fondo1.png)");
-    num_fondo=0;
-  }
-
-
+var aleatorio =  Math.floor((Math.random() * 3) + 1);
+if(aleatorio ==  1){
+  $('.imagen').css("background-image", "url(img/fondo2.png)");
+}else if(aleatorio == 2){
+  $('.imagen').css("background-image", "url(img/fondo3.png)");
+}else if(aleatorio == 3){
+  $('.imagen').css("background-image", "url(img/fondo1.png)");
 }
+
 window.onload = function() {
 
   var idioma = navigator.language || navigator.userLanguage;
