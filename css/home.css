@@ -5,11 +5,12 @@ html
 .imagen
 {
   height: 700px;
-  background: url('../img/fondo1.png') no-repeat center;
+  background:  no-repeat center; 
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+   -webkit-transition: background 2s;
 }
 .fondo
 {
@@ -579,12 +580,12 @@ nav
     background-color: #ffd907;
     border-style: none;
     padding: 5px 1rem;
-    margin-right: 5px;
+    margin-right: 2px;
     border-radius: 4px;
 }
 .icns
 {
-	text-decoration: none;
+	  text-decoration: none;
     color: #fff;
     text-align: center;
     letter-spacing: .5px;
@@ -593,8 +594,41 @@ nav
     background-color: #4caf50;
     border-style: none;
     padding: 5px 1rem;
+    margin-right: 2px;
     border-radius: 4px;
 }
+
+.icnPDF
+{
+	  text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+    background-color: #a8361a;
+    border-style: none;
+    padding: 5px 1rem;
+    margin-right: 2px;
+    border-radius: 4px;
+}
+
+.icnSDMX
+{
+	  text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+    background-color: #4fa0c8;
+    border-style: none;
+    padding: 5px 1rem;
+    margin-right: 2px;
+    border-radius: 4px;
+}
+
+
 .dropdown-content
 {
 	z-index: 4000;
@@ -845,4 +879,67 @@ nav .brand-logo {
 }
 
 
+}
+
+
+
+/**************  raton *********************/
+.raton{
+  position: absolute;
+  right: 5%;
+  top: 650px;
+}
+
+.icon-scroll,.icon-scroll:before
+ {
+  position: absolute;
+  left:  50%;
+}
+
+.icon-scroll {
+width: 40px;
+height: 70px;
+margin-left: -20px;
+bottom: 28%;
+margin-top: -35px;
+box-shadow: inset 0 0 0 1px #FFF;
+border-radius: 25px;
+}
+
+.icon-scroll:before {
+content: '';
+width: 8px;
+height: 8px;
+background: #FFF;
+margin-left: -4px;
+top: 8px;
+border-radius: 4px;
+-webkit-animation-duration: 1.5s;
+animation-duration: 1.5s;
+-webkit-animation-iteration-count: infinite;
+animation-iteration-count: infinite;
+-webkit-animation-name: scroll;
+animation-name: scroll;
+}
+
+@-webkit-keyframes scroll {
+0% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+  -webkit-transform: translateY(46px);
+  transform: translateY(46px);
+}
+}
+
+@keyframes scroll {
+0% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+  -webkit-transform: translateY(46px);
+  transform: translateY(46px);
+}
 }
