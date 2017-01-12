@@ -212,7 +212,7 @@ input[type=text]:focus:not([readonly])
 }
 .nav_sticky li
 {
-    margin: 0 5%;
+    margin: 0 2%;
 }
 .nav_sticky a:hover
 {
@@ -513,7 +513,7 @@ nav
 }
 .tam
 {
-  width: 15%;
+  
 }
 .head_cont
 {
