@@ -12,33 +12,64 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+    <style media="screen">
+      .status_c{
+        border-radius: 20px;
+        background-color: #07c2a7;
+        height: 30px;
+        width: 30px;
+      }
+      .status_p{
+        border-radius: 20px;
+        background-color: #f3c000;
+        height: 30px;
+        width: 30px;
+      }
+      .status_i{
+        border-radius: 20px;
+        background-color: #ff6666;
+        height: 30px;
+        width: 30px;
+      }
+    .contendor_coll{
+      padding: 25px;
+    }
+
+    .altura{
+      padding-top: 20px;
+    }
+    </style>
   </head>
   <body>
     <div class="navbar-fixed">
-
-      <style media="screen">
-
-      </style>
       <nav>
         <div class="nav-wrapper">
-          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt=""/></a>
+          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
-            <li class="tam t_sm"><a class="t_sm mActive" href="objetivos.html">OBJETIVOS</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="explora.html">EXPLORA</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">COMPARA</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="#!">¿C&Oacute;MO VAMOS?</a></li>
+	          <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
+	          <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Objetivos</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="#">Indicadores por unidad geográfica</a></li>
+            <li class="tam t_sm"><a class="t_sm mActive" href="como_vamos.html!">¿C&oacute;mo vamos?</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
+            <li><input type="text" name="buscar" style="background: rgba(255, 255, 255, 0.4) none repeat scroll 0 0;border-bottom: 0 none;border-radius: 15px;color: #ffffff !important;padding: 0 10px;" /><i class="material-icons prefix">search</i></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="objetivos.html">OBJETIVOS</a></li>
-            <li><a href="explora.html">EXPLORA</a></li>
-            <li><a href="compara.html">COMPARA</a></li>
-            <li><a href="#!">¿C&Oacute;MO VAMOS?</a></li>
+	          <li><a href="explora.html">Explora</a></li>
+	          <li><a href="compara.html">Compara</a></li>
+            <li><a href="objetivos.html">Objetivos</a></li>
+            <li><a href="#">Indicadores por unidad geográfica</a></li>
+            <li><a href="#!">¿C&oacute;mo vamos?</a></li>
+            <li><a href="#!">Acerca de</a></li>
           </ul>
         </div>
       </nav>
-
     </div>
+
+
+
     <div class="container">
       <div class="row">
         <div class="col s12">
@@ -57,67 +88,65 @@
                <span class="marg_obj t_sm gris">1- Fin de la pobreza<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <table class="bordered">
-                 <thead>
-                   <tr>
-                     <th>Indicador</th>
-                     <th>Meta</th>
-                     <th>último valor</th>
-                     <th>¿Cómo va México?</th>
-                   </tr>
-                 </thead>
-                 <tbody>
-                   <tr>
-                      <td>Proporción de la población  con accesos  a la seguridad social</td>
-                      <td>4.6</td>
-                      <td>4.6</td>
-                      <td>
-                        <div>
-                          <div>
-                            <div class="status_c"></div>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
                           </div>
-                          <div>Meta cumpolida</div>
-                        </div>
-                      </td>
-                   </tr>
-                   <tr>
-                      <td>Proporción de la población  con accesos  a la seguridad social</td>
-                      <td>4.6</td>
-                      <td>4.6</td>
-                      <td>
-                        <div>
-                          <div>
-                            <div class="status_c"></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
                           </div>
-                          <div>Progreso insuficiente</div>
-                        </div>
-                      </td>
-                   </tr>
-                   <tr>
-                      <td>Proporción de la población  con accesos  a la seguridad social</td>
-                      <td>4.6</td>
-                      <td>4.6</td>
-                      <td>
-                        <div class="row">
-                          <div class="col s4 .center-align">
-                            <div class="status_c"></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
                           </div>
-                          <div class="col s4 .center-align">
-                            En progreso
-                          </div>
-                        </div>
-                      </td>
-                   </tr>
-                 </tbody>
-               </table>
-<style media="screen">
-  .status_c{
-    border-radius: 20px;
-    background-color: #000;
-    height: 30px;
-    width: 30px;
-  }
-</style>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -128,7 +157,65 @@
                <span class="marg_obj t_sm gris">2- Hambre cero<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>El hambre extrema y la desnutrición continúan siendo un obstáculo para el desarrollo sostenible y una trampa de la que la gente no escapa fácilmente. El hambre y la desnutrición significan: individuos menos productivos, que son más propensos a enfermedades y por lo tanto incapaces de ganar más y mejorar sus medios de vida. Hay cerca de 800 millones de personas que padecen hambre en todo el mundo, la gran mayoría en los países en vías de desarrollo.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -139,7 +226,65 @@
                <span class="marg_obj t_sm gris">3- Salud y bienestar<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Se han tenido importantes avances en el mundo como el aumento de la esperanza de vida y la reducción de la mortalidad infantil y materna. En materia de aumento del acceso a agua potable y el saneamiento, reducción de la malaria, la tuberculosis, la poliomielitis y la propagación del VIH/SIDA. Sin embargo, se necesitan muchos más esfuerzos para erradicar totalmente una amplia gama de enfermedades y hacer frente a diversos problemas de salud persistentes y emergentes.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -150,7 +295,65 @@
                <span class="marg_obj t_sm gris">4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>La obtención de una educación de calidad es la base para mejorar la vida de las personas y el desarrollo sostenible. Se han hecho grandes avances en el mundo para aumentar el acceso a la educación en todos los niveles, han aumentado las tasas de matrícula en las escuelas, particularmente para mujeres y niñas. Las habilidades básicas de alfabetización han mejorado enormemente, sin embargo, son necesarios esfuerzos más audaces para hacer aún mayores avances y alcanzar los objetivos de educación para todos y todas. Por ejemplo, el mundo ha alcanzado la igualdad en la educación primaria entre niños y niñas, pero pocos países han alcanzado ese nivel en todos los niveles de la educación.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -161,7 +364,65 @@
                <span class="marg_obj t_sm gris">5- Igualdad de género<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Las mujeres y las niñas representan la mitad de la población del mundo y, por tanto, también la mitad del potencial. Sin embargo, la desigualdad de género persiste hoy en todas partes y estanca el progreso social. A partir de 2014, 143 países han garantizado la igualdad entre hombres y mujeres en sus constituciones, pero 52 aún tienen que dar este paso.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -172,7 +433,65 @@
                <span class="marg_obj t_sm gris">6- Agua limpia y saneamiento<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>El acceso a agua, saneamiento e higiene es un derecho humano, sin embargo, miles de millones todavía se enfrentan a desafíos diarios para acceder incluso al más básico de los servicios. Cerca de 1.8 millones de personas en todo el mundo utilizan una fuente de agua potable que está contaminada con materia fecal. Alrededor de 2.4 millones de personas carecen de acceso a servicios de saneamiento básicos, tales como baños o letrinas en el mudno. La escasez de agua afecta a más del 40% de la población mundial y se prevé que aumente. Más del 80% de las aguas residuales resultantes de las actividades humanas se descargan a los ríos o al mar sin ningún tratamiento, lo que genera más contaminación.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -183,7 +502,65 @@
                <span class="marg_obj t_sm gris">7- Energía asequible y no contaminante<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Nuestras vidas cotidianas dependen de servicios de energía confiables y asequibles, para funcionar sin problemas y para desarrollarnos equitativamente. Un sistema de energía bien establecido es compatible con todos los sectores: desdes el sector de negocios, medicina y educación, hasta el de agricultura, infraestructura, comunicaciones y alta tecnología. La falta de acceso a los suministros de energía y sistemas de transformación es un obstáculo para el desarrollo humano y económico.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -194,7 +571,65 @@
                <span class="marg_obj t_sm gris">8- Trabajo decente y crecimiento económico<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>La erradicación de la pobreza sólo es posible a través de trabajos estables y bien remunerados. Casi 2.2 millones de personas viven por debajo del umbral de pobreza de 2 dólares en el mundo. De acuerdo con la Organización Internacional del Trabajo (OIT), más de 204 millones de personas están desempleadas desde el 2015. El desempleo aumentó de 170 millones de personas en 2007 a casi 202 millones de personas en 2012, de los cuales aproximadamente 75 millones son mujeres y hombres jóvenes.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -205,7 +640,65 @@
                <span class="marg_obj t_sm gris">9- Industria, innovación e infraestructura<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>El crecimiento económico, el desarrollo social y la acción climática dependen en gran medida de las inversiones en infraestructura, el desarrollo de industrias sostenibles y el progreso tecnológico. De cara a un rápido cambio de panorama económico mundial y de aumento de la desigualdad, el crecimiento sostenido debe basarse en industrialización que primero que nada genere oportunidades de acceso para toda la población, apoyada de innovación e infraestructura resiliente.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -216,7 +709,65 @@
                <span class="marg_obj t_sm gris">10- Reducción de las desigualdades<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>La comunidad internacional ha dado pasos significativos para sacar a las personas de la pobreza. Las naciones más vulnerables -los países menos desarrollados, los países en desarrollo sin litoral y los pequeños Estados insulares en desarrollo- continúan haciendo incursiones en la reducción de la pobreza. Sin embargo, la desigualdad persiste y grandes disparidades permanecen en el acceso a los servicios de salud, educación y otros activos. Además, mientras que la desigualdad de ingresos entre países puede haberse reducido, la desigualdad dentro de los países ha aumentado. Existe un creciente consenso de que el crecimiento económico no es suficiente para reducir la pobreza, si éste no es inclusivo y no contiene las tres dimensiones del desarrollo sostenible -económicas, sociales y medioambientales-.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -227,7 +778,65 @@
                <span class="marg_obj t_sm gris">11- Ciudades y comunidades sustentables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>La mitad de la humanidad, cerca de 3.5 mil millones de personas, viven actualmente en ciudades, y este número sólo seguirá creciendo. Debido a que el futuro será urbano para la mayoría de la gente, las soluciones a algunos de los mayores retos que enfrentan:  la pobreza humana, el cambio climático, la salud y educación, se deben solucionar para la vida de las ciudades. 828 millones de personas viven en barrios marginales y este número sigue aumentando. Los niveles de consumo de energía y la contaminación urbana también son preocupantes. Las ciudades ocupan sólo el 3 por ciento de las tierras del planeta, pero representan el 60-80 por ciento del consumo de energía y el 75 por ciento de las emisiones de carbono. Muchas ciudades también son más vulnerables al cambio climático y desastres naturales debido a su alta concentración de personas y ubicación, así que la construcción de resiliencia urbana es crucial para evitar pérdidas humanas, sociales y económicas.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -238,7 +847,65 @@
                <span class="marg_obj t_sm gris">12- Producción y consumo responsables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Se espera que más gente en el mundo se una a la clase media en las próximas dos décadas. Esto es bueno para la prosperidad individual pero aumentará la demanda de recursos naturales limitados. Si no actuamos para cambiar nuestros patrones de consumo y producción, vamos a causar daños irreversibles en el medio ambiente.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -249,7 +916,65 @@
                <span class="marg_obj t_sm gris">13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>El cambio climático es causado por las actividades humanas y está amenazando la forma en la que vivimos y el futuro de nuestro planeta. Al enfrentar el cambio climático, podemos construir un mundo sostenible para todos.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -260,7 +985,65 @@
                <span class="marg_obj t_sm gris">14- Vida submarina<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Los océanos constituyen uno los principales recursos naturales proveen: alimentos, medicamentos, biocombustibles y otros productos. Ayudan con la descomposición y eliminación de los residuos y la contaminación, y sus ecosistemas costeros actúan como amortiguadores para reducir los daños causados por las tormentas. Las Zonas Marinas Protegidas contribuyen grandemente a la reducción de la pobreza al aumentar la cantidad de captura, de ingresos y a mejorar la salud de las comunidades pesqueras. El mantenimiento de la salud de los océanos es compatible con la mitigación del cambio climático y los esfuerzos de adaptación.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -271,7 +1054,65 @@
                <span class="marg_obj t_sm gris">15- Vida de ecosistemas terrestres<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Los bosques cubren casi el 31% de la superficie terrestre de nuestro planeta. Desde el aire que respiramos, el agua que bebemos y los alimentos que comemos, los bosques nos sostienen. Alrededor de 1.6 miles de millones de personas en el mundo, dependen de los bosques para su sustento en el mundo. Casi el 75% de los pobres del mundo son afectados directamente por la degradación del suelo. Y son el hogar de más del 80% de todas las especies terrestres de animales, plantas e insectos.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -282,7 +1123,65 @@
                <span class="marg_obj t_sm gris">16- Paz, justicia e instituciones sólidas<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Entre las instituciones más afectadas por la corrupción son el poder judicial y la policía. La corrupción, el soborno, el robo y el fraude fiscal cuestan cerca 1.26 billones de dólares a los países en desarrollo cada año; esta cantidad de dinero podría ser utilizada para sacar de la pobreza a los que viven con menos de $1,25 dólares al día por hasta seis años. Además las tasa de niños que abandonan la escuela primaria en países afectados por conflictos alcanzó el 50 por ciento en 2011, lo cual representa a 28.5 millones de niños y niñas, y eso es solo una muestra del impacto que las sociedades inestables tienen en uno de los principales objetivos de la Agenda 2030: la educación. El estado de derecho y el desarrollo tienen una interrelación significativa y se refuerzan mutuamente, por lo que es esencial asegurarlo para el desarrollo sostenible a nivel nacional e internacional.</p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
            <li>
@@ -293,8 +1192,65 @@
                <span class="marg_obj t_sm gris">17- Alianzas para lograr objetivos<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris">
-               <p>Un programa de desarrollo sostenible exitoso requiere asociaciones entre los gobiernos, el sector privado y la sociedad civil. Estas asociaciones se necesitan a nivel mundial, regional, nacional y local, construidas de forma inclusiva y sobre  una visión compartida y objetivos comunes que ponen a las personas y lal planeta en el centro.
-Se necesita la acción urgente de movilizar, redirigir y desbloquear el poder transformador de miles de millones de dólares de recursos privados para cumplir con los Objetivos de Desarrollo Sostenible. Se necesitan inversiones a largo plazo, incluida la inversión extranjera directa, en sectores críticos, especialmente en los países en desarrollo. Estos incluyen: energía sostenible, infraestructura y transporte, así como en tecnologías de información y comunicación. El sector público tendrá que establecer una dirección clara y supervisión de marcos, reglamentos y estructuras de incentivos que permitan dichas inversiones, así como atraerlas y reforzar el desarrollo sostenible. </p>
+               <div class="contendor_coll">
+                 <table class="bordered">
+                   <thead>
+                     <tr>
+                       <th>Indicador</th>
+                       <th>Meta</th>
+                       <th>último valor</th>
+                       <th>¿Cómo va México?</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_c center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Meta cumpolida
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2">
+                              <div class="status_i center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              Progreso insuficiente
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Proporción de la población  con accesos  a la seguridad social</td>
+                        <td>4.6</td>
+                        <td>4.6</td>
+                        <td>
+                          <div class="row valign-wrapper altura">
+                            <div class="col s2 ">
+                              <div class="status_p center-align"></div>
+                            </div>
+                            <div class="col s8 left-align">
+                              En progreso
+                            </div>
+                          </div>
+                        </td>
+                     </tr>
+                   </tbody>
+                 </table>
+              </div>
              </div>
            </li>
          </ul>
