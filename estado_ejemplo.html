@@ -1,11 +1,3 @@
- <!--
-   Menú de selección
-   Mapa
-   Gráfica
-   Descarga de datos
-  -->
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,16 +15,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/home.css">
 
-
-
   	<!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
-
-
-
-
-
+<!--     <link rel="stylesheet" type="text/css" href="css/section-scroll.css"> -->
 
 <style media="screen">
   .infoPadre{
@@ -108,6 +93,49 @@ td
     background-color: #FFF;
 }
 
+.btn-edo{
+	padding:15px 20px !important;
+	vertical-align: middle;
+	text-align: left;
+	background: #F6F6F6;
+	color:#0A254F;
+}
+.btn-edo a{
+	padding:15px 20px !important;
+	vertical-align: middle;
+	text-align: left;
+	background: #F6F6F6;
+	color:#0A254F;
+}
+
+.btn-edo img{
+	vertical-align: middle;
+	margin-right: 15px;
+	max-height: 30px;
+	max-width: 30px;
+}
+
+.alto_col{
+  height: 120px;
+}
+
+.sin_borde_der{
+  border-right-width:0px !important;
+}
+
+.sin_borde_izq{
+border-left-width: 0px !important;
+}
+
+.foot_er{
+  background-color: #c7b102;
+  height: 50px;
+  color: #fff;
+}
+
+}
+
+
 </style>
 
 
@@ -119,7 +147,7 @@ td
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
-    <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
+<!--     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script> -->
 
    </head>
   <body>
@@ -130,9 +158,9 @@ td
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm mActive" href="compara.html">Compara</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Objetivos</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="estados.html">Indicadores por unidad geográfica</a></li>
+            <li class="tam t_sm"><a class="t_sm mActive" href="estados.html">Indicadores por unidad geográfica</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
             <li>
@@ -151,214 +179,258 @@ td
         </div>
       </nav>
     </div>
+
+
+
     <div class="container">
       <div class="row scrollable-section" data-section-title="Menú de selección">
         <div class="col s12">
-          <h3 class="fuerte t_principal">COMPARA</h3>
+          <h3 class="fuerte t_principal">Indicadores</h3>
           <li class="divider"></li>
-          <br>
-          <p class="gris t_sm">
-          Esta sección permite llevar a cabo el cruce de dos indicadores seleccionados por el usuario, a fin de que pueda analizar de manera sencillas y visual la correlación existente entre dos variables. Igualmente se puede llevar a cabo un seguimiento del comportamiento de los dos indicadores seleccionados en el tiempo por medio de un gráfico y exportar la información, mapas y gráficos para su uso.
-          </p>
-        </div>
-      </div>
-      <!--  -->
-      <div class="row">
-        <p class="claro t_sm col s12 m1" style="margin-top: 25px; width: 123px;">1. Tipo de indicador</p>
-        <div class="input-field col s12 m4 caja_s">
-          <select>
-            <option value="" disabled selected>Elige una opción</option>
-            <option value="2">Estatal</option>
-            <option value="3">Municipal</option>
-          </select>
         </div>
       </div>
       <div class="row">
-
-          <p class="claro col s12 m1 t_sm" style="margin-top: 25px; width: 123px;">2. Objetivo</p>
-          <div class="input-field col s12  m4 caja_s">
-            <select>
-              <option value="" disabled selected>Elige una opción</option>
-              <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
-              <option value="2">Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
-              <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
-              <option value="1">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
-              <option value="1">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
-              <option value="1">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
-              <option value="1">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
-              <option value="1">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
-              <option value="2">Reducir la desigualdad en y entre los países</option>
-              <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>
-            </select>
+          <div class="col l4">
+            <div class="col s3">
+            <p>Estado</p>
+            </div>
+            <div class="col s9">
+              <select class="icons">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 1</option>
+                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 2</option>
+                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 3</option>
+              </select>
+            </div>
           </div>
-
-
-
-          <p class="claro col s12 m1 offset-m1 t_sm" style="margin-left:10px; margin-top: 25px; width: 123px; color:#2e4367;">Indicador</p>
-          <div class="input-field col s12 m4 caja_s">
-            <select>
-              <option value="" disabled selected>Elige un opción</option>
-              <option value="1">Porcentaje de la población con servicio eléctrico</option>
-              <option value="2">Viviendas particulares donde se utiliza leña o carbón para cocinar</option>
-              <option value="3">Viviendas con disponibilidad de focos ahorradores</option>
-            </select>
+          <div class="col l4 offset-l1">
+            <div class="col s3">
+            <p>Municipio</p>
+            </div>
+            <div class="col s9">
+              <select class="icons">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 1</option>
+                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 2</option>
+                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 3</option>
+              </select>
+            </div>
           </div>
-
       </div>
-      <div class="row">
 
-          <p class="claro col s12 m1 t_sm" style="margin-top: 25px; width: 123px;">3. Objetivo</p>
-          <div class="input-field col s12 m4 caja_s">
-            <select>
-              <option value="" disabled selected>Elige una opcion</option>
-              <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
-              <option value="2">Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
-              <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
-              <option value="1">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
-              <option value="1">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
-              <option value="1">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
-              <option value="1">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
-              <option value="1">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
-              <option value="2">Reducir la desigualdad en y entre los países</option>
-              <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>				    </select>
-          </div>
-
-
-          <p class="claro col s12 m1 offset-m1 t_sm" style="margin-left:10px; margin-top: 25px; width: 123px; color:#2e4367;">Indicador</p>
-          <div class="input-field col s12 m4 caja_s">
-            <select>
-              <option value="" disabled selected>Elige un opción</option>
-              <option value="1">Porcentaje de la población con servicio eléctrico</option>
-              <option value="2">Viviendas particulares donde se utiliza leña o carbón para cocinar</option>
-              <option value="3">Viviendas con disponibilidad de focos ahorradores</option>
-            </select>
-          </div>
-
-      </div>
-      <div class="espacio_seccion"></div>
-      <div class="row scrollable-section" id="mapa" data-section-title="Mapa">
+      <div class="row tabla">
+        <div class="col l4">
+          Indicadores
+        </div>
+        <div class="col l3">
           <div class="col s12">
-            <div id="map">
-              <div class="leaflet-top leaflet-right" style="top:139px;">
-                <div id="colrs" class="info2 legend leaflet-control hide">
-                  <table id="legend-colors">
-                    <tbody>
-                      <tr>
-                        <td class="legend-breaks legend-breaks-b-0">74.4 - 117.2</td>
-                        <td class="legend-color legend-color-00 tooltipped" data-container="body" onmouseover="highlightFromLegend('cA3')" onmouseout="clearHighlight();" style="background-color: #64acbe;" data-position="top" data-tooltip="9.2 - 16.1 / 74.4 - 117.2"></td>
-                        <td class="legend-color legend-color-01 tooltipped" data-container="body" onmouseover="highlightFromLegend('cB3')" onmouseout="clearHighlight();" style="background-color: #627f8c;" data-position="top" data-tooltip="16.1 - 21.2 / 74.4 - 117.2"></td>
-                        <td class="legend-color legend-color-02 tooltipped" data-container="body" onmouseover="highlightFromLegend('cC3')" onmouseout="clearHighlight();" style="background-color: #574249;" data-position="top" data-tooltip="21.2 - 33.5 / 74.4 - 117.2"></td>
-                      </tr>
-                      <tr>
-                        <td class="legend-breaks legend-breaks-b-1">39.6 - 74.4</td>
-                        <td class="legend-color legend-color-10 tooltipped" data-container="body" onmouseover="highlightFromLegend('cA2')" onmouseout="clearHighlight();" style="background-color: #b0d5df;" data-position="top" data-tooltip="9.2 - 16.1 / 39.6 - 74.4"></td>
-                        <td class="legend-color legend-color-11 tooltipped" data-container="body" onmouseover="highlightFromLegend('cB2')" onmouseout="clearHighlight();" style="background-color: #ad9ea5;" data-position="top" data-tooltip="16.1 - 21.2 / 39.6 - 74.4"></td>
-                        <td class="legend-color legend-color-12 tooltipped" data-container="body" onmouseover="highlightFromLegend('cC2')" onmouseout="clearHighlight();" style="background-color: #985356;" data-position="top" data-tooltip="21.2 - 33.5 / 39.6 - 74.4"></td>
-                      </tr>
-                      <tr>
-                        <td class="legend-breaks legend-breaks-b-2">2.6 - 39.6</td>
-                        <td class="legend-color legend-color-20 tooltipped" data-container="body" onmouseover="highlightFromLegend('cA1')" onmouseout="clearHighlight();" style="background-color: #e8e8e8;" data-position="top" data-tooltip="9.2 - 16.1 / 2.6 - 39.6"></td>
-                        <td class="legend-color legend-color-21 tooltipped" data-container="body" onmouseover="highlightFromLegend('cB1')" onmouseout="clearHighlight();" style="background-color: #e4acac;" data-position="top" data-tooltip="16.1 - 21.2 / 2.6 - 39.6"></td>
-                        <td class="legend-color legend-color-22 tooltipped" data-container="body" onmouseover="highlightFromLegend('cC1')" onmouseout="clearHighlight();" style="background-color: #c85a5a;" data-position="top" data-tooltip="21.2 - 33.5/ 2.6 - 39.6"></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td class="legend-breaks legend-breaks-0">9.2 - 16.1</td>
-                        <td class="legend-breaks legend-breaks-1">16.1 - 21.2</td>
-                        <td class="legend-breaks legend-breaks-2">21.2 - 33.5</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-	            <div class="col s8 center-align">
-	            	<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
-		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
-		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
-		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
-	            </div>
-	            <div class="col s4">
-                    <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
-	            </div>
-            </div>
+            Estados Unidos Mexicanos
           </div>
-      </div>
-      <br><br><br>
-      <div class="row scrollable-section" id="grafica" data-section-title="Gráfica">
-        <div class="col s12">
-          <h3 class="fuerte t_principal">Comparación de indicadores en el tiempo</h3>
-          <li class="divider"></li>
-          <br><br>
-          <div id="chart"></div>
-          <div class="col s1 center-align">
-            <label for="">
-              2008
-            </label>
+          <div class="col s4">
+            Línea base
           </div>
-          <div class="col s10">
-            <form action="#">
-              <p class="range-field">
-                <input type="range" id="test5" min="2008" max="2012" />
-              </p>
-            </form>
-          </div>
-          <div class="col s1 center-align">
-            <label for="" >
-              2012
-            </label>
-          </div>
-          <div class="col s4 offset-s8">
-                <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
+          <div class="col s8">
+            Dato mas recinete
           </div>
         </div>
-      </div>
-      <div class="row scrollable-section" data-section-title="Descarga de datos">
-        <div class="col s12">
-          <h3 class="fuerte t_principal">Datos</h3>
-          <li class="divider"></li>
-          <div class="row">
-          	<div class="col s10 offset-s1">
-          		<div class="row">
-          			<div class="col s8">
-          				<p class="fuerte t_normal">Nombre</p>
-		  			</div>
-		  			<div class="col s2">
-          				<p class="fuerte t_normal">Institución</p>
-		  			</div>
-		  			<div class="col s2">
-          				<p class="fuerte t_normal">Formato</p>
-		  			</div>
-		  			<div class="col s12">
-          				<li class="divider griss"></li>
-		  			</div>
-		  			<div class="col s6">
-          				<p class="gris t_sm">Indicadores Objetivo 1 ODS</p>
-		  			</div>
-		  			<div class="col s2">
-          				<p class="gris t_sm">ODS</p>
-		  			</div>
-		  			<div class="col s4" style="margin-top: 10px;">
-          				<a class="icn">CSV</a><a class="icns">XLS</a> <a class="icnSDMX">SDMX</a><a class="icnPDF">PDF</a>
-		  			</div>
-		  			<div class="col s12">
-          				<li class="divider griss"></li>
-		  			</div>
-		  			<div class="col s6">
-          				<p class="gris t_sm">Indicadores Objetivo 2 ODS</p>
-		  			</div>
-		  			<div class="col s2">
-          				<p class="gris t_sm">ODS</p>
-		  			</div>
-		  			<div class="col s4" style="margin-top: 10px;">
-          				<a class="icn">CSV</a><a class="icns">XLS</a> <a class="icnSDMX">SDMX</a><a class="icnPDF">PDF</a>
-		  			</div>
-          		</div>
-          	</div>
+        <div class="col l3">
+          <div class="col s12">
+              Aguascalientes
+          </div>
+          <div class="col s4">
+            Línea base
+          </div>
+          <div class="col s8">
+            Dato mas recinete
           </div>
         </div>
+        <div class="col l2">
+          <div class="col s12">
+              Meta de México
+          </div>
+          <div class="col s12">
+              Dato mas recinete
+          </div>
+        </div>
+
+
+        <div class="col l12 titu valign-wrapper">
+          1 - Erradicar la pobreza extrema y el hambre
+        </div>
+
+        <div class="col l1 subti sin_borde_der center-align">
+          <p class="center-align">1.A.</p>
+        </div>
+        <div class="col l11 subti sin_borde_izq">
+          <p>Reducir a la mitad, entre 1990 y 2015, el porcentaje de personas cuyos ingresos sean inferiores a 1.25 dólares por día</p>
+        </div>
+
+        <div class="col l1 alto_col sin_borde_der center-align">
+          <p class="center-align">1.1.</p>
+        </div>
+        <div class="col l3 valign-wrapper alto_col sin_borde_izq">
+          <p>Proporción de la poblacion con ingresos per cápita inferiores a 1.25 dólares diarios (Paridad de Poder de Compra respecto al dólar)-Lista oficial de la ONU Nacional y desglose por entidad federativa.</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">9.3<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">3.7<br>(2014)</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">ND<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">2.4<br>(2014)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">Meta nacional 2015:<br>
+          4.6</p>
+        </div>
+
+
+        <div class="col l1 subti sin_borde_der center-align">
+          <p class="center-align">1.B.</p>
+        </div>
+        <div class="col l11 subti sin_borde_izq">
+          <p>Lograr empleo pleno y productivo, y trabajo decente para todos, incluyenfo mujeres y jóvenes</p>
+        </div>
+
+        <div class="col l1 alto_col sin_borde_der center-align">
+          <p class="center-align">1.5.</p>
+        </div>
+        <div class="col l3 valign-wrapper alto_col sin_borde_izq">
+          <p>Relación entre ocupación y población en edad de trabajar - Lista oficial de la ONU Nacional y desglose por entidad federativa</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">9.3<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">3.7<br>(2014)</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">ND<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">2.4<br>(2014)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">Meta nacional 2015:<br>
+          4.6</p>
+        </div>
+        <div class="col l1 alto_col sin_borde_der center-align">
+          <p class="center-align">1.7.</p>
+        </div>
+        <div class="col l3 valign-wrapper alto_col sin_borde_izq">
+          <p>Proporción de trabajadores por cuenta propia y los no remunerados - Reformulación Nacional y desglose por entidad federativa</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">9.3<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">3.7<br>(2014)</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">ND<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">2.4<br>(2014)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">Meta nacional 2015:<br>
+          4.6</p>
+        </div>
+        <div class="col l1 alto_col sin_borde_der center-align">
+          <p class="center-align">MMM<br>1.5.</p>
+        </div>
+        <div class="col l3 valign-wrapper alto_col sin_borde_izq">
+          <p>Tasa de desocupación de jóvenes - Metas Más allá del Milenio (MMM) Nacional y desglose por entidad federativa</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">9.3<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">3.7<br>(2014)</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">ND<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">2.4<br>(2014)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">Meta nacional 2015:<br>
+          4.6</p>
+        </div>
+
+
+        <div class="col l1 subti sin_borde_der center-align">
+          <p class="center-align">1.B.</p>
+        </div>
+        <div class="col l11 subti sin_borde_izq">
+          <p>Reducir a la mitad la proporción de personas en pobreza alimentaria entre 1990 y 2015</p>
+        </div>
+
+        <div class="col l1 alto_col sin_borde_der center-align">
+          <p class="center-align">MMM<br>1.1.</p>
+        </div>
+        <div class="col l3 valign-wrapper alto_col sin_borde_izq">
+          <p>Proporción de la poblacion que habita en hogares en pobreza alimentaria - Metas Más allá del Milenio (MMM) Nacional y desglose por entidad federativa.</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">9.3<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">3.7<br>(2014)</p>
+        </div>
+        <div class="col l1 alto_col center-align">
+          <p class="valign">ND<br>(1989)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">2.4<br>(2014)</p>
+        </div>
+        <div class="col l2 alto_col center-align">
+          <p class="valign">Meta nacional 2015:<br>
+          4.6</p>
+        </div>
+        <div class="col l12 foot_er valign-wrapper">
+          1 - Lograr la enseñanza primaria universal
+        </div>
+
       </div>
+
+
+
+
+
+<style media="screen">
+  .tabla{
+    border: solid 1px #ccc;
+  }
+
+  .tabla .col {
+    border: solid 1px #ccc;
+  }
+
+  .tabla .titu{
+    background-color: #d90a38;
+    height: 50px;
+    color: #fff;
+  }
+
+  .tabla .subti{
+    background-color: #f6f6f6;
+    height: 40px;
+    color: #6c6c6c;
+  }
+</style>
+
+
+
+
+
+
+
     </div>
     <footer class="page-footer id">
       <div class="container">
@@ -373,20 +445,14 @@ td
               <a href="#"><img src="img/fill3.png" alt="" style="width:7%;"/></a>
             </div>
           </div>
-          <div class="col l3 s12">
+          <div class="col l5 offset-l1 s12">
             <ul class="fuerte">
+              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
               <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
-              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm" href="#!">Indicadores por unidad geográfica</a></li>
-            </ul>
-          </div>
-          <div class="col l3 s12">
-            <ul class="fuerte">
               <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
               <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
-              <li><a class="fuerte t_sm" href="#!">Calendario de actualizaciones</a></li>
-              <li><a class="fuerte t_sm" href="#!">Exportación masiva</a></li>
+              <li><a class="fuerte t_sm" href="#!">Recursos</a></li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -399,95 +465,6 @@ td
       </div>
     </footer>
 
-
-
-  <!-- Modal Structure -->
-  <div id="modalMapa" class="modal">
-    <div class="modal-content">
-      <h5>Compartir</h5>
-      <div class="row">
-        <b>Redes Sociales</b>
-        <ul class="cuadrosSocial">
-          <li>
-            <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
-          </li>
-          <li>
-            <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-          </li>
-        </ul>
-      </div>
-      <div class="row">
-        <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-        <div class="input-field col s12">
-         <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-         <label for="">Copia este código para insertar el mapa en una página HTML</label>
-       </div>
-      </div>
-
-      <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-        <div class="input-field col s12">
-            <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
-       </div>
-      </div>
-
-      <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-        <div class="input-field col s12">
-            <a class="waves-effect btn color claro">Descargar PDF</a>
-       </div>
-      </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Grafica -->
-<div id="modalGrafica" class="modal">
-  <div class="modal-content">
-    <h5>Compartir</h5>
-    <div class="row">
-      <b>Redes Sociales</b>
-      <ul class="cuadrosSocial">
-        <li>
-
-          <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
-
-        </li>
-
-        <li>
-          <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-        </li>
-
-      </ul>
-    </div>
-    <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-      <div class="input-field col s12">
-       <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-       <label for="">Copia este código para insertar el mapa en una página HTML</label>
-     </div>
-    </div>
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-      <div class="input-field col s12">
-          <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#grafica">
-     </div>
-    </div>
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-      <div class="input-field col s12">
-          <a class="waves-effect btn color claro">Descargar PDF</a>
-     </div>
-    </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-  </div>
-</div>
-</div>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
     <script type="text/javascript" src="entidadCompara.json"></script>
@@ -511,8 +488,7 @@ td
         lupa =  true;
       }
     });
-
-    $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
+//     $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
 
     $(".button-collapse").sideNav();
     $('.modal-trigger').leanModal();

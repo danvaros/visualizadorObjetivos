@@ -5,7 +5,7 @@ html
 .imagen
 {
   height: 700px;
-  background:  no-repeat center; 
+  background: url(../img/fondo1.png) no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -203,7 +203,7 @@ input[type=text]:focus:not([readonly])
 }
 .nav_stick li
 {
-    margin: 0 5%;
+    margin: 0 2%;
 }
 .nav_stick a:hover
 {
@@ -212,7 +212,7 @@ input[type=text]:focus:not([readonly])
 }
 .nav_sticky li
 {
-    margin: 0 5%;
+    margin: 0 2%;
 }
 .nav_sticky a:hover
 {
@@ -513,7 +513,7 @@ nav
 }
 .tam
 {
-  width: 15%;
+
 }
 .head_cont
 {
