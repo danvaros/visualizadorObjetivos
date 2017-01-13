@@ -487,6 +487,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
     <script type="text/javascript" src="entidadCompara.json"></script>
+    <script type="text/javascript" src="variable.js"></script>
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
     <!-- <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script> -->
@@ -498,6 +499,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
   <script type="text/javascript">
     $(document).ready(function(){
+          var datos_doble = '';
+            console.log(estados);
+            console.log(estados.length);
+            console.log(estados[0].length);
+            // for (var i = 0; i < array.length; i++) {
+            //   array[i]
+            // }
+          $('#datos-panel').html(datos_doble);
+
 
           var lupa =  false;
           $('#buscar').click(function(){
