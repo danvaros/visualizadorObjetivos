@@ -499,7 +499,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
     <!-- <script type="text/javascript" src="entidadCompara.json"></script> -->
     <script type="text/javascript" src="entidad2.json"></script>
-    <script type="text/javascript" src="estados_indicador3.js"></script>
+    <!-- <script type="text/javascript" src="estados_indicador3.js"></script> -->
+    <script type="text/javascript" src="variable.js"></script>
     <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script>
 
@@ -636,8 +637,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 		            value: function (value, ratio, id) {
 			            (function ($) {
 				            if (id != "Estados Unidos Mexicanos") {
-        					      $( "svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
-        								$( "svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+        					      $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+        								$( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
 
                         $( "svg g.c3-chart-line g.c3-circles-" +id.replace(/ /g,'-') + " circle" ).css('fill','#00aeef');
         								$( "svg g.c3-chart-line path.c3-line-" +id.replace(/ /g,'-') ).css('stroke','#00aeef');
@@ -651,8 +652,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
 				            }
 				            else {
-					            $( "svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
-      								$( "svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+					            $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+      								$( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
 
       					      $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
       								$( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
@@ -772,7 +773,7 @@ function busqueda_estado(cadena)
     if(estados[i][0] == cadena)
     {
       console.log(cadena);
-      return parseFloat(estados[i][estados[i].length-1]);
+      return parseFloat(estados[i][1]);
     }
   }
 }
