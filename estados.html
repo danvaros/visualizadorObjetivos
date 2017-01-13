@@ -150,7 +150,10 @@ td
             <li class="tam t_sm"><a class="t_sm mActive" href="estados.html">Indicadores por unidad geográfica</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
-            <li><input type="text" name="buscar" style="background-color: rgba(255, 255, 255, 0.4); background-image: url('img/search.png');background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" /></li>
+            <li>
+              <a id="buscar"><img src="img/search.png" alt="" /></a>
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" />
+            </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="explora.html">Explora</a></li>
@@ -168,7 +171,7 @@ td
     <div class="container">
       <div class="row scrollable-section" data-section-title="Menú de selección">
         <div class="col s12">
-          <h3 class="fuerte t_principal">Indicadores por estado o municipio</h3>
+          <h3 class="fuerte t_principal">Indicadores por unidad geográfica</h3>
           <li class="divider"></li>
           <br>
           <p class="gris t_sm">Elige un estado</p>
@@ -539,14 +542,20 @@ td
               <a href="#"><img src="img/fill3.png" alt="" style="width:7%;"/></a>
             </div>
           </div>
-          <div class="col l5 offset-l1 s12">
+          <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
               <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
+              <li><a class="fuerte t_sm" href="#!">Indicadores por unidad geográfica</a></li>
+            </ul>
+          </div>
+          <div class="col l3 s12">
+            <ul class="fuerte">
               <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
               <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
-              <li><a class="fuerte t_sm" href="#!">Recursos</a></li>
+              <li><a class="fuerte t_sm" href="#!">Calendario de actualizaciones</a></li>
+              <li><a class="fuerte t_sm" href="#!">Exportación masiva</a></li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -560,93 +569,8 @@ td
     </footer>
 
 
-  <!-- Modal Structure -->
-  <div id="modalMapa" class="modal">
-    <div class="modal-content">
-      <h5>Compartir</h5>
-      <div class="row">
-        <b>Redes Sociales</b>
-        <ul class="cuadrosSocial">
-          <li>
-            <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
-          </li>
-          <li>
-            <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-          </li>
-        </ul>
-      </div>
-      <div class="row">
-        <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-        <div class="input-field col s12">
-         <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-         <label for="">Copia este código para insertar el mapa en una página HTML</label>
-       </div>
-      </div>
 
-      <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-        <div class="input-field col s12">
-            <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
-       </div>
-      </div>
 
-      <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-        <div class="input-field col s12">
-            <a class="waves-effect btn color claro">Descargar PDF</a>
-       </div>
-      </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Grafica -->
-<div id="modalGrafica" class="modal">
-  <div class="modal-content">
-    <h5>Compartir</h5>
-    <div class="row">
-      <b>Redes Sociales</b>
-      <ul class="cuadrosSocial">
-        <li>
-
-          <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
-
-        </li>
-
-        <li>
-          <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-        </li>
-
-      </ul>
-    </div>
-    <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-      <div class="input-field col s12">
-       <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-       <label for="">Copia este código para insertar el mapa en una página HTML</label>
-     </div>
-    </div>
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-      <div class="input-field col s12">
-          <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#grafica">
-     </div>
-    </div>
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-      <div class="input-field col s12">
-          <a class="waves-effect btn color claro">Descargar PDF</a>
-     </div>
-    </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-  </div>
-</div>
-</div>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
     <script type="text/javascript" src="entidadCompara.json"></script>
@@ -660,6 +584,17 @@ td
   <script src="classybrew/build/classybrew.min.js"></script>
   <script type="text/javascript">
 	$(document).ready(function() {
+
+    var lupa =  false;
+  $('#buscar').click(function(){
+    if(lupa){
+      $('#cam_bus').hide();
+      lupa =  false;
+    }else{
+      $('#cam_bus').show();
+      lupa =  true;
+    }
+  });
 
 //     $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
 
