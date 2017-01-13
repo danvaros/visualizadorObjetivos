@@ -102,26 +102,43 @@ td
 }
 
 .btn-edo{
-	padding:15px 20px !important;
-	vertical-align: middle;
+
 	text-align: left;
-	background: #F6F6F6;
+  /* background: #F6F6F6; */
 	color:#0A254F;
 }
-.btn-edo a{
-	padding:15px 20px !important;
-	vertical-align: middle;
-	text-align: left;
-	color:#0A254F;
+/* .btn-edo a{
+  padding:15px 20px !important;
+  vertical-align: middle;
+  text-align: left;
+  color:#0A254F;
+} */
+
+.btn-edo div{
+  padding:15px 20px !important;
+  background: #F6F6F6;
+
 }
+.btn-edo div:first-child{
+border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+}
+
+.btn-edo div:last-child{
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+
+}
+
+
 
 .btn-edo img{
-	vertical-align: middle;
-	margin-right: 15px;
-	max-height: 30px;
-	max-width: 30px;
+  vertical-align: middle;
+  margin-right: 15px;
+  max-height: 30px;
+  max-width: 30px;
+  height: 30px;
 }
-
 </style>
 
 
@@ -177,15 +194,19 @@ td
           <p class="gris t_sm">Elige un estado</p>
         </div>
       </div>
+
+
       <div class="row">
 	      <div class="col l3 m3 s12 btn-edo">
 		      <a href="#">
+
 			      <div class="col l2 m3">
 			      	<img src="img/edos/aguascalientes.png" alt="" />
 			      </div>
 			      <div class="col l10 m9">
 			      	<h6>Aguascalientes</h6>
 			      </div>
+
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
