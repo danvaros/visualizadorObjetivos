@@ -5,7 +5,7 @@ html
 .imagen
 {
   height: 700px;
-  background:  no-repeat center; 
+  background: url(../img/fondo1.png) no-repeat center; 
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -513,7 +513,7 @@ nav
 }
 .tam
 {
-  
+
 }
 .head_cont
 {
