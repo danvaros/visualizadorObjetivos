@@ -808,12 +808,12 @@ border-radius: 0 !important;
 }
 .indicadores-taps-active
 {
-  background-color: #d8ae2b;
+  background-color: #299e33;
   color: #fff;
 }
 
 .indicadores-taps-active:hover{
-  background-color: #bb9621;
+  background-color: #299e33;
   color: #fff;
 }
 
@@ -823,15 +823,15 @@ border-radius: 0 !important;
 
 
 .headerObje{
-  background-color: #d7ad3a;
-  height: 150px;
+  background-color: #299e33;
+  height: 250px;
   color: #fff;
 }
 
 
 /**************************** cabezera indicadores **************************/
 .headerObje .container{
-  background-color: #d7ad3a;
+  background-color: #299e33;
   margin-top: 0%;
 }
 
