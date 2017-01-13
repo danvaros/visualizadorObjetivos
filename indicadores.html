@@ -499,14 +499,111 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
   <script type="text/javascript">
     $(document).ready(function(){
-          var datos_doble = '';
+          var datos_doble = '<table class="bordered">';
             console.log(estados);
             console.log(estados.length);
             console.log(estados[0].length);
-            // for (var i = 0; i < array.length; i++) {
-            //   array[i]
-            // }
+
+
+             for (var i = 0; i < estados.length; i++) {
+               if(i == 0){
+                datos_doble +=  '<thead><tr>';
+              }
+               else if(i == 1){
+                 datos_doble +=  '<tbody><tr>';
+               }
+               else {
+                  datos_doble +=  '<tr>';
+               }
+
+               for (var j = estados[0].length -1 ; j > 0 ; j--) {
+                 if(i == 0 && j == estados[0].length -1){
+                  datos_doble +=  '  <th>'+ estados[i][0] +'</th><th>'+ estados[i][j] +'</th>';
+                }else if( i == 0 ){
+                  datos_doble += '<th>'+ estados[i][j] +'</th>';
+                }else if(j == estados[0].length -1 ) {
+                  datos_doble += '<td>'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                }else{
+                  datos_doble +=  '  <td>'+ estados[i][j] +'</td>';
+                }
+
+                if(j == 0){
+
+                }else{
+
+                }
+
+               }
+                 if(i == 0){
+                   datos_doble +=  '</tr></thead>';
+                 }else{
+                   datos_doble +=  '</tr>';
+                 }
+             }
+
+            datos_doble +=  '<tbody><tr>';
+
+             console.log(datos_doble);
           $('#datos-panel').html(datos_doble);
+
+
+
+            //
+            //
+            //
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //     <th>2012</th>
+            //   </tr>
+            // </thead>
+            // <tbody>
+            //   <tr>
+            //     <td>Nacional</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //   </tr>
+            //   <tr>
+            //     <td>Aguascalientes</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //     <td>6.3</td>
+            //   </tr>
+            //   <tr>
+
 
 
           var lupa =  false;
