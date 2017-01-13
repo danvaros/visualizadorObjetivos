@@ -55,7 +55,10 @@
             <li class="tam t_sm"><a class="t_sm mActive" href="estados.html">Indicadores por unidad geográfica</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
-            <li><input type="text" name="buscar" style="background-color: rgba(255, 255, 255, 0.4); background-image: url('img/search.png');background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" /></li>
+            <li>
+              <a id="buscar"><img src="img/search.png" alt="" /></a>
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" />
+            </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="explora.html">Explora</a></li>
@@ -1299,6 +1302,18 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
+
+      var lupa =  false;
+      $('#buscar').click(function(){
+        if(lupa){
+          $('#cam_bus').hide();
+          lupa =  false;
+        }else{
+          $('#cam_bus').show();
+          lupa =  true;
+        }
+      });
+
       $('.collapsible').collapsible({
         accordion : true
       });

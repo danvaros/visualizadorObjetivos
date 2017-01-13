@@ -23,7 +23,9 @@
 
 
 <style media="screen">
-
+svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
+  fill: #f00 !important;
+}
 
 #datosNacional{
   display: none;
@@ -94,6 +96,14 @@
     background-color: #FFF;
 }
 
+.line_pro{
+  border-bottom: #F44336;
+  border: solid 1px #F44336;
+  margin: 10px;
+      max-width: 32%;
+}
+
+
 </style>
 
 
@@ -120,7 +130,10 @@
             <li class="tam t_sm"><a class="t_sm mActive" href="estados.html">Indicadores por unidad geográfica</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
-            <li><input type="text" name="buscar" style="background-color: rgba(255, 255, 255, 0.4); background-image: url('img/search.png');background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" /></li>
+            <li>
+              <a id="buscar"><img src="img/search.png" alt="" /></a>
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" />
+            </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="explora.html">Explora</a></li>
@@ -226,13 +239,17 @@
           <li class="divider"></li>
           <br><br>
           <div id="chart2"></div>
-          <div class="col s4 offset-s8">
+          <div class="col s4" style="margin-top: 40px;">
+            <div class="col s6 line_pro"></div>
+            <div class="col s6">
+              Promedio nacional
+            </div>
+          </div>
+          <div class="col s4 offset-s4">
                 <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
           </div>
         </div>
       </div>
-
-
       <div id="datosEstatal">
         <div class="row scrollable-section" data-section-title="Tablas" >
           <div class="col s12">
@@ -493,6 +510,19 @@
   <script type="text/javascript">
     $(document).ready(function()
     {
+
+      var lupa =  false;
+      $('#buscar').click(function(){
+        if(lupa){
+          $('#cam_bus').hide();
+          lupa =  false;
+        }else{
+          $('#cam_bus').show();
+          lupa =  true;
+        }
+      });
+
+
       $(".button-collapse").sideNav();
 
       var nacional =  false;
@@ -539,6 +569,7 @@
 		    data: {
 		        x: 'x',
  		        columns: estados,
+
 //[
 // 		            ['x', '2009-01-01', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01'],
 // 		           ['Aguascalientes',      '122.24', '104.54',    '120.4',       '122.8',       '110.4'],
@@ -604,19 +635,30 @@
 		            title: function (d) { return d.name; },
 		            value: function (value, ratio, id) {
 			            (function ($) {
-				            if (id != "Promedio nacional") {
-					      $( "svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
-								$( "svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
-								$( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
-								$( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
-								$( "svg g.c3-chart-line g.c3-circles-" +id.replace(/ /g,'-') + " circle" ).css('fill','#00aeef');
-								$( "svg g.c3-chart-line path.c3-line-" +id.replace(/ /g,'-') ).css('stroke','#00aeef');
+				            if (id != "Estados Unidos Mexicanos") {
+        					      $( "svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+        								$( "svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+
+                        $( "svg g.c3-chart-line g.c3-circles-" +id.replace(/ /g,'-') + " circle" ).css('fill','#00aeef');
+        								$( "svg g.c3-chart-line path.c3-line-" +id.replace(/ /g,'-') ).css('stroke','#00aeef');
+
+        								$( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
+        								$( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+                        $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
+        								$( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
+
+
+
 				            }
 				            else {
 					            $( "svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
-								$( "svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
-					            $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
-								$( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+      								$( "svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+
+      					      $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
+      								$( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+
+                      $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
+                      $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
 				            }
 			            }(jQuery));
 		                return commaSeparateNumber(Math.round(value*10)/10);
