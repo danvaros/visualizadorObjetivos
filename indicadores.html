@@ -174,9 +174,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
       </div>
 
 
-      <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
+      <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
 
-      <div class="row card tablaPadding" id="serie-panel">
+      <div class="row card tablaPadding" id="serie-panel" style="overflow-x: scroll;border-radius: 20px;">
         <div class="col s12">
           <table class="bordered">
             <thead>
@@ -527,7 +527,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
   <script type="text/javascript">
     $(document).ready(function(){
-          var datos_doble = '<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div><h5>Defunciones de mujeres por cada 100 mil nacidos vivos</h5><table class="bordered">';
+          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
+          var datos_doble = '<h5>Defunciones de mujeres por cada 100 mil nacidos vivos</h5><table class="bordered">';
             // console.log(estados);
             // console.log(estados.length);
             // console.log(estados[0].length);
@@ -572,8 +574,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
             datos_doble +=  '</tbody></table><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
 
              console.log(datos_doble);
-          $('#datos-panel').html(datos_doble);
-          $('#datos-panel-dos').html(datos_doble);
+          $('#datos-panel').html(select+datos_doble);
+          $('#serie-panel').html(datos_doble);
+          $('#datos-panel-dos').html(select+datos_doble);
 
 
 
@@ -653,6 +656,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
                 $('#indicador-panel').show();
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
+                $('#datos-panel-dos').hide();
+                $('#link-datos-panel').hide();
 
                 $('#indicador').addClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -665,6 +670,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
                 $('#indicador-panel').hide();
                 $('#serie-panel').show();
                 $('#datos-panel').hide();
+                $('#datos-panel-dos').hide();
+                $('#link-datos-panel').hide();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').addClass('indicadores-taps-active');
@@ -677,6 +684,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
                 $('#indicador-panel').hide();
                 $('#serie-panel').hide();
                 $('#datos-panel').show();
+                $('#datos-panel-dos').show();
+                $('#link-datos-panel').show();
 
 
                 $('#indicador').removeClass('indicadores-taps-active');
@@ -690,6 +699,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
                 $('#indicador-panel').hide();
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
+                $('#datos-panel-dos').hide();
+                $('#link-datos-panel').hide();
 
 
                 $('#indicador').removeClass('indicadores-taps-active');
