@@ -868,7 +868,8 @@ chart = c3.generate({
     ],
     types: {
         'Razón de mortalidad materna': 'bar',
-    }
+    },
+    order: 'desc',
           },
           axis: {
     rotated: true,
@@ -938,6 +939,10 @@ function adelante(){
 function datosGrafica(year){
   var indice = 0;
   var serie = [];
+
+  var valueToPush = new Array();
+  var serie_doble = new Array();
+
   var tabla_uno = tabla_dos =  '';
 
   for (var i = 0; i < estados[0].length; i++) {
@@ -959,9 +964,23 @@ function datosGrafica(year){
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
       }
 
+valueToPush['estado'] = estados[i][0];
+valueToPush['numero'] = estados[i][indice];
+console.log(valueToPush);
+serie_doble[i] =  valueToPush;
+
+
+
       serie.push(estados[i][indice]);
     }
   }
+
+console.log(serie_doble);
+
+  var a = [[12, 'AAA'], [58, 'BBB'], [28, 'CCC'],[18, 'DDD']];
+  a.sort(sortFunction);
+  console.log(a);
+
 
   chart.load({
     columns: [serie],
@@ -972,6 +991,14 @@ function datosGrafica(year){
   $('.tabla_dos').html(tabla_dos);
 }
 
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
 
 
 
