@@ -976,15 +976,17 @@ function datosGrafica(year){
   var categories = [];
   var series = [];
 
+console.log('estados dobles');
+console.log(nuevos_estados_dobles);
+
+
 //separar el areglo
+series.push('Razón de mortalidad materna');
 for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   console.log(nuevos_estados_dobles[i].estado);
   categories[i] = nuevos_estados_dobles[i].estado;
-  if(i==0){
-    series.push('Razón de mortalidad materna');
-  }else{
-    series.push(nuevos_estados_dobles[i].numero);
-  }
+  series.push(nuevos_estados_dobles[i].numero);
+
 }
 
   console.log(series);
@@ -1001,9 +1003,6 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
 }
 
 function sortFunction(a, b) {
-  // console.log('a :'+a.numero);
-  // console.log('b :'+b.numero);
-  // console.log('b :'+b);
     if (a.numero === b.numero) {
         return 0;
     }
@@ -1011,8 +1010,6 @@ function sortFunction(a, b) {
         return (a.numero < b.numero) ? -1 : 1;
     }
 }
-
-
 
   function commaSeparateNumber(x)
   {
