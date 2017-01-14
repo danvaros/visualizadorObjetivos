@@ -453,6 +453,13 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
         </div>
       </div>
 
+      <div class="row">
+        <div class="col s12">
+          <a id="ver_grafica" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
+          <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+        </div>
+      </div>
+
       <div class="row card tablaPadding" id="indicador-panel">
         <div class="col s5">
           <table class="bordered">
@@ -1122,7 +1129,21 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
     });
 
+    function cambio_grafica()
+    {
+      $('#ver_tabla').removeClass('inactive_anio');
+      $('#ver_tabla').addClass('active_anio');
+      $('#ver_grafica').removeClass('active_anio');
+      $('#ver_grafica').addClass('inactive_anio');
+    }
 
+    function cambio_tabla()
+    {
+      $('#ver_grafica').removeClass('inactive_anio');
+      $('#ver_grafica').addClass('active_anio');
+      $('#ver_tabla').removeClass('active_anio');
+      $('#ver_tabla').addClass('inactive_anio');
+    }
 
 
     function cambio_anio(cadena, i)
