@@ -219,7 +219,7 @@ input[type=text]:focus:not([readonly])
   background-color: transparent;
   color: #083362;
 }
-nav ul a:hover
+ul a:hover
 {
   background-color: transparent;
   color: #083362;
@@ -880,9 +880,17 @@ border-radius: 0 !important;
   }
 
   nav .brand-logo img{
-    width: 50%;
-    margin-top: 18%;
-    margin-left: 60%;
+/*     width: 50%;
+margin-top: 18%;
+margin-left: 60%; */
+
+/*     -moz-margin-left: 30%;
+-moz-margin-top: 12%;
+-moz-width: 35%; */
+
+    margin-left: 50%;
+    margin-top: 15px;
+    width: 40px;
   }
 
 @media only screen and (max-width: 992px){
