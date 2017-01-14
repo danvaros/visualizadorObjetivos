@@ -829,6 +829,18 @@ border-radius: 0 !important;
 }
 
 
+.active_anio
+{
+  background-color: #15b5f0;
+  color: white;
+}
+
+.inactive_anio
+{
+  background-color: white;
+  color: #15b5f0;
+}
+
 /**************************** cabezera indicadores **************************/
 .headerObje .container{
   background-color: #299e33;
