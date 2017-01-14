@@ -455,8 +455,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
       <div class="row">
         <div class="col s10">
-          <a id="ver_grafica" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
-          <a id="ver_tabla" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+          <a id="ver_grafica" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
+          <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
         </div>
         <div class="col s2 right-align" style="margin-top: 60px;">
           <a href="#!" class="col s4 right-align" onclick="atras()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
@@ -831,7 +831,7 @@ chart = c3.generate({
           },
     data: {
     columns: [
-        ['Difunciones de mujeres por cada 100 mil nacidos vivos',
+        ['Razón de mortalidad materna',
           '25.8',
           '32',
           '24.3',
@@ -867,8 +867,9 @@ chart = c3.generate({
       ],
     ],
     types: {
-        'Difunciones de mujeres por cada 100 mil nacidos vivos': 'bar',
-    }
+        'Razón de mortalidad materna': 'bar',
+    },
+    order: 'desc',
           },
           axis: {
     rotated: true,
@@ -938,6 +939,10 @@ function adelante(){
 function datosGrafica(year){
   var indice = 0;
   var serie = [];
+
+  var valueToPush = new Array();
+  var serie_doble = new Array();
+
   var tabla_uno = tabla_dos =  '';
 
   for (var i = 0; i < estados[0].length; i++) {
@@ -948,7 +953,7 @@ function datosGrafica(year){
 
   for (var i = 0; i < estados.length; i++) {
     if(i==0){
-      serie.push('Difunciones de mujeres por cada 100 mil nacidos vivos');
+      serie.push('Razón de mortalidad materna');
     }else{
       if(i < 17){
         tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
@@ -959,19 +964,41 @@ function datosGrafica(year){
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
       }
 
+valueToPush['estado'] = estados[i][0];
+valueToPush['numero'] = estados[i][indice];
+console.log(valueToPush);
+serie_doble[i] =  valueToPush;
+
+
+
       serie.push(estados[i][indice]);
     }
   }
 
+console.log(serie_doble);
+
+  var a = [[12, 'AAA'], [58, 'BBB'], [28, 'CCC'],[18, 'DDD']];
+  a.sort(sortFunction);
+  console.log(a);
+
+
   chart.load({
     columns: [serie],
-    unload: ['Difunciones de mujeres por cada 100 mil nacidos vivos'],
+    unload: ['Razón de mortalidad materna'],
   });
 
   $('.tabla_uno').html(tabla_uno);
   $('.tabla_dos').html(tabla_dos);
 }
 
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
 
 
 
@@ -1270,7 +1297,7 @@ function datosGrafica(year){
   <script type="text/javascript">
     $(document).ready(function(){
 
-          $('#indicador-grafica').hide();
+          $('#indicador-panel').hide();
           $('.modal-trigger').leanModal();
           var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
@@ -1340,7 +1367,7 @@ function datosGrafica(year){
           // select de metadatos
           $('#indicador').click(function(){
                 $('#metadato-panel').hide();
-                $('#indicador-panel').show();
+                $('#indicador-grafica').show();
                 $('#mapas_hide').show();
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
