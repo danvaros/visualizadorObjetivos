@@ -174,7 +174,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <select id="agregacion">
               <option value="" disabled selected>Elige una opción</option>
               <option value="1">Nacional</option>
-              <option value="2">Estatal</option>
+              <option value="2" selected>Estatal</option>
               <option value="3">Municipal</option>
             </select>
           </div>
@@ -182,14 +182,14 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       </div>
       <div class="row">
         <div class="col s2" style="display: flex;">
-          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">2.Objetivo</p>
+          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">2. Objetivo</p>
         </div>
         <div class="col s5" style="display: flex;">
           <div class="input-field col s12 caja_s">
             <select>
               <option value="" disabled selected>Elige una opción</option>
               <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
-              <option value="2">Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
+              <option value="2" selected>Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
               <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
               <option value="1">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
               <option value="1">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
@@ -204,12 +204,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       </div>
       <div class="row">
         <div class="col s2" style="display: flex;">
-          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">3.Indicador </p>
+          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">3. Indicador </p>
         </div>
         <div class="col s5" style="display: flex;">
             <div class="input-field col s12 caja_s">
             <select>
               <option value="" disabled selected>Elige una opcion</option>
+              <option value="0" selected>Razón de mortalidad materna</option>
               <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
               <option value="2">Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
               <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
@@ -635,6 +636,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 		        x : {
 		            type : 'timeseries',
 		            tick: {
+                    rotate:90,
 		                format: function (x) { return x.getFullYear(); }
 		              //format: '%Y' // format string is also available for timeseries data
 		            }
@@ -702,6 +704,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			        x: {
 			            type: 'timeseries',
 			            tick: {
+                       rotate:90,
 		               		 format: function (x) { return x.getFullYear(); }
 			            }
 			        },
