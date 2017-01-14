@@ -858,7 +858,7 @@ function busqueda_anio(cadena)
 	     $('.info2').removeClass('hide');
 	     if(props != undefined)
 	     {
-		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(3)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
 
 			  gen(estados[props.cve]);
 	     }
@@ -1136,7 +1136,7 @@ function busqueda_anio(cadena)
     	     $('.info2').removeClass('hide');
     	     if(props != undefined)
     	     {
-    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(3) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
 
     			  gen(estados[props.cve]);
     	     }

@@ -806,7 +806,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(3)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
 
   			  gen(estados[props.cve]);
   	     }
@@ -965,7 +965,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           $('.modal-trigger').leanModal();
           var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var datos_doble = '<h5>Defunciones de mujeres por cada 100 mil nacidos vivos</h5><table class="bordered">';
+          var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5><table class="bordered">';
             // console.log(estados);
             // console.log(estados.length);
             // console.log(estados[0].length);
@@ -1152,7 +1152,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(3) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
 
         gen(estados[props.cve]);
        }
