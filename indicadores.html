@@ -555,24 +555,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
 
       <div class="row card tablaPadding" id="indicador-grafica">
-        <div class="col s5">
-          <table class="bordered">
-            <thead>
-              <tr>
-                <th>Grafica de barras</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div class="col s1"></div>
-        <div class="col s5">
-          <table class="bordered">
-            <thead>
-              <tr>
-                <th>Grafica de barras</th>
-              </tr>
-            </thead>
-          </table>
+        <div class="col s12">
+          <div id="barras"></div>
         </div>
 
         <div id="modalMapa" class="modal">
@@ -741,6 +725,100 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script>
+
+
+  $(document).ready(function(){
+  var chart = c3.generate({
+    bindto: '#barras',
+    size: {
+height: 600
+},
+          data: {
+    columns: [
+        ['Difunciones de mujeres por cada 100 mil nacidos vivos',
+          '25.8',
+          '32',
+          '24.3',
+          '46.5',
+          '28.3',
+          '22.3',
+          '68.5',
+          '43.1',
+          '44.3',
+          '31.1',
+          '31.2',
+          '49.5',
+          '32.3',
+          '24.7',
+          '30.9',
+          '34.3',
+          '36.6',
+          '66.9',
+          '23.5',
+          '48.6',
+          '32.3',
+          '14.9',
+          '20.7',
+          '30.1',
+          '22.1',
+          '32.2',
+          '41.7',
+          '32',
+          '20.1',
+          '29.9',
+          '32.6',
+          '32.6'
+      ],
+    ],
+    types: {
+        'Difunciones de mujeres por cada 100 mil nacidos vivos': 'bar',
+    }
+          },
+          axis: {
+    rotated: true,
+    x: {
+    type: 'category',
+    categories: [ 'Aguascalientes',
+                  'Baja California',
+                  'Baja California Sur',
+                  'Campeche',
+                  'Coahuila de Zaragoza',
+                  'Colima',
+                  'Chiapas',
+                  'Chihuahua',
+                  'Ciudad de México',
+                  'Durango',
+                  'Guanajuato',
+                  'Guerrero',
+                  'Hidalgo',
+                  'Jalisco',
+                  'México',
+                  'Michoacán de Ocampo',
+                  'Morelos',
+                  'Nayarit',
+                  'Nuevo León',
+                  'Oaxaca',
+                  'Puebla',
+                  'Querétaro',
+                  'Quintana Roo',
+                  'San Luis Potosí',
+                  'Sinaloa',
+                  'Sonora',
+                  'Tabasco',
+                  'Tamaulipas',
+                  'Tlaxcala',
+                  'Veracruz de Ignacio de la Llave',
+                  'Yucatán',
+                  'Zacatecas',
+                  'Estados Unidos Mexicanos'
+                ]
+          }
+          }
+      });//fin de grafica
+
+});
+
+
   function commaSeparateNumber(x)
   {
     var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");
@@ -1035,6 +1113,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   </script>
   <script type="text/javascript">
     $(document).ready(function(){
+
           $('#indicador-grafica').hide();
           $('.modal-trigger').leanModal();
           var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
