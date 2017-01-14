@@ -530,7 +530,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
                 <div class="col s12">
                   <p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
                 </div>
-            
+
 
 
         <div id="modalMapa" class="modal">
@@ -723,7 +723,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
               <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
               <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm" href="#!">Indicadores por unidad geográfica</a></li>
+              <li><a class="fuerte t_sm" href="estados.html">Indicadores por unidad geográfica</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
@@ -1114,7 +1114,7 @@ function datosGrafica(year){
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
   			  gen(estados[props.cve]);
   	     }
@@ -1479,7 +1479,7 @@ function datosGrafica(year){
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
         gen(estados[props.cve]);
        }
