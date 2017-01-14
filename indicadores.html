@@ -939,9 +939,8 @@ function adelante(){
 function datosGrafica(year){
   var indice = 0;
   var serie = [];
-
-  var valueToPush = new Array();
-  var serie_doble = new Array();
+  var nuevos_estados_dobles = new Array();
+  console.log(nuevos_estados_dobles);
 
   var tabla_uno = tabla_dos =  '';
 
@@ -964,26 +963,36 @@ function datosGrafica(year){
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
       }
 
-valueToPush['estado'] = estados[i][0];
-valueToPush['numero'] = estados[i][indice];
-console.log(valueToPush);
-serie_doble[i] =  valueToPush;
-
-
+      var valueToPush = {'numero':estados[i][indice], 'estado':estados[i][0]};
+      nuevos_estados_dobles.push(valueToPush);
 
       serie.push(estados[i][indice]);
     }
   }
 
-console.log(serie_doble);
+  nuevos_estados_dobles.sort(sortFunction);
 
-  var a = [[12, 'AAA'], [58, 'BBB'], [28, 'CCC'],[18, 'DDD']];
-  a.sort(sortFunction);
-  console.log(a);
 
+  var categories = [];
+  var series = [];
+
+//separar el areglo
+for (var i = 0; i < nuevos_estados_dobles.length; i++) {
+  console.log(nuevos_estados_dobles[i].estado);
+  categories[i] = nuevos_estados_dobles[i].estado;
+  if(i==0){
+    series.push('Razón de mortalidad materna');
+  }else{
+    series.push(nuevos_estados_dobles[i].numero);
+  }
+}
+
+  console.log(series);
+  console.log(categories);
 
   chart.load({
-    columns: [serie],
+    columns: [series],
+    categories: categories,
     unload: ['Razón de mortalidad materna'],
   });
 
@@ -992,11 +1001,14 @@ console.log(serie_doble);
 }
 
 function sortFunction(a, b) {
-    if (a[0] === b[0]) {
+  // console.log('a :'+a.numero);
+  // console.log('b :'+b.numero);
+  // console.log('b :'+b);
+    if (a.numero === b.numero) {
         return 0;
     }
     else {
-        return (a[0] < b[0]) ? -1 : 1;
+        return (a.numero < b.numero) ? -1 : 1;
     }
 }
 
