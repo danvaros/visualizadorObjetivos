@@ -2476,6 +2476,159 @@ var estados =[
           return div;
         };
         legend.addTo(map);
+
+
+
+
+        $(document).ready(function()
+        {
+
+  	    for(var j=1;j<18;j++)
+  	    {
+  		    var id='#obj_'+j;
+  		    for(var i=0;i<30;i++)
+  		    {
+  			    var r=Math.floor((Math.random() * 10) + 1);
+  			    if(r == 1)
+  			    {
+  					$(id).append('<th class="id_m1 tooltip" data-tooltip-content="#tooltip_content_1"></th>');
+  			    }
+  			    if(r == 2)
+  			    {
+  					$(id).append('<th class="id_m2 tooltip" data-tooltip-content="#tooltip_content_2"></th>');
+  			    }
+  			    if(r == 3)
+  			    {
+  					$(id).append('<th class="id_m3 tooltip" data-tooltip-content="#tooltip_content_3"></th>');
+  			    }
+            if(r == 4)
+  			    {
+  					$(id).append('<th class="id_m4 tooltip" data-tooltip-content="#tooltip_content_4"></th>');
+  			    }
+  			    if(r == 5)
+  			    {
+  					$(id).append('<th class="id_m5 tooltip" data-tooltip-content="#tooltip_content_5"></th>');
+  			    }
+  			    if(r == 6)
+  			    {
+  					$(id).append('<th class="id_m6 tooltip" data-tooltip-content="#tooltip_content_6"></th>');
+  			    }
+            if(r == 7)
+  			    {
+  					$(id).append('<th class="id_m7 tooltip" data-tooltip-content="#tooltip_content_7"></th>');
+  			    }
+  			    if(r == 8)
+  			    {
+  					$(id).append('<th class="id_m8 tooltip" data-tooltip-content="#tooltip_content_8"></th>');
+  			    }
+  			    if(r == 9)
+  			    {
+  					$(id).append('<th class="id_m9 tooltip" data-tooltip-content="#tooltip_content_9"></th>');
+  			    }
+            if(r == 10)
+  			    {
+  					$(id).append('<th class="id_m10 tooltip" data-tooltip-content="#tooltip_content_10"></th>');
+  			    }
+  		    }
+  		}
+
+
+          var stickyNavTop = $('#normal').offset().top;
+          var bandera =  true;
+
+          var stickyNav = function(){
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > stickyNavTop)
+            {
+
+  	          if(bandera){
+
+
+  	          console.log("entro");
+                $('#normal').addClass('sticky');
+
+  //               $('#imago').css("display", "");
+
+
+  			$( "#imago img" ).animate({
+
+  			    width: "50%"
+  			  }, 1500 );
+
+                $('#normal').find('ul').each(function(){
+  				$(this).removeClass('nab');
+  			});
+  				$( "#nav-mobile" ).animate({
+
+  			    width: "90%"
+  			  }, 1500 );
+
+
+
+
+
+
+                  $('#normal').find('li').each(function(){
+  	                 $(this).removeClass('tamp');
+                  });
+
+  //               $('#normal').removeClass('hide');
+
+  			bandera = false;
+  				}
+            }
+            else
+            {
+  		  		          if(!bandera){
+
+  			  		          	$( "#imago img" ).animate({
+
+  			    width: "1%"
+  			  }, 1500 );
+
+  			  $( "#nav-mobile" ).animate({
+
+  			    width: "80%"
+  			  }, 1500 );
+
+
+
+  // 	  	$('#imago').css("display", "none");
+
+  	          console.log("entro arriba ");
+
+  			$('#normal').removeClass('sticky');
+
+  			$('#normal').find('ul').each(function(){
+  				$(this).addClass('nab');
+  			});
+
+  			$('#normal').find('li').each(function(){
+  				$(this).addClass('tamp');
+  			});
+
+  			//               $('#normal').addClass('hide');
+
+  						bandera = true;
+  						}
+            }
+          };
+          stickyNav();
+          $(window).scroll(function() {
+            stickyNav();
+          });
+        });
+      </script>
+      <script>
+          $(document).ready(function() {
+              $('.tooltip').tooltipster({
+  				contentCloning: true,
+  				animation: 'fade',
+  				delay: 200,
+  				theme: 'tooltipster-light',
+  				trigger: 'hover'
+              });
+          });
       </script>
 
 
