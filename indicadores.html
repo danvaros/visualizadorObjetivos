@@ -514,6 +514,25 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           </table>
         </div>
 
+
+        <div class="col s12" style="
+    margin-top: -10px;
+">
+           <hr>
+        </div>
+            <div class="col s6">
+              <strong>Estados Unidos Mexicanos</strong>
+            </div>
+            <div class="col s6 right-align pais">
+            </div>
+
+
+                <div class="col s12">
+                  <p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+                </div>
+            
+
+
         <div id="modalMapa" class="modal">
           <div class="modal-content">
             <h5>Compartir</h5>
@@ -607,6 +626,16 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
 
       </div>
+
+    <div class="row">
+      <div class="col s5">
+        <p>Fecha de actualización: 11 de enero de 2016</p>
+        <p>Próxima fecha de actualización: Noviembre de 2016</p>
+      </div>
+      <div class="col s4 offset-s3 right-align" >
+            <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
+      </div>
+    </div>
 
       <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
@@ -917,13 +946,16 @@ function datosGrafica(year){
     }
   }
 
-  for (var i = 0; i < estados.length-1; i++) {
+  for (var i = 0; i < estados.length; i++) {
     if(i==0){
       serie.push('Difunciones de mujeres por cada 100 mil nacidos vivos');
     }else{
       if(i < 17){
         tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
-      }else {
+      }else if(i == 32){
+        $('.pais').html(estados[i][indice]);
+      }
+      else {
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
       }
 
