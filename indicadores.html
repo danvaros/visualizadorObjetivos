@@ -460,21 +460,21 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
         </div>
         <div class="col s2 right-align" style="margin-top: 60px;">
           <a href="#!" class="col s4 right-align" onclick="atras()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-          <a class="col s4 center-align" id="numero">2015</a>
+          <a class="col s4 center-align numero">2015</a>
           <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
       </div>
 
       <div class="row card tablaPadding" id="indicador-panel">
-        <div class="col s5">
+        <div class="col s5 ">
           <table class="bordered">
             <thead>
               <tr>
                 <th>Entidad Federativa</th>
-                <th>2016</th>
+                <th class="numero">2015</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="tabla_uno">
               <tr>
                 <td>Aguascalientes</td>
                 <td>6.3</td>
@@ -490,15 +490,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           </table>
         </div>
         <div class="col s1"></div>
-        <div class="col s5">
+        <div class="col s5 ">
           <table class="bordered">
             <thead>
               <tr>
                 <th>Entidad Federativa</th>
-                <th>2016</th>
+                <th class="numero">2015</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="tabla_dos">
               <tr>
                 <td>Aguascalientes</td>
                 <td>6.3</td>
@@ -770,42 +770,37 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 //             '69.4',
 //             '54.1'];
 
-    setTimeout(function () {
-      var year = 1991;
-      var indice = 0;
-      var serie = [];
-      for (var i = 0; i < estados[0].length; i++) {
-        if(estados[0][i].includes(year)){
-        indice = i;
-        }
-      }
-
-      for (var i = 0; i < estados.length; i++) {
-        if(i==0){
-          serie.push('Difunciones de mujeres por cada 100 mil nacidos vivos');
-        }else{
-          serie.push(estados[i][indice]);
-        }
-      }
-  console.log(serie);
-
-      chart.load({
-             columns: [serie],
-             unload: ['Difunciones de mujeres por cada 100 mil nacidos vivos'],
-         });
-    }, 2000);
-
-function cambiarYear(year){
-
-}//fin funcion year
-
+    // setTimeout(function () {
+    //   var year = 1991;
+    //   var indice = 0;
+    //   var serie = [];
+    //   for (var i = 0; i < estados[0].length; i++) {
+    //     if(estados[0][i].includes(year)){
+    //     indice = i;
+    //     }
+    //   }
+    //
+    //   for (var i = 0; i < estados.length; i++) {
+    //     if(i==0){
+    //       serie.push('Difunciones de mujeres por cada 100 mil nacidos vivos');
+    //     }else{
+    //       serie.push(estados[i][indice]);
+    //     }
+    //   }
+    //
+    //
+    //   chart.load({
+    //          columns: [serie],
+    //          unload: ['Difunciones de mujeres por cada 100 mil nacidos vivos'],
+    //      });
+    // }, 2000);
 
 chart = c3.generate({
     bindto: '#barras',
     size: {
-height: 600
-},
-          data: {
+            height: 600
+          },
+    data: {
     columns: [
         ['Difunciones de mujeres por cada 100 mil nacidos vivos',
           '25.8',
@@ -888,6 +883,8 @@ height: 600
           }
       });//fin de grafica
 
+
+    datosGrafica(2015);
 });
 
 
@@ -895,7 +892,7 @@ function atras(){
   if(estadoYear != 1990){
     estadoYear--;
     console.log(estadoYear);
-    $('#numero').html(estadoYear);
+    $('.numero').html(estadoYear);
     datosGrafica(estadoYear);
   }
 }
@@ -904,7 +901,7 @@ function adelante(){
   if(estadoYear != 2015){
     estadoYear++;
     console.log(estadoYear);
-    $('#numero').html(estadoYear);
+    $('.numero').html(estadoYear);
     datosGrafica(estadoYear);
   }
 }
@@ -912,6 +909,7 @@ function adelante(){
 function datosGrafica(year){
   var indice = 0;
   var serie = [];
+  var tabla_uno = tabla_dos =  '';
 
   for (var i = 0; i < estados[0].length; i++) {
     if(estados[0][i].includes(year)){
@@ -919,10 +917,16 @@ function datosGrafica(year){
     }
   }
 
-  for (var i = 0; i < estados.length; i++) {
+  for (var i = 0; i < estados.length-1; i++) {
     if(i==0){
       serie.push('Difunciones de mujeres por cada 100 mil nacidos vivos');
     }else{
+      if(i < 17){
+        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+      }else {
+        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+      }
+
       serie.push(estados[i][indice]);
     }
   }
@@ -931,6 +935,9 @@ function datosGrafica(year){
     columns: [serie],
     unload: ['Difunciones de mujeres por cada 100 mil nacidos vivos'],
   });
+
+  $('.tabla_uno').html(tabla_uno);
+  $('.tabla_dos').html(tabla_dos);
 }
 
 
