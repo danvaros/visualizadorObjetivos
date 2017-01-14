@@ -456,7 +456,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
       <div class="row">
         <div class="col s12">
           <a id="ver_grafica" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
-          <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+          <a id="ver_tabla" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
         </div>
       </div>
 
@@ -506,6 +506,72 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
                 <td>Baja California Sur</td>
                 <td>6.3</td>
               </tr>
+          </table>
+        </div>
+
+        <div id="modalMapa" class="modal">
+          <div class="modal-content">
+            <h5>Compartir</h5>
+            <div class="row">
+              <b>Redes Sociales</b>
+              <ul class="cuadrosSocial">
+                <li>
+                  <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
+                </li>
+                <li>
+                  <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+              <div class="input-field col s12">
+               <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+               <label for="">Copia este código para insertar el mapa en una página HTML</label>
+             </div>
+            </div>
+
+            <div class="row">
+            <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+              <div class="input-field col s12">
+                  <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
+             </div>
+            </div>
+
+            <div class="row">
+            <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+              <div class="input-field col s12">
+                  <a class="waves-effect btn color claro">Descargar PDF</a>
+             </div>
+            </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+
+
+      <div class="row card tablaPadding" id="indicador-grafica">
+        <div class="col s5">
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>Grafica de barras</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col s1"></div>
+        <div class="col s5">
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>Grafica de barras</th>
+              </tr>
+            </thead>
           </table>
         </div>
 
@@ -969,7 +1035,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   </script>
   <script type="text/javascript">
     $(document).ready(function(){
-
+          $('#indicador-grafica').hide();
           $('.modal-trigger').leanModal();
           var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
@@ -1135,6 +1201,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
       $('#ver_tabla').addClass('active_anio');
       $('#ver_grafica').removeClass('active_anio');
       $('#ver_grafica').addClass('inactive_anio');
+      $('#indicador-grafica').hide();
+      $('#indicador-panel').show();
     }
 
     function cambio_tabla()
@@ -1142,7 +1210,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
       $('#ver_grafica').removeClass('inactive_anio');
       $('#ver_grafica').addClass('active_anio');
       $('#ver_tabla').removeClass('active_anio');
-      $('#ver_tabla').addClass('inactive_anio');
+      $('#ver_tabla').addClass('in¡active_anio');
+      $('#indicador-grafica').show();
+      $('#indicador-panel').hide();
     }
 
 
