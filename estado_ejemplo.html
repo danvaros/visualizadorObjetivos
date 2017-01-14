@@ -133,8 +133,19 @@ border-left-width: 0px !important;
   color: #fff;
 }
 
+
+.circle {
+    /* height: 30px !important;
+    width: 30px !important; */
+    max-width: 30px;
+    max-height: 30px:
+    border-radius: 0px !important;
 }
 
+.select-dropdown li img{
+  width: auto !important;
+  height: auto !important;
+}
 
 </style>
 
@@ -194,7 +205,7 @@ border-left-width: 0px !important;
             <div class="col s3">
             <p>Estado</p>
             </div>
-            <div class="col s9">
+            <div class="col s9 caja_s">
               <select class="icons">
                 <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">Aguascalientes</option>
                 <option value="" data-icon="img/edos/bajacalifornia.png" class="left circle">Baja California</option>
@@ -235,12 +246,12 @@ border-left-width: 0px !important;
             <div class="col s3">
             <p>Municipio</p>
             </div>
-            <div class="col s9">
-              <select class="icons">
+            <div class="col s9 caja_s">
+              <select>
                 <option value="" disabled selected>Selecciona un municipio</option>
-                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 1</option>
-                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 2</option>
-                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">example 3</option>
+                <option value="" class="left circle">Municipio 1</option>
+                <option value="" class="left circle">Municipio 2</option>
+                <option value="" class="left circle">Municipio 3</option>
               </select>
             </div>
           </div>
