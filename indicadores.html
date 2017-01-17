@@ -213,8 +213,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   </div>
 </div> -->
 
-
-      <div class="row card tablaPadding" id="datos-panel" style="overflow-x: scroll;border-radius: 20px;">
+ <!-- style="overflow-x: scroll;border-radius: 20px;" -->
+      <div class="row card tablaPadding" id="datos-panel">
           <div class="col s6">PERIODO</div>
           <div class="col s6">Proporción del consumo nacional que corresponde</div>
           <hr>
@@ -1303,6 +1303,26 @@ function sortFunction(a, b) {
         legend.addTo(map);
 
   </script>
+
+  <style media="screen">
+  .headcol {
+       position:absolute;
+       width:5em;
+       left:0;
+       top:auto;
+      /*  border-right: 0px none black;
+      border-top-width:3px; only relevant for first row
+            // margin-top:-3px; compensate for top border */
+       background-color: #ffffff;
+       margin-left: 6px;
+       width: 200px;
+       /* margin: 5px; */
+   }
+.padding-200{
+  padding-left: 200px !important;
+}
+  </style>
+
   <script type="text/javascript">
     $(document).ready(function(){
 
@@ -1310,7 +1330,9 @@ function sortFunction(a, b) {
           $('.modal-trigger').leanModal();
           var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5><table class="bordered">';
+          var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+                            '<div style=" width: auto; height: auto; overflow: auto;">'+
+                            '<table class="bordered" id="miTabla">';
             // console.log(estados);
             // console.log(estados.length);
             // console.log(estados[0].length);
@@ -1328,23 +1350,27 @@ function sortFunction(a, b) {
                }
 
                for (var j = estados[0].length -1 ; j > 0 ; j--) {
-                 if(i == 0 && j == estados[0].length -1){
-                  datos_doble +=  '  <th>'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
-                }else if( i == 0 ){
+                if(i == 0 && j == estados[0].length -1){
+                  datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                }
+                else if( i == 0 && j == estados[0].length -1 ){
+                  datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                }
+                else if( i == 0 ){
                   datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
-                }else if(j == estados[0].length -1 ) {
-                  datos_doble += '<td>'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
-                }else{
+                }
+                else if(j == estados[0].length -1 ) {
+                  datos_doble += '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                }
+                else if(j == estados[0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                }
+                else{
                   datos_doble +=  '  <td>'+ estados[i][j] +'</td>';
                 }
-
-                if(j == 0){
-
-                }else{
-
-                }
-
                }
+
+
                  if(i == 0){
                    datos_doble +=  '</tr></thead>';
                  }else{
@@ -1352,12 +1378,21 @@ function sortFunction(a, b) {
                  }
              }
 
-            datos_doble +=  '</tbody></table><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
 
             //  console.log(datos_doble);
           $('#datos-panel').html(select+datos_doble);
           $('#serie-panel').html(datos_doble);
           $('#datos-panel-dos').html(select+datos_doble);
+
+          $("#miTabla tr").find('td:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla tr").find('th:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
 
 
           var lupa =  false;
