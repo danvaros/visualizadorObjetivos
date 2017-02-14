@@ -140,7 +140,7 @@
       </nav>
     </div>
 <!-- // verde #299e33 -->
-    <div class="headerObje">
+    <div class="headerObje" style=" position:fixed; z-index: 9999; width: 100%;">
       <div class="container">
         <div class="row">
           <div class="col s2 center-align">
@@ -166,7 +166,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" style="margin-top: 300px;">
       <div class="row">
         <div class="col s12">
       <!--     <h3 class="fuerte t_principal">Meta 1 .A. Reducir a la mitad, entre 1990 y 2015, el porcentaje de personas cuyos ingresos sean inferiores a 1.25 dólares por día,</h3> -->
@@ -465,7 +465,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
         </div>
       </div>
 
-      <div class="row card tablaPadding" id="indicador-panel">
+      <div class="row card tablaPadding" id="indicador-panel" style="display:none">
         <div class="col s5 ">
           <table class="bordered">
             <thead>
@@ -764,8 +764,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   <script>
   var estadoYear = 2015;
   var chart;
+  var index_estados;
   $(document).ready(function(){
-
+  
 //   ejemplo de arreglo para los datos
 // datos = ['Difunciones de mujeres por cada 100 mil nacidos vivos',
 //             '88.7',
@@ -828,9 +829,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
     // }, 2000);
 
 chart = c3.generate({
+    legend: {
+        show: false
+    },
     bindto: '#barras',
     size: {
-            height: 600
+            height: 800
           },
     data: {
     columns: [
@@ -869,11 +873,27 @@ chart = c3.generate({
           '32.6'
       ],
     ],
-    types: {
-        'Razón de mortalidad materna': 'bar',
-    },
+    type: 'bar',
+    colors: {
+            'Razón de mortalidad materna' : function (d) {
+                return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+                 //return (d.value >= 45) ? '#00ff00' : '#ff0000';
+            }
+        },
+       // color: function (color, d) {
+       //      
+       //  },
     order: 'desc',
           },
+          tooltip: {
+                contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+                    color = function() {
+                        //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
+                         return d[0].index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+                    };
+                    return chart.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
+                }
+            },
           axis: {
     rotated: true,
     x: {
@@ -910,7 +930,7 @@ chart = c3.generate({
                   'Veracruz de Ignacio de la Llave',
                   'Yucatán',
                   'Zacatecas',
-                  'Estados Unidos Mexicanos'
+                  'Estados Unidos Mexicanos',
                 ]
           }
           }
@@ -959,7 +979,7 @@ function datosGrafica(year){
     }else{
       if(i < 17){
         tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
-      }else if(i == 32){
+      } else if(i == 33){
         $('.pais').html(estados[i][indice]);
       }
       else {
@@ -972,6 +992,7 @@ function datosGrafica(year){
       serie.push(estados[i][indice]);
     }
   }
+
 
   nuevos_estados_dobles.sort(sortFunction);
 
@@ -986,7 +1007,10 @@ console.log(nuevos_estados_dobles);
 //separar el areglo
 series.push('Razón de mortalidad materna');
 for (var i = 0; i < nuevos_estados_dobles.length; i++) {
-  console.log(nuevos_estados_dobles[i].estado);
+ // console.log(nuevos_estados_dobles[i].estado);
+  if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
+      index_estados = i;
+  }
   categories[i] = nuevos_estados_dobles[i].estado;
   series.push(nuevos_estados_dobles[i].numero);
 
@@ -994,7 +1018,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
 
   console.log(series);
   console.log(categories);
-
+  cat_global = categories;
   chart.load({
     columns: [series],
     categories: categories,
@@ -1003,6 +1027,9 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
 
   $('.tabla_uno').html(tabla_uno);
   $('.tabla_dos').html(tabla_dos);
+}
+function regresa_estados_unidos(){
+  return index_estados;
 }
 
 function sortFunction(a, b) {
@@ -1318,11 +1345,11 @@ function sortFunction(a, b) {
             // margin-top:-3px; compensate for top border */
        background-color: #ffffff;
        margin-left: 6px;
-       width: 200px;
+       width: 230px;
        /* margin: 5px; */
    }
 .padding-200{
-  padding-left: 200px !important;
+  padding-left: 225px !important;
 }
   </style>
 
@@ -1331,11 +1358,21 @@ function sortFunction(a, b) {
 
           $('#indicador-panel').hide();
           $('.modal-trigger').leanModal();
-          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
+          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
           var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
-                            '<div style=" width: auto; height: auto; overflow: auto;">'+
-                            '<table class="bordered" id="miTabla">';
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
+
+          var datos_doble_2 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
+
+           var datos_doble_3 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<table class="bordered" id="miTabla3" class="miTabla3" >';                            
             // console.log(estados);
             // console.log(estados.length);
             // console.log(estados[0].length);
@@ -1344,49 +1381,74 @@ function sortFunction(a, b) {
              for (var i = 0; i < estados.length; i++) {
                if(i == 0){
                 datos_doble +=  '<thead><tr>';
+                datos_doble_2 +=  '<thead><tr>';
+                datos_doble_3 +=  '<thead><tr>';
               }
                else if(i == 1){
                  datos_doble +=  '<tbody><tr>';
+                 datos_doble_2 +=  '<tbody><tr>';
+                 datos_doble_3 +=  '<tbody><tr>';
                }
                else {
                   datos_doble +=  '<tr>';
+                  datos_doble_2 +=  '<tr>';
+                  datos_doble_3 +=  '<tr>';
                }
 
                for (var j = estados[0].length -1 ; j > 0 ; j--) {
                 if(i == 0 && j == estados[0].length -1){
                   datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                 }
                 else if( i == 0 && j == estados[0].length -1 ){
                   datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if( i == 0 ){
                   datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == estados[0].length -1 ) {
-                  datos_doble += '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                  datos_doble += varia;
+                  datos_doble_2 += varia;
+                  datos_doble_3 += varia;
                 }
                 else if(j == estados[0].length -2){
                     datos_doble +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
                 }
                 else{
                   datos_doble +=  '  <td>'+ estados[i][j] +'</td>';
+                  datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
+                  datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
                 }
                }
 
 
                  if(i == 0){
                    datos_doble +=  '</tr></thead>';
+                   datos_doble_2 +=  '</tr></thead>';
+                   datos_doble_3 +=  '</tr></thead>';
                  }else{
                    datos_doble +=  '</tr>';
+                   datos_doble_2 +=  '</tr>';
+                   datos_doble_3 +=  '</tr>';
                  }
              }
 
             datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+             datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
 
             //  console.log(datos_doble);
           $('#datos-panel').html(select+datos_doble);
-          $('#serie-panel').html(datos_doble);
-          $('#datos-panel-dos').html(select+datos_doble);
+          $('#serie-panel').html(datos_doble_3);
+          $('#datos-panel-dos').html(select_2+datos_doble_2);
 
           $("#miTabla tr").find('td:eq(1)').each(function () {
              $(this).addClass( "padding-200");
@@ -1396,6 +1458,21 @@ function sortFunction(a, b) {
              $(this).addClass( "padding-200");
           })
 
+$("#miTabla2 tr").find('td:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla2 tr").find('th:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla3 tr").find('td:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla3 tr").find('th:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
 
 
           var lupa =  false;
@@ -1475,6 +1552,14 @@ function sortFunction(a, b) {
           });
 
           $('#indicador').trigger("click");
+
+          $('.select_datos').change(function(){
+            $('#miTabla').show();
+          });
+
+           $('.select_datos_2').change(function(){
+            $('#miTabla2').show();
+          });
 
 
           var cadena='';
@@ -1702,7 +1787,6 @@ function sortFunction(a, b) {
         return div;
       };
       legend.addTo(map);
-
     }
     </script>
   </body>
