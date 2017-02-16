@@ -135,7 +135,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <li class="tam t_sm"><a class="t_sm mActive" href="explora.html">Explora</a></li>
             <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Objetivos</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="estados.html">Indicadores por unidad geográfica</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
             <li>
@@ -393,15 +393,15 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
               <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
               <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm" href="#!">Indicadores por unidad geográfica</a></li>
+              <li><a class="fuerte t_sm" href="estados.html">Indicadores por unidad geográfica</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
-              <li><a class="fuerte t_sm" href="#!">Calendario de actualizaciones</a></li>
-              <li><a class="fuerte t_sm" href="#!">Exportación masiva</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+              <!-- <li><a class="fuerte t_sm" href="#!">Calendario de actualizaciones</a></li>
+              <li><a class="fuerte t_sm" href="#!">Exportación masiva</a></li> -->
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -861,7 +861,7 @@ function busqueda_anio(cadena)
 	     $('.info2').removeClass('hide');
 	     if(props != undefined)
 	     {
-		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
 			  gen(estados[props.cve]);
 	     }
@@ -1139,7 +1139,7 @@ function busqueda_anio(cadena)
     	     $('.info2').removeClass('hide');
     	     if(props != undefined)
     	     {
-    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
     			  gen(estados[props.cve]);
     	     }

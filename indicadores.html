@@ -18,7 +18,7 @@
 	<link href="lib/c3.css" rel="stylesheet" type="text/css">
   <style media="screen">
     th, td{
-      padding: 20px !important;
+      padding: 10px !important;
     }
 
     svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
@@ -120,7 +120,7 @@
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Objetivos</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="estados.html">Indicadores por unidad geográfica</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
             <li>
@@ -140,7 +140,7 @@
       </nav>
     </div>
 <!-- // verde #299e33 -->
-    <div class="headerObje">
+    <div class="headerObje" style=" position:fixed; z-index: 9999; width: 100%;">
       <div class="container">
         <div class="row">
           <div class="col s2 center-align">
@@ -166,7 +166,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" style="margin-top: 300px;">
       <div class="row">
         <div class="col s12">
       <!--     <h3 class="fuerte t_principal">Meta 1 .A. Reducir a la mitad, entre 1990 y 2015, el porcentaje de personas cuyos ingresos sean inferiores a 1.25 dólares por día,</h3> -->
@@ -213,8 +213,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   </div>
 </div> -->
 
-
-      <div class="row card tablaPadding" id="datos-panel" style="overflow-x: scroll;border-radius: 20px;">
+ <!-- style="overflow-x: scroll;border-radius: 20px;" -->
+      <div class="row card tablaPadding" id="datos-panel">
           <div class="col s6">PERIODO</div>
           <div class="col s6">Proporción del consumo nacional que corresponde</div>
           <hr>
@@ -451,25 +451,30 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
             </div>
           </div>
         </div>
-      </div>
+
 
       <div class="row">
-        <div class="col s12">
-          <a id="ver_grafica" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
-          <a id="ver_tabla" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+        <div class="col s10">
+          <a id="ver_grafica" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
+          <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+        </div>
+        <div class="col s2 right-align" style="margin-top: 60px;">
+          <a href="#!" class="col s4 right-align" onclick="atras()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+          <a class="col s4 center-align numero">2015</a>
+          <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
       </div>
 
-      <div class="row card tablaPadding" id="indicador-panel">
-        <div class="col s5">
+      <div class="row card tablaPadding" id="indicador-panel" style="display:none">
+        <div class="col s5 ">
           <table class="bordered">
             <thead>
               <tr>
                 <th>Entidad Federativa</th>
-                <th>2016</th>
+                <th class="numero">2015</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="tabla_uno">
               <tr>
                 <td>Aguascalientes</td>
                 <td>6.3</td>
@@ -485,15 +490,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           </table>
         </div>
         <div class="col s1"></div>
-        <div class="col s5">
+        <div class="col s5 ">
           <table class="bordered">
             <thead>
               <tr>
                 <th>Entidad Federativa</th>
-                <th>2016</th>
+                <th class="numero">2015</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="tabla_dos">
               <tr>
                 <td>Aguascalientes</td>
                 <td>6.3</td>
@@ -508,6 +513,25 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
               </tr>
           </table>
         </div>
+
+
+        <div class="col s12" style="
+    margin-top: -10px;
+">
+           <hr>
+        </div>
+            <div class="col s6">
+              <strong>Estados Unidos Mexicanos</strong>
+            </div>
+            <div class="col s6 right-align pais">
+            </div>
+
+
+                <div class="col s12">
+                  <p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+                </div>
+
+
 
         <div id="modalMapa" class="modal">
           <div class="modal-content">
@@ -552,27 +576,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
 
       </div>
+
 
 
       <div class="row card tablaPadding" id="indicador-grafica">
-        <div class="col s5">
-          <table class="bordered">
-            <thead>
-              <tr>
-                <th>Grafica de barras</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div class="col s1"></div>
-        <div class="col s5">
-          <table class="bordered">
-            <thead>
-              <tr>
-                <th>Grafica de barras</th>
-              </tr>
-            </thead>
-          </table>
+        <div class="col s12">
+          <div id="barras"></div>
         </div>
 
         <div id="modalMapa" class="modal">
@@ -619,6 +628,18 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
       </div>
 
+
+
+    <div class="row">
+      <div class="col s5">
+        <p>Fecha de actualización: 11 de enero de 2016</p>
+        <p>Próxima fecha de actualización: Noviembre de 2016</p>
+      </div>
+      <div class="col s4 offset-s3 right-align" >
+            <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
+      </div>
+    </div>
+  </div>
       <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
           <h3 class="fuerte t_principal">Datos</h3>
@@ -705,15 +726,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
               <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
               <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm" href="#!">Indicadores por unidad geográfica</a></li>
+              <li><a class="fuerte t_sm" href="estados.html">Indicadores por unidad geográfica</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="#">¿Cómo vamos?</a></li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca</a></li>
-              <li><a class="fuerte t_sm" href="#!">Calendario de actualizaciones</a></li>
-              <li><a class="fuerte t_sm" href="#!">Exportación masiva</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+              <!-- <li><a class="fuerte t_sm" href="#!">Calendario de actualizaciones</a></li>
+              <li><a class="fuerte t_sm" href="#!">Exportación masiva</a></li> -->
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -741,6 +762,285 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script>
+  var estadoYear = 2015;
+  var chart;
+  var index_estados;
+  $(document).ready(function(){
+  
+//   ejemplo de arreglo para los datos
+// datos = ['Difunciones de mujeres por cada 100 mil nacidos vivos',
+//             '88.7',
+//             '23',
+//             '53',
+//             '33.9',
+//             '62.5',
+//             '12.4',
+//             '45.8',
+//             '121.4',
+//             '103.2',
+//             '104.8',
+//             '74',
+//             '91.9',
+//             '94.2',
+//             '116.7',
+//             '54.8',
+//             '112.7',
+//             '49.1',
+//             '91.4',
+//             '58.1',
+//             '40.1',
+//             '175.2',
+//             '123.1',
+//             '74.3',
+//             '33.8',
+//             '93.5',
+//             '26.8',
+//             '44',
+//             '46',
+//             '34.3',
+//             '126.8',
+//             '129.1',
+//             '69.4',
+//             '54.1'];
+
+    // setTimeout(function () {
+    //   var year = 1991;
+    //   var indice = 0;
+    //   var serie = [];
+    //   for (var i = 0; i < estados[0].length; i++) {
+    //     if(estados[0][i].includes(year)){
+    //     indice = i;
+    //     }
+    //   }
+    //
+    //   for (var i = 0; i < estados.length; i++) {
+    //     if(i==0){
+    //       serie.push('Difunciones de mujeres por cada 100 mil nacidos vivos');
+    //     }else{
+    //       serie.push(estados[i][indice]);
+    //     }
+    //   }
+    //
+    //
+    //   chart.load({
+    //          columns: [serie],
+    //          unload: ['Difunciones de mujeres por cada 100 mil nacidos vivos'],
+    //      });
+    // }, 2000);
+
+chart = c3.generate({
+    legend: {
+        show: false
+    },
+    bindto: '#barras',
+    size: {
+            height: 800
+          },
+    data: {
+    columns: [
+        ['Razón de mortalidad materna',
+          '25.8',
+          '32',
+          '24.3',
+          '46.5',
+          '28.3',
+          '22.3',
+          '68.5',
+          '43.1',
+          '44.3',
+          '31.1',
+          '31.2',
+          '49.5',
+          '32.3',
+          '24.7',
+          '30.9',
+          '34.3',
+          '36.6',
+          '66.9',
+          '23.5',
+          '48.6',
+          '32.3',
+          '14.9',
+          '20.7',
+          '30.1',
+          '22.1',
+          '32.2',
+          '41.7',
+          '32',
+          '20.1',
+          '29.9',
+          '32.6',
+          '32.6'
+      ],
+    ],
+    type: 'bar',
+    colors: {
+            'Razón de mortalidad materna' : function (d) {
+                return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+                 //return (d.value >= 45) ? '#00ff00' : '#ff0000';
+            }
+        },
+       // color: function (color, d) {
+       //      
+       //  },
+    order: 'desc',
+          },
+          tooltip: {
+                contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+                    color = function() {
+                        //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
+                         return d[0].index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+                    };
+                    return chart.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
+                }
+            },
+          axis: {
+    rotated: true,
+    x: {
+    type: 'category',
+    categories: [ 'Aguascalientes',
+                  'Baja California',
+                  'Baja California Sur',
+                  'Campeche',
+                  'Coahuila de Zaragoza',
+                  'Colima',
+                  'Chiapas',
+                  'Chihuahua',
+                  'Ciudad de México',
+                  'Durango',
+                  'Guanajuato',
+                  'Guerrero',
+                  'Hidalgo',
+                  'Jalisco',
+                  'México',
+                  'Michoacán de Ocampo',
+                  'Morelos',
+                  'Nayarit',
+                  'Nuevo León',
+                  'Oaxaca',
+                  'Puebla',
+                  'Querétaro',
+                  'Quintana Roo',
+                  'San Luis Potosí',
+                  'Sinaloa',
+                  'Sonora',
+                  'Tabasco',
+                  'Tamaulipas',
+                  'Tlaxcala',
+                  'Veracruz de Ignacio de la Llave',
+                  'Yucatán',
+                  'Zacatecas',
+                  'Estados Unidos Mexicanos',
+                ]
+          }
+          }
+      });//fin de grafica
+
+
+    datosGrafica(2015);
+});
+
+
+function atras(){
+  if(estadoYear != 1990){
+    estadoYear--;
+    console.log(estadoYear);
+    $('.numero').html(estadoYear);
+    datosGrafica(estadoYear);
+  }
+}
+
+function adelante(){
+  if(estadoYear != 2015){
+    estadoYear++;
+    console.log(estadoYear);
+    $('.numero').html(estadoYear);
+    datosGrafica(estadoYear);
+  }
+}
+
+function datosGrafica(year){
+  var indice = 0;
+  var serie = [];
+  var nuevos_estados_dobles = new Array();
+  console.log(nuevos_estados_dobles);
+
+  var tabla_uno = tabla_dos =  '';
+
+  for (var i = 0; i < estados[0].length; i++) {
+    if(estados[0][i].includes(year)){
+      indice = i;
+    }
+  }
+
+  for (var i = 0; i < estados.length; i++) {
+    if(i==0){
+      serie.push('Razón de mortalidad materna');
+    }else{
+      if(i < 17){
+        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+      } else if(i == 33){
+        $('.pais').html(estados[i][indice]);
+      }
+      else {
+        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+      }
+
+      var valueToPush = {'numero':estados[i][indice], 'estado':estados[i][0]};
+      nuevos_estados_dobles.push(valueToPush);
+
+      serie.push(estados[i][indice]);
+    }
+  }
+
+
+  nuevos_estados_dobles.sort(sortFunction);
+
+
+  var categories = [];
+  var series = [];
+
+console.log('estados dobles');
+console.log(nuevos_estados_dobles);
+
+
+//separar el areglo
+series.push('Razón de mortalidad materna');
+for (var i = 0; i < nuevos_estados_dobles.length; i++) {
+ // console.log(nuevos_estados_dobles[i].estado);
+  if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
+      index_estados = i;
+  }
+  categories[i] = nuevos_estados_dobles[i].estado;
+  series.push(nuevos_estados_dobles[i].numero);
+
+}
+
+  console.log(series);
+  console.log(categories);
+  cat_global = categories;
+  chart.load({
+    columns: [series],
+    categories: categories,
+    unload: ['Razón de mortalidad materna'],
+  });
+
+  $('.tabla_uno').html(tabla_uno);
+  $('.tabla_dos').html(tabla_dos);
+}
+function regresa_estados_unidos(){
+  return index_estados;
+}
+
+function sortFunction(a, b) {
+    if (a.numero === b.numero) {
+        return 0;
+    }
+    else {
+        return (a.numero < b.numero) ? -1 : 1;
+    }
+}
+
   function commaSeparateNumber(x)
   {
     var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");
@@ -880,7 +1180,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
   			  gen(estados[props.cve]);
   	     }
@@ -1033,13 +1333,46 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
         legend.addTo(map);
 
   </script>
+
+  <style media="screen">
+  .headcol {
+       position:absolute;
+       width:5em;
+       left:0;
+       top:auto;
+      /*  border-right: 0px none black;
+      border-top-width:3px; only relevant for first row
+            // margin-top:-3px; compensate for top border */
+       background-color: #ffffff;
+       margin-left: 6px;
+       width: 230px;
+       /* margin: 5px; */
+   }
+.padding-200{
+  padding-left: 225px !important;
+}
+  </style>
+
   <script type="text/javascript">
     $(document).ready(function(){
-          $('#indicador-grafica').hide();
-          $('.modal-trigger').leanModal();
-          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5><table class="bordered">';
+          $('#indicador-panel').hide();
+          $('.modal-trigger').leanModal();
+          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
+          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
+          var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
+
+          var datos_doble_2 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
+
+           var datos_doble_3 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<table class="bordered" id="miTabla3" class="miTabla3" >';                            
             // console.log(estados);
             // console.log(estados.length);
             // console.log(estados[0].length);
@@ -1048,45 +1381,98 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
              for (var i = 0; i < estados.length; i++) {
                if(i == 0){
                 datos_doble +=  '<thead><tr>';
+                datos_doble_2 +=  '<thead><tr>';
+                datos_doble_3 +=  '<thead><tr>';
               }
                else if(i == 1){
                  datos_doble +=  '<tbody><tr>';
+                 datos_doble_2 +=  '<tbody><tr>';
+                 datos_doble_3 +=  '<tbody><tr>';
                }
                else {
                   datos_doble +=  '<tr>';
+                  datos_doble_2 +=  '<tr>';
+                  datos_doble_3 +=  '<tr>';
                }
 
                for (var j = estados[0].length -1 ; j > 0 ; j--) {
-                 if(i == 0 && j == estados[0].length -1){
-                  datos_doble +=  '  <th>'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
-                }else if( i == 0 ){
+                if(i == 0 && j == estados[0].length -1){
+                  datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                }
+                else if( i == 0 && j == estados[0].length -1 ){
+                  datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                }
+                else if( i == 0 ){
                   datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
-                }else if(j == estados[0].length -1 ) {
-                  datos_doble += '<td>'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
-                }else{
+                  datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                }
+                else if(j == estados[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                  datos_doble += varia;
+                  datos_doble_2 += varia;
+                  datos_doble_3 += varia;
+                }
+                else if(j == estados[0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                }
+                else{
                   datos_doble +=  '  <td>'+ estados[i][j] +'</td>';
+                  datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
+                  datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
                 }
-
-                if(j == 0){
-
-                }else{
-
-                }
-
                }
+
+
                  if(i == 0){
                    datos_doble +=  '</tr></thead>';
+                   datos_doble_2 +=  '</tr></thead>';
+                   datos_doble_3 +=  '</tr></thead>';
                  }else{
                    datos_doble +=  '</tr>';
+                   datos_doble_2 +=  '</tr>';
+                   datos_doble_3 +=  '</tr>';
                  }
              }
 
-            datos_doble +=  '</tbody></table><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+             datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
 
             //  console.log(datos_doble);
           $('#datos-panel').html(select+datos_doble);
-          $('#serie-panel').html(datos_doble);
-          $('#datos-panel-dos').html(select+datos_doble);
+          $('#serie-panel').html(datos_doble_3);
+          $('#datos-panel-dos').html(select_2+datos_doble_2);
+
+          $("#miTabla tr").find('td:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla tr").find('th:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+$("#miTabla2 tr").find('td:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla2 tr").find('th:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla3 tr").find('td:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
+
+          $("#miTabla3 tr").find('th:eq(1)').each(function () {
+             $(this).addClass( "padding-200");
+          })
 
 
           var lupa =  false;
@@ -1105,7 +1491,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           // select de metadatos
           $('#indicador').click(function(){
                 $('#metadato-panel').hide();
-                $('#indicador-panel').show();
+                $('#indicador-grafica').show();
                 $('#mapas_hide').show();
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
@@ -1166,6 +1552,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           });
 
           $('#indicador').trigger("click");
+
+          $('.select_datos').change(function(){
+            $('#miTabla').show();
+          });
+
+           $('.select_datos_2').change(function(){
+            $('#miTabla2').show();
+          });
 
 
           var cadena='';
@@ -1244,7 +1638,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Porcentaje de <br>mortalidad materna</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
         gen(estados[props.cve]);
        }
@@ -1393,7 +1787,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
         return div;
       };
       legend.addTo(map);
-
     }
     </script>
   </body>
