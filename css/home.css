@@ -824,7 +824,7 @@ border-radius: 0 !important;
 
 .headerObje{
   background-color: #299e33;
-  height: 250px;
+  height: 200px;
   color: #fff;
 }
 
@@ -848,7 +848,7 @@ border-radius: 0 !important;
 }
 
 .headerObje .container .row{
-  padding-top: 30px;
+  padding-top: 0px;
 }
 .regreso{
   padding-top: 20px;
