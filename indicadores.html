@@ -259,7 +259,43 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
 
-      <div class="row card tablaPadding" id="serie-panel" style="overflow-x: scroll;border-radius: 20px;">
+        <div class="row card tablaPadding scroller" id="serie_fija" style="overflow-x: scroll; border-radius: 20px;">
+      <h5>Defunciones de mujeres por cada 100 mil nacidos vivos</h5>
+      <table>
+        <thead class="bordered">
+          <tr>
+            <th class="headcol">Entidad</th>
+            <th class="padding-200">1990</th>
+            <th>1991</th>
+            <th>1992</th>
+            <th>1993</th>
+            <th>1994</th>
+            <th>1995</th>
+            <th>1996</th>
+            <th>1997</th>
+            <th>1998</th>
+            <th>1999</th>
+            <th>2000</th>
+            <th>2001</th>
+            <th>2002</th>
+            <th>2003</th>
+            <th>2004</th>
+            <th>2005</th>
+            <th>2006</th>
+            <th>2007</th>
+            <th>2008</th>
+            <th>2009</th>
+            <th>2010</th>
+            <th>2011</th>
+            <th>2012</th>
+            <th>2013</th>
+            <th>2014</th>
+            <th>2015</th>
+          </tr>
+        </thead>
+      </table>
+      </div>
+      <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
         <div class="col s12">
           <table class="bordered">
             <thead>
@@ -726,15 +762,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
               <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
               <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
-              <li><a class="fuerte t_sm" href="estados.html">Indicadores por unidad geográfica</a></li>
+              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
               <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
-              <!-- <li><a class="fuerte t_sm" href="#!">Calendario de actualizaciones</a></li>
-              <li><a class="fuerte t_sm" href="#!">Exportación masiva</a></li> -->
+              <li class="fuerte t_sm">Calendario de actualizaciones</li>
+              <li class="fuerte t_sm">Exportación masiva</li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -760,13 +796,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
     <!-- Load d3.js and c3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
   <script src="lib/c3.min.js"></script>
+  <script src="lib/jquery.fixedheadertable.js"></script>
+  <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script>
   var estadoYear = 2015;
   var chart;
   var index_estados;
   $(document).ready(function(){
-  
+
 //   ejemplo de arreglo para los datos
 // datos = ['Difunciones de mujeres por cada 100 mil nacidos vivos',
 //             '88.7',
@@ -834,7 +872,7 @@ chart = c3.generate({
     },
     bindto: '#barras',
     size: {
-            height: 800
+            height: 1280
           },
     data: {
     columns: [
@@ -881,7 +919,7 @@ chart = c3.generate({
             }
         },
        // color: function (color, d) {
-       //      
+       //
        //  },
     order: 'desc',
           },
@@ -931,7 +969,8 @@ chart = c3.generate({
                   'Yucatán',
                   'Zacatecas',
                   'Estados Unidos Mexicanos',
-                ]
+                ],
+          height: 40,
           }
           }
       });//fin de grafica
@@ -1180,7 +1219,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">Razón de <br>mortalidad materna</p></div></div><div class="info"></div>';
 
   			  gen(estados[props.cve]);
   	     }
@@ -1358,9 +1397,9 @@ function sortFunction(a, b) {
 
           $('#indicador-panel').hide();
           $('.modal-trigger').leanModal();
-          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option><option value=" ">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
           var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
@@ -1371,8 +1410,8 @@ function sortFunction(a, b) {
                             '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
            var datos_doble_3 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
-                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
-                            '<table class="bordered" id="miTabla3" class="miTabla3" >';                            
+                            '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<table class="bordered" id="miTabla3" class="miTabla3" >';
             // console.log(estados);
             // console.log(estados.length);
             // console.log(estados[0].length);
@@ -1449,6 +1488,46 @@ function sortFunction(a, b) {
           $('#datos-panel').html(select+datos_doble);
           $('#serie-panel').html(datos_doble_3);
           $('#datos-panel-dos').html(select_2+datos_doble_2);
+
+
+          $('.scroller').scroll(function(e) {
+            console.log("aca");
+            $('.scroller').scrollLeft(e.target.scrollLeft);
+            });
+        //$('#miTabla3').fixedHeaderTable({ footer: true, cloneHeadToFoot: true, fixedColumn: true });
+          // $("#serie_fija").scroll(function () {
+          //   console.log("aca");
+          //   $("#serie-panel").scrollTop($("#serie_fija").scrollTop());
+          //   $("#serie-panel").scrollLeft($("#serie_fija").scrollLeft());
+          // });
+          //
+          // $("#miTabla3").scroll(function () {
+          //   console.log("aca no");
+          //   $("#serie_fija").scrollTop($("#miTabla3").scrollTop());
+          //   $("#serie_fija").scrollLeft($("#miTabla3").scrollLeft());
+          // });
+          //
+          //
+          // $("#datos_calculo_1").scroll(function () {
+          //   console.log("aca tampoco");
+          //   $("#serie_fija").scrollTop($("#datos_calculo_1").scrollTop());
+          //   $("#serie_fija").scrollLeft($("#datos_calculo_1").scrollLeft());
+          // });
+          //
+          // $("#serie-panel").scroll(function () {
+          //   console.log("aca menos");
+          //   $("#serie_fija").scrollTop($("#serie-panel").scrollTop());
+          //   $("#serie_fija").scrollLeft($("#serie-panel").scrollLeft());
+          // });
+          //
+          // $("#menos").scroll(function () {
+          //   console.log("aca menos");
+          //   $("#serie_fija").scrollTop($("#menos").scrollTop());
+          //   $("#serie_fija").scrollLeft($("#menos").scrollLeft());
+          // });
+
+
+
 
           $("#miTabla tr").find('td:eq(1)').each(function () {
              $(this).addClass( "padding-200");
@@ -1554,11 +1633,20 @@ $("#miTabla2 tr").find('td:eq(1)').each(function () {
           $('#indicador').trigger("click");
 
           $('.select_datos').change(function(){
-            $('#miTabla').show();
+            var osds=$('.select_datos').val();
+            if(osds == 1)
+              $('#miTabla').show();
+            else
+              $('#miTabla').hide();
           });
 
            $('.select_datos_2').change(function(){
-            $('#miTabla2').show();
+             var osds=$('.select_datos_2').val();
+             if(osds == 1)
+               $('#miTabla2').show();
+             else
+               $('#miTabla2').hide();
+            //$('#miTabla2').show();
           });
 
 
