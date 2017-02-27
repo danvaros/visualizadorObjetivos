@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Indicadores</title>
     	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
-	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+	  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
@@ -18,7 +18,7 @@
 	<link href="lib/c3.css" rel="stylesheet" type="text/css">
   <style media="screen">
     th, td{
-      padding: 10px !important;
+      padding: 13px !important;
     }
 
     svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
@@ -102,6 +102,38 @@
     }
 
   </style>
+  <link rel="stylesheet" href="DataTables/datatables.css">
+    <style>
+        /*th, td { white-space: nowrap; }*/
+    div.dataTables_wrapper {
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .dataTables_info  , .dataTables_filter{
+        display: none;
+    }
+
+    .DTFC_LeftBodyLiner{
+        margin-top: -10px !important;
+    }
+
+    td ,th{
+
+    }
+
+    .sorting{
+      margin-top: -10px;
+    }
+
+    table.dataTable thead .sorting_asc {
+      background-image: url(DataTables-1.10.13/images/sort_asc.png);
+      background-color: #fff;
+    }
+
+    </style>
+
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
@@ -109,6 +141,11 @@
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+
+
+    <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
+    <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="DataTables/dataTables.fixedColumns.js"></script>
   </head>
   <body>
     <div class="navbar-fixed">
@@ -259,42 +296,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
 
-        <div class="row card tablaPadding scroller" id="serie_fija" style="overflow-x: scroll; border-radius: 20px;">
-      <h5>Defunciones de mujeres por cada 100 mil nacidos vivos</h5>
-      <table>
-        <thead class="bordered">
-          <tr>
-            <th class="headcol">Entidad</th>
-            <th class="padding-200">1990</th>
-            <th>1991</th>
-            <th>1992</th>
-            <th>1993</th>
-            <th>1994</th>
-            <th>1995</th>
-            <th>1996</th>
-            <th>1997</th>
-            <th>1998</th>
-            <th>1999</th>
-            <th>2000</th>
-            <th>2001</th>
-            <th>2002</th>
-            <th>2003</th>
-            <th>2004</th>
-            <th>2005</th>
-            <th>2006</th>
-            <th>2007</th>
-            <th>2008</th>
-            <th>2009</th>
-            <th>2010</th>
-            <th>2011</th>
-            <th>2012</th>
-            <th>2013</th>
-            <th>2014</th>
-            <th>2015</th>
-          </tr>
-        </thead>
-      </table>
-      </div>
       <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
         <div class="col s12">
           <table class="bordered">
@@ -803,79 +804,21 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
   var estadoYear = 2015;
   var chart;
   var index_estados;
-  $(document).ready(function(){
-
-//   ejemplo de arreglo para los datos
-// datos = ['Difunciones de mujeres por cada 100 mil nacidos vivos',
-//             '88.7',
-//             '23',
-//             '53',
-//             '33.9',
-//             '62.5',
-//             '12.4',
-//             '45.8',
-//             '121.4',
-//             '103.2',
-//             '104.8',
-//             '74',
-//             '91.9',
-//             '94.2',
-//             '116.7',
-//             '54.8',
-//             '112.7',
-//             '49.1',
-//             '91.4',
-//             '58.1',
-//             '40.1',
-//             '175.2',
-//             '123.1',
-//             '74.3',
-//             '33.8',
-//             '93.5',
-//             '26.8',
-//             '44',
-//             '46',
-//             '34.3',
-//             '126.8',
-//             '129.1',
-//             '69.4',
-//             '54.1'];
-
-    // setTimeout(function () {
-    //   var year = 1991;
-    //   var indice = 0;
-    //   var serie = [];
-    //   for (var i = 0; i < estados[0].length; i++) {
-    //     if(estados[0][i].includes(year)){
-    //     indice = i;
-    //     }
-    //   }
-    //
-    //   for (var i = 0; i < estados.length; i++) {
-    //     if(i==0){
-    //       serie.push('Difunciones de mujeres por cada 100 mil nacidos vivos');
-    //     }else{
-    //       serie.push(estados[i][indice]);
-    //     }
-    //   }
-    //
-    //
-    //   chart.load({
-    //          columns: [serie],
-    //          unload: ['Difunciones de mujeres por cada 100 mil nacidos vivos'],
-    //      });
-    // }, 2000);
-
-chart = c3.generate({
-    legend: {
+  var table3 = null;
+  var table2 = null;
+  var table1  = null;
+  $(document).ready(function()
+  {
+    chart = c3.generate({
+      legend: {
         show: false
-    },
-    bindto: '#barras',
-    size: {
+      },
+      bindto: '#barras',
+      size: {
             height: 1280
           },
-    data: {
-    columns: [
+      data: {
+      columns: [
         ['Razón de mortalidad materna',
           '25.8',
           '32',
@@ -909,10 +852,10 @@ chart = c3.generate({
           '29.9',
           '32.6',
           '32.6'
+        ],
       ],
-    ],
-    type: 'bar',
-    colors: {
+      type: 'bar',
+      colors: {
             'Razón de mortalidad materna' : function (d) {
                 return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
@@ -921,7 +864,7 @@ chart = c3.generate({
        // color: function (color, d) {
        //
        //  },
-    order: 'desc',
+      order: 'desc',
           },
           tooltip: {
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
@@ -1374,22 +1317,25 @@ function sortFunction(a, b) {
   </script>
 
   <style media="screen">
-  .headcol {
-       position:absolute;
+ .headcol {
+       /*position:absolute;*/
        width:5em;
        left:0;
        top:auto;
-      /*  border-right: 0px none black;
-      border-top-width:3px; only relevant for first row
+        border-right: 0px none black;
+     /* border-top-width:3px; only relevant for first row
             // margin-top:-3px; compensate for top border */
        background-color: #ffffff;
        margin-left: 6px;
+       margin-top: 6px;
        width: 230px;
-       /* margin: 5px; */
-   }
+      margin: 5px; 
+      padding-top: 26px !important;
+ }
+ /*
 .padding-200{
   padding-left: 225px !important;
-}
+}*/
   </style>
 
   <script type="text/javascript">
@@ -1406,11 +1352,11 @@ function sortFunction(a, b) {
                             '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
 
           var datos_doble_2 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
-                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
                             '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
            var datos_doble_3 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
-                            '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                            '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
                             '<table class="bordered" id="miTabla3" class="miTabla3" >';
             // console.log(estados);
             // console.log(estados.length);
@@ -1486,73 +1432,37 @@ function sortFunction(a, b) {
 
             //  console.log(datos_doble);
           $('#datos-panel').html(select+datos_doble);
-          $('#serie-panel').html(datos_doble_3);
           $('#datos-panel-dos').html(select_2+datos_doble_2);
-
+          $('#serie-panel').html(datos_doble_3);
 
           $('.scroller').scroll(function(e) {
             console.log("aca");
             $('.scroller').scrollLeft(e.target.scrollLeft);
             });
-        //$('#miTabla3').fixedHeaderTable({ footer: true, cloneHeadToFoot: true, fixedColumn: true });
-          // $("#serie_fija").scroll(function () {
-          //   console.log("aca");
-          //   $("#serie-panel").scrollTop($("#serie_fija").scrollTop());
-          //   $("#serie-panel").scrollLeft($("#serie_fija").scrollLeft());
-          // });
-          //
-          // $("#miTabla3").scroll(function () {
-          //   console.log("aca no");
-          //   $("#serie_fija").scrollTop($("#miTabla3").scrollTop());
-          //   $("#serie_fija").scrollLeft($("#miTabla3").scrollLeft());
-          // });
-          //
-          //
-          // $("#datos_calculo_1").scroll(function () {
-          //   console.log("aca tampoco");
-          //   $("#serie_fija").scrollTop($("#datos_calculo_1").scrollTop());
-          //   $("#serie_fija").scrollLeft($("#datos_calculo_1").scrollLeft());
-          // });
-          //
-          // $("#serie-panel").scroll(function () {
-          //   console.log("aca menos");
-          //   $("#serie_fija").scrollTop($("#serie-panel").scrollTop());
-          //   $("#serie_fija").scrollLeft($("#serie-panel").scrollLeft());
-          // });
-          //
-          // $("#menos").scroll(function () {
-          //   console.log("aca menos");
-          //   $("#serie_fija").scrollTop($("#menos").scrollTop());
-          //   $("#serie_fija").scrollLeft($("#menos").scrollLeft());
-          // });
+  
+          // $("#miTabla tr").find('td:eq(1)').each(function () {
+          //    $(this).addClass( "padding-200");
+          // })
 
+          // $("#miTabla tr").find('th:eq(1)').each(function () {
+          //    $(this).addClass( "padding-200");
+          // })
 
+          // $("#miTabla2 tr").find('td:eq(1)').each(function () {
+          //    $(this).addClass( "padding-200");
+          // })
 
+          // $("#miTabla2 tr").find('th:eq(1)').each(function () {
+          //    $(this).addClass( "padding-200");
+          // })
 
-          $("#miTabla tr").find('td:eq(1)').each(function () {
-             $(this).addClass( "padding-200");
-          })
+          // $("#miTabla3 tr").find('td:eq(1)').each(function () {
+          //    $(this).addClass( "padding-200");
+          // })
 
-          $("#miTabla tr").find('th:eq(1)').each(function () {
-             $(this).addClass( "padding-200");
-          })
-
-$("#miTabla2 tr").find('td:eq(1)').each(function () {
-             $(this).addClass( "padding-200");
-          })
-
-          $("#miTabla2 tr").find('th:eq(1)').each(function () {
-             $(this).addClass( "padding-200");
-          })
-
-          $("#miTabla3 tr").find('td:eq(1)').each(function () {
-             $(this).addClass( "padding-200");
-          })
-
-          $("#miTabla3 tr").find('th:eq(1)').each(function () {
-             $(this).addClass( "padding-200");
-          })
-
+          // $("#miTabla3 tr").find('th:eq(1)').each(function () {
+          //    $(this).addClass( "padding-200");
+          // })
 
           var lupa =  false;
           $('#buscar').click(function(){
@@ -1588,6 +1498,20 @@ $("#miTabla2 tr").find('td:eq(1)').each(function () {
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
                 $('#serie-panel').show();
+                if(table3 == null){
+                  table3 = $('#miTabla3').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    aoColumnDefs: [
+                      { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                  });
+                }
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1634,19 +1558,55 @@ $("#miTabla2 tr").find('td:eq(1)').each(function () {
 
           $('.select_datos').change(function(){
             var osds=$('.select_datos').val();
-            if(osds == 1)
-              $('#miTabla').show();
-            else
-              $('#miTabla').hide();
+            if(osds == 1){
+              
+              $('#datos_calculo_1').show();
+              
+              if(table1 == null){
+                    $('#miTabla').show();
+                    table1 = $('#miTabla').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    aoColumnDefs: [
+                      { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                } );
+              }
+           }
+            else{
+              $('#datos_calculo_1').hide();
+              
+            }
           });
 
            $('.select_datos_2').change(function(){
              var osds=$('.select_datos_2').val();
-             if(osds == 1)
-               $('#miTabla2').show();
+             if(osds == 1){
+              
+               $('#datos_calculo_2').show();
+                  if(table2 == null){
+                    $('#miTabla2').show();
+                    table2 = $('#miTabla2').DataTable( {
+                      scrollY:        "600px",
+                      scrollX:        true,
+                      scrollCollapse: true,
+                      paging:         false,
+                      aoColumnDefs: [
+                        { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                      ],
+                      fixedColumns:   {
+                          leftColumns: 1
+                      }
+                  } );
+                }
+            }
              else
-               $('#miTabla2').hide();
-            //$('#miTabla2').show();
+                $('#datos_calculo_2').hide();
           });
 
 
