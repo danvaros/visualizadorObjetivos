@@ -322,16 +322,16 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down nav_stick nab">
               <li class="tam t_sm"><a  href="objetivos.html">Indicadores</a></li>
-              <li class="tam t_sm"><a  href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li class="tam t_sm"><a href="estados.html" style="line-height: 32px;">Indicadores con<br>desglose geográfico</a></li>
               <li class="tam t_sm"><a  href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
               <li class="tam t_sm"><a  href="explora.html">Explora</a></li>
               <li class="tam t_sm"><a  href="compara.html">Compara</a></li>
-              <li>
+              <li class="tamps">
                 <a id="buscar"><img src="img/search.png" alt="" /></a>
-                <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" />
+                <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" onfocusout="esconder()"/>
               </li>
-                <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
-                <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
+                <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
+                <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
               <li><a href="explora.html">Explora</a></li>
@@ -997,11 +997,11 @@
           <div class="col s12">
             <h3 class="fuerte t_principal">EXPLORA</h3>
             <li class="divider"></li>
-			        <p class="t_sm gris">
-              Porcentaje de aguas residuales tratadas
-            </p>
             <div>
+              <div style="width:100%;"><br><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil  nacidos vivos</div>
               <div id="map"></div>
+              <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b></div>
+              <!-- <div id="map"></div> -->
 	            <!-- <div id="chart2"></div> -->
 	            <!-- <div><img style="margin-left: 35px;" width="147" height="25" src="img/promedio.png"></div> -->
 <!-- 	            <img src="img/graficaexplora.png" alt="" style="width:100%;"/></div> -->
@@ -1184,7 +1184,7 @@
               <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
               <li><a class="fuerte t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
-              
+
             </ul>
           </div>
           <div class="col l3 s12">
@@ -1240,13 +1240,22 @@
 // }else if(aleatorio == 3){
 //   $('.imagen').css("background-image", "url(img/fondo1.png)");
 // }
+var lupa =  false;
+
+function esconder(){
+  console.log("focusout");
+  $('#cam_bus').hide();
+  $('#buscar').show();
+  lupa =  false;
+}
+
+
 $(document).ready(function() {
     $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
 });
 
 window.onload = function() {
 
-  var lupa =  false;
 $('#buscar').click(function(){
   if(lupa){
     $('#cam_bus').hide();
@@ -1254,10 +1263,10 @@ $('#buscar').click(function(){
   }else{
     $('#cam_bus').show();
     $('#buscar').hide();
+    document.getElementById("cam_bus").focus();
     lupa =  true;
   }
 });
-
 
   var idioma = navigator.language || navigator.userLanguage;
   console.log("The language is: " + idioma);
@@ -2441,7 +2450,7 @@ var estados =[
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">Razón de <br>mortalidad materna</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%; font-size: 18px;">Razón de <br>mortalidad materna</p></div></div><div class="info"></div>';
 
   			  gen(estados[props.cve]);
   	     }
