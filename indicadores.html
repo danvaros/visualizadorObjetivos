@@ -126,7 +126,7 @@
       background-image: url(DataTables-1.10.13/images/sort_asc.png);
       background-color: #fff;
     }
-    
+
     </style>
 
 
@@ -220,19 +220,35 @@
     </div>
 <!-- menu -->
 <!-- // verde #299e33 -->
-    <div class="headerObje" style=" position:fixed; z-index: 9999; width: 100%;">
+    <div id="sti" style="background-color:#299e33; position:fixed; width:100%; height:77px; z-index: 9999; color: #fff;">
+      <div class="container" style="margin-top: 0 !important;">
+      <div class="row">
+        <div class="col s2 center-align">
+            <img src="img/ods-03.png" style="width: 38%;" alt="">
+        </div>
+        <div class="col s9 left-align">
+            <hr>
+            <p>
+              Indicador 3.1.1 Razón de mortalidad materna
+            </p>
+            <hr>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="esconder" class="headerObje" style=" /*position:fixed;*/ z-index: 9999; width: 100%;">
       <div class="container">
         <div class="row">
           <div class="col s2 center-align">
-              <img class="ico_obj" src="img/ods-03.png" alt="">
+              <img class="ico_obj" src="img/ods-03.png" alt="" style="position: fixed; width: 4.5%;">
           </div>
           <div class="col s9 left-align">
-              <!-- <h5>3 - Garantizar una vida sana y promover el bienestar para todos en todas en todas las edades</h5>
-              <p>
+              <h5>3 - Garantizar una vida sana y promover el bienestar para todos en todas en todas las edades</h5>
+              <p id="parrafo">
                 Meta 3.1 Para 2030, reducir la tasa mundial de mortalidad materna a menos de 70 por cada 100,00 nacidos vivos
-              </p> -->
-              <hr>
-              <p>
+              </p>
+              <hr id="primer">
+              <p id="bajo">
                 Indicador 3.1.1 Razón de mortalidad materna
               </p>
               <hr>
@@ -1666,6 +1682,45 @@ function sortFunction(a, b) {
       };
       legend.addTo(map);
     }
+
+    function isScrolledIntoView(elem)
+    {
+      //alert("method invoked");
+      var docViewTop = $(window).scrollTop();
+      var docViewBottom = docViewTop + $(window).height();
+      var elemTop = $(elem).offset().top;
+      var elemBottom = elemTop + $(elem).height();
+      //console.log(docViewTop , docViewBottom , elemTop , elemBottom);
+      // return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+
+      return (elemTop > docViewTop);
+    }
+
+    $( window ).scroll(function() {
+      console.log('bajando',isScrolledIntoView($("#parrafo")));
+      if ($(window).scrollTop() == 0)
+      {
+        console.log("arriba");
+        $("#sti").fadeOut(200);
+        $("#esconder").fadeIn(2000);
+        // $( "#sti" ).animate({
+        //   height: "0px"
+        // }, 1500 );
+        // $( "#esconder" ).animate({
+        //   height: "200px"
+        // }, 1500 );
+      }
+      if(!isScrolledIntoView($("#parrafo")))
+      {
+        $("#esconder").fadeOut(200);
+        $("#sti").fadeIn(2000);
+      }
+    });
+
+      $(document).ready(function() {
+        $("#sti").hide();
+        console.log(isScrolledIntoView($("#bajo")));
+      });
     </script>
   </body>
 </html>
