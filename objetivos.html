@@ -34,34 +34,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   </head>
   <body>
+    <!-- menu -->
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
           <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
-            <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
-            <li class="tam t_sm"><a class="t_sm mActive" href="objetivos.html">Objetivos</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
             <li class="tam t_sm"><a class="t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
             <li>
               <a id="buscar"><img src="img/search.png" alt="" /></a>
-              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" />
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" />
             </li>
+               <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
+            <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="explora.html">Explora</a></li>
-            <li><a href="compara.html">Compara</a></li>
-            <li><a href="objetivos.html">Objetivos</a></li>
+            <li><a href="objetivos.html">Indicadores</a></li>
             <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
             <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
-            <li><a href="acerca.html">Acerca de</a></li>
+            <li><a href="explora.html">Explora</a></li>
+            <li><a href="compara.html">Compara</a></li>
           </ul>
         </div>
       </nav>
     </div>
+<!-- menu -->
     <div class="container">
       <div class="row">
         <div class="col s12">
@@ -1726,6 +1728,9 @@
         </div>
       </div>
     </div>
+
+    
+<!-- footer -->
     <footer class="page-footer id">
       <div class="container">
         <div class="row" id="fot">
@@ -1741,18 +1746,18 @@
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
-              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
-              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
+              <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
               <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
               <li class="fuerte t_sm">Calendario de actualizaciones</li>
               <li class="fuerte t_sm">Exportación masiva</li>
+              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -1764,6 +1769,8 @@
       <div class="footer-copyright light-blue">
       </div>
     </footer>
+<!-- footer -->
+
 
     <script type="text/javascript">
     $(document).ready(function(){
