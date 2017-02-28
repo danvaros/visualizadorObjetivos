@@ -65,8 +65,6 @@
       height: 40px;
     }
 
-
-
     .promedios{
       font-size: 40px !important;
       font-weight: 200;
@@ -76,11 +74,9 @@
       color: #3ebcef;
     }
 
-
     .section-bullets li a:before {
         background-color: #00aeef;
     }
-
 
     .section-bullets li:hover {
         background-color: #eee;
@@ -141,6 +137,48 @@
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+    
+
+
+
+<!-- 
+        function lee_json() {
+            $.getJSON("/Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(datos) {
+                alert("Dato: " + datos["dato"]);
+                $.each(datos["primos"], function(idx,primo) {
+                    alert("Numero primo: " + primo);
+                });
+            });
+        }
+ -->
+<!-- 
+<script type="text/javascript">
+       
+       $(document).ready(function () {
+           $("#boton1").click(function () {
+               // var cad = "Los libros en el archivo JSON son:<br />";
+               // var cadena = $.getJSON("Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function (data) {
+               //     for (l in data.libros.lib) {
+               //         cad += ("<br />" + data.libros.lib[l].libro + " de " +
+               //             data.libros.lib[l].autores[0] + ", " +
+               //             data.libros.lib[l].autores[1] + " y " +
+               //             data.libros.lib[l].autores[2] + "<br />Editorial: " +
+               //             data.libros.lib[l].editorial +
+               //             "<br />").replace("y undefined", "").replace(", undefined", "");
+               //      }
+               //     $("#texto").html(cad);
+               // })     
+               $.getJSON("Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(json) {
+    console.log(json); // this will show the info it in firebug console
+});
+           })
+       });
+  
+
+</script>
+ -->
+
+
 
 
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
@@ -148,34 +186,39 @@
     <script type="text/javascript" charset="utf8" src="DataTables/dataTables.fixedColumns.js"></script>
   </head>
   <body>
+
+
+
+    <!-- menu -->
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
           <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
-            <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Objetivos</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
             <li class="tam t_sm"><a class="t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="acerca.html">Acerca de</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
             <li>
               <a id="buscar"><img src="img/search.png" alt="" /></a>
-              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" />
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" />
             </li>
+              <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
+            <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="explora.html">Explora</a></li>
-            <li><a href="compara.html">Compara</a></li>
-            <li><a href="objetivos.html">Objetivos</a></li>
+            <li><a href="objetivos.html">Indicadores</a></li>
             <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
             <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
-            <li><a href="acerca.html">Acerca de</a></li>
+            <li><a href="explora.html">Explora</a></li>
+            <li><a href="compara.html">Compara</a></li>
           </ul>
         </div>
       </nav>
     </div>
+<!-- menu -->
 <!-- // verde #299e33 -->
     <div class="headerObje" style=" position:fixed; z-index: 9999; width: 100%;">
       <div class="container">
@@ -206,24 +249,11 @@
     <div class="container" style="margin-top: 300px;">
       <div class="row">
         <div class="col s12">
-      <!--     <h3 class="fuerte t_principal">Meta 1 .A. Reducir a la mitad, entre 1990 y 2015, el porcentaje de personas cuyos ingresos sean inferiores a 1.25 dólares por día,</h3> -->
       <h3 style="color:#0a254f">Indicador 3.1.1 Razón de mortalidad materna</h3>
           <li class="divider"></li>
           <br>
-<!--           <p class="t_sec2"> 1.1. Proporción de la población coin ingresos per cápital inferiores a 1.25 dólares diarios (Paridad de Poder de Compra respecto al dólar) - Lista oficial de la ONU </p>
-<p class="gris t_sm">
-Esta sección permite llevar a cabo el cruce de dos indicadores seleccionados por el usuario, a fin de que pueda analizar de manera sencillas y visual la correlación existente entre dos variables. Igualmente se puede llevar a cabo un seguimiento del comportamiento de los dos indicadores seleccionados en el tiempo por medio de un gráfico y exportar la información, mapas y gráficos para su uso.
-
-<p class="gris t_sm">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum ipsa eius quam impedit ex nihil debitis quo laudantium aperiam, corrupti nam sit at corporis, accusamus aliquid. Ullam, a? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p> -->
         </div>
       </div>
-    <!--   <div class="row" id="grafica">
-      <div class="col s12">
-        <div id="chart"></div>
-      </div>
-    </div> -->
 
       <div class="row">
         <div class="col s12 center-align">
@@ -234,22 +264,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
         </div>
       </div>
 
-
-<!--       <div class="row">
-  <div class="col s3 center-align">
-    <a id="indicador" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 5px 0px 0px 5px;">INDICADOR</a>
-  </div>
-  <div class="col s3 center-align">
-    <a id="metadato" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0;">METADATO</a>
-  </div>
-  <div class="col s3 center-align">
-    <a id="serie" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0">SERIE HISTÓRICA</a>
-    </div>
-    <div class="col s3 center-align">
-    <a id="datos" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps indicadores-taps-active" style =" border-radius: 0px 5px 5px 0px;">DATOS PARA EL CÁLCULO</a>
-  </div>
-</div> -->
-
  <!-- style="overflow-x: scroll;border-radius: 20px;" -->
       <div class="row card tablaPadding" id="datos-panel">
           <div class="col s6">PERIODO</div>
@@ -257,35 +271,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           <hr>
           <div class="col s6">2000</div>
           <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
-          <br>
-          <br>
           <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
           Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
       </div>
@@ -298,132 +283,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
 
       <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
         <div class="col s12">
-          <table class="bordered">
-            <thead>
-              <tr>
-                <th>Entidad Federativa</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-                <th>2012</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Nacional</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-              </tr>
-              <tr>
-                <td>Aguascalientes</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-              </tr>
-              <tr>
-                <td>Baja California</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-              </tr>
-              <tr>
-                <td>Baja California Sur</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-              </tr>
-              <tr>
-                <td>Campeche</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-              </tr>
-              <tr>
-                <td>Chiapas</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-                <td>6.3</td>
-              </tr>
-            </tbody>
-          </table>
-
           <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
           Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
         </div>
@@ -550,11 +409,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
               </tr>
           </table>
         </div>
-
-
-        <div class="col s12" style="
-    margin-top: -10px;
-">
+        <div class="col s12" style="margin-top: -10px;">
            <hr>
         </div>
             <div class="col s6">
@@ -745,6 +600,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
     </div>
 
 
+<!-- footer -->
     <footer class="page-footer id">
       <div class="container">
         <div class="row" id="fot">
@@ -760,18 +616,18 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
-              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
-              <li><a class="fuerte t_sm" href="objetivos.html">Objetivos</a></li>
+              <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
               <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
               <li class="fuerte t_sm">Calendario de actualizaciones</li>
               <li class="fuerte t_sm">Exportación masiva</li>
+              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -783,6 +639,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
       <div class="footer-copyright light-blue">
       </div>
     </footer>
+<!-- footer -->
 
 
 
@@ -861,9 +718,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus neque rerum
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
             }
         },
-       // color: function (color, d) {
-       //
-       //  },
       order: 'desc',
           },
           tooltip: {
@@ -1332,10 +1186,6 @@ function sortFunction(a, b) {
       margin: 5px; 
       padding-top: 26px !important;
  }
- /*
-.padding-200{
-  padding-left: 225px !important;
-}*/
   </style>
 
   <script type="text/javascript">
@@ -1439,30 +1289,6 @@ function sortFunction(a, b) {
             console.log("aca");
             $('.scroller').scrollLeft(e.target.scrollLeft);
             });
-  
-          // $("#miTabla tr").find('td:eq(1)').each(function () {
-          //    $(this).addClass( "padding-200");
-          // })
-
-          // $("#miTabla tr").find('th:eq(1)').each(function () {
-          //    $(this).addClass( "padding-200");
-          // })
-
-          // $("#miTabla2 tr").find('td:eq(1)').each(function () {
-          //    $(this).addClass( "padding-200");
-          // })
-
-          // $("#miTabla2 tr").find('th:eq(1)').each(function () {
-          //    $(this).addClass( "padding-200");
-          // })
-
-          // $("#miTabla3 tr").find('td:eq(1)').each(function () {
-          //    $(this).addClass( "padding-200");
-          // })
-
-          // $("#miTabla3 tr").find('th:eq(1)').each(function () {
-          //    $(this).addClass( "padding-200");
-          // })
 
           var lupa =  false;
           $('#buscar').click(function(){
