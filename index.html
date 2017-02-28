@@ -1,244 +1,241 @@
-
-
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Objetivos de Desarrollo Sostenible</title>
-	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
-	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,300,600italic,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/fakeLoader.css">
-    <link rel="stylesheet" href="css/home.css">
-	<!-- Load c3.css -->
-	<link href="lib/c3.css" rel="stylesheet" type="text/css">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Objetivos de Desarrollo Sostenible</title>
+  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css"
+  />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,300,600italic,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/fakeLoader.css">
+  <link rel="stylesheet" href="css/home.css">
+  <!-- Load c3.css -->
+  <link href="lib/c3.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
 
 
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="lib/fakeLoader.min.js"></script>
-    <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-    <script src='image.js'></script>
-    <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
-    <script type="text/javascript">
-
-      //$(window).load(function(){
-        if (sessionStorage.getItem('dontLoad') == null){
-          $('#loader').show();
-          $('#loader').delay(2000).fadeOut("slow");
-        	sessionStorage.setItem('dontLoad', 'true');
-          console.log(sessionStorage.getItem('dontLoad'));
-        }
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="lib/fakeLoader.min.js"></script>
+  <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src='image.js'></script>
+  <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
+  <script type="text/javascript">
+    //$(window).load(function(){
+    if (sessionStorage.getItem('dontLoad') == null) {
+      $('#loader').show();
+      $('#loader').delay(2000).fadeOut("slow");
+      sessionStorage.setItem('dontLoad', 'true');
+      console.log(sessionStorage.getItem('dontLoad'));
+    }
       //});
+  </script>
+  <style media="screen">
+    #loader {
+      display: block;
+      background: #fff;
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
+    
+    #loader p {
+      display: block;
+      width: 100px;
+      height: 30px;
+      font-size: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+  </style>
 
+  <style>
+    #map {
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+    }
+    
+    #map_compara {
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+    }
+    
+    .info,
+    .info-explora {
+      padding: 6px 8px;
+      font: 14px/16px Arial, Helvetica, sans-serif;
+      border-radius: 5px;
+    }
+    
+    .info2-explora,
+    .info2 {
+      padding: 6px 8px;
+      font: 10px/16px Arial, Helvetica, sans-serif;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 5px 5px;
+      margin-top: 0 !important;
+      width: 291px;
+    }
+    
+    .infos,
+    .infos-explora {
+      padding: 6px 7.5px;
+      font: 14px/16px Arial, Helvetica, sans-serif;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 5px 5px 0 0;
+      width: 291px;
+    }
+    
+    .info h4,
+    .info-explora h4 {
+      margin: 0 0 5px;
+      color: #777;
+    }
+    
+    .legend {
+      text-align: left;
+      line-height: 18px;
+      color: #555;
+    }
+    
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 4.0pc;
+      opacity: 0.7;
+    }
+    
+    .c3-ygrids line {
+      stroke-dasharray: 1;
+    }
+    
+    .c3-xgrid-focus line {
+      stroke: #d2d2d2;
+    }
+    
+    g .leaflet-interactive {
+      stroke-dasharray: 0 !important;
+    }
+    
+    .highlighted {
+      fill: rgb(226, 204, 6);
+    }
+  </style>
 
-    </script>
-    <style media="screen">
-      #loader{
-        display: block;
-        background: #fff;
-        color: white;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10000;
-      }
-      #loader p{
-        display: block;
-        width: 100px;
-        height: 30px;
-        font-size: 30px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        margin: auto;
-      }
-    </style>
-
-    <style>
-  		#map {
-  			width: 100%;
-  			height: 600px;
-        overflow: hidden;
-  		}
-
-      #map_compara {
-        width: 100%;
-        height: 600px;
-        overflow: hidden;
-      }
-
-  		.info, .info-explora {
-  			padding: 6px 8px;
-  			font: 14px/16px Arial, Helvetica, sans-serif;
-  			border-radius: 5px;
-
-  		}
-  		 .info2-explora,  .info2 {
-  			padding: 6px 8px;
-  			font: 10px/16px Arial, Helvetica, sans-serif;
-  			background-color: rgba(255,255,255,0.8);
-  			border-radius: 0 0 5px 5px;
-  			margin-top: 0 !important;
-        width: 291px;
-  		}
-
-  		.infos , .infos-explora{
-  			padding: 6px 7.5px;
-  			font: 14px/16px Arial, Helvetica, sans-serif;
-  			background-color: rgba(255,255,255,0.8);
-  			box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  			border-radius: 5px 5px 0 0;
-        width: 291px;
-  		}
-  		.info  h4 , .info-explora h4{
-  			margin: 0 0 5px;
-  			color: #777;
-  		}
-  		.legend {
-  			text-align: left;
-  			line-height: 18px;
-  			color: #555;
-  		}
-  		.legend i {
-  			width: 18px;
-  			height: 18px;
-  			float: left;
-  			margin-right: 4.0pc;
-  			opacity: 0.7;
-  		}
-  		.c3-ygrids line
-  		{
-		    stroke-dasharray: 1;
-		}
-		.c3-xgrid-focus line
-		{
-			stroke:#d2d2d2;
-		}
-		g .leaflet-interactive
-		{
-			stroke-dasharray:0 !important;
-		}
-		.highlighted
-		{
-			fill: rgb(226, 204, 6);
-		}
-  	</style>
-
-    <style media="screen">
-    svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
+  <style media="screen">
+    svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle {
       fill: #f00 !important;
     }
-
-    #datosNacional{
+    
+    #datosNacional {
       display: none;
     }
-
-      .infoPadre{
-        width: 276px;
+    
+    .infoPadre {
+      width: 276px;
     }
-
-      .cuadrosSocial li {
-        display: inline;
+    
+    .cuadrosSocial li {
+      display: inline;
     }
-
-    .cuadrosSocial li a{
+    
+    .cuadrosSocial li a {
       border: 1px solid #ccc;
       padding: 10px;
       transition: all 1.0s ease;
       width: 40px;
     }
-
-
+    
     .cuadrosSocial li a:hover {
       background-color: #ccc;
-
     }
-
-    .select-dropdown{
+    
+    .select-dropdown {
       padding-left: 10px !important;
     }
-
-
-    .select-wrapper span.caret{
+    
+    .select-wrapper span.caret {
       padding-right: 10px;
       font-size: 14px;
       color: #666;
     }
-
-    .espacio_seccion{
+    
+    .espacio_seccion {
       height: 40px;
     }
-
-
-
-    .promedios{
+    
+    .promedios {
       font-size: 40px !important;
       font-weight: 200;
     }
-
-    .topColor{
+    
+    .topColor {
       color: #3ebcef;
     }
-
-
+    
     .section-bullets li a:before {
-        background-color: #00aeef;
+      background-color: #00aeef;
     }
-
-
+    
     .section-bullets li:hover {
-        background-color: #eee;
+      background-color: #eee;
     }
-
+    
     .section-bullets .active a {
       color: #fff;
     }
-
-     .section-bullets .active a:after {
-        background-color: #FFF;
+    
+    .section-bullets .active a:after {
+      background-color: #FFF;
     }
-
-    .line_pro{
+    
+    .line_pro {
       border-bottom: #F44336;
       border: solid 1px #F44336;
       margin: 10px;
       max-width: 32%;
     }
-
-    .active_anio
-    {
+    
+    .active_anio {
       background-color: #15b5f0;
       color: white;
     }
-
-    .inactive_anio
-    {
+    
+    .inactive_anio {
       background-color: white;
       color: #15b5f0;
     }
+  </style>
 
-    </style>
 
+</head>
 
-  </head>
-  <body>
-    <!-- <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span> -->
-    <div class="full">
-      <div class="header">
-        <div class="imagen">
-          <div class="fondo">
+<body>
+  <!-- <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span> -->
+  <div class="full">
+    <div class="header">
+      <div class="imagen">
+        <div class="fondo">
           <nav class="trans sin_sombra">
             <div class="nav-wrapper">
               <ul id="nav-mobile2" class="right hide-on-med-and-down">
@@ -251,7 +248,7 @@
           <div class="head_cont">
             <div class="row center-align">
               <div class="col s4 offset-s4">
-                <img class="logo" src="img/ods_logo_home.png" alt=""/>
+                <img class="logo" src="img/ods_logo_home.png" alt="" />
               </div>
               <div class="col s12">
                 <a class="waves-effect waves-light btn color white-text sin_sombra marg t_sm" href="acerca.html">ACERCA DE</a>
@@ -265,7 +262,7 @@
               <div class="raton">
                 <div class='icon-scroll'></div>
               </div>
-<!--
+              <!--
               <div class="col s12 marg_top">
                 <a class="claro t_sm modal-trigger" href="#modal1">VER VIDEO</a>
               </div>
@@ -279,10 +276,10 @@
 -->
             </div>
           </div>
-          </div>
         </div>
+      </div>
 
-<!--
+      <!--
         <nav id="nav_s" class="sticky">
           <div class="nav-wrapper">
             <ul id="nav-mobile" class="hide-on-med-and-down nab">
@@ -316,700 +313,729 @@
       </nav> -->
 
 
-        <nav id="normal">
-          <div class="nav-wrapper">
-            <a href="index.html" id="imago" class="brand-logo"><img src="img/logo.png" alt=""/></a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down nav_stick nab">
-              <li class="tam t_sm"><a  href="objetivos.html">Indicadores</a></li>
-              <li class="tam t_sm"><a href="estados.html" style="line-height: 32px;">Indicadores con<br>desglose geográfico</a></li>
-              <li class="tam t_sm"><a  href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
-              <li class="tam t_sm"><a  href="explora.html">Explora</a></li>
-              <li class="tam t_sm"><a  href="compara.html">Compara</a></li>
-              <li class="tamps">
-                <a id="buscar"><img src="img/search.png" alt="" /></a>
-                <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;" onfocusout="esconder()"/>
-              </li>
-                <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
-                <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-              <li><a href="explora.html">Explora</a></li>
-              <li><a href="compara.html">Compara</a></li>
-              <li><a href="objetivos.html">Objetivos</a></li>
-              <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
-              <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
-              <li><a href="acerca.html">Acerca de</a></li>
-            </ul>
+      <nav id="normal">
+        <div class="nav-wrapper">
+          <a href="index.html" id="imago" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down nav_stick nab">
+            <li class="tam t_sm"><a href="objetivos.html">Indicadores</a></li>
+            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <li class="tam t_sm"><a href="explora.html">Explora</a></li>
+            <li class="tam t_sm"><a href="compara.html">Compara</a></li>
+            <li class="tamps">
+              <a id="buscar"><img src="img/search.png" alt="" /></a>
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;"
+                onfocusout="esconder()" />
+            </li>
+            <li class="tamps">
+              <a id="busca"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
+                  alt="" /></a>
+            </li>
+            <li class="tamps">
+              <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
+                  alt="" /></a>
+            </li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="objetivos.html">Indicadores</a></li>
+            <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
+            <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <li><a href="explora.html">Explora</a></li>
+            <li><a href="compara.html">Compara</a></li>
+            <li class="tamps">
+              <a id="buscar"><img src="img/search.png" alt="" /></a>
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;"
+                onfocusout="esconder()" />
+            </li>
+            <li class="tamps">
+              <a id="busca"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
+                  alt="" /></a>
+            </li>
+            <li class="tamps">
+              <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
+                  alt="" /></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+    <div class="container">
+      <div class="row scrollable-section" data-section-title="Conoce los indicadores">
+        <div class="col s12 m9 l9">
+          <div class="card-panel id posicion">
+            <h5 class="white-text t_normal">Objetivos</h5>
+            <span class="white-text texto-abajo describe t_sm">2016 presenta una oportunidad sin precedentes para que los paises y los cuidadanos del mundo emprenda un nuevo camino para mejorar las vidas de las personas en todas partes. Los paises han adoptado un nuevo programa de desarrollo sostenible y un nuevo acuerdo mundial sobre el cambio climatico. Explore este sitio para obtener mas informacion sobre los esfuerzos de la ONU y sus socios para construir un mundo mejor, en el que nadie se quede atras.
+              </span>
           </div>
-        </nav>
+        </div>
+        <div class="col s12 m3 l3">
+          <div class="card-panel id_1 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">1</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-01.png" alt="" />
+              </div>
+            </div>
+            <h5 class="white-text titulo t_normal">Fin de la pobreza</h5>
+            <span class="white-text descrip texto-abajo t_sm">Poner fin a todas las formas de pobreza en el mundo antes del 2030.
+              </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_2 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">2</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-02.png" alt="" />
+              </div>
+            </div>
+            <h5 class="white-text titulo t_normal">Hambre Cero</h5>
+            <span class="white-text descrip texto-abajo t_sm">Poner fin al hambre, lograr seguridad alimentaria y mejorar la nutrición y promover la agricultura sostenible.
+              </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_3 tres posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">3</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-03.png" alt="" />
+              </div>
+            </div>
+            <h5 class="white-text titulo t_normal">Salud y Bienestar</h5>
+            <span class="white-text descrip texto-abajo t_sm">Asegurar una vida sana y promover el bienestar para todos y todas las personas de todas las edades es esencial para el desarrollo sostenible
+              </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_4 cuatro posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">4</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-04.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Educación de calidad</h5>
+            <span class="white-text descrip texto-abajo t_sm">Garantizar educación inclusiva, equitativa, de calidad que promueva oportunidades de aprendizaje para todas y todos.              </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_5 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">5</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-05.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Igualdad de género</h5>
+            <span class="white-text descrip texto-abajo t_sm">Lograr la igualdad entre los géneros y empoderar a todas las mujeres y niñas.</span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_6 seis posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">6</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-06.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Agua limpia y saneamiento</h5>
+            <span class="white-text descrip texto-abajo t_sm">Asegurar la disponibilidad de agua potable, su gestión sostenible y saneamiento para todos y todas.</span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_7 siete posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">7</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-07.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Energía asequible y no contaminante</h5>
+            <span class="white-text descrip texto-abajo t_sm">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos y todas.              </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_8 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">8</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-08.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Trabajo decente y crecimiento económico</h5>
+            <span class="white-text descrip texto-abajo t_sm">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos.</span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_9 nueve posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">9</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-09.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Industria, innovación e infraestructura</h5>
+            <span class="white-text descrip texto-abajo t_sm">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación.                          </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_10 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">10</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-10.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Reducción de las desigualdades</h5>
+            <span class="white-text descrip texto-abajo t_sm">Reducir la desigualdad en y entre los países.                          </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_11 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">11</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-11.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Ciudades y comunidades sostenibles</h5>
+            <span class="white-text descrip texto-abajo t_sm">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles.              </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_12 doce posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">12</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-12.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Producción y consumo responsables</h5>
+            <span class="white-text descrip texto-abajo t_sm">Garantizar modalidades de consumo y producción sostenibles.                          </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_13 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">13</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-13.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Acción por el clima</h5>
+            <span class="white-text descrip texto-abajo t_sm">Adoptar medidas urgentes para combatir el cambio climático y sus efectos.                          </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_14 catorce posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">14</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-14.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Vida submarina</h5>
+            <span class="white-text descrip texto-abajo t_sm">Conservar y utilizar en forma sostenible los océanos, los mares y los recursos marinos para el desarrollo sostenible.                          </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_15 quince posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">15</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-15.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Vida y ecosistemas terrestres</h5>
+            <span class="white-text descrip texto-abajo t_sm">Promover el uso sostenible de los ecosistemas terrestres, luchar contra la desertificación, detener y revertir la degradación de las tierras y frenar la pérdida de la diversidad biológica.                          </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_16 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">16</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-16.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Paz, justicia e instituciones solidas</h5>
+            <span class="white-text descrip texto-abajo t_sm">Promover sociedades pacíficas e inclusivas para el desarrollo sostenible, facilitar el acceso a la justicia para todos y crear instituciones eficaces, responsables e inclusivas a todos los niveles.                          </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel id_17 posicion">
+            <div class="row">
+              <div class="col s6">
+                <h5 class="white-text t_normal">17</h5>
+              </div>
+              <div class="col s6 right-align">
+                <img class="icono" src="img/ods-17.png" alt="" />
+              </div>
+            </div>
+            <h5 class="titulo white-text t_normal">Alianzas para lograr los objetivos</h5>
+            <span class="white-text descrip texto-abajo t_sm">Fortalecer los medios de ejecución y revitalizar la Alianza Mundial para el Desarrollo Sostenible.                          </span>
+          </div>
+        </div>
       </div>
-
-
-      <div class="container">
-        <div class="row scrollable-section" data-section-title="Conoce los indicadores" >
-          <div class="col s12 m9 l9">
-            <div class="card-panel id posicion">
-              <h5 class="white-text t_normal">Objetivos</h5>
-              <span class="white-text texto-abajo describe t_sm">2016 presenta una oportunidad sin precedentes para que los paises y los cuidadanos del mundo emprenda un nuevo camino para mejorar las vidas de las personas en todas partes. Los paises han adoptado un nuevo programa de desarrollo sostenible y un nuevo acuerdo mundial sobre el cambio climatico. Explore este sitio para obtener mas informacion sobre los esfuerzos de la ONU y sus socios para construir un mundo mejor, en el que nadie se quede atras.
-              </span>
-            </div>
-          </div>
-          <div class="col s12 m3 l3">
-            <div class="card-panel id_1 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">1</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-01.png" alt="" />
-                </div>
-              </div>
-              <h5 class="white-text titulo t_normal">Fin de la pobreza</h5>
-              <span class="white-text descrip texto-abajo t_sm">Poner fin a todas las formas de pobreza en el mundo antes del 2030.
-              </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_2 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">2</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-02.png" alt="" />
-                </div>
-              </div>
-              <h5 class="white-text titulo t_normal">Hambre Cero</h5>
-              <span class="white-text descrip texto-abajo t_sm">Poner fin al hambre, lograr seguridad alimentaria y mejorar la nutrición y promover la agricultura sostenible.
-              </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_3 tres posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">3</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-03.png" alt="" />
-                </div>
-              </div>
-              <h5 class="white-text titulo t_normal">Salud y Bienestar</h5>
-              <span class="white-text descrip texto-abajo t_sm">Asegurar una vida sana y promover el bienestar para todos y todas las personas de todas las edades es esencial para el desarrollo sostenible
-              </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_4 cuatro posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">4</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-04.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Educación de calidad</h5>
-              <span class="white-text descrip texto-abajo t_sm">Garantizar educación inclusiva, equitativa, de calidad que promueva oportunidades de aprendizaje para todas y todos.              </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_5 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">5</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-05.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Igualdad de género</h5>
-              <span class="white-text descrip texto-abajo t_sm">Lograr la igualdad entre los géneros y empoderar a todas las mujeres y niñas.</span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_6 seis posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">6</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-06.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Agua limpia y saneamiento</h5>
-              <span class="white-text descrip texto-abajo t_sm">Asegurar la disponibilidad de agua potable, su gestión sostenible y saneamiento para todos y todas.</span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_7 siete posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">7</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-07.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Energía asequible y no contaminante</h5>
-              <span class="white-text descrip texto-abajo t_sm">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos y todas.              </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_8 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">8</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-08.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Trabajo decente y crecimiento económico</h5>
-              <span class="white-text descrip texto-abajo t_sm">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos.</span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_9 nueve posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">9</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-09.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Industria, innovación e infraestructura</h5>
-              <span class="white-text descrip texto-abajo t_sm">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación.                          </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_10 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">10</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-10.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Reducción de las desigualdades</h5>
-              <span class="white-text descrip texto-abajo t_sm">Reducir la desigualdad en y entre los países.                          </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_11 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">11</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-11.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Ciudades y comunidades sostenibles</h5>
-              <span class="white-text descrip texto-abajo t_sm">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles.              </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_12 doce posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">12</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-12.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Producción y consumo responsables</h5>
-              <span class="white-text descrip texto-abajo t_sm">Garantizar modalidades de consumo y producción sostenibles.                          </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_13 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">13</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-13.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Acción por el clima</h5>
-              <span class="white-text descrip texto-abajo t_sm">Adoptar medidas urgentes para combatir el cambio climático y sus efectos.                          </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_14 catorce posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">14</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-14.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Vida submarina</h5>
-              <span class="white-text descrip texto-abajo t_sm">Conservar y utilizar en forma sostenible los océanos, los mares y los recursos marinos para el desarrollo sostenible.                          </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_15 quince posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">15</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-15.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Vida y ecosistemas terrestres</h5>
-              <span class="white-text descrip texto-abajo t_sm">Promover el uso sostenible de los ecosistemas terrestres, luchar contra la desertificación, detener y revertir la degradación de las tierras y frenar la pérdida de la diversidad biológica.                          </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_16 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">16</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-16.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Paz, justicia e instituciones solidas</h5>
-              <span class="white-text descrip texto-abajo t_sm">Promover sociedades pacíficas e inclusivas para el desarrollo sostenible, facilitar el acceso a la justicia para todos y crear instituciones eficaces, responsables e inclusivas a todos los niveles.                          </span>
-            </div>
-          </div>
-          <div class="col s12 m6 l3">
-            <div class="card-panel id_17 posicion">
-              <div class="row">
-                <div class="col s6">
-                  <h5 class="white-text t_normal">17</h5>
-                </div>
-                <div class="col s6 right-align">
-                  <img class="icono" src="img/ods-17.png" alt="" />
-                </div>
-              </div>
-              <h5 class="titulo white-text t_normal">Alianzas para lograr los objetivos</h5>
-              <span class="white-text descrip texto-abajo t_sm">Fortalecer los medios de ejecución y revitalizar la Alianza Mundial para el Desarrollo Sostenible.                          </span>
-            </div>
-          </div>
+      <div class="row scrollable-section" data-section-title="Conoce cómo vamos">
+        <div class="col s12">
+          <h3 class="fuerte t_principal">C&Oacute;MO VAMOS</h3>
+          <li class="divider"></li>
+          <p class="t_sm gris">
+            Esta sección permite visualizar el avance de los indicadores de los cuales se dispone información para 11 de 17 objetivos
+            de la Agenda 2030 para el Desarrollo Sostenible.
+          </p>
         </div>
-        <div class="row scrollable-section" data-section-title="Conoce cómo vamos">
-          <div class="col s12">
-            <h3 class="fuerte t_principal">C&Oacute;MO VAMOS</h3>
-            <li class="divider"></li>
-            <p class="t_sm gris">
-              Esta sección permite visualizar el avance de los indicadores de los cuales se dispone información para 11 de 17 objetivos de la Agenda 2030 para el Desarrollo Sostenible.
-            </p>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col s1 center-align">
+          <p class="t_sm gris">OBJETIVO</p>
         </div>
-        <div class="row">
-        	<div class="col s1 center-align">
-        		<p class="t_sm gris">OBJETIVO</p>
-        	</div>
-        	<div class="col s11">
-			    <p class="t_sm gris" style="margin-left: 2%">INDICADORES Y METAS</p>
-        	</div>
+        <div class="col s11">
+          <p class="t_sm gris" style="margin-left: 2%">INDICADORES Y METAS</p>
         </div>
-        <div class="row wm_bottom">
-        	<div class="col s1 id_1" >
-        		<img data-position="top" data-tooltip="Fin de la pobreza" class="padd responsive-img tooltipped" src="img/ods-01.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_1">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_1">
+          <img data-position="top" data-tooltip="Fin de la pobreza" class="padd responsive-img tooltipped" src="img/ods-01.png" alt=""
+          />
         </div>
-        <div class="row wm_bottom">
-        	<div class="col s1 id_2">
-        		<img data-position="top" data-tooltip="Hambre Cero" class="padd responsive-img tooltipped" src="img/ods-02.png" alt="" />
-        	</div>
-			<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_2">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_1">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_3">
-        		<img data-position="top" data-tooltip="Salud y bienestar" class="padd responsive-img tooltipped"src="img/ods-03.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_3">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_2">
+          <img data-position="top" data-tooltip="Hambre Cero" class="padd responsive-img tooltipped" src="img/ods-02.png" alt="" />
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_4">
-        		<img data-position="top" data-tooltip="Educación de calidad" class="padd responsive-img tooltipped" src="img/ods-04.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_4">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_2">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_5">
-        		<img data-position="top" data-tooltip="Igualdad de genero" class="padd responsive-img tooltipped" src="img/ods-05.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_5">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_3">
+          <img data-position="top" data-tooltip="Salud y bienestar" class="padd responsive-img tooltipped" src="img/ods-03.png" alt=""
+          />
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_6">
-        		<img data-position="top" data-tooltip="Agua limpia y saneamiento" class="padd responsive-img tooltipped" src="img/ods-06.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_6">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_3">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_7">
-        		<img data-position="top" data-tooltip="Energía asequible y no contaminante" class="padd responsive-img tooltipped" src="img/ods-07.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_7">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_4">
+          <img data-position="top" data-tooltip="Educación de calidad" class="padd responsive-img tooltipped" src="img/ods-04.png"
+            alt="" />
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_8">
-        		<img data-position="top" data-tooltip="Trabajo decente y crecimiento económico" class="padd responsive-img tooltipped" src="img/ods-08.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_8">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_4">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_9">
-        		<img data-position="top" data-tooltip="Industria, innovación e infraestructura" class="padd responsive-img tooltipped" src="img/ods-09.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_9">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_5">
+          <img data-position="top" data-tooltip="Igualdad de genero" class="padd responsive-img tooltipped" src="img/ods-05.png" alt=""
+          />
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_10">
-        		<img data-position="top" data-tooltip="Redución de las desigualdades" class="padd responsive-img tooltipped" src="img/ods-10.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_10">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_5">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_11">
-        		<img data-position="top" data-tooltip="Ciudades y comunidades sostenibles" class="padd responsive-img tooltipped" src="img/ods-11.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_11">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_6">
+          <img data-position="top" data-tooltip="Agua limpia y saneamiento" class="padd responsive-img tooltipped" src="img/ods-06.png"
+            alt="" />
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_12">
-        		<img data-position="top" data-tooltip="Producción y consumo responsables" class="padd responsive-img tooltipped" src="img/ods-12.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_12">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_6">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_13">
-        		<img data-position="top" data-tooltip="Acción por el clima" class="padd responsive-img tooltipped" src="img/ods-13.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_13">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_7">
+          <img data-position="top" data-tooltip="Energía asequible y no contaminante" class="padd responsive-img tooltipped" src="img/ods-07.png"
+            alt="" />
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_14">
-        		<img data-position="top" data-tooltip="Vida submarina" class="padd responsive-img tooltipped" src="img/ods-14.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_14">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_7">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_15">
-        		<img data-position="top" data-tooltip="Vida y ecosistemas terrestres" class="padd responsive-img tooltipped" src="img/ods-15.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_15">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_8">
+          <img data-position="top" data-tooltip="Trabajo decente y crecimiento económico" class="padd responsive-img tooltipped" src="img/ods-08.png"
+            alt="" />
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_16">
-        		<img data-position="top" data-tooltip="Paz, justicia e instituciones solidas" class="padd responsive-img tooltipped" src="img/ods-16.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_16">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_8">
+              </tr>
+            </thead>
+          </table>
         </div>
-         <div class="row wm_bottom">
-        	<div class="col s1 id_17">
-        		<img data-position="top" data-tooltip="Alianzas para lograr los objetivos" class="padd responsive-img tooltipped" src="img/ods-17.png" alt="" />
-        	</div>
-        	<div class="col s11 borde_a padd_a">
-        		<table>
-        			<thead>
-        				<tr id="obj_17">
-        				</tr>
-        			</thead>
-        		</table>
-        	</div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_9">
+          <img data-position="top" data-tooltip="Industria, innovación e infraestructura" class="padd responsive-img tooltipped" src="img/ods-09.png"
+            alt="" />
         </div>
-        <div class="tooltip_templates">
-		    <div id="tooltip_content">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_9">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_10">
+          <img data-position="top" data-tooltip="Redución de las desigualdades" class="padd responsive-img tooltipped" src="img/ods-10.png"
+            alt="" />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_10">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_11">
+          <img data-position="top" data-tooltip="Ciudades y comunidades sostenibles" class="padd responsive-img tooltipped" src="img/ods-11.png"
+            alt="" />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_11">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_12">
+          <img data-position="top" data-tooltip="Producción y consumo responsables" class="padd responsive-img tooltipped" src="img/ods-12.png"
+            alt="" />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_12">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_13">
+          <img data-position="top" data-tooltip="Acción por el clima" class="padd responsive-img tooltipped" src="img/ods-13.png" alt=""
+          />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_13">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_14">
+          <img data-position="top" data-tooltip="Vida submarina" class="padd responsive-img tooltipped" src="img/ods-14.png" alt=""
+          />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_14">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_15">
+          <img data-position="top" data-tooltip="Vida y ecosistemas terrestres" class="padd responsive-img tooltipped" src="img/ods-15.png"
+            alt="" />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_15">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_16">
+          <img data-position="top" data-tooltip="Paz, justicia e instituciones solidas" class="padd responsive-img tooltipped" src="img/ods-16.png"
+            alt="" />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_16">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row wm_bottom">
+        <div class="col s1 id_17">
+          <img data-position="top" data-tooltip="Alianzas para lograr los objetivos" class="padd responsive-img tooltipped" src="img/ods-17.png"
+            alt="" />
+        </div>
+        <div class="col s11 borde_a padd_a">
+          <table>
+            <thead>
+              <tr id="obj_17">
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
 				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
 				<br><br>
 				</span>
-				<div class="chip">
-			    	<img style="background: #34bb7e">
-					Meta cumplida
-				</div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_1">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+          <div class="chip">
+            <img style="background: #34bb7e"> Meta cumplida
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_1">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
 				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
 				<br><br>
 				</span>
-				<div class="chip">
-				    <img style="background: #E1F5FE">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
+          <div class="chip">
+            <img style="background: #E1F5FE"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
         <div id="tooltip_content_2">
-        <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
         <br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
         <br><br>
         </span>
-        <div class="chip">
-            <img style="background: #B3E5FC">
-            Meta en proceso
-         </div>
-        </div>
-    </div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_3">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #81D4FA">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_4">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #4FC3F7">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_5">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #29B6F6">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_6">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #03A9F4">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_7">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #039BE5">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_8">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #0288D1">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_9">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #0277BD">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-    <div class="tooltip_templates">
-		    <div id="tooltip_content_10">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #01579B">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-
-
-		<div class="tooltip_templates">
-		    <div id="tooltip_content_m">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #F2CB02">
-				    Meta en proceso
-				 </div>
-		    </div>
-		</div>
-		<div class="tooltip_templates">
-		    <div id="tooltip_content_f">
-				<span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
-				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
-				<br><br>
-				</span>
-				<div class="chip">
-				    <img style="background: #e80000">
-				    Meta no cumplida
-				 </div>
-		    </div>
-		</div>
-        <div class="row scrollable-section" data-section-title="Explora los datos">
-          <div class="col s12">
-            <h3 class="fuerte t_principal">EXPLORA</h3>
-            <li class="divider"></li>
-            <div>
-              <div style="width:100%;"><br><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil  nacidos vivos</div>
-              <div id="map"></div>
-              <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b></div>
-              <!-- <div id="map"></div> -->
-	            <!-- <div id="chart2"></div> -->
-	            <!-- <div><img style="margin-left: 35px;" width="147" height="25" src="img/promedio.png"></div> -->
-<!-- 	            <img src="img/graficaexplora.png" alt="" style="width:100%;"/></div> -->
-            <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A EXPLORA</a>
-          </div
+          <div class="chip">
+            <img style="background: #B3E5FC"> Meta en proceso
+          </div>
         </div>
       </div>
-      <!--   <div class="row">
+      <div class="tooltip_templates">
+        <div id="tooltip_content_3">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #81D4FA"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_4">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #4FC3F7"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_5">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #29B6F6"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_6">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #03A9F4"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_7">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #039BE5"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_8">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #0288D1"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_9">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #0277BD"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_10">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #01579B"> Meta en proceso
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tooltip_templates">
+        <div id="tooltip_content_m">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #F2CB02"> Meta en proceso
+          </div>
+        </div>
+      </div>
+      <div class="tooltip_templates">
+        <div id="tooltip_content_f">
+          <span><strong>Meta 1 Reducir a la mitad, entre 1990 y 2015, el<br>porcentaje de personas cuyos ingresos sean inferiores a<br>1.25 dolares por dia</strong>
+				<br><br>1.3 Proporcion del consumo nacional que<br>corresponde al quintil mas pobre de la poblacion
+				<br><br>
+				</span>
+          <div class="chip">
+            <img style="background: #e80000"> Meta no cumplida
+          </div>
+        </div>
+      </div>
+
+      <div class="row scrollable-section" data-section-title="Explora los datos">
+        <div class="col s12">
+          <h3 class="fuerte t_principal">EXPLORA</h3>
+          <li class="divider"></li>
+          <div>
+            <div style="width:100%;"><br><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil nacidos
+              vivos
+            </div>
+            <div id="map"></div>
+            <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b
+                class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b></div>
+            <!-- <div id="map"></div> -->
+            <!-- <div id="chart2"></div> -->
+            <!-- <div><img style="margin-left: 35px;" width="147" height="25" src="img/promedio.png"></div> -->
+            <!-- 	            <img src="img/graficaexplora.png" alt="" style="width:100%;"/></div> -->
+            <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A EXPLORA</a>
+          </div> 
+        </div>
+      </div>
+      
+        <!--   
+          <div class="row">
           <div class="col s12">
             <h3 class="fuerte t_principal">COMPARA</h3>
             <li class="divider"></li>
@@ -1052,78 +1078,78 @@
         </div>
         <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A COMPARA</a>
                   </div>
-                </div> -->
-        <div class="row scrollable-section" data-section-title="Información relacionada" >
+                </div> 
+                -->
 
 
-         <div class="row">
-        <div class="col s12">
-          <h3 class="fuerte t_principal">Información relacionada</h3>
-          <li class="divider"></li>
-        </div>
-        <div class="col l6 m12 s12">
-          <div class="caja-cafe" style="padding-bottom: 72px;">
-            <p style="color: #9c9c9c; margin-left: 30px;">Acerca de los ODS</p>
-            <div class="">
-              <a href="#">Documentos importantes</a>
+        <div class="row scrollable-section" data-section-title="Información relacionada">
+          <div class="row">
+            <div class="col s12">
+              <h3 class="fuerte t_principal">Información relacionada</h3>
+              <li class="divider"></li>
             </div>
-            <div class="">
-              <a href="#">Acuerdos de creación</a>
-            </div>
-            <div class="">
-              <a href="#">Informes de América Latina y el Caribe</a>
-            </div>
-            <div class="">
-              <a href="#">Video: ODS mejoran la vida de todos alrededor del planeta</a>
-            </div>
-            <div class="">
-              <div class="">
-                <a href="#"></a>
+            <div class="col l6 m12 s12">
+              <div class="caja-cafe" style="padding-bottom: 72px;">
+                <p style="color: #9c9c9c; margin-left: 30px;">Acerca de los ODS</p>
+                <div class="">
+                  <a href="#">Documentos importantes</a>
+                </div>
+                <div class="">
+                  <a href="#">Acuerdos de creación</a>
+                </div>
+                <div class="">
+                  <a href="#">Informes de América Latina y el Caribe</a>
+                </div>
+                <div class="">
+                  <a href="#">Video: ODS mejoran la vida de todos alrededor del planeta</a>
+                </div>
+                <div class="">
+                  <div class="">
+                    <a href="#"></a>
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="col l6 m12 s12 ">
+              <div class="caja-cafe">
+                <p style="color: #9c9c9c; margin-left: 30px;">Los ODS en México</p>
+                <div class="">
+                  <a href="#">Comparativo indicadores globales ONU vs indicadores en México</a>
+                </div>
+                <div class="">
+                  <a href="#">Comité Técnico especializado en los ODS y Unidades del estado Responsable </a>
+                </div>
+                <div class="">
+                  <a href="#">Calendario de Actualización de indicadores</a>
+                </div>
+                <div class="">
+                  <a href="#">Consulta de información de los indicadores</a>
+                </div>
+              </div>
+            </div>
+
+
+            <style media="screen">
+              .caja-cafe {
+                background-color: #f6f6f6;
+                margin: 20px;
+                padding: 50px;
+                height: 380px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+              }
+              
+              .caja-cafe div {
+                margin: 30px;
+              }
+              
+              .caja-cafe a {
+                color: #142a4f;
+              }
+            </style>
+
           </div>
         </div>
-        <div class="col l6 m12 s12 ">
-          <div class="caja-cafe">
-            <p style="color: #9c9c9c; margin-left: 30px;">Los ODS en México</p>
-            <div class="">
-              <a href="#">Comparativo indicadores globales ONU vs indicadores en México</a>
-            </div>
-            <div class="">
-              <a href="#">Comité Técnico especializado en los ODS y Unidades del estado Responsable </a>
-            </div>
-            <div class="">
-              <a href="#">Calendario de Actualización de indicadores</a>
-            </div>
-            <div class="">
-              <a href="#">Consulta de información de los indicadores</a>
-            </div>
-          </div>
-        </div>
-
-
-<style media="screen">
-
-  .caja-cafe{
-    background-color: #f6f6f6;
-    margin: 20px;
-    padding: 50px;
-    height: 380px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .caja-cafe div{
-    margin: 30px;
-  }
-
-  .caja-cafe a{
-    color: #142a4f;
-  }
-</style>
-
-      </div>
-    </div>
 
 
 
@@ -1160,50 +1186,50 @@
             </div>
             <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A RECURSOS</a>
           </div> -->
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="page-footer id">
+    <div class="container">
+      <div class="row" id="fot">
+        <div class="col l3 s12">
+          <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
+          <br>
+          <br>
+          <div class="" style="display:inline;">
+            <a href="https://www.facebook.com" style="margin-right: 12%;"><img src="img/fill2.png" alt="" style="width:3%;" /></a>
+            <a href="https://twitter.com" style="margin-right: 12%;"><img src="img/fill1.png" alt="" style="width:7%;" /></a>
+            <a href="#"><img src="img/fill3.png" alt="" style="width:7%;" /></a>
+          </div>
+        </div>
+        <div class="col l3 s12">
+          <ul class="fuerte">
+            <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
+            <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+            <li><a class="fuerte t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
+
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <ul class="fuerte">
+            <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+            <li class="fuerte t_sm">Calendario de actualizaciones</li>
+            <li class="fuerte t_sm">Exportación masiva</li>
+            <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12" style="display:inline;">
+          <a href="https://www.gob.mx" target="_blank"><img src="img/logoPR.png" alt="" style="width: 45%; margin-right: 15%;" /></a>
+          <a href="http://www.inegi.org.mx" target="_blank"><img src="img/logoINEGI.png" alt="" style="width:25%;" /></a>
         </div>
       </div>
     </div>
-
-
-    <footer class="page-footer id">
-      <div class="container">
-        <div class="row" id="fot">
-          <div class="col l3 s12">
-            <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
-            <br>
-            <br>
-            <div class="" style="display:inline;">
-              <a href="https://www.facebook.com" style="margin-right: 12%;"><img src="img/fill2.png" alt="" style="width:3%;"/></a>
-              <a href="https://twitter.com" style="margin-right: 12%;"><img src="img/fill1.png" alt="" style="width:7%;"/></a>
-              <a href="#"><img src="img/fill3.png" alt="" style="width:7%;"/></a>
-            </div>
-          </div>
-          <div class="col l3 s12">
-            <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
-              <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
-
-            </ul>
-          </div>
-          <div class="col l3 s12">
-            <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
-              <li class="fuerte t_sm">Calendario de actualizaciones</li>
-              <li class="fuerte t_sm">Exportación masiva</li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
-            </ul>
-          </div>
-          <div class="col l3 s12" style="display:inline;">
-            <a href="https://www.gob.mx" target="_blank"><img src="img/logoPR.png" alt="" style="width: 45%; margin-right: 15%;"/></a>
-            <a href="http://www.inegi.org.mx" target="_blank"><img src="img/logoINEGI.png" alt="" style="width:25%;"/></a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright light-blue">
-      </div>
-    </footer>
+    <div class="footer-copyright light-blue">
+    </div>
+  </footer>
 
 
 
@@ -1211,15 +1237,15 @@
 
 
 
-    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
-    <!-- <script type="text/javascript" src="entidad.json"></script> -->
-    <script type="text/javascript" src="entidad2.json"></script>
-    <script type="text/javascript" src="municipio.json"></script>
-    <script type="text/javascript" src="nacion.json"></script>
-    <!-- <script type="text/javascript" src="entidadCompara.json"></script> -->
-    <script type="text/javascript" src="variable.js"></script>
+  <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+  <!-- <script type="text/javascript" src="entidad.json"></script> -->
+  <script type="text/javascript" src="entidad2.json"></script>
+  <script type="text/javascript" src="municipio.json"></script>
+  <script type="text/javascript" src="nacion.json"></script>
+  <!-- <script type="text/javascript" src="entidadCompara.json"></script> -->
+  <script type="text/javascript" src="variable.js"></script>
 
-    <!-- Load d3.js and c3.js -->
+  <!-- Load d3.js and c3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
@@ -1230,62 +1256,59 @@
 
 
 
-<script type="text/javascript">
+  <script type="text/javascript">
+                            // var aleatorio =  Math.floor((Math.random() * 3) + 1);
+                            // if(aleatorio ==  1){
+                            //   $('.imagen').css("background-image", "url(img/fondo2.png)");
+                            // }else if(aleatorio == 2){
+                            //   $('.imagen').css("background-image", "url(img/fondo3.png)");
+                            // }else if(aleatorio == 3){
+                            //   $('.imagen').css("background-image", "url(img/fondo1.png)");
+                            // }
+                            var lupa = false;
 
-// var aleatorio =  Math.floor((Math.random() * 3) + 1);
-// if(aleatorio ==  1){
-//   $('.imagen').css("background-image", "url(img/fondo2.png)");
-// }else if(aleatorio == 2){
-//   $('.imagen').css("background-image", "url(img/fondo3.png)");
-// }else if(aleatorio == 3){
-//   $('.imagen').css("background-image", "url(img/fondo1.png)");
-// }
-var lupa =  false;
-
-function esconder(){
-  console.log("focusout");
-  $('#cam_bus').hide();
-  $('#buscar').show();
-  lupa =  false;
-}
-
-
-$(document).ready(function() {
-    $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
-});
-
-window.onload = function() {
-
-$('#buscar').click(function(){
-  if(lupa){
-    $('#cam_bus').hide();
-    lupa =  false;
-  }else{
-    $('#cam_bus').show();
-    $('#buscar').hide();
-    document.getElementById("cam_bus").focus();
-    lupa =  true;
-  }
-});
-
-  var idioma = navigator.language || navigator.userLanguage;
-  console.log("The language is: " + idioma);
-
-var ln = x = window.navigator.language||navigator.browserLanguage;
-console.log(ln);
-if(ln == 'en' ){
-  console.log('en');
-}else if(ln == 'es' || ln == 'es-419'){
-  console.log('es');
-}else{
-  console.log('diferente');
-}
-}
+                            function esconder() {
+                              console.log("focusout");
+                              $('#cam_bus').hide();
+                              $('#buscar').show();
+                              lupa = false;
+                            }
 
 
+                            $(document).ready(function () {
+                              $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
 
+                              $('.bullets-container').hide(); //oculta los bullets para que no se vean en la parte del header
+                            });
 
-</script>
+                            window.onload = function () {
+
+                              $('#buscar').click(function () {
+                                if (lupa) {
+                                  $('#cam_bus').hide();
+                                  lupa = false;
+                                } else {
+                                  $('#cam_bus').show();
+                                  $('#buscar').hide();
+                                  document.getElementById("cam_bus").focus();
+                                  lupa = true;
+                                }
+                              });
+
+                              var idioma = navigator.language || navigator.userLanguage;
+                              console.log("The language is: " + idioma);
+
+                              var ln = x = window.navigator.language || navigator.browserLanguage;
+                              console.log(ln);
+                              if (ln == 'en') {
+                                console.log('en');
+                              } else if (ln == 'es' || ln == 'es-419') {
+                                console.log('es');
+                              } else {
+                                console.log('diferente');
+                              }
+                            }
+  </script>
   <!-- <script type="text/javascript">
 
 
@@ -2270,561 +2293,537 @@ var estados =[
       };
       legend.addTo(map_compara);
     </script> -->
-    <script>
-  	function gen(props)
-  	{
-  	  var chart = c3.generate({
-  				bindto: '.info',
-  				padding: {
-  					top: 10,
-  			        left: 30,
-  			        right: 10
-  			    },
-  			    data: {
-  			        x: 'Entidad',
-  					columns: [
-              ['Entidad','2016-01-01','2015-01-01','2014-01-01','2013-01-01','2012-01-01','2011-01-01','2010-01-01','2009-01-01','2008-01-01','2007-01-01','2006-01-01','2005-01-01','2004-01-01','2003-01-01','2002-01-01','2001-01-01','2000-01-01','1999-01-01','1998-01-01','1997-01-01','1996-01-01','1995-01-01','1994-01-01','1993-01-01','1992-01-01','1991-01-01','1990-01-01'],
-  	            props
-  		        ]
+  <script>
+                            function gen(props) {
+                              var chart = c3.generate({
+                                bindto: '.info',
+                                padding: {
+                                  top: 10,
+                                  left: 30,
+                                  right: 10
+                                },
+                                data: {
+                                  x: 'Entidad',
+                                  columns: [
+                                    ['Entidad', '2016-01-01', '2015-01-01', '2014-01-01', '2013-01-01', '2012-01-01', '2011-01-01', '2010-01-01', '2009-01-01', '2008-01-01', '2007-01-01', '2006-01-01', '2005-01-01', '2004-01-01', '2003-01-01', '2002-01-01', '2001-01-01', '2000-01-01', '1999-01-01', '1998-01-01', '1997-01-01', '1996-01-01', '1995-01-01', '1994-01-01', '1993-01-01', '1992-01-01', '1991-01-01', '1990-01-01'],
+                                    props
+                                  ]
 
 
-  			    },
-  			    axis: {
-  			        x: {
-  			            type: 'timeseries',
-  			            tick: {
-                         rotate:90,
-  		               		 format: function (x) { return x.getFullYear(); }
-  			            }
-  			        },
-  			        y : {
-  			            tick: {
-  			                format: d3.format(".2s")
-  			            }
-  			        }
-  			    },
-  			    color: {
-  			        pattern: ['#00AEEF']
-  			    },
-  			    size: {
-  			        width: 260,
-  			        height: 160
-  			    },
-  			    legend: {
-  			        show: false
-  			    },
-  			    grid: {
-  			        x: {
-  			            show: false
-  			        },
-  			        y: {
-  			            show: true
-  			        }
-  			    }
+                                },
+                                axis: {
+                                  x: {
+                                    type: 'timeseries',
+                                    tick: {
+                                      rotate: 90,
+                                      format: function (x) { return x.getFullYear(); }
+                                    }
+                                  },
+                                  y: {
+                                    tick: {
+                                      format: d3.format(".2s")
+                                    }
+                                  }
+                                },
+                                color: {
+                                  pattern: ['#00AEEF']
+                                },
+                                size: {
+                                  width: 260,
+                                  height: 160
+                                },
+                                legend: {
+                                  show: false
+                                },
+                                grid: {
+                                  x: {
+                                    show: false
+                                  },
+                                  y: {
+                                    show: true
+                                  }
+                                }
 
-  		});
-  	}
-    </script>
-
-
+                              });
+                            }
+  </script>
 
 
-      <script type="text/javascript">
-  var estados2 =[
-  ['x', '2009-01-01', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01'],
-  ['Aguascalientes',      '122.24', '104.54',    '120.4',       '122.8',       '110.4'],
-  ['Baja California',   '93.05',  '108.39',    '92.3',        '86.6',        '86.8'],
-  ['Baja California Sur', '54.22',  '53.06',     '57',          '64.8',        '68.6'],
-  ['Campeche',            '4.76',   '4.78',      '6.6',         '5.8',         '4.5'],
-  ['Chiapas',             '15.8',   '20.36',     '16.6',        '18.9',        '18.5'],
-  ['Chihuahua',           '64.18',  '68.05',     '68.1',        '72.8',        '74.4'],
-  ['Coahuila',            '46.07',  '48.3',      '45.1',        '46.4',        '45.2'],
-  ['Colima',              '43.64',  '51',        '51.7',        '52.1',        '59.6'],
-  ['Distrito Federal',    '14.22',  '14.82',     '14.8',        '13.9',        '13.6'],
-  ['Durango',             '57.85',  '59.15',     '61.8',        '65',          '60.6'],
-  ['Guanajuato',          '46.08',  '45.38',     '46.6',        '50.2',        '59'],
-  ['Guerrero',            '47.93',  '60.49',     '56.4',        '57.6',        '74.2'],
-  ['Hidalgo',             '9.66',   '12',        '12',          '6.8',         '5.4'],
-  ['Jalisco',             '23.37',  '25.75',     '35.5',        '46.3',        '51.9'],
-  ['México',             '20.04',  '23.64',     '24.8',        '28',          '28.4'],
-  ['Michoacán',           '26.06',  '26.59',     '26.4',        '27.3',        '32.1'],
-  ['Morelos',             '18.82',  '18.79',     '25.4',        '26.4',        '23.5'],
-  ['Nayarit',             '65.34',  '72.86',     '72.9',        '83.4',        '104.1'],
-  ['Nuevo León',         '118.42', '112.14',    '108.3',       '109.5',       '117.2'],
-  ['Oaxaca',              '27.4',   '28.18',     '27.6',        '28.4',        '33.3'],
-  ['Puebla',              '35.49',  '36.59',     '46.1',        '43',          '53.9'],
-  ['Querétaro',           '22.65',  '41.51',     '41.3',        '42.3',        '45.5'],
-  ['Quintana Roo',       '60.49',  '57.37',     '61.5',        '55.6',        '55.6'],
-  ['San Luis Potosí­',     '47.74',  '48.66',     '47.7',        '49.1',        '53.2'],
-  ['Sinaloa',             '61.82',  '66.08',     '68.8',        '71.6',        '68'],
-  ['Sonora',              '31.65',  '31.76',     '32',          '34.9',        '34.6'],
-  ['Tabasco',             '18.31',  '19.93',     '19.9',        '20.7',        '25.3'],
-  ['Tamaulipas',          '53.87',  '59.85',     '73.4',        '75.6',        '71.8'],
-  ['Tlaxcala',            '53.49',  '54.42',     '49.1',        '48.4',        '43.1'],
-  ['Veracruz',            '25.73',  '28.14',     '32.7',        '34.9',        '39.6'],
-  ['Yucatán',             '1.63',   '2.65',      '2.1',         '2.1',         '2.6'],
-  ['Zacatecas',           '13.79',  '18.81',     '21.4',        '23.1',        '35.5'],
-  ];
 
 
-  function busqueda_estado(cadena)
-  {
-    for(var i=0;i<estados.length;i++)
-    {
-      if(estados[i][0] == cadena)
-      {
-        console.log(cadena);
-        return parseFloat(estados[i][1]);
+  <script type="text/javascript">
+    var estados2 = [
+      ['x', '2009-01-01', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01'],
+      ['Aguascalientes', '122.24', '104.54', '120.4', '122.8', '110.4'],
+      ['Baja California', '93.05', '108.39', '92.3', '86.6', '86.8'],
+      ['Baja California Sur', '54.22', '53.06', '57', '64.8', '68.6'],
+      ['Campeche', '4.76', '4.78', '6.6', '5.8', '4.5'],
+      ['Chiapas', '15.8', '20.36', '16.6', '18.9', '18.5'],
+      ['Chihuahua', '64.18', '68.05', '68.1', '72.8', '74.4'],
+      ['Coahuila', '46.07', '48.3', '45.1', '46.4', '45.2'],
+      ['Colima', '43.64', '51', '51.7', '52.1', '59.6'],
+      ['Distrito Federal', '14.22', '14.82', '14.8', '13.9', '13.6'],
+      ['Durango', '57.85', '59.15', '61.8', '65', '60.6'],
+      ['Guanajuato', '46.08', '45.38', '46.6', '50.2', '59'],
+      ['Guerrero', '47.93', '60.49', '56.4', '57.6', '74.2'],
+      ['Hidalgo', '9.66', '12', '12', '6.8', '5.4'],
+      ['Jalisco', '23.37', '25.75', '35.5', '46.3', '51.9'],
+      ['México', '20.04', '23.64', '24.8', '28', '28.4'],
+      ['Michoacán', '26.06', '26.59', '26.4', '27.3', '32.1'],
+      ['Morelos', '18.82', '18.79', '25.4', '26.4', '23.5'],
+      ['Nayarit', '65.34', '72.86', '72.9', '83.4', '104.1'],
+      ['Nuevo León', '118.42', '112.14', '108.3', '109.5', '117.2'],
+      ['Oaxaca', '27.4', '28.18', '27.6', '28.4', '33.3'],
+      ['Puebla', '35.49', '36.59', '46.1', '43', '53.9'],
+      ['Querétaro', '22.65', '41.51', '41.3', '42.3', '45.5'],
+      ['Quintana Roo', '60.49', '57.37', '61.5', '55.6', '55.6'],
+      ['San Luis Potosí­', '47.74', '48.66', '47.7', '49.1', '53.2'],
+      ['Sinaloa', '61.82', '66.08', '68.8', '71.6', '68'],
+      ['Sonora', '31.65', '31.76', '32', '34.9', '34.6'],
+      ['Tabasco', '18.31', '19.93', '19.9', '20.7', '25.3'],
+      ['Tamaulipas', '53.87', '59.85', '73.4', '75.6', '71.8'],
+      ['Tlaxcala', '53.49', '54.42', '49.1', '48.4', '43.1'],
+      ['Veracruz', '25.73', '28.14', '32.7', '34.9', '39.6'],
+      ['Yucatán', '1.63', '2.65', '2.1', '2.1', '2.6'],
+      ['Zacatecas', '13.79', '18.81', '21.4', '23.1', '35.5'],
+    ];
+
+
+    function busqueda_estado(cadena) {
+      for (var i = 0; i < estados.length; i++) {
+        if (estados[i][0] == cadena) {
+          console.log(cadena);
+          return parseFloat(estados[i][1]);
+        }
       }
     }
-  }
 
-  function busqueda_estado_posicion(cadena,posicion)
-  {
-    for(var i=0;i<estados.length;i++)
-    {
-      if(estados[i][0] == cadena)
-      {
-        console.log(cadena);
-        return parseFloat(estados[i][posicion]);
+    function busqueda_estado_posicion(cadena, posicion) {
+      for (var i = 0; i < estados.length; i++) {
+        if (estados[i][0] == cadena) {
+          console.log(cadena);
+          return parseFloat(estados[i][posicion]);
+        }
       }
     }
-  }
 
-  function busqueda_anio(cadena)
-  {
-    for(var i=0;i<estados[0].length;i++)
-    {
-      if(estados[0][i] == cadena)
-      {
-        console.log(estados[0][i]);
-        return i;
+    function busqueda_anio(cadena) {
+      for (var i = 0; i < estados[0].length; i++) {
+        if (estados[0][i] == cadena) {
+          console.log(estados[0][i]);
+          return i;
+        }
       }
     }
-  }
 
-      //variable de mapa
-        var img;
-        var data_url;
-        var locked=false;
-        var map = L.map('map' ,
-        {
-  	        scrollWheelZoom: false,
-  	        maxZoom: 14,
-  			minZomm:5,
-  			//zoomControl:false,
-  			//dragging: false
-        }).setView([24.8, -100], 5);
+    //variable de mapa
+    var img;
+    var data_url;
+    var locked = false;
+    var map = L.map('map',
+      {
+        scrollWheelZoom: false,
+        maxZoom: 14,
+        minZomm: 5,
+        //zoomControl:false,
+        //dragging: false
+      }).setView([24.8, -100], 5);
 
-      //implementacion de mapa estandar y ubicacion haci como zoom
-   //     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-  	 	L.tileLayer('http://{s}.google.com/vt/?hl=es&x={x}&y={y}&z={z}&s={s}&apistyle=s.t%3A5|p.l%3A53%2Cs.t%3A1314|p.v%3Aoff%2Cp.s%3A-100%2Cs.t%3A3|p.v%3Aon%2Cs.t%3A2|p.v%3Aoff%2Cs.t%3A4|p.v%3Aoff%2Cs.t%3A3|s.e%3Ag.f|p.w%3A1|p.l%3A100%2Cs.t%3A18|p.v%3Aoff%2Cs.t%3A49|s.e%3Ag.s|p.v%3Aon|p.s%3A-19|p.l%3A24%2Cs.t%3A50|s.e%3Ag.s|p.v%3Aon|p.l%3A15&style=47,37', {
-  		subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
-          maxZoom: 14,
-          minZomm:5,
-          attribution: '&copy <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> &copy <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
-          id: 'mapbox.light',
-        }).addTo(map);
+    //implementacion de mapa estandar y ubicacion haci como zoom
+    //     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+    L.tileLayer('http://{s}.google.com/vt/?hl=es&x={x}&y={y}&z={z}&s={s}&apistyle=s.t%3A5|p.l%3A53%2Cs.t%3A1314|p.v%3Aoff%2Cp.s%3A-100%2Cs.t%3A3|p.v%3Aon%2Cs.t%3A2|p.v%3Aoff%2Cs.t%3A4|p.v%3Aoff%2Cs.t%3A3|s.e%3Ag.f|p.w%3A1|p.l%3A100%2Cs.t%3A18|p.v%3Aoff%2Cs.t%3A49|s.e%3Ag.s|p.v%3Aon|p.s%3A-19|p.l%3A24%2Cs.t%3A50|s.e%3Ag.s|p.v%3Aon|p.l%3A15&style=47,37', {
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+      maxZoom: 14,
+      minZomm: 5,
+      attribution: '&copy <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> &copy <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+      id: 'mapbox.light',
+    }).addTo(map);
 
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) )
-        {
-  			map.dragging.disable();
-  	  }
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      map.dragging.disable();
+    }
 
 
 
-        // control that shows state info on hover
-        var info = L.control();
-        info.onAdd = function (map) {
-          this._div = L.DomUtil.create('div', 'infos hide');
-          this.update();
-          return this._div;
-        };
+    // control that shows state info on hover
+    var info = L.control();
+    info.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'infos hide');
+      this.update();
+      return this._div;
+    };
 
 
 
 
-        info.update = function (props) {
-  	     //this._div = L.DomUtil.create('div', 'infos');
-  	     $('.infos').removeClass('hide');
-  	     $('.info2').removeClass('hide');
-  	     if(props != undefined)
-  	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%; font-size: 18px;">Razón de <br>mortalidad materna</p></div></div><div class="info"></div>';
+    info.update = function (props) {
+      //this._div = L.DomUtil.create('div', 'infos');
+      $('.infos').removeClass('hide');
+      $('.info2').removeClass('hide');
+      if (props != undefined) {
+        this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_ent + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%; font-size: 18px;">Razón de <br>mortalidad materna</p></div></div><div class="info"></div>';
 
-  			  gen(estados[props.cve]);
-  	     }
-  /*
-          this._div.innerHTML = '<div><h4>Aguas tratadas</h4>' +  (props ?
-            '<b>' + props.nom_ent + '</b><br />' + props.density + '% avance</div>'
-            : 'Situate sobre un estado')+'<div class="info"></div>';
-            if(props != undefined)
-  		  {
-
-  		  }
-  */
-        };
-        info.addTo(map);
-        // get color depending on population density value
-        // function getColor(d) {
-        // 	return d > 1000 ? '#800026' :
-        // 	       d > 500  ? '#BD0026' :
-        // 	       d > 200  ? '#E31A1C' :
-        // 	       d > 100  ? '#FC4E2A' :
-        // 	       d > 50   ? '#FD8D3C' :
-        // 	       d > 20   ? '#FEB24C' :
-        // 	       d > 10   ? '#FED976' :
-        // 	                  '#FFEDA0';
-        // }
-
-        function getColor(d) {
-          return d > 100 ? '#004b67' :
-                 d > 50  ? '#007dab' :
-                 d > 20  ? '#01baff' :
-                           '#45ccff';
-        }
-
-        function getColoR(number)
-        {
-  	    return brew.getColorInRange(number);
-  	  }
-
-        function style(feature) {
-  	    var res=String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
-        console.log(res,'hhhh',"c"+res[1]);
-  	    //console.log("hola->",res[1]);
-          return {
-            weight: 0.5,
-            opacity: 1,
-            color: '#000',
-            dashArray: '1',
-            fillOpacity: 0.6,
-            // fillColor: getColoR(feature.properties.density),
-            fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
-             className: "c"+res[1]
-          };
-        }
-        function highlightFeature(e) {
-  	     if(locked == false)
-  	     {
-  	        var layer = e.target;
-  	        layer.setStyle({
-  	          weight: 2,
-  	          color: '#ccc',
-  	          dashArray: '',
-  	          fillOpacity: 0.7
-  	        });
-  	        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-  	          layer.bringToFront();
-  	        }
-  	        info.update(layer.feature.properties);
-  	     }
-        }
-        var geojson;
-        function resetHighlight(e) {
-  /*
-  	     if(locked == false)
-  	     {
-  */
-  		     geojson.resetStyle(e.target);
-  			 info.update();
-  // 	 	 }
-        }
-        function zoomToFeature(e) {
-          map.fitBounds(e.target.getBounds());
-        }
-        function onEachFeature(feature, layer) {
-          layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
-            mousedown: function(e)
+        gen(estados[props.cve]);
+      }
+      /*
+              this._div.innerHTML = '<div><h4>Aguas tratadas</h4>' +  (props ?
+                '<b>' + props.nom_ent + '</b><br />' + props.density + '% avance</div>'
+                : 'Situate sobre un estado')+'<div class="info"></div>';
+                if(props != undefined)
             {
-  			if (locked == true) {
-  				locked = false;
-  				(function ($) {
-  								 $(".info2").css("border","none");
-  								 $(".infos").css("border","none");
-  							   }(jQuery));
-  			}
-  			else {
-  				locked = true;
-  				(function ($) {
-  							//	$(".info2").css("border","5px solid #00cc99");
-  								$(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
-  								$(".info2").css("border-left","5px solid rgb(107, 174, 214)");
-  								$(".info2").css("border-right","5px solid rgb(107, 174, 214)");
-  								$(".infos").css("border-top","5px solid rgb(107, 174, 214)");
-  								$(".infos").css("border-left","5px solid rgb(107, 174, 214)");
-  								$(".infos").css("border-right","5px solid rgb(107, 174, 214)");
-  //								$(".infos").css("border","5px solid #00cc99");
-  							   }(jQuery));
-  			}
-  // 			resetHighlight(e);
-  		 },
-  //          click: zoomToFeature
-          });
-        }
-
-        function highlightFromLegend(e)
-        	{
-  	      	//console.log(e);
-  			(function ($) {
-  				$("svg path."+e).addClass("highlighted");
-  				var r=$("svg path."+e);
-  				for(var i=0;i<r.length;i++)
-  				{
-  					r[i].classList.add("highlighted");
-  					//console.log(r[i]);
-  				}
-  				//console.log($("svg path."+e));
-  			}(jQuery));
-  		}
-
-  		function clearHighlight() {
-  			(function ($) {
-
-  				$("path").removeClass("highlighted");
-  				var r=$("path");
-  				for(var i=0;i<r.length;i++)
-  				{
-  					r[i].classList.remove("highlighted");
-  				}
-  				//console.log(r);
-  			}(jQuery));
-  		}
-
-  		var brew = new classyBrew();
-  		var values = [];
-      var values2 = [];
-  		for (var i = 0; i < statesData.features.length; i++)
-      {
-        console.log(statesData.features[i].properties.nom_ent);
-        if (statesData.features[i].properties.nom_ent == null) continue;
-  			values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
-  			// if (statesData.features[i].properties.density == null) continue;
-  			// values2.push(statesData.features[i].properties.density);
-  		}
-
-      console.log(values,values2);
-  		brew.setSeries(values);
-  		brew.setNumClasses(4);
-  		brew.setColorCode("Blues");
-  		brew.classify('jenks');
-  /*
-        geojson = L.geoJson(statesData, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-  */
-
-  /*
-  	  geojson = L.geoJson(municipio, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-
-  	  geojson = L.geoJson(entidad, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-  */
-
-        geojson = L.geoJson(statesData, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-
-  /*
-        geojson = L.geoJson(nacion, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-  */
-
-        map.attributionControl.addAttribution('');
-        var legend = L.control();
-        legend.onAdd = function (map) {
-          var div = L.DomUtil.create('div', 'info2 legend hide'),
-            grades = brew.getBreaks(),//[0, 20, 50, 100],
-            labels = [],
-            from, to;
-          for (var i = 0; i < grades.length-1; i++) {
-            from = grades[i];
-            to = grades[i + 1];
-            var res=String(getColoR(from)).split(",");
-            console.log(from,from+1,res,grades);
-            labels.push(
-              '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+')+'</div>');
-          }
-          div.innerHTML = labels.join('');
-          return div;
-        };
-        legend.addTo(map);
-
-
-
-
-        $(document).ready(function()
-        {
-  	    for(var j=1;j<18;j++)
-  	    {
-  		    var id='#obj_'+j;
-  		    for(var i=0;i<30;i++)
-  		    {
-  			    var r=Math.floor((Math.random() * 10) + 1);
-  			    if(r == 1)
-  			    {
-  					$(id).append('<th class="id_m1 tooltip" data-tooltip-content="#tooltip_content_1"></th>');
-  			    }
-  			    if(r == 2)
-  			    {
-  					$(id).append('<th class="id_m2 tooltip" data-tooltip-content="#tooltip_content_2"></th>');
-  			    }
-  			    if(r == 3)
-  			    {
-  					$(id).append('<th class="id_m3 tooltip" data-tooltip-content="#tooltip_content_3"></th>');
-  			    }
-            if(r == 4)
-  			    {
-  					$(id).append('<th class="id_m4 tooltip" data-tooltip-content="#tooltip_content_4"></th>');
-  			    }
-  			    if(r == 5)
-  			    {
-  					$(id).append('<th class="id_m5 tooltip" data-tooltip-content="#tooltip_content_5"></th>');
-  			    }
-  			    if(r == 6)
-  			    {
-  					$(id).append('<th class="id_m6 tooltip" data-tooltip-content="#tooltip_content_6"></th>');
-  			    }
-            if(r == 7)
-  			    {
-  					$(id).append('<th class="id_m7 tooltip" data-tooltip-content="#tooltip_content_7"></th>');
-  			    }
-  			    if(r == 8)
-  			    {
-  					$(id).append('<th class="id_m8 tooltip" data-tooltip-content="#tooltip_content_8"></th>');
-  			    }
-  			    if(r == 9)
-  			    {
-  					$(id).append('<th class="id_m9 tooltip" data-tooltip-content="#tooltip_content_9"></th>');
-  			    }
-            if(r == 10)
-  			    {
-  					$(id).append('<th class="id_m10 tooltip" data-tooltip-content="#tooltip_content_10"></th>');
-  			    }
-  		    }
-  		}
-
-
-          var stickyNavTop = $('#normal').offset().top;
-          var bandera =  true;
-
-          var stickyNav = function(){
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > stickyNavTop)
-            {
-
-  	          if(bandera){
-
-
-  	          console.log("entro");
-                $('#normal').addClass('sticky');
-
-  //               $('#imago').css("display", "");
-
-          if(navigator.userAgent.indexOf("Firefox") != -1 )
-          {
-            $( "#imago img" ).animate({
-              width: "25%"
-            }, 1500 );
-          }
-          else
-          {
-            $( "#imago img" ).animate({
-              width: "50%"
-            }, 1500 );
-          }
-
-                $('#normal').find('ul').each(function(){
-  				$(this).removeClass('nab');
-  			});
-  				$( "#nav-mobile" ).animate({
-
-  			    width: "90%"
-  			  }, 1500 );
-
-
-
-
-
-
-                  $('#normal').find('li').each(function(){
-  	                 $(this).removeClass('tamp');
-                  });
-
-  //               $('#normal').removeClass('hide');
-
-  			bandera = false;
-  				}
+    
             }
-            else
-            {
-  		  		          if(!bandera){
+      */
+    };
+    info.addTo(map);
+    // get color depending on population density value
+    // function getColor(d) {
+    // 	return d > 1000 ? '#800026' :
+    // 	       d > 500  ? '#BD0026' :
+    // 	       d > 200  ? '#E31A1C' :
+    // 	       d > 100  ? '#FC4E2A' :
+    // 	       d > 50   ? '#FD8D3C' :
+    // 	       d > 20   ? '#FEB24C' :
+    // 	       d > 10   ? '#FED976' :
+    // 	                  '#FFEDA0';
+    // }
 
-  			  		          	$( "#imago img" ).animate({
+    function getColor(d) {
+      return d > 100 ? '#004b67' :
+        d > 50 ? '#007dab' :
+          d > 20 ? '#01baff' :
+            '#45ccff';
+    }
 
-  			    width: "1%"
-  			  }, 1500 );
+    function getColoR(number) {
+      return brew.getColorInRange(number);
+    }
 
-  			  $( "#nav-mobile" ).animate({
-
-  			    width: "80%"
-  			  }, 1500 );
-
-
-
-  // 	  	$('#imago').css("display", "none");
-
-  	          console.log("entro arriba ");
-
-  			$('#normal').removeClass('sticky');
-
-  			$('#normal').find('ul').each(function(){
-  				$(this).addClass('nab');
-  			});
-
-  			$('#normal').find('li').each(function(){
-  				$(this).addClass('tamp');
-  			});
-
-  			//               $('#normal').addClass('hide');
-
-  						bandera = true;
-  						}
-            }
-          };
-          stickyNav();
-          $(window).scroll(function() {
-            stickyNav();
-          });
+    function style(feature) {
+      var res = String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
+      console.log(res, 'hhhh', "c" + res[1]);
+      //console.log("hola->",res[1]);
+      return {
+        weight: 0.5,
+        opacity: 1,
+        color: '#000',
+        dashArray: '1',
+        fillOpacity: 0.6,
+        // fillColor: getColoR(feature.properties.density),
+        fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
+        className: "c" + res[1]
+      };
+    }
+    function highlightFeature(e) {
+      if (locked == false) {
+        var layer = e.target;
+        layer.setStyle({
+          weight: 2,
+          color: '#ccc',
+          dashArray: '',
+          fillOpacity: 0.7
         });
-      </script>
-      <script>
-          $(document).ready(function() {
-              $('.tooltip').tooltipster({
-  				contentCloning: true,
-  				animation: 'fade',
-  				delay: 200,
-  				theme: 'tooltipster-light',
-  				trigger: 'hover'
-              });
-          });
-      </script>
+        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+          layer.bringToFront();
+        }
+        info.update(layer.feature.properties);
+      }
+    }
+    var geojson;
+    function resetHighlight(e) {
+      /*
+             if(locked == false)
+             {
+      */
+      geojson.resetStyle(e.target);
+      info.update();
+      // 	 	 }
+    }
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        mousedown: function (e) {
+          if (locked == true) {
+            locked = false;
+            (function ($) {
+              $(".info2").css("border", "none");
+              $(".infos").css("border", "none");
+            } (jQuery));
+          }
+          else {
+            locked = true;
+            (function ($) {
+              //	$(".info2").css("border","5px solid #00cc99");
+              $(".info2").css("border-bottom", "5px solid rgb(107, 174, 214)");
+              $(".info2").css("border-left", "5px solid rgb(107, 174, 214)");
+              $(".info2").css("border-right", "5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-top", "5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-left", "5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-right", "5px solid rgb(107, 174, 214)");
+              //								$(".infos").css("border","5px solid #00cc99");
+            } (jQuery));
+          }
+          // 			resetHighlight(e);
+        },
+        //          click: zoomToFeature
+      });
+    }
+
+    function highlightFromLegend(e) {
+      //console.log(e);
+      (function ($) {
+        $("svg path." + e).addClass("highlighted");
+        var r = $("svg path." + e);
+        for (var i = 0; i < r.length; i++) {
+          r[i].classList.add("highlighted");
+          //console.log(r[i]);
+        }
+        //console.log($("svg path."+e));
+      } (jQuery));
+    }
+
+    function clearHighlight() {
+      (function ($) {
+
+        $("path").removeClass("highlighted");
+        var r = $("path");
+        for (var i = 0; i < r.length; i++) {
+          r[i].classList.remove("highlighted");
+        }
+        //console.log(r);
+      } (jQuery));
+    }
+
+    var brew = new classyBrew();
+    var values = [];
+    var values2 = [];
+    for (var i = 0; i < statesData.features.length; i++) {
+      console.log(statesData.features[i].properties.nom_ent);
+      if (statesData.features[i].properties.nom_ent == null) continue;
+      values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
+      // if (statesData.features[i].properties.density == null) continue;
+      // values2.push(statesData.features[i].properties.density);
+    }
+
+    console.log(values, values2);
+    brew.setSeries(values);
+    brew.setNumClasses(4);
+    brew.setColorCode("Blues");
+    brew.classify('jenks');
+    /*
+          geojson = L.geoJson(statesData, {
+            style: style,
+            onEachFeature: onEachFeature
+          }).addTo(map);
+    */
+
+    /*
+        geojson = L.geoJson(municipio, {
+            style: style,
+            onEachFeature: onEachFeature
+          }).addTo(map);
+  
+        geojson = L.geoJson(entidad, {
+            style: style,
+            onEachFeature: onEachFeature
+          }).addTo(map);
+    */
+
+    geojson = L.geoJson(statesData, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+
+    /*
+          geojson = L.geoJson(nacion, {
+            style: style,
+            onEachFeature: onEachFeature
+          }).addTo(map);
+    */
+
+    map.attributionControl.addAttribution('');
+    var legend = L.control();
+    legend.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'info2 legend hide'),
+        grades = brew.getBreaks(),//[0, 20, 50, 100],
+        labels = [],
+        from, to;
+      for (var i = 0; i < grades.length - 1; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+        var res = String(getColoR(from)).split(",");
+        console.log(from, from + 1, res, grades);
+        labels.push(
+          '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+          from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
+      }
+      div.innerHTML = labels.join('');
+      return div;
+    };
+    legend.addTo(map);
+
+
+
+
+    $(document).ready(function () {
+      for (var j = 1; j < 18; j++) {
+        var id = '#obj_' + j;
+        for (var i = 0; i < 30; i++) {
+          var r = Math.floor((Math.random() * 10) + 1);
+          if (r == 1) {
+            $(id).append('<th class="id_m1 tooltip" data-tooltip-content="#tooltip_content_1"></th>');
+          }
+          if (r == 2) {
+            $(id).append('<th class="id_m2 tooltip" data-tooltip-content="#tooltip_content_2"></th>');
+          }
+          if (r == 3) {
+            $(id).append('<th class="id_m3 tooltip" data-tooltip-content="#tooltip_content_3"></th>');
+          }
+          if (r == 4) {
+            $(id).append('<th class="id_m4 tooltip" data-tooltip-content="#tooltip_content_4"></th>');
+          }
+          if (r == 5) {
+            $(id).append('<th class="id_m5 tooltip" data-tooltip-content="#tooltip_content_5"></th>');
+          }
+          if (r == 6) {
+            $(id).append('<th class="id_m6 tooltip" data-tooltip-content="#tooltip_content_6"></th>');
+          }
+          if (r == 7) {
+            $(id).append('<th class="id_m7 tooltip" data-tooltip-content="#tooltip_content_7"></th>');
+          }
+          if (r == 8) {
+            $(id).append('<th class="id_m8 tooltip" data-tooltip-content="#tooltip_content_8"></th>');
+          }
+          if (r == 9) {
+            $(id).append('<th class="id_m9 tooltip" data-tooltip-content="#tooltip_content_9"></th>');
+          }
+          if (r == 10) {
+            $(id).append('<th class="id_m10 tooltip" data-tooltip-content="#tooltip_content_10"></th>');
+          }
+        }
+      }
+
+
+      var stickyNavTop = $('#normal').offset().top;
+      var bandera = true;
+
+      var stickyNav = function () {
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop > stickyNavTop) {
+
+          if (bandera) {
+
+
+            console.log("entro");
+            $('.bullets-container').show();
+            $('#normal').addClass('sticky');
+
+            //               $('#imago').css("display", "");
+
+            if (navigator.userAgent.indexOf("Firefox") != -1) {
+              $("#imago img").animate({
+                width: "25%"
+              }, 1500);
+            }
+            else {
+              $("#imago img").animate({
+                width: "50%"
+              }, 1500);
+            }
+
+            $('#normal').find('ul').each(function () {
+              $(this).removeClass('nab');
+            });
+            $("#nav-mobile").animate({
+
+              width: "90%"
+            }, 1500);
 
 
 
 
 
-  </body>
+
+            $('#normal').find('li').each(function () {
+              $(this).removeClass('tamp');
+            });
+
+            //               $('#normal').removeClass('hide');
+
+            bandera = false;
+          }
+        }
+        else {
+          if (!bandera) {
+
+            $("#imago img").animate({
+
+              width: "1%"
+            }, 1500);
+
+            $("#nav-mobile").animate({
+
+              width: "80%"
+            }, 1500);
+
+
+
+            // 	  	$('#imago').css("display", "none");
+
+            console.log("entro arriba ");
+            $('.bullets-container').hide();
+
+            $('#normal').removeClass('sticky');
+
+            $('#normal').find('ul').each(function () {
+              $(this).addClass('nab');
+            });
+
+            $('#normal').find('li').each(function () {
+              $(this).addClass('tamp');
+            });
+
+            //               $('#normal').addClass('hide');
+
+            bandera = true;
+          }
+        }
+      };
+      stickyNav();
+      $(window).scroll(function () {
+        stickyNav();
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('.tooltip').tooltipster({
+        contentCloning: true,
+        animation: 'fade',
+        delay: 200,
+        theme: 'tooltipster-light',
+        trigger: 'hover'
+      });
+
+
+      $(window).scroll(function () {
+        console.log($(window).scrollTop());
+        console.log($(document).height());
+        console.log($(window).height());
+      });
+
+
+    });
+  </script>
+
+
+
+
+
+</body>
+
 </html>

@@ -1,11 +1,3 @@
- <!--
-   Menú de selección
-   Mapa
-   Gráfica
-   Descarga de datos
-  -->
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,11 +20,6 @@
   	<!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
-
-
-
-
-
 
 <style media="screen">
   .infoPadre{
@@ -1037,6 +1024,9 @@ td
 
 
 var chart = c3.generate({
+   size: {
+            height: 500
+          },
     data: {
         xs: {
             setosa: 'setosa_x',
