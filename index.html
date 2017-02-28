@@ -50,7 +50,7 @@
       left: 0;
       z-index: 10000;
     }
-    
+
     #loader p {
       display: block;
       width: 100px;
@@ -71,20 +71,20 @@
       height: 600px;
       overflow: hidden;
     }
-    
+
     #map_compara {
       width: 100%;
       height: 600px;
       overflow: hidden;
     }
-    
+
     .info,
     .info-explora {
       padding: 6px 8px;
       font: 14px/16px Arial, Helvetica, sans-serif;
       border-radius: 5px;
     }
-    
+
     .info2-explora,
     .info2 {
       padding: 6px 8px;
@@ -94,7 +94,7 @@
       margin-top: 0 !important;
       width: 291px;
     }
-    
+
     .infos,
     .infos-explora {
       padding: 6px 7.5px;
@@ -104,19 +104,19 @@
       border-radius: 5px 5px 0 0;
       width: 291px;
     }
-    
+
     .info h4,
     .info-explora h4 {
       margin: 0 0 5px;
       color: #777;
     }
-    
+
     .legend {
       text-align: left;
       line-height: 18px;
       color: #555;
     }
-    
+
     .legend i {
       width: 18px;
       height: 18px;
@@ -124,19 +124,20 @@
       margin-right: 4.0pc;
       opacity: 0.7;
     }
-    
+
     .c3-ygrids line {
       stroke-dasharray: 1;
+      stroke: #dedbdb;
     }
-    
+
     .c3-xgrid-focus line {
-      stroke: #d2d2d2;
+      stroke: #dedbdb;
     }
-    
+
     g .leaflet-interactive {
       stroke-dasharray: 0 !important;
     }
-    
+
     .highlighted {
       fill: rgb(226, 204, 6);
     }
@@ -146,81 +147,81 @@
     svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle {
       fill: #f00 !important;
     }
-    
+
     #datosNacional {
       display: none;
     }
-    
+
     .infoPadre {
       width: 276px;
     }
-    
+
     .cuadrosSocial li {
       display: inline;
     }
-    
+
     .cuadrosSocial li a {
       border: 1px solid #ccc;
       padding: 10px;
       transition: all 1.0s ease;
       width: 40px;
     }
-    
+
     .cuadrosSocial li a:hover {
       background-color: #ccc;
     }
-    
+
     .select-dropdown {
       padding-left: 10px !important;
     }
-    
+
     .select-wrapper span.caret {
       padding-right: 10px;
       font-size: 14px;
       color: #666;
     }
-    
+
     .espacio_seccion {
       height: 40px;
     }
-    
+
     .promedios {
       font-size: 40px !important;
       font-weight: 200;
     }
-    
+
     .topColor {
       color: #3ebcef;
     }
-    
+
     .section-bullets li a:before {
       background-color: #00aeef;
     }
-    
+
     .section-bullets li:hover {
       background-color: #eee;
     }
-    
+
     .section-bullets .active a {
       color: #fff;
     }
-    
+
     .section-bullets .active a:after {
       background-color: #FFF;
     }
-    
+
     .line_pro {
       border-bottom: #F44336;
       border: solid 1px #F44336;
       margin: 10px;
       max-width: 32%;
     }
-    
+
     .active_anio {
       background-color: #15b5f0;
       color: white;
     }
-    
+
     .inactive_anio {
       background-color: white;
       color: #15b5f0;
@@ -1030,11 +1031,11 @@
             <!-- <div><img style="margin-left: 35px;" width="147" height="25" src="img/promedio.png"></div> -->
             <!-- 	            <img src="img/graficaexplora.png" alt="" style="width:100%;"/></div> -->
             <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A EXPLORA</a>
-          </div> 
+          </div>
         </div>
       </div>
-      
-        <!--   
+
+        <!--
           <div class="row">
           <div class="col s12">
             <h3 class="fuerte t_principal">COMPARA</h3>
@@ -1078,7 +1079,7 @@
         </div>
         <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">IR A COMPARA</a>
                   </div>
-                </div> 
+                </div>
                 -->
 
 
@@ -1138,11 +1139,11 @@
                 padding-top: 20px;
                 padding-bottom: 20px;
               }
-              
+
               .caja-cafe div {
                 margin: 30px;
               }
-              
+
               .caja-cafe a {
                 color: #142a4f;
               }
@@ -2306,7 +2307,8 @@ var estados =[
                                   x: 'Entidad',
                                   columns: [
                                     ['Entidad', '2016-01-01', '2015-01-01', '2014-01-01', '2013-01-01', '2012-01-01', '2011-01-01', '2010-01-01', '2009-01-01', '2008-01-01', '2007-01-01', '2006-01-01', '2005-01-01', '2004-01-01', '2003-01-01', '2002-01-01', '2001-01-01', '2000-01-01', '1999-01-01', '1998-01-01', '1997-01-01', '1996-01-01', '1995-01-01', '1994-01-01', '1993-01-01', '1992-01-01', '1991-01-01', '1990-01-01'],
-                                    props
+                                    props,
+                                    ['Estados Unidos Mexicanos','34.6','38.9','38.2','42.3','43','44.1','53.3','49.2','48.1','50.9','54','53.5','56.5','56.1','68.9','74.1','80','78.2','77.6','79.7','80.5','82.4','84','85.4','86.3','88.7'],
                                   ]
 
 
@@ -2326,7 +2328,7 @@ var estados =[
                                   }
                                 },
                                 color: {
-                                  pattern: ['#00AEEF']
+                                  pattern: ['#00AEEF', '#f00']
                                 },
                                 size: {
                                   width: 260,
@@ -2462,7 +2464,7 @@ var estados =[
       $('.info2').removeClass('hide');
       if (props != undefined) {
         this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_ent + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%; font-size: 18px;">Razón de <br>mortalidad materna</p></div></div><div class="info"></div>';
-
+        console.log("aca ---> ",estados[props.cve]);
         gen(estados[props.cve]);
       }
       /*
@@ -2471,7 +2473,7 @@ var estados =[
                 : 'Situate sobre un estado')+'<div class="info"></div>';
                 if(props != undefined)
             {
-    
+
             }
       */
     };
@@ -2626,7 +2628,7 @@ var estados =[
             style: style,
             onEachFeature: onEachFeature
           }).addTo(map);
-  
+
         geojson = L.geoJson(entidad, {
             style: style,
             onEachFeature: onEachFeature
