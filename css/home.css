@@ -562,12 +562,27 @@ nav
 {
   background-color: #a9a9a9 !important;
 }
+
+.gris_letra
+{
+  color: #a9a9a9 !important;
+}
 .btn
 {
   background-color: transparent;
   border-style: solid;
   border-width: 2px;
   border-color: #00AEEF;
+}
+.btn_fuera
+{
+  background-color: #00AEEF;
+  border-style: solid;
+  border-width: 2px;
+  color: white;
+  border-color: #00AEEF;
+  padding: 10px 25px 10px 25px;
+  border-radius: 4px;
 }
 .icn
 {
