@@ -450,7 +450,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       <div class="row">
       <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
         <div class="input-field col s12">
-            <a class="waves-effect btn color claro">Descargar PDF</a>
+            <a id="pdf_descarga" class="waves-effect btn color claro">Descargar PDF</a>
        </div>
       </div>
     <div class="modal-footer">
@@ -504,6 +504,17 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   </div>
 </div>
 </div>
+<div class="row" style="display:none;">
+  <div id="copia" style="width:100%; height:600px;"></div>
+  <div id="copias" style="width:100%; height:600px;"></div>
+  <div id="fondo" style="width:100%; height:600px;"></div>
+  <div id="todo" style="width:1298px; height:600px;"></div>
+  <div id="todo_listo" style="width:1298px; height:600px;"></div>
+  <div id="images" style="width:100%; height:600px;"></div>
+  <div id="forms" style="width:100%; height:600px;"></div>
+</div>
+
+
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
     <!-- <script type="text/javascript" src="entidadCompara.json"></script> -->
@@ -517,7 +528,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
+
+  <script type="text/javascript" src="http://canvg.github.io/canvg/rgbcolor.js"></script>
+  <script type="text/javascript" src="http://canvg.github.io/canvg/StackBlur.js"></script>
+  <script type="text/javascript" src="http://canvg.github.io/canvg/canvg.js"></script>
+  <script type="text/javascript" src="lib/html2canvas.js"></script>
   <script type="text/javascript">
+  var normal,fondo,todo;
     $(document).ready(function()
     {
 
@@ -568,8 +585,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             }
           }
       });
+  });
 
-    });
     </script>
       <script type="text/javascript">
 	  function commaSeparateNumber(x){var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");}
@@ -1072,6 +1089,15 @@ function busqueda_anio(cadena)
         return div;
       };
       legend.addTo(map);
+
+      setTimeout(function() {
+
+
+
+
+  }, 3000);
+
+
     </script>
     <script>
         $(document).ready(function() {
@@ -1108,6 +1134,7 @@ function busqueda_anio(cadena)
             // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a><select id="opciones_anio" onchange="cambio_anio()" style="display:block;"><option value=" " disabled selected>Selecciona un año</option>'+cadena;
             cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
             $('#anios').html(cadena);
+
         });
 
 
@@ -1290,6 +1317,134 @@ function busqueda_anio(cadena)
           legend.addTo(map);
 
         }
+
+
+    function nodeToString ( node )
+		{
+			var tmpNode = document.createElement( "div" );
+			tmpNode.appendChild( node.cloneNode( true ) );
+			var str = tmpNode.innerHTML;
+			tmpNode = node = null; // prevent memory leaks in IE
+			return str;
+		}
+
+
+      $('#pdf_descarga').click(function()
+			{
+            var copias_canvas;
+        leafletImage(map, function(err, canvas) {
+    				// now you have canvas
+    				// example thing to do with that canvas:
+    				console.log("Ya lo hizo");
+    				img = document.createElement('img');
+    				var dimensions = map.getSize();
+    				img.width = dimensions.x;
+    				img.height = dimensions.y;
+    				img.src = canvas.toDataURL();
+    				data_url = canvas.toDataURL();
+    			//	document.getElementById('images').innerHTML = '';
+    				document.getElementById('images').appendChild(img);
+
+            var mapa = document.getElementById('map');
+            var svg = mapa.childNodes[0].childNodes[2].childNodes[0].innerHTML;
+            document.getElementById('copia').innerHTML='<canvas id="canvas_todo" width="1298px" height="600px"></canvas>';
+            var canvas = document.getElementById('canvas_todo');
+            canvg(canvas, svg);
+            normal = canvas.toDataURL('image/png');
+
+            document.getElementById('copias').innerHTML='<canvas id="canvas_tol" width="1298px" height="600px"></canvas>';
+            var canvas2 = document.getElementById('canvas_tol');
+            var c = mapa.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[1].childNodes[4].childNodes[2].childNodes[0].childNodes[0].childNodes[0].style.fill='none';
+
+
+             var c = mapa.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[1].childNodes;
+
+//[7].childNodes
+            for(var j=0;j<c.length;j++)
+            {
+              console.log(c[j],c[j].classList.value);
+              if(c[j].classList.value === 'domain')
+              {
+                c[j].style.fill='none';
+                c[j].style.stroke='#000';
+                // c[j].childNodes[z].style.display='none';
+              }
+              if (c[j].firstChild)
+              {
+                //console.log("tiene hijos");
+                for(var z=0;z<c[j].childNodes.length;z++)
+                {
+                  // console.log(c[j].childNodes[z]);
+                  if(c[j].childNodes[z].className != undefined)
+                  {
+                    if(c[j].childNodes[z].classList.value === 'domain')
+                    {
+                      //console.log("->"+c[j].childNodes[z].tagName);
+                      c[j].style.fill='none';
+                      c[j].style.stroke='#000';
+                      // c[j].childNodes[z].style.display='none';
+                    }
+                  }
+                }
+              }
+              if(c[j].className != undefined)
+              {
+                if(c[j].classList.value == 'line')
+                {
+                  c[j].style.fill='none';
+                  console.log(c[j]);
+                }
+                if(c[j].classList.value == 'x-axis-label')
+                {
+                  c[j].style.display='none';
+                }
+              }
+            }
+            var svg2 = nodeToString(mapa.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0]);
+            canvg(canvas2, svg2);
+
+            html2canvas(mapa.childNodes[1].childNodes[1], {
+                onrendered: function(canvas) {
+                    theCanvas = canvas;
+                    $("#copias").append(canvas);
+                    copias_canvas= canvas.toDataURL('image/png');
+                }
+            });
+
+            html2canvas($("#map"), {
+                onrendered: function(canvas) {
+                    theCanvas = canvas;
+                    $("#fondo").append(canvas);
+                    fondo = document.getElementById('fondo').childNodes[0].toDataURL('image/png');
+                    $('#todo').html('<div id="todo_junto" style="width:1298px; height:600px; background-image: url('+normal+'), url('+data_url+'); background-repeat: no-repeat;"><div style="width:296px; height:314px;  background-image: url('+copias_canvas+'); background-repeat: no-repeat;"><img src="'+document.getElementById('canvas_tol').toDataURL('image/png')+'" style="margin-top: 100px; margin-left: 10px;"></div></div>');
+
+                    html2canvas($("#todo"), {
+                        onrendered: function(canvas) {
+                            theCanvas = canvas;
+                            // document.body.appendChild(canvas);
+                            // Canvas2Image.saveAsPNG(canvas);
+                            $("#todo_listo").append(canvas);
+                            todo = document.getElementById('todo_listo').childNodes[0].toDataURL('image/png');
+                            console.log(todo);
+                            var method = "post";
+                    				var form = document.createElement("form");
+                    				form.setAttribute("method", method);
+                    				form.setAttribute("action", "generar.php");
+                            var hiddenField = document.createElement("input");
+                    				hiddenField.setAttribute("type", "hidden");
+                    				hiddenField.setAttribute("name", "todo_ya");
+                    				hiddenField.setAttribute("value", todo);
+                    				form.appendChild(hiddenField);
+                    				document.getElementById('forms').appendChild(form);
+                    				console.log("Envia");
+                    				form.submit();
+                        }
+                    });
+                }
+            });
+    		});
+
+      });
     </script>
 
   </body>
