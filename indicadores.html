@@ -201,12 +201,12 @@
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
-            <li>
+            <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
-              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" />
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;"   onfocusout="esconder()" />
             </li>
-              <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
-            <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
+              <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
+            <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="objetivos.html">Indicadores</a></li>
@@ -1717,9 +1717,37 @@ function sortFunction(a, b) {
       }
     });
 
+    var lupa = false;
+
+    function esconder() {
+      console.log("focusout");
+      $('#cam_bus').hide();
+      $('#buscar').show();
+      lupa = false;
+    }
+
       $(document).ready(function() {
         $("#sti").hide();
         console.log(isScrolledIntoView($("#bajo")));
+
+        window.onload = function () {
+
+          $('#buscar').click(function () {
+            console.log("aca");
+            if (lupa) {
+              $('#cam_bus').hide();
+              lupa = false;
+            } else {
+              $('#cam_bus').show();
+              $('#buscar').hide();
+              document.getElementById("cam_bus").focus();
+              lupa = true;
+            }
+          });
+
+        }
+
+
       });
     </script>
   </body>
