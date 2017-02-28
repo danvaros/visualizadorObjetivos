@@ -126,7 +126,7 @@
       background-image: url(DataTables-1.10.13/images/sort_asc.png);
       background-color: #fff;
     }
-
+    
     </style>
 
 
@@ -137,11 +137,11 @@
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
-    
 
 
 
-<!-- 
+
+<!--
         function lee_json() {
             $.getJSON("/Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(datos) {
                 alert("Dato: " + datos["dato"]);
@@ -151,9 +151,9 @@
             });
         }
  -->
-<!-- 
+<!--
 <script type="text/javascript">
-       
+
        $(document).ready(function () {
            $("#boton1").click(function () {
                // var cad = "Los libros en el archivo JSON son:<br />";
@@ -167,13 +167,13 @@
                //             "<br />").replace("y undefined", "").replace(", undefined", "");
                //      }
                //     $("#texto").html(cad);
-               // })     
+               // })
                $.getJSON("Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(json) {
     console.log(json); // this will show the info it in firebug console
 });
            })
        });
-  
+
 
 </script>
  -->
@@ -227,10 +227,10 @@
               <img class="ico_obj" src="img/ods-03.png" alt="">
           </div>
           <div class="col s9 left-align">
-              <h5>3 - Garantizar una vida sana y promover el bienestar para todos en todas en todas las edades</h5>
+              <!-- <h5>3 - Garantizar una vida sana y promover el bienestar para todos en todas en todas las edades</h5>
               <p>
                 Meta 3.1 Para 2030, reducir la tasa mundial de mortalidad materna a menos de 70 por cada 100,00 nacidos vivos
-              </p>
+              </p> -->
               <hr>
               <p>
                 Indicador 3.1.1 Razón de mortalidad materna
@@ -334,7 +334,9 @@
 
       <div id="mapas_hide">
         <div class="col s12">
+          <div style="width:100%;"><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil  nacidos vivos</div>
           <div id="map"></div>
+          <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b></div>
           <div class="row" id="footmap">
             <div id="anios" class="col s8 center-align">
               <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
@@ -473,7 +475,9 @@
 
       <div class="row card tablaPadding" id="indicador-grafica">
         <div class="col s12">
+          <div style="width:100%;"><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil  nacidos vivos</div>
           <div id="barras"></div>
+          <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b><br><b class="pie_cuadro">Fecha de actualización: Noviembre de 2016</b></div>
         </div>
 
         <div id="modalMapa" class="modal">
@@ -1183,7 +1187,7 @@ function sortFunction(a, b) {
        margin-left: 6px;
        margin-top: 6px;
        width: 230px;
-      margin: 5px; 
+      margin: 5px;
       padding-top: 26px !important;
  }
   </style>
@@ -1385,9 +1389,9 @@ function sortFunction(a, b) {
           $('.select_datos').change(function(){
             var osds=$('.select_datos').val();
             if(osds == 1){
-              
+
               $('#datos_calculo_1').show();
-              
+
               if(table1 == null){
                     $('#miTabla').show();
                     table1 = $('#miTabla').DataTable( {
@@ -1406,14 +1410,14 @@ function sortFunction(a, b) {
            }
             else{
               $('#datos_calculo_1').hide();
-              
+
             }
           });
 
            $('.select_datos_2').change(function(){
              var osds=$('.select_datos_2').val();
              if(osds == 1){
-              
+
                $('#datos_calculo_2').show();
                   if(table2 == null){
                     $('#miTabla2').show();
