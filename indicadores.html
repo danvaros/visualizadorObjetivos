@@ -16,6 +16,43 @@
 
 	<!-- Load c3.css -->
 	<link href="lib/c3.css" rel="stylesheet" type="text/css">
+
+
+      <style>
+.cuadro_titulo{
+    background-color: #fff;
+    padding: 30px;
+    color: #083362;
+}
+
+.cuadro_titulo p{
+    font-size: 20px;
+    font-weight: 100;
+    margin: 0px;
+}
+
+.cuadro_titulo span{
+      font-size: 14px;
+    font-weight: 300;
+}
+
+.cuadro_titulo .divider {
+    background-color: #fff;
+}
+
+.pie_cuadro2{
+  background-color: #fff;
+  color: #083362;
+  padding: 20px;
+}
+.pie_cuadro2 div{
+  margin-top:6px; 
+  font-weight: 100;
+  font-size: initial;
+}
+</style>
+
+
   <style media="screen">
     th, td{
       padding: 13px !important;
@@ -205,8 +242,14 @@
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;"   onfocusout="esconder()" />
             </li>
-              <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
-            <li class="tamps"> <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
+              <li class="tamps">
+              <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
+                  alt="" /></a>
+            </li>
+            <li class="tamps">
+              <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
+                  alt="" /></a>
+            </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="objetivos.html">Indicadores</a></li>
@@ -287,8 +330,11 @@
           <hr>
           <div class="col s6">2000</div>
           <div class="col s6">6.3</div>
-          <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
-          Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+            <div class="pie_cuadro2">
+              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+            </div>
       </div>
 
       <div class="row card tablaPadding" id="datos-panel-dos" style="overflow-x: scroll;border-radius: 20px;">
@@ -299,8 +345,11 @@
 
       <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
         <div class="col s12">
-          <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
-          Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+           <div class="pie_cuadro2">
+              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+            </div>
         </div>
       </div>
 
@@ -350,9 +399,18 @@
 
       <div id="mapas_hide">
         <div class="col s12">
-          <div style="width:100%;"><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil  nacidos vivos</div>
+          <div class="cuadro_titulo">
+              <h4>Razón de mortalidad materna</h4>
+              <li class="divider"></li>
+              <p>1990-2015</p>
+              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+          </div>
           <div id="map"></div>
-          <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b><br><b class="pie_cuadro">Fecha de actualización: Noviembre de 2016</b></div>
+             <div class="pie_cuadro2">
+              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+            </div>
           <div class="row" id="footmap">
             <div id="anios" class="col s8 center-align">
               <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
@@ -491,9 +549,18 @@
 
       <div class="row card tablaPadding" id="indicador-grafica">
         <div class="col s12">
-          <div style="width:100%;"><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil  nacidos vivos</div>
+          <div class="cuadro_titulo">
+              <h4>Razón de mortalidad materna</h4>
+              <li class="divider"></li>
+              <p>1990-2015</p>
+              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+          </div>
           <div id="barras"></div>
-          <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b><br><b class="pie_cuadro">Fecha de actualización: Noviembre de 2016</b></div>
+        <div class="pie_cuadro2">
+              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+            </div>
         </div>
 
         <div id="modalMapa" class="modal">
@@ -644,10 +711,10 @@
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
-              <li class="fuerte t_sm"><a href="calendario.html">Calendario de actualizaciones</a></li>
-              <li class="fuerte t_sm"><a href="exportacion.html">Exportación masiva</a></li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+          <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+            <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
+            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -1218,15 +1285,30 @@ function sortFunction(a, b) {
 
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var datos_doble = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+          var datos_doble = ' <div class="cuadro_titulo"> ' +
+              '<h4>Razón de mortalidad materna</h4>' +
+              '<li class="divider"></li>'+
+             ' <p>1990-2015</p>'+
+             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+          '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                             '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
 
-          var datos_doble_2 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' +
+              '<h4>Razón de mortalidad materna</h4>' +
+              '<li class="divider"></li>'+
+             ' <p>1990-2015</p>'+
+             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+          '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
                             '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
-           var datos_doble_3 = '<h5 id="header_datos">Defunciones de mujeres por cada 100 mil nacidos vivos</h5>' +
+           var datos_doble_3 =  ' <div class="cuadro_titulo"> ' +
+              '<h4>Razón de mortalidad materna</h4>' +
+              '<li class="divider"></li>'+
+             ' <p>1990-2015</p>'+
+             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+          '</div>' +
                             '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
                             '<table class="bordered" id="miTabla3" class="miTabla3" >';
             // console.log(estados);
@@ -1297,9 +1379,26 @@ function sortFunction(a, b) {
                  }
              }
 
-            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
-            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
-             datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+
+             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
+             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
+             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+             '</div></div>';
+
+               datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+
+             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
+             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
+             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+             '</div></div>';
+
+               datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+
+             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
+             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
+             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+             '</div></div>';
 
             //  console.log(datos_doble);
           $('#datos-panel').html(select+datos_doble);
