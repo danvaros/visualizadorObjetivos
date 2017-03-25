@@ -134,6 +134,10 @@
       max-width: 32%;
     }
 
+#preloader { position: fixed; left: 0; top: 0; z-index: 99999999999999999; width: 100%; height: 100%; overflow: visible; background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center; }
+
+
+
   </style>
   <link rel="stylesheet" href="DataTables/datatables.css">
     <style>
@@ -222,6 +226,7 @@
     <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="DataTables/dataTables.fixedColumns.js"></script>
   </head>
+  <div id="preloader"><div style="position: absolute;right: 50%;top:50%;transform:translate(-50%,-50%);z-index: 999999999999999999999999">Cargando...</div></div>
   <body>
 
 
@@ -733,7 +738,8 @@
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
     <script type="text/javascript" src="entidad2.json"></script>
-    <script type="text/javascript" src="variable.js"></script>
+    <script src="app.js"></script>
+    <!-- <script type="text/javascript" src="variable.js"></script> -->
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
     <!-- <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script> -->
@@ -751,8 +757,11 @@
   var table3 = null;
   var table2 = null;
   var table1  = null;
+
   $(document).ready(function()
   {
+
+
     chart = c3.generate({
       legend: {
         show: false
@@ -1827,6 +1836,10 @@ function sortFunction(a, b) {
     }
 
       $(document).ready(function() {
+
+        
+    // alert('termino de esperar');
+
         $("#sti").hide();
         console.log(isScrolledIntoView($("#bajo")));
 
