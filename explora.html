@@ -133,7 +133,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
@@ -141,8 +141,14 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li>
-               <li class="tamps"> <a id="buscar"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a> </li>
-            <li class="tamps"> <a id="buscar"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png" alt="" /></a> </li>
+              <li class="tamps">
+              <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
+                  alt="" /></a>
+            </li>
+            <li class="tamps">
+              <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
+                  alt="" /></a>
+            </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="objetivos.html">Indicadores</a></li>
@@ -212,18 +218,18 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
         <div class="col s5" style="display: flex;">
           <div class="input-field col s12 caja_s">
-            <select>
-              <option value="" disabled selected>Elige una opción</option>
-              <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
-              <option value="2" selected>Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
+            <select id="obj_name">
+              <option value="-1" disabled selected>Elige una opción</option>
+              <option value="27">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
+              <option value="26" selected>Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
               <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
-              <option value="1">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
-              <option value="1">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
-              <option value="1">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
-              <option value="1">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
-              <option value="1">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
-              <option value="2">Reducir la desigualdad en y entre los países</option>
-              <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>
+              <option value="4">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
+              <option value="5">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
+              <option value="6">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
+              <option value="7">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
+              <option value="8">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
+              <option value="9">Reducir la desigualdad en y entre los países</option>
+              <option value="10">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>
             </select>
           </div>
         </div>
@@ -252,13 +258,58 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       </div>
       <div class="espacio_seccion"></div>
       <div class="row scrollable-section" data-section-title="Mapa" id="mapa">
-          <div class="col s12">
-            <div style="width:100%;"><br><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil nacidos
-              vivos
-            </div>
+        <div class="col s12">
+          <div class="cuadro_titulo">
+              <h4>Razón de mortalidad materna</h4>
+              <li class="divider"></li>
+              <p>1990-2015</p>
+              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+          </div>
+
             <div id="map"></div>
-            <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b
-                class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b><br><b class="pie_cuadro">Fecha de actualización: Noviembre de 2016</b></div>
+            
+            <div class="pie_cuadro2">
+              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+            </div>
+      
+
+      <style>
+.cuadro_titulo{
+    background-color: #fff;
+    padding: 30px;
+    color: #083362;
+}
+
+.cuadro_titulo p{
+    font-size: 20px;
+    font-weight: 100;
+    margin: 0px;
+}
+
+.cuadro_titulo span{
+      font-size: 14px;
+    font-weight: 300;
+}
+
+.cuadro_titulo .divider {
+    background-color: #fff;
+}
+
+.pie_cuadro2{
+  background-color: #fff;
+  color: #083362;
+  padding: 20px;
+}
+.pie_cuadro2 div{
+  margin-top:6px; 
+  font-weight: 100;
+  font-size: initial;
+}
+</style>
+
+
             <!-- <div id="map"></div> -->
             <div class="row" id="footmap">
 	            <div id="anios" class="col s8">
@@ -279,9 +330,18 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <h3 class="fuerte t_principal">Evolución del indicador en el tiempo</h3>
           <li class="divider"></li>
           <br><br>
-          <div style="width:100%;"><b>Razón de mortalidad materna</b><br><b>1990-2015</b><br>Defunciones de mujeres por cada 100 mil  nacidos vivos</div>
+               <div class="cuadro_titulo">
+              <h4>Razón de mortalidad materna</h4>
+              <li class="divider"></li>
+              <p>1990-2015</p>
+              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+          </div>
           <div id="chart2"></div>
-          <div style="width:100%;"><b class="pie_cuadro">Nota: A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</b><br><b class="pie_cuadro">Fuente: SS. Dirección General de Información en Salud (DGIS)</b><br><b class="pie_cuadro">Fecha de actualización: Noviembre de 2016</b></div>
+          <div class="pie_cuadro2">
+              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+            </div>
           <div class="col s4" style="margin-top: 40px;">
             <div class="col s1 line_pro"></div>
             <div class="col s6">
@@ -431,10 +491,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
-              <li class="fuerte t_sm">Calendario de actualizaciones</li>
-              <li class="fuerte t_sm">Exportación masiva</li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+             <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+            <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
+            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -592,6 +652,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="entidad2.json"></script>
     <!-- <script type="text/javascript" src="estados_indicador3.js"></script> -->
     <script type="text/javascript" src="variable.js"></script>
+    <script type="text/javascript" src="appExplora.js"></script>
     <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script>
 
@@ -608,7 +669,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   var normal,fondo,todo;
     $(document).ready(function()
     {
-
       var lupa =  false;
       $('#buscar').click(function(){
         if(lupa){
@@ -1213,8 +1273,8 @@ function busqueda_anio(cadena)
         });
 
 
-        function cambio_anio(cadena, i)
-        {
+        function cambio_anio(cadena, i){
+
           for(var j=1;j<=7;j++)
           {
             $('#anio_'+j).removeClass('active_anio');
@@ -1258,7 +1318,14 @@ function busqueda_anio(cadena)
           function getColoR(number)
           {
     	    return brew.getColorInRange(number);
-    	  }
+    	     }
+
+
+
+
+
+
+
 
           function style(feature) {
     	    var res=String(getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi))).split(",");
@@ -1550,9 +1617,29 @@ function busqueda_anio(cadena)
             });
 
           }
-
-
         });
+    </script>
+    <script type="text/javascript">
+          $(document).ready(function() {
+
+                $("#obj_name").on('change', function() {
+                      var indicador = $(this).val();
+                      if(indicador == 27 ){
+                        getIndicador(indicador, 99);
+                        alert('Cambia estado'+ indicador);
+                      }
+                      else{
+                        getIndicador(indicador, 87);  
+                        alert('Cambia estado'+ indicador);
+                      }
+                      
+                      // alert('Cambia estado');
+                      // $("#map").load(location.href + " #map");
+                      // alert('Cambia Mapa' + $(this).val());
+                  });
+            
+          });
+        
     </script>
 
   </body>

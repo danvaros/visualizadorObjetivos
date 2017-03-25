@@ -171,7 +171,7 @@ border-bottom-width: 0px !important;
 
    </head>
   <body>
-    <!-- menu -->
+   <!-- menu -->
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -179,16 +179,22 @@ border-bottom-width: 0px !important;
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
-            <li>
+            <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
-              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" />
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li>
-            <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="padd responsive-img tooltipped" src="img/search.png" alt="" /></a> </li>
-            <li> <a id="buscar"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class="padd responsive-img tooltipped" src="img/search.png" alt="" /></a> </li>
+              <li class="tamps">
+              <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
+                  alt="" /></a>
+            </li>
+            <li class="tamps">
+              <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
+                  alt="" /></a>
+            </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="objetivos.html">Indicadores</a></li>
@@ -200,7 +206,7 @@ border-bottom-width: 0px !important;
         </div>
       </nav>
     </div>
-    <!-- menu -->
+<!-- menu -->
 
 
     <div class="container">
@@ -497,7 +503,6 @@ border-bottom-width: 0px !important;
 
       </div>
     </div>
-
 <!-- footer -->
     <footer class="page-footer id">
       <div class="container">
@@ -523,9 +528,9 @@ border-bottom-width: 0px !important;
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
-              <li class="fuerte t_sm">Calendario de actualizaciones</li>
-              <li class="fuerte t_sm">Exportación masiva</li>
-              <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
+            <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
+            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
           <div class="col l3 s12" style="display:inline;">
@@ -552,6 +557,7 @@ border-bottom-width: 0px !important;
   <script src="classybrew/build/classybrew.min.js"></script>
   <script type="text/javascript">
 	$(document).ready(function() {
+    
       var lupa =  false;
       $('#buscar').click(function(){
         if(lupa){
@@ -571,7 +577,7 @@ border-bottom-width: 0px !important;
 
       	$('select').material_select();
 
-        $('.region').hide();
+        
         $('#municipio').change(function(){
           if($(this).val() != 0){
             $('.region').show();
