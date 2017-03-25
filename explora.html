@@ -218,18 +218,18 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
         <div class="col s5" style="display: flex;">
           <div class="input-field col s12 caja_s">
-            <select>
-              <option value="" disabled selected>Elige una opción</option>
-              <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
-              <option value="2" selected>Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
+            <select id="obj_name">
+              <option value="-1" disabled selected>Elige una opción</option>
+              <option value="27">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
+              <option value="26" selected>Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
               <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
-              <option value="1">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
-              <option value="1">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
-              <option value="1">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
-              <option value="1">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
-              <option value="1">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
-              <option value="2">Reducir la desigualdad en y entre los países</option>
-              <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>
+              <option value="4">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
+              <option value="5">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
+              <option value="6">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
+              <option value="7">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
+              <option value="8">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
+              <option value="9">Reducir la desigualdad en y entre los países</option>
+              <option value="10">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>
             </select>
           </div>
         </div>
@@ -652,6 +652,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="entidad2.json"></script>
     <!-- <script type="text/javascript" src="estados_indicador3.js"></script> -->
     <script type="text/javascript" src="variable.js"></script>
+    <script type="text/javascript" src="appExplora.js"></script>
     <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script>
 
@@ -668,7 +669,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   var normal,fondo,todo;
     $(document).ready(function()
     {
-
       var lupa =  false;
       $('#buscar').click(function(){
         if(lupa){
@@ -1273,8 +1273,8 @@ function busqueda_anio(cadena)
         });
 
 
-        function cambio_anio(cadena, i)
-        {
+        function cambio_anio(cadena, i){
+
           for(var j=1;j<=7;j++)
           {
             $('#anio_'+j).removeClass('active_anio');
@@ -1318,7 +1318,14 @@ function busqueda_anio(cadena)
           function getColoR(number)
           {
     	    return brew.getColorInRange(number);
-    	  }
+    	     }
+
+
+
+
+
+
+
 
           function style(feature) {
     	    var res=String(getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi))).split(",");
@@ -1610,9 +1617,29 @@ function busqueda_anio(cadena)
             });
 
           }
-
-
         });
+    </script>
+    <script type="text/javascript">
+          $(document).ready(function() {
+
+                $("#obj_name").on('change', function() {
+                      var indicador = $(this).val();
+                      if(indicador == 27 ){
+                        getIndicador(indicador, 99);
+                        alert('Cambia estado'+ indicador);
+                      }
+                      else{
+                        getIndicador(indicador, 87);  
+                        alert('Cambia estado'+ indicador);
+                      }
+                      
+                      // alert('Cambia estado');
+                      // $("#map").load(location.href + " #map");
+                      // alert('Cambia Mapa' + $(this).val());
+                  });
+            
+          });
+        
     </script>
 
   </body>
