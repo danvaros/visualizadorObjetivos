@@ -267,13 +267,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           </div>
 
             <div id="map"></div>
-            
+
             <div class="pie_cuadro2">
               <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
-      
+
 
       <style>
 .cuadro_titulo{
@@ -303,7 +303,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   padding: 20px;
 }
 .pie_cuadro2 div{
-  margin-top:6px; 
+  margin-top:6px;
   font-weight: 100;
   font-size: initial;
 }
@@ -1005,8 +1005,6 @@ function busqueda_anio(cadena)
       };
 
 
-
-
       info.update = function (props) {
 	     //this._div = L.DomUtil.create('div', 'infos');
 	     $('.infos').removeClass('hide');
@@ -1089,7 +1087,7 @@ function busqueda_anio(cadena)
 	     if(locked == false)
 	     {
 */
-		     geojson.resetStyle(e.target);
+		   geojson.resetStyle(e.target);
 			 info.update();
 // 	 	 }
       }
@@ -1627,19 +1625,27 @@ function busqueda_anio(cadena)
                       if(indicador == 27 ){
                         getIndicador(indicador, 99);
                         alert('Cambia estado'+ indicador);
+                        cambio_anio('2015-01-01',1);
+                        chart2.load({
+                          columns: estados
+                        });
                       }
                       else{
-                        getIndicador(indicador, 87);  
+                        getIndicador(indicador, 87);
                         alert('Cambia estado'+ indicador);
+                        cambio_anio('2015-01-01',1);
+                        chart2.load({
+                          columns: estados
+                        });
                       }
-                      
+
                       // alert('Cambia estado');
                       // $("#map").load(location.href + " #map");
                       // alert('Cambia Mapa' + $(this).val());
                   });
-            
+
           });
-        
+
     </script>
 
   </body>
