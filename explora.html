@@ -240,9 +240,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
         <div class="col s5" style="display: flex;">
             <div class="input-field col s12 caja_s">
-            <select>
-              <option value="" disabled selected>Elige una opcion</option>
-              <option value="0" selected>Razón de mortalidad materna</option>
+            <select id="indicadores">
+              <!-- <option value="" disabled selected>Elige una opcion</option> -->
+              <option value="-1" selected>Selecciona un Objetivo</option>
+              <!-- <option value="0">Razón de mortalidad materna</option>
               <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
               <option value="2">Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
               <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
@@ -252,8 +253,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               <option value="1">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
               <option value="1">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
               <option value="2">Reducir la desigualdad en y entre los países</option>
-              <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>				    </select>
+              <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option> -->
+            </select>
           </div>
+        </div>
+        <div class="col s5 offset-s2" style="display: flex;">
+          <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top" style="width: 250px;" id ="hacer_llamada" onclick="llamar_api()">Ir</a>
         </div>
       </div>
       <div class="espacio_seccion"></div>
@@ -665,6 +670,90 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript" src="http://canvg.github.io/canvg/StackBlur.js"></script>
   <script type="text/javascript" src="http://canvg.github.io/canvg/canvg.js"></script>
   <script type="text/javascript" src="lib/html2canvas.js"></script>
+  <script type="text/javascript">
+        var objeto;
+        $(document).ready(function()
+        {
+          llamada(2,3);
+          $("#obj_name").html('<option value="-1">Selecciona un Objetivo</option>');
+          for(var i=0;i<objeto.length;i++)
+          {
+            $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+          }
+          $("#obj_name").on('change', function()
+          {
+            var indicador = $(this).val().split(".")[0];
+            console.log("entro",indicador);
+            console.log("Meta",objeto[indicador-1].Meta.length);
+            $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
+            for(var i=0;i<objeto[indicador-1].Meta.length;i++)
+            {
+              console.log("Meta adentro",objeto[indicador-1].Meta.length);
+              for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
+              {
+                $("#indicadores").append('<option value="'+objeto[indicador-1].Meta[i].Indicador[j].ClaveInd_arb+'">'+objeto[indicador-1].Meta[i].Indicador[j].Descrip_des+'</option>');
+              }
+            }
+            $('select').material_select();
+          });
+          $("#indicadores").on('change', function()
+          {
+            var indicador = $(this).val().split(".")[0];
+            console.log("entro",indicador);
+          });
+          // $("#obj_name").on('change', function()
+          // {
+          //       var indicador = $(this).val();
+          //       if(indicador == 27 )
+          //       {
+          //         getIndicador(indicador, 99);
+          //         alert('Cambia estado'+ indicador);
+          //         cambio_anio('2015-01-01',1);
+          //         chart2.load({
+          //           columns: estados
+          //         });
+          //       }
+          //       else
+          //       {
+          //         getIndicador(indicador, 87);
+          //         alert('Cambia estado'+ indicador);
+          //         cambio_anio('2015-01-01',1);
+          //         chart2.load({
+          //           columns: estados
+          //         });
+          //       }
+          //   });
+        });
+
+        function llamada(indicador, ser){
+          var url = 'https://operativos.inegi.org.mx/datos/api/Tematica/Todos';
+          //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
+          var parametros =  {"PIdioma":"ES"}
+          //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
+
+            $.ajax({
+              type: 'POST',
+              url: url,
+              data: parametros,
+              success: function( data, textStatus, jqxhr ) {
+                 console.log(data);
+                 objeto=data;
+              },
+              async:false
+            });
+        }
+
+        function llamar_api()
+        {
+            console.log("indi",$("#indicadores").val(),"objetivo",$("#obj_name").val());
+            getSerie($("#indicadores").val());
+            cambio_anio('2015-01-01',1);
+             chart2.load({
+               columns: estados
+             });
+        }
+
+  </script>
   <script type="text/javascript">
   var normal,fondo,todo;
     $(document).ready(function()
@@ -1272,7 +1361,8 @@ function busqueda_anio(cadena)
 
 
         function cambio_anio(cadena, i){
-
+          console.log(document.getElementsByTagName("g"));
+          document.getElementsByTagName("g")[0].innerHTML=" ";
           for(var j=1;j<=7;j++)
           {
             $('#anio_'+j).removeClass('active_anio');
@@ -1315,15 +1405,8 @@ function busqueda_anio(cadena)
 
           function getColoR(number)
           {
-    	    return brew.getColorInRange(number);
-    	     }
-
-
-
-
-
-
-
+    	      return brew.getColorInRange(number);
+    	    }
 
           function style(feature) {
     	    var res=String(getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi))).split(",");
@@ -1616,36 +1699,6 @@ function busqueda_anio(cadena)
 
           }
         });
-    </script>
-    <script type="text/javascript">
-          $(document).ready(function() {
-
-                $("#obj_name").on('change', function() {
-                      var indicador = $(this).val();
-                      if(indicador == 27 ){
-                        getIndicador(indicador, 99);
-                        alert('Cambia estado'+ indicador);
-                        cambio_anio('2015-01-01',1);
-                        chart2.load({
-                          columns: estados
-                        });
-                      }
-                      else{
-                        getIndicador(indicador, 87);
-                        alert('Cambia estado'+ indicador);
-                        cambio_anio('2015-01-01',1);
-                        chart2.load({
-                          columns: estados
-                        });
-                      }
-
-                      // alert('Cambia estado');
-                      // $("#map").load(location.href + " #map");
-                      // alert('Cambia Mapa' + $(this).val());
-                  });
-
-          });
-
     </script>
 
   </body>
