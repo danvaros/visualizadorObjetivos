@@ -47,7 +47,7 @@ function getIndicador(indicador,ser){
 			console.log(data.Series[0].Coberturas);
 			console.log(data.Series[0].Coberturas.length);
 
-      if(data.Series[0].Coberturas.length != 34)
+      if(data.Series[0].Coberturas.length  < 32 )
       {
         alert("La llamada no contiene valores para todos los estados");
       }
