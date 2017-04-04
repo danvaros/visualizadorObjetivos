@@ -264,7 +264,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       <div class="espacio_seccion"></div>
       <div class="row scrollable-section" data-section-title="Mapa" id="mapa">
         <div class="col s12">
-          <div class="cuadro_titulo">
+          <div class="cuadro_titulo" id="headmap">
               <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
               <p>1990-2015</p>
@@ -273,7 +273,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
             <div id="map"></div>
 
-            <div class="pie_cuadro2">
+            <div class="pie_cuadro2" id="footmapdatos">
               <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
@@ -788,8 +788,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       $('#agregacion').on('change', function (e)
       {
           if(this.value == 1){
+            $('#headmap').slideToggle("slow");
+            $('#footmapdatos').slideToggle("slow");
             $('#footmap').slideToggle("slow");
-            $('#mapa').slideToggle("slow");
+            $('#map').slideToggle("slow");
             $('#datosEstatal').slideToggle();
             $('#datosNacional').slideToggle();
             nacional =  true ;
@@ -797,6 +799,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           else{
             if(nacional)
             {
+              $('#headmap').slideToggle("slow");
+              $('#footmapdatos').slideToggle("slow");
               $('#footmap').slideToggle("slow");
               $('#map').slideToggle("slow");
               $('#datosEstatal').slideToggle( );
