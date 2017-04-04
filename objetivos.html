@@ -464,7 +464,6 @@
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}
       //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
-        
         $.ajax({
           type: 'POST',
           url: url,
@@ -493,7 +492,7 @@
                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';
             for (var k = 0; k < datos[i].Meta[j].Indicador.length; k++) {
                     contenido = contenido + '<a href="indicadores.html?'+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
-                   '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="Significado de la etiqueta">Global</a> &nbsp;&nbsp; ' +
+                   '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="Significado de la etiqueta"> Global</a> &nbsp;&nbsp; ' +
                    '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="Significado de la etiqueta">&nbsp;&nbsp;N&nbsp;&nbsp;</a>'+
                    '<br>';
             }
