@@ -17,14 +17,18 @@ var estados = [];
 	// 	console.log('------------------------------------- nuevo arreglo  --------------------');
 	// 	console.log(data.Series);
 	// });
-
-
-
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("?");
+  console.log(vars[0]);
+  var PCveInd = vars[0];
+  var Codigo_ind = '';
+  var Descrip_ind = '';
 
 $.ajax({
   type: 'POST',
-  url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie",
-  data: {'PCveInd':'27','PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer':'99', 'PIdioma':'ES'},
+  url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
+  data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
   success: function( data, textStatus, jqxhr ) {
   		//alert( "Exito" );
 		console.log(data);
@@ -34,11 +38,14 @@ $.ajax({
 		console.log(data.Series[0].Coberturas);
 		console.log(data.Series[0].Coberturas.length);
 
-		
+		Codigo_ind 	=	data.Codigo_ind;
+  		Descrip_ind = 	data.Descrip_ind;
+
+
 		var temporal = [];
 		temporal.push('Entidad');
 		for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
-		temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
+			temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
 		}
 		estados.push(temporal);
 		
@@ -58,7 +65,11 @@ $.ajax({
 		console.log(codigo_indicador);
 		var descripcion = data.Descrip_ind;
 		console.log(descripcion);
-
+		
+		$('.Codigo_ind').html(Codigo_ind);
+		$('.Descrip_ind').html(Descrip_ind);
+		alert(Descrip_ind);
+		
 		//inicio =  1;
 		setTimeout(function(){$('#preloader').fadeOut('slow',function(){$(this).remove();});},3000);
   },
