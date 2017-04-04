@@ -112,6 +112,36 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   color: #15b5f0;
 }
 
+ #loader {
+      display: block;
+      background: #fff;
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
+
+    #loader p {
+      display: block;
+      width: 300px;
+      height: 30px;
+      font-size: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+
+     #loader p #tex{
+      width: 300px;
+    }
+
+
 </style>
 
 
@@ -124,8 +154,18 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
+       <span id="loader" style="display:none">
+    <p><img src="img/logorueda.gif" alt="Cargando..." style="padding-left: 45%"></p>
+    <br>
+    <p style="color:#333; padding-top: 100px; ">Cargando información</p>
+  </span>
+    <script>
+       $('#loader').show();
+    </script>
+
   </head>
   <body>
+ 
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -736,7 +776,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               url: url,
               data: parametros,
               success: function( data, textStatus, jqxhr ) {
-                 console.log(data);
+                 console.log(".-----",data);
                  objeto=data;
               },
               async:false
@@ -745,9 +785,19 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
         function llamar_api()
         {
+            $('#loader').show();
             console.log("indi",$("#indicadores").val(),"objetivo",$("#obj_name").val());
             getSerie($("#indicadores").val());
             cambio_anio('2015-01-01',1);
+             chart2.load({
+               columns: estados
+             });
+        }
+
+
+        function llamar_api_2(){
+          getSerie(26);
+           cambio_anio('2015-01-01',1);
              chart2.load({
                columns: estados
              });

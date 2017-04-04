@@ -30,7 +30,11 @@
 
 
   <script src='funcionesApi.js'></script>
-  <span id="loader" style="display:none"><p><img src="img/logorueda.gif" alt="Cargando..."></p></span>
+  <span id="loader" style="display:none">
+    <p><img src="img/logorueda.gif" alt="Cargando..." style="padding-left: 45%"></p>
+    <br>
+    <p style="color:#333; padding-top: 100px; ">Cargando información</p>
+  </span>
   <script type="text/javascript">
     //$(window).load(function(){
       $('#loader').show();
@@ -57,7 +61,7 @@
 
     #loader p {
       display: block;
-      width: 100px;
+      width: 300px;
       height: 30px;
       font-size: 30px;
       position: absolute;
@@ -66,6 +70,10 @@
       bottom: 0;
       right: 0;
       margin: auto;
+    }
+
+     #loader p #tex{
+      width: 300px;
     }
   </style>
 
