@@ -29,9 +29,50 @@
         .borde_b{
           border-bottom: solid 1px #afaaaa;
         }
+           #loader {
+      display: block;
+      background: #fff;
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
+
+    #loader p {
+      display: block;
+      width: 300px;
+      height: 30px;
+      font-size: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+
+     #loader p #tex{
+      width: 300px;
+    }
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+
+    <span id="loader">
+    <p><img src="img/logorueda.gif" alt="Cargando..." style="padding-left: 45%"></p>
+    <br>
+    <p style="color:#333; padding-top: 100px; ">Cargando información</p>
+  </span>
+<script>
+  
+$('#loader').show();
+</script>
+
+
   </head>
   <body>
     <!-- menu -->
@@ -390,6 +431,8 @@
           success: function( data, textStatus, jqxhr ) {
              console.log(data);
              ponObjetivos(data);
+
+              $('#loader').delay(2000).fadeOut("slow");
           },
           async:false
         });
@@ -420,7 +463,7 @@
         if(datos[i].Meta.length > 2){
           contenido = contenido +    '<div class="row fond link_less">' +
                                         '<div class="col s12">'+
-                                          '<p style="text-align:right !important;"><a class="fond mensaje" href="#id_17" onclick="show_less()">Ver menos</a></p>'+
+                                          '<p style="text-align:right !important;"><a class="fond mensaje" href="#objetivoId'+(i+1)+'" onclick="show_less()">Ver menos</a></p>'+
                                         '</div>'+
                                       '</div>';
         }
@@ -498,7 +541,6 @@
        visibles = true;
        $('.mensaje').html('Ver menos');
       }
-      
     }
 
     function esconder() {
