@@ -1,6 +1,6 @@
 var estados = [];
 
- getIndicador(26,87);
+getIndicador(26,87);
 
  function getSerie(indicador)
  {
