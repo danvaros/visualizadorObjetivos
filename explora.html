@@ -302,6 +302,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
       <div class="espacio_seccion"></div>
+      <div class="hide">Ocurrio un Error al hacer la llamada</div>
       <div class="row scrollable-section" data-section-title="Mapa" id="mapa">
         <div class="col s12">
           <div class="cuadro_titulo" id="headmap" >
@@ -719,24 +720,62 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           console.log('al inicio',$('#tit_map_des').html());
           llamada(2,3);
           $("#obj_name").html('<option value="-1">Selecciona un Objetivo</option>');
+          console.log('---------------------------- obj -------------------------');
+          console.log(objeto);
           for(var i=0;i<objeto.length;i++)
           {
             $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
           }
           $("#obj_name").on('change', function()
           {
-            var indicador = $(this).val().split(".")[0];
-            console.log("entro",indicador);
-            console.log("Meta",objeto[indicador-1].Meta.length);
-            $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
-            for(var i=0;i<objeto[indicador-1].Meta.length;i++)
+            if($('#agregacion').val() ==  1)
             {
-              console.log("Meta adentro",objeto[indicador-1].Meta.length);
-              for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
+              var indicador = $(this).val().split(".")[0];
+
+              console.log("entro",indicador);
+              console.log("Meta",objeto[indicador-1].Meta.length);
+              $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
+              for(var i=0;i<objeto[indicador-1].Meta.length;i++)
               {
-                $("#indicadores").append('<option value="'+objeto[indicador-1].Meta[i].Indicador[j].ClaveInd_arb+'">'+objeto[indicador-1].Meta[i].Indicador[j].Descrip_des+'</option>');
+                console.log("Meta adentro",objeto[indicador-1].Meta.length);
+
+
+                for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
+                {
+                  console.log('--------------------------  que onda  dice mari nacional-------------');
+                    console.log(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg);
+
+                  if($.trim(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg) == 'N'){
+                    $("#indicadores").append('<option value="'+objeto[indicador-1].Meta[i].Indicador[j].ClaveInd_arb+'">'+objeto[indicador-1].Meta[i].Indicador[j].Descrip_des+'</option>');
+                   
+                  }
+                }
               }
             }
+            else{
+              var indicador = $(this).val().split(".")[0];
+
+              console.log("entro",indicador);
+              console.log("Meta",objeto[indicador-1].Meta.length);
+              $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
+              for(var i=0;i<objeto[indicador-1].Meta.length;i++)
+              {
+                console.log("Meta adentro",objeto[indicador-1].Meta.length);
+                for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
+                {
+                   console.log('--------------------------  que onda  dice mari estatal-------------');
+                    console.log(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg);
+
+                  if($.trim(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg) == 'NE' || $.trim(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg) == 'NEE'){
+                    $("#indicadores").append('<option value="'+objeto[indicador-1].Meta[i].Indicador[j].ClaveInd_arb+'">'+objeto[indicador-1].Meta[i].Indicador[j].Descrip_des+'</option>');
+                  }
+                }
+              }
+            }
+
+            
+            
+            
             $('select').material_select();
           });
           $("#indicadores").on('change', function()
@@ -803,7 +842,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               data: parametros,
               success: function( data, textStatus, jqxhr ) {
                  console.log(".-----",data);
-                 objeto=data;
+                 objeto = data;
               },
               async:false
             });

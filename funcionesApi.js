@@ -1,31 +1,3 @@
-	function getSerie(indicador)
-	 {
-	   $.ajax({
-	   	  type: 'POST',
-	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave",
-	   	  data: {'PCveInd':indicador, 'PIdioma':'ES'},
-	   	  success: function( data, textStatus, jqxhr )
-	      {
-	        console.log("llamada",indicador);
-	        console.log("Serie:::::",data.Serie[0].ClaveSer_ats);
-	        getIndicador(indicador,data.Serie[0].ClaveSer_ats);
-	      },
-	      error:function( data, textStatus, responseJSON )
-	      {
-	        console.log(data);
-	        console.log(data.responseJSON.Message);
-	        if(data.responseJSON.Message == "La clave de indicador NO existe")
-	        {
-	          alert("El indicador no contiene valores\nPor favor selecciona otro");
-	        }
-	        if(data.responseJSON.Message == "An error has occurred.")
-	        {
-	          alert("Ocurrio un error al solicitar los datos");
-	        }
-	      },
-	  	  async:false
-	    });
-	 }
 
 	function getIndicadorSer(indicador,ser){
 		var estados = [];

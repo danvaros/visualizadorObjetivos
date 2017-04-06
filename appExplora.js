@@ -20,11 +20,14 @@ getIndicador(26,87);
         console.log(data.responseJSON.Message);
         if(data.responseJSON.Message == "La clave de indicador NO existe")
         {
-          alert("El indicador no contiene valores\nPor favor selecciona otro");
+          console.log('El indicador no contiene valores\nPor favor selecciona otro');
+          $('#loader').delay(2000).fadeOut("slow");
         }
         if(data.responseJSON.Message == "An error has occurred.")
         {
-          alert("Ocurrio un error al solicitar los datos");
+          //alert("Ocurrio un error al solicitar los datos");
+          console.log('Ocurrio un error al solicitar los datos');
+          $('#loader').delay(2000).fadeOut("slow");
         }
       },
   	  async:false
@@ -49,7 +52,9 @@ function getIndicador(indicador,ser){
 
       if(data.Series[0].Coberturas.length  < 32 )
       {
-        alert("La llamada no contiene valores para todos los estados");
+        //alert("La llamada no contiene valores para todos los estados");
+        console.log('La llamada no contiene valores para todos los estados');
+        $('#loader').delay(2000).fadeOut("slow");
       }
       else
       {
