@@ -1,6 +1,6 @@
 var estados = [];
 
- getIndicador(26,87);
+getIndicador(26,87);
 
  function getSerie(indicador)
  {
@@ -78,7 +78,8 @@ function getIndicador(indicador,ser){
     			console.log(descripcion);
 
     			//inicio =  1;
-    			setTimeout(function(){$('#preloader').fadeOut('slow',function(){$(this).remove();});},3000);
+    			//setTimeout(function(){$('#preloader').fadeOut('slow',function(){$(this).remove();});},3000);
+          $('#loader').delay(2000).fadeOut("slow");
       }
 	  },
 	  async:false

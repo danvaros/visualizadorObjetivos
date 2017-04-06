@@ -112,6 +112,36 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   color: #15b5f0;
 }
 
+ #loader {
+      display: block;
+      background: #fff;
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
+
+    #loader p {
+      display: block;
+      width: 300px;
+      height: 30px;
+      font-size: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+
+     #loader p #tex{
+      width: 300px;
+    }
+
+
 </style>
 
 
@@ -124,8 +154,18 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
+       <span id="loader" style="display:none">
+    <p><img src="img/logorueda.gif" alt="Cargando..." style="padding-left: 45%"></p>
+    <br>
+    <p style="color:#333; padding-top: 100px; ">Cargando información</p>
+  </span>
+    <script>
+       $('#loader').show();
+    </script>
+
   </head>
   <body>
+ 
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -264,7 +304,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       <div class="espacio_seccion"></div>
       <div class="row scrollable-section" data-section-title="Mapa" id="mapa">
         <div class="col s12">
-          <div class="cuadro_titulo">
+          <div class="cuadro_titulo" id="headmap" >
               <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
               <p>1990-2015</p>
@@ -273,7 +313,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
             <div id="map"></div>
 
-            <div class="pie_cuadro2">
+            <div class="pie_cuadro2" id="footmapdatos" >
               <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
@@ -670,6 +710,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript" src="http://canvg.github.io/canvg/StackBlur.js"></script>
   <script type="text/javascript" src="http://canvg.github.io/canvg/canvg.js"></script>
   <script type="text/javascript" src="lib/html2canvas.js"></script>
+  <script src='funcionesApi.js'></script>
   <script type="text/javascript">
         var objeto;
         $(document).ready(function()
@@ -723,7 +764,30 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           //         });
           //       }
           //   });
+          titulos(26);
         });
+
+
+
+        function titulos(indicador){
+              var atributos = getAtributos(indicador);
+              
+              var titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' + 
+                              '<li class="divider"></li> ' +
+                              '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                              '<span> '+ atributos.Descrip_uni +'</span>';
+
+
+              var pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div> ')+
+                        ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
+                        ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                        ' </div>';
+                              
+              $('.pie_cuadro2').html(pie);
+              $('.cuadro_titulo').html(titulo);
+            }
+
+
 
         function llamada(indicador, ser){
           var url = 'https://operativos.inegi.org.mx/datos/api/Tematica/Todos';
@@ -736,7 +800,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               url: url,
               data: parametros,
               success: function( data, textStatus, jqxhr ) {
-                 console.log(data);
+                 console.log(".-----",data);
                  objeto=data;
               },
               async:false
@@ -745,9 +809,20 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
         function llamar_api()
         {
+            $('#loader').show();
             console.log("indi",$("#indicadores").val(),"objetivo",$("#obj_name").val());
+            titulos($("#indicadores").val());
             getSerie($("#indicadores").val());
             cambio_anio('2015-01-01',1);
+             chart2.load({
+               columns: estados
+             });
+        }
+
+
+        function llamar_api_2(){
+          getSerie(26);
+           cambio_anio('2015-01-01',1);
              chart2.load({
                columns: estados
              });
@@ -788,6 +863,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       $('#agregacion').on('change', function (e)
       {
           if(this.value == 1){
+            $('#headmap').slideToggle("slow");
+            $('#footmapdatos').slideToggle("slow");
             $('#footmap').slideToggle("slow");
             $('#map').slideToggle("slow");
             $('#datosEstatal').slideToggle();
@@ -797,6 +874,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           else{
             if(nacional)
             {
+              $('#headmap').slideToggle("slow");
+              $('#footmapdatos').slideToggle("slow");
               $('#footmap').slideToggle("slow");
               $('#map').slideToggle("slow");
               $('#datosEstatal').slideToggle( );
