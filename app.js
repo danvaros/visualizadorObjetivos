@@ -68,7 +68,7 @@ $.ajax({
 
 		$('.Codigo_ind').html(Codigo_ind);
 		$('.Descrip_ind').html(Descrip_ind);
-		alert(Descrip_ind);
+		//alert(Descrip_ind);
 
 		//inicio =  1;
 		setTimeout(function(){$('#preloader').fadeOut('slow',function(){$(this).remove();});},3000);

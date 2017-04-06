@@ -30,26 +30,23 @@
 
 
   <script src='funcionesApi.js'></script>
-  <span id="loader" style="display:none">
-    <p><img src="img/logorueda.gif" alt="Cargando..." style="padding-left: 45%"></p>
-    <br>
+  <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando información</p>
   </span>
   <script type="text/javascript">
     //$(window).load(function(){
-      $('#loader').show();
     if (sessionStorage.getItem('dontLoad') == null) {
       //$('#loader').show();
       // $('#loader').delay(2000).fadeOut("slow");
       // sessionStorage.setItem('dontLoad', 'true');
       // console.log(sessionStorage.getItem('dontLoad'));
-    }
+      }
       //});
   </script>
   <style media="screen">
     #loader {
       display: block;
-      background: #fff;
+      background: rgba(62, 60, 60, 0.6);
       color: white;
       width: 100%;
       height: 100%;
@@ -61,15 +58,16 @@
 
     #loader p {
       display: block;
-      width: 300px;
-      height: 30px;
+      /*width: 300px;
+      height: 30px;*/
       font-size: 30px;
       position: absolute;
-      top: 0;
-      left: 0;
+      top: -100px;
+      /*left: 0;*/
       bottom: 0;
-      right: 0;
-      margin: auto;
+      right: 15px;
+      color: #fff !important
+      /*margin: auto;*/
     }
 
      #loader p #tex{
@@ -650,7 +648,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		     <a href="#">
+		     <a href="estado_ejemplo.html">
 			     <div class="col l2 m3">
 			     <img src="img/edos/bajacalifornia.png" alt="" />
 			     </div>
@@ -660,7 +658,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/bajacaliforniasur.png" alt="" />
 		      </div>
@@ -670,7 +668,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/campeche.png" alt="" />
 		      </div>
@@ -684,7 +682,7 @@
       <div class="row">
 
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/chiapas.png" alt="" />
 		      </div>
@@ -694,7 +692,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/chihuahua.png" alt="" />
 		      </div>
@@ -704,7 +702,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/ciudaddemexico.png" alt="" />
 		      </div>
@@ -714,7 +712,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/coahuila.png" alt="" />
 		      </div>
@@ -727,7 +725,7 @@
       <div class="row">
 
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/colima.png" alt="" />
 		      </div>
@@ -737,7 +735,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/durango.png" alt="" />
 		      </div>
@@ -747,7 +745,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/estadodemexico.png" alt="" />
 		      </div>
@@ -757,7 +755,7 @@
 		      </a>
 	      </div>
 	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
+		      <a href="estado_ejemplo.html">
 			      <div class="col l2 m3">
 		      <img src="img/edos/guanajuato.png" alt="" />
 		      </div>
@@ -771,7 +769,7 @@
 
 
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/guerrero.png" alt="" />
           </div>
@@ -781,7 +779,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/hidalgo.png" alt="" />
           </div>
@@ -791,7 +789,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/jalisco.png" alt="" />
           </div>
@@ -802,7 +800,7 @@
         </div>
 
         <div class="col l3 m3 s12 btn-edo">
-         <a href="#">
+         <a href="estado_ejemplo.html">
            <div class="col l2 m3">
           <img src="img/edos/michoacan.png" alt="" />
           </div>
@@ -815,7 +813,7 @@
       <div class="row">
 
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/morelos.png" alt="" />
           </div>
@@ -825,7 +823,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/nayarit.png" alt="" />
           </div>
@@ -835,7 +833,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/nuevoleon.png" alt="" />
           </div>
@@ -845,7 +843,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/oaxaca.png" alt="" />
           </div>
@@ -858,7 +856,7 @@
       <div class="row">
 
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/puebla.png" alt="" />
           </div>
@@ -868,7 +866,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/queretaro.png" alt="" />
           </div>
@@ -878,7 +876,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/quintanaroo.png" alt="" />
           </div>
@@ -888,7 +886,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/sanluispotosi.png" alt="" />
           </div>
@@ -901,7 +899,7 @@
       <div class="row">
 
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/sinaloa.png" alt="" />
           </div>
@@ -911,7 +909,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/sonora.png" alt="" />
           </div>
@@ -921,7 +919,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/tabasco.png" alt="" />
           </div>
@@ -931,7 +929,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/tamaulipas.png" alt="" />
           </div>
@@ -944,7 +942,7 @@
       <div class="row">
 
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/tlaxcala.png" alt="" />
           </div>
@@ -954,7 +952,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-         <a href="#">
+         <a href="estado_ejemplo.html">
            <div class="col l2 m3">
           <img src="img/edos/veracruz.png" alt="" />
           </div>
@@ -964,7 +962,7 @@
          </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-          <a href="#">
+          <a href="estado_ejemplo.html">
             <div class="col l2 m3">
           <img src="img/edos/yucatan.png" alt="" />
           </div>
@@ -974,7 +972,7 @@
           </a>
         </div>
         <div class="col l3 m3 s12 btn-edo">
-         <a href="#">
+         <a href="estado_ejemplo.html">
            <div class="col l2 m3">
           <img src="img/edos/zacatecas.png" alt="" />
           </div>
