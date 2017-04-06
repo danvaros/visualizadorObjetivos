@@ -79,6 +79,7 @@ function getIndicador(indicador,ser){
 
     			//inicio =  1;
     			//setTimeout(function(){$('#preloader').fadeOut('slow',function(){$(this).remove();});},3000);
+          console.log("ya termino las llamadas");
           $('#loader').delay(2000).fadeOut("slow");
       }
 	  },
