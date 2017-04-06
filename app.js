@@ -2,9 +2,9 @@
 // 	$('#preloader').fadeOut('slow',function(){$(this).remove();});
 // });
 
-
+var titulo_des_graf=" ";
 var inicio = 0;
-var estados = [];	
+var estados = [];
 
 	// $.post( "https://operativos.inegi.org.mx/datos/api/tematica/PorClave", {'PIdioma': 'ES','PClave': 'O'}, function( data, textStatus, jqxhr ) {
 	// 	alert( "Exito" );
@@ -48,7 +48,7 @@ $.ajax({
 			temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
 		}
 		estados.push(temporal);
-		
+
 
 		for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
 			var temporal = [];
@@ -65,16 +65,40 @@ $.ajax({
 		console.log(codigo_indicador);
 		var descripcion = data.Descrip_ind;
 		console.log(descripcion);
-		
+
 		$('.Codigo_ind').html(Codigo_ind);
 		$('.Descrip_ind').html(Descrip_ind);
 		alert(Descrip_ind);
-		
+
 		//inicio =  1;
 		setTimeout(function(){$('#preloader').fadeOut('slow',function(){$(this).remove();});},3000);
   },
   async:false
 });
+
+
+$(document).ready(function()
+{
+  titulos(PCveInd);
+});
+
+function titulos(indicador){
+      var atributos = getAtributos(indicador);
+      var titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' +
+                      '<li class="divider"></li> ' +
+                      '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                      '<span> '+ atributos.Descrip_uni +'</span>';
+
+
+      var pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div> ')+
+                ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
+                ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                ' </div>';
+
+      $('.pie_cuadro2').html(pie);
+      $('.cuadro_titulo').html(titulo);
+      titulo_des_graf = atributos.DescripInd_des;
+    }
 
 
 
@@ -90,14 +114,14 @@ $.ajax({
 	// 	console.log(data.Series[0].Coberturas);
 	// 	console.log(data.Series[0].Coberturas.length);
 
-		
+
 	// 	var temporal = [];
 	// 	temporal.push('Entidad');
 	// 	for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
 	// 	temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
 	// 	}
 	// 	estados.push(temporal);
-		
+
 
 	// 	for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
 	// 		var temporal = [];
@@ -122,14 +146,14 @@ $.ajax({
 // clave serie 87
 
 
- 
+
 
 //  Filtro (Acción PorClaveSerie):
 // Body: {“PCveInd”:”{CVEIND}”, “PAnoIni”:”{AÑOINI}”, “PAnoFin”:”{AÑOFIN}”,  “POrden”:”{ORDEN}”, “PIdioma”:”{IDIOMA}”}
 /*
-$.post( "https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie", 
+$.post( "https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie",
 			{'PCveSer':'87', 'PIdioma':'ES'}, function( data, textStatus, jqxhr ) {
-		
+
 	});
 
 	*/
