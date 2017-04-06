@@ -46,7 +46,7 @@
   padding: 20px;
 }
 .pie_cuadro2 div{
-  margin-top:6px; 
+  margin-top:6px;
   font-weight: 100;
   font-size: initial;
 }
@@ -738,6 +738,7 @@
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
     <script type="text/javascript" src="entidad2.json"></script>
+    <script src='funcionesApi.js'></script>
     <script src="app.js"></script>
     <!-- <script type="text/javascript" src="variable.js"></script> -->
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
@@ -1113,7 +1114,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">Razón de <br>mortalidad materna</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  gen(estados[props.cve]);
   	     }
@@ -1837,7 +1838,7 @@ function sortFunction(a, b) {
 
       $(document).ready(function() {
 
-        
+
     // alert('termino de esperar');
 
         $("#sti").hide();
