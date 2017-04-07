@@ -257,16 +257,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <div class="input-field col s12 caja_s">
             <select id="obj_name">
               <option value="-1" disabled selected>Elige una opción</option>
-              <option value="27">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
-              <option value="26" selected>Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
-              <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
-              <option value="4">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
-              <option value="5">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
-              <option value="6">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
-              <option value="7">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
-              <option value="8">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
-              <option value="9">Reducir la desigualdad en y entre los países</option>
-              <option value="10">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option>
             </select>
           </div>
         </div>
@@ -279,18 +269,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <div class="input-field col s12 caja_s">
             <select id="indicadores">
               <!-- <option value="" disabled selected>Elige una opcion</option> -->
-              <option value="-1" selected>Selecciona un Objetivo</option>
-              <!-- <option value="0">Razón de mortalidad materna</option>
-              <option value="1">Poner fin a la pobreza en todas sus formas en todo el mundo</option>
-              <option value="2">Garantizar una vida sana y promover el bienestar para todos en todas las edades</option>
-              <option value="3">Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos</option>
-              <option value="1">Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas</option>
-              <option value="1">Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos</option>
-              <option value="1">Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos</option>
-              <option value="1">Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos</option>
-              <option value="1">Construir infraestructura resiliente, promover la industrialización inclusiva y sostenible y fomentar la innovación</option>
-              <option value="2">Reducir la desigualdad en y entre los países</option>
-              <option value="2">Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles</option> -->
+              <option value="-1" selected>Selecciona un Indicador</option>
             </select>
           </div>
         </div>
@@ -717,12 +696,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           console.log('al inicio',$('#tit_map_des').html());
           llamada(2,3);
           $("#obj_name").html('<option value="-1">Selecciona un Objetivo</option>');
-          console.log('---------------------------- obj -------------------------');
-          console.log(objeto);
-          for(var i=0;i<objeto.length;i++)
-          {
-            $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
-          }
+
           $("#obj_name").on('change', function()
           {
             if($('#agregacion').val() ==  1)
@@ -748,7 +722,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                   }
                 }
               }
-            }
+            }else if($('#agregacion').val() ==  -1){/*no hacemos nada */}
             else{
               var indicador = $(this).val().split(".")[0];
 
@@ -803,6 +777,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           //       }
           //   });
           titulos(26);
+          //activamos el change
+          $('#agregacion').trigger('change');
         });
 
 
@@ -897,7 +873,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
       console.log($('#objetivos').find('li.active').children().children());
 
-
       $('#agregacion').on('change', function (e)
       {
           if(this.value == 1){
@@ -921,8 +896,78 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               nacional =  false ;
             }
           }
+          //borramos el select 
+          $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');  
+          console.log('------------------------ nuevo ---------------------');
+            for(var i=0;i<objeto.length;i++)
+            {
+              var bkr =  false;
+              for (var j = 0; j < objeto[i].Meta.length; j++) {
+                for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
+                  if($('#agregacion').val() ==  1 ){
+                    if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
+                      console.log('nacional '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg); 
+                      $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+                      bkr =  true;
+                      break;
+                    }
+                  }else{
+                    if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NE' || $.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NEE'){
+                      console.log('estatal '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
+                      $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+                      bkr =  true;
+                      break;
+                    }
+                  }
+                }
+                if(bkr){
+                  break;
+                }
+              }
+            }
+
+            $('select').material_select();
       });
-  });
+
+    inicial();
+  });// fin segundo document ready
+
+
+      function inicial()
+      {
+        //borramos el select 
+        $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');  
+        console.log('------------------------ nuevo ---------------------');
+          for(var i=0;i<objeto.length;i++)
+          {
+            var bkr =  false;
+            for (var j = 0; j < objeto[i].Meta.length; j++) {
+              for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
+                if($('#agregacion').val() ==  1 ){
+                  if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
+                    console.log('nacional '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg); 
+                    $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+                    bkr =  true;
+                    break;
+                  }
+                }else{
+                  if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NE' || $.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NEE'){
+                    console.log('estatal '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
+                    $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+                    bkr =  true;
+                    break;
+                  }
+                }
+              }
+              if(bkr){
+                break;
+              }
+            }
+          }
+          $('select').material_select();
+      }
+
+
 
     </script>
       <script type="text/javascript">
