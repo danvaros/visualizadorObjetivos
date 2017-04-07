@@ -134,8 +134,7 @@
       max-width: 32%;
     }
 
-    #preloader { position: fixed; left: 0; top: 0; z-index: 99999999999999999; width: 100%; height: 100%; overflow: visible; 
-              background: rgba(62, 60, 60, 0.6) url('http://files.mimoymima.com/images/loading.gif') no-repeat center center; }
+   
 
 
 
@@ -167,6 +166,35 @@
     table.dataTable thead .sorting_asc {
       background-image: url(DataTables-1.10.13/images/sort_asc.png);
       background-color: #fff;
+    }
+
+
+             #loader {
+      display: block;
+      background: rgba(62, 60, 60, 0.6);
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
+
+  #loader p {
+      display: block;
+      font-size: 40px;
+      position: absolute;
+      top: -70px;
+      /* left: 0; */
+      bottom: 0;
+      right: 15px;
+      color: #fff !important /*margin: auto;*/;
+      text-align: right;
+    }
+
+     #loader p #tex{
+      width: 300px;
     }
 
     </style>
@@ -227,7 +255,9 @@
     <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="DataTables/dataTables.fixedColumns.js"></script>
   </head>
-  <div id="preloader"><div style="position: absolute;right: 50%;top:50%;transform:translate(-50%,-50%);z-index: 999999999999999999999999">Cargando...</div></div>
+  <span id="loader">
+    <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
+  </span>
   <body>
 
 
