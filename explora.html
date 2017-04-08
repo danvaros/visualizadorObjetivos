@@ -142,7 +142,9 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
 
 </style>
-
+  <span id="loader">
+    <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
+  </span>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
@@ -153,11 +155,9 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
-       <span id="loader" style="display:none">
-    <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
-  </span>
+ 
     <script>
-       $('#loader').show();
+       
     </script>
 
   </head>
@@ -244,7 +244,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               <option value="" disabled selected>Elige una opción</option>
               <option value="1">Nacional</option>
               <option value="2" selected>Estatal</option>
-              <option value="3">Municipal</option>
             </select>
           </div>
         </div>
@@ -273,9 +272,9 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             </select>
           </div>
         </div>
-        <div class="col s5 offset-s2" style="display: flex;">
+       <!--  <div class="col s5 offset-s2" style="display: flex;">
           <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top" style="width: 250px;" id ="hacer_llamada" onclick="llamar_api()">Ir</a>
-        </div>
+        </div> -->
       </div>
       <div class="espacio_seccion"></div>
       <div class="hide">Ocurrio un Error al hacer la llamada</div>
@@ -348,7 +347,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       </div>
       <br><br><br>
       <div class="row scrollable-section" data-section-title="Gráfica" id="grafica">
-        <div class="col s12">
+        <div class="col s12" id="grafica_c">
           <h3 class="fuerte t_principal">Evolución del indicador en el tiempo</h3>
           <li class="divider"></li>
           <br><br>
@@ -777,8 +776,11 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           //       }
           //   });
           titulos(26);
+
+          $('#indicadores').on('change',function(){
+            llamar_api();
+          });
           //activamos el change
-          $('#agregacion').trigger('change');
         });
 
 
@@ -876,6 +878,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       $('#agregacion').on('change', function (e)
       {
           if(this.value == 1){
+            $('#grafica_c').slideToggle("slow");
             $('#headmap').slideToggle("slow");
             $('#footmapdatos').slideToggle("slow");
             $('#footmap').slideToggle("slow");
@@ -887,6 +890,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           else{
             if(nacional)
             {
+              $('#grafica_c').slideToggle("slow");
               $('#headmap').slideToggle("slow");
               $('#footmapdatos').slideToggle("slow");
               $('#footmap').slideToggle("slow");
