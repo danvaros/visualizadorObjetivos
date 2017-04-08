@@ -1715,8 +1715,22 @@ border-bottom-right-radius: 15px;
     // llamamos a la funcion que genera la variable que alimenta el mapa
     //se llama fuera del documento por que queremos que se ejecute antes de mostrar el docuemento
     var estados = [];
-    estados = getIndicadorSer(26,87);
+    var numero = getRandomInt(0,9);
+    var res = numero % 2;
+    console.log('-------------------random --------------');
+    console.log(res);
+    console.log(numero);
+    if(res == 0){
+      estados = getIndicadorSer(27,89);  
+    }else{
+      estados = getIndicadorSer(26,87);  
+    }
+    
 
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
 
     // docuemento general
     $(document).ready(function () {
