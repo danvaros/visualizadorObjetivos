@@ -2793,6 +2793,7 @@ var estados =[
     </script> -->
   <script>
                             function gen(props) {
+                              console.log("0000001111111111",props);
                               var chart = c3.generate({
                                 bindto: '.info',
                                 padding: {
@@ -2805,7 +2806,7 @@ var estados =[
                                   columns: [
                                     ['Entidad', '2016-01-01', '2015-01-01', '2014-01-01', '2013-01-01', '2012-01-01', '2011-01-01', '2010-01-01', '2009-01-01', '2008-01-01', '2007-01-01', '2006-01-01', '2005-01-01', '2004-01-01', '2003-01-01', '2002-01-01', '2001-01-01', '2000-01-01', '1999-01-01', '1998-01-01', '1997-01-01', '1996-01-01', '1995-01-01', '1994-01-01', '1993-01-01', '1992-01-01', '1991-01-01', '1990-01-01'],
                                     props,
-                                    ['Estados Unidos Mexicanos','34.6','38.9','38.2','42.3','43','44.1','53.3','49.2','48.1','50.9','54','53.5','56.5','56.1','68.9','74.1','80','78.2','77.6','79.7','80.5','82.4','84','85.4','86.3','88.7'],
+                                    busqueda_mexico(),
                                   ]
 
 
@@ -2889,12 +2890,34 @@ var estados =[
 
 
     function busqueda_estado(cadena) {
+      console.log("super log",cadena,estados);
       for (var i = 0; i < estados.length; i++) {
         if (estados[i][0] == cadena) {
-          console.log(cadena);
+          console.log(cadena,estados[i][1],i);
           return parseFloat(estados[i][1]);
         }
       }
+    }
+
+    function busqueda_indice(cadena) {
+      for (var i = 0; i < estados.length; i++) {
+        if (estados[i][0] == cadena) {
+          return parseFloat(i);
+        }
+      }
+    }
+
+    function busqueda_mexico() {
+      var arrray=[];
+      for (var i = 0; i < estados.length; i++) {
+        if (estados[i][0] == "Estados Unidos Mexicanos") {
+          for(var j=0;j< estados[i].length;j++)
+          {
+            arrray.push(estados[i][j])
+          }
+        }
+      }
+      return arrray;
     }
 
     function busqueda_estado_posicion(cadena, posicion) {
@@ -2961,9 +2984,12 @@ var estados =[
       $('.info2').removeClass('hide');
       if (props != undefined) {
         this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_ent + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%; font-size: 18px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
-        console.log("aca ---> ",estados[props.cve]);
-        gen(estados[props.cve]);
+        console.log("aca ---> ",estados[busqueda_indice(props.nom_ent)]);
+        // gen(estados[props.cve]);
+        gen(estados[busqueda_indice(props.nom_ent)]);
+        console.log("busqueda",busqueda_mexico());
         console.log("--->>>>>>>",titulo_des_graf);
+        console.log("props",props);
       }
       /*
               this._div.innerHTML = '<div><h4>Aguas tratadas</h4>' +  (props ?
@@ -3026,6 +3052,7 @@ var estados =[
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
           layer.bringToFront();
         }
+        console.log("over",layer.feature.properties);
         info.update(layer.feature.properties);
       }
     }

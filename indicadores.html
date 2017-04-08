@@ -134,7 +134,7 @@
       max-width: 32%;
     }
 
-   
+
 
 
 
@@ -1022,9 +1022,9 @@ function sortFunction(a, b) {
           data: {
               x: 'x',
           columns: [
-            ['x','1990-01-01','1991-01-01','1992-01-01','1993-01-01','1994-01-01','1995-01-01','1996-01-01','1997-01-01','1998-01-01','1999-01-01','2000-01-01','2001-01-01','2002-01-01','2003-01-01','2004-01-01','2005-01-01','2006-01-01','2007-01-01','2008-01-01','2009-01-01','2010-01-01','2011-01-01','2012-01-01','2013-01-01','2014-01-01','2015-01-01','2016-01-01'],
+            ['x','2016-01-01','2015-01-01','2014-01-01','2013-01-01','2012-01-01','2011-01-01','2010-01-01','2009-01-01','2008-01-01','2007-01-01','2006-01-01','2005-01-01','2004-01-01','2003-01-01','2002-01-01','2001-01-01','2000-01-01','1999-01-01','1998-01-01','1997-01-01','1996-01-01','1995-01-01','1994-01-01','1993-01-01','1992-01-01','1991-01-01','1990-01-01'],
               props,
-              ['Estados Unidos Mexicanos','88.7','86.3','85.4','84','82.4','80.5','79.7','77.6','78.2','80','74.1','68.9','56.1','56.5','53.5','54','50.9','48.1','49.2','53.3','44.1','43','42.3','38.2','38.9','34.6']
+              busqueda_mexico()
             ]
 
 
@@ -1078,6 +1078,27 @@ function sortFunction(a, b) {
         return parseFloat(estados[i][1]);
       }
     }
+  }
+
+  function busqueda_indice(cadena) {
+    for (var i = 0; i < estados.length; i++) {
+      if (estados[i][0] == cadena) {
+        return parseFloat(i);
+      }
+    }
+  }
+
+  function busqueda_mexico() {
+    var arrray=[];
+    for (var i = 0; i < estados.length; i++) {
+      if (estados[i][0] == "Estados Unidos Mexicanos") {
+        for(var j=0;j< estados[i].length;j++)
+        {
+          arrray.push(estados[i][j])
+        }
+      }
+    }
+    return arrray;
   }
 
   function busqueda_estado_posicion(cadena,posicion)
@@ -1147,7 +1168,8 @@ function sortFunction(a, b) {
   	     {
   		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
-  			  gen(estados[props.cve]);
+  			  // gen(estados[props.cve]);
+          gen(estados[busqueda_indice(props.nom_ent)]);
   	     }
         };
         info.addTo(map);
@@ -1675,7 +1697,8 @@ function sortFunction(a, b) {
        {
           this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
-        gen(estados[props.cve]);
+        // gen(estados[props.cve]);
+        gen(estados[busqueda_indice(props.nom_ent)]);
        }
       };
       info.addTo(map);
