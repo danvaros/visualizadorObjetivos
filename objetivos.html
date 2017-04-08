@@ -65,7 +65,7 @@
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
   </span>
 <script>
-  
+
 $('#loader').show();
 </script>
 
@@ -167,7 +167,7 @@ $('#loader').show();
                <span class="marg_obj t_sm gris">4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="educacion_calidad_cont">
-               
+
              </div>
            </li>
            <li id="objetivo5">
@@ -266,7 +266,7 @@ $('#loader').show();
                <span class="marg_obj t_sm gris">13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="accion_clima_cont">
-               
+
              </div>
            </li>
            <li id="objetivo14">
@@ -310,7 +310,7 @@ $('#loader').show();
                <span class="marg_obj t_sm gris">17- Alianzas para lograr objetivos<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="alianzas_objetivos_cont">
-              ... 
+              ...
              </div>
            </li>
          </ul>
@@ -413,7 +413,7 @@ $('#loader').show();
       desplegar(objetivoId);
       console.log('entro');
     }
-    
+
     });
 
     function llamada(indicador, ser){
@@ -451,13 +451,12 @@ $('#loader').show();
                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';
             for (var k = 0; k < datos[i].Meta[j].Indicador.length; k++) {
 
-
-                    contenido = contenido + '<a href="indicadores.html?'+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
+                    contenido = contenido + '<a href="indicadores.html?indicador='+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
                    '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
                    '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'</a>'+
                    '<br>';
 
-// llamada que arroja todos los datos de todos los indicadores que tiene datos y lo que no tiene 
+// llamada que arroja todos los datos de todos los indicadores que tiene datos y lo que no tiene
 // var indicador =  datos[i].Meta[j].Indicador[k].ClaveInd_arb;
 //         console.log(indicador);
 //         console.log(datos[i].Meta[j].Indicador[k].Codigo_des);
@@ -467,10 +466,10 @@ $('#loader').show();
 //     url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
 //     data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
 //     success: function( data, textStatus, jqxhr ) {
-          
+
 //           console.log(data);
 //           console.log('-------------------------------________________------------');
-          
+
 //       },
 //     error: function(result) {
 //      console.error("Los errores", result.responseText);
@@ -488,7 +487,7 @@ $('#loader').show();
                                         '</div>'+
                                       '</div>';
         }
-        
+
 
             if(datos[i].Clave_arb == "ODS0010"){
               $('#fin_pobreza_cont').html(contenido);
@@ -552,13 +551,13 @@ $('#loader').show();
     function show_less()
     {
       if(visibles){
-        $('.ocultar').hide();  
+        $('.ocultar').hide();
         console.log('oculta');
         visibles = false;
         $('.mensaje').html('Ver más');
       }
       else{
-       $('.ocultar').show();   
+       $('.ocultar').show();
        console.log('muetra');
        visibles = true;
        $('.mensaje').html('Ver menos');
@@ -582,7 +581,7 @@ $('#loader').show();
     function desplegar(objetivoId)
     {
       $('#objetivo'+objetivoId+' > div').click();
-      window.location.href = '#objetivo'+ (objetivoId-1);  
+      window.location.href = '#objetivo'+ (objetivoId-1);
     }
 
     </script>

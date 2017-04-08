@@ -433,6 +433,7 @@
         </div>
       </div>
 
+
       <div id="mapas_hide">
         <div class="col s12">
           <div class="cuadro_titulo">
@@ -442,6 +443,7 @@
               <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
           </div>
           <div id="map"></div>
+          <div id="chart2"></div>
              <div class="pie_cuadro2">
               <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
@@ -461,7 +463,7 @@
         </div>
 
 
-      <div class="row">
+      <div class="row" id="grafs">
         <div class="col s10">
           <a id="ver_grafica" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
           <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
@@ -790,9 +792,93 @@
   var table2 = null;
   var table1  = null;
 
+  console.log(codigoDg.replace(/\s/g,''),"por aca");
+  if(codigoDg.replace(/\s/g,'') == 'N')
+  {
+    //$('.cuadro_titulo').remove();
+    $('#map').remove();
+    //$('.pie_cuadro2').remove();
+    $('#footmap').remove();
+    $('#grafs').remove();
+    $('#indicador-grafica').remove();
+    $('#indicador-panel').remove();
+    //$('#mapas_hide').remove();
+    console.log("hecho");
+    var chart2 = c3.generate({
+    bindto: '#chart2',
+    size: {
+          height: 500
+        },
+      data: {
+          x: 'Entidad',
+          columns: estados,
+      },
+      legend: {
+      show: false
+      },
+    padding: {
+          left: 40,
+          right: 30
+      },
+      point: {
+      show: true
+    },
+    color: {
+          pattern:['#f00']
+      },
+
+      axis : {
+          x : {
+              type : 'timeseries',
+              tick: {
+                  rotate:90,
+                  format: function (x) { return x.getFullYear(); }
+                //format: '%Y' // format string is also available for timeseries data
+              }
+          }
+      },tooltip: {
+          grouped: false, // Default true
+            format: {
+              title: function (d) { return d.name; },
+              value: function (value, ratio, id) {
+                (function ($) {
+                  if (id != "Estados Unidos Mexicanos") {
+                      $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+                      $( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+
+                      $( "svg g.c3-chart-line g.c3-circles-" +id.replace(/ /g,'-') + " circle" ).css('fill','#00aeef');
+                      $( "svg g.c3-chart-line path.c3-line-" +id.replace(/ /g,'-') ).css('stroke','#00aeef');
+
+                      $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
+                      $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+                      $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
+                      $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
+
+
+
+                  }
+                  else {
+                    $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+                    $( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+
+                    $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
+                    $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+
+                    $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
+                    $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
+                  }
+                }(jQuery));
+                  return commaSeparateNumber(Math.round(value*10)/10);
+              }
+  //            value: d3.format(',') // apply this format to both y and y2
+          }
+      },
+    });
+
+  }
+
   $(document).ready(function()
   {
-
 
     chart = c3.generate({
       legend: {
@@ -1491,6 +1577,7 @@ function sortFunction(a, b) {
                 $('#metadato-panel').hide();
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
+                $('#chart2').show();
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
@@ -1506,6 +1593,7 @@ function sortFunction(a, b) {
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
+                $('#chart2').hide();
                 $('#serie-panel').show();
                 if(table3 == null){
                   table3 = $('#miTabla3').DataTable( {
@@ -1535,6 +1623,7 @@ function sortFunction(a, b) {
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
+                $('#chart2').hide();
                 $('#serie-panel').hide();
                 $('#datos-panel').show();
                 $('#datos-panel-dos').show();
@@ -1551,6 +1640,7 @@ function sortFunction(a, b) {
                 $('#metadato-panel').show();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
+                $('#chart2').hide();
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
