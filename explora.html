@@ -718,7 +718,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
                   if($.trim(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg) == 'N'){
                     $("#indicadores").append('<option value="'+objeto[indicador-1].Meta[i].Indicador[j].ClaveInd_arb+'">'+objeto[indicador-1].Meta[i].Indicador[j].Descrip_des+'</option>');
-                   
+
                   }
                 }
               }
@@ -744,9 +744,9 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               }
             }
 
-            
-            
-            
+
+
+
             $('select').material_select();
           });
           $("#indicadores").on('change', function()
@@ -896,8 +896,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               nacional =  false ;
             }
           }
-          //borramos el select 
-          $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');  
+          //borramos el select
+          $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');
           console.log('------------------------ nuevo ---------------------');
             for(var i=0;i<objeto.length;i++)
             {
@@ -906,7 +906,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                 for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
                   if($('#agregacion').val() ==  1 ){
                     if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
-                      console.log('nacional '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg); 
+                      console.log('nacional '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
                       $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
                       bkr =  true;
                       break;
@@ -935,8 +935,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
       function inicial()
       {
-        //borramos el select 
-        $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');  
+        //borramos el select
+        $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');
         console.log('------------------------ nuevo ---------------------');
           for(var i=0;i<objeto.length;i++)
           {
@@ -945,7 +945,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
                 if($('#agregacion').val() ==  1 ){
                   if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
-                    console.log('nacional '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg); 
+                    console.log('nacional '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
                     $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
                     bkr =  true;
                     break;
@@ -1098,7 +1098,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 					columns: [
             ['Entidad','2016-01-01','2015-01-01','2014-01-01','2013-01-01','2012-01-01','2011-01-01','2010-01-01','2009-01-01','2008-01-01','2007-01-01','2006-01-01','2005-01-01','2004-01-01','2003-01-01','2002-01-01','2001-01-01','2000-01-01','1999-01-01','1998-01-01','1997-01-01','1996-01-01','1995-01-01','1994-01-01','1993-01-01','1992-01-01','1991-01-01','1990-01-01'],
 	            props,
-              ['Estados Unidos Mexicanos','34.6','38.9','38.2','42.3','43','44.1','53.3','49.2','48.1','50.9','54','53.5','56.5','56.1','68.9','74.1','80','78.2','77.6','79.7','80.5','82.4','84','85.4','86.3','88.7']
+              busqueda_mexico()
 		        ]
 
 
@@ -1193,6 +1193,27 @@ function busqueda_estado(cadena)
   }
 }
 
+function busqueda_indice(cadena) {
+  for (var i = 0; i < estados.length; i++) {
+    if (estados[i][0] == cadena) {
+      return parseFloat(i);
+    }
+  }
+}
+
+function busqueda_mexico() {
+  var arrray=[];
+  for (var i = 0; i < estados.length; i++) {
+    if (estados[i][0] == "Estados Unidos Mexicanos") {
+      for(var j=0;j< estados[i].length;j++)
+      {
+        arrray.push(estados[i][j])
+      }
+    }
+  }
+  return arrray;
+}
+
 function busqueda_estado_posicion(cadena,posicion)
 {
   for(var i=0;i<estados.length;i++)
@@ -1263,8 +1284,8 @@ function busqueda_anio(cadena)
 	     if(props != undefined)
 	     {
 		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
-
-			  gen(estados[props.cve]);
+          console.log("busqueda",estados[busqueda_indice(props.nom_ent)]);
+			  gen(estados[busqueda_indice(props.nom_ent)]);
 	     }
 /*
         this._div.innerHTML = '<div><h4>Aguas tratadas</h4>' +  (props ?
@@ -1554,7 +1575,8 @@ function busqueda_anio(cadena)
              console.log("Estado creo:---> ",props);
     		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div><div class="info"></div>';
 
-    			  gen(estados[props.cve]);
+    			  // gen(estados[props.cve]);
+            gen(estados[busqueda_indice(props.nom_ent)]);
     	     }
           };
           info.addTo(map);
