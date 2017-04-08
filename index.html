@@ -1712,21 +1712,28 @@ border-bottom-right-radius: 15px;
 
   <script type="text/javascript">
     var titulo_des_graf="Razón de Mortalidad Materna";
+
     // llamamos a la funcion que genera la variable que alimenta el mapa
     //se llama fuera del documento por que queremos que se ejecute antes de mostrar el docuemento
     var estados = [];
+    var atributos;
     var numero = getRandomInt(0,9);
     var res = numero % 2;
     console.log('-------------------random --------------');
     console.log(res);
     console.log(numero);
     if(res == 0){
-      estados = getIndicadorSer(27,89);  
+      estados = getIndicadorSer(27,89);
+      atributos = getAtributos(27);
     }else{
-      estados = getIndicadorSer(26,87);  
+      estados = getIndicadorSer(26,87);
+      atributos = getAtributos(26);
     }
-    
 
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
 
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
@@ -1737,7 +1744,7 @@ border-bottom-right-radius: 15px;
       $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
       $('.bullets-container').hide(); //oculta los bullets para que no se vean en la parte del header
 
-      var atributos = getAtributos(26);
+      // var atributos = getAtributos(27);
 
       var titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' +
                       '<li class="divider"></li> ' +
@@ -2983,7 +2990,7 @@ var estados =[
       $('.infos').removeClass('hide');
       $('.info2').removeClass('hide');
       if (props != undefined) {
-        this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_ent + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%; font-size: 18px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+        this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_ent + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%; font-size: 14px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
         console.log("aca ---> ",estados[busqueda_indice(props.nom_ent)]);
         // gen(estados[props.cve]);
         gen(estados[busqueda_indice(props.nom_ent)]);
