@@ -68,3 +68,69 @@
 
 	    return atributos;
 	}
+
+	//regresa todos los objetivos con todas las metas y todos los indicadores
+	function getIndicadores(){
+		var indicadores = [];
+		$.ajax({
+	   	  type: 'POST',
+	   	  url: "https://operativos.inegi.org.mx/datos/api/Tematica/todos",
+	   	  data: {'PIdioma':'ES'},
+	   	  success: function( data, textStatus, jqxhr )
+	      {
+	        indicadores = data;
+	      },
+	      error:function( data, textStatus, responseJSON )
+	      {
+	        console.log(data);
+	      },
+	  	  async:false
+	    });
+
+	    return indicadores;
+	}
+
+function getMetadatos(indicador){
+	var metadatos = [];
+		$.ajax({
+	   	  type: 'POST',
+	   	  url: "https://operativos.inegi.org.mx/datos/api/Metadato/PorClave",
+	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
+	   	  success: function( data, textStatus, jqxhr )
+	      {
+	        metadatos = data;
+	      },
+	      error:function( data, textStatus, responseJSON )
+	      {
+	        console.log(data);
+	      },
+	  	  async:false
+	    });
+
+	    return metadatos;
+}
+
+
+function getAtr(indicador){
+	var metadatos = [];
+		$.ajax({
+	   	  type: 'POST',
+	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave",
+	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
+	   	  success: function( data, textStatus, jqxhr )
+	      {
+	        metadatos = data;
+	      },
+	      error:function( data, textStatus, responseJSON )
+	      {
+	        console.log(data);
+	      },
+	  	  async:false
+	    });
+
+	    return metadatos;
+}
+
+
+
+	
