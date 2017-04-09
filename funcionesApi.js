@@ -112,14 +112,14 @@ function getMetadatos(indicador){
 
 
 function getAtr(indicador){
-	var metadatos = [];
+	var atr = [];
 		$.ajax({
 	   	  type: 'POST',
 	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave",
 	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
-	        metadatos = data;
+	        atr = data;
 	      },
 	      error:function( data, textStatus, responseJSON )
 	      {
@@ -128,7 +128,7 @@ function getAtr(indicador){
 	  	  async:false
 	    });
 
-	    return metadatos;
+	    return atr;
 }
 
 

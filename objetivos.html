@@ -450,34 +450,19 @@ $('#loader').show();
                   '<div class="col s11">'+
                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';
             for (var k = 0; k < datos[i].Meta[j].Indicador.length; k++) {
+              if(datos[i].Meta[j].Indicador[k].TieneValores){
+                contenido = contenido + '<a href="indicadores.html?'+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
+                '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
+                '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
+                '<br>';
+              }else{
+                contenido = contenido + datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +
+                '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
+                '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
+                '<br>';
+              }
 
-
-                    contenido = contenido + '<a href="indicadores.html?'+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
-                   '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
-                   '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'</a>'+
-                   '<br>';
-
-// llamada que arroja todos los datos de todos los indicadores que tiene datos y lo que no tiene 
-// var indicador =  datos[i].Meta[j].Indicador[k].ClaveInd_arb;
-//         console.log(indicador);
-//         console.log(datos[i].Meta[j].Indicador[k].Codigo_des);
-//         console.log('------------------------------- resultados de llamadas ------------');
-//   $.ajax({
-//     type: 'POST',
-//     url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
-//     data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
-//     success: function( data, textStatus, jqxhr ) {
-          
-//           console.log(data);
-//           console.log('-------------------------------________________------------');
-          
-//       },
-//     error: function(result) {
-//      console.error("Los errores", result.responseText);
-//    },
-//     async:false
-//   });
-
+                   
             }
             contenido = contenido +     '</p></div>'+'</div>';
         }

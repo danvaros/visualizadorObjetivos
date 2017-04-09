@@ -208,49 +208,6 @@
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
-
-
-
-<!--
-        function lee_json() {
-            $.getJSON("/Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(datos) {
-                alert("Dato: " + datos["dato"]);
-                $.each(datos["primos"], function(idx,primo) {
-                    alert("Numero primo: " + primo);
-                });
-            });
-        }
- -->
-<!--
-<script type="text/javascript">
-
-       $(document).ready(function () {
-           $("#boton1").click(function () {
-               // var cad = "Los libros en el archivo JSON son:<br />";
-               // var cadena = $.getJSON("Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function (data) {
-               //     for (l in data.libros.lib) {
-               //         cad += ("<br />" + data.libros.lib[l].libro + " de " +
-               //             data.libros.lib[l].autores[0] + ", " +
-               //             data.libros.lib[l].autores[1] + " y " +
-               //             data.libros.lib[l].autores[2] + "<br />Editorial: " +
-               //             data.libros.lib[l].editorial +
-               //             "<br />").replace("y undefined", "").replace(", undefined", "");
-               //      }
-               //     $("#texto").html(cad);
-               // })
-               $.getJSON("Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(json) {
-    console.log(json); // this will show the info it in firebug console
-});
-           })
-       });
-
-
-</script>
- -->
-
-
-
-
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
     <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="DataTables/dataTables.fixedColumns.js"></script>
@@ -259,8 +216,6 @@
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
   </span>
   <body>
-
-
 
     <!-- menu -->
     <div class="navbar-fixed">
@@ -389,48 +344,8 @@
         </div>
       </div>
 
-
       <div class="row card tablaPadding" id="metadato-panel">
-        <div class="col s12">
-          <table class="bordered">
-
-            <tbody>
-            <tr>
-              <th>Definición</th>
-              <td><!-- <p>Es la relación entre la matrícula de sexo femenino y la matrícula de sexo masculino en la educación media superior, correspondiente a un ciclo escolar.</p> -->
-              <p>Es el porcentaje de la piblación que en el año del calculo vive con menso del equivaliente a 1.25 dólares diarios a precio de 2005, según la paridad del poder adquisitivo.</p>
-              </td>
-            </tr>
-            <tr>
-              <th>Algoritmo</th>
-              <td>
-                  <img src="img/formula.png" alt="">
-                  <p>Significado de las siglas o abreviaturas:</p>
-                  PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>
-                  qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>
-                  nt: Número de personas
-              </td>
-            </tr>
-            <tr>
-              <th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:oritmo</th>
-              <td>
-            Instituto Nacional de Estadística y Geografía (INEGI). Índice Nacional de Precios al Consumidor.<br>
-            http://www.inigi.org.mx/est/contenidos/proyectos/inp/inoc.aspx<br>
-            Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL). Medición de la pobreza por ingresos.<br>
-            Banco Mundial (BM). Global Purchasing Power Paraties and Real Expenditures. 2005 International Comparison Program.<br>
-            http://www.worldbank.org/data/icp.<br>
-            Instituto Nacional de Estadística y Geografía (INEGI). Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 1992-2012<br>
-            y Banco de Información Económica (BIE). Serie de datos para PIB y Consumi Privado.<br>
-            Para entidad federativa: Instituto Nacional de Estadística y Geografía (INEGI). Módulo de condiciones<br>
-            Socioeconómicas de la ENIGH (MCS-ENIGH) 2008, 2010, 2012 y 2014.
-
-             </td>
-            </tr>
-            </tbody>
-          </table>
-          <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
-          Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
-        </div>
+        <div class="col s12" id="metadatosApi"></div>
       </div>
 
       <div id="mapas_hide">
@@ -639,19 +554,10 @@
           </div>
         </div>
       </div>
-
-
       </div>
-
-
-
     <div class="row">
-      <div class="col s5">
-        <p>Fecha de actualización: 11 de enero de 2016</p>
-        <p>Próxima fecha de actualización: Noviembre de 2016</p>
-      </div>
       <div class="col s4 offset-s3 right-align" >
-            <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
+        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
       </div>
     </div>
   </div>
@@ -792,8 +698,6 @@
 
   $(document).ready(function()
   {
-
-
     chart = c3.generate({
       legend: {
         show: false
@@ -899,8 +803,6 @@
           }
           }
       });//fin de grafica
-
-
     datosGrafica(2015);
 });
 
@@ -1868,15 +1770,8 @@ function sortFunction(a, b) {
     }
 
       $(document).ready(function() {
-
-
-    // alert('termino de esperar');
-
         $("#sti").hide();
-        console.log(isScrolledIntoView($("#bajo")));
-
         window.onload = function () {
-
           $('#buscar').click(function () {
             console.log("aca");
             if (lupa) {
@@ -1889,11 +1784,31 @@ function sortFunction(a, b) {
               lupa = true;
             }
           });
-
         }
 
-
+        armaMetadatos();
       });
+
+
+      function armaMetadatos(){
+        var tablaMeta =  '';
+        var metadatosArr =  getMetadatos(26);
+        console.log('---------------------- metadatos -----------------'); 
+        console.log(metadatosArr);
+
+        tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
+        '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
+        '<tr><th>Algoritmo</th><td><img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas</td></tr>'+
+        '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:oritmo</th><td>';
+
+        for (var i = 0; i < metadatosArr.Fuente.length; i++) {
+          tablaMeta = tablaMeta  +  metadatosArr.Fuente[i].Descrip_fue + '<br>';
+        }
+
+        tablaMeta = tablaMeta +  '</td></tr></tbody></table><p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+
+        $('#metadatosApi').html(tablaMeta);
+      }
     </script>
   </body>
 </html>
