@@ -75,6 +75,7 @@ $.ajax({
 
 		//inicio =  1;
 		$('#loader').delay(2000).fadeOut("slow");
+		titulos(PCveInd);
   },
   async:false
 });
@@ -90,16 +91,17 @@ $(document).ready(function()
 {
   titulos(PCveInd);
 });
-
+var titulo ;
+ var pie ;
 function titulos(indicador){
       var atributos = getAtributos(indicador);
-      var titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' +
+      titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' +
                       '<li class="divider"></li> ' +
                       '<p> '+ atributos.CobTemporal_ser +' </p>' +
                       '<span> '+ atributos.Descrip_uni +'</span>';
 
 
-      var pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div> ')+
+      pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div> ')+
                 ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                 ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                 ' </div>';

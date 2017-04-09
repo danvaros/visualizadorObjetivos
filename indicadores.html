@@ -1337,28 +1337,19 @@ function sortFunction(a, b) {
 
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var datos_doble = ' <div class="cuadro_titulo"> ' +
-              '<h4>Razón de mortalidad materna</h4>' +
-              '<li class="divider"></li>'+
-             ' <p>1990-2015</p>'+
-             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-          '</div>' +
-                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
-                            '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
+           
+var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+                  '</div>' +
+                  '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                  '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
 
-          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' +
-              '<h4>Razón de mortalidad materna</h4>' +
-              '<li class="divider"></li>'+
-             ' <p>1990-2015</p>'+
+          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
              ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
                             '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
-           var datos_doble_3 =  ' <div class="cuadro_titulo"> ' +
-              '<h4>Razón de mortalidad materna</h4>' +
-              '<li class="divider"></li>'+
-             ' <p>1990-2015</p>'+
+           var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
              ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
@@ -1432,24 +1423,15 @@ function sortFunction(a, b) {
              }
 
             datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+
-             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
-             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
-             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+            ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
                datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+
-             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
-             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
-             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+            ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
                datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+
-             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
-             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
-             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+            ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
             //  console.log(datos_doble);
