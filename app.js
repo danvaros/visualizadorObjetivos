@@ -19,9 +19,12 @@ var estados = [];
 	// });
   var query_string = {};
   var query = window.location.search.substring(1);
-  var vars = query.split("?");
-  console.log(vars[0]);
-  var PCveInd = vars[0];
+  // var vars = query.split("?");
+  var vars = getParameterByName("indicador");
+  console.log(vars);
+  var codigoDg = getParameterByName("codigo");
+  console.log(codigoDg);
+  var PCveInd = vars;
   var Codigo_ind = '';
   var Descrip_ind = '';
 
@@ -76,6 +79,12 @@ $.ajax({
   async:false
 });
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 $(document).ready(function()
 {
