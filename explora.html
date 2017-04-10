@@ -170,10 +170,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <!-- <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
+            <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
             <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
@@ -1080,8 +1080,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 				            }
 			            }(jQuery));
 		                return commaSeparateNumber(Math.round(value*10)/10);
-		            }
-		//            value: d3.format(',') // apply this format to both y and y2
+		            },
+		           value: d3.format(',.2f') // apply this format to both y and y2
 		        }
 		    },
 		});
@@ -1104,8 +1104,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 	            props,
               busqueda_mexico()
 		        ]
-
-
 			    },
 			    axis: {
 			        x: {
@@ -1117,7 +1115,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			        },
 			        y : {
 			            tick: {
-			                format: d3.format(".2s")
+			                format: d3.format(".2f")
 			            }
 			        }
 			    },
@@ -1138,8 +1136,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			        y: {
 			            show: true
 			        }
-			    }
-
+			    },
+       // value: d3.format(',.2f') // apply this format to both y and y2
 		});
 	}
   </script>
@@ -1287,7 +1285,7 @@ function busqueda_anio(cadena)
 	     $('.info2').removeClass('hide');
 	     if(props != undefined)
 	     {
-		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
           console.log("busqueda",estados[busqueda_indice(props.nom_ent)]);
 			  gen(estados[busqueda_indice(props.nom_ent)]);
 	     }
@@ -1577,7 +1575,7 @@ function busqueda_anio(cadena)
     	     if(props != undefined)
     	     {
              console.log("Estado creo:---> ",props);
-    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div><div class="info"></div>';
+    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div><div class="info"></div>';
 
     			  // gen(estados[props.cve]);
             gen(estados[busqueda_indice(props.nom_ent)]);

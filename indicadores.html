@@ -225,10 +225,10 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <!-- <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
+            <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
             <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;"   onfocusout="esconder()" />
@@ -254,7 +254,7 @@
     </div>
 <!-- menu -->
 <!-- // verde #299e33 -->
-    <div id="sti" style="background-color:#299e33; position:fixed; width:100%; height:77px; z-index: 9999; color: #fff;">
+    <div id="sti" style="background-color:#299e33; position:fixed; width:100%; height:110px; z-index: 9999; color: #fff;">
       <div class="container" style="margin-top: 0 !important;">
       <div class="row">
         <div class="col s2 center-align">
@@ -648,14 +648,14 @@
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <!-- <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li> -->
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-          <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+          <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
             <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
@@ -740,6 +740,11 @@
                   rotate:90,
                   format: function (x) { return x.getFullYear(); }
                 //format: '%Y' // format string is also available for timeseries data
+              },   
+              y : {
+                  tick: {
+                      format: d3.format(",.2f")
+                  }
               }
           }
       },tooltip: {
@@ -776,7 +781,6 @@
                 }(jQuery));
                   return commaSeparateNumber(Math.round(value*10)/10);
               }
-  //            value: d3.format(',') // apply this format to both y and y2
           }
       },
     });
@@ -848,6 +852,11 @@
                     return chart.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
                 }
             },
+
+           
+           
+          
+
           axis: {
     rotated: true,
     x: {
@@ -887,8 +896,13 @@
                   'Estados Unidos Mexicanos',
                 ],
           height: 40,
-          }
-          }
+          } ,
+           y : {
+                  tick: {
+                      format: d3.format(".2f")
+                  }
+              }
+          },
       });//fin de grafica
     datosGrafica(2015);
 });
@@ -1028,7 +1042,7 @@ function sortFunction(a, b) {
               },
               y : {
                   tick: {
-                      format: d3.format(".2s")
+                      format: d3.format(".2f")
                   }
               }
           },
@@ -1155,7 +1169,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           gen(estados[busqueda_indice(props.nom_ent)]);
@@ -1393,20 +1407,20 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == estados[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble += varia;
                   datos_doble_2 += varia;
                   datos_doble_3 += varia;
                 }
                 else if(j == estados[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ estados[i][j] +'</td>';
-                    datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
-                    datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ estados[i][j] +'</td>';
-                  datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
-                  datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
+                  datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                }
 
@@ -1670,7 +1684,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         gen(estados[busqueda_indice(props.nom_ent)]);
