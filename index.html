@@ -293,10 +293,10 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_stick nab">
             <li class="tam t_sm"><a href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <li class="tam t_sm"><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <!-- <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a href="compara.html">Compara</a></li>
+            <!-- <li class="tam t_sm"><a href="compara.html">Compara</a></li> -->
             <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;"
@@ -625,7 +625,7 @@
       </div>
 
 
-
+<!-- 
  <div class="row scrollable-section" data-section-title="Desglose geográfico" style="padding-top: 25px;">
 
           <h3 class="fuerte t_principal">Indicadores con desglose geográfico</h3>
@@ -986,7 +986,7 @@
 
 	  <a class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top" href="estados.html">Indicadores con desglose geográfico</a>
                 </div>
-</div>
+</div> -->
 <style>
 
   .btn-edo{
@@ -1024,7 +1024,7 @@ border-bottom-right-radius: 15px;
 
 
 
-
+<!-- 
       <div class="row scrollable-section" data-section-title="Conoce cómo vamos">
         <div class="col s12">
           <h3 class="fuerte t_principal">C&Oacute;MO VAMOS</h3>
@@ -1424,7 +1424,7 @@ border-bottom-right-radius: 15px;
             <img style="background: #e80000"> Meta no cumplida
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row scrollable-section" data-section-title="Explora los datos">
         <div class="col s12">
@@ -1659,15 +1659,15 @@ border-bottom-right-radius: 15px;
         <div class="col l3 s12">
           <ul class="fuerte">
             <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-            <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-            <li><a class="fuerte t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <!-- <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+            <li><a class="fuerte t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
 
           </ul>
         </div>
         <div class="col l3 s12">
           <ul class="fuerte">
-            <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+            <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
             <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
@@ -2814,8 +2814,6 @@ var estados =[
                                     props,
                                     busqueda_mexico(),
                                   ]
-
-
                                 },
                                 axis: {
                                   x: {
@@ -2827,7 +2825,7 @@ var estados =[
                                   },
                                   y: {
                                     tick: {
-                                      format: d3.format(".2s")
+                                      format: d3.format(".2f")
                                     }
                                   }
                                 },
@@ -2989,7 +2987,7 @@ var estados =[
       $('.infos').removeClass('hide');
       $('.info2').removeClass('hide');
       if (props != undefined) {
-        this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_ent + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 57%; left: 35%; font-size: 15px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+        this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_ent + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 57%; left: 35%; font-size: 15px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
         console.log("aca ---> ",estados[busqueda_indice(props.nom_ent)]);
         // gen(estados[props.cve]);
         gen(estados[busqueda_indice(props.nom_ent)]);
