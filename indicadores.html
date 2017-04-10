@@ -364,6 +364,10 @@
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
+            <div class="col s4"  id="chart2btn">
+                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar gráfica</a>
+            </div>
+         
           <div class="row" id="footmap">
             <div id="anios" class="col s8 center-align">
               <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
@@ -559,7 +563,7 @@
       </div>
     <div class="row">
       <div class="col s4 offset-s3 right-align" >
-        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
+        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar gráfica</a>
       </div>
     </div>
   </div>
@@ -697,7 +701,7 @@
   var table3 = null;
   var table2 = null;
   var table1  = null;
-
+  
   console.log(codigoDg.replace(/\s/g,''),"por aca");
   if(codigoDg.replace(/\s/g,'') == 'N')
   {
@@ -785,10 +789,13 @@
       },
     });
 
+
+    $('#chart2btn').show();
   }
 
   $(document).ready(function()
   {
+    $('#chart2btn').hide();
     chart = c3.generate({
       legend: {
         show: false
@@ -1477,6 +1484,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
                 $('#chart2').show();
+                
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
@@ -1909,13 +1917,13 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
         tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
         '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
         '<tr><th>Algoritmo</th><td><img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas</td></tr>'+
-        '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:oritmo</th><td>';
+        '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:</th><td>';
 
         for (var i = 0; i < metadatosArr.Fuente.length; i++) {
           tablaMeta = tablaMeta  +  metadatosArr.Fuente[i].Descrip_fue + '<br>';
         }
 
-        tablaMeta = tablaMeta +  '</td></tr></tbody></table><p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>';
+        tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>';
 
         $('#metadatosApi').html(tablaMeta);
       }

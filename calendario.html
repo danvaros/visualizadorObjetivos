@@ -16,6 +16,7 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
 
     <!-- Load c3.css -->
     <link href="lib/c3.css" rel="stylesheet" type="text/css">
@@ -206,7 +207,7 @@
                   <br>
             </div>
           
-            <div class="col s2">
+ <!--            <div class="col s2">
                 <p>Ordenado por: </p>
             </div>
             <div class="col s4 caja_s">
@@ -216,16 +217,16 @@
                 <option value="2" class="left circle">Municipio 2</option>
                 <option value="3" class="left circle">Municipio 3</option>
               </select>
-            </div>
+            </div> -->
             <div class="col s12">
-                <table class="bordered" style="color: #8c8c8c;">
+                <table class="bordered" style="color: #8c8c8c;" id="example">
                     <thead>
-                        <tr>
-                            <th>Número</th>
-                            <th>Clasificación</th>
-                            <th>Indicador</th>
+                        <tr style="background-color:#ccc; ">
+                            <th class="center">Número</th>
+                            <th class="center">Clasificación</th>
+                            <th class="center">Indicador</th>
                             <th class="center">Institución<br>responsable</th>
-                            <th class="center">Proxima<br>actualizacion</th>
+                            <th class="center">Próxima<br>actualización</th>
                         </tr>
                     </thead>
                     <tbody id="cuerpo">
@@ -279,6 +280,7 @@
     <!-- footer -->
 
 <script type="text/javascript" src="funcionesApi.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
 
   $(document).ready(function() {
@@ -286,6 +288,7 @@
 
     var indicadores = getIndicadores();
     var contenido =  '';
+    var indice = 1;
     console.log(indicadores);
     for (var i = 0; i < indicadores.length; i++) {
         for (var j = 0; j < indicadores[i].Meta.length; j++) {
@@ -295,14 +298,15 @@
                     var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
                     var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
                     //Descrip_cla
-                    console.log(atr.Descrip_cla);
+                    //console.log(atr.Descrip_cla);
                     contenido =  contenido +'<tr>'+
-                                            '<th>1</th>'+
-                                            '<th>Lista oficial de ONU</th>'+
-                                            '<th>'+indicadores[i].Meta[j].Indicador[k].Codigo_des+' ' +indicadores[i].Meta[j].Indicador[k].Descrip_des+'</th>'+
-                                            '<th>'+metadatos.InsResp[0].Abrevia_ins+'</th>'+
-                                            '<th>'+ metadatos.FecProxAct_eic+'</th>'+
+                                            '<td>'+ indice +'</td>'+
+                                            '<td>Lista oficial de ONU</td>'+
+                                            '<td>'+indicadores[i].Meta[j].Indicador[k].Codigo_des+' ' +indicadores[i].Meta[j].Indicador[k].Descrip_des+'</td>'+
+                                            '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
+                                            '<td>'+ metadatos.FecProxAct_eic+'</td>'+
                                             '</tr>';
+                                            indice++;
                 }
             }
         }
@@ -310,7 +314,14 @@
 
 $('#cuerpo').html(contenido);
 
-
+$('#example').DataTable({
+    "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "sSearch": "Buscar"
+        },
+    "paging":   false,
+    "bInfo": false,
+});
 
 
     $('#loader').delay(2000).fadeOut("slow");
