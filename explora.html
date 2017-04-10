@@ -255,7 +255,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         <div class="col s5" style="display: flex;">
           <div class="input-field col s12 caja_s">
             <select id="obj_name">
-              <option value="-1" disabled selected>Elige una opción</option>
+              <option value="-1" disabled selected>Salud y bienestar</option>
             </select>
           </div>
         </div>
@@ -268,7 +268,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <div class="input-field col s12 caja_s">
             <select id="indicadores">
               <!-- <option value="" disabled selected>Elige una opcion</option> -->
-              <option value="-1" selected>Selecciona un Indicador</option>
+              <option value="-1" selected>Razón de mortalidad materna</option>
             </select>
           </div>
         </div>
@@ -701,15 +701,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             if($('#agregacion').val() ==  1)
             {
               var indicador = $(this).val().split(".")[0];
-
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
               $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
               for(var i=0;i<objeto[indicador-1].Meta.length;i++)
               {
                 console.log("Meta adentro",objeto[indicador-1].Meta.length);
-
-
                 for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
                 {
                   console.log('--------------------------  que onda  dice mari nacional-------------');
@@ -724,7 +721,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             }else if($('#agregacion').val() ==  -1){/*no hacemos nada */}
             else{
               var indicador = $(this).val().split(".")[0];
-
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
               $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
