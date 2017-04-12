@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -1916,16 +1916,20 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
 
         tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
         '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
-        '<tr><th>Algoritmo</th><td><img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas</td></tr>'+
+        '<tr><th>Algoritmo</th><td><strong>Pendiente de conectar a la API</strong></td></tr>'+
         '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:</th><td>';
 
         for (var i = 0; i < metadatosArr.Fuente.length; i++) {
           tablaMeta = tablaMeta  +  metadatosArr.Fuente[i].Descrip_fue + '<br>';
         }
 
-        tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>';
+        /* tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>'; */
+        tablaMeta = tablaMeta +  '</td></tr></tbody></table><strong>Pendiente de conectar a la API</strong></p>';
+        
 
         $('#metadatosApi').html(tablaMeta);
+
+        // <img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas
       }
     </script>
   </body>
