@@ -436,6 +436,7 @@ $('#loader').show();
     }
 
     function ponObjetivos(datos){
+      var tabla = '';
       for (var i = 0; i < datos.length; i++) {
          var contenido='';
         for (var j = 0; j < datos[i].Meta.length; j++) {
@@ -450,6 +451,7 @@ $('#loader').show();
                   '<div class="col s11">'+
                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';
             for (var k = 0; k < datos[i].Meta[j].Indicador.length; k++) {
+
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                 contenido = contenido + '<a href="indicadores.html?indicador='+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
                 '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
@@ -461,6 +463,34 @@ $('#loader').show();
                 '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
                 '<br>';
               }
+
+// llamada que arroja todos los datos de todos los indicadores que tiene datos y lo que no tiene 
+tabla = tabla + '<tr>';
+var indicador =  datos[i].Meta[j].Indicador[k].ClaveInd_arb;
+        //console.log(indicador);
+        tabla =  tabla + '<td>'+ indicador +'<td>';
+        //console.log(datos[i].Meta[j].Indicador[k].Codigo_des);
+        tabla =  tabla + '<td>'+ datos[i].Meta[j].Indicador[k].Codigo_des +'<td>';
+        //console.log('------------------------------- resultados de llamadas ------------');
+  $.ajax({
+    type: 'POST',
+    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
+    data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
+    success: function( data, textStatus, jqxhr ) {
+          
+         // console.log(data);
+          tabla =  tabla + '<td>'+ data +'<td>';
+       //   console.log('-------------------------------________________------------');
+          
+      },
+    error: function(result) {
+     //console.error("Los errores", result.responseText);
+     tabla =  tabla + '<td>'+ result.responseText +'<td>';
+   },
+    async:false
+  });
+
+  tabla = tabla + '</tr>';
             }
             contenido = contenido +     '</p></div>'+'</div>';
         }
@@ -528,6 +558,7 @@ $('#loader').show();
       }//fin for mas externo
       show_less();
       $('.tooltipped').tooltip({delay: 50});
+      console.log(tabla);
     }
 
     function show_less()
