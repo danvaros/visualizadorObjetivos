@@ -1,6 +1,6 @@
 
 	function getIndicadorSer(indicador,ser){
-		var estados = [];
+	  var estados = [];
 	  console.log("Indicador",indicador," -> Serie",ser);
 		$.ajax({
 		  type: 'POST',

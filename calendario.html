@@ -311,13 +311,15 @@
                     //Descrip_cla
                     //console.log(atr.Descrip_cla);
                     contenido =  contenido +'<tr>'+
-                                            '<td>'+ indice +'</td>'+
+                                            '<td class="center">'+ indice +'</td>'+
                                             '<td>Lista oficial de ONU</td>'+
-                                            '<td>'+indicadores[i].Meta[j].Indicador[k].Codigo_des+' ' +indicadores[i].Meta[j].Indicador[k].Descrip_des+'</td>'+
+                                            '<td>'+ '<a href="indicadores.html?indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des +'</a>'   +'</td>'+
                                             '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
                                             '<td>'+ metadatos.FecProxAct_eic+'</td>'+
                                             '</tr>';
                                             indice++;
+
+
                 }
             }
         }

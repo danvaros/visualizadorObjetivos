@@ -691,6 +691,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript">
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
+        var primera_carga =  true;
         $(document).ready(function()
         {
           console.log('al inicio',$('#tit_map_des').html());
@@ -863,7 +864,11 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         $('#datosNacional').show();
 
           //borramos el select
-          $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');
+          
+          $("#obj_name").html('<option value="-1" disabled selected>Elige una objetivo</option>');
+          $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');  
+          
+          
           console.log('------------------------ nuevo ---------------------');
             for(var i=0;i<objeto.length;i++)
             {
@@ -902,7 +907,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       function inicial()
       {
         //borramos el select
-        $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');
+        $("#obj_name").html('<option value="-1" disabled selected>Salud y bienestar</option>');
         console.log('------------------------ nuevo ---------------------');
           for(var i=0;i<objeto.length;i++)
           {
