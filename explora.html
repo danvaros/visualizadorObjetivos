@@ -229,7 +229,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         <div class="col s5" style="display: flex;">
           <div class="input-field col s12 caja_s">
             <select id="obj_name">
-              <option value="-1" disabled selected>Elige una opción</option>
+              <option value="-1" disabled selected>Salud y bienestar</option>
             </select>
           </div>
         </div>
@@ -242,7 +242,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <div class="input-field col s12 caja_s">
             <select id="indicadores">
               <!-- <option value="" disabled selected>Elige una opcion</option> -->
-              <option value="-1" selected>Selecciona un Indicador</option>
+              <option value="-1" selected>Razón de mortalidad materna</option>
             </select>
           </div>
         </div>
@@ -348,6 +348,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           </div>
         </div>
       </div>
+
       <div id="datosEstatal">
         <div class="row scrollable-section" data-section-title="Tablas" >
           <div class="col s12">
@@ -622,6 +623,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript">
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
+        var primera_carga =  true;
         $(document).ready(function()
         {
           console.log('al inicio',$('#tit_map_des').html());
@@ -633,18 +635,15 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             if($('#agregacion').val() ==  1)
             {
               var indicador = $(this).val().split(".")[0];
-
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
               $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
               for(var i=0;i<objeto[indicador-1].Meta.length;i++)
               {
                 console.log("Meta adentro",objeto[indicador-1].Meta.length);
-
-
                 for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
                 {
-                  console.log('--------------------------  que onda  dice mari nacional-------------');
+              
                     console.log(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg);
 
                   if($.trim(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg) == 'N'){
@@ -656,7 +655,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             }else if($('#agregacion').val() ==  -1){/*no hacemos nada */}
             else{
               var indicador = $(this).val().split(".")[0];
-
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
               $("#indicadores").html('<option value="-1">Selecciona un Indicador</option>')
@@ -665,7 +663,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                 console.log("Meta adentro",objeto[indicador-1].Meta.length);
                 for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
                 {
-                   console.log('--------------------------  que onda  dice mari estatal-------------');
                     console.log(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg);
 
                   if($.trim(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg) == 'NE' || $.trim(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg) == 'NEE'){
@@ -674,10 +671,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                 }
               }
             }
-
-
-
-
             $('select').material_select();
           });
           $("#indicadores").on('change', function()
@@ -691,6 +684,19 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
           $('#indicadores').on('change',function(){
             llamar_api();
+            if($('#agregacion').val() == 1){
+              $('#grafica_c').show();
+            }else{
+              $('#grafica_c').show();
+              $('#headmap').show();
+              $('#footmapdatos').show();
+              $('#footmap').show();
+              $('#map').show();
+              $('#datosEstatal').show( );
+              $('#datosNacional').hide( );
+            }
+            console.log("indi",$("#indicadores").val(),"objetivo",$("#obj_name").val());
+            
           });
           //activamos el change
         });
@@ -738,9 +744,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         function llamar_api()
         {
             $('#loader').show();
-            console.log("indi",$("#indicadores").val(),"objetivo",$("#obj_name").val());
-            getSerie($("#indicadores").val());
-            cambio_anio('2015-01-01',1);
+            getInd($("#indicadores").val());
+            console.log('------------------------- estados -------------');
+            console.log(estados);
+            //cambio_anio('2015-01-01',1);
              chart2.load({
                columns: estados
              });
@@ -756,8 +763,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
              });
         }
 
-  </script>
-  <script type="text/javascript">
   var normal,fondo,todo;
     $(document).ready(function()
     {
@@ -776,8 +781,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
       $(".button-collapse").sideNav();
 
-      var nacional =  false;
-
       $('.modal-trigger').leanModal();
       $('select').material_select();
       $('.collapsible').collapsible(
@@ -789,31 +792,21 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
       $('#agregacion').on('change', function (e)
       {
-          if(this.value == 1){
-            $('#grafica_c').slideToggle("slow");
-            $('#headmap').slideToggle("slow");
-            $('#footmapdatos').slideToggle("slow");
-            $('#footmap').slideToggle("slow");
-            $('#map').slideToggle("slow");
-            $('#datosEstatal').slideToggle();
-            $('#datosNacional').slideToggle();
-            nacional =  true ;
-          }
-          else{
-            if(nacional)
-            {
-              $('#grafica_c').slideToggle("slow");
-              $('#headmap').slideToggle("slow");
-              $('#footmapdatos').slideToggle("slow");
-              $('#footmap').slideToggle("slow");
-              $('#map').slideToggle("slow");
-              $('#datosEstatal').slideToggle( );
-              $('#datosNacional').slideToggle( );
-              nacional =  false ;
-            }
-          }
+
+        $('#grafica_c').hide();
+        $('#headmap').hide();
+        $('#footmapdatos').hide();
+        $('#footmap').hide();
+        $('#map').hide();
+        $('#datosEstatal').hide();
+        $('#datosNacional').show();
+
           //borramos el select
-          $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');
+          
+          $("#obj_name").html('<option value="-1" disabled selected>Elige una objetivo</option>');
+          $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');  
+          
+          
           console.log('------------------------ nuevo ---------------------');
             for(var i=0;i<objeto.length;i++)
             {
@@ -852,7 +845,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       function inicial()
       {
         //borramos el select
-        $("#obj_name").html('<option value="-1" disabled selected>Elige una opción</option>');
+        $("#obj_name").html('<option value="-1" disabled selected>Salud y bienestar</option>');
         console.log('------------------------ nuevo ---------------------');
           for(var i=0;i<objeto.length;i++)
           {
@@ -883,10 +876,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           $('select').material_select();
       }
 
-
-
-    </script>
-      <script type="text/javascript">
 	  function commaSeparateNumber(x){var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");}
 
 
@@ -898,43 +887,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 		    data: {
 		        x: 'Entidad',
  		        columns: estados,
-
-//[
-// 		            ['x', '2009-01-01', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01'],
-// 		           ['Aguascalientes',      '122.24', '104.54',    '120.4',       '122.8',       '110.4'],
-// ['Baja California  ',   '93.05',  '108.39',    '92.3',        '86.6',        '86.8'],
-// ['Baja California Sur', '54.22',  '53.06',     '57',          '64.8',        '68.6'],
-// ['Campeche',            '4.76',   '4.78',      '6.6',         '5.8',         '4.5'],
-// ['Chiapas',             '15.8',   '20.36',     '16.6',        '18.9',        '18.5'],
-// ['Chihuahua',           '64.18',  '68.05',     '68.1',        '72.8',        '74.4'],
-// ['Coahuila',            '46.07',  '48.3',      '45.1',        '46.4',        '45.2'],
-// ['Colima',              '43.64',  '51',        '51.7',        '52.1',        '59.6'],
-// ['Distrito Federal',    '14.22',  '14.82',     '14.8',        '13.9',        '13.6'],
-// ['Durango',             '57.85',  '59.15',     '61.8',        '65',          '60.6'],
-// ['Guanajuato',          '46.08',  '45.38',     '46.6',        '50.2',        '59'],
-// ['Guerrero',            '47.93',  '60.49',     '56.4',        '57.6',        '74.2'],
-// ['Hidalgo',             '9.66',   '12',        '12',          '6.8',         '5.4'],
-// ['Jalisco',             '23.37',  '25.75',     '35.5',        '46.3',        '51.9'],
-// ['MÃ©xico',             '20.04',  '23.64',     '24.8',        '28',          '28.4'],
-// ['Michoacán',           '26.06',  '26.59',     '26.4',        '27.3',        '32.1'],
-// ['Morelos',             '18.82',  '18.79',     '25.4',        '26.4',        '23.5'],
-// ['Nayarit',             '65.34',  '72.86',     '72.9',        '83.4',        '104.1'],
-// ['Nuevo León ',         '118.42', '112.14',    '108.3',       '109.5',       '117.2'],
-// ['Oaxaca',              '27.4',   '28.18',     '27.6',        '28.4',        '33.3'],
-// ['Puebla',              '35.49',  '36.59',     '46.1',        '43',          '53.9'],
-// ['Querétaro',           '22.65',  '41.51',     '41.3',        '42.3',        '45.5'],
-// ['Quintana Roo ',       '60.49',  '57.37',     '61.5',        '55.6',        '55.6'],
-// ['San Luis Potosí',     '47.74',  '48.66',     '47.7',        '49.1',        '53.2'],
-// ['Sinaloa',             '61.82',  '66.08',     '68.8',        '71.6',        '68'],
-// ['Sonora',              '31.65',  '31.76',     '32',          '34.9',        '34.6'],
-// ['Tabasco',             '18.31',  '19.93',     '19.9',        '20.7',        '25.3'],
-// ['Tamaulipas',          '53.87',  '59.85',     '73.4',        '75.6',        '71.8'],
-// ['Tlaxcala',            '53.49',  '54.42',     '49.1',        '48.4',        '43.1'],
-// ['Veracruz',            '25.73',  '28.14',     '32.7',        '34.9',        '39.6'],
-// ['Yucatán',             '1.63',   '2.65',      '2.1',         '2.1',         '2.6'],
-// ['Zacatecas',           '13.79',  '18.81',     '21.4',        '23.1',        '35.5'],
-// ['Promedio nacional',            '42.0565625',  '44.50125',     '45.821875',        '47.321875',        '50']
-// 		        ]
 		    },
 		    legend: {
 				show: false
@@ -997,9 +949,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 		        }
 		    },
 		});
-  </script>
 
-  <script>
 	function gen(props)
 	{
 	  var chart = c3.generate({
@@ -1049,51 +999,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			            show: true
 			        }
 			    },
-       //value: {d3.format(',.2f')} // apply this format to both y and y2
 		});
 	}
-  </script>
-
-
-
-
-    <script type="text/javascript">
-var estados2 =[
-['x', '2009-01-01', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01'],
-['Aguascalientes',      '122.24', '104.54',    '120.4',       '122.8',       '110.4'],
-['Baja California',   '93.05',  '108.39',    '92.3',        '86.6',        '86.8'],
-['Baja California Sur', '54.22',  '53.06',     '57',          '64.8',        '68.6'],
-['Campeche',            '4.76',   '4.78',      '6.6',         '5.8',         '4.5'],
-['Chiapas',             '15.8',   '20.36',     '16.6',        '18.9',        '18.5'],
-['Chihuahua',           '64.18',  '68.05',     '68.1',        '72.8',        '74.4'],
-['Coahuila',            '46.07',  '48.3',      '45.1',        '46.4',        '45.2'],
-['Colima',              '43.64',  '51',        '51.7',        '52.1',        '59.6'],
-['Distrito Federal',    '14.22',  '14.82',     '14.8',        '13.9',        '13.6'],
-['Durango',             '57.85',  '59.15',     '61.8',        '65',          '60.6'],
-['Guanajuato',          '46.08',  '45.38',     '46.6',        '50.2',        '59'],
-['Guerrero',            '47.93',  '60.49',     '56.4',        '57.6',        '74.2'],
-['Hidalgo',             '9.66',   '12',        '12',          '6.8',         '5.4'],
-['Jalisco',             '23.37',  '25.75',     '35.5',        '46.3',        '51.9'],
-['México',             '20.04',  '23.64',     '24.8',        '28',          '28.4'],
-['Michoacán',           '26.06',  '26.59',     '26.4',        '27.3',        '32.1'],
-['Morelos',             '18.82',  '18.79',     '25.4',        '26.4',        '23.5'],
-['Nayarit',             '65.34',  '72.86',     '72.9',        '83.4',        '104.1'],
-['Nuevo León',         '118.42', '112.14',    '108.3',       '109.5',       '117.2'],
-['Oaxaca',              '27.4',   '28.18',     '27.6',        '28.4',        '33.3'],
-['Puebla',              '35.49',  '36.59',     '46.1',        '43',          '53.9'],
-['Querétaro',           '22.65',  '41.51',     '41.3',        '42.3',        '45.5'],
-['Quintana Roo',       '60.49',  '57.37',     '61.5',        '55.6',        '55.6'],
-['San Luis Potosí­',     '47.74',  '48.66',     '47.7',        '49.1',        '53.2'],
-['Sinaloa',             '61.82',  '66.08',     '68.8',        '71.6',        '68'],
-['Sonora',              '31.65',  '31.76',     '32',          '34.9',        '34.6'],
-['Tabasco',             '18.31',  '19.93',     '19.9',        '20.7',        '25.3'],
-['Tamaulipas',          '53.87',  '59.85',     '73.4',        '75.6',        '71.8'],
-['Tlaxcala',            '53.49',  '54.42',     '49.1',        '48.4',        '43.1'],
-['Veracruz',            '25.73',  '28.14',     '32.7',        '34.9',        '39.6'],
-['Yucatán',             '1.63',   '2.65',      '2.1',         '2.1',         '2.6'],
-['Zacatecas',           '13.79',  '18.81',     '21.4',        '23.1',        '35.5'],
-];
-
 
 function busqueda_estado(cadena)
 {
@@ -1142,14 +1049,14 @@ function busqueda_estado_posicion(cadena,posicion)
 
 function busqueda_anio(cadena)
 {
-  for(var i=0;i<estados[0].length;i++)
-  {
-    if(estados[0][i] == cadena)
+     for(var i=0;i<estados[0].length;i++)
     {
-      console.log(estados[0][i]);
-      return i;
-    }
-  }
+      if(estados[0][i] == cadena)
+      {
+        console.log(estados[0][i]);
+        return i;
+      }
+    } 
 }
 
     //variable de mapa
@@ -1795,7 +1702,6 @@ function busqueda_anio(cadena)
                 lupa = true;
               }
             });
-
           }
         });
     </script>
