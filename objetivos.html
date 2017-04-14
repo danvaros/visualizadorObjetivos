@@ -119,7 +119,7 @@ $('#loader').show();
           <br>
           <div class="input-field col s4">
             <i class="material-icons prefix caja_i">search</i>
-            <input id="icon_prefix" type="text" class="validate caja_d" placeholder=" Buscar indicadores" style="padding-left: 12px;">
+            <input id="icon_prefix" type="text" class="validate caja_d autocomplete" placeholder=" Buscar indicadores" style="padding-left: 12px;">
 
           </div>
         </div>
@@ -367,6 +367,16 @@ $('#loader').show();
     var visibles =  true;
 
     $(document).ready(function(){
+
+      $('#icon_prefix').keyup(function () {
+            var rex = new RegExp($(this).val(), 'i');
+            $('.buscar div.col').hide();
+            $('.buscar div.col').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+        })
+
+
       $('.uno').hide();
       $('.dos').hide();
       $('.link_less').hide();
@@ -436,6 +446,8 @@ $('#loader').show();
     }
 
     function ponObjetivos(datos){
+      var listado =  {"Apple": null,"Microsoft": null,"Google": 'http://placehold.it/250x250',} ;
+  
       for (var i = 0; i < datos.length; i++) {
          var contenido='';
         for (var j = 0; j < datos[i].Meta.length; j++) {
@@ -451,15 +463,18 @@ $('#loader').show();
                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';
             for (var k = 0; k < datos[i].Meta[j].Indicador.length; k++) {
               if(datos[i].Meta[j].Indicador[k].TieneValores){
-                contenido = contenido + '<a href="indicadores.html?indicador='+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
-                '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
-                '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
+                contenido = contenido + '<a class="buscar" href="indicadores.html?indicador='+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
+                '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
+                '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
                 '<br>';
+                //listado = listado +'"'+datos[i].Meta[j].Indicador[k].Descrip_des + '"'+ :null+ ',';
+                
               }else{
-                contenido = contenido + datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +
-                '<a class="fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
-                '<a class="ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
+                contenido = '<a class="buscar">' + contenido + datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des + '</a>' +
+                '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
+                '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
                 '<br>';
+               // listado = listado +'"'+datos[i].Meta[j].Indicador[k].Descrip_des + '"'+ :null + ',';
               }
             }
             contenido = contenido +     '</p></div>'+'</div>';
@@ -527,6 +542,17 @@ $('#loader').show();
 
       }//fin for mas externo
       show_less();
+      //listado = listado + } ;
+      //listado = {"Apple": null,"Microsoft": null,"Google": 'http://placehold.it/250x250'};
+       $('input.autocomplete').autocomplete({
+          data:listado ,
+          limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+          onAutocomplete: function(val) {
+            // Callback function when value is autcompleted.
+          },
+          minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+        });
+
       $('.tooltipped').tooltip({delay: 50});
     }
 
