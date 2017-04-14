@@ -141,6 +141,14 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     }
 
 
+    @media only screen and (max-width: 1555px) {
+        
+        .bullets-container{
+          display: none;
+        }
+    }
+
+
 </style>
   <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
@@ -436,7 +444,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           				<p class="fuerte t_normal">Nombre</p>
 		  			    </div>
     		  			<div class="col s2">
-              				<p class="fuerte t_normal">Institución</p>
+              				<p class="fuerte t_normal" >Institución</p>
     		  			</div>
     		  			<div class="col s4">
               				<p class="fuerte t_normal">Formato</p>
@@ -445,10 +453,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               				<li class="divider griss"></li>
     		  			</div>
     		  			<div class="col s6">
-              				<p class="gris t_sm">Indicadores Objetivo 1 ODS</p>
+              				<p class="gris t_sm" id="da_indicador">Razón de mortalidad materna</p>
     		  			</div>
     		  			<div class="col s2">
-              				<p class="gris t_sm">ODS</p>
+              				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
     		  			<div class="col s4" style="margin-top: 10px;">
               				<a class="icn">CSV</a><a class="icns">XLS</a> <a class="icnSDMX">SDMX</a><a class="icnPDF">PDF</a>
@@ -676,7 +684,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           $("#indicadores").on('change', function()
           {
             var indicador = $(this).val().split(".")[0];
-            console.log("entro",indicador);
           });
     
 
@@ -711,7 +718,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                               '<span> '+ atributos.Descrip_uni +'</span>';
 
 
-              var pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div> ')+
+              var pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' ')+
                         ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                         ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                         ' </div>';
@@ -719,6 +726,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               $('.pie_cuadro2').html(pie);
               $('.cuadro_titulo').html(titulo);
               titulo_des_graf = atributos.DescripInd_des;
+
+              put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
             }
 
 
@@ -928,9 +937,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         								$( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
                         $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
         								$( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
-
-
-
 				            }
 				            else {
 					            $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
@@ -945,7 +951,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			            }(jQuery));
 		                return commaSeparateNumber(Math.round(value*10)/10);
 		            },
-		           value: d3.format(',.2f') // apply this format to both y and y2
+		           value: d3.format('.0F') // apply this format to both y and y2
 		        }
 		    },
 		});
@@ -977,7 +983,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			        },
 			        y : {
 			            tick: {
-			                format: d3.format(".1f")
+			                format: d3.format(".0f")
 			            }
 			        }
 			    },
@@ -986,7 +992,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			    },
 			    size: {
 			        width: 260,
-			        height: 160
+			        height: 200
 			    },
 			    legend: {
 			        show: false
@@ -1104,7 +1110,7 @@ function busqueda_anio(cadena)
 	     $('.info2').removeClass('hide');
 	     if(props != undefined)
 	     {
-		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
           console.log("busqueda",estados[busqueda_indice(props.nom_ent)]);
 			  gen(estados[busqueda_indice(props.nom_ent)]);
 	     }
@@ -1704,6 +1710,12 @@ function busqueda_anio(cadena)
             });
           }
         });
+
+
+        function put_datos(indicador, institucion){
+            $('#da_indicador').html(indicador);
+            $('#da_institucion').html(institucion);
+        }
     </script>
 
   </body>
