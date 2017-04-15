@@ -140,6 +140,14 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       width: 300px;
     }
 
+    .crop {
+     width: 185px; 
+     line-height: 18px; 
+     height: 54px; 
+     overflow: hidden; 
+     margin: 0 auto; 
+     text-align: left; 
+   }
 
     @media only screen and (max-width: 1555px) {
         
@@ -409,7 +417,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
 
-      <div id="datosNacional">
+  <!--     <div id="datosNacional">
         <div class="row">
           <div class="col s12">
             <h3 class="fuerte t_principal">Promedio regional y global</h3>
@@ -431,7 +439,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <h4 class="fuerte t_principal"><strong>13.1</strong></h4>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
@@ -628,6 +636,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript" src="http://canvg.github.io/canvg/canvg.js"></script>
   <script type="text/javascript" src="lib/html2canvas.js"></script>
   <script src='funcionesApi.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
   <script type="text/javascript">
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
@@ -1110,9 +1119,10 @@ function busqueda_anio(cadena)
 	     $('.info2').removeClass('hide');
 	     if(props != undefined)
 	     {
-		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
           console.log("busqueda",estados[busqueda_indice(props.nom_ent)]);
 			  gen(estados[busqueda_indice(props.nom_ent)]);
+        $(".crop").dotdotdot();
 	     }
 /*
         this._div.innerHTML = '<div><h4>Aguas tratadas</h4>' +  (props ?
