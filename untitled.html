@@ -1,0 +1,79 @@
+ 
+        
+           
+              
+            
+            
+        
+
+
+
+
+        if(datos[i].Meta.length > 2){
+          contenido = contenido +    '<div class="row fond link_less">' +
+                                        '<div class="col s12">'+
+                                          '<p style="text-align:right !important;"><a class="fond mensaje" href="#objetivoId'+(i+1)+'" onclick="show_less()">Ver menos</a></p>'+
+                                        '</div>'+
+                                      '</div>';
+        }
+
+
+            // se asigna el codiogo de cada contenedor 
+            if(datos[i].Clave_arb == "ODS0010"){
+              $('#fin_pobreza_cont').html(contenido);
+              console.log(contenido);
+            }else if(datos[i].Clave_arb == "ODS0020")
+            {
+              $('#hambre_cero_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0030")
+            {
+              $('#salud_bienestar_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0040")
+            {
+              $('#educacion_calidad_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0050")
+            {
+              $('#igualdad_genero_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0060")
+            {
+              $('#agua_limpia_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0070")
+            {
+              $('#energia_esequible_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0080")
+            {
+              $('#trabajo_docente_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0090")
+            {
+              $('#industria_innovacion_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0100")
+            {
+              $('#reduccion_desigualdades_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0110")
+            {
+              $('#ciudades_comunidades_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0120")
+            {
+              $('#produccion_consumo_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0130")
+            {
+              $('#accion_clima_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0140")
+            {
+              $('#vida_submarina_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0150")
+            {
+              $('#vida_ecosistemas_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0160")
+            {
+              $('#paz_justicia_cont').html(contenido);
+            }else if(datos[i].Clave_arb == "ODS0170")
+            {
+              $('#alianzas_objetivos_cont').html(contenido);
+            }
+            //limpiamos la variable
+            contenido = '';
+
+
+
+
