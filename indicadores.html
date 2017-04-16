@@ -348,6 +348,15 @@
         <div class="col s12" id="metadatosApi"></div>
       </div>
 
+<!--  -->
+
+      <div class="row" id="botonera_nacional" style="display: none; ">
+        <div class="col s10">
+          <a id="ver_grafica_nacional" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla_nacional()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
+          <a id="ver_tabla_nacional" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica_nacional()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+        </div>
+      </div>
+
 
       <div id="mapas_hide">
         <div class="col s12">
@@ -393,6 +402,9 @@
           <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
       </div>
+
+
+  
 
       <div class="row card tablaPadding" id="indicador-panel" style="display:none">
         <div class="col s5 ">
@@ -567,7 +579,10 @@
       </div>
     </div>
   </div>
-      <div class="row scrollable-section" data-section-title="Descarga de datos">
+  
+  <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div>
+
+  <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
           <h3 class="fuerte t_principal">Datos</h3>
           <li class="divider"></li>
@@ -711,7 +726,7 @@
     $('#footmap').remove();
     $('#grafs').remove();
     $('#indicador-grafica').remove();
-    $('#indicador-panel').remove();
+    $('#indicador-panel').hide();
     //$('#mapas_hide').remove();
     console.log("hecho");
     var chart2 = c3.generate({
@@ -768,8 +783,6 @@
                       $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
                       $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
 
-
-
                   }
                   else {
                     $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
@@ -788,8 +801,10 @@
       },
     });
 
-
     $('#chart2btn').show();
+    $('#botonera_nacional').show();
+  }else{
+    $('#botonera_nacional').remove();
   }
 
   $(document).ready(function()
@@ -858,10 +873,6 @@
                     return chart.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
                 }
             },
-
-           
-           
-          
 
           axis: {
     rotated: true,
@@ -1657,9 +1668,32 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
       $('#ver_grafica').removeClass('inactive_anio');
       $('#ver_grafica').addClass('active_anio');
       $('#ver_tabla').removeClass('active_anio');
-      $('#ver_tabla').addClass('in¡active_anio');
-      $('#indicador-grafica').show();
+      $('#ver_tabla').addClass('inactive_anio');
+
+      $('#mapas_hide').show();
       $('#indicador-panel').hide();
+    }
+
+      function cambio_grafica_nacional()
+    {
+      $('#ver_tabla_nacional').removeClass('inactive_anio');
+      $('#ver_tabla_nacional').addClass('active_anio');
+      $('#ver_grafica_nacional').removeClass('active_anio');
+      $('#ver_grafica_nacional').addClass('inactive_anio');
+
+      $('#mapas_hide').hide();
+      $('#tabla_nacional').show();
+    }
+
+    function cambio_tabla_nacional()
+    {
+      $('#ver_grafica_nacional').removeClass('inactive_anio');
+      $('#ver_grafica_nacional').addClass('active_anio');
+      $('#ver_tabla_nacional').removeClass('active_anio');
+      $('#ver_tabla_nacional').addClass('inactive_anio');
+
+      $('#mapas_hide').show();
+      $('#tabla_nacional').hide();
     }
 
 

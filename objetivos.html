@@ -446,145 +446,139 @@ $('#loader').show();
     }
 
     function ponObjetivos(datos){
-      var listado =  {"Apple": null,"Microsoft": null,"Google": 'http://placehold.it/250x250',} ;
-  
-      var tabla = '';
+      var checar = 0;
       for (var i = 0; i < datos.length; i++) {
-         var contenido='';
+        var contenido='';
         for (var j = 0; j < datos[i].Meta.length; j++) {
-            if(j > 2){
+          if(j > 2){
                 contenido = contenido + '<div class="row borde_b fond ocultar" >';
               }else{
                 contenido = contenido + '<div class="row borde_b fond" >';
               }
-              contenido = contenido + '<div class="col s1">'+
-                    '<p>'+datos[i].Meta[j].Codigo_des+'</p>'+
-                  '</div>'+
-                  '<div class="col s11">'+
-                   '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';
+          contenido = contenido + '<div class="col s1">'+
+                                    '<p>'+datos[i].Meta[j].Codigo_des+'</p>'+
+                                  '</div>'+
+                                  '<div class="col s11">'+
+                                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';   
+
+            
             for (var k = 0; k < datos[i].Meta[j].Indicador.length; k++) {
 
+              var clave_arb     = datos[i].Meta[j].Indicador[k].ClaveInd_arb;
+              var codigo_dg     = datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg;
+              var descrip_des   = datos[i].Meta[j].Indicador[k].Descrip_des;
+              var codigo_des    = datos[i].Meta[j].Indicador[k].Codigo_des;
+              
               if(datos[i].Meta[j].Indicador[k].TieneValores){
-                contenido = contenido + '<a class="buscar" href="indicadores.html?indicador='+ datos[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'">'+ datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des +'</a>'+
-                '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
-                '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
-                '<br>';
-                //listado = listado +'"'+datos[i].Meta[j].Indicador[k].Descrip_des + '"'+ :null+ ',';
-                
+                 contenido = contenido + 
+                  '<a class="buscar" href="indicadores.html?indicador='+ clave_arb + '&codigo='+ codigo_dg +'">'+ 
+                    codigo_des +' '+ descrip_des +
+                  '</a>'+
+                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ 
+                    ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
+                  '</a>' +
+                  '&nbsp;&nbsp;'+
+                '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">'+
+                  '&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
+                '<br>'; 
               }else{
-                contenido = '<a class="buscar">' + contenido + datos[i].Meta[j].Indicador[k].Codigo_des +' '+ datos[i].Meta[j].Indicador[k].Descrip_des + '</a>' +
-                '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+'</a> &nbsp;&nbsp; ' +
-                '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
-                '<br>';
-               // listado = listado +'"'+datos[i].Meta[j].Indicador[k].Descrip_des + '"'+ :null + ',';
+                 contenido = contenido + 
+                  '<span class="buscar" >'+ 
+                    codigo_des +' '+ descrip_des +
+                  '</span>'+
+                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ 
+                    ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
+                  '</a>' +
+                  '&nbsp;&nbsp;'+
+                '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">'+
+                  '&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
+                '<br>'; 
               }
+              
+            }//fin for mas interno
 
-// llamada que arroja todos los datos de todos los indicadores que tiene datos y lo que no tiene 
-tabla = tabla + '<tr>';
-var indicador =  datos[i].Meta[j].Indicador[k].ClaveInd_arb;
-        //console.log(indicador);
-        tabla =  tabla + '<td>'+ indicador +'<td>';
-        //console.log(datos[i].Meta[j].Indicador[k].Codigo_des);
-        tabla =  tabla + '<td>'+ datos[i].Meta[j].Indicador[k].Codigo_des +'<td>';
-        //console.log('------------------------------- resultados de llamadas ------------');
-  $.ajax({
-    type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
-    data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
-    success: function( data, textStatus, jqxhr ) {
-          
-         // console.log(data);
-          tabla =  tabla + '<td>'+ data +'<td>';
-       //   console.log('-------------------------------________________------------');
-          
-      },
-    error: function(result) {
-     //console.error("Los errores", result.responseText);
-     tabla =  tabla + '<td>'+ result.responseText +'<td>';
-   },
-    async:false
-  });
+          contenido = contenido +     '</p></div>'+'</div>';
 
-  tabla = tabla + '</tr>';
-            }
-            contenido = contenido +     '</p></div>'+'</div>';
+          // if(checar < 2 ){
+          //   console.log(contenido);   
+          //   checar ++;   
+          // }      
+
+          
+
+        }//despues de este cambia el indicador
+
+if(datos[i].Meta.length > 2){
+            contenido = contenido +    '<div class="row fond link_less">' +
+                                          '<div class="col s12">'+
+                                            '<p style="text-align:right !important;"><a class="fond mensaje" href="#objetivoId'+(i+1)+'" onclick="show_less()">Ver menos</a></p>'+
+                                          '</div>'+
+                                        '</div>';
+          }
+
+     // se asigna el codiogo de cada contenedor 
+        if(datos[i].Clave_arb == "ODS0010"){
+          $('#fin_pobreza_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0020")
+        {
+          $('#hambre_cero_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0030")
+        {
+          $('#salud_bienestar_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0040")
+        {
+          $('#educacion_calidad_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0050")
+        {
+          $('#igualdad_genero_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0060")
+        {
+          $('#agua_limpia_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0070")
+        {
+          $('#energia_esequible_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0080")
+        {
+          $('#trabajo_docente_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0090")
+        {
+          $('#industria_innovacion_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0100")
+        {
+          $('#reduccion_desigualdades_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0110")
+        {
+          $('#ciudades_comunidades_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0120")
+        {
+          $('#produccion_consumo_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0130")
+        {
+          $('#accion_clima_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0140")
+        {
+          $('#vida_submarina_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0150")
+        {
+          $('#vida_ecosistemas_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0160")
+        {
+          $('#paz_justicia_cont').html(contenido);
+        }else if(datos[i].Clave_arb == "ODS0170")
+        {
+          $('#alianzas_objetivos_cont').html(contenido);
         }
-        if(datos[i].Meta.length > 2){
-          contenido = contenido +    '<div class="row fond link_less">' +
-                                        '<div class="col s12">'+
-                                          '<p style="text-align:right !important;"><a class="fond mensaje" href="#objetivoId'+(i+1)+'" onclick="show_less()">Ver menos</a></p>'+
-                                        '</div>'+
-                                      '</div>';
-        }
-            if(datos[i].Clave_arb == "ODS0010"){
-              $('#fin_pobreza_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0020")
-            {
-              $('#hambre_cero_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0030")
-            {
-              $('#salud_bienestar_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0040")
-            {
-              $('#educacion_calidad_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0050")
-            {
-              $('#igualdad_genero_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0060")
-            {
-              $('#agua_limpia_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0070")
-            {
-              $('#energia_esequible_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0080")
-            {
-              $('#trabajo_docente_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0090")
-            {
-              $('#industria_innovacion_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0100")
-            {
-              $('#reduccion_desigualdades_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0110")
-            {
-              $('#ciudades_comunidades_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0120")
-            {
-              $('#produccion_consumo_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0130")
-            {
-              $('#accion_clima_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0140")
-            {
-              $('#vida_submarina_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0150")
-            {
-              $('#vida_ecosistemas_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0160")
-            {
-              $('#paz_justicia_cont').html(contenido);
-            }else if(datos[i].Clave_arb == "ODS0170")
-            {
-              $('#alianzas_objetivos_cont').html(contenido);
-            }
-            //limpiamos la variable
-            contenido = '';
+        //limpiamos la variable
+        contenido = '';
+
 
       }//fin for mas externo
+
+
       show_less();
-      //listado = listado + } ;
-      //listado = {"Apple": null,"Microsoft": null,"Google": 'http://placehold.it/250x250'};
-       $('input.autocomplete').autocomplete({
-          data:listado ,
-          limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-          onAutocomplete: function(val) {
-            // Callback function when value is autcompleted.
-          },
-          minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-        });
 
       $('.tooltipped').tooltip({delay: 50});
-      console.log(tabla);
+      // console.log(tabla);
     }
 
     function show_less()
