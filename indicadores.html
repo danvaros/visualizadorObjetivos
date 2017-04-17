@@ -376,7 +376,7 @@
             <div class="col s4"  id="chart2btn">
                   <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar gráfica</a>
             </div>
-         
+
           <div class="row" id="footmap">
             <div id="anios" class="col s8 center-align">
               <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
@@ -404,7 +404,7 @@
       </div>
 
 
-  
+
 
       <div class="row card tablaPadding" id="indicador-panel" style="display:none">
         <div class="col s5 ">
@@ -579,7 +579,7 @@
       </div>
     </div>
   </div>
-  
+
   <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div>
 
   <div class="row scrollable-section" data-section-title="Descarga de datos">
@@ -716,7 +716,7 @@
   var table3 = null;
   var table2 = null;
   var table1  = null;
-  
+
   console.log(codigoDg.replace(/\s/g,''),"por aca");
   if(codigoDg.replace(/\s/g,'') == 'N')
   {
@@ -758,10 +758,10 @@
               tick: {
                   format: function (x) { return x.getFullYear(); }
                 //format: '%Y' // format string is also available for timeseries data
-              },   
+              },
               y : {
                   tick: {
-                      format: d3.format(",.1f")
+                      format: d3.format(".0f")
                   }
               }
           }
@@ -916,7 +916,7 @@
           } ,
            y : {
                   tick: {
-                      format: d3.format(".1f")
+                      format: d3.format(".0f")
                   }
               }
           },
@@ -1059,7 +1059,7 @@ function sortFunction(a, b) {
               },
               y : {
                   tick: {
-                      format: d3.format(".1f")
+                      format: d3.format(".0f")
                   }
               }
           },
@@ -1368,7 +1368,7 @@ function sortFunction(a, b) {
 
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-           
+
 var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                   '</div>' +
                   '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
@@ -1494,7 +1494,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
                 $('#chart2').show();
-                
+
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
@@ -1944,7 +1944,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
       function armaMetadatos(){
         var tablaMeta =  '';
         var metadatosArr =  getMetadatos(vars);
-        console.log('---------------------- metadatos -----------------'); 
+        console.log('---------------------- metadatos -----------------');
         console.log(metadatosArr);
 
         tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
@@ -1958,7 +1958,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
 
         /* tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>'; */
         tablaMeta = tablaMeta +  '</td></tr></tbody></table><strong>Pendiente de conectar a la API</strong></p>';
-        
+
 
         $('#metadatosApi').html(tablaMeta);
 
