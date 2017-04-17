@@ -698,15 +698,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             }
             $('select').material_select();
           });
-          $("#indicadores").on('change', function()
-          {
-            var indicador = $(this).val().split(".")[0];
-          });
-    
-
+                  
           titulos(26);
-
           $('#indicadores').on('change',function(){
+            var indicador = $(this).val().split(".")[0];
             llamar_api();
             if($('#agregacion').val() == 1){
               $('#grafica_c').show();
@@ -719,8 +714,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               $('#datosEstatal').show( );
               $('#datosNacional').hide( );
             }
-            console.log("indi",$("#indicadores").val(),"objetivo",$("#obj_name").val());
-            
+            put_anios();
           });
           //activamos el change
         });
@@ -1350,6 +1344,50 @@ function busqueda_anio(cadena)
 
     </script>
     <script>
+    //globales 
+    var anio_mas_actual;
+
+    function put_anios(){
+      var cadena='';
+      console.log('----------------------- estados anios -----------------');
+      console.log(estados);
+      console.log(estados[0]);
+      console.log(estados[0].length);
+                              
+      for(var i = 1; i < estados[0].length; i++)
+      {
+        if(i == 1)
+        {
+        anio_mas_actual = 'anio_'+i;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        }
+        else if(i <= estados[0].length-1)
+        {
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        }
+        console.log(estados[0][i].split('-')[0]);
+      }
+
+      if(cadena !=  ''){
+        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;  
+        $('#'+anio_mas_actual).trigger( "click" );
+      }else{
+        for (var i = 0; i < estados.length; i++) {
+          if(i == 0){
+            estados[i][1] =  '2017-01-01'; 
+          }else{
+            estados[i][1] = 1;
+          }
+        }
+        console.log('--------------- estados fake ------------------');
+        console.log(estados);
+        cambio_anio('2017-01-01',44);
+      }
+
+      $('#anios').html(cadena);
+    }
+
+
         $(document).ready(function() {
             $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
             $('.tooltip').tooltipster({
@@ -1359,39 +1397,15 @@ function busqueda_anio(cadena)
     				theme: 'tooltipster-light',
     				trigger: 'hover'
                 });
-            // var cadena='</div></select>';
-            var cadena='';
-            for(var i=1;i<=7;i++)
-            {
-              if(i == 1)
-              {
-                cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-                console.log(i);
-              }
-              else if(i == 7)
-              {
-                cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-                console.log(i,'break');
-                break;
-              }
-              else if(i < estados[0].length-1)
-              {
-                cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-                console.log(i);
-              }
-              // cadena='<option value="'+estados[0][i]+'">'+estados[0][i].split('-')[0]+'</option>'+cadena;
-            }
-            // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a><select id="opciones_anio" onchange="cambio_anio()" style="display:block;"><option value=" " disabled selected>Selecciona un año</option>'+cadena;
-            cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
-            $('#anios').html(cadena);
-
+            //pedimos los años en la primera llamada 
+            put_anios();
         });
 
 
         function cambio_anio(cadena, i){
           console.log(document.getElementsByTagName("g"));
           document.getElementsByTagName("g")[0].innerHTML=" ";
-          for(var j=1;j<=7;j++)
+          for(var j=1; j<=7; j++)
           {
             $('#anio_'+j).removeClass('active_anio');
             $('#anio_'+j).addClass('inactive_anio');
@@ -1401,7 +1415,7 @@ function busqueda_anio(cadena)
           // $('#map').html('');
           $('.infos').remove();
           $('.info2').remove();
-          var anio_buscar=$('#opciones_anio').val();
+          var anio_buscar = $('#opciones_anio').val();
           var posi = busqueda_anio(cadena);
 
           locked =false;
@@ -1412,6 +1426,7 @@ function busqueda_anio(cadena)
             this.update();
             return this._div;
           };
+
           info.update = function (props) {
     	     $('.infos').removeClass('hide');
     	     $('.info2').removeClass('hide');
@@ -1424,6 +1439,8 @@ function busqueda_anio(cadena)
             gen(estados[busqueda_indice(props.nom_ent)]);
     	     }
           };
+
+
           info.addTo(map);
 
           function getColor(d) {
