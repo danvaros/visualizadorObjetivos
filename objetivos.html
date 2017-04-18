@@ -459,52 +459,52 @@ $('#loader').show();
                                     '<p>'+datos[i].Meta[j].Codigo_des+'</p>'+
                                   '</div>'+
                                   '<div class="col s11">'+
-                                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';   
+                                    '<p style="padding-bottom: 0px;">'+datos[i].Meta[j].Descrip_des+'</p><p>';
 
-            
+
             for (var k = 0; k < datos[i].Meta[j].Indicador.length; k++) {
 
               var clave_arb     = datos[i].Meta[j].Indicador[k].ClaveInd_arb;
               var codigo_dg     = datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg;
               var descrip_des   = datos[i].Meta[j].Indicador[k].Descrip_des;
               var codigo_des    = datos[i].Meta[j].Indicador[k].Codigo_des;
-              
+
               if(datos[i].Meta[j].Indicador[k].TieneValores){
-                 contenido = contenido + 
-                  '<a class="buscar" href="indicadores.html?indicador='+ clave_arb + '&codigo='+ codigo_dg +'">'+ 
+                 contenido = contenido +
+                  '<a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb + '&codigo='+ codigo_dg +'">'+
                     codigo_des +' '+ descrip_des +
                   '</a>'+
-                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ 
+                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
                 '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">'+
                   '&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
-                '<br>'; 
+                '<br>';
               }else{
-                 contenido = contenido + 
-                  '<span class="buscar" >'+ 
+                 contenido = contenido +
+                  '<span class="buscar" >'+
                     codigo_des +' '+ descrip_des +
                   '</span>'+
-                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+ 
+                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
                 '<a class="buscar ns tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ datos[i].Meta[j].Indicador[k].DesGeo.Descrip_dg +'">'+
                   '&nbsp;&nbsp;&nbsp;'+ datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg +'&nbsp;</a>'+
-                '<br>'; 
+                '<br>';
               }
-              
+
             }//fin for mas interno
 
           contenido = contenido +     '</p></div>'+'</div>';
 
           // if(checar < 2 ){
-          //   console.log(contenido);   
-          //   checar ++;   
-          // }      
+          //   console.log(contenido);
+          //   checar ++;
+          // }
 
-          
+
 
         }//despues de este cambia el indicador
 
@@ -516,7 +516,7 @@ if(datos[i].Meta.length > 2){
                                         '</div>';
           }
 
-     // se asigna el codiogo de cada contenedor 
+     // se asigna el codiogo de cada contenedor
         if(datos[i].Clave_arb == "ODS0010"){
           $('#fin_pobreza_cont').html(contenido);
         }else if(datos[i].Clave_arb == "ODS0020")
