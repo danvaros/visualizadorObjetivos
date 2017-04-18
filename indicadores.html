@@ -278,11 +278,11 @@
           </div>
           <div class="col s9 left-align">
               <h5>3 - Garantizar una vida sana y promover el bienestar para todos en todas en todas las edades</h5>
-              <p id="parrafo">
+              <p id="parrafo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                 Meta 3.1 Para 2030, reducir la tasa mundial de mortalidad materna a menos de 70 por cada 100,00 nacidos vivos
               </p>
               <hr id="primer">
-              <p id="bajo">
+              <p id="bajo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                 Indicador <span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span>
               </p>
               <hr>
@@ -615,7 +615,7 @@
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div> -->
-                <div class="col s3" style="margin-top: 10px;">
+                <div class="col s6" style="margin-top: 10px;">
                       <a class="icn">CSV</a>
                       <a class="icns">XLS</a>
                       <a class="icnSDMX">SDMX</a>
@@ -635,7 +635,7 @@
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div> -->
-                <div class="col s3" style="margin-top: 10px;">
+                <div class="col s6" style="margin-top: 10px;">
                       <a class="icn">CSV</a>
                       <a class="icns">XLS</a>
                       <a class="icnSDMX">SDMX</a>
@@ -962,18 +962,18 @@ function datosGrafica(year){
       serie.push('Razón de mortalidad materna');
     }else{
       if(i < 17){
-        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
       } else if(i == 33){
         $('.pais').html(estados[i][indice]);
       }
       else {
-        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
       }
 
-      var valueToPush = {'numero':estados[i][indice], 'estado':estados[i][0]};
+      var valueToPush = {'numero':parseFloat(estados[i][indice]).toFixed(2), 'estado':estados[i][0]};
       nuevos_estados_dobles.push(valueToPush);
 
-      serie.push(estados[i][indice]);
+      serie.push(parseFloat(estados[i][indice]).toFixed(2));
     }
   }
 
@@ -996,7 +996,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
       index_estados = i;
   }
   categories[i] = nuevos_estados_dobles[i].estado;
-  series.push(nuevos_estados_dobles[i].numero);
+  series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(2));
 
 }
 
