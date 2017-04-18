@@ -296,14 +296,14 @@
         </div>
       </div>
     </div>
-    <div class="container" style="margin-top: 100px;">
-      <div class="row">
+    <div class="container" style="margin-top: 10px;">
+      <!-- <div class="row">
         <div class="col s12">
       <h3 style="color:#0a254f">Indicador <span class="Codigo_ind">&nbsp; </span> <span class="Descrip_ind">&nbsp; </span></h3>
           <li class="divider"></li>
           <br>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="col s12 center-align">
@@ -964,7 +964,7 @@ function datosGrafica(year){
       if(i < 17){
         tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
       } else if(i == 33){
-        $('.pais').html(estados[i][indice]);
+        $('.pais').html(parseFloat(estados[i][indice]).toFixed(2));
       }
       else {
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
