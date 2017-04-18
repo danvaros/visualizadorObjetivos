@@ -701,6 +701,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                   
           titulos(26);
           $('#indicadores').on('change',function(){
+            $('#loader').show();
             var indicador = $(this).val().split(".")[0];
             llamar_api();
             if($('#agregacion').val() == 1){
@@ -763,7 +764,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
         function llamar_api()
         {
-            $('#loader').show();
+            
             getInd($("#indicadores").val());
             console.log('------------------------- estados -------------');
             console.log(estados);
@@ -777,7 +778,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
         function llamar_api_2(){
           getSerie(26);
-           cambio_anio('2015-01-01',1);
+           //cambio_anio('2015-01-01',1);
              chart2.load({
                columns: estados
              });
@@ -1369,7 +1370,9 @@ function busqueda_anio(cadena)
       }
 
       if(cadena !=  ''){
-        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;  
+        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
+
+        $('#anios').html(cadena);
         $('#'+anio_mas_actual).trigger( "click" );
       }else{
         for (var i = 0; i < estados.length; i++) {
@@ -1384,7 +1387,9 @@ function busqueda_anio(cadena)
         cambio_anio('2017-01-01',44);
       }
 
-      $('#anios').html(cadena);
+      
+
+      
     }
 
 
