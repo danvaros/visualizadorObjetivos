@@ -143,7 +143,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     .crop {
      width: 185px; 
      line-height: 18px; 
-     height: 54px; 
+     height: 50px; 
      overflow: hidden; 
      margin: 0 auto; 
      text-align: left; 
@@ -644,7 +644,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript" src="http://canvg.github.io/canvg/canvg.js"></script>
   <script type="text/javascript" src="lib/html2canvas.js"></script>
   <script src='funcionesApi.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
+  <script src="lib/jquery.dotdotdot.js"></script>
   <script type="text/javascript">
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
@@ -1438,10 +1438,11 @@ function busqueda_anio(cadena)
     	     if(props != undefined)
     	     {
              console.log("Estado creo:---> ",props);
-    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des">'+titulo_des_graf+'</p></div><div class="info"></div>';
+    		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;" id="tit_map_des" class="crop">'+titulo_des_graf+'</p></div><div class="info"></div>';
 
     			  // gen(estados[props.cve]);
             gen(estados[busqueda_indice(props.nom_ent)]);
+            $(".crop").dotdotdot();
     	     }
           };
 
