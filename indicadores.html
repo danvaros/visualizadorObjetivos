@@ -134,7 +134,14 @@
       max-width: 32%;
     }
 
-
+    .crop {
+     width: 185px;
+     line-height: 18px;
+     height: 54px;
+     overflow: hidden;
+     margin: 0 auto;
+     text-align: left;
+    }
 
 
 
@@ -278,11 +285,11 @@
           </div>
           <div class="col s9 left-align">
               <h5 class="tituloObjetivo"></h5>
-              <p id="parrafo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+              <p id="parrafo">
                 <span class="Codigo_meta"></span> <span class="Descrip_meta">&nbsp; </span>
               </p>
               <hr id="primer">
-              <p id="bajo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+              <p id="bajo">
                 Indicador <span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span>
               </p>
               <hr>
@@ -1188,10 +1195,11 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           gen(estados[busqueda_indice(props.nom_ent)]);
+          $(".crop").dotdotdot();
   	     }
         };
         info.addTo(map);
@@ -1728,7 +1736,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">'+titulo_des_graf+'</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;" class="crop">'+titulo_des_graf+'</p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         gen(estados[busqueda_indice(props.nom_ent)]);
