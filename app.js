@@ -135,6 +135,9 @@ var estados = [];
   		Codigo_ind 	=	data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
 
+      colorObjetivo(obj);
+      iconoObjetivo(obj);
+
     $('.tituloObjetivo').html(obj+' '+nombreObj);
     $('.Codigo_meta').html(Codigo_meta);
     $('.Descrip_meta').html(Descrip_meta);
@@ -233,6 +236,157 @@ function getParameterByName(name) {
     results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+function iconoObjetivo(objetivo){
+  switch(objetivo){
+    case "1.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-01.png">');
+      //return '<img class="ico_obj" src="img/ods-01.png">';
+    break;
+    case "2.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-02.png">');
+      //return '<img class="ico_obj" src="img/ods-02.png">';
+    break;
+    case "3.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-03.png">');
+      //return '<img class="ico_obj" src="img/ods-03.png">';
+    break;
+    case "4.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-04.png">');
+      //return '<img class="ico_obj" src="img/ods-04.png">';
+    break;
+    case "5.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-05.png">');
+      //return '<img class="ico_obj" src="img/ods-05.png">';
+    break;
+    case "6.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-06.png">');
+      //return '<img class="ico_obj" src="img/ods-06.png">';
+    break;
+    case "7.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-07.png">');
+      //return '<img class="ico_obj" src="img/ods-07.png">';
+    break;
+    case "8.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-08.png">');
+      //return '<img class="ico_obj" src="img/ods-08.png">';
+    break;
+    case "9.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-09.png">');
+      //return '<img class="ico_obj" src="img/ods-09.png">';
+    break;
+    case "10.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-10.png">');
+      //return '<img class="ico_obj" src="img/ods-10.png">';
+    break;
+    case "11.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-11.png">');
+      //return '<img class="ico_obj" src="img/ods-11.png">';
+    break;
+    case "12.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-12.png">');
+      //return '<img class="ico_obj" src="img/ods-12.png">';
+    break;
+    case "13.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-13.png">');
+      //return '<img class="ico_obj" src="img/ods-13.png">';
+    break;
+    case "14.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-14.png">');
+      //return '<img class="ico_obj" src="img/ods-14.png">';
+    break;
+    case "15.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-15.png">');
+      //return '<img class="ico_obj" src="img/ods-15.png">';
+    break;
+    case "16.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-16.png">');
+      //return '<img class="ico_obj" src="img/ods-16.png">';
+    break;
+    case "17.":
+      $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-17.png">');
+      //return '<img class="ico_obj" src="img/ods-17.png">';
+    break;
+
+  }
+}
+
+function colorObjetivo(objetivo){
+  switch(objetivo){
+    case "1.":
+      $('.headerObje').addClass('id_1');
+      $('#sti').addClass('id_1');
+    break;
+    case "2.":
+      $('.headerObje').addClass('id_2');
+      $('#sti').addClass('id_2');
+    break;
+    case "3.":
+      $('.headerObje').addClass('id_3');
+      $('#sti').addClass('id_3');
+    break;
+    case "4.":
+      $('.headerObje').addClass('id_4');
+      $('#sti').addClass('id_4');
+    break;
+    case "5.":
+      $('.headerObje').addClass('id_5');
+      $('#sti').addClass('id_5');
+    break;
+    case "6.":
+      $('.headerObje').addClass('id_6');
+      $('#sti').addClass('id_6');
+    break;
+    case "7.":
+      $('.headerObje').addClass('id_7');
+      $('#sti').addClass('id_7');
+    break;
+    case "8.":
+      $('.headerObje').addClass('id_8');
+      $('#sti').addClass('id_8');
+    break;
+    case "9.":
+      $('.headerObje').addClass('id_9');
+      $('#sti').addClass('id_9');
+    break;
+    case "10.":
+      $('.headerObje').addClass('id_10');
+      $('#sti').addClass('id_10');
+    break;
+    case "11.":
+      $('.headerObje').addClass('id_11');
+      $('#sti').addClass('id_11');
+    break;
+    case "12.":
+      $('.headerObje').addClass('id_12');
+      $('#sti').addClass('id_12');
+    break;
+    case "13.":
+      $('.headerObje').addClass('id_13');
+      $('#sti').addClass('id_13');
+    break;
+    case "14.":
+      $('.headerObje').addClass('id_14');
+      $('#sti').addClass('id_14');
+    break;
+    case "15.":
+      $('.headerObje').addClass('id_15');
+      $('#sti').addClass('id_15');
+    break;
+    case "16.":
+      $('.headerObje').addClass('id_16');
+      $('#sti').addClass('id_16');
+    break;
+    case "17.":
+      $('.headerObje').addClass('id_17');
+      $('#sti').addClass('id_17');
+    break;
+
+  }
+}
+
+
+
 
 $(document).ready(function()
 {
