@@ -710,6 +710,7 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script>
+  var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
   var chart;
   var index_estados;
@@ -821,7 +822,7 @@
           },
       data: {
       columns: [
-        ['Razón de mortalidad materna',
+        [Descrip_ind,
           '25.8',
           '32',
           '24.3',
@@ -858,7 +859,7 @@
       ],
       type: 'bar',
       colors: {
-            'Razón de mortalidad materna' : function (d) {
+            Descrip_ind : function (d) {
                 return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
             }
@@ -960,7 +961,7 @@ function datosGrafica(year){
 
   for (var i = 0; i < estados.length; i++) {
     if(i==0){
-      serie.push('Razón de mortalidad materna');
+      serie.push(Descrip_ind);
     }else{
       if(i < 17){
         tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
@@ -990,7 +991,7 @@ console.log(nuevos_estados_dobles);
 
 
 //separar el areglo
-series.push('Razón de mortalidad materna');
+series.push(Descrip_ind);
 for (var i = 0; i < nuevos_estados_dobles.length; i++) {
  // console.log(nuevos_estados_dobles[i].estado);
   if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
@@ -1007,7 +1008,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   chart.load({
     columns: [series],
     categories: categories,
-    unload: ['Razón de mortalidad materna'],
+    unload: [Descrip_ind],
   });
 
   $('.tabla_uno').html(tabla_uno);
@@ -1069,7 +1070,7 @@ function sortFunction(a, b) {
           },
           size: {
               width: 260,
-              height: 160
+              height: 200
           },
           legend: {
               show: false
@@ -1672,6 +1673,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
       $('#ver_tabla').addClass('inactive_anio');
 
       $('#mapas_hide').show();
+      $('#indicador-grafica').show();
       $('#indicador-panel').hide();
     }
 
@@ -1726,7 +1728,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">'+titulo_des_graf+'</p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         gen(estados[busqueda_indice(props.nom_ent)]);
