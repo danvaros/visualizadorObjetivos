@@ -44,11 +44,100 @@ var estados = [];
   		// console.log(data.Series[0].Coberturas);
   		// console.log(data.Series[0].Coberturas.length);
 
-      nombreObj = data[0].Abrevia_des;
-      console.log(obj+nombreObj);
+      switch (obj){
+        case '1.':
+          nombreObj = data[0].Abrevia_des;
+          Codigo_meta 	=	data[0].Meta[0].Codigo_des;
+          Descrip_meta = data[0].Meta[0].Descrip_des;
+        break;
+        case '2.':
+          nombreObj = data[1].Abrevia_des;
+          Codigo_meta 	=	data[1].Meta[0].Codigo_des;
+          Descrip_meta = data[1].Meta[0].Descrip_des;
+        break;
+        case '3.':
+          nombreObj = data[2].Abrevia_des;
+          Codigo_meta 	=	data[2].Meta[0].Codigo_des;
+          Descrip_meta = data[2].Meta[0].Descrip_des;
+        break;
+        case '4.':
+          nombreObj = data[3].Abrevia_des;
+          Codigo_meta 	=	data[3].Meta[0].Codigo_des;
+          Descrip_meta = data[3].Meta[0].Descrip_des;
+        break;
+        case '5.':
+          nombreObj = data[4].Abrevia_des;
+          Codigo_meta 	=	data[4].Meta[0].Codigo_des;
+          Descrip_meta = data[4].Meta[0].Descrip_des;
+        break;
+        case '6.':
+          nombreObj = data[5].Abrevia_des;
+          Codigo_meta 	=	data[5].Meta[0].Codigo_des;
+          Descrip_meta = data[5].Meta[0].Descrip_des;
+        break;
+        case '7.':
+          nombreObj = data[6].Abrevia_des;
+          Codigo_meta 	=	data[6].Meta[0].Codigo_des;
+          Descrip_meta = data[6].Meta[0].Descrip_des;
+        break;
+        case '8.':
+          nombreObj = data[7].Abrevia_des;
+          Codigo_meta 	=	data[7].Meta[0].Codigo_des;
+          Descrip_meta = data[7].Meta[0].Descrip_des;
+        break;
+        case '9.':
+          nombreObj = data[8].Abrevia_des;
+          Codigo_meta 	=	data[8].Meta[0].Codigo_des;
+          Descrip_meta = data[8].Meta[0].Descrip_des;
+        break;
+        case '10.':
+          nombreObj = data[9].Abrevia_des;
+          Codigo_meta 	=	data[9].Meta[0].Codigo_des;
+          Descrip_meta = data[9].Meta[0].Descrip_des;
+        break;
+        case '11.':
+          nombreObj = data[10].Abrevia_des;
+          Codigo_meta 	=	data[10].Meta[0].Codigo_des;
+          Descrip_meta = data[10].Meta[0].Descrip_des;
+        break;
+        case '12.':
+          nombreObj = data[11].Abrevia_des;
+          Codigo_meta 	=	data[11].Meta[0].Codigo_des;
+          Descrip_meta = data[11].Meta[0].Descrip_des;
+        break;
+        case '13.':
+          nombreObj = data[12].Abrevia_des;
+          Codigo_meta 	=	data[12].Meta[0].Codigo_des;
+          Descrip_meta = data[12].Meta[0].Descrip_des;
+        break;
+        case '14.':
+          nombreObj = data[13].Abrevia_des;
+          Codigo_meta 	=	data[13].Meta[0].Codigo_des;
+          Descrip_meta = data[13].Meta[0].Descrip_des;
+        break;
+        case '15.':
+          nombreObj = data[14].Abrevia_des;
+          Codigo_meta 	=	data[14].Meta[0].Codigo_des;
+          Descrip_meta = data[14].Meta[0].Descrip_des;
+        break;
+        case '16.':
+          nombreObj = data[15].Abrevia_des;
+          Codigo_meta 	=	data[15].Meta[0].Codigo_des;
+          Descrip_meta = data[15].Meta[0].Descrip_des;
+        break;
+        case '17.':
+          nombreObj = data[16].Abrevia_des;
+          Codigo_meta 	=	data[16].Meta[0].Codigo_des;
+          Descrip_meta = data[16].Meta[0].Descrip_des;
+        break;
+      }
+
   		Codigo_ind 	=	data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
 
+    $('.tituloObjetivo').html(obj+' '+nombreObj);
+    $('.Codigo_meta').html(Codigo_meta);
+    $('.Descrip_meta').html(Descrip_meta);
 
   		var temporal = [];
   		temporal.push('Entidad');
@@ -73,7 +162,6 @@ var estados = [];
   		// console.log(codigo_indicador);
   		var descripcion = data.Descrip_ind;
   		// console.log(descripcion);
-      $('.tituloObjetivo').html(obj+nombreObj);
   		$('.Codigo_ind').html(Codigo_ind);
   		$('.Descrip_ind').html(Descrip_ind);
   		//alert(Descrip_ind);
