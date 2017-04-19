@@ -838,8 +838,9 @@ border-radius: 0 !important;
 
 
 .headerObje{
-  height: 195px;
+  height: auto;
   color: #fff;
+  padding:5px 0px;
 }
 
 .pie_cuadro
