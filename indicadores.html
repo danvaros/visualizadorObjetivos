@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -208,49 +208,6 @@
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
-
-
-
-<!--
-        function lee_json() {
-            $.getJSON("/Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(datos) {
-                alert("Dato: " + datos["dato"]);
-                $.each(datos["primos"], function(idx,primo) {
-                    alert("Numero primo: " + primo);
-                });
-            });
-        }
- -->
-<!--
-<script type="text/javascript">
-
-       $(document).ready(function () {
-           $("#boton1").click(function () {
-               // var cad = "Los libros en el archivo JSON son:<br />";
-               // var cadena = $.getJSON("Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function (data) {
-               //     for (l in data.libros.lib) {
-               //         cad += ("<br />" + data.libros.lib[l].libro + " de " +
-               //             data.libros.lib[l].autores[0] + ", " +
-               //             data.libros.lib[l].autores[1] + " y " +
-               //             data.libros.lib[l].autores[2] + "<br />Editorial: " +
-               //             data.libros.lib[l].editorial +
-               //             "<br />").replace("y undefined", "").replace(", undefined", "");
-               //      }
-               //     $("#texto").html(cad);
-               // })
-               $.getJSON("Valores_cobcla_26_des_ent_0_0_87_020_0_ASC_es.json", function(json) {
-    console.log(json); // this will show the info it in firebug console
-});
-           })
-       });
-
-
-</script>
- -->
-
-
-
-
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
     <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="DataTables/dataTables.fixedColumns.js"></script>
@@ -260,8 +217,6 @@
   </span>
   <body>
 
-
-
     <!-- menu -->
     <div class="navbar-fixed">
       <nav>
@@ -270,10 +225,10 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <!-- <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
+            <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
             <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;"   onfocusout="esconder()" />
@@ -299,11 +254,11 @@
     </div>
 <!-- menu -->
 <!-- // verde #299e33 -->
-    <div id="sti" style="background-color:#299e33; position:fixed; width:100%; height:77px; z-index: 9999; color: #fff;">
+    <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 9999; color: #fff;padding:5px 0px 0px 0px; ">
       <div class="container" style="margin-top: 0 !important;">
-      <div class="row">
-        <div class="col s2 center-align">
-            <img src="img/ods-03.png" style="width: 38%;" alt="">
+      <div class="row" style="margin-top: 8px;">
+        <div class="col s2 center-align iconoObjetivo">
+            <!-- <img src="img/ods-03.png" style="width: 38%;" alt=""> -->
         </div>
         <div class="col s9 left-align">
             <hr>
@@ -317,17 +272,17 @@
     </div>
     <div id="esconder" class="headerObje" style=" /*position:fixed;*/ z-index: 9999; width: 100%;">
       <div class="container">
-        <div class="row">
-          <div class="col s2 center-align">
-              <img class="ico_obj" src="img/ods-03.png" alt="" style="position: fixed; width: 4.5%;">
+        <div class="row" style="margin-bottom: 0;padding-top: 15px;">
+          <div class="col s2 center-align iconoObjetivo">
+              <!-- <img class="ico_obj" src="img/ods-03.png" alt="" style="position: fixed; width: 4.5%;"> -->
           </div>
           <div class="col s9 left-align">
-              <h5>3 - Garantizar una vida sana y promover el bienestar para todos en todas en todas las edades</h5>
-              <p id="parrafo">
-                Meta 3.1 Para 2030, reducir la tasa mundial de mortalidad materna a menos de 70 por cada 100,00 nacidos vivos
+              <h5 class="tituloObjetivo"></h5>
+              <p id="parrafo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                <span class="Codigo_meta"></span> <span class="Descrip_meta">&nbsp; </span>
               </p>
               <hr id="primer">
-              <p id="bajo">
+              <p id="bajo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                 Indicador <span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span>
               </p>
               <hr>
@@ -341,14 +296,14 @@
         </div>
       </div>
     </div>
-    <div class="container" style="margin-top: 100px;">
-      <div class="row">
+    <div class="container" style="margin-top: 10px;">
+      <!-- <div class="row">
         <div class="col s12">
       <h3 style="color:#0a254f">Indicador <span class="Codigo_ind">&nbsp; </span> <span class="Descrip_ind">&nbsp; </span></h3>
           <li class="divider"></li>
           <br>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="col s12 center-align">
@@ -389,47 +344,16 @@
         </div>
       </div>
 
-
       <div class="row card tablaPadding" id="metadato-panel">
-        <div class="col s12">
-          <table class="bordered">
+        <div class="col s12" id="metadatosApi"></div>
+      </div>
 
-            <tbody>
-            <tr>
-              <th>Definición</th>
-              <td><!-- <p>Es la relación entre la matrícula de sexo femenino y la matrícula de sexo masculino en la educación media superior, correspondiente a un ciclo escolar.</p> -->
-              <p>Es el porcentaje de la piblación que en el año del calculo vive con menso del equivaliente a 1.25 dólares diarios a precio de 2005, según la paridad del poder adquisitivo.</p>
-              </td>
-            </tr>
-            <tr>
-              <th>Algoritmo</th>
-              <td>
-                  <img src="img/formula.png" alt="">
-                  <p>Significado de las siglas o abreviaturas:</p>
-                  PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>
-                  qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>
-                  nt: Número de personas
-              </td>
-            </tr>
-            <tr>
-              <th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:oritmo</th>
-              <td>
-            Instituto Nacional de Estadística y Geografía (INEGI). Índice Nacional de Precios al Consumidor.<br>
-            http://www.inigi.org.mx/est/contenidos/proyectos/inp/inoc.aspx<br>
-            Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL). Medición de la pobreza por ingresos.<br>
-            Banco Mundial (BM). Global Purchasing Power Paraties and Real Expenditures. 2005 International Comparison Program.<br>
-            http://www.worldbank.org/data/icp.<br>
-            Instituto Nacional de Estadística y Geografía (INEGI). Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 1992-2012<br>
-            y Banco de Información Económica (BIE). Serie de datos para PIB y Consumi Privado.<br>
-            Para entidad federativa: Instituto Nacional de Estadística y Geografía (INEGI). Módulo de condiciones<br>
-            Socioeconómicas de la ENIGH (MCS-ENIGH) 2008, 2010, 2012 y 2014.
+<!--  -->
 
-             </td>
-            </tr>
-            </tbody>
-          </table>
-          <p class="nota">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONApo, estimados por INEGI. La información de 1989 se roma de los datos históricos del indicador.<br>
-          Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+      <div class="row" id="botonera_nacional" style="display: none; ">
+        <div class="col s10">
+          <a id="ver_grafica_nacional" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla_nacional()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
+          <a id="ver_tabla_nacional" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica_nacional()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
         </div>
       </div>
 
@@ -449,6 +373,10 @@
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
+            <div class="col s4"  id="chart2btn">
+                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar gráfica</a>
+            </div>
+
           <div class="row" id="footmap">
             <div id="anios" class="col s8 center-align">
               <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
@@ -474,6 +402,9 @@
           <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
       </div>
+
+
+
 
       <div class="row card tablaPadding" id="indicador-panel" style="display:none">
         <div class="col s5 ">
@@ -641,23 +572,17 @@
           </div>
         </div>
       </div>
-
-
       </div>
-
-
-
     <div class="row">
-      <div class="col s5">
-        <p>Fecha de actualización: 11 de enero de 2016</p>
-        <p>Próxima fecha de actualización: Noviembre de 2016</p>
-      </div>
-      <div class="col s4 offset-s3 right-align" >
-            <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
+      <div class="col s4 offset-s8 right-align" >
+        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar gráfica</a>
       </div>
     </div>
   </div>
-      <div class="row scrollable-section" data-section-title="Descarga de datos">
+
+  <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div>
+
+  <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
           <h3 class="fuerte t_principal">Datos</h3>
           <li class="divider"></li>
@@ -667,12 +592,12 @@
                 <div class="col s4">
                   <p class="fuerte t_normal">Nombre</p>
                 </div>
-                <div class="col s2">
+            <!--     <div class="col s2">
                       <p class="fuerte t_normal">Mapa</p>
                 </div>
                 <div class="col s2">
                       <p class="fuerte t_normal">Grafica</p>
-                </div>
+                </div> -->
                 <div class="col s3">
                       <p class="fuerte t_normal">Datos del indicador</p>
                 </div>
@@ -680,17 +605,17 @@
                       <li class="divider griss"></li>
                 </div>
                 <div class="col s4">
-                      <p class="gris t_sm">3.1.1 Razón de mortalidad materna</p>
+                      <p class="gris t_sm"><span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span></p>
                 </div>
-                <div class="col s2" style="margin-top: 10px;">
+            <!--     <div class="col s2" style="margin-top: 10px;">
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div>
                 <div class="col s2" style="margin-top: 10px;">
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
-                </div>
-                <div class="col s3" style="margin-top: 10px;">
+                </div> -->
+                <div class="col s6" style="margin-top: 10px;">
                       <a class="icn">CSV</a>
                       <a class="icns">XLS</a>
                       <a class="icnSDMX">SDMX</a>
@@ -699,23 +624,23 @@
                 <div class="col s12">
                       <li class="divider griss"></li>
                 </div>
-                <div class="col s4">
+                <!-- <div class="col s4">
                       <p class="gris t_sm">3.1.1 Razón de mortalidad materna</p>
-                </div>
-                <div class="col s2" style="margin-top: 10px;">
+                </div> -->
+       <!--          <div class="col s2" style="margin-top: 10px;">
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div>
                 <div class="col s2" style="margin-top: 10px;">
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
-                </div>
-                <div class="col s3" style="margin-top: 10px;">
+                </div> -->
+                <!-- <div class="col s6" style="margin-top: 10px;">
                       <a class="icn">CSV</a>
                       <a class="icns">XLS</a>
                       <a class="icnSDMX">SDMX</a>
                       <a class="icnPDF">PDF</a>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -742,14 +667,14 @@
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <!-- <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li> -->
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-          <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+          <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
             <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
@@ -785,6 +710,7 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script>
+  var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
   var chart;
   var index_estados;
@@ -801,13 +727,13 @@
     $('#footmap').remove();
     $('#grafs').remove();
     $('#indicador-grafica').remove();
-    $('#indicador-panel').remove();
+    $('#indicador-panel').hide();
     //$('#mapas_hide').remove();
     console.log("hecho");
     var chart2 = c3.generate({
     bindto: '#chart2',
     size: {
-          height: 500
+          height: 400
         },
       data: {
           x: 'Entidad',
@@ -831,9 +757,14 @@
           x : {
               type : 'timeseries',
               tick: {
-                  rotate:90,
                   format: function (x) { return x.getFullYear(); }
                 //format: '%Y' // format string is also available for timeseries data
+              },
+              y : {
+                  tick: {
+                      format: d3.format(".0f")
+                  },
+                  padding: {top: 35, bottom: 0}
               }
           }
       },tooltip: {
@@ -854,8 +785,6 @@
                       $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
                       $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
 
-
-
                   }
                   else {
                     $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
@@ -870,16 +799,19 @@
                 }(jQuery));
                   return commaSeparateNumber(Math.round(value*10)/10);
               }
-  //            value: d3.format(',') // apply this format to both y and y2
           }
       },
     });
 
+    $('#chart2btn').show();
+    $('#botonera_nacional').show();
+  }else{
+    $('#botonera_nacional').remove();
   }
 
   $(document).ready(function()
   {
-
+    $('#chart2btn').hide();
     chart = c3.generate({
       legend: {
         show: false
@@ -890,7 +822,7 @@
           },
       data: {
       columns: [
-        ['Razón de mortalidad materna',
+        [Descrip_ind,
           '25.8',
           '32',
           '24.3',
@@ -927,7 +859,7 @@
       ],
       type: 'bar',
       colors: {
-            'Razón de mortalidad materna' : function (d) {
+            Descrip_ind : function (d) {
                 return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
             }
@@ -943,6 +875,7 @@
                     return chart.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
                 }
             },
+
           axis: {
     rotated: true,
     x: {
@@ -982,11 +915,14 @@
                   'Estados Unidos Mexicanos',
                 ],
           height: 40,
-          }
-          }
+          } ,
+           y : {
+                  tick: {
+                      format: d3.format(".0f")
+                  }
+              }
+          },
       });//fin de grafica
-
-
     datosGrafica(2015);
 });
 
@@ -1025,21 +961,21 @@ function datosGrafica(year){
 
   for (var i = 0; i < estados.length; i++) {
     if(i==0){
-      serie.push('Razón de mortalidad materna');
+      serie.push(Descrip_ind);
     }else{
       if(i < 17){
-        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
       } else if(i == 33){
-        $('.pais').html(estados[i][indice]);
+        $('.pais').html(parseFloat(estados[i][indice]).toFixed(2));
       }
       else {
-        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+estados[i][indice]+'</td></tr>' ;
+        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
       }
 
-      var valueToPush = {'numero':estados[i][indice], 'estado':estados[i][0]};
+      var valueToPush = {'numero':parseFloat(estados[i][indice]).toFixed(2), 'estado':estados[i][0]};
       nuevos_estados_dobles.push(valueToPush);
 
-      serie.push(estados[i][indice]);
+      serie.push(parseFloat(estados[i][indice]).toFixed(2));
     }
   }
 
@@ -1055,14 +991,14 @@ console.log(nuevos_estados_dobles);
 
 
 //separar el areglo
-series.push('Razón de mortalidad materna');
+series.push(Descrip_ind);
 for (var i = 0; i < nuevos_estados_dobles.length; i++) {
  // console.log(nuevos_estados_dobles[i].estado);
   if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
       index_estados = i;
   }
   categories[i] = nuevos_estados_dobles[i].estado;
-  series.push(nuevos_estados_dobles[i].numero);
+  series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(2));
 
 }
 
@@ -1072,7 +1008,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   chart.load({
     columns: [series],
     categories: categories,
-    unload: ['Razón de mortalidad materna'],
+    unload: [Descrip_ind],
   });
 
   $('.tabla_uno').html(tabla_uno);
@@ -1125,7 +1061,7 @@ function sortFunction(a, b) {
               },
               y : {
                   tick: {
-                      format: d3.format(".2s")
+                      format: d3.format(".0f")
                   }
               }
           },
@@ -1134,7 +1070,7 @@ function sortFunction(a, b) {
           },
           size: {
               width: 260,
-              height: 160
+              height: 200
           },
           legend: {
               show: false
@@ -1252,7 +1188,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           gen(estados[busqueda_indice(props.nom_ent)]);
@@ -1434,28 +1370,19 @@ function sortFunction(a, b) {
 
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var datos_doble = ' <div class="cuadro_titulo"> ' +
-              '<h4>Razón de mortalidad materna</h4>' +
-              '<li class="divider"></li>'+
-             ' <p>1990-2015</p>'+
-             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-          '</div>' +
-                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
-                            '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
 
-          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' +
-              '<h4>Razón de mortalidad materna</h4>' +
-              '<li class="divider"></li>'+
-             ' <p>1990-2015</p>'+
+var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+                  '</div>' +
+                  '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                  '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
+
+          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
              ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
                             '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
-           var datos_doble_3 =  ' <div class="cuadro_titulo"> ' +
-              '<h4>Razón de mortalidad materna</h4>' +
-              '<li class="divider"></li>'+
-             ' <p>1990-2015</p>'+
+           var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
              ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
@@ -1499,20 +1426,20 @@ function sortFunction(a, b) {
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == estados[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble += varia;
                   datos_doble_2 += varia;
                   datos_doble_3 += varia;
                 }
                 else if(j == estados[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ estados[i][j] +'</td>';
-                    datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
-                    datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ estados[i][j] +'</td>';
-                  datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
-                  datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
+                  datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                }
 
@@ -1529,24 +1456,15 @@ function sortFunction(a, b) {
              }
 
             datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+
-             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
-             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
-             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+            ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
                datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+
-             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
-             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
-             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+            ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
                datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+
-             ' <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>'+
-             ' <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>'+
-             ' <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>'+
+            ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
             //  console.log(datos_doble);
@@ -1578,6 +1496,7 @@ function sortFunction(a, b) {
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
                 $('#chart2').show();
+
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
@@ -1709,32 +1628,76 @@ function sortFunction(a, b) {
           });
 
 
-          var cadena='';
-          for(var i=1;i<=7;i++)
-          {
-            if(i == 1)
-            {
-              cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-              console.log(i);
-            }
-            else if(i == 7)
-            {
-              cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-              console.log(i,'break');
-              break;
-            }
-            else if(i < estados[0].length-1)
-            {
-              cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-              console.log(i);
-            }
-            // cadena='<option value="'+estados[0][i]+'">'+estados[0][i].split('-')[0]+'</option>'+cadena;
-          }
-          // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a><select id="opciones_anio" onchange="cambio_anio()" style="display:block;"><option value=" " disabled selected>Selecciona un año</option>'+cadena;
-          cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
-          $('#anios').html(cadena);
-
+          // var cadena='';
+          // for(var i=1;i<=7;i++)
+          // {
+          //   if(i == 1)
+          //   {
+          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          //     console.log(i);
+          //   }
+          //   else if(i == 7)
+          //   {
+          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          //     console.log(i,'break');
+          //     break;
+          //   }
+          //   else if(i < estados[0].length-1)
+          //   {
+          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          //     console.log(i);
+          //   }
+          //   // cadena='<option value="'+estados[0][i]+'">'+estados[0][i].split('-')[0]+'</option>'+cadena;
+          // }
+          // // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a><select id="opciones_anio" onchange="cambio_anio()" style="display:block;"><option value=" " disabled selected>Selecciona un año</option>'+cadena;
+          // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
+          // $('#anios').html(cadena);
+          put_anios();
     });
+
+
+   function put_anios(){
+      var cadena='';
+      var anio_mas_actual;
+      console.log('----------------------- estados anios -----------------');
+      console.log(estados);
+      console.log(estados[0]);
+      console.log(estados[0].length);
+                              
+      for(var i = 1; i < estados[0].length; i++)
+      {
+        if(i == 1)
+        {
+        anio_mas_actual = 'anio_'+i;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        }
+        else if(i <= estados[0].length-1)
+        {
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        }
+      }
+
+      if(cadena !=  ''){
+        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
+        $('#anios').html(cadena);
+
+        $('#'+anio_mas_actual).trigger( "click" );
+      }else{
+        for (var i = 0; i < estados.length; i++) {
+          if(i == 0){
+            estados[i][1] =  '2017-01-01'; 
+          }else{
+            estados[i][1] = 1;
+          }
+        }
+        console.log('--------------- estados fake ------------------');
+        console.log(estados);
+        cambio_anio('2017-01-01',44);
+      }
+    }//fin funcion
+
+
+
 
     function cambio_grafica()
     {
@@ -1751,9 +1714,33 @@ function sortFunction(a, b) {
       $('#ver_grafica').removeClass('inactive_anio');
       $('#ver_grafica').addClass('active_anio');
       $('#ver_tabla').removeClass('active_anio');
-      $('#ver_tabla').addClass('in¡active_anio');
+      $('#ver_tabla').addClass('inactive_anio');
+
+      $('#mapas_hide').show();
       $('#indicador-grafica').show();
       $('#indicador-panel').hide();
+    }
+
+      function cambio_grafica_nacional()
+    {
+      $('#ver_tabla_nacional').removeClass('inactive_anio');
+      $('#ver_tabla_nacional').addClass('active_anio');
+      $('#ver_grafica_nacional').removeClass('active_anio');
+      $('#ver_grafica_nacional').addClass('inactive_anio');
+
+      $('#mapas_hide').hide();
+      $('#tabla_nacional').show();
+    }
+
+    function cambio_tabla_nacional()
+    {
+      $('#ver_grafica_nacional').removeClass('inactive_anio');
+      $('#ver_grafica_nacional').addClass('active_anio');
+      $('#ver_tabla_nacional').removeClass('active_anio');
+      $('#ver_tabla_nacional').addClass('inactive_anio');
+
+      $('#mapas_hide').show();
+      $('#tabla_nacional').hide();
     }
 
 
@@ -1785,7 +1772,7 @@ function sortFunction(a, b) {
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">'+titulo_des_graf+'</p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         gen(estados[busqueda_indice(props.nom_ent)]);
@@ -1956,7 +1943,7 @@ function sortFunction(a, b) {
       {
         console.log("arriba");
         $("#sti").fadeOut(200);
-        $("#esconder").fadeIn(2000);
+        $("#esconder").fadeIn(200);
         // $( "#sti" ).animate({
         //   height: "0px"
         // }, 1500 );
@@ -1967,7 +1954,7 @@ function sortFunction(a, b) {
       if(!isScrolledIntoView($("#parrafo")))
       {
         $("#esconder").fadeOut(200);
-        $("#sti").fadeIn(2000);
+        $("#sti").fadeIn(200);
       }
     });
 
@@ -1981,15 +1968,8 @@ function sortFunction(a, b) {
     }
 
       $(document).ready(function() {
-
-
-    // alert('termino de esperar');
-
         $("#sti").hide();
-        console.log(isScrolledIntoView($("#bajo")));
-
         window.onload = function () {
-
           $('#buscar').click(function () {
             console.log("aca");
             if (lupa) {
@@ -2002,11 +1982,35 @@ function sortFunction(a, b) {
               lupa = true;
             }
           });
-
         }
 
-
+        armaMetadatos();
       });
+
+
+      function armaMetadatos(){
+        var tablaMeta =  '';
+        var metadatosArr =  getMetadatos(vars);
+        console.log('---------------------- metadatos -----------------');
+        console.log(metadatosArr);
+
+        tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
+        '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
+        '<tr><th>Algoritmo</th><td><strong>Pendiente de conectar a la API</strong></td></tr>'+
+        '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:</th><td>';
+
+        for (var i = 0; i < metadatosArr.Fuente.length; i++) {
+          tablaMeta = tablaMeta  +  metadatosArr.Fuente[i].Descrip_fue + '<br>';
+        }
+
+        /* tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>'; */
+        tablaMeta = tablaMeta +  '</td></tr></tbody></table><strong>Pendiente de conectar a la API</strong></p>';
+
+
+        $('#metadatosApi').html(tablaMeta);
+
+        // <img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas
+      }
     </script>
   </body>
 </html>

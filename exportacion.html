@@ -14,6 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
     <style media="screen">
+      .alinea{
+        margin-top: 10px;
+      }
+
       .status_c{
         border-radius: 20px;
         background-color: #07c2a7;
@@ -52,10 +56,10 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+            <!-- <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
+            <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
             <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
@@ -90,7 +94,7 @@
         </div>
       </div>
       <div class="row" style="margin-top:25px;">
-        <div class="col s2"><b class="fuerte t_normal">Elementos a exportar</b></div>
+        <div class="col s2"><p class="alinea fuerte t_normal">Elementos a exportar</p></div>
         <div class="col s2">
           <p class="center-align">
             <input type="checkbox" id="test5" />
@@ -117,27 +121,33 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s2"><b class="fuerte t_normal">Entidad federativa</b></div>
+        <div class="col s2"><p class="alinea fuerte t_normal">Entidad federativa</p></div>
         <div class="input-field col s2" style="margin-top:0 !important;">
            <select>
              <option value="" disabled selected>Entidad</option>
              <option value="1">Aguascalientes</option>
            </select>
         </div>
-        <div class="col s2 center-align"><b class="fuerte t_normal">Formato</b></div>
-        <div class="col s2">
+        <div class="col s1 center-align"><p class="alinea fuerte t_normal">Formato</p></div>
+        <div class="col s1">
           <p>
             <input type="checkbox" id="test9" />
             <label for="test9"><a class="icns">XLS</a></label>
           </p>
         </div>
-        <div class="col s2">
+        <div class="col s1">
           <p>
             <input type="checkbox" id="test10" />
             <label for="test10"><a class="icn">CSV</a></label>
           </p>
         </div>
-        <div class="col s2"><a class="waves-effect waves-light btn_fuera color claro t_sm sin_sombra">EXPORTAR</a></div>
+        <div class="col s2">
+          <p>
+            <input type="checkbox" id="test10" />
+            <label for="test10"><a class="icnSDMX">SDMX</a></label>
+          </p>
+        </div>
+        <div class="col s1"><a class="waves-effect waves-light btn_fuera color claro t_sm sin_sombra">EXPORTAR</a></div>
       </div>
       <div class="row" style="margin-top:25px;">
         <div class="col s12">
@@ -259,14 +269,14 @@
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <!-- <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li> -->
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+              <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
             <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>

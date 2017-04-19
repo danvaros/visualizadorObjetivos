@@ -1,6 +1,6 @@
 
 	function getIndicadorSer(indicador,ser){
-		var estados = [];
+	  var estados = [];
 	  console.log("Indicador",indicador," -> Serie",ser);
 		$.ajax({
 		  type: 'POST',
@@ -53,8 +53,8 @@
 		var atributos = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
-	   	  data: {'PCveInd':indicador, 'PIdioma':'ES' , "POpcion":"Cl" },
+	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave",
+	   	  data: {'PCveInd':indicador, 'PIdioma':'ES'},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
 	        atributos = data;
@@ -112,14 +112,14 @@ function getMetadatos(indicador){
 
 
 function getAtr(indicador){
-	var metadatos = [];
+	var atr = [];
 		$.ajax({
 	   	  type: 'POST',
 	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave",
 	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
-	        metadatos = data;
+	        atr = data;
 	      },
 	      error:function( data, textStatus, responseJSON )
 	      {
@@ -128,7 +128,7 @@ function getAtr(indicador){
 	  	  async:false
 	    });
 
-	    return metadatos;
+	    return atr;
 }
 
 
