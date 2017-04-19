@@ -649,6 +649,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript" src="lib/html2canvas.js"></script>
   <script src='funcionesApi.js'></script>
   <script src="lib/jquery.dotdotdot.js"></script>
+  <script src="cobertura.js"></script>
   <script type="text/javascript">
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
@@ -703,7 +704,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             }
             $('select').material_select();
           });
-                  
+               
+
           titulos(26);
           $('#indicadores').on('change',function(){
             $('#loader').show();
@@ -718,14 +720,14 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               $('#seccion_mapa').show();//panel de datos de descarga 
               put_anios();
             }
+
+            actualiza_grafica();
             //else{
             //   // $('#headmap').show();
             //   // $('#footmapdatos').show();
             //   // $('#footmap').show();
             //   // $('#map').show();
             // }
-
-            actualiza_grafica();
           });
           //activamos el change
         });
@@ -774,7 +776,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
         function llamar_api()
         {
-            
             getInd($("#indicadores").val());
             console.log('------------------------- estados -------------');
             console.log(estados);
