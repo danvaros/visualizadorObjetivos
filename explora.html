@@ -376,7 +376,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
 
-      <div id="datosEstatal">
+      <div id="datosEstatal" style="display:none;">
         <div class="row scrollable-section" data-section-title="Tablas" >
           <div class="col s12">
             <h3 class="fuerte t_principal">Top 3 estados</h3>
@@ -714,7 +714,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
             if($('#agregacion').val() != 1){
               $('#datosNacional').hide( );
-              $('#datosEstatal').show( );
+              $('#datosEstatal').hide( );
               $('#seccion_mapa').show();//panel de datos de descarga 
               put_anios();
             }
