@@ -412,7 +412,7 @@
         </div>
         <div class="col s2 right-align" style="margin-top: 60px;">
           <a href="#!" class="col s4 right-align" onclick="atras()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-          <a class="col s4 center-align numero">2015</a>
+          <a class="col s4 center-align numero" id="numero_anio">2015</a>
           <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -707,7 +707,7 @@
 <!-- footer -->
 
 
-
+    <script src="cobertura.js"></script>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
     <script type="text/javascript" src="entidad2.json"></script>
@@ -725,6 +725,7 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
+  
   <script>
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
@@ -953,6 +954,10 @@ function atras(){
 }
 
 function adelante(){
+  console.log('------------------------ array anios -------------------');
+  console.log(anios_array);
+
+
   if(estadoYear != 2015){
     estadoYear++;
     console.log(estadoYear);
@@ -1698,14 +1703,15 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
           put_anios();
     });
 
-
+   
    function put_anios(){
+      
       var cadena='';
       var anio_mas_actual;
-      console.log('----------------------- estados anios -----------------');
-      console.log(estados);
-      console.log(estados[0]);
-      console.log(estados[0].length);
+      // console.log('----------------------- estados anios -----------------');
+      // console.log(estados);
+      // console.log(estados[0]);
+      // console.log(estados[0].length);
                               
       for(var i = 1; i < estados[0].length; i++)
       {
@@ -1713,13 +1719,15 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
         {
         anio_mas_actual = 'anio_'+i;
         cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          
         }
         else if(i <= estados[0].length-1)
         {
         cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
         }
       }
-
+      console.log('--------------------   previa array anios----------------------');
+      console.log(anios_array);
       if(cadena !=  ''){
         cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
         $('#anios').html(cadena);
