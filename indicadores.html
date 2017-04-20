@@ -13,6 +13,10 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="lib/owl.carousel.min.css">
+    <link rel="stylesheet" href="lib/owl.theme.default.min.css">
+
+
 
 	<!-- Load c3.css -->
 	<link href="lib/c3.css" rel="stylesheet" type="text/css">
@@ -134,7 +138,14 @@
       max-width: 32%;
     }
 
-
+    .crop {
+     width: 185px;
+     line-height: 18px;
+     height:37px;
+     overflow: hidden;
+     margin: 0 auto;
+     text-align: left;
+    }
 
 
 
@@ -211,6 +222,7 @@
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
     <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="DataTables/dataTables.fixedColumns.js"></script>
+    <script src="lib/owl.carousel.min.js"></script>
   </head>
   <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
@@ -254,11 +266,11 @@
     </div>
 <!-- menu -->
 <!-- // verde #299e33 -->
-    <div id="sti" style="background-color:#299e33; position:fixed; width:100%; height:90px; z-index: 9999; color: #fff; ">
+    <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 9999; color: #fff;padding:5px 0px 0px 0px; ">
       <div class="container" style="margin-top: 0 !important;">
-      <div class="row" style="margin-top: 8px;">
-        <div class="col s2 center-align">
-            <img src="img/ods-03.png" style="width: 38%;" alt="">
+      <div class="row" style="margin-top: 8px;margin-bottom:8px;">
+        <div class="col s2 center-align iconoObjetivo">
+            <!-- <img src="img/ods-03.png" style="width: 38%;" alt=""> -->
         </div>
         <div class="col s9 left-align">
             <hr>
@@ -272,17 +284,17 @@
     </div>
     <div id="esconder" class="headerObje" style=" /*position:fixed;*/ z-index: 9999; width: 100%;">
       <div class="container">
-        <div class="row">
-          <div class="col s2 center-align">
-              <img class="ico_obj" src="img/ods-03.png" alt="" style="position: fixed; width: 4.5%;">
+        <div class="row" style="margin-bottom: 0;padding-top: 2px;">
+          <div class="col s2 center-align iconoObjetivo">
+              <!-- <img class="ico_obj" src="img/ods-03.png" alt="" style="position: fixed; width: 4.5%;"> -->
           </div>
           <div class="col s9 left-align">
               <h5 class="tituloObjetivo"></h5>
-              <p id="parrafo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+              <p id="parrafo">
                 <span class="Codigo_meta"></span> <span class="Descrip_meta">&nbsp; </span>
               </p>
               <hr id="primer">
-              <p id="bajo" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+              <p id="bajo">
                 Indicador <span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span>
               </p>
               <hr>
@@ -364,7 +376,7 @@
               <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
               <p>1990-2015</p>
-              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+              <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
           </div>
           <div id="map"></div>
           <div id="chart2"></div>
@@ -378,12 +390,14 @@
             </div>
 
           <div class="row" id="footmap">
-            <div id="anios" class="col s8 center-align">
-              <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
-              <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
-              <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
-              <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
-            </div>
+
+              <div id="anios" class="col s8 center-align">
+                <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
+                <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
+                <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
+                <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
+              </div>
+            
             <div class="col s4" >
                   <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
             </div>
@@ -522,7 +536,7 @@
               <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
               <p>1990-2015</p>
-              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+              <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
           </div>
           <div id="barras"></div>
         <div class="pie_cuadro2">
@@ -580,7 +594,8 @@
     </div>
   </div>
 
-  <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div>
+  <!-- <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div> -->
+  <div id="tabla_nacional" style="display: none;"></div>
 
   <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
@@ -605,7 +620,7 @@
                       <li class="divider griss"></li>
                 </div>
                 <div class="col s4">
-                      <p class="gris t_sm">3.1.1 Razón de mortalidad materna</p>
+                      <p class="gris t_sm"><span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span></p>
                 </div>
             <!--     <div class="col s2" style="margin-top: 10px;">
                   <a class="icn">SHP</a>
@@ -624,9 +639,9 @@
                 <div class="col s12">
                       <li class="divider griss"></li>
                 </div>
-                <div class="col s4">
+                <!-- <div class="col s4">
                       <p class="gris t_sm">3.1.1 Razón de mortalidad materna</p>
-                </div>
+                </div> -->
        <!--          <div class="col s2" style="margin-top: 10px;">
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
@@ -635,12 +650,12 @@
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div> -->
-                <div class="col s6" style="margin-top: 10px;">
+                <!-- <div class="col s6" style="margin-top: 10px;">
                       <a class="icn">CSV</a>
                       <a class="icns">XLS</a>
                       <a class="icnSDMX">SDMX</a>
                       <a class="icnPDF">PDF</a>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -709,7 +724,9 @@
   <script src="lib/jquery.fixedheadertable.js"></script>
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
   <script>
+  var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
   var chart;
   var index_estados;
@@ -821,7 +838,7 @@
           },
       data: {
       columns: [
-        ['Razón de mortalidad materna',
+        [Descrip_ind,
           '25.8',
           '32',
           '24.3',
@@ -858,7 +875,7 @@
       ],
       type: 'bar',
       colors: {
-            'Razón de mortalidad materna' : function (d) {
+            Descrip_ind : function (d) {
                 return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
             }
@@ -960,7 +977,7 @@ function datosGrafica(year){
 
   for (var i = 0; i < estados.length; i++) {
     if(i==0){
-      serie.push('Razón de mortalidad materna');
+      serie.push(Descrip_ind);
     }else{
       if(i < 17){
         tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
@@ -990,7 +1007,7 @@ console.log(nuevos_estados_dobles);
 
 
 //separar el areglo
-series.push('Razón de mortalidad materna');
+series.push(Descrip_ind);
 for (var i = 0; i < nuevos_estados_dobles.length; i++) {
  // console.log(nuevos_estados_dobles[i].estado);
   if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
@@ -1007,7 +1024,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   chart.load({
     columns: [series],
     categories: categories,
-    unload: ['Razón de mortalidad materna'],
+    unload: [Descrip_ind],
   });
 
   $('.tabla_uno').html(tabla_uno);
@@ -1069,7 +1086,7 @@ function sortFunction(a, b) {
           },
           size: {
               width: 260,
-              height: 160
+              height: 200
           },
           legend: {
               show: false
@@ -1187,10 +1204,11 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 54%; left: 35%;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           gen(estados[busqueda_indice(props.nom_ent)]);
+          $(".crop").dotdotdot();
   	     }
         };
         info.addTo(map);
@@ -1359,7 +1377,26 @@ function sortFunction(a, b) {
       padding-top: 26px !important;
  }
   </style>
-
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+  });
+});
+</script>
   <script type="text/javascript">
     $(document).ready(function(){
 
@@ -1376,13 +1413,13 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                   '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
 
           var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
-             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+            //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
                             '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
            var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
-             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+            //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
                             '<table class="bordered" id="miTabla3" class="miTabla3" >';
@@ -1470,6 +1507,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
           $('#datos-panel').html(select+datos_doble);
           $('#datos-panel-dos').html(select_2+datos_doble_2);
           $('#serie-panel').html(datos_doble_3);
+          $('#tabla_nacional').html(datos_doble_3);
 
           $('.scroller').scroll(function(e) {
             console.log("aca");
@@ -1497,6 +1535,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#chart2').show();
 
                 $('#serie-panel').hide();
+
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1513,12 +1552,15 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').show();
+
                 if(table3 == null){
                   table3 = $('#miTabla3').DataTable( {
                     scrollY:        "600px",
                     scrollX:        true,
                     scrollCollapse: true,
                     paging:         false,
+                    searching: false,
+                    retrieve: true,
                     aoColumnDefs: [
                       { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
                     ],
@@ -1543,6 +1585,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
+
                 $('#datos-panel').show();
                 $('#datos-panel-dos').show();
                 $('#link-datos-panel').show();
@@ -1560,6 +1603,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
+
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1716,6 +1760,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
       $('#ver_tabla').addClass('inactive_anio');
 
       $('#mapas_hide').show();
+      $('#indicador-grafica').show();
       $('#indicador-panel').hide();
     }
 
@@ -1770,10 +1815,11 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b></p><p style="position: absolute; top: 15%; left: 35%;">Razón de <br>mortalidad materna</p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         gen(estados[busqueda_indice(props.nom_ent)]);
+        $(".crop").dotdotdot();
        }
       };
       info.addTo(map);
@@ -2002,7 +2048,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
         }
 
         /* tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>'; */
-        tablaMeta = tablaMeta +  '</td></tr></tbody></table><strong>Pendiente de conectar a la API</strong></p>';
+        tablaMeta = tablaMeta +  '</td></tr></tbody></table></p>';
 
 
         $('#metadatosApi').html(tablaMeta);
