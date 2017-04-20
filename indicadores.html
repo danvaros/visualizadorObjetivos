@@ -954,10 +954,6 @@ function atras(){
 }
 
 function adelante(){
-  console.log('------------------------ array anios -------------------');
-  console.log(anios_array);
-
-
   if(estadoYear != 2015){
     estadoYear++;
     console.log(estadoYear);
@@ -1726,8 +1722,6 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
         cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
         }
       }
-      console.log('--------------------   previa array anios----------------------');
-      console.log(anios_array);
       if(cadena !=  ''){
         cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
         $('#anios').html(cadena);
