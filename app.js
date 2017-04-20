@@ -176,8 +176,6 @@ var estados = [];
     async:false
   });
 
-
-
 $.ajax({
   type: 'POST',
   url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
@@ -196,11 +194,10 @@ $.ajax({
       }else{
         cobertura(data);
         estados = arma_tabla(0);
-        //poner_filtros();
+        poner_filtros();
       }
     
-
-        // console.log(estados);
+      // console.log(estados);
 
       var codigo_indicador = data.Codigo_ind;
       // console.log(codigo_indicador);
@@ -219,6 +216,22 @@ $.ajax({
   },
   async:false
 });
+
+  function actualiza_grafica(){
+    $('.numero').html(arrray_anios[0]);
+    datosGrafica(arrray_anios[0]);
+  }//fin de la función
+
+function poner_filtros(){
+  console.log('--------------------- ponemos filtros ------------------');  
+  $("#filtros").html('');
+  for (var i = 0; i < arreglo_cla.length; i++) {
+    $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+  }
+  $('#row_filtros').show();
+  $('select').material_select();
+}
+
 
 function valorDato(data){
     var temporal = [];
