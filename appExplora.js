@@ -1,5 +1,5 @@
 var estados = [];
-
+var es_cobertura =  false;
 getIndicador(26,87);
 
 function getInd(indicador){
@@ -17,6 +17,7 @@ function getInd(indicador){
       }else{
         cobertura(data);
         estados = arma_tabla(0);
+        poner_filtros();
       }
     
       console.log("ya termino las llamadas");

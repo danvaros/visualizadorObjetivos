@@ -277,6 +277,17 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top" style="width: 250px;" id ="hacer_llamada" onclick="llamar_api()">Ir</a>
         </div> -->
       </div>
+      <div class="row" id="row_filtros" style="display: none;">
+        <div class="col s2" style="display: flex;">
+          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">4. filtros</p>
+        </div>
+        <div class="col s5" style="display: flex;">
+          <div class="input-field col s12 caja_s">
+            <select id="filtros">
+            </select>
+          </div>
+        </div>
+      </div>
       <div class="espacio_seccion"></div>
       <div class="hide">Ocurrio un Error al hacer la llamada</div>
       <div class="row scrollable-section" data-section-title="Mapa">
@@ -828,6 +839,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         $('#seccion_mapa').hide();//panel de datos de descarga 
         $('#grafica_c').hide();
         $('#datosEstatal').hide();
+        $('#row_filtros').hide();
+      
 
         // $('#headmap').hide();
         // $('#footmapdatos').hide();
@@ -1362,81 +1375,80 @@ function busqueda_anio(cadena)
       //    unload:estados
       // });
 
-        $('#chart2').html('');
-chart2 = c3.generate({
-      bindto: '#chart2',
-      size: {
-            height: 500
+      $('#chart2').html('');
+      chart2 = c3.generate({
+        bindto: '#chart2',
+        size: {
+              height: 500
+            },
+          data: {
+              x: 'Entidad',
+              columns: estados,
           },
-        data: {
-            x: 'Entidad',
-            columns: estados,
+          legend: {
+          show: false
+          },
+        padding: {
+              left: 40,
+              right: 30
+          },
+          point: {
+          show: true
         },
-        legend: {
-        show: false
-        },
-      padding: {
-            left: 40,
-            right: 30
-        },
-        point: {
-        show: true
-      },
-      color: {
-            pattern:['#f00','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc']
-        },
+        color: {
+              pattern:['#f00','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc']
+          },
 
-        axis : {
-            x : {
-                type : 'timeseries',
-                tick: {
-                    rotate:90,
-                    format: function (x) { return x.getFullYear(); }
-                  //format: '%Y' // format string is also available for timeseries data
-                }
-            }
-        },tooltip: {
-            grouped: false, // Default true
-              format: {
-                title: function (d) { return d.name; },
-                value: function (value, ratio, id) {
-                  (function ($) {
-                    if (id != "Estados Unidos Mexicanos") {
+          axis : {
+              x : {
+                  type : 'timeseries',
+                  tick: {
+                      rotate:90,
+                      format: function (x) { return x.getFullYear(); }
+                    //format: '%Y' // format string is also available for timeseries data
+                  }
+              }
+          },tooltip: {
+              grouped: false, // Default true
+                format: {
+                  title: function (d) { return d.name; },
+                  value: function (value, ratio, id) {
+                    (function ($) {
+                      if (id != "Estados Unidos Mexicanos") {
+                          $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+                          $( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+
+                          $( "svg g.c3-chart-line g.c3-circles-" +id.replace(/ /g,'-') + " circle" ).css('fill','#00aeef');
+                          $( "svg g.c3-chart-line path.c3-line-" +id.replace(/ /g,'-') ).css('stroke','#00aeef');
+
+                          $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
+                          $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+                          $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
+                          $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
+                      }
+                      else {
                         $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
                         $( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
 
-                        $( "svg g.c3-chart-line g.c3-circles-" +id.replace(/ /g,'-') + " circle" ).css('fill','#00aeef');
-                        $( "svg g.c3-chart-line path.c3-line-" +id.replace(/ /g,'-') ).css('stroke','#00aeef');
-
                         $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
                         $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+
                         $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
                         $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
-                    }
-                    else {
-                      $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
-                      $( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+                      }
+                    }(jQuery));
+                      return commaSeparateNumber(Math.round(value*10)/10);
+                  },
+                 value: d3.format('.0F') // apply this format to both y and y2
+              }
+          },
+      });
+    }//fin de la función
 
-                      $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
-                      $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
-
-                      $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
-                      $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
-                    }
-                  }(jQuery));
-                    return commaSeparateNumber(Math.round(value*10)/10);
-                },
-               value: d3.format('.0F') // apply this format to both y and y2
-            }
-        },
-    });
-
-
-    }
-
+    var anio_mas_actual;
     function put_anios(){
       var cadena='';
-      var anio_mas_actual;
+      
       console.log('----------------------- estados anios -----------------');
       console.log(estados);
       console.log(estados[0]);
@@ -1474,8 +1486,29 @@ chart2 = c3.generate({
       }
     }//fin funcion
 
+    function poner_filtros(){
+      console.log('--------------------- ponemos filtros ------------------');  
+      $("#filtros").html('');
+      for (var i = 0; i < arreglo_cla.length; i++) {
+        $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+      }
+      $('#row_filtros').show();
+      $('select').material_select();
+    }
 
-     $(document).ready(function() {
+    $('#filtros').on('change',function(){
+      $('#loader').show();
+      estados = arma_tabla($(this).val());
+      console.log('------------------------- estados tabala select-----------------');
+      console.log(estados);
+      actualiza_grafica(); 
+      if($('#agregacion').val() != 1){
+        $('#'+anio_mas_actual).trigger( "click" );
+      }
+      $('#loader').delay(2000).fadeOut("slow");
+    });
+
+    $(document).ready(function() {
         $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
         $('.tooltip').tooltipster({
         contentCloning: true,
