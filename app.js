@@ -1,7 +1,7 @@
 // $(window).onload(function(){
 // 	$('#preloader').fadeOut('slow',function(){$(this).remove();});
 // });
-var series_calculo=[];
+
 var titulo_des_graf=" ";
 var inicio = 0;
 var estados = [];
@@ -184,7 +184,6 @@ $.ajax({
   data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
   success: function( data, textStatus, jqxhr ) {
 
-
       console.log('-------------------- valorDato ----------------');
       console.log(data.Series[0].Coberturas[0].ValorDato);
       Codigo_ind  = data.Codigo_ind;
@@ -217,7 +216,6 @@ $.ajax({
 
       console.log("ya termino las llamadas");
       $('#loader').delay(2000).fadeOut("slow");
-
   },
   async:false
 });

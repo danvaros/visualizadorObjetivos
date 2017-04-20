@@ -1422,65 +1422,19 @@ $(document).ready(function(){
 
           $('#indicador-panel').hide();
           $('.modal-trigger').leanModal();
+          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          console.log("el objeto es",series_calculo);
-          var opciones='<option value="0">Selecciona</option>';
-          for(var i=0;i<series_calculo.length;i++)
-          {
-            if(series_calculo[i].Tipo_ser == "I")
-            {
-              opciones=opciones+'<option value="'+i+'">'+series_calculo[i].Descrip_ser+'</option>';
-            }
-          }
-//<option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option>
-//<option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option>
-          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;">'+opciones+'</select></div>';
-
-          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;">'+opciones+'</select></div>';
-
-          console.log("asi quedara",estados);
-          var todas_series=[]
-          for(var z=0;z<series_calculo.length;z++)
-          {
-            if(series_calculo[z].Tipo_ser == "I")
-            {
-                var nueva_tabla = [];
-                var temporal = [];
-            		temporal.push('Entidad');
-            		for (var j = 0; j < series_calculo[z].Coberturas[0].ValorDato.length; j++)
-                {
-            			temporal.push(series_calculo[z].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
-            		}
-            		nueva_tabla.push(temporal);
-            		for (var i = 0; i < series_calculo[z].Coberturas.length; i++)
-                {
-            			var temporal = [];
-            			temporal.push(series_calculo[z].Coberturas[i].Descrip_cg);
-            			for (var j = 0; j < series_calculo[z].Coberturas[i].ValorDato.length; j++) {
-            				temporal.push(series_calculo[z].Coberturas[i].ValorDato[j].Dato_ser);
-            			}
-            			nueva_tabla.push(temporal);
-            		}
-                todas_series.push(nueva_tabla);
-              }
-          }
-
-          console.log("asi quedo",todas_series[0][0]);
+          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
 
-var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser +
+var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                   '</div>' +
                   '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                   '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
 
-
-          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser +
-             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-
-          //var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
+          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-
-          //'</div>' +
+          '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
                             '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
@@ -1511,36 +1465,36 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
                   datos_doble_3 +=  '<tr>';
                }
 
-               for (var j = todas_series[0][0].length -1 ; j > 0 ; j--) {
-                if(i == 0 && j == todas_series[0][0].length -1){
-                  datos_doble +=  '  <th  class="headcol">'+ todas_series[0][i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
-                  datos_doble_2 +=  '  <th  class="headcol">'+ todas_series[1][i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+               for (var j = estados[0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == estados[0].length -1){
+                  datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                   datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                 }
-                else if( i == 0 && j == todas_series[0][0].length -1 ){
-                  datos_doble += '<th class"padding-200">'+ todas_series[0][i][j].split('-')[0] +'</th>';
-                  datos_doble_2 += '<th class"padding-200">'+ todas_series[1][i][j].split('-')[0] +'</th>';
+                else if( i == 0 && j == estados[0].length -1 ){
+                  datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if( i == 0 ){
-                  datos_doble += '<th>'+ todas_series[0][i][j].split('-')[0] +'</th>';
-                  datos_doble_2 += '<th>'+ todas_series[1][i][j].split('-')[0] +'</th>';
+                  datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
-                else if(j == todas_series[0][0].length -1 ) {
-                  var varia = '<td class="headcol">'+ todas_series[0][i][0] +'</td><td>'+ parseFloat(todas_series[0][i][j]).toFixed(2) +'</td>';
+                else if(j == estados[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble += varia;
                   datos_doble_2 += varia;
                   datos_doble_3 += varia;
                 }
                 else if(j == estados[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ parseFloat(todas_series[0][i][j]).toFixed(2) +'</td>';
-                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(todas_series[1][i][j]).toFixed(2) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ parseFloat(todas_series[0][i][j]).toFixed(2) +'</td>';
-                  datos_doble_2 +=  '  <td>'+ parseFloat(todas_series[1][i][j]).toFixed(2) +'</td>';
+                  datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                }
@@ -1770,12 +1724,11 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
       arrray_anios = []; 
       var cadena='';
       var anio_mas_actual;
-
-      console.log('----------------------- estados anios -----------------');
-      console.log(estados);
-      console.log(estados[0]);
-      console.log(estados[0].length);
-
+      // console.log('----------------------- estados anios -----------------');
+      // console.log(estados);
+      // console.log(estados[0]);
+      // console.log(estados[0].length);
+                              
       for(var i = 1; i < estados[0].length; i++)
       {
         if(i == 1)
@@ -1793,14 +1746,14 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
       
 
       if(cadena !=  ''){
-        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
+        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
         $('#anios').html(cadena);
 
         $('#'+anio_mas_actual).trigger( "click" );
       }else{
         for (var i = 0; i < estados.length; i++) {
           if(i == 0){
-            estados[i][1] =  '2017-01-01';
+            estados[i][1] =  '2017-01-01'; 
           }else{
             estados[i][1] = 1;
           }
