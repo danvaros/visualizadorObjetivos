@@ -9,14 +9,13 @@
 		  success: function( data, textStatus, jqxhr ) {
 		  		//alert( "Exito" );
 				console.log(data);
-				console.log("las series son",data.Series);
 				console.log('------------------------------------- nuevo arreglo  --------------------');
 				console.log(data.Series);
 				console.log(data.Series[0]);
 				console.log(data.Series[0].Coberturas);
 				console.log(data.Series[0].Coberturas.length);
 
-
+	  
 	    			var temporal = [];
 	    			temporal.push('Entidad');
 	    			for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
@@ -121,7 +120,6 @@ function getAtr(indicador){
 	   	  success: function( data, textStatus, jqxhr )
 	      {
 	        atr = data;
-					console.log("el objeto",data);
 	      },
 	      error:function( data, textStatus, responseJSON )
 	      {
@@ -132,3 +130,7 @@ function getAtr(indicador){
 
 	    return atr;
 }
+
+
+
+	
