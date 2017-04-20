@@ -170,7 +170,7 @@ var estados = [];
   		//alert(Descrip_ind);
 
   		//inicio =  1;
-  		$('#loader').delay(2000).fadeOut("slow");
+  		//$('#loader').delay(2000).fadeOut("slow");
   		titulos(PCveInd);
     },
     async:false
@@ -186,6 +186,11 @@ $.ajax({
 
       console.log('-------------------- valorDato ----------------');
       console.log(data.Series[0].Coberturas[0].ValorDato);
+      Codigo_ind  = data.Codigo_ind;
+      Descrip_ind = data.Descrip_ind;
+
+      //valorDato(data);
+      // separamos para ver que funcion es la que debemos usar 
       if(data.Series[0].Coberturas[0].ValorDato != 0){
         valorDato(data);
       }else{
@@ -194,6 +199,21 @@ $.ajax({
         //poner_filtros();
       }
     
+
+        // console.log(estados);
+
+      var codigo_indicador = data.Codigo_ind;
+      // console.log(codigo_indicador);
+      var descripcion = data.Descrip_ind;
+      // console.log(descripcion);
+
+      $('.Codigo_ind').html(Codigo_ind);
+      $('.Descrip_ind').html(Descrip_ind);
+      //alert(Descrip_ind);
+
+      titulos(PCveInd);
+
+
       console.log("ya termino las llamadas");
       $('#loader').delay(2000).fadeOut("slow");
   },
@@ -201,9 +221,6 @@ $.ajax({
 });
 
 function valorDato(data){
-    Codigo_ind  = data.Codigo_ind;
-    Descrip_ind = data.Descrip_ind;
-
     var temporal = [];
     temporal.push('Entidad');
     for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
@@ -219,19 +236,6 @@ function valorDato(data){
       }
       estados.push(temporal);
     }
-
-    // console.log(estados);
-
-    var codigo_indicador = data.Codigo_ind;
-    // console.log(codigo_indicador);
-    var descripcion = data.Descrip_ind;
-    // console.log(descripcion);
-
-    $('.Codigo_ind').html(Codigo_ind);
-    $('.Descrip_ind').html(Descrip_ind);
-    //alert(Descrip_ind);
-
-    titulos(PCveInd);
 }
 
 function arma_tabla(num_cobertura){
