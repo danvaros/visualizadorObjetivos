@@ -137,7 +137,7 @@
     .crop {
      width: 185px;
      line-height: 18px;
-     height: 54px;
+     height:37px;
      overflow: hidden;
      margin: 0 auto;
      text-align: left;
@@ -1196,7 +1196,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: absolute; bottom: 60%; left: 35%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           gen(estados[busqueda_indice(props.nom_ent)]);
