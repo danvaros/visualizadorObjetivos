@@ -587,7 +587,8 @@
     </div>
   </div>
 
-  <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div>
+  <!-- <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div> -->
+  <div id="tabla_nacional" style="display: none;"></div>
 
   <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
@@ -1480,6 +1481,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
           $('#datos-panel').html(select+datos_doble);
           $('#datos-panel-dos').html(select_2+datos_doble_2);
           $('#serie-panel').html(datos_doble_3);
+          $('#tabla_nacional').html(datos_doble_3);
 
           $('.scroller').scroll(function(e) {
             console.log("aca");
@@ -1507,6 +1509,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#chart2').show();
 
                 $('#serie-panel').hide();
+
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1523,6 +1526,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').show();
+
                 if(table3 == null){
                   table3 = $('#miTabla3').DataTable( {
                     scrollY:        "600px",
@@ -1555,6 +1559,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
+
                 $('#datos-panel').show();
                 $('#datos-panel-dos').show();
                 $('#link-datos-panel').show();
@@ -1572,6 +1577,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
+
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
