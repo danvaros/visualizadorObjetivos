@@ -823,12 +823,12 @@ border-radius: 0 !important;
 }
 .indicadores-taps-active
 {
-  background-color: #299e33;
+  background-color: #00AEEF;
   color: #fff;
 }
 
 .indicadores-taps-active:hover{
-  background-color: #299e33;
+  background-color: #00AEEF;
   color: #fff;
 }
 
