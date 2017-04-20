@@ -1,7 +1,7 @@
 // $(window).onload(function(){
 // 	$('#preloader').fadeOut('slow',function(){$(this).remove();});
 // });
-
+var series_calculo=[];
 var titulo_des_graf=" ";
 var inicio = 0;
 var estados = [];
@@ -190,7 +190,7 @@ $.ajax({
 		// console.log(data.Series[0]);
 		// console.log(data.Series[0].Coberturas);
 		// console.log(data.Series[0].Coberturas.length);
-
+    series_calculo=data.Series;
 		Codigo_ind 	=	data.Codigo_ind;
     Descrip_ind = data.Descrip_ind;
 
