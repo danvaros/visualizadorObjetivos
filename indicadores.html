@@ -1671,32 +1671,76 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
           });
 
 
-          var cadena='';
-          for(var i=1;i<=7;i++)
-          {
-            if(i == 1)
-            {
-              cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-              console.log(i);
-            }
-            else if(i == 7)
-            {
-              cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-              console.log(i,'break');
-              break;
-            }
-            else if(i < estados[0].length-1)
-            {
-              cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-              console.log(i);
-            }
-            // cadena='<option value="'+estados[0][i]+'">'+estados[0][i].split('-')[0]+'</option>'+cadena;
-          }
-          // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a><select id="opciones_anio" onchange="cambio_anio()" style="display:block;"><option value=" " disabled selected>Selecciona un año</option>'+cadena;
-          cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
-          $('#anios').html(cadena);
-
+          // var cadena='';
+          // for(var i=1;i<=7;i++)
+          // {
+          //   if(i == 1)
+          //   {
+          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          //     console.log(i);
+          //   }
+          //   else if(i == 7)
+          //   {
+          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          //     console.log(i,'break');
+          //     break;
+          //   }
+          //   else if(i < estados[0].length-1)
+          //   {
+          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          //     console.log(i);
+          //   }
+          //   // cadena='<option value="'+estados[0][i]+'">'+estados[0][i].split('-')[0]+'</option>'+cadena;
+          // }
+          // // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a><select id="opciones_anio" onchange="cambio_anio()" style="display:block;"><option value=" " disabled selected>Selecciona un año</option>'+cadena;
+          // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
+          // $('#anios').html(cadena);
+          put_anios();
     });
+
+
+   function put_anios(){
+      var cadena='';
+      var anio_mas_actual;
+      console.log('----------------------- estados anios -----------------');
+      console.log(estados);
+      console.log(estados[0]);
+      console.log(estados[0].length);
+                              
+      for(var i = 1; i < estados[0].length; i++)
+      {
+        if(i == 1)
+        {
+        anio_mas_actual = 'anio_'+i;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        }
+        else if(i <= estados[0].length-1)
+        {
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        }
+      }
+
+      if(cadena !=  ''){
+        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
+        $('#anios').html(cadena);
+
+        $('#'+anio_mas_actual).trigger( "click" );
+      }else{
+        for (var i = 0; i < estados.length; i++) {
+          if(i == 0){
+            estados[i][1] =  '2017-01-01'; 
+          }else{
+            estados[i][1] = 1;
+          }
+        }
+        console.log('--------------- estados fake ------------------');
+        console.log(estados);
+        cambio_anio('2017-01-01',44);
+      }
+    }//fin funcion
+
+
+
 
     function cambio_grafica()
     {
