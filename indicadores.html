@@ -363,25 +363,34 @@
 <!--  -->
 
       <div class="row" id="botonera_nacional" style="display: none; ">
-        <div class="col s10">
+        <div class="col s6">
           <a id="ver_grafica_nacional" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla_nacional()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
           <a id="ver_tabla_nacional" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica_nacional()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+        </div>
+        <div class="col s2" >
+          <p class="claro t_sm cob_sel_nac" style="display: none; margin-top: 25px; margin-right: 63px;">Filtros</p>
+        </div>
+        <div class="col s4" >
+          <div class="input-field col s12 caja_s cob_sel_nac" style="display: none;">
+            <select id="filtros_na">
+            </select>
+          </div>
         </div>
       </div>
 
 
       <div id="mapas_hide">
         <div class="row" id="row_filtros" style="display: none;">
-          <div class="col s2" style="display: flex;">
+          <div class="col s2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
           </div>
-          <div class="col s5" style="display: flex;">
+          <div class="col s4 " >
             <div class="input-field col s12 caja_s">
-              <select id="filtros">
+              <select id="filtros_es">
               </select>
             </div>
           </div>
-        </div>
+        </div> 
         <div class="col s12">
           <div class="cuadro_titulo">
               <h4>Razón de mortalidad materna</h4>
@@ -748,7 +757,14 @@
 
   console.log(codigoDg.replace(/\s/g,''),"por aca");
   if(codigoDg.replace(/\s/g,'') == 'N')
-  {
+  { 
+    console.log('------------------------ arreglo -----------------');
+    console.log(arreglo_cla);
+    if(arreglo_cla.length > 0){
+      poner_filtros_na();  
+    }
+    
+    $('#row_filtros').hide();
     //$('.cuadro_titulo').remove();
     $('#map').remove();
     //$('.pie_cuadro2').remove();
@@ -990,7 +1006,7 @@ function adelante(){
   // }
 }
 
-function datosGrafica(year){
+ function datosGrafica(year){
   var indice = 0;
   var serie = [];
   var nuevos_estados_dobles = new Array();
@@ -1564,13 +1580,13 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
                 $('#chart2').show();
-
+                $('#botonera_nacional').show();
                 $('#serie-panel').hide();
 
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
-
+                
                 $('#indicador').addClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
                 $('#datos').removeClass('indicadores-taps-active');
@@ -1583,6 +1599,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').show();
+                $('#botonera_nacional').hide();
 
                 if(table3 == null){
                   table3 = $('#miTabla3').DataTable( {
@@ -1616,7 +1633,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
-
+                $('#botonera_nacional').hide();
                 $('#datos-panel').show();
                 $('#datos-panel-dos').show();
                 $('#link-datos-panel').show();
@@ -1634,11 +1651,11 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
-
+                
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
-
+                $('#botonera_nacional').hide();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');

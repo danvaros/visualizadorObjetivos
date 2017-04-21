@@ -195,6 +195,8 @@ $.ajax({
         cobertura(data);
         estados = arma_tabla(0);
         poner_filtros();
+        console.log('------------------------ arreglo desde llamada-----------------');
+        console.log(arreglo_cla);
       }
     
       // console.log(estados);
@@ -217,21 +219,105 @@ $.ajax({
   async:false
 });
 
-  function actualiza_grafica(){
-    $('.numero').html(arrray_anios[0]);
-    datosGrafica(arrray_anios[0]);
-  }//fin de la función
+function actualiza_grafica(){
+  $('.numero').html(arrray_anios[0]);
+  datosGrafica(arrray_anios[0]);
+}//fin de la función
+
+function actualiza_grafica_na(){
+  chart2 = c3.generate({
+  bindto: '#chart2',
+  size: {
+        height: 400
+      },
+    data: {
+        x: 'Entidad',
+        columns: estados,
+    },
+    legend: {
+    show: false
+    },
+  padding: {
+        left: 40,
+        right: 30
+    },
+    point: {
+    show: true
+  },
+  color: {
+        pattern:['#f00']
+    },
+
+    axis : {
+        x : {
+            type : 'timeseries',
+            tick: {
+                format: function (x) { return x.getFullYear(); }
+              //format: '%Y' // format string is also available for timeseries data
+            },
+            y : {
+                tick: {
+                    format: d3.format(".0f")
+                },
+                padding: {top: 35, bottom: 0}
+            }
+        }
+    },tooltip: {
+        grouped: false, // Default true
+          format: {
+            title: function (d) { return d.name; },
+            value: function (value, ratio, id) {
+              (function ($) {
+                if (id != "Estados Unidos Mexicanos") {
+                    $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+                    $( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+
+                    $( "svg g.c3-chart-line g.c3-circles-" +id.replace(/ /g,'-') + " circle" ).css('fill','#00aeef');
+                    $( "svg g.c3-chart-line path.c3-line-" +id.replace(/ /g,'-') ).css('stroke','#00aeef');
+
+                    $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
+                    $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+                    $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
+                    $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
+
+                }
+                else {
+                  $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
+                  $( "#chart2 svg g.c3-chart-line path.c3-line" ).css('stroke','#ccc');
+
+                  $( "svg g.c3-chart-line g.c3-circles-Promedio-nacional circle" ).css('fill','#f00');
+                  $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
+
+                  $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
+                  $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
+                }
+              }(jQuery));
+                return commaSeparateNumber(Math.round(value*10)/10);
+            }
+        }
+    },
+  });
+}//fin de la función
 
 function poner_filtros(){
   console.log('--------------------- ponemos filtros ------------------');  
-  $("#filtros").html('');
+  $("#filtros_es").html('');
   for (var i = 0; i < arreglo_cla.length; i++) {
-    $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+    $("#filtros_es").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
   }
   $('#row_filtros').show();
   $('select').material_select();
 }
 
+function poner_filtros_na(){
+  console.log('--------------------- ponemos filtros ------------------');  
+  $("#filtros_na").html('');
+  for (var i = 0; i < arreglo_cla.length; i++) {
+    $("#filtros_na").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+  }
+  $('.cob_sel_nac').show();
+  $('select').material_select();
+}
 
 function valorDato(data){
     var temporal = [];
@@ -420,12 +506,32 @@ function colorObjetivo(objetivo){
   }
 }
 
-
-
-
 $(document).ready(function()
 {
   titulos(PCveInd);
+
+  $('#filtros_es').on('change',function(){
+    $('#loader').show();
+    estados = arma_tabla($(this).val());
+    console.log('------------------------- estados tabala select-----------------');
+    console.log(estados);
+    actualiza_grafica(); 
+
+    $('#'+anio_mas_actual).trigger( "click" );
+
+    $('#loader').delay(2000).fadeOut("slow");
+  });
+
+  $('#filtros_na').on('change',function(){
+    $('#loader').show();
+    estados = arma_tabla($(this).val());
+    console.log('------------------------- estados tabala select-----------------');
+    console.log(estados);
+    actualiza_grafica_na(); 
+
+    $('#loader').delay(2000).fadeOut("slow");
+  });
+
 });
 var titulo ;
  var pie ;
