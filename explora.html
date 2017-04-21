@@ -18,6 +18,8 @@
     <!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
+    <link rel="stylesheet" href="lib/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="lib/assets/owl.theme.default.min.css">
 
 <style media="screen">
 svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
@@ -163,6 +165,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   </span>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="lib/owl.carousel.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="image.js"></script>
@@ -1463,16 +1466,16 @@ function busqueda_anio(cadena)
         if(i == 1)
         {
         anio_mas_actual = 'anio_'+i;
-        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena = '<div class="item"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
         }
         else if(i <= estados[0].length-1)
         {
-        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena='<div class="item"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
         }
       }
 
       if(cadena !=  ''){
-        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
+        cadena='<div class="col s1"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a></div>'+'<div class="col s11"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
         $('#anios').html(cadena);
 
         $('#'+anio_mas_actual).trigger( "click" );
@@ -1487,7 +1490,25 @@ function busqueda_anio(cadena)
         console.log('--------------- estados fake ------------------');
         console.log(estados);
         cambio_anio('2017-01-01',44);
+
       }
+      $('.owl-carousel').owlCarousel({
+          loop:true,
+          margin:10,
+          nav:true,
+          navText:'<>',
+          responsive:{
+              0:{
+                  items:3
+              },
+              600:{
+                  items:6
+              },
+              1000:{
+                  items:8
+              }
+          }
+      })
     }//fin funcion
 
     function poner_filtros(){
