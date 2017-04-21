@@ -23,7 +23,7 @@ function cobertura(data){
 	var clave_ser = data.Series[0].Clave_ser;
 	console.log('clave serie : ' + clave_ser);
 
-	
+
 	// sacamos todos los años en caso de ser nacional solo se toma EUM
 	anios_cob.push('Entidad');
 	for (var i = 0; i < Cobertura[0].Clasificaciones.length; i++) {
@@ -35,13 +35,13 @@ function cobertura(data){
 	for (var i = 0; i < Clasificaciones.length; i++) {
 		arreglo_cla.push(Clasificaciones[i].Descrip_cla);
 		arreglo_agru.push(Clasificaciones[i].ClaveAgrupa_ac);
-	}	
-	
+	}
+
 	//limpiamos el arreglo
 	arreglo_cla = arreglo_cla.unique();
 	arreglo_agru = arreglo_agru.unique();
 	anios_cob = anios_cob.unique();
-	
+
 	console.log(arreglo_cla);
 	for (var i = 0; i < arreglo_agru.length; i++) {
 		$.ajax({
@@ -64,9 +64,13 @@ function cobertura(data){
 		  		arreglo_datos.push(arreglo_datos_tem)
 		  },
 		  async:false
-		});	
+		});
 	}
 
 	console.log(arreglo_datos);
-}//fin de la función 
+}//fin de la función
 
+
+function coberturaInsumos(data){
+
+}
