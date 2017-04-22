@@ -284,6 +284,8 @@ $.ajax({
                         leftColumns: 1
                     }
                 } );
+    //agregamos titulo del insumo seleccionado
+    $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change').val()]);
   }
 
   function valorDatoInsumos(data){
