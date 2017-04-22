@@ -83,9 +83,12 @@ $.ajax({
         valorDato(data);
         valorDatoInsumos(data);
       }else{
+        console.log('------------------------ analisis de datos que se enstan mostrando --------------');
+       //console.log(data);
         cobertura(data);
-        coberturaInsumos(data);
         estados = arma_tabla(0);
+        coberturaInsumos(data);
+        console.log(estados);
         poner_filtros();
       }
       var codigo_indicador = data.Codigo_ind;
@@ -470,6 +473,8 @@ $.ajax({
   function arma_tabla(num_cobertura){
     var cobertura_tabla = [];
 
+    console.log(arreglo_datos[num_cobertura]);
+    console.log(arreglo_datos);
     cobertura_tabla.push(anios_cob);
     for (var i = 0; i < arreglo_datos[num_cobertura].length; i++) {
         cobertura_tabla.push(arreglo_datos[num_cobertura][i]);
