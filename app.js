@@ -214,6 +214,7 @@ $.ajax({
                 } );
     //agregamos titulo del insumo seleccionado
     $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change_cob').val()]);
+    $('#descrip_uni').html(''); 
   }
 
   function put_filtros_insumo_cob(insumo){
@@ -286,6 +287,7 @@ $.ajax({
                 } );
     //agregamos titulo del insumo seleccionado
     $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change').val()]);
+    $('#descrip_uni').html(''); 
   }
 
   function valorDatoInsumos(data){
@@ -529,7 +531,7 @@ $.ajax({
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                        '<span> '+ atributos.Descrip_uni +'</span>';
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
