@@ -414,7 +414,7 @@
                 <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
                 <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
               </div>
-            
+
             <div class="col s4" >
                   <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
             </div>
@@ -742,7 +742,7 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
-  
+
   <script>
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
@@ -994,7 +994,7 @@ function adelante(){
     $('.numero').html(arrray_anios[anio_activo]);
     datosGrafica(arrray_anios[anio_activo]);
   }
-    
+
   // if(estadoYear != 2015){
   //   estadoYear++;
   //   console.log(estadoYear);
@@ -1421,7 +1421,7 @@ function sortFunction(a, b) {
       padding-top: 26px !important;
  }
   </style>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function(){
   $(".owl-carousel").owlCarousel({
     loop:true,
@@ -1440,7 +1440,7 @@ $(document).ready(function(){
     }
   });
 });
-</script>
+</script> -->
   <script type="text/javascript">
     $(document).ready(function(){
 
@@ -1717,33 +1717,33 @@ $(document).ready(function(){
           put_anios();
     });
 
-   var arrray_anios = []; 
+   var arrray_anios = [];
    var anio_activo = 0;
    var anio_mas_actual;
    function put_anios(){
-      arrray_anios = []; 
+      arrray_anios = [];
       var cadena='';
       anio_mas_actual='';
       // console.log('----------------------- estados anios -----------------');
       // console.log(estados);
       // console.log(estados[0]);
       // console.log(estados[0].length);
-                              
+
       for(var i = 1; i < estados[0].length; i++)
       {
         if(i == 1)
         {
         anio_mas_actual = 'anio_'+i;
-        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
         else if(i <= estados[0].length-1)
         {
-        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
       }
-      
+
 
       if(cadena !=  ''){
         cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 10px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
@@ -1755,7 +1755,7 @@ $(document).ready(function(){
       }else{
         for (var i = 0; i < estados.length; i++) {
           if(i == 0){
-            estados[i][1] =  '2017-01-01'; 
+            estados[i][1] =  '2017-01-01';
           }else{
             estados[i][1] = 1;
           }
@@ -1770,12 +1770,14 @@ $(document).ready(function(){
       $('.numero').html(arrray_anios[0]);
       datosGrafica(arrray_anios[0]);
 
+var contaAnios = arrray_anios.length - 1;
+
       $('.owl-carousel').owlCarousel({
           loop:false,
           rtl:false,
           margin:10,
           rewind:false,
-          startPosition:"#anio_1",
+          startPosition: contaAnios,
           nav:true,
           navText:['< Años anteriores','Años posteriores >'],
           responsive:{
@@ -1789,14 +1791,16 @@ $(document).ready(function(){
                   items:7
               }
           }
-      })
+      });
+
+
     }//fin funcion
 
    // function poner_filtros(){
-   //    console.log('--------------------- ponemos filtros ------------------');  
+   //    console.log('--------------------- ponemos filtros ------------------');
    //    $("#filtros").html('');
    //    for (var i = 0; i < arreglo_cla.length; i++) {
-   //      $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+   //      $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
    //    }
    //    $('#row_filtros').show();
    //    $('select').material_select();
@@ -1807,7 +1811,7 @@ $(document).ready(function(){
       estados = arma_tabla($(this).val());
       console.log('------------------------- estados tabala select-----------------');
       console.log(estados);
-      actualiza_grafica(); 
+      actualiza_grafica();
       if($('#agregacion').val() != 1){
         $('#'+anio_mas_actual).trigger( "click" );
       }
@@ -1861,7 +1865,7 @@ $(document).ready(function(){
 
     function cambio_anio(cadena, i)
     {
-      for(var j=1;j<=7;j++)
+      for(var j=1;j<=25;j++)
       {
         $('#anio_'+j).removeClass('active_anio');
         $('#anio_'+j).addClass('inactive_anio');
@@ -2112,7 +2116,7 @@ $(document).ready(function(){
 
         tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
         '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
-        '<tr><th>Algoritmo</th><td><strong>Pendiente de conectar a la API</strong></td></tr>'+
+        '<tr><th>Algoritmo</th><td><div class="imgAlgoritmo"><img src="img/algoritmos/'+metadatosArr.Algoritmo_ft+'.gif" alt="Algoritmo '+metadatosArr.Algoritmo_ft+'" /></div></td></tr>'+
         '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:</th><td>';
 
         for (var i = 0; i < metadatosArr.Fuente.length; i++) {
