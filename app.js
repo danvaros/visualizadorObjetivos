@@ -530,6 +530,7 @@ function titulos(indicador){
       $('.pie_cuadro2').html(pie);
       $('.cuadro_titulo').html(titulo);
       titulo_des_graf = atributos.DescripInd_des;
+          put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
 }
 
   function iconoObjetivo(objetivo){
@@ -678,4 +679,9 @@ function titulos(indicador){
       break;
 
     }
+  }
+
+  function put_datos(indicador, institucion){
+      // $('#da_indicador').html(indicador);
+      $('#da_institucion').html(institucion);
   }
