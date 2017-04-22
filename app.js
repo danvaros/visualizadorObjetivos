@@ -23,6 +23,7 @@ var estados = [];
   var vars = getParameterByName("indicador");
   console.log(vars);
   var obj = getParameterByName("objetivo");
+  var objetivo = getParameterByName("obj");
   var meta = getParameterByName("meta");
   var codigoDg = getParameterByName("codigo");
   console.log(codigoDg);
@@ -33,8 +34,8 @@ var estados = [];
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Tematica/Todos",
-    data: {'PIdioma':'ES'},
+    url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
+    data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
     		//alert( "Exito" );
   		// console.log(data);
@@ -44,94 +45,17 @@ var estados = [];
   		// console.log(data.Series[0].Coberturas);
   		// console.log(data.Series[0].Coberturas.length);
 
-      switch (obj){
-        case '1.':
-          nombreObj = data[0].Abrevia_des;
-          Codigo_meta 	=	data[0].Meta[0].Codigo_des;
-          Descrip_meta = data[0].Meta[0].Descrip_des;
-        break;
-        case '2.':
-          nombreObj = data[1].Abrevia_des;
-          Codigo_meta 	=	data[1].Meta[0].Codigo_des;
-          Descrip_meta = data[1].Meta[0].Descrip_des;
-        break;
-        case '3.':
-          nombreObj = data[2].Abrevia_des;
-          Codigo_meta 	=	data[2].Meta[0].Codigo_des;
-          Descrip_meta = data[2].Meta[0].Descrip_des;
-        break;
-        case '4.':
-          nombreObj = data[3].Abrevia_des;
-          Codigo_meta 	=	data[3].Meta[0].Codigo_des;
-          Descrip_meta = data[3].Meta[0].Descrip_des;
-        break;
-        case '5.':
-          nombreObj = data[4].Abrevia_des;
-          Codigo_meta 	=	data[4].Meta[0].Codigo_des;
-          Descrip_meta = data[4].Meta[0].Descrip_des;
-        break;
-        case '6.':
-          nombreObj = data[5].Abrevia_des;
-          Codigo_meta 	=	data[5].Meta[0].Codigo_des;
-          Descrip_meta = data[5].Meta[0].Descrip_des;
-        break;
-        case '7.':
-          nombreObj = data[6].Abrevia_des;
-          Codigo_meta 	=	data[6].Meta[0].Codigo_des;
-          Descrip_meta = data[6].Meta[0].Descrip_des;
-        break;
-        case '8.':
-          nombreObj = data[7].Abrevia_des;
-          Codigo_meta 	=	data[7].Meta[0].Codigo_des;
-          Descrip_meta = data[7].Meta[0].Descrip_des;
-        break;
-        case '9.':
-          nombreObj = data[8].Abrevia_des;
-          Codigo_meta 	=	data[8].Meta[0].Codigo_des;
-          Descrip_meta = data[8].Meta[0].Descrip_des;
-        break;
-        case '10.':
-          nombreObj = data[9].Abrevia_des;
-          Codigo_meta 	=	data[9].Meta[0].Codigo_des;
-          Descrip_meta = data[9].Meta[0].Descrip_des;
-        break;
-        case '11.':
-          nombreObj = data[10].Abrevia_des;
-          Codigo_meta 	=	data[10].Meta[0].Codigo_des;
-          Descrip_meta = data[10].Meta[0].Descrip_des;
-        break;
-        case '12.':
-          nombreObj = data[11].Abrevia_des;
-          Codigo_meta 	=	data[11].Meta[0].Codigo_des;
-          Descrip_meta = data[11].Meta[0].Descrip_des;
-        break;
-        case '13.':
-          nombreObj = data[12].Abrevia_des;
-          Codigo_meta 	=	data[12].Meta[0].Codigo_des;
-          Descrip_meta = data[12].Meta[0].Descrip_des;
-        break;
-        case '14.':
-          nombreObj = data[13].Abrevia_des;
-          Codigo_meta 	=	data[13].Meta[0].Codigo_des;
-          Descrip_meta = data[13].Meta[0].Descrip_des;
-        break;
-        case '15.':
-          nombreObj = data[14].Abrevia_des;
-          Codigo_meta 	=	data[14].Meta[0].Codigo_des;
-          Descrip_meta = data[14].Meta[0].Descrip_des;
-        break;
-        case '16.':
-          nombreObj = data[15].Abrevia_des;
-          Codigo_meta 	=	data[15].Meta[0].Codigo_des;
-          Descrip_meta = data[15].Meta[0].Descrip_des;
-        break;
-        case '17.':
-          nombreObj = data[16].Abrevia_des;
-          Codigo_meta 	=	data[16].Meta[0].Codigo_des;
-          Descrip_meta = data[16].Meta[0].Descrip_des;
-        break;
-      }
 
+      nombreObj = data.Abrevia_des;
+      
+
+      for (var i = 0; i < data.Meta.length; i++) {
+        if( data.Meta[i].Clave_arb ==  meta){
+          Codigo_meta   = data.Meta[i].Codigo_des;
+          Descrip_meta = data.Meta[i].Descrip_des;
+        }
+      }
+      
   		Codigo_ind 	=	data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
 
@@ -142,38 +66,8 @@ var estados = [];
     $('.Codigo_meta').html(Codigo_meta);
     $('.Descrip_meta').html(Descrip_meta);
 
-  		var temporal = [];
-  		temporal.push('Entidad');
-  		for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
-  			temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
-  		}
-  		estados.push(temporal);
-
-
-  		for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
-  			var temporal = [];
-  			temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
-  			for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-  				temporal.push(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
-  			}
-  			estados.push(temporal);
-  		}
-
-  		// console.log(estados);
-
-  		var codigo_indicador = data.Codigo_ind;
-  		// console.log(codigo_indicador);
-  		var descripcion = data.Descrip_ind;
-  		// console.log(descripcion);
-  		$('.Codigo_ind').html(Codigo_ind);
-  		$('.Descrip_ind').html(Descrip_ind);
-  		//alert(Descrip_ind);
-
-  		//inicio =  1;
-  		//$('#loader').delay(2000).fadeOut("slow");
-  		titulos(PCveInd);
     },
-    async:false
+    async:true
   });
 
 $.ajax({
