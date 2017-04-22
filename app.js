@@ -171,10 +171,10 @@ $.ajax({
       datos_doble += '<tr>';
       $.each(value, function(idx2, value2){
         if(idx == 0 && idx2 == (value.length -1)){
-          datos_doble += '<th class="headcol">'+ numberWithCommas(value2.split('-')[0]); +'</th>';
+          datos_doble += '<th class="headcol">'+ value2.split('-')[0]; +'</th>';
         }
         else if(idx == 0){
-          datos_doble += '<th>'+ numberWithCommas(value2.split('-')[0]) +'</th>';
+          datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
         }
         else if(idx2 == (value.length -1)){
           datos_doble += '<td class="headcol">'+ numberWithCommas(value2) +'</td>';
@@ -243,10 +243,10 @@ $.ajax({
       datos_doble += '<tr>';
       $.each(value, function(idx2, value2){
         if(idx == 0 && idx2 == (value.length -1)){
-          datos_doble += '<th class="headcol">'+ numberWithCommas(value2.split('-')[0]) +'</th>';
+          datos_doble += '<th class="headcol">'+ value2.split('-')[0] +'</th>';
         }
         else if(idx == 0){
-          datos_doble += '<th>'+ numberWithCommas(value2.split('-')[0]) +'</th>';
+          datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
         }
         else if(idx2 == (value.length -1)){
           datos_doble += '<td class="headcol">'+ numberWithCommas(value2)+'</td>';
