@@ -340,7 +340,7 @@
             </div>
       </div>
 
-      <div class="row card tablaPadding" id="datos-panel-dos" style="overflow-x: scroll;border-radius: 20px;">
+      <div class="row card tablaPadding" id="datos-panel-dos" style="overflow-x: scroll;border-radius: 20px; display:none;">
       </div>
 
 
@@ -390,7 +390,7 @@
               </select>
             </div>
           </div>
-        </div> 
+        </div>
         <div class="col s12">
           <div class="cuadro_titulo">
               <h4>Razón de mortalidad materna</h4>
@@ -417,7 +417,7 @@
                 <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
                 <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
               </div>
-            
+
             <div class="col s4" >
                   <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
             </div>
@@ -745,7 +745,7 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
-  
+
   <script>
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
@@ -757,13 +757,13 @@
 
   console.log(codigoDg.replace(/\s/g,''),"por aca");
   if(codigoDg.replace(/\s/g,'') == 'N')
-  { 
+  {
     console.log('------------------------ arreglo -----------------');
     console.log(arreglo_cla);
     if(arreglo_cla.length > 0){
-      poner_filtros_na();  
+      poner_filtros_na();
     }
-    
+
     $('#row_filtros').hide();
     //$('.cuadro_titulo').remove();
     $('#map').remove();
@@ -997,7 +997,7 @@ function adelante(){
     $('.numero').html(arrray_anios[anio_activo]);
     datosGrafica(arrray_anios[anio_activo]);
   }
-    
+
   // if(estadoYear != 2015){
   //   estadoYear++;
   //   console.log(estadoYear);
@@ -1449,15 +1449,9 @@ $(document).ready(function(){
 
           $('#indicador-panel').hide();
           $('.modal-trigger').leanModal();
-          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-
-var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
-                  '</div>' +
-                  '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
-                  '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
 
           var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
@@ -1477,50 +1471,50 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
 
              for (var i = 0; i < estados.length; i++) {
                if(i == 0){
-                datos_doble +=  '<thead><tr>';
+                // datos_doble +=  '<thead><tr>';
                 datos_doble_2 +=  '<thead><tr>';
                 datos_doble_3 +=  '<thead><tr>';
               }
                else if(i == 1){
-                 datos_doble +=  '<tbody><tr>';
+                //  datos_doble +=  '<tbody><tr>';
                  datos_doble_2 +=  '<tbody><tr>';
                  datos_doble_3 +=  '<tbody><tr>';
                }
                else {
-                  datos_doble +=  '<tr>';
+                  // datos_doble +=  '<tr>';
                   datos_doble_2 +=  '<tr>';
                   datos_doble_3 +=  '<tr>';
                }
 
                for (var j = estados[0].length -1 ; j > 0 ; j--) {
                 if(i == 0 && j == estados[0].length -1){
-                  datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                   datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                   datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                 }
                 else if( i == 0 && j == estados[0].length -1 ){
-                  datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if( i == 0 ){
-                  datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == estados[0].length -1 ) {
                   var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  datos_doble += varia;
+                  // datos_doble += varia;
                   datos_doble_2 += varia;
                   datos_doble_3 += varia;
                 }
                 else if(j == estados[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
@@ -1528,19 +1522,17 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
 
 
                  if(i == 0){
-                   datos_doble +=  '</tr></thead>';
+                  //  datos_doble +=  '</tr></thead>';
                    datos_doble_2 +=  '</tr></thead>';
                    datos_doble_3 +=  '</tr></thead>';
                  }else{
-                   datos_doble +=  '</tr>';
+                  //  datos_doble +=  '</tr>';
                    datos_doble_2 +=  '</tr>';
                    datos_doble_3 +=  '</tr>';
                  }
              }
 
-            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
-             '</div></div>';
+
 
                datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
@@ -1550,8 +1542,9 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
-            //  console.log(datos_doble);
-          $('#datos-panel').html(select+datos_doble);
+
+
+
           $('#datos-panel-dos').html(select_2+datos_doble_2);
           $('#serie-panel').html(datos_doble_3);
           $('#tabla_nacional').html(datos_doble_3);
@@ -1586,7 +1579,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
-                
+
                 $('#indicador').addClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
                 $('#datos').removeClass('indicadores-taps-active');
@@ -1635,7 +1628,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#serie-panel').hide();
                 $('#botonera_nacional').hide();
                 $('#datos-panel').show();
-                $('#datos-panel-dos').show();
+                $('#datos-panel-dos').hide();
                 $('#link-datos-panel').show();
 
 
@@ -1651,7 +1644,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
-                
+
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1746,18 +1739,18 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
           put_anios();
     });
 
-   var arrray_anios = []; 
+   var arrray_anios = [];
    var anio_activo = 0;
    var anio_mas_actual;
    function put_anios(){
-      arrray_anios = []; 
+      arrray_anios = [];
       var cadena='';
       anio_mas_actual='';
       // console.log('----------------------- estados anios -----------------');
       // console.log(estados);
       // console.log(estados[0]);
       // console.log(estados[0].length);
-                              
+
       for(var i = 1; i < estados[0].length; i++)
       {
         if(i == 1)
@@ -1772,17 +1765,17 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
       }
-      
+
 
       if(cadena !=  ''){
-        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
+        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
         $('#anios').html(cadena);
 
         $('#'+anio_mas_actual).trigger( "click" );
       }else{
         for (var i = 0; i < estados.length; i++) {
           if(i == 0){
-            estados[i][1] =  '2017-01-01'; 
+            estados[i][1] =  '2017-01-01';
           }else{
             estados[i][1] = 1;
           }
@@ -1799,10 +1792,10 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
     }//fin funcion
 
    // function poner_filtros(){
-   //    console.log('--------------------- ponemos filtros ------------------');  
+   //    console.log('--------------------- ponemos filtros ------------------');
    //    $("#filtros").html('');
    //    for (var i = 0; i < arreglo_cla.length; i++) {
-   //      $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+   //      $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
    //    }
    //    $('#row_filtros').show();
    //    $('select').material_select();
@@ -1813,7 +1806,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
       estados = arma_tabla($(this).val());
       console.log('------------------------- estados tabala select-----------------');
       console.log(estados);
-      actualiza_grafica(); 
+      actualiza_grafica();
       if($('#agregacion').val() != 1){
         $('#'+anio_mas_actual).trigger( "click" );
       }

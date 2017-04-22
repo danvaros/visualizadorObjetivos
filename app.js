@@ -5,6 +5,7 @@
 var titulo_des_graf=" ";
 var inicio = 0;
 var estados = [];
+var lista_insumos = [];
 
 	// $.post( "https://operativos.inegi.org.mx/datos/api/tematica/PorClave", {'PIdioma': 'ES','PClave': 'O'}, function( data, textStatus, jqxhr ) {
 	// 	alert( "Exito" );
@@ -77,22 +78,25 @@ $.ajax({
   success: function( data, textStatus, jqxhr ) {
 
       console.log('-------------------- valorDato ----------------');
+    //  console.log(data);
       console.log(data.Series[0].Coberturas[0].ValorDato);
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
 
       //valorDato(data);
-      // separamos para ver que funcion es la que debemos usar 
+      // separamos para ver que funcion es la que debemos usar
       if(data.Series[0].Coberturas[0].ValorDato != 0){
         valorDato(data);
+        valorDatoInsumos(data);
       }else{
         cobertura(data);
+        coberturaInsumos(data);
         estados = arma_tabla(0);
         poner_filtros();
         console.log('------------------------ arreglo desde llamada-----------------');
         console.log(arreglo_cla);
       }
-    
+
       // console.log(estados);
 
       var codigo_indicador = data.Codigo_ind;
@@ -112,6 +116,45 @@ $.ajax({
   },
   async:false
 });
+
+
+function valorDatoInsumos(data){
+  lista_insumos = [];
+  console.log("**************vamos por los insumos*****************");
+  console.log(data.Series);
+  for (var i = 0; i < data.Series.length; i++) {
+    if(data.Series[i].Tipo_ser == "I"){
+        lista_insumos.push(data.Series[i].Descrip_ser);
+    }
+  }
+
+
+  //Armamos el select para que tenga todas las series que pueden existir
+  var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
+
+  $.each(lista_insumos, function(idx, value){
+    select += '<option value="'+idx+'">'+value+'</option>';
+  });
+
+  select += '</select></div>';
+
+  var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+                    '</div>' +
+                    '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                    '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
+
+  datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
+                     '</div></div>';
+
+console.log("**************vamos por los insumos poner select *****************");
+//con pie y cabecera de la pagina
+//$('#datos-panel').html(select+datos_doble);
+
+//sin pie y cabezera de la pagina
+$('#datos-panel').html(select);
+
+
+}
 
 function actualiza_grafica(){
   $('.numero').html(arrray_anios[0]);
@@ -194,20 +237,20 @@ function actualiza_grafica_na(){
 }//fin de la función
 
 function poner_filtros(){
-  console.log('--------------------- ponemos filtros ------------------');  
+  console.log('--------------------- ponemos filtros ------------------');
   $("#filtros_es").html('');
   for (var i = 0; i < arreglo_cla.length; i++) {
-    $("#filtros_es").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+    $("#filtros_es").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
   }
   $('#row_filtros').show();
   $('select').material_select();
 }
 
 function poner_filtros_na(){
-  console.log('--------------------- ponemos filtros ------------------');  
+  console.log('--------------------- ponemos filtros ------------------');
   $("#filtros_na").html('');
   for (var i = 0; i < arreglo_cla.length; i++) {
-    $("#filtros_na").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+    $("#filtros_na").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
   }
   $('.cob_sel_nac').show();
   $('select').material_select();
@@ -409,7 +452,7 @@ $(document).ready(function()
     estados = arma_tabla($(this).val());
     console.log('------------------------- estados tabala select-----------------');
     console.log(estados);
-    actualiza_grafica(); 
+    actualiza_grafica();
 
     $('#'+anio_mas_actual).trigger( "click" );
 
@@ -421,7 +464,7 @@ $(document).ready(function()
     estados = arma_tabla($(this).val());
     console.log('------------------------- estados tabala select-----------------');
     console.log(estados);
-    actualiza_grafica_na(); 
+    actualiza_grafica_na();
 
     $('#loader').delay(2000).fadeOut("slow");
   });
