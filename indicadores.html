@@ -1792,12 +1792,16 @@ $(document).ready(function(){
       $('.numero').html(arrray_anios[0]);
       datosGrafica(arrray_anios[0]);
 
+console.log('-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-');
+console.log(arrray_anios.length);
+var contaAnios = arrray_anios.length - 1;
+
       $('.owl-carousel').owlCarousel({
           loop:false,
           rtl:false,
           margin:10,
           rewind:false,
-          startPosition:"#anio_1",
+          startPosition: contaAnios,
           nav:true,
           navText:['< Años anteriores','Años posteriores >'],
           responsive:{
@@ -1811,7 +1815,9 @@ $(document).ready(function(){
                   items:7
               }
           }
-      })
+      });
+
+
     }//fin funcion
 
    // function poner_filtros(){
