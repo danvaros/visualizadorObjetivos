@@ -1792,8 +1792,6 @@ $(document).ready(function(){
       $('.numero').html(arrray_anios[0]);
       datosGrafica(arrray_anios[0]);
 
-console.log('-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-');
-console.log(arrray_anios.length);
 var contaAnios = arrray_anios.length - 1;
 
       $('.owl-carousel').owlCarousel({
@@ -2140,7 +2138,7 @@ var contaAnios = arrray_anios.length - 1;
 
         tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
         '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
-        '<tr><th>Algoritmo</th><td><strong>Pendiente de conectar a la API</strong></td></tr>'+
+        '<tr><th>Algoritmo</th><td><div class="imgAlgoritmo"><img src="img/algoritmos/'+metadatosArr.Algoritmo_ft+'.gif" alt="Algoritmo '+metadatosArr.Algoritmo_ft+'" /></div></td></tr>'+
         '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:</th><td>';
 
         for (var i = 0; i < metadatosArr.Fuente.length; i++) {

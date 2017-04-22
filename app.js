@@ -32,23 +32,14 @@ var lista_insumos = [];
   var Codigo_ind = '';
   var Descrip_ind = '';
   var tituloObjetivo = '';
+  var Algoritmo_ft = '';
 
   $.ajax({
     type: 'POST',
     url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
-    		//alert( "Exito" );
-  		// console.log(data);
-  		// console.log('------------------------------------- nuevo arreglo  --------------------');
-  		// console.log(data.Series);
-  		// console.log(data.Series[0]);
-  		// console.log(data.Series[0].Coberturas);
-  		// console.log(data.Series[0].Coberturas.length);
-
-
       nombreObj = data.Abrevia_des;
-      
 
       for (var i = 0; i < data.Meta.length; i++) {
         if( data.Meta[i].Clave_arb ==  meta){
@@ -56,7 +47,7 @@ var lista_insumos = [];
           Descrip_meta = data.Meta[i].Descrip_des;
         }
       }
-      
+
   		Codigo_ind 	=	data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
 
@@ -70,6 +61,22 @@ var lista_insumos = [];
     },
     async:true
   });
+
+
+  // $.ajax({
+  //   type: 'POST',
+  //   url: "https://operativos.inegi.org.mx/datos/api/Metadato/PorClave",
+  //   data: {'PCveInd':vars , 'PIdioma':'ES'},
+  //   success: function( data, textStatus, jqxhr ) {
+  //     Algoritmo_ft = data.Algoritmo_ft;
+  //     console.log('.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l');
+  //     console.log(Algoritmo_ft);
+  //     var dasdasd = '<img src="img/algoritmos/'+Algoritmo_ft+'.gif" alt="Algoritmo '+Algoritmo_ft+'" />';
+  //     console.log(dasdasd);
+  //     $('.imgAlgoritmo').html(dasdasd);
+  //   },
+  //   async:false
+  // });
 
 $.ajax({
   type: 'POST',
