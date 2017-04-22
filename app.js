@@ -484,6 +484,53 @@ $.ajax({
       return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
+
+$(document).ready(function()
+{
+  titulos(PCveInd);
+
+  $('#filtros_es').on('change',function(){
+    $('#loader').show();
+    estados = arma_tabla($(this).val());
+    console.log('------------------------- estados tabala select-----------------');
+    console.log(estados);
+    actualiza_grafica();
+
+    $('#'+anio_mas_actual).trigger( "click" );
+
+    $('#loader').delay(2000).fadeOut("slow");
+  });
+
+  $('#filtros_na').on('change',function(){
+    $('#loader').show();
+    estados = arma_tabla($(this).val());
+    console.log('------------------------- estados tabala select-----------------');
+    console.log(estados);
+    actualiza_grafica_na();
+
+    $('#loader').delay(2000).fadeOut("slow");
+  });
+
+});
+var titulo ;
+ var pie ;
+function titulos(indicador){
+      var atributos = getAtributos(indicador);
+      titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' +
+                      '<li class="divider"></li> ' +
+                      '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                      '<span> '+ atributos.Descrip_uni +'</span>';
+
+
+      pie  = ((atributos.Descrip_not != null) ? '<div><strong>Nota:</strong> '+atributos.Descrip_not+'</div>' : '')+
+                ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
+                ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                ' </div>';
+
+      $('.pie_cuadro2').html(pie);
+      $('.cuadro_titulo').html(titulo);
+      titulo_des_graf = atributos.DescripInd_des;
+
   function iconoObjetivo(objetivo){
     switch(objetivo){
       case "1.":
@@ -554,6 +601,7 @@ $.ajax({
         $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-17.png">');
         //return '<img class="ico_obj" src="img/ods-17.png">';
       break;
+
     }
   }
 
