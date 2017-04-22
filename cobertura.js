@@ -9,6 +9,10 @@ Array.prototype.unique=function(a){
   return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
 });
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function cobertura(data){
 	arreglo_cla 	=  [];
 	arreglo_agru 	=  [];
@@ -49,7 +53,9 @@ function cobertura(data){
 		  			var temporal = [];
 		  			temporal.push(cober_inter[i].Descrip_cg);
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
-		  				temporal.push(cober_inter[i].Clasificaciones[j].ValorDato.Dato_ser);
+		  				//varios problemas
+		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato.replace(",", "");
+		  				temporal.push(dato_formato);
 		  			}
 		  			arreglo_datos_tem.push(temporal)
 		  		}
@@ -113,7 +119,8 @@ function cobertura_series(data,i){
 		  			var temporal = [];
 		  			temporal.push(cober_inter[i].Descrip_cg);
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
-		  				temporal.push(cober_inter[i].Clasificaciones[j].ValorDato.Dato_ser);
+		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato.replace(",", "");
+		  				temporal.push(dato_formato);
 		  			}
 		  			arreglo_datos_tem.push(temporal)
 		  		}
