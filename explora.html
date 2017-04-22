@@ -18,8 +18,6 @@
     <!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
-    <link rel="stylesheet" href="lib/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="lib/assets/owl.theme.default.min.css">
 
 <style media="screen">
 svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
@@ -143,16 +141,16 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     }
 
     .crop {
-     width: 185px;
-     line-height: 18px;
-     height: 50px;
-     overflow: hidden;
-     margin: 0 auto;
-     text-align: left;
+     width: 185px; 
+     line-height: 18px; 
+     height: 50px; 
+     overflow: hidden; 
+     margin: 0 auto; 
+     text-align: left; 
    }
 
     @media only screen and (max-width: 1555px) {
-
+        
         .bullets-container{
           display: none;
         }
@@ -165,7 +163,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   </span>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="lib/owl.carousel.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="image.js"></script>
@@ -174,9 +171,9 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
-
+ 
     <script>
-
+       
     </script>
 
   </head>
@@ -264,7 +261,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <div class="input-field col s12 caja_s">
             <select id="indicadores">
               <!-- <option value="" disabled selected>Elige una opcion</option> -->
-
+              
               <option value="26" selected>Razón de mortalidad materna</option>
               <option value="27">Proporción de partos con asistencia de personal sanitario especializado</option>
               <option value="23">Tasa de mortalidad de niños menores de 5 años</option>
@@ -521,14 +518,14 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-              <!-- <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li> -->
+              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-             <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
+             <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
             <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
@@ -718,7 +715,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             }
             $('select').material_select();
           });
-
+               
 
           titulos(26);
           $('#indicadores').on('change',function(){
@@ -726,12 +723,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             var indicador = $(this).val().split(".")[0];
             llamar_api();
             $('#grafica_c').show();
-            $('#datos_descarga').show();//panel de datos de descarga
+            $('#datos_descarga').show();//panel de datos de descarga 
 
             if($('#agregacion').val() != 1){
               $('#datosNacional').hide( );
               $('#datosEstatal').hide( );
-              $('#seccion_mapa').show();//panel de datos de descarga
+              $('#seccion_mapa').show();//panel de datos de descarga 
               put_anios();
             }
 
@@ -838,12 +835,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
       $('#agregacion').on('change', function (e)
       {
-        $('#datos_descarga').hide();//panel de datos de descarga
-        $('#seccion_mapa').hide();//panel de datos de descarga
+        $('#datos_descarga').hide();//panel de datos de descarga 
+        $('#seccion_mapa').hide();//panel de datos de descarga 
         $('#grafica_c').hide();
         $('#datosEstatal').hide();
         $('#row_filtros').hide();
-
+      
 
         // $('#headmap').hide();
         // $('#footmapdatos').hide();
@@ -853,7 +850,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
         //borramos el select
         $("#obj_name").html('<option value="-1" disabled selected>Elige una objetivo</option>');
-        $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');
+        $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');  
         console.log('------------------------ nuevo ---------------------');
         // for(var i=0;i<objeto.length;i++)
         // {
@@ -887,7 +884,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         carga_selectes();
       });
 
-
+    
   });// fin segundo document ready
 
 
@@ -962,7 +959,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 		        grouped: false, // Default true
 		        	format: {
 		            title: function (d) { return d.name; },
-		            value: function (value, ratio, id,index) {
+		            value: function (value, ratio, id) {
 			            (function ($) {
 				            if (id != "Estados Unidos Mexicanos") {
                       console.log("es estados unidos",id);
@@ -989,11 +986,9 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                       $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
 				            }
 			            }(jQuery));
-                    //var valor = Math.round(value*10)/10);
-		                //return commaSeparateNumber(valor);
-                    return value.toFixed(1);
+		                return commaSeparateNumber(Math.round(value*10)/10);
 		            },
-		           //value: d3.format('.0F') // apply this format to both y and y2
+		           value: d3.format('.0F') // apply this format to both y and y2
 		        }
 		    },
 		});
@@ -1104,7 +1099,7 @@ function busqueda_anio(cadena)
         console.log(estados[0][i]);
         return i;
       }
-    }
+    } 
 }
 
   //variable de mapa
@@ -1369,7 +1364,7 @@ function busqueda_anio(cadena)
 
     </script>
     <script>
-    //globales
+    //globales 
 
     function actualiza_grafica(){
      // chart2.unload();
@@ -1417,7 +1412,7 @@ function busqueda_anio(cadena)
               grouped: false, // Default true
                 format: {
                   title: function (d) { return d.name; },
-                  value: function (value, ratio, id, index) {
+                  value: function (value, ratio, id) {
                     (function ($) {
                       if (id != "Estados Unidos Mexicanos") {
                           $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
@@ -1442,11 +1437,9 @@ function busqueda_anio(cadena)
                         $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
                       }
                     }(jQuery));
-                    var valor = value.toFixed(2);
-                      return commaSeparateNumber(Math.round(valor*10)/10);
-                      //return 2;
+                      return commaSeparateNumber(Math.round(value*10)/10);
                   },
-                 //value: d3.format('.0F') // apply this format to both y and y2
+                 value: d3.format('.0F') // apply this format to both y and y2
               }
           },
       });
@@ -1455,34 +1448,34 @@ function busqueda_anio(cadena)
     var anio_mas_actual;
     function put_anios(){
       var cadena='';
-
+      
       console.log('----------------------- estados anios -----------------');
       console.log(estados);
       console.log(estados[0]);
       console.log(estados[0].length);
-
+                              
       for(var i = 1; i < estados[0].length; i++)
       {
         if(i == 1)
         {
         anio_mas_actual = 'anio_'+i;
-        cadena = '<div class="item"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
         }
         else if(i <= estados[0].length-1)
         {
-        cadena='<div class="item"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
         }
       }
 
       if(cadena !=  ''){
-        cadena='<div class="col s1"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a></div>'+'<div class="col s11"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
         $('#anios').html(cadena);
 
         $('#'+anio_mas_actual).trigger( "click" );
       }else{
         for (var i = 0; i < estados.length; i++) {
           if(i == 0){
-            estados[i][1] =  '2017-01-01';
+            estados[i][1] =  '2017-01-01'; 
           }else{
             estados[i][1] = 1;
           }
@@ -1490,34 +1483,14 @@ function busqueda_anio(cadena)
         console.log('--------------- estados fake ------------------');
         console.log(estados);
         cambio_anio('2017-01-01',44);
-
       }
-      $('.owl-carousel').owlCarousel({
-          loop:false,
-          margin:10,
-          rtl:true,
-          startPosition:"#anio_1",
-          nav:true,
-          navText:['Años anteriores','Años posteriores'],
-          responsive:{
-              0:{
-                  items:2
-              },
-              600:{
-                  items:5
-              },
-              1000:{
-                  items:7
-              }
-          }
-      })
     }//fin funcion
 
     function poner_filtros(){
-      console.log('--------------------- ponemos filtros ------------------');
+      console.log('--------------------- ponemos filtros ------------------');  
       $("#filtros").html('');
       for (var i = 0; i < arreglo_cla.length; i++) {
-        $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
+        $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
       }
       $('#row_filtros').show();
       $('select').material_select();
@@ -1528,7 +1501,7 @@ function busqueda_anio(cadena)
       estados = arma_tabla($(this).val());
       console.log('------------------------- estados tabala select-----------------');
       console.log(estados);
-      actualiza_grafica();
+      actualiza_grafica(); 
       if($('#agregacion').val() != 1){
         $('#'+anio_mas_actual).trigger( "click" );
       }
@@ -1546,7 +1519,7 @@ function busqueda_anio(cadena)
         theme: 'tooltipster-light',
         trigger: 'hover'
             });
-        //pedimos los años en la primera llamada
+        //pedimos los años en la primera llamada 
         put_anios();
     });
 
