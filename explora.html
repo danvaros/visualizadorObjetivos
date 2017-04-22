@@ -1493,19 +1493,21 @@ function busqueda_anio(cadena)
 
       }
       $('.owl-carousel').owlCarousel({
-          loop:true,
+          loop:false,
           margin:10,
+          rtl:true,
+          startPosition:"#anio_1",
           nav:true,
-          navText:'<>',
+          navText:['Años anteriores','Años posteriores'],
           responsive:{
               0:{
-                  items:3
+                  items:2
               },
               600:{
-                  items:6
+                  items:5
               },
               1000:{
-                  items:8
+                  items:7
               }
           }
       })

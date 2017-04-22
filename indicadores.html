@@ -1761,20 +1761,19 @@ function sortFunction(a, b) {
         if(i == 1)
         {
         anio_mas_actual = 'anio_'+i;
-        cadena = '<div class="item"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
+        cadena = '<div class="item anio_'+i+'"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;margin-top:6px;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
         else if(i <= estados[0].length-1)
         {
-        cadena='<div class="item"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
+        cadena='<div class="item anio_'+i+'"><a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;margin-top:6px;">'+estados[0][i].split('-')[0]+'</a></div>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
       }
 
 
       if(cadena !=  ''){
-
-        cadena='<div class="col s1"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a></div>'+'<div class="col s11"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 10px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
       //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
         $('#anios').html(cadena);
@@ -1799,19 +1798,22 @@ function sortFunction(a, b) {
       datosGrafica(arrray_anios[0]);
 
       $('.owl-carousel').owlCarousel({
-          loop:true,
+          loop:false,
+          rtl:false,
           margin:10,
+          rewind:false,
+          startPosition:0,
           nav:true,
-          navText:'<>',
+          navText:['< Años anteriores','Años posteriores >'],
           responsive:{
               0:{
-                  items:3
+                  items:2
               },
               600:{
-                  items:6
+                  items:5
               },
               1000:{
-                  items:8
+                  items:7
               }
           }
       })
