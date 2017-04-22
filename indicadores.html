@@ -15,12 +15,9 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="lib/owl.carousel.min.css">
     <link rel="stylesheet" href="lib/owl.theme.default.min.css">
-
-
-
-	<!-- Load c3.css -->
-	<link href="lib/c3.css" rel="stylesheet" type="text/css">
-
+    
+    <!-- Load c3.css -->
+    <link href="lib/c3.css" rel="stylesheet" type="text/css">
 
       <style>
 .cuadro_titulo{
@@ -246,10 +243,10 @@
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
-            </li>
+            </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="objetivos.html">Indicadores</a></li>
@@ -387,7 +384,8 @@
               </select>
             </div>
           </div>
-        </div>
+        </div> 
+        <div class="row card tablaPadding">
         <div class="col s12">
           <div class="cuadro_titulo">
               <h4>Razón de mortalidad materna</h4>
@@ -419,6 +417,7 @@
                   <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
             </div>
           </div>
+        </div>
         </div>
 
 
@@ -612,7 +611,8 @@
   </div>
 
   <!-- <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div> -->
-  <div id="tabla_nacional" style="display: none;"></div>
+
+  <div class="row card tablaPadding" id="tabla_nacional" style="display: none;"></div>
   <div id="tabla_export" style="display: none;"></div>
 
   <div class="row scrollable-section" data-section-title="Descarga de datos">
