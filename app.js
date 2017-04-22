@@ -27,7 +27,7 @@
     url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
-      
+
       nombreObj = data.Abrevia_des;
 
       for (var i = 0; i < data.Meta.length; i++) {
@@ -103,7 +103,7 @@ $.ajax({
   $(document).ready(function()
   {
     titulos(PCveInd);
-    //llamada cuando cambia el select de los filtros estatales 
+    //llamada cuando cambia el select de los filtros estatales
     $('#filtros_es').on('change',function(){
       $('#loader').show();
       estados = arma_tabla($(this).val());
@@ -112,7 +112,7 @@ $.ajax({
       $('#loader').delay(2000).fadeOut("slow");
     });
 
-    //llamada cuando cambia el select de los filtros nacionales 
+    //llamada cuando cambia el select de los filtros nacionales
     $('#filtros_na').on('change',function(){
       $('#loader').show();
       estados = arma_tabla($(this).val());
@@ -134,7 +134,7 @@ $.ajax({
       put_tabla_insumo_cob($(this).val());
     });
 
-  });//fin document ready 
+  });//fin document ready
 
   function arma_tabla_insumo(arreglo_datos,num_cobertura){
     var cobertura_tabla = [];
@@ -164,7 +164,7 @@ $.ajax({
       }else if(idx == 1){
         datos_doble += '<tbody>';
       }
-      datos_doble += '<tr>';   
+      datos_doble += '<tr>';
       $.each(value, function(idx2, value2){
         if(idx == 0 && idx2 == (value.length -1)){
           datos_doble += '<th class="headcol">'+ value2.split('-')[0] +'</th>';
@@ -179,7 +179,7 @@ $.ajax({
           datos_doble += '<td>'+ value2 +'</td>';
         }
       });
-      datos_doble += '</tr>';   
+      datos_doble += '</tr>';
       if(idx == 0){
         datos_doble += '</thead>';
       }
@@ -187,10 +187,10 @@ $.ajax({
 
     datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
                     '</div></div>';
-                 
+
     //sin pie y cabezera de la pagina
     $('#insumos_cont').html(datos_doble);
-    var arre = []; 
+    var arre = [];
     for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
       arre.push(i)
     }
@@ -201,7 +201,7 @@ $.ajax({
                     scrollCollapse: true,
                     paging:         false,
                     aoColumnDefs: [
-                      { 'bSortable': false, 
+                      { 'bSortable': false,
                         'aTargets': arre }
                     ],
                     fixedColumns:   {
@@ -220,7 +220,7 @@ $.ajax({
     });
 
     $('#este').html(insumo_filtro);
-  } 
+  }
 
 
 
@@ -236,7 +236,7 @@ $.ajax({
       }else if(idx == 1){
         datos_doble += '<tbody>';
       }
-      datos_doble += '<tr>';   
+      datos_doble += '<tr>';
       $.each(value, function(idx2, value2){
         if(idx == 0 && idx2 == (value.length -1)){
           datos_doble += '<th class="headcol">'+ value2.split('-')[0] +'</th>';
@@ -251,7 +251,7 @@ $.ajax({
           datos_doble += '<td>'+ value2 +'</td>';
         }
       });
-      datos_doble += '</tr>';   
+      datos_doble += '</tr>';
       if(idx == 0){
         datos_doble += '</thead>';
       }
@@ -259,10 +259,10 @@ $.ajax({
 
     datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
                     '</div></div>';
-                 
+
     //sin pie y cabezera de la pagina
     $('#insumos_cont').html(datos_doble);
-    var arre = []; 
+    var arre = [];
     for (var i = 0; i < insumos_general[insumo][0].length - 1; i++) {
       arre.push(i)
     }
@@ -273,15 +273,15 @@ $.ajax({
                     scrollCollapse: true,
                     paging:         false,
                     aoColumnDefs: [
-                      { 'bSortable': false, 
+                      { 'bSortable': false,
                         'aTargets': arre }
                     ],
                     fixedColumns:   {
                         leftColumns: 1
                     }
                 } );
-  } 
-   
+  }
+
   function valorDatoInsumos(data){
     lista_insumos = [];
     var temporal = [];
@@ -332,11 +332,11 @@ $.ajax({
     for (var i = 0; i < data.Series.length; i++) {
       if(data.Series[i].Tipo_ser == "I"){
         lista_insumos.push(data.Series[i].Descrip_ser);
-        insumos_cobertura.push(cobertura_series(data,i));  
-        insumo_cober_clasifica.push(clasificaciones(data,i));  
+        insumos_cobertura.push(cobertura_series(data,i));
+        insumo_cober_clasifica.push(clasificaciones(data,i));
       }
     }
-    
+
     //Armamos el select para que tenga todas las series que pueden existir
     var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
@@ -522,7 +522,7 @@ function titulos(indicador){
                       '<span> '+ atributos.Descrip_uni +'</span>';
 
 
-      pie  = ((atributos.Descrip_not != null) ? '<div><strong>Nota:</strong> '+atributos.Descrip_not+'</div>' : '')+
+      pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                 ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                 ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                 ' </div>';
@@ -530,8 +530,9 @@ function titulos(indicador){
       $('.pie_cuadro2').html(pie);
       $('.cuadro_titulo').html(titulo);
       titulo_des_graf = atributos.DescripInd_des;
-  }
-  
+
+          put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
+}
   function iconoObjetivo(objetivo){
     switch(objetivo){
       case "1.":
@@ -680,20 +681,7 @@ function titulos(indicador){
     }
   }
 
-  function titulos(indicador){
-    var atributos = getAtributos(indicador);
-    titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' +
-    '<li class="divider"></li> ' +
-    '<p> '+ atributos.CobTemporal_ser +' </p>' +
-    '<span> '+ atributos.Descrip_uni +'</span>';
-
-
-    pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not+'</div>' : ' ND</div> ')+
-    ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
-    ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
-    ' </div>';
-
-    $('.pie_cuadro2').html(pie);
-    $('.cuadro_titulo').html(titulo);
-    titulo_des_graf = atributos.DescripInd_des;
+  function put_datos(indicador, institucion){
+      // $('#da_indicador').html(indicador);
+      $('#da_institucion').html(institucion);
   }
