@@ -656,7 +656,8 @@
     		  			</div>
                 <div class="col s6" style="margin-top: 10px;">
                       <a class="icn exportCSV">CSV</a>
-                      <a class="icns exportXLS">XLS</a>
+                      <!-- <a download="indicador.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a> -->
+                      <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
                       <a class="icnSDMX">SDMX</a>
                       <!-- <a class="icnPDF">PDF</a> -->
                 </div>
@@ -715,7 +716,7 @@
             <ul class="fuerte">
           <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
-            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li> -->
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
@@ -741,6 +742,7 @@
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
     <!-- <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script> -->
+<script src="lib/excellentexport.js"></script>
 
     <!-- Load d3.js and c3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -2313,7 +2315,7 @@ function exportTableToXLS($table1, filename1) {
     // Deliberate 'false', see comment below
     if (false && window.navigator.msSaveBlob) {
 
-        var blob1 = new Blob([decodeURIComponent(xls)], {
+        var blob1 = new Blob([decodeURIComponent($table1)], {
             type: 'text/plain;charset=utf8'
         });
 
@@ -2347,6 +2349,10 @@ function exportTableToXLS($table1, filename1) {
     }
 }
 
+
+
+
+
 // This must be a hyperlink
 $(".exportXLS").on('click', function (event) {
     // CSV
@@ -2358,6 +2364,17 @@ $(".exportXLS").on('click', function (event) {
     // We actually need this to be a typical hyperlink
 });
 });
+
+// function exportXXLS()
+// {
+//   var blob = new Blob([document.getElementById('tabla_export').innerHTML], {
+//           type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+//       });
+// saveAs(blob, "Report.xls");
+// }
+
+
+
 </script>
   </body>
 </html>
