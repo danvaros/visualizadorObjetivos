@@ -4,6 +4,8 @@
   var estados = [];
   var lista_insumos = [];
   var insumos_general = [];
+  var insumos_cobertura = [];
+  var insumo_cober_clasifica = [];
 
   var query_string = {};
   var query = window.location.search.substring(1);
@@ -68,7 +70,13 @@
         estados = arma_tabla(0);
         poner_filtros();
       }
+      var codigo_indicador = data.Codigo_ind;
+      var descripcion = data.Descrip_ind;
 
+      $('.Codigo_ind').html(Codigo_ind);
+      $('.Descrip_ind').html(Descrip_ind);
+
+      titulos(PCveInd);
       $('#loader').delay(2000).fadeOut("slow");
     },
     async:false
@@ -97,13 +105,108 @@
     });
 
     $('#insumo_change').on('change',function(){
-      put_tabla_cobertura($(this).val());
+      put_tabla_insumo($(this).val());
+    });
+
+    $('#insumo_change_cob').on('change',function(){
+      put_filtros_insumo_cob($(this).val());
+    });
+
+    $('#este').on('change', function(){
+      put_tabla_insumo_cob($(this).val());
     });
 
   });//fin document ready 
 
-  function put_tabla_cobertura(insumo){
-    console.log(insumos_general[insumo]);
+  function arma_tabla_insumo(arreglo_datos,num_cobertura){
+    var cobertura_tabla = [];
+
+    cobertura_tabla.push(anios_cob);
+    for (var i = 0; i < arreglo_datos[num_cobertura].length; i++) {
+        cobertura_tabla.push(arreglo_datos[num_cobertura][i]);
+    }
+    return cobertura_tabla;
+  }
+
+  function put_tabla_insumo_cob(filtro){
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+                      '</div>' +
+                      '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                      '<table class="bordered" id="miTabla" class="miTabla">';
+    console.log('--------------- insu cobertura ----------');
+    console.log(insumos_cobertura[$('#insumo_change_cob').val()]);
+    console.log(insumos_cobertura[$('#insumo_change_cob').val()][filtro]);
+    var tabla_armada = arma_tabla_insumo(insumos_cobertura[$('#insumo_change_cob').val()],filtro);
+    console.log('--------------- tabla armada ----------');
+    console.log(tabla_armada);
+
+    $.each(tabla_armada, function(idx, value){
+      if(idx == 0){
+        datos_doble += '<thead>';
+      }else if(idx == 1){
+        datos_doble += '<tbody>';
+      }
+      datos_doble += '<tr>';   
+      $.each(value, function(idx2, value2){
+        if(idx == 0 && idx2 == (value.length -1)){
+          datos_doble += '<th class="headcol">'+ value2.split('-')[0] +'</th>';
+        }
+        else if(idx == 0){
+          datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
+        }
+        else if(idx2 == (value.length -1)){
+          datos_doble += '<td class="headcol">'+ value2 +'</td>';
+        }
+        else{
+          datos_doble += '<td>'+ value2 +'</td>';
+        }
+      });
+      datos_doble += '</tr>';   
+      if(idx == 0){
+        datos_doble += '</thead>';
+      }
+    });
+
+    datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
+                    '</div></div>';
+                 
+    //sin pie y cabezera de la pagina
+    $('#insumos_cont').html(datos_doble);
+    var arre = []; 
+    for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
+      arre.push(i)
+    }
+    console.log(arre);
+    $('#miTabla').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    aoColumnDefs: [
+                      { 'bSortable': false, 
+                        'aTargets': arre }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                } );
+  }
+
+  function put_filtros_insumo_cob(insumo){
+    $('#este').show();
+
+    var insumo_filtro = '<option value="-1"> Selecciona una Filtro </option>';
+
+    $.each(insumo_cober_clasifica[insumo], function(idx, value){
+      insumo_filtro += '<option value="'+idx+'">'+value+'</option>';
+    });
+
+    $('#este').html(insumo_filtro);
+  } 
+
+
+
+  function put_tabla_insumo(insumo){
     var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
                       '</div>' +
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
@@ -145,7 +248,7 @@
     for (var i = 0; i < insumos_general[insumo][0].length - 1; i++) {
       arre.push(i)
     }
-    console.log(arre);
+
     $('#miTabla').DataTable( {
                     scrollY:        "600px",
                     scrollX:        true,
@@ -194,12 +297,37 @@
     //Armamos el select para que tenga todas las series que pueden existir
     var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
-    select += '<option value="0"> Selecciona una opción </option>';
+    select += '<option value="-1"> Selecciona una opción </option>';
     $.each(lista_insumos, function(idx, value){
       select += '<option value="'+idx+'">'+value+'</option>';
     });
 
     select += '</select></div><div class="col s12" id="insumos_cont"></div>';
+
+    //sin pie y cabezera de la pagina
+    $('#datos-panel').html(select);
+  }
+
+  function coberturaInsumos(data){
+    lista_insumos = [];
+
+    for (var i = 0; i < data.Series.length; i++) {
+      if(data.Series[i].Tipo_ser == "I"){
+        lista_insumos.push(data.Series[i].Descrip_ser);
+        insumos_cobertura.push(cobertura_series(data,i));  
+        insumo_cober_clasifica.push(clasificaciones(data,i));  
+      }
+    }
+    
+    //Armamos el select para que tenga todas las series que pueden existir
+    var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
+
+    select += '<option value="0"> Selecciona una opción </option>';
+    $.each(lista_insumos, function(idx, value){
+      select += '<option value="'+idx+'">'+value+'</option>';
+    });
+
+    select += '</select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
@@ -291,7 +419,7 @@
       $("#filtros_es").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
     }
     //$('#row_filtros').show();
-    $('select').material_select();
+    //$('select').material_select();
   }
 
   function poner_filtros_na(){
@@ -300,7 +428,7 @@
       $("#filtros_na").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
     }
     //$('.cob_sel_nac').show();
-    $('select').material_select();
+    //$('select').material_select();
   }
 
   function valorDato(data){

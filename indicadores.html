@@ -1591,6 +1591,10 @@ $(document).ready(function(){
                 $('#serie-panel').show();
                 $('#botonera_nacional').hide();
 
+                var arre = []; 
+                for (var i = 0; i < estados[0].length - 1; i++) {
+                  arre.push(i)
+                }
                 if(table3 == null){
                   table3 = $('#miTabla3').DataTable( {
                     scrollY:        "600px",
@@ -1600,7 +1604,7 @@ $(document).ready(function(){
                     searching: false,
                     retrieve: true,
                     aoColumnDefs: [
-                      { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                      { 'bSortable': false, 'aTargets': arre }
                     ],
                     fixedColumns:   {
                         leftColumns: 1
@@ -1663,13 +1667,17 @@ $(document).ready(function(){
                $('#datos_calculo_2').show();
                   if(table2 == null){
                     $('#miTabla2').show();
+                    var arre = []; 
+                    for (var i = 0; i < estados[0].length - 1; i++) {
+                      arre.push(i)
+                    }
                     table2 = $('#miTabla2').DataTable( {
                       scrollY:        "600px",
                       scrollX:        true,
                       scrollCollapse: true,
                       paging:         false,
                       aoColumnDefs: [
-                        { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                        { 'bSortable': false, 'aTargets': arre }
                       ],
                       fixedColumns:   {
                           leftColumns: 1
