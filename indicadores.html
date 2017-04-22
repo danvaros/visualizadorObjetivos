@@ -1768,8 +1768,7 @@ $(document).ready(function(){
       
 
       if(cadena !=  ''){
-
-        cadena='<div class="col s1"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a></div>'+'<div class="col s11"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 10px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
       //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
         $('#anios').html(cadena);
@@ -1792,6 +1791,27 @@ $(document).ready(function(){
       console.log(arrray_anios);
       $('.numero').html(arrray_anios[0]);
       datosGrafica(arrray_anios[0]);
+
+      $('.owl-carousel').owlCarousel({
+          loop:false,
+          rtl:false,
+          margin:10,
+          rewind:false,
+          startPosition:"#anio_1",
+          nav:true,
+          navText:['< Años anteriores','Años posteriores >'],
+          responsive:{
+              0:{
+                  items:2
+              },
+              600:{
+                  items:5
+              },
+              1000:{
+                  items:7
+              }
+          }
+      })
     }//fin funcion
 
    // function poner_filtros(){
