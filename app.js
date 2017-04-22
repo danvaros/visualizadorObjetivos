@@ -22,7 +22,6 @@
   var pie ;
   var Algoritmo_ft = '';
 
-
   $.ajax({
     type: 'POST',
     url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",

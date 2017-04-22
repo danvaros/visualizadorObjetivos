@@ -363,17 +363,17 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <h3 class="fuerte t_principal">Evolución del indicador en el tiempo</h3>
           <li class="divider"></li>
           <br><br>
-               <div class="cuadro_titulo">
-              <h4>Razón de mortalidad materna</h4>
+          <div class="cuadro_titulo">
+              <!-- <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
               <p>1990-2015</p>
-              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
           </div>
           <div id="chart2"></div>
           <div class="pie_cuadro2">
-              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <!-- <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
-              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div> -->
             </div>
           <div class="col s4" style="margin-top: 40px;">
             <div class="col s1 line_pro"></div>
@@ -753,7 +753,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                               '<span> '+ atributos.Descrip_uni +'</span>';
 
 
-              var pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' ')+
+              var pie  =' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                         ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                         ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                         ' </div>';
@@ -945,16 +945,27 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			color: {
 		        pattern:['#f00','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc']
 		    },
-
-		    axis : {
-		        x : {
-		            type : 'timeseries',
-		            tick: {
+        axis : {
+            x : {
+                type : 'timeseries',
+                tick: {
                     rotate:90,
-		                format: function (x) { return x.getFullYear(); }
-		              //format: '%Y' // format string is also available for timeseries data
-		            }
-		        }
+                    format: function (x) { return x.getFullYear(); }
+                  //format: '%Y' // format string is also available for timeseries data
+                },
+                size : 80
+            },
+            Y : {
+              // padding: {top: 0, bottom: 0},
+              // tick: {
+              //       format: d3.format(".2f")
+              //   }
+                // tick: {
+                //     format: function (d) {
+                //         return (parseInt(d) == d) ? d : null;
+                //     }
+                // }  
+            } 
 		    },tooltip: {
 		        grouped: false, // Default true
 		        	format: {
@@ -988,7 +999,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			            }(jQuery));
 		                return commaSeparateNumber(Math.round(value*10)/10);
 		            },
-		           value: d3.format('.0F') // apply this format to both y and y2
+		           //value: d3.format('.2F') // apply this format to both y and y2
 		        }
 		    },
 		});
@@ -1020,7 +1031,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			        },
 			        y : {
 			            tick: {
-			                format: d3.format(".0f")
+			                format: d3.format(".2f")
 			            }
 			        }
 			    },
@@ -1407,6 +1418,17 @@ function busqueda_anio(cadena)
                       format: function (x) { return x.getFullYear(); }
                     //format: '%Y' // format string is also available for timeseries data
                   }
+              },
+              Y : {
+                // padding: {top: 0, bottom: 0},
+                // tick: {
+                //       format: d3.format(".2f")
+                //   }  
+                 tick: {
+                    format: function (d) {
+                        return (parseInt(d) == d) ? d : null;
+                    }
+                }
               }
           },tooltip: {
               grouped: false, // Default true
@@ -1439,7 +1461,7 @@ function busqueda_anio(cadena)
                     }(jQuery));
                       return commaSeparateNumber(Math.round(value*10)/10);
                   },
-                 value: d3.format('.0F') // apply this format to both y and y2
+                //value: d3.format('.2f') // apply this format to both y and y2
               }
           },
       });
