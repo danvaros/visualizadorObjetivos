@@ -169,16 +169,16 @@ $.ajax({
       datos_doble += '<tr>';
       $.each(value, function(idx2, value2){
         if(idx == 0 && idx2 == (value.length -1)){
-          datos_doble += '<th class="headcol">'+ value2.split('-')[0] +'</th>';
+          datos_doble += '<th class="headcol">'+ numberWithCommas(value2.split('-')[0]); +'</th>';
         }
         else if(idx == 0){
-          datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
+          datos_doble += '<th>'+ numberWithCommas(value2.split('-')[0]) +'</th>';
         }
         else if(idx2 == (value.length -1)){
-          datos_doble += '<td class="headcol">'+ value2 +'</td>';
+          datos_doble += '<td class="headcol">'+ numberWithCommas(value2) +'</td>';
         }
         else{
-          datos_doble += '<td>'+ value2 +'</td>';
+          datos_doble += '<td>'+ numberWithCommas(value2) +'</td>';
         }
       });
       datos_doble += '</tr>';
@@ -241,16 +241,16 @@ $.ajax({
       datos_doble += '<tr>';
       $.each(value, function(idx2, value2){
         if(idx == 0 && idx2 == (value.length -1)){
-          datos_doble += '<th class="headcol">'+ value2.split('-')[0] +'</th>';
+          datos_doble += '<th class="headcol">'+ numberWithCommas(value2.split('-')[0]) +'</th>';
         }
         else if(idx == 0){
-          datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
+          datos_doble += '<th>'+ numberWithCommas(value2.split('-')[0]) +'</th>';
         }
         else if(idx2 == (value.length -1)){
-          datos_doble += '<td class="headcol">'+ value2 +'</td>';
+          datos_doble += '<td class="headcol">'+ numberWithCommas(value2)+'</td>';
         }
         else{
-          datos_doble += '<td>'+ value2 +'</td>';
+          datos_doble += '<td>'+ numberWithCommas(value2) +'</td>';
         }
       });
       datos_doble += '</tr>';
@@ -306,7 +306,8 @@ $.ajax({
           temporal = [];
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
-            temporal.push(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser);
+            var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            temporal.push(dato_formato);
           }
           individual.push(temporal);
         }
@@ -463,7 +464,8 @@ $.ajax({
       var temporal = [];
       temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-        temporal.push(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
+        var dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+        temporal.push(dato_formato);
       }
       estados.push(temporal);
     }
