@@ -52,8 +52,6 @@
     async:true
   });
 
-
-
   // $.ajax({
   //   type: 'POST',
   //   url: "https://operativos.inegi.org.mx/datos/api/Metadato/PorClave",
@@ -211,6 +209,8 @@ $.ajax({
                         leftColumns: 1
                     }
                 } );
+    //agregamos titulo del insumo seleccionado
+    $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change_cob').val()]);
   }
 
   function put_filtros_insumo_cob(insumo){
@@ -224,8 +224,6 @@ $.ajax({
 
     $('#este').html(insumo_filtro);
   }
-
-
 
   function put_tabla_insumo(insumo){
     var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
@@ -489,55 +487,56 @@ $.ajax({
       return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
+  $(document).ready(function()
+  {
+    titulos(PCveInd);
 
-$(document).ready(function()
-{
-  titulos(PCveInd);
+    $('#filtros_es').on('change',function(){
+      $('#loader').show();
+      estados = arma_tabla($(this).val());
+      console.log('------------------------- estados tabala select-----------------');
+      console.log(estados);
+      actualiza_grafica();
 
-  $('#filtros_es').on('change',function(){
-    $('#loader').show();
-    estados = arma_tabla($(this).val());
-    console.log('------------------------- estados tabala select-----------------');
-    console.log(estados);
-    actualiza_grafica();
+      $('#'+anio_mas_actual).trigger( "click" );
 
-    $('#'+anio_mas_actual).trigger( "click" );
+      $('#loader').delay(2000).fadeOut("slow");
+    });
 
-    $('#loader').delay(2000).fadeOut("slow");
+    $('#filtros_na').on('change',function(){
+      $('#loader').show();
+      estados = arma_tabla($(this).val());
+      console.log('------------------------- estados tabala select-----------------');
+      console.log(estados);
+      actualiza_grafica_na();
+
+      $('#loader').delay(2000).fadeOut("slow");
+    });
   });
 
-  $('#filtros_na').on('change',function(){
-    $('#loader').show();
-    estados = arma_tabla($(this).val());
-    console.log('------------------------- estados tabala select-----------------');
-    console.log(estados);
-    actualiza_grafica_na();
+  var titulo ;
+  var pie ;
 
-    $('#loader').delay(2000).fadeOut("slow");
-  });
-
-});
-var titulo ;
- var pie ;
-function titulos(indicador){
-      var atributos = getAtributos(indicador);
-      titulo   =  '<h4>'+ atributos.DescripInd_des  +'</h4>' +
-                      '<li class="divider"></li> ' +
-                      '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                      '<span> '+ atributos.Descrip_uni +'</span>';
+  function titulos(indicador){
+        var atributos = getAtributos(indicador);
+        titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
+                        '<li class="divider"></li> ' +
+                        '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                        '<span> '+ atributos.Descrip_uni +'</span>';
 
 
-      pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-                ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
-                ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
-                ' </div>';
+        pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
+                  ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
+                  ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' </div>';
 
-      $('.pie_cuadro2').html(pie);
-      $('.cuadro_titulo').html(titulo);
-      titulo_des_graf = atributos.DescripInd_des;
+        $('.pie_cuadro2').html(pie);
+        $('.cuadro_titulo').html(titulo);
+        titulo_des_graf = atributos.DescripInd_des;
 
-          put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
-}
+            put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
+  }
+
   function iconoObjetivo(objetivo){
     switch(objetivo){
       case "1.":
