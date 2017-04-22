@@ -17,5 +17,26 @@
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="app2.js"></script>
       <script type="text/javascript" src="funcionesApi.js"></script>
+<script>
+  //
+  // $.getJSON( "claveSerie.js", function( json ) {
+  //   console.log( "JSON Data: " + json.users[ 3 ].name );
+  // });
+
+  $.ajax({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    url: 'claveSerie.js',
+    data: '',
+    async: false,
+    dataType: 'json',
+    success: function (response) {
+      console.log(response);
+        $.each(response, function(idx, value){
+            console.log(value);
+        });
+    }
+})
+</script>
     </body>
   </html>
