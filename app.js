@@ -487,7 +487,7 @@ function titulos(indicador){
                       '<span> '+ atributos.Descrip_uni +'</span>';
 
 
-      pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not+'</div>' : ' ND</div> ')+
+      pie  = ((atributos.Descrip_not != null) ? '<div><strong>Nota:</strong> '+atributos.Descrip_not+'</div>' : '')+
                 ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                 ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                 ' </div>';
