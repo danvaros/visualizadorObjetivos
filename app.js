@@ -129,6 +129,7 @@ $.ajax({
 
     $('#insumo_change_cob').on('change',function(){
       put_filtros_insumo_cob($(this).val());
+      $('#insumos_cont').html('');
     });
 
     $('#este').on('change', function(){
