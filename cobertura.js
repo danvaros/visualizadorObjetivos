@@ -10,10 +10,10 @@ Array.prototype.unique=function(a){
 });
 
 function cobertura(data){
-	arreglo_cla =  [];
-	arreglo_agru =  [];
-	arreglo_datos =  [];
-	anios_cob = [];
+	arreglo_cla 	=  [];
+	arreglo_agru 	=  [];
+	arreglo_datos 	=  [];
+	anios_cob 		= [];
 
 	var Cobertura = data.Series[0].Coberturas;
 	var clave_ser = data.Series[0].Clave_ser;
@@ -58,6 +58,8 @@ function cobertura(data){
 		  async:false
 		});
 	}
+	//impresion de resultado para cuando haga falta
+	//console.log(arreglo_datos);
 }//fin de la función
 
 function clasificaciones(data,i){
