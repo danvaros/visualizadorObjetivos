@@ -18,15 +18,15 @@
   var tituloObjetivo = '';
   var titulo ;
   var pie ;
+  var Algoritmo_ft = '';
+
 
   $.ajax({
     type: 'POST',
     url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
-      // console.log(data);
-      // console.log('------------------------------------- nuevo arreglo  --------------------');
-
+      
       nombreObj = data.Abrevia_des;
 
       for (var i = 0; i < data.Meta.length; i++) {
@@ -37,6 +37,7 @@
       }
 
       Codigo_ind 	=	data.Codigo_ind;
+
       Descrip_ind = data.Descrip_ind;
 
       colorObjetivo(obj);
@@ -50,11 +51,29 @@
     async:true
   });
 
-  $.ajax({
-    type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
-    data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
-    success: function( data, textStatus, jqxhr ) {
+
+
+  // $.ajax({
+  //   type: 'POST',
+  //   url: "https://operativos.inegi.org.mx/datos/api/Metadato/PorClave",
+  //   data: {'PCveInd':vars , 'PIdioma':'ES'},
+  //   success: function( data, textStatus, jqxhr ) {
+  //     Algoritmo_ft = data.Algoritmo_ft;
+  //     console.log('.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l');
+  //     console.log(Algoritmo_ft);
+  //     var dasdasd = '<img src="img/algoritmos/'+Algoritmo_ft+'.gif" alt="Algoritmo '+Algoritmo_ft+'" />';
+  //     console.log(dasdasd);
+  //     $('.imgAlgoritmo').html(dasdasd);
+  //   },
+  //   async:false
+  // });
+
+$.ajax({
+  type: 'POST',
+  url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
+  data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
+  success: function( data, textStatus, jqxhr ) {
+
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
 
