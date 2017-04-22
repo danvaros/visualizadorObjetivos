@@ -215,9 +215,6 @@
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="image.js"></script>
-    <!-- <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> -->
 
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
     <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
@@ -764,7 +761,7 @@
       poner_filtros_na();
     }
 
-    $('#row_filtros').hide();
+    //$('#row_filtros').hide();
     //$('.cuadro_titulo').remove();
     $('#map').remove();
     //$('.pie_cuadro2').remove();
@@ -1609,6 +1606,10 @@ $(document).ready(function(){
                 $('#serie-panel').show();
                 $('#botonera_nacional').hide();
 
+                var arre = []; 
+                for (var i = 0; i < estados[0].length - 1; i++) {
+                  arre.push(i)
+                }
                 if(table3 == null){
                   table3 = $('#miTabla3').DataTable( {
                     scrollY:        "600px",
@@ -1618,7 +1619,7 @@ $(document).ready(function(){
                     searching: false,
                     retrieve: true,
                     aoColumnDefs: [
-                      { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                      { 'bSortable': false, 'aTargets': arre }
                     ],
                     fixedColumns:   {
                         leftColumns: 1
@@ -1673,33 +1674,6 @@ $(document).ready(function(){
 
           $('#indicador').trigger("click");
 
-          $('.select_datos').change(function(){
-            var osds=$('.select_datos').val();
-            if(osds == 1){
-
-              $('#datos_calculo_1').show();
-
-              if(table1 == null){
-                    $('#miTabla').show();
-                    table1 = $('#miTabla').DataTable( {
-                    scrollY:        "600px",
-                    scrollX:        true,
-                    scrollCollapse: true,
-                    paging:         false,
-                    aoColumnDefs: [
-                      { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
-                    ],
-                    fixedColumns:   {
-                        leftColumns: 1
-                    }
-                } );
-              }
-           }
-            else{
-              $('#datos_calculo_1').hide();
-
-            }
-          });
 
            $('.select_datos_2').change(function(){
              var osds=$('.select_datos_2').val();
@@ -1708,13 +1682,17 @@ $(document).ready(function(){
                $('#datos_calculo_2').show();
                   if(table2 == null){
                     $('#miTabla2').show();
+                    var arre = []; 
+                    for (var i = 0; i < estados[0].length - 1; i++) {
+                      arre.push(i)
+                    }
                     table2 = $('#miTabla2').DataTable( {
                       scrollY:        "600px",
                       scrollX:        true,
                       scrollCollapse: true,
                       paging:         false,
                       aoColumnDefs: [
-                        { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                        { 'bSortable': false, 'aTargets': arre }
                       ],
                       fixedColumns:   {
                           leftColumns: 1
