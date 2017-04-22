@@ -530,9 +530,9 @@ function titulos(indicador){
       $('.pie_cuadro2').html(pie);
       $('.cuadro_titulo').html(titulo);
       titulo_des_graf = atributos.DescripInd_des;
+
           put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
 }
-
   function iconoObjetivo(objetivo){
     switch(objetivo){
       case "1.":
