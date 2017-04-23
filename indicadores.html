@@ -16,11 +16,8 @@
     <link rel="stylesheet" href="lib/owl.carousel.min.css">
     <link rel="stylesheet" href="lib/owl.theme.default.min.css">
 
-
-
-	<!-- Load c3.css -->
-	<link href="lib/c3.css" rel="stylesheet" type="text/css">
-
+    <!-- Load c3.css -->
+    <link href="lib/c3.css" rel="stylesheet" type="text/css">
 
       <style>
 .cuadro_titulo{
@@ -47,7 +44,7 @@
 .pie_cuadro2{
   background-color: #fff;
   color: #083362;
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
 }
 .pie_cuadro2 div{
   margin-top:6px;
@@ -215,9 +212,6 @@
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="image.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
     <script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.13/js/jquery.dataTables.js"></script>
@@ -249,10 +243,10 @@
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
-            </li>
+            </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="objetivos.html">Indicadores</a></li>
@@ -340,19 +334,27 @@
             </div>
       </div>
 
-      <div class="row card tablaPadding" id="datos-panel-dos" style="overflow-x: scroll;border-radius: 20px;">
+      <div class="row card tablaPadding" id="datos-panel-dos" style="overflow-x: scroll;border-radius: 20px; display:none;">
       </div>
 
 
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
 
-      <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
-        <div class="col s12">
-           <div class="pie_cuadro2">
-              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
-              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
-              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+      <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
+        
+         
+        <div class="row" id="row_filtros_serie" style="display: none">
+          <div class="col s2 " >
+            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
+          </div>
+          <div class="col s4 " >
+            <div class="input-field col s12" style="margin-bottom:20px;">
+              <select id="filtros_serie" style="display:block !important; background-color: #f2f2f2;"></select>
             </div>
+          </div>
+        </div> 
+
+        <div class="row" id="serie_panel_tablas">
         </div>
       </div>
 
@@ -363,14 +365,35 @@
 <!--  -->
 
       <div class="row" id="botonera_nacional" style="display: none; ">
-        <div class="col s10">
+        <div class="col s6">
           <a id="ver_grafica_nacional" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla_nacional()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
           <a id="ver_tabla_nacional" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica_nacional()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+        </div>
+        <div class="col s2" >
+          <p class="claro t_sm cob_sel_nac" style="display: none; margin-top: 25px; margin-right: 63px;">Filtros</p>
+        </div>
+        <div class="col s4" >
+          <div class="input-field col s12 caja_s cob_sel_nac" style="display: none;">
+            <select id="filtros_na">
+            </select>
+          </div>
         </div>
       </div>
 
 
       <div id="mapas_hide">
+        <div class="row" id="row_filtros" style="display: none;">
+          <div class="col s2 " >
+            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
+          </div>
+          <div class="col s4 " >
+            <div class="input-field col s12 caja_s">
+              <select id="filtros_es">
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row card tablaPadding">
         <div class="col s12">
           <div class="cuadro_titulo">
               <h4>Razón de mortalidad materna</h4>
@@ -386,7 +409,7 @@
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
             <div class="col s4"  id="chart2btn">
-                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar gráfica</a>
+                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;margin-top:42px;">Exportar gráfica</a>
             </div>
 
           <div class="row" id="footmap">
@@ -397,11 +420,12 @@
                 <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
                 <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
               </div>
-            
+
             <div class="col s4" >
-                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar mapa</a>
+                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px; margin-top: 43px;float: right;margin-right: 10px;">Exportar mapa</a>
             </div>
           </div>
+        </div>
         </div>
 
 
@@ -589,17 +613,19 @@
       </div>
     <div class="row">
       <div class="col s4 offset-s8 right-align" >
-        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Exportar gráfica</a>
+        <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;    margin-top: 43px;">Exportar gráfica</a>
       </div>
     </div>
   </div>
 
   <!-- <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div> -->
-  <div id="tabla_nacional" style="display: none;"></div>
+
+  <div class="row card tablaPadding" id="tabla_nacional" style="display: none;"></div>
+  <div id="tabla_export" style="display: none;"></div>
 
   <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
-          <h3 class="fuerte t_principal">Datos</h3>
+          <h3 class="fuerte t_principal">Descargar datos</h3>
           <li class="divider"></li>
           <div class="row">
             <div class="col s11 offset-s1">
@@ -613,6 +639,9 @@
                 <div class="col s2">
                       <p class="fuerte t_normal">Grafica</p>
                 </div> -->
+                <div class="col s2">
+              				<p class="fuerte t_normal" >Institución</p>
+    		  			</div>
                 <div class="col s3">
                       <p class="fuerte t_normal">Datos del indicador</p>
                 </div>
@@ -630,11 +659,15 @@
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div> -->
+                <div class="col s2">
+              				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
+    		  			</div>
                 <div class="col s6" style="margin-top: 10px;">
-                      <a class="icn">CSV</a>
-                      <a class="icns">XLS</a>
-                      <a class="icnSDMX">SDMX</a>
-                      <a class="icnPDF">PDF</a>
+                      <a class="icn exportCSV">CSV</a>
+                      <!-- <a download="indicador.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a> -->
+                      <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
+                      <!-- <a class="icnSDMX">SDMX</a> -->
+                      <!-- <a class="icnPDF">PDF</a> -->
                 </div>
                 <div class="col s12">
                       <li class="divider griss"></li>
@@ -691,7 +724,7 @@
             <ul class="fuerte">
           <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
-            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li> -->
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
@@ -701,8 +734,8 @@
           </div>
         </div>
       </div>
-      <div class="footer-copyright light-blue">
-      </div>
+      <!-- <div class="footer-copyright light-blue">
+      </div> -->
     </footer>
 <!-- footer -->
 
@@ -717,6 +750,7 @@
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
     <!-- <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script> -->
+<script src="lib/excellentexport.js"></script>
 
     <!-- Load d3.js and c3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -725,7 +759,7 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
-  
+
   <script>
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
@@ -738,6 +772,13 @@
   console.log(codigoDg.replace(/\s/g,''),"por aca");
   if(codigoDg.replace(/\s/g,'') == 'N')
   {
+    console.log('------------------------ arreglo -----------------');
+    console.log(arreglo_cla);
+    if(arreglo_cla.length > 0){
+      poner_filtros_na();
+    }
+
+    //$('#row_filtros').hide();
     //$('.cuadro_titulo').remove();
     $('#map').remove();
     //$('.pie_cuadro2').remove();
@@ -875,11 +916,16 @@
         ],
       ],
       type: 'bar',
-      colors: {
-            Descrip_ind : function (d) {
-                return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+      color:
+        function (color, d) {
+            return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+
+            // Descrip_ind : function (d) {
+            //     return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+            //     console.log('x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-');
+            //     console.log(d.index);
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
-            }
+            //}
         },
       order: 'desc',
           },
@@ -935,7 +981,7 @@
           } ,
            y : {
                   tick: {
-                      format: d3.format(".0f")
+                      format: d3.format(".2f")
                   }
               }
           },
@@ -970,7 +1016,7 @@ function adelante(){
     $('.numero').html(arrray_anios[anio_activo]);
     datosGrafica(arrray_anios[anio_activo]);
   }
-    
+
   // if(estadoYear != 2015){
   //   estadoYear++;
   //   console.log(estadoYear);
@@ -979,7 +1025,7 @@ function adelante(){
   // }
 }
 
-function datosGrafica(year){
+ function datosGrafica(year){
   var indice = 0;
   var serie = [];
   var nuevos_estados_dobles = new Array();
@@ -1084,9 +1130,14 @@ function sortFunction(a, b) {
               props,
               busqueda_mexico()
             ]
-
-
           },
+        tooltip: {
+          format: {
+              value: function(value) {
+                  return d3.format(",.2f")(value)
+              }
+          }
+        },
           axis: {
               x: {
                   type: 'timeseries',
@@ -1397,7 +1448,7 @@ function sortFunction(a, b) {
       padding-top: 26px !important;
  }
   </style>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function(){
   $(".owl-carousel").owlCarousel({
     loop:true,
@@ -1416,73 +1467,22 @@ $(document).ready(function(){
     }
   });
 });
-</script>
+</script> -->
   <script type="text/javascript">
+
     $(document).ready(function(){
 
           $('#indicador-panel').hide();
           $('.modal-trigger').leanModal();
 
-          console.log("el objeto es",series_calculo);
-          var opciones='<option value="0">Selecciona</option>';
-          for(var i=0;i<series_calculo.length;i++)
-          {
-            if(series_calculo[i].Tipo_ser == "I")
-            {
-              opciones=opciones+'<option value="'+i+'">'+series_calculo[i].Descrip_ser+'</option>';
-            }
-          }
-//<option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option>
-//<option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option>
-          var select='<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos" style="display:block !important; background-color: #f2f2f2;">'+opciones+'</select></div>';
-
-          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;">'+opciones+'</select></div>';
-
-          console.log("asi quedara",estados);
-          var todas_series=[]
-          for(var z=0;z<series_calculo.length;z++)
-          {
-            if(series_calculo[z].Tipo_ser == "I")
-            {
-                var nueva_tabla = [];
-                var temporal = [];
-            		temporal.push('Entidad');
-            		for (var j = 0; j < series_calculo[z].Coberturas[0].ValorDato.length; j++)
-                {
-            			temporal.push(series_calculo[z].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
-            		}
-            		nueva_tabla.push(temporal);
-            		for (var i = 0; i < series_calculo[z].Coberturas.length; i++)
-                {
-            			var temporal = [];
-            			temporal.push(series_calculo[z].Coberturas[i].Descrip_cg);
-            			for (var j = 0; j < series_calculo[z].Coberturas[i].ValorDato.length; j++) {
-            				temporal.push(series_calculo[z].Coberturas[i].ValorDato[j].Dato_ser);
-            			}
-            			nueva_tabla.push(temporal);
-            		}
-                todas_series.push(nueva_tabla);
-              }
-          }
-
-          console.log("asi quedo",todas_series[0][0]);
+          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
 
-var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser +
-                  '</div>' +
-                  '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
-                  '<table class="bordered" id="miTabla" class="miTabla" style="display:none">';
-
-
-          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser +
-             ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-
-          //var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
+          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-
-          //'</div>' +
+          '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
-                            '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
+                            '<table class="bordered" id="miTabla2" class="miTabla2">';
 
            var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
@@ -1496,84 +1496,87 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
 
              for (var i = 0; i < estados.length; i++) {
                if(i == 0){
-                datos_doble +=  '<thead><tr>';
+                // datos_doble +=  '<thead><tr>';
                 datos_doble_2 +=  '<thead><tr>';
                 datos_doble_3 +=  '<thead><tr>';
               }
                else if(i == 1){
-                 datos_doble +=  '<tbody><tr>';
+                //  datos_doble +=  '<tbody><tr>';
                  datos_doble_2 +=  '<tbody><tr>';
                  datos_doble_3 +=  '<tbody><tr>';
                }
                else {
-                  datos_doble +=  '<tr>';
+                  // datos_doble +=  '<tr>';
                   datos_doble_2 +=  '<tr>';
                   datos_doble_3 +=  '<tr>';
                }
 
-               for (var j = todas_series[0][0].length -1 ; j > 0 ; j--) {
-                if(i == 0 && j == todas_series[0][0].length -1){
-                  datos_doble +=  '  <th  class="headcol">'+ todas_series[0][i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
-                  datos_doble_2 +=  '  <th  class="headcol">'+ todas_series[1][i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+               for (var j = estados[0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == estados[0].length -1){
+                  // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                   datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                 }
-                else if( i == 0 && j == todas_series[0][0].length -1 ){
-                  datos_doble += '<th class"padding-200">'+ todas_series[0][i][j].split('-')[0] +'</th>';
-                  datos_doble_2 += '<th class"padding-200">'+ todas_series[1][i][j].split('-')[0] +'</th>';
+                else if( i == 0 && j == estados[0].length -1 ){
+                  // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if( i == 0 ){
-                  datos_doble += '<th>'+ todas_series[0][i][j].split('-')[0] +'</th>';
-                  datos_doble_2 += '<th>'+ todas_series[1][i][j].split('-')[0] +'</th>';
+                  // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
-                else if(j == todas_series[0][0].length -1 ) {
-                  var varia = '<td class="headcol">'+ todas_series[0][i][0] +'</td><td>'+ parseFloat(todas_series[0][i][j]).toFixed(2) +'</td>';
-                  datos_doble += varia;
+                else if(j == estados[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  // datos_doble += varia;
                   datos_doble_2 += varia;
                   datos_doble_3 += varia;
                 }
                 else if(j == estados[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ parseFloat(todas_series[0][i][j]).toFixed(2) +'</td>';
-                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(todas_series[1][i][j]).toFixed(2) +'</td>';
+                    // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ parseFloat(todas_series[0][i][j]).toFixed(2) +'</td>';
-                  datos_doble_2 +=  '  <td>'+ parseFloat(todas_series[1][i][j]).toFixed(2) +'</td>';
+                  // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                }
 
 
-                 if(i == 0){
-                   datos_doble +=  '</tr></thead>';
-                   datos_doble_2 +=  '</tr></thead>';
-                   datos_doble_3 +=  '</tr></thead>';
-                 }else{
-                   datos_doble +=  '</tr>';
-                   datos_doble_2 +=  '</tr>';
-                   datos_doble_3 +=  '</tr>';
-                 }
+
+               if(i == 0){
+                //  datos_doble +=  '</tr></thead>';
+                 datos_doble_2 +=  '</tr></thead>';
+                 datos_doble_3 +=  '</tr></thead>';
+               }else{
+                //  datos_doble +=  '</tr>';
+                 datos_doble_2 +=  '</tr>';
+                 datos_doble_3 +=  '</tr>';
+               }
              }
 
-            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+
+
+            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
-               datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
-               datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
-             '</div></div>';
 
-            //  console.log(datos_doble);
-          $('#datos-panel').html(select+datos_doble);
-          $('#datos-panel-dos').html(select_2+datos_doble_2);
-          $('#serie-panel').html(datos_doble_3);
-          $('#tabla_nacional').html(datos_doble_3);
+
+
+          //$('#datos-panel-dos').html(select_2+datos_doble_2);
+          $('#serie_panel_tablas').html(datos_doble_2);
+
+          // $('#tabla_export').html(datos_doble_3);
+
+          $('#tabla_nacional').html(datos_doble_2);
 
           $('.scroller').scroll(function(e) {
             console.log("aca");
@@ -1599,7 +1602,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
                 $('#chart2').show();
-
+                $('#botonera_nacional').show();
                 $('#serie-panel').hide();
 
                 $('#datos-panel').hide();
@@ -1618,23 +1621,32 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').show();
+                $('#botonera_nacional').hide();
 
-                if(table3 == null){
-                  table3 = $('#miTabla3').DataTable( {
-                    scrollY:        "600px",
-                    scrollX:        true,
-                    scrollCollapse: true,
-                    paging:         false,
-                    searching: false,
-                    retrieve: true,
-                    aoColumnDefs: [
-                      { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
-                    ],
-                    fixedColumns:   {
-                        leftColumns: 1
-                    }
-                  });
+                var arre = [];
+                for (var i = 0; i < estados[0].length - 1; i++) {
+                  arre.push(i)
                 }
+                
+
+                    
+                if(arre.length > 17){
+                 $('#miTabla2').DataTable( {
+                        scrollY:        "600px",
+                        scrollX:        true,
+                        scrollCollapse: true,
+                        paging:         false,
+                        aoColumnDefs: [
+                          { 'bSortable': false,
+                            'aTargets': arre }
+                        ],
+                        fixedColumns:   {
+                            leftColumns: 1
+                        }
+                    } );
+                }
+
+              
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1651,9 +1663,9 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
                 $('#mapas_hide').hide();
                 $('#chart2').hide();
                 $('#serie-panel').hide();
-
+                $('#botonera_nacional').hide();
                 $('#datos-panel').show();
-                $('#datos-panel-dos').show();
+                $('#datos-panel-dos').hide();
                 $('#link-datos-panel').show();
 
 
@@ -1673,7 +1685,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
-
+                $('#botonera_nacional').hide();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -1683,33 +1695,6 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
 
           $('#indicador').trigger("click");
 
-          $('.select_datos').change(function(){
-            var osds=$('.select_datos').val();
-            if(osds == 1){
-
-              $('#datos_calculo_1').show();
-
-              if(table1 == null){
-                    $('#miTabla').show();
-                    table1 = $('#miTabla').DataTable( {
-                    scrollY:        "600px",
-                    scrollX:        true,
-                    scrollCollapse: true,
-                    paging:         false,
-                    aoColumnDefs: [
-                      { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
-                    ],
-                    fixedColumns:   {
-                        leftColumns: 1
-                    }
-                } );
-              }
-           }
-            else{
-              $('#datos_calculo_1').hide();
-
-            }
-          });
 
            $('.select_datos_2').change(function(){
              var osds=$('.select_datos_2').val();
@@ -1718,13 +1703,17 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
                $('#datos_calculo_2').show();
                   if(table2 == null){
                     $('#miTabla2').show();
+                    var arre = [];
+                    for (var i = 0; i < estados[0].length - 1; i++) {
+                      arre.push(i)
+                    }
                     table2 = $('#miTabla2').DataTable( {
                       scrollY:        "600px",
                       scrollX:        true,
                       scrollCollapse: true,
                       paging:         false,
                       aoColumnDefs: [
-                        { 'bSortable': false, 'aTargets': [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 ] }
+                        { 'bSortable': false, 'aTargets': arre }
                       ],
                       fixedColumns:   {
                           leftColumns: 1
@@ -1764,36 +1753,38 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
           put_anios();
     });
 
-   var arrray_anios = []; 
+   var arrray_anios = [];
    var anio_activo = 0;
+   var anio_mas_actual;
    function put_anios(){
-      arrray_anios = []; 
+      arrray_anios = [];
       var cadena='';
-      var anio_mas_actual;
-
-      console.log('----------------------- estados anios -----------------');
-      console.log(estados);
-      console.log(estados[0]);
-      console.log(estados[0].length);
+      anio_mas_actual='';
+      // console.log('----------------------- estados anios -----------------');
+      // console.log(estados);
+      // console.log(estados[0]);
+      // console.log(estados[0].length);
 
       for(var i = 1; i < estados[0].length; i++)
       {
         if(i == 1)
         {
         anio_mas_actual = 'anio_'+i;
-        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
         else if(i <= estados[0].length-1)
         {
-        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
       }
-      
+
 
       if(cadena !=  ''){
-        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 5px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+      //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
+
         $('#anios').html(cadena);
 
         $('#'+anio_mas_actual).trigger( "click" );
@@ -1815,10 +1806,53 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
       $('.numero').html(arrray_anios[0]);
       datosGrafica(arrray_anios[0]);
 
+var contaAnios = arrray_anios.length - 1;
+
+      $('.owl-carousel').owlCarousel({
+          loop:false,
+          rtl:false,
+          margin:10,
+          rewind:false,
+          startPosition: contaAnios,
+          nav:true,
+          navText:['< Años anteriores','Años posteriores >'],
+          responsive:{
+              0:{
+                  items:2
+              },
+              600:{
+                  items:5
+              },
+              1000:{
+                  items:7
+              }
+          }
+      });
+
+
     }//fin funcion
 
+   // function poner_filtros(){
+   //    console.log('--------------------- ponemos filtros ------------------');
+   //    $("#filtros").html('');
+   //    for (var i = 0; i < arreglo_cla.length; i++) {
+   //      $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
+   //    }
+   //    $('#row_filtros').show();
+   //    $('select').material_select();
+   //  }
 
-
+    $('#filtros').on('change',function(){
+      $('#loader').show();
+      estados = arma_tabla($(this).val());
+      console.log('------------------------- estados tabala select-----------------');
+      console.log(estados);
+      actualiza_grafica();
+      if($('#agregacion').val() != 1){
+        $('#'+anio_mas_actual).trigger( "click" );
+      }
+      $('#loader').delay(2000).fadeOut("slow");
+    });
 
     function cambio_grafica()
     {
@@ -1867,7 +1901,7 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
 
     function cambio_anio(cadena, i)
     {
-      for(var j=1;j<=7;j++)
+      for(var j=1;j<=25;j++)
       {
         $('#anio_'+j).removeClass('active_anio');
         $('#anio_'+j).addClass('inactive_anio');
@@ -2117,13 +2151,50 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
         console.log(metadatosArr);
 
         tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
+        '<tr><th>Objetivo</th><td>'+metadatosArr.Descrip_obj+'</td></tr>'+
+        '<tr><th>Meta</th><td>'+metadatosArr.Descrip_met+'</td></tr>'+
+        '<tr><th>Nombre del Indicador</th><td>'+metadatosArr.Descrip_ind+'</td></tr>'+
         '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
-        '<tr><th>Algoritmo</th><td><strong>Pendiente de conectar a la API</strong></td></tr>'+
-        '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador:</th><td>';
+        '<tr><th>Tipo de Indicador</th><td>'+metadatosArr.DesTipoInd_ft+'</td></tr>'+
+        '<tr><th>Algoritmo</th><td><div class="imgAlgoritmo"><img src="img/algoritmos/'+metadatosArr.Algoritmo_ft+'.gif" alt="Algoritmo '+metadatosArr.Algoritmo_ft+'" /></div></td></tr>'+
+        '<tr><th>Descripción narrativa del cálculo del indicador</th><td>'+metadatosArr.DescripCal_ft+'</td></tr>'+
+        '<tr><th>Unidad de medida</th><td>'+metadatosArr.Descrip_uni+'</td></tr>'+
+        '<tr><th>Cobertura geográfica</th><td>'+metadatosArr.Descrip_fdg+'</td></tr>'+
+        '<tr><th>Referencia temporal</th><td>'+metadatosArr.CobTem_ft+'</td></tr>'+
+        '<tr><th>Oportunidad</th><td>'+metadatosArr.Oportunidad_ft+'</td></tr>'+
+        '<tr><th>Periodicidad del indicador</th><td>'+metadatosArr.Descrip_per+'</td></tr>'+
+        '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador</th><td>';
 
         for (var i = 0; i < metadatosArr.Fuente.length; i++) {
           tablaMeta = tablaMeta  +  metadatosArr.Fuente[i].Descrip_fue + '<br>';
         }
+
+        tablaMeta = tablaMeta + '</td></tr>'+
+        '<tr><th>Fecha de actualización del indicador</th><td>'+metadatosArr.FechaAct_atr+'</td></tr>'+
+        '<tr><th>Fecha próxima de actualización del indicador</th><td>'+metadatosArr.FecProxAct_eic+'</td></tr>'+
+        '<tr><th>Unidad del Estado (UE) responsable de calcular el indicador</th><td>';
+
+        for (var i = 0; i < metadatosArr.InsResp.length; i++) {
+          tablaMeta = tablaMeta  +  metadatosArr.InsResp[i].Descrip_ins + '<br>';
+        }
+
+
+        tablaMeta = tablaMeta + '</td></tr>'+
+        '<tr><th>Importancia y utilidad del indicador</th><td>'+metadatosArr.Importancia_ft+'</td></tr>'+
+        '<tr><th>Referencia nacional y/o internacional</th><td>';
+
+        for (var i = 0; i < metadatosArr.RefInt.length; i++) {
+          tablaMeta = tablaMeta  +  metadatosArr.RefInt[i].Descrip_ri + '<br>';
+        }
+
+        tablaMeta = tablaMeta + '</td></tr>'+
+        '<tr><th>Observaciones</th><td>'+metadatosArr.Observacion_ft+'</td></tr>'+
+        '<tr><th>Contacto</th><td>';
+
+        for (var i = 0; i < metadatosArr.Contacto.length; i++) {
+          tablaMeta = tablaMeta  +  metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br>' + metadatosArr.Contacto[i].Telefono_con + '<br>' + metadatosArr.Contacto[i].Correo_con + '<br>' + metadatosArr.Contacto[i].Domicilio_con;
+        }
+
 
         /* tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>'; */
         tablaMeta = tablaMeta +  '</td></tr></tbody></table></p>';
@@ -2133,6 +2204,186 @@ var datos_doble = '<div class="cuadro_titulo"> ' + series_calculo[1].Descrip_ser
 
         // <img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas
       }
+
     </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"';
+
+				// Deliberate 'false', see comment below
+        if (false && window.navigator.msSaveBlob) {
+
+						var blob = new Blob([decodeURIComponent(csv)], {
+	              type: 'text/csv;charset=utf8'
+            });
+
+            // Crashes in IE 10, IE 11 and Microsoft Edge
+            // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+            // Hence, the deliberate 'false'
+            // This is here just for completeness
+            // Remove the 'false' at your own risk
+            window.navigator.msSaveBlob(blob, filename);
+
+        } else if (window.Blob && window.URL) {
+						// HTML5 Blob
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
+            var csvUrl = URL.createObjectURL(blob);
+
+            $(this)
+            		.attr({
+                		'download': filename,
+                		'href': csvUrl
+		            });
+				} else {
+            // Data URI
+            var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+						$(this)
+                .attr({
+               		  'download': filename,
+                    'href': csvData,
+                    'target': '_blank'
+            		});
+        }
+    }
+
+    // This must be a hyperlink
+    $(".exportCSV").on('click', function (event) {
+        // CSV
+        var args = [$('#tabla_export table'), 'Indicador.csv'];
+
+        exportTableToCSV.apply(this, args);
+
+        // If CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+function exportTableToXLS($table1, filename1) {
+
+    var $rows1 = $table1.find('tr:has(td)'),
+
+        // Temporary delimiter characters unlikely to be typed by keyboard
+        // This is to avoid accidentally splitting the actual contents
+        tmpColDelim1 = String.fromCharCode(11), // vertical tab character
+        tmpRowDelim1 = String.fromCharCode(0), // null character
+
+        // actual delimiter characters for CSV format
+        colDelim1 = '","',
+        rowDelim1 = '"\r\n"',
+
+        // Grab text from table into CSV formatted string
+        xls = '"' + $rows1.map(function (i, row) {
+            var $row1 = $(row),
+                $cols1 = $row1.find('td');
+
+            return $cols1.map(function (j, col) {
+                var $col1 = $(col),
+                    text1 = $col1.text();
+
+                return text1.replace(/"/g, '""'); // escape double quotes
+
+            }).get().join(tmpColDelim1);
+
+        }).get().join(tmpRowDelim1)
+            .split(tmpRowDelim1).join(rowDelim1)
+            .split(tmpColDelim1).join(colDelim1) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+
+        var blob1 = new Blob([decodeURIComponent($table1)], {
+            type: 'text/plain;charset=utf8'
+        });
+
+        // Crashes in IE 10, IE 11 and Microsoft Edge
+        // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+        // Hence, the deliberate 'false'
+        // This is here just for completeness
+        // Remove the 'false' at your own risk
+        window.navigator.msSaveBlob(blob1, filename1);
+
+    } else if (window.Blob && window.URL) {
+        // HTML5 Blob
+        var blob1 = new Blob([xls], { type: 'text/plain;charset=utf8' });
+        var xlsUrl = URL.createObjectURL(blob1);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsUrl
+            });
+    } else {
+        // Data URI
+        var xlsData = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(xls);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsData,
+                'target': '_blank'
+            });
+    }
+}
+
+
+
+
+
+// This must be a hyperlink
+$(".exportXLS").on('click', function (event) {
+    // CSV
+    var args1 = [$('#tabla_export table'), 'Indicador.xls'];
+
+    exportTableToXLS.apply(this, args1);
+
+    // If CSV, don't do event.preventDefault() or return false
+    // We actually need this to be a typical hyperlink
+});
+});
+
+// function exportXXLS()
+// {
+//   var blob = new Blob([document.getElementById('tabla_export').innerHTML], {
+//           type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+//       });
+// saveAs(blob, "Report.xls");
+// }
+
+
+
+</script>
   </body>
 </html>

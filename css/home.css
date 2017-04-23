@@ -987,3 +987,15 @@ animation-name: scroll;
   transform: translateY(46px);
 }
 }
+
+
+
+
+@media only screen and (max-width: 1555px) {
+    .bullets-container{
+      display: none;
+    }
+}
+
+
+    

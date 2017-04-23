@@ -15,6 +15,8 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="lib/owl.carousel.min.css">
+    <link rel="stylesheet" href="lib/owl.theme.default.min.css">
     <!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
@@ -141,22 +143,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     }
 
     .crop {
-     width: 185px; 
-     line-height: 18px; 
-     height: 50px; 
-     overflow: hidden; 
-     margin: 0 auto; 
-     text-align: left; 
+     width: 185px;
+     line-height: 18px;
+     height: 50px;
+     overflow: hidden;
+     margin: 0 auto;
+     text-align: left;
    }
-
-    @media only screen and (max-width: 1555px) {
-        
-        .bullets-container{
-          display: none;
-        }
-    }
-
-
 </style>
   <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
@@ -166,15 +159,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="image.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
+    <!-- <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> -->
 
     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
- 
-    <script>
-       
-    </script>
+<script src="lib/owl.carousel.min.js"></script>
 
   </head>
   <body>
@@ -198,10 +188,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
-            <li class="tamps">
+          <!--   <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
-            </li>
+            </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="objetivos.html">Indicadores</a></li>
@@ -245,7 +235,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         <div class="col s5" style="display: flex;">
           <div class="input-field col s12 caja_s">
             <select id="obj_name">
-              <option value="-1" disabled="">Elige una objetivo</option>
+              <option value="-1" disabled="">Elige un objetivo</option>
               <option value="1.">Fin de la pobreza</option>
               <option value="3." selected="">Salud y bienestar</option>
               <option value="8.">Trabajo decente y crecimiento económico</option>
@@ -261,7 +251,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <div class="input-field col s12 caja_s">
             <select id="indicadores">
               <!-- <option value="" disabled selected>Elige una opcion</option> -->
-              
+
               <option value="26" selected>Razón de mortalidad materna</option>
               <option value="27">Proporción de partos con asistencia de personal sanitario especializado</option>
               <option value="23">Tasa de mortalidad de niños menores de 5 años</option>
@@ -352,7 +342,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
 	            </div>
 	            <div class="col s4" >
-                    <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
+                    <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;margin-top:42px;">Comparte este mapa</a>
 	            </div>
             </div>
           </div>
@@ -363,17 +353,17 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <h3 class="fuerte t_principal">Evolución del indicador en el tiempo</h3>
           <li class="divider"></li>
           <br><br>
-               <div class="cuadro_titulo">
-              <h4>Razón de mortalidad materna</h4>
+          <div class="cuadro_titulo">
+              <!-- <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
               <p>1990-2015</p>
-              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>
+              <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
           </div>
           <div id="chart2"></div>
           <div class="pie_cuadro2">
-              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <!-- <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
-              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div> -->
             </div>
           <div class="col s4" style="margin-top: 40px;">
             <div class="col s1 line_pro"></div>
@@ -465,7 +455,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
       <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12" id="datos_descarga">
-          <h3 class="fuerte t_principal">Datos</h3>
+          <h3 class="fuerte t_principal">Descargar datos</h3>
           <li class="divider"></li>
           <div class="row">
           	<div class="col s10 offset-s1">
@@ -489,7 +479,11 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
     		  			<div class="col s4" style="margin-top: 10px;">
-              				<a class="icn">CSV</a><a class="icns">XLS</a> <a class="icnSDMX">SDMX</a><a class="icnPDF">PDF</a>
+              				<a class="icn  exportCSV">CSV</a>
+                      <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
+                      <!-- <a class="icns">XLS</a> -->
+                      <!-- <a class="icnSDMX">SDMX</a>
+                      <a class="icnPDF">PDF</a> -->
     		  			</div>
     		  			<div class="col s12">
               				<li class="divider griss"></li>
@@ -500,6 +494,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
     </div>
+
+<div id="tabla_export" style="display: none;"></div>
 
 
     <footer class="page-footer id">
@@ -518,16 +514,16 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <!-- <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li> -->
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-             <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+             <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
-            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li> -->
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
@@ -537,8 +533,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           </div>
         </div>
       </div>
-      <div class="footer-copyright light-blue">
-      </div>
+      <!-- <div class="footer-copyright light-blue">
+      </div> -->
     </footer>
   <!-- Modal Structure -->
   <div id="modalMapa" class="modal">
@@ -648,6 +644,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="appExplora.js"></script>
     <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script>
+    <script src="lib/excellentexport.js"></script>
+
 
     <!-- Load d3.js and c3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -715,7 +713,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             }
             $('select').material_select();
           });
-               
+
 
           titulos(26);
           $('#indicadores').on('change',function(){
@@ -723,12 +721,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             var indicador = $(this).val().split(".")[0];
             llamar_api();
             $('#grafica_c').show();
-            $('#datos_descarga').show();//panel de datos de descarga 
+            $('#datos_descarga').show();//panel de datos de descarga
 
             if($('#agregacion').val() != 1){
               $('#datosNacional').hide( );
               $('#datosEstatal').hide( );
-              $('#seccion_mapa').show();//panel de datos de descarga 
+              $('#seccion_mapa').show();//panel de datos de descarga
               put_anios();
             }
 
@@ -753,7 +751,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                               '<span> '+ atributos.Descrip_uni +'</span>';
 
 
-              var pie  =' <div><strong>Nota:</strong> '+ ((atributos.Descrip_not != null) ? atributos.Descrip_not : ' ')+
+              var pie  =' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                         ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                         ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                         ' </div>';
@@ -835,12 +833,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
       $('#agregacion').on('change', function (e)
       {
-        $('#datos_descarga').hide();//panel de datos de descarga 
-        $('#seccion_mapa').hide();//panel de datos de descarga 
+        $('#datos_descarga').hide();//panel de datos de descarga
+        $('#seccion_mapa').hide();//panel de datos de descarga
         $('#grafica_c').hide();
         $('#datosEstatal').hide();
         $('#row_filtros').hide();
-      
+
 
         // $('#headmap').hide();
         // $('#footmapdatos').hide();
@@ -849,8 +847,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         // $('#datosNacional').show();
 
         //borramos el select
-        $("#obj_name").html('<option value="-1" disabled selected>Elige una objetivo</option>');
-        $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');  
+        $("#obj_name").html('<option value="-1" disabled selected>Elige un objetivo</option>');
+        $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');
         console.log('------------------------ nuevo ---------------------');
         // for(var i=0;i<objeto.length;i++)
         // {
@@ -884,7 +882,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         carga_selectes();
       });
 
-    
+
   });// fin segundo document ready
 
 
@@ -945,16 +943,27 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			color: {
 		        pattern:['#f00','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc']
 		    },
-
-		    axis : {
-		        x : {
-		            type : 'timeseries',
-		            tick: {
+        axis : {
+            x : {
+                type : 'timeseries',
+                tick: {
                     rotate:90,
-		                format: function (x) { return x.getFullYear(); }
-		              //format: '%Y' // format string is also available for timeseries data
-		            }
-		        }
+                    format: function (x) { return x.getFullYear(); }
+                  //format: '%Y' // format string is also available for timeseries data
+                },
+                size : 80
+            },
+            Y : {
+              // padding: {top: 0, bottom: 0},
+              // tick: {
+              //       format: d3.format(".2f")
+              //   }
+                // tick: {
+                //     format: function (d) {
+                //         return (parseInt(d) == d) ? d : null;
+                //     }
+                // }
+            }
 		    },tooltip: {
 		        grouped: false, // Default true
 		        	format: {
@@ -988,7 +997,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			            }(jQuery));
 		                return commaSeparateNumber(Math.round(value*10)/10);
 		            },
-		           value: d3.format('.0F') // apply this format to both y and y2
+		           //value: d3.format('.2F') // apply this format to both y and y2
 		        }
 		    },
 		});
@@ -1020,7 +1029,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			        },
 			        y : {
 			            tick: {
-			                format: d3.format(".0f")
+			                format: d3.format(".2f")
 			            }
 			        }
 			    },
@@ -1099,7 +1108,7 @@ function busqueda_anio(cadena)
         console.log(estados[0][i]);
         return i;
       }
-    } 
+    }
 }
 
   //variable de mapa
@@ -1364,7 +1373,7 @@ function busqueda_anio(cadena)
 
     </script>
     <script>
-    //globales 
+    //globales
 
     function actualiza_grafica(){
      // chart2.unload();
@@ -1407,6 +1416,17 @@ function busqueda_anio(cadena)
                       format: function (x) { return x.getFullYear(); }
                     //format: '%Y' // format string is also available for timeseries data
                   }
+              },
+              Y : {
+                // padding: {top: 0, bottom: 0},
+                // tick: {
+                //       format: d3.format(".2f")
+                //   }
+                 tick: {
+                    format: function (d) {
+                        return (parseInt(d) == d) ? d : null;
+                    }
+                }
               }
           },tooltip: {
               grouped: false, // Default true
@@ -1439,43 +1459,45 @@ function busqueda_anio(cadena)
                     }(jQuery));
                       return commaSeparateNumber(Math.round(value*10)/10);
                   },
-                 value: d3.format('.0F') // apply this format to both y and y2
+                //value: d3.format('.2f') // apply this format to both y and y2
               }
           },
       });
     }//fin de la función
-
+ var arrray_anios = [];
     var anio_mas_actual;
     function put_anios(){
       var cadena='';
-      
+
       console.log('----------------------- estados anios -----------------');
       console.log(estados);
       console.log(estados[0]);
       console.log(estados[0].length);
-                              
+
       for(var i = 1; i < estados[0].length; i++)
       {
         if(i == 1)
         {
         anio_mas_actual = 'anio_'+i;
-        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra " onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        arrray_anios.push(estados[0][i].split('-')[0]);
         }
         else if(i <= estados[0].length-1)
         {
-        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra " onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        arrray_anios.push(estados[0][i].split('-')[0]);
         }
       }
 
       if(cadena !=  ''){
-        cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena; 
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 10px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
         $('#anios').html(cadena);
 
         $('#'+anio_mas_actual).trigger( "click" );
       }else{
         for (var i = 0; i < estados.length; i++) {
           if(i == 0){
-            estados[i][1] =  '2017-01-01'; 
+            estados[i][1] =  '2017-01-01';
           }else{
             estados[i][1] = 1;
           }
@@ -1483,14 +1505,44 @@ function busqueda_anio(cadena)
         console.log('--------------- estados fake ------------------');
         console.log(estados);
         cambio_anio('2017-01-01',44);
+
+
+
       }
+
+var contaAnios = arrray_anios.length - 1;
+
+
+      $('.owl-carousel').owlCarousel({
+          loop:false,
+          rtl:false,
+          margin:10,
+          rewind:false,
+          startPosition: contaAnios,
+          nav:true,
+          navText:['< Años anteriores','Años posteriores >'],
+          responsive:{
+              0:{
+                  items:2
+              },
+              600:{
+                  items:5
+              },
+              1000:{
+                  items:7
+              }
+          }
+      });
+
+
+
     }//fin funcion
 
     function poner_filtros(){
-      console.log('--------------------- ponemos filtros ------------------');  
+      console.log('--------------------- ponemos filtros ------------------');
       $("#filtros").html('');
       for (var i = 0; i < arreglo_cla.length; i++) {
-        $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');  
+        $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
       }
       $('#row_filtros').show();
       $('select').material_select();
@@ -1501,7 +1553,7 @@ function busqueda_anio(cadena)
       estados = arma_tabla($(this).val());
       console.log('------------------------- estados tabala select-----------------');
       console.log(estados);
-      actualiza_grafica(); 
+      actualiza_grafica();
       if($('#agregacion').val() != 1){
         $('#'+anio_mas_actual).trigger( "click" );
       }
@@ -1519,7 +1571,7 @@ function busqueda_anio(cadena)
         theme: 'tooltipster-light',
         trigger: 'hover'
             });
-        //pedimos los años en la primera llamada 
+        //pedimos los años en la primera llamada
         put_anios();
     });
 
@@ -1875,6 +1927,286 @@ function busqueda_anio(cadena)
             $('#da_institucion').html(institucion);
         }
     </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
 
+            $('#indicador-panel').hide();
+            $('.modal-trigger').leanModal();
+
+            var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
+
+            var datos_doble_2 =  ' <div class="cuadro_titulo"> TABLA'+
+              //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+            '</div>' +
+                              '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
+                              '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
+
+             var datos_doble_3 =  ' <div class="cuadro_titulo"> TABLA'+
+              //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+            '</div>' +
+                              '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
+                              '<table class="bordered" id="miTabla3" class="miTabla3" >';
+              // console.log(estados);
+              // console.log(estados.length);
+              // console.log(estados[0].length);
+
+
+               for (var i = 0; i < estados.length; i++) {
+                 if(i == 0){
+                  // datos_doble +=  '<thead><tr>';
+                  datos_doble_2 +=  '<thead><tr>';
+                  datos_doble_3 +=  '<thead><tr>';
+                }
+                 else if(i == 1){
+                  //  datos_doble +=  '<tbody><tr>';
+                   datos_doble_2 +=  '<tbody><tr>';
+                   datos_doble_3 +=  '<tbody><tr>';
+                 }
+                 else {
+                    // datos_doble +=  '<tr>';
+                    datos_doble_2 +=  '<tr>';
+                    datos_doble_3 +=  '<tr>';
+                 }
+
+                 for (var j = estados[0].length -1 ; j > 0 ; j--) {
+                  if(i == 0 && j == estados[0].length -1){
+                    // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                    datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                    datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  }
+                  else if( i == 0 && j == estados[0].length -1 ){
+                    // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  }
+                  else if( i == 0 ){
+                    // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  }
+                  else if(j == estados[0].length -1 ) {
+                    var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    // datos_doble += varia;
+                    datos_doble_2 += varia;
+                    datos_doble_3 += varia;
+                  }
+                  else if(j == estados[0].length -2){
+                      // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
+                  else{
+                    // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
+                 }
+
+
+                   if(i == 0){
+                    //  datos_doble +=  '</tr></thead>';
+                     datos_doble_2 +=  '</tr></thead>';
+                     datos_doble_3 +=  '</tr></thead>';
+                   }else{
+                    //  datos_doble +=  '</tr>';
+                     datos_doble_2 +=  '</tr>';
+                     datos_doble_3 +=  '</tr>';
+                   }
+               }
+
+
+
+                 datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
+
+                 datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
+
+            $('#tabla_export').html(datos_doble_3);
+
+          });
+</script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"';
+
+				// Deliberate 'false', see comment below
+        if (false && window.navigator.msSaveBlob) {
+
+						var blob = new Blob([decodeURIComponent(csv)], {
+	              type: 'text/csv;charset=utf8'
+            });
+
+            // Crashes in IE 10, IE 11 and Microsoft Edge
+            // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+            // Hence, the deliberate 'false'
+            // This is here just for completeness
+            // Remove the 'false' at your own risk
+            window.navigator.msSaveBlob(blob, filename);
+
+        } else if (window.Blob && window.URL) {
+						// HTML5 Blob
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
+            var csvUrl = URL.createObjectURL(blob);
+
+            $(this)
+            		.attr({
+                		'download': filename,
+                		'href': csvUrl
+		            });
+				} else {
+            // Data URI
+            var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+						$(this)
+                .attr({
+               		  'download': filename,
+                    'href': csvData,
+                    'target': '_blank'
+            		});
+        }
+    }
+
+    // This must be a hyperlink
+    $(".exportCSV").on('click', function (event) {
+        // CSV
+        var args = [$('#tabla_export table'), 'Indicador.csv'];
+
+        exportTableToCSV.apply(this, args);
+
+        // If CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+function exportTableToXLS($table1, filename1) {
+
+    var $rows1 = $table1.find('tr:has(td)'),
+
+        // Temporary delimiter characters unlikely to be typed by keyboard
+        // This is to avoid accidentally splitting the actual contents
+        tmpColDelim1 = String.fromCharCode(11), // vertical tab character
+        tmpRowDelim1 = String.fromCharCode(0), // null character
+
+        // actual delimiter characters for CSV format
+        colDelim1 = '","',
+        rowDelim1 = '"\r\n"',
+
+        // Grab text from table into CSV formatted string
+        xls = '"' + $rows1.map(function (i, row) {
+            var $row1 = $(row),
+                $cols1 = $row1.find('td');
+
+            return $cols1.map(function (j, col) {
+                var $col1 = $(col),
+                    text1 = $col1.text();
+
+                return text1.replace(/"/g, '""'); // escape double quotes
+
+            }).get().join(tmpColDelim1);
+
+        }).get().join(tmpRowDelim1)
+            .split(tmpRowDelim1).join(rowDelim1)
+            .split(tmpColDelim1).join(colDelim1) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+
+        var blob1 = new Blob([decodeURIComponent($table1)], {
+            type: 'text/plain;charset=utf8'
+        });
+
+        // Crashes in IE 10, IE 11 and Microsoft Edge
+        // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+        // Hence, the deliberate 'false'
+        // This is here just for completeness
+        // Remove the 'false' at your own risk
+        window.navigator.msSaveBlob(blob1, filename1);
+
+    } else if (window.Blob && window.URL) {
+        // HTML5 Blob
+        var blob1 = new Blob([xls], { type: 'text/plain;charset=utf8' });
+        var xlsUrl = URL.createObjectURL(blob1);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsUrl
+            });
+    } else {
+        // Data URI
+        var xlsData = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(xls);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsData,
+                'target': '_blank'
+            });
+    }
+}
+
+
+
+
+
+// This must be a hyperlink
+$(".exportXLS").on('click', function (event) {
+    // CSV
+    var args1 = [$('#tabla_export table'), 'Indicador.xls'];
+
+    exportTableToXLS.apply(this, args1);
+
+    // If CSV, don't do event.preventDefault() or return false
+    // We actually need this to be a typical hyperlink
+});
+});
+
+// function exportXXLS()
+// {
+//   var blob = new Blob([document.getElementById('tabla_export').innerHTML], {
+//           type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+//       });
+// saveAs(blob, "Report.xls");
+// }
+
+
+
+</script>
   </body>
 </html>
