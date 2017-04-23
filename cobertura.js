@@ -14,6 +14,8 @@ function numberWithCommas(x) {
 }
 
 function cobertura(data){
+
+	console.log(data);
 	arreglo_cla 	=  [];
 	arreglo_agru 	=  [];
 	arreglo_datos 	=  [];
