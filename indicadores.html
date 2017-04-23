@@ -1130,19 +1130,14 @@ function sortFunction(a, b) {
               props,
               busqueda_mexico()
             ]
-
-
           },
-          tooltip: {
-            format: {
-        title: function (d) { return 'Data ' + d; },
-        value: function (value, ratio, id) {
-            var format = id === 'data1' ? d3.format(',') : d3.format('$');
-            return format(value);
-        }
-//            value: d3.format(',') // apply this format to both y and y2
-    }
-            },
+        tooltip: {
+          format: {
+              value: function(value) {
+                  return d3.format(",.2f")(value)
+              }
+          }
+        },
           axis: {
               x: {
                   type: 'timeseries',
@@ -1581,7 +1576,7 @@ $(document).ready(function(){
 
           // $('#tabla_export').html(datos_doble_3);
 
-          // $('#tabla_nacional').html(datos_doble_3);
+          $('#tabla_nacional').html(datos_doble_2);
 
           $('.scroller').scroll(function(e) {
             console.log("aca");
