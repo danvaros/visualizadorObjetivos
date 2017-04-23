@@ -479,7 +479,11 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
     		  			<div class="col s4" style="margin-top: 10px;">
-              				<a class="icn">CSV</a><a class="icns">XLS</a> <a class="icnSDMX">SDMX</a><a class="icnPDF">PDF</a>
+              				<a class="icn  exportCSV">CSV</a>
+                      <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
+                      <!-- <a class="icns">XLS</a> -->
+                      <!-- <a class="icnSDMX">SDMX</a>
+                      <a class="icnPDF">PDF</a> -->
     		  			</div>
     		  			<div class="col s12">
               				<li class="divider griss"></li>
@@ -490,6 +494,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
     </div>
+
+<div id="tabla_export" style="display: none;"></div>
 
 
     <footer class="page-footer id">
@@ -508,16 +514,16 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
-              <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <!-- <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
+              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li> -->
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-             <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+             <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
-            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li> -->
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
@@ -638,6 +644,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="appExplora.js"></script>
     <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script>
+    <script src="lib/excellentexport.js"></script>
+
 
     <!-- Load d3.js and c3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -1471,12 +1479,12 @@ function busqueda_anio(cadena)
         if(i == 1)
         {
         anio_mas_actual = 'anio_'+i;
-        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra " onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
         arrray_anios.push(estados[0][i].split('-')[0]);
         }
         else if(i <= estados[0].length-1)
         {
-        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra " onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
         arrray_anios.push(estados[0][i].split('-')[0]);
         }
       }
@@ -1919,6 +1927,286 @@ var contaAnios = arrray_anios.length - 1;
             $('#da_institucion').html(institucion);
         }
     </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
 
+            $('#indicador-panel').hide();
+            $('.modal-trigger').leanModal();
+
+            var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
+
+            var datos_doble_2 =  ' <div class="cuadro_titulo"> TABLA'+
+              //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+            '</div>' +
+                              '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
+                              '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
+
+             var datos_doble_3 =  ' <div class="cuadro_titulo"> TABLA'+
+              //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+            '</div>' +
+                              '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
+                              '<table class="bordered" id="miTabla3" class="miTabla3" >';
+              // console.log(estados);
+              // console.log(estados.length);
+              // console.log(estados[0].length);
+
+
+               for (var i = 0; i < estados.length; i++) {
+                 if(i == 0){
+                  // datos_doble +=  '<thead><tr>';
+                  datos_doble_2 +=  '<thead><tr>';
+                  datos_doble_3 +=  '<thead><tr>';
+                }
+                 else if(i == 1){
+                  //  datos_doble +=  '<tbody><tr>';
+                   datos_doble_2 +=  '<tbody><tr>';
+                   datos_doble_3 +=  '<tbody><tr>';
+                 }
+                 else {
+                    // datos_doble +=  '<tr>';
+                    datos_doble_2 +=  '<tr>';
+                    datos_doble_3 +=  '<tr>';
+                 }
+
+                 for (var j = estados[0].length -1 ; j > 0 ; j--) {
+                  if(i == 0 && j == estados[0].length -1){
+                    // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                    datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                    datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  }
+                  else if( i == 0 && j == estados[0].length -1 ){
+                    // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  }
+                  else if( i == 0 ){
+                    // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  }
+                  else if(j == estados[0].length -1 ) {
+                    var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    // datos_doble += varia;
+                    datos_doble_2 += varia;
+                    datos_doble_3 += varia;
+                  }
+                  else if(j == estados[0].length -2){
+                      // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
+                  else{
+                    // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
+                 }
+
+
+                   if(i == 0){
+                    //  datos_doble +=  '</tr></thead>';
+                     datos_doble_2 +=  '</tr></thead>';
+                     datos_doble_3 +=  '</tr></thead>';
+                   }else{
+                    //  datos_doble +=  '</tr>';
+                     datos_doble_2 +=  '</tr>';
+                     datos_doble_3 +=  '</tr>';
+                   }
+               }
+
+
+
+                 datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
+
+                 datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
+
+            $('#tabla_export').html(datos_doble_3);
+
+          });
+</script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"';
+
+				// Deliberate 'false', see comment below
+        if (false && window.navigator.msSaveBlob) {
+
+						var blob = new Blob([decodeURIComponent(csv)], {
+	              type: 'text/csv;charset=utf8'
+            });
+
+            // Crashes in IE 10, IE 11 and Microsoft Edge
+            // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+            // Hence, the deliberate 'false'
+            // This is here just for completeness
+            // Remove the 'false' at your own risk
+            window.navigator.msSaveBlob(blob, filename);
+
+        } else if (window.Blob && window.URL) {
+						// HTML5 Blob
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
+            var csvUrl = URL.createObjectURL(blob);
+
+            $(this)
+            		.attr({
+                		'download': filename,
+                		'href': csvUrl
+		            });
+				} else {
+            // Data URI
+            var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+						$(this)
+                .attr({
+               		  'download': filename,
+                    'href': csvData,
+                    'target': '_blank'
+            		});
+        }
+    }
+
+    // This must be a hyperlink
+    $(".exportCSV").on('click', function (event) {
+        // CSV
+        var args = [$('#tabla_export table'), 'Indicador.csv'];
+
+        exportTableToCSV.apply(this, args);
+
+        // If CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+function exportTableToXLS($table1, filename1) {
+
+    var $rows1 = $table1.find('tr:has(td)'),
+
+        // Temporary delimiter characters unlikely to be typed by keyboard
+        // This is to avoid accidentally splitting the actual contents
+        tmpColDelim1 = String.fromCharCode(11), // vertical tab character
+        tmpRowDelim1 = String.fromCharCode(0), // null character
+
+        // actual delimiter characters for CSV format
+        colDelim1 = '","',
+        rowDelim1 = '"\r\n"',
+
+        // Grab text from table into CSV formatted string
+        xls = '"' + $rows1.map(function (i, row) {
+            var $row1 = $(row),
+                $cols1 = $row1.find('td');
+
+            return $cols1.map(function (j, col) {
+                var $col1 = $(col),
+                    text1 = $col1.text();
+
+                return text1.replace(/"/g, '""'); // escape double quotes
+
+            }).get().join(tmpColDelim1);
+
+        }).get().join(tmpRowDelim1)
+            .split(tmpRowDelim1).join(rowDelim1)
+            .split(tmpColDelim1).join(colDelim1) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+
+        var blob1 = new Blob([decodeURIComponent($table1)], {
+            type: 'text/plain;charset=utf8'
+        });
+
+        // Crashes in IE 10, IE 11 and Microsoft Edge
+        // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+        // Hence, the deliberate 'false'
+        // This is here just for completeness
+        // Remove the 'false' at your own risk
+        window.navigator.msSaveBlob(blob1, filename1);
+
+    } else if (window.Blob && window.URL) {
+        // HTML5 Blob
+        var blob1 = new Blob([xls], { type: 'text/plain;charset=utf8' });
+        var xlsUrl = URL.createObjectURL(blob1);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsUrl
+            });
+    } else {
+        // Data URI
+        var xlsData = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(xls);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsData,
+                'target': '_blank'
+            });
+    }
+}
+
+
+
+
+
+// This must be a hyperlink
+$(".exportXLS").on('click', function (event) {
+    // CSV
+    var args1 = [$('#tabla_export table'), 'Indicador.xls'];
+
+    exportTableToXLS.apply(this, args1);
+
+    // If CSV, don't do event.preventDefault() or return false
+    // We actually need this to be a typical hyperlink
+});
+});
+
+// function exportXXLS()
+// {
+//   var blob = new Blob([document.getElementById('tabla_export').innerHTML], {
+//           type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+//       });
+// saveAs(blob, "Report.xls");
+// }
+
+
+
+</script>
   </body>
 </html>
