@@ -90,6 +90,8 @@
         coberturaInsumos(data);
         console.log(estados);
         poner_filtros();
+        poner_filtros_serie();
+        $('#row_filtros_serie').show();
       }
       var codigo_indicador = data.Codigo_ind;
       var descripcion = data.Descrip_ind;
@@ -137,6 +139,13 @@
     $('#este').on('change', function(){
       put_tabla_insumo_cob($(this).val());
     });
+
+    $('#filtros_serie').on('change', function(){
+      console.log('-------------------- validemos ---------------');
+      console.log(arreglo_datos);
+
+      put_tabla_serie_cob($(this).val());
+    });
   });//fin document ready
 
   function arma_tabla_insumo(arreglo_datos,num_cobertura){
@@ -148,6 +157,84 @@
     }
     return cobertura_tabla;
   }
+
+ function put_tabla_serie_cob(filtro){
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+                      '</div>' +
+                      '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                      '<table class="bordered" id="miTabla" class="miTabla">';
+    console.log('-------------------- validemos ---------------');
+    console.log(arreglo_datos);
+    var tabla_armada = arma_tabla_insumo(arreglo_datos,filtro);
+
+      for (var i = 0; i < tabla_armada.length; i++) {
+               if(i == 0){
+                datos_doble +=  '<thead><tr>';
+              }
+               else if(i == 1){
+                 datos_doble +=  '<tbody><tr>';
+               }
+               else {
+                  datos_doble +=  '<tr>';
+               }
+
+               for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == tabla_armada[0].length -1){
+                  datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                }
+                else if( i == 0 && j == tabla_armada[0].length -1 ){
+                  datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                }
+                else if( i == 0 ){
+                  datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                }
+                else if(j == tabla_armada[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  datos_doble += varia;
+                }
+                else if(j == tabla_armada[0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                }
+                else{
+                  datos_doble +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                }
+               }
+
+               if(i == 0){
+                 datos_doble +=  '</tr></thead>';
+               }else{
+                 datos_doble +=  '</tr>';
+               }
+             }
+
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+ pie +
+             '</div></div>';
+
+    //sin pie y cabezera de la pagina
+    $('#serie_panel_tablas').html(datos_doble);
+    var arre = [];
+    for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
+      arre.push(i)
+    }
+
+    if(arre.length > 17){
+      $('#miTabla').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    aoColumnDefs: [
+                      { 'bSortable': false,
+                        'aTargets': arre }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                } );
+    }
+  }
+
 
   function put_tabla_insumo_cob(filtro){
     var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
@@ -556,6 +643,15 @@
     $("#filtros_na").html('');
     for (var i = 0; i < arreglo_cla.length; i++) {
       $("#filtros_na").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
+    }
+    //$('.cob_sel_nac').show();
+    //$('select').material_select();
+  }
+
+  function poner_filtros_serie(){
+    $("#filtros_serie").html('');
+    for (var i = 0; i < arreglo_cla.length; i++) {
+      $("#filtros_serie").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
     }
     //$('.cob_sel_nac').show();
     //$('select').material_select();

@@ -340,13 +340,21 @@
 
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
 
-      <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
-        <div class="col s12">
-           <div class="pie_cuadro2">
-              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
-              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
-              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+      <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
+        
+         
+        <div class="row" id="row_filtros_serie" style="display: none">
+          <div class="col s2 " >
+            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
+          </div>
+          <div class="col s4 " >
+            <div class="input-field col s12" style="margin-bottom:20px;">
+              <select id="filtros_serie" style="display:block !important; background-color: #f2f2f2;"></select>
             </div>
+          </div>
+        </div> 
+
+        <div class="row" id="serie_panel_tablas">
         </div>
       </div>
 
@@ -1569,7 +1577,7 @@ $(document).ready(function(){
 
 
           //$('#datos-panel-dos').html(select_2+datos_doble_2);
-          $('#serie-panel').html(datos_doble_2);
+          $('#serie_panel_tablas').html(datos_doble_2);
 
           // $('#tabla_export').html(datos_doble_3);
 
