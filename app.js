@@ -67,11 +67,11 @@
   //   async:false
   // });
 
-$.ajax({
-  type: 'POST',
-  url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
-  data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
-  success: function( data, textStatus, jqxhr ) {
+  $.ajax({
+    type: 'POST',
+    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
+    data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
+    success: function( data, textStatus, jqxhr ) {
 
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
@@ -135,7 +135,6 @@ $.ajax({
     $('#este').on('change', function(){
       put_tabla_insumo_cob($(this).val());
     });
-
   });//fin document ready
 
   function arma_tabla_insumo(arreglo_datos,num_cobertura){
@@ -160,35 +159,86 @@ $.ajax({
     console.log('--------------- tabla armada ----------');
     console.log(tabla_armada);
 
-    $.each(tabla_armada, function(idx, value){
-      if(idx == 0){
-        datos_doble += '<thead>';
-      }else if(idx == 1){
-        datos_doble += '<tbody>';
-      }
-      datos_doble += '<tr>';
-      $.each(value, function(idx2, value2){
-        if(idx == 0 && idx2 == (value.length -1)){
-          datos_doble += '<th class="headcol">'+ value2.split('-')[0]; +'</th>';
-        }
-        else if(idx == 0){
-          datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
-        }
-        else if(idx2 == (value.length -1)){
-          datos_doble += '<td class="headcol">'+ numberWithCommas(value2) +'</td>';
-        }
-        else{
-          datos_doble += '<td>'+ numberWithCommas(value2) +'</td>';
-        }
-      });
-      datos_doble += '</tr>';
-      if(idx == 0){
-        datos_doble += '</thead>';
-      }
-    });
+      for (var i = 0; i < tabla_armada.length; i++) {
+               if(i == 0){
+                datos_doble +=  '<thead><tr>';
+              }
+               else if(i == 1){
+                 datos_doble +=  '<tbody><tr>';
+               }
+               else {
+                  datos_doble +=  '<tr>';
+               }
 
-    datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
-                    '</div></div>';
+               for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == tabla_armada[0].length -1){
+                  datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                }
+                else if( i == 0 && j == tabla_armada[0].length -1 ){
+                  datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                }
+                else if( i == 0 ){
+                  datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                }
+                else if(j == tabla_armada[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  datos_doble += varia;
+                }
+                else if(j == tabla_armada[0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                }
+                else{
+                  datos_doble +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                }
+               }
+
+
+
+               if(i == 0){
+                 datos_doble +=  '</tr></thead>';
+               }else{
+                 datos_doble +=  '</tr>';
+               }
+             }
+
+
+
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+ pie +
+             '</div></div>';
+
+
+
+
+    // $.each(tabla_armada, function(idx, value){
+    //   if(idx == 0){
+    //     datos_doble += '<thead>';
+    //   }else if(idx == 1){
+    //     datos_doble += '<tbody>';
+    //   }
+    //   datos_doble += '<tr>';
+    //   $.each(value, function(idx2, value2){
+    //     if(idx == 0 && idx2 == (value.length -1)){
+    //       datos_doble += '<th >'+ value2.split('-')[0]; +'</th>';
+    //     }
+    //     else if(idx == 0){
+    //       datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
+    //     }
+    //     else if(idx2 == (value.length -1)){
+    //       datos_doble += '<td >'+ numberWithCommas(value2) +'</td>';
+    //     }
+    //     else{
+    //       datos_doble += '<td>'+ numberWithCommas(value2) +'</td>';
+    //     }
+    //   });
+    //   datos_doble += '</tr>';
+    //   if(idx == 0){
+    //     datos_doble += '</thead>';
+    //   }
+    // });
+
+    // datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
+    //                 '</div></div>';
 
     //sin pie y cabezera de la pagina
     $('#insumos_cont').html(datos_doble);
@@ -196,8 +246,9 @@ $.ajax({
     for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
       arre.push(i)
     }
-    console.log(arre);
-    $('#miTabla').DataTable( {
+
+    if(arre.length > 17){
+      $('#miTabla').DataTable( {
                     scrollY:        "600px",
                     scrollX:        true,
                     scrollCollapse: true,
@@ -210,6 +261,8 @@ $.ajax({
                         leftColumns: 1
                     }
                 } );
+    }
+    
     //agregamos titulo del insumo seleccionado
     $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change_cob').val()]);
     $('#descrip_uni').html(''); 
@@ -233,35 +286,84 @@ $.ajax({
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
 
-    $.each(insumos_general[insumo], function(idx, value){
-      if(idx == 0){
-        datos_doble += '<thead>';
-      }else if(idx == 1){
-        datos_doble += '<tbody>';
-      }
-      datos_doble += '<tr>';
-      $.each(value, function(idx2, value2){
-        if(idx == 0 && idx2 == (value.length -1)){
-          datos_doble += '<th class="headcol">'+ value2.split('-')[0] +'</th>';
-        }
-        else if(idx == 0){
-          datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
-        }
-        else if(idx2 == (value.length -1)){
-          datos_doble += '<td class="headcol">'+ numberWithCommas(value2)+'</td>';
-        }
-        else{
-          datos_doble += '<td>'+ numberWithCommas(value2) +'</td>';
-        }
-      });
-      datos_doble += '</tr>';
-      if(idx == 0){
-        datos_doble += '</thead>';
-      }
-    });
 
-    datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
-                    '</div></div>';
+      for (var i = 0; i < insumos_general[insumo].length; i++) {
+               if(i == 0){
+                datos_doble +=  '<thead><tr>';
+              }
+               else if(i == 1){
+                 datos_doble +=  '<tbody><tr>';
+               }
+               else {
+                  datos_doble +=  '<tr>';
+               }
+
+               for (var j = insumos_general[insumo][0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == insumos_general[insumo][0].length -1){
+                  datos_doble +=  '  <th  class="headcol">'+ insumos_general[insumo][i][0] +'</th><th>'+ insumos_general[insumo][i][j] .split('-')[0]+'</th>';
+                }
+                else if( i == 0 && j == insumos_general[insumo][0].length -1 ){
+                  datos_doble += '<th class"padding-200">'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                }
+                else if( i == 0 ){
+                  datos_doble += '<th>'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                }
+                else if(j == insumos_general[insumo][0].length -1 ) {
+                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                  datos_doble += varia;
+                }
+                else if(j == insumos_general[insumo][0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                }
+                else{
+                  datos_doble +=  '  <td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                }
+               }
+
+               if(i == 0){
+                 datos_doble +=  '</tr></thead>';
+               }else{
+                 datos_doble +=  '</tr>';
+               }
+             }
+
+
+
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+ pie +
+             '</div></div>';
+
+
+
+    // $.each(insumos_general[insumo], function(idx, value){
+    //   if(idx == 0){
+    //     datos_doble += '<thead>';
+    //   }else if(idx == 1){
+    //     datos_doble += '<tbody>';
+    //   }
+    //   datos_doble += '<tr>';
+    //   $.each(value, function(idx2, value2){
+    //     if(idx == 0 && idx2 == (value.length -1)){
+    //       datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
+    //     }
+    //     else if(idx == 0){
+    //       datos_doble += '<th>'+ value2.split('-')[0] +'</th>';
+    //     }
+    //     else if(idx2 == (value.length -1)){
+    //       datos_doble += '<td>'+ numberWithCommas(value2)+'</td>';
+    //     }
+    //     else{
+    //       datos_doble += '<td>'+ numberWithCommas(value2) +'</td>';
+    //     }
+    //   });
+    //   datos_doble += '</tr>';
+    //   if(idx == 0){
+    //     datos_doble += '</thead>';
+    //   }
+    // });
+
+    // datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
+    //                 '</div></div>';
 
     //sin pie y cabezera de la pagina
     $('#insumos_cont').html(datos_doble);
@@ -270,7 +372,8 @@ $.ajax({
       arre.push(i)
     }
 
-    $('#miTabla').DataTable( {
+    if(arre.length > 17){
+      $('#miTabla').DataTable( {
                     scrollY:        "600px",
                     scrollX:        true,
                     scrollCollapse: true,
@@ -283,6 +386,7 @@ $.ajax({
                         leftColumns: 1
                     }
                 } );
+    }
     //agregamos titulo del insumo seleccionado
     $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change').val()]);
     $('#descrip_uni').html(''); 
@@ -418,7 +522,6 @@ $.ajax({
                       $( "svg g.c3-chart-line path.c3-line-Promedio-nacional" ).css('stroke','#f00');
                       $( "svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle" ).css('fill','#f00');
                       $( "svg g.c3-chart-line path.c3-line-Estados-Unidos-Mexicanos" ).css('stroke','#f00');
-
                   }
                   else {
                     $( "#chart2 svg g.c3-chart-line g.c3-circles circle" ).css('fill','#ccc');
@@ -457,6 +560,7 @@ $.ajax({
   }
 
   function valorDato(data){
+    console.log(data);
     var temporal = [];
     temporal.push('Entidad');
     for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
