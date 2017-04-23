@@ -82,54 +82,54 @@ function clasificaciones(data,i){
 }
 
 function cobertura_series(data,i){
-	arreglo_cla =  [];
-	arreglo_agru =  [];
-	arreglo_datos =  [];
-	anios_cob = [];
+var	arreglo_cla2 =  [];
+var	arreglo_agru2 =  [];
+var	arreglo_datos2 =  [];
+var	anios_cob2 = [];
 	
 	var Cobertura = data.Series[i].Coberturas;
 	var clave_ser = data.Series[i].Clave_ser;
 
 	// sacamos todos los años en caso de ser nacional solo se toma EUM
-	anios_cob.push('Entidad');
+	anios_cob2.push('Entidad');
 	for (var i = 0; i < Cobertura[0].Clasificaciones.length; i++) {
-		anios_cob.push(Cobertura[0].Clasificaciones[i].ValorDato.AADato_ser + '-01-01');
+		anios_cob2.push(Cobertura[0].Clasificaciones[i].ValorDato.AADato_ser + '-01-01');
 	}
 
 	var Clasificaciones = Cobertura[0].Clasificaciones;
 
 	for (var i = 0; i < Clasificaciones.length; i++) {
-		arreglo_cla.push(Clasificaciones[i].Descrip_cla);
-		arreglo_agru.push(Clasificaciones[i].ClaveAgrupa_ac);
+		arreglo_cla2.push(Clasificaciones[i].Descrip_cla);
+		arreglo_agru2.push(Clasificaciones[i].ClaveAgrupa_ac);
 	}
 
 	//limpiamos el arreglo
-	arreglo_cla = arreglo_cla.unique();
-	arreglo_agru = arreglo_agru.unique();
-	anios_cob = anios_cob.unique();
+	arreglo_cla2 = arreglo_cla.unique();
+	arreglo_agru2 = arreglo_agru.unique();
+	anios_cob2 = anios_cob.unique();
 
-	for (var i = 0; i < arreglo_agru.length; i++) {
+	for (var i = 0; i < arreglo_agru2.length; i++) {
 		$.ajax({
 		  type: 'POST',
 		  url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
-		  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru[i]},
+		  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru2[i]},
 		  success: function( data2, textStatus, jqxhr ) {
 
 		  		var cober_inter = data2.Series[0].Coberturas;
-		  		var arreglo_datos_tem = [];
+		  		var arreglo_datos_tem2 = [];
 		  		for (var i = 0; i < cober_inter.length; i++) {
-		  			var temporal = [];
-		  			temporal.push(cober_inter[i].Descrip_cg);
+		  			var temporal2 = [];
+		  			temporal2.push(cober_inter[i].Descrip_cg);
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
 		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato.replace(",", "");
-		  				temporal.push(dato_formato);
+		  				temporal2.push(dato_formato);
 		  			}
-		  			arreglo_datos_tem.push(temporal)
+		  			arreglo_datos_tem2.push(temporal2)
 		  		}
-		  		arreglo_datos.push(arreglo_datos_tem)
+		  		arreglo_datos2.push(arreglo_datos_tem2)
 		  },
 		  async:false
 		});
 	}
-	return arreglo_datos;
+	return arreglo_datos2;
 }//fin de la función
