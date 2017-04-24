@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Indicadores</title>
+
     	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
 	  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -215,6 +216,10 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+     <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+     -->
+
     <script src="image.js"></script>
 
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
@@ -264,7 +269,7 @@
     </div>
 <!-- menu -->
 <!-- // verde #299e33 -->
-    <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 9999; color: #fff;padding:5px 0px 0px 0px; ">
+    <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 999; color: #fff;padding:5px 0px 0px 0px; ">
       <div class="container" style="margin-top: 0 !important;">
       <div class="row" style="margin-top: 8px;margin-bottom:8px;">
         <div class="col s2 center-align iconoObjetivo">
@@ -342,11 +347,11 @@
       </div>
 
 
-      <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
+      <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top exportCSVDatos">Exportar datos para el cálculo</a>
 
       <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
-        
-         
+
+
         <div class="row" id="row_filtros_serie" style="display: none">
           <div class="col s2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
@@ -356,7 +361,7 @@
               <select id="filtros_serie" style="display:block !important; background-color: #f2f2f2;"></select>
             </div>
           </div>
-        </div> 
+        </div>
 
         <div class="row" id="serie_panel_tablas">
         </div>
@@ -413,7 +418,9 @@
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
             <div class="col s4"  id="chart2btn">
-                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;margin-top:42px;">Exportar gráfica</a>
+
+                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
+
             </div>
 
           <div class="row" id="footmap">
@@ -426,7 +433,9 @@
               </div>
 
             <div class="col s4" >
-                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px; margin-top: 43px;float: right;margin-right: 10px;">Exportar mapa</a>
+
+                  <a style="margin-top: 42px;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
+
             </div>
           </div>
         </div>
@@ -499,60 +508,16 @@
         <div class="col s12" style="margin-top: -10px;">
            <hr>
         </div>
-            <div class="col s6">
+            <!-- <div class="col s6">
               <strong>Estados Unidos Mexicanos</strong>
             </div>
             <div class="col s6 right-align pais">
-            </div>
+            </div> -->
 
 
-                <div class="col s12">
-                  <p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+                <div class="col s12 pie_cuadro2">
+                  <!-- <p class="nota" style="color:#8694a8;"></p> -->
                 </div>
-
-
-
-        <div id="modalMapa" class="modal">
-          <div class="modal-content">
-            <h5>Compartir</h5>
-            <div class="row">
-              <b>Redes Sociales</b>
-              <ul class="cuadrosSocial">
-                <li>
-                  <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
-                </li>
-                <li>
-                  <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-                </li>
-              </ul>
-            </div>
-            <div class="row">
-              <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-              <div class="input-field col s12">
-               <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-               <label for="">Copia este código para insertar el mapa en una página HTML</label>
-             </div>
-            </div>
-
-            <div class="row">
-            <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-              <div class="input-field col s12">
-                  <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
-             </div>
-            </div>
-
-            <div class="row">
-            <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-              <div class="input-field col s12">
-                  <a class="waves-effect btn color claro">Descargar PDF</a>
-             </div>
-            </div>
-          <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-          </div>
-        </div>
-      </div>
-
 
       </div>
 
@@ -573,51 +538,12 @@
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
         </div>
-
-        <div id="modalMapa" class="modal">
-          <div class="modal-content">
-            <h5>Compartir</h5>
-            <div class="row">
-              <b>Redes Sociales</b>
-              <ul class="cuadrosSocial">
-                <li>
-                  <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
-                </li>
-                <li>
-                  <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-                </li>
-              </ul>
-            </div>
-            <div class="row">
-              <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-              <div class="input-field col s12">
-               <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-               <label for="">Copia este código para insertar el mapa en una página HTML</label>
-             </div>
-            </div>
-
-            <div class="row">
-            <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-              <div class="input-field col s12">
-                  <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
-             </div>
-            </div>
-
-            <div class="row">
-            <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-              <div class="input-field col s12">
-                  <a class="waves-effect btn color claro">Descargar PDF</a>
-             </div>
-            </div>
-          <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-          </div>
-        </div>
-      </div>
       </div>
     <div class="row">
       <div class="col s4 offset-s8 right-align" >
-        <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;    margin-top: 43px;">Exportar gráfica</a>
+
+        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
+
       </div>
     </div>
   </div>
@@ -626,6 +552,7 @@
 
   <div class="row card tablaPadding" id="tabla_nacional" style="display: none;"></div>
   <div id="tabla_export" style="display: none;"></div>
+  <div id="tabla_export2" style="display: none;"></div>
 
   <div class="row scrollable-section" data-section-title="Descarga de datos">
         <div class="col s12">
@@ -669,10 +596,11 @@
                 <div class="col s6" style="margin-top: 10px;">
                       <a class="icn exportCSV">CSV</a>
                       <!-- <a download="indicador.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a> -->
+                      <!-- <a download="indid.csv" href="#" class="icns" onclick="return ExcellentExport.csv(this, 'tabla_export');">csv2</a> -->
                       <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
                       <!-- <a class="icnSDMX">SDMX</a> -->
                       <!-- <a class="icnPDF">PDF</a> -->
-                      
+
                 </div>
                 <div class="col s12">
                       <li class="divider griss"></li>
@@ -745,6 +673,108 @@
 <!-- footer -->
 
 
+
+<!-- Modal Grafica -->
+<div id="modalGrafica" class="modal" >
+  <div class="modal-content">
+    <h5>Compartir</h5>
+    <div class="row">
+      <b>Redes Sociales</b>
+      <ul class="cuadrosSocial">
+        <li>
+          <!-- <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a> -->
+          <a class="twitter-share-button waves-effect"
+  href="https://twitter.com/share"
+  data-size="large"
+  data-text="custom share text"
+  data-url="https://dev.twitter.com/web/tweet-button"
+  data-hashtags="example,demo"
+  data-via="twitterdev"
+  data-related="twitterapi,twitter"><i class="fa fa-twitter fa-lg"></i></a>
+        </li>
+        <li>
+           <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <!-- <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+      <div class="input-field col s12">
+       <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+       <label for="">Copia este código para insertar el mapa en una página HTML</label>
+     </div> -->
+    </div>
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+      <div class="input-field col s12">
+          <input placeholder="Placeholder" class="liga" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#grafica">
+     </div>
+    </div>
+
+   <!--  <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+      <div class="input-field col s12">
+          <a class="waves-effect btn color claro">Descargar PDF</a>
+     </div>
+    </div> -->
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modalMapa" class="modal">
+  <div class="modal-content">
+    <h5>Compartir</h5>
+    <div class="row">
+      <b>Redes Sociales</b>
+      <ul class="cuadrosSocial">
+        <li>
+          <!-- <a id="share_mapa" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a> -->
+          <a class="twitter-share-button waves-effect"
+          href="https://twitter.com/share"
+          data-size="large"
+          data-text="custom share text"
+          data-url="https://dev.twitter.com/web/tweet-button"
+          data-hashtags="example,demo"
+          data-via="twitterdev"
+          data-related="twitterapi,twitter"><i class="fa fa-twitter fa-lg"></i></a>
+        </li>
+        <li>
+            <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="row">
+      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+      <div class="input-field col s12">
+       <input placeholder="++" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+       <label for="">Copia este código para insertar el mapa en una página HTML</label>
+     </div>
+    </div> -->
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+      <div class="input-field col s12">
+          <input placeholder="++" class="liga" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
+     </div>
+    </div>
+
+<!--     <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+      <div class="input-field col s12">
+          <a id="pdf_descarga" class="waves-effect btn color claro">Descargar PDF</a>
+     </div>
+    </div> -->
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+</div>
+
     <script src="cobertura.js"></script>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
@@ -769,10 +799,12 @@
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
   var chart;
+  var chartBarras;
   var index_estados;
   var table3 = null;
   var table2 = null;
   var table1  = null;
+
 
   console.log(codigoDg.replace(/\s/g,''),"por aca");
   if(codigoDg.replace(/\s/g,'') == 'N')
@@ -874,14 +906,29 @@
 
   $(document).ready(function()
   {
+    //$('.modal').modal();
+    $('.modal-trigger').leanModal();
+    
+    var textoTwitterGrafica = 'Comparto esta grafica';
+    var textoTwitterMapa    = 'Comparto este mapa';
+    var URLactual = window.location;
+    console.log(URLactual);
+    $('.liga').val(URLactual);
+
+    var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
+    var urlTwitterGrafica = 'https://twitter.com/intent/tweet?text='+textoTwitterGrafica+';url='+URLactual;
+
+    $('#share_grafica').attr('href',urlTwitterGrafica);
+    $('#share_mapa').attr('href',urlTwitterMapa);
+
     $('#chart2btn').hide();
-    chart = c3.generate({
+    chartBarras = c3.generate({
       legend: {
         show: false
       },
       bindto: '#barras',
       size: {
-            height: 400
+            height: 1280
           },
       data: {
       columns: [
@@ -940,60 +987,60 @@
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
                          return d[0].index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
                     };
-                    return chart.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
+                    return chartBarras.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
                 }
             },
 
-          axis: {
-    rotated: false,
-    x: {
-    type: 'category',
-    categories: [ 'Aguascalientes',
-                  'Baja California',
-                  'Baja California Sur',
-                  'Campeche',
-                  'Coahuila de Zaragoza',
-                  'Colima',
-                  'Chiapas',
-                  'Chihuahua',
-                  'Ciudad de México',
-                  'Durango',
-                  'Guanajuato',
-                  'Guerrero',
-                  'Hidalgo',
-                  'Jalisco',
-                  'México',
-                  'Michoacán de Ocampo',
-                  'Morelos',
-                  'Nayarit',
-                  'Nuevo León',
-                  'Oaxaca',
-                  'Puebla',
-                  'Querétaro',
-                  'Quintana Roo',
-                  'San Luis Potosí',
-                  'Sinaloa',
-                  'Sonora',
-                  'Tabasco',
-                  'Tamaulipas',
-                  'Tlaxcala',
-                  'Veracruz de Ignacio de la Llave',
-                  'Yucatán',
-                  'Zacatecas',
-                  'Estados Unidos Mexicanos',
-                ],
-          height: 100,
-            tick:{
-              rotate: 270,
-              multiline: false
+    axis: {
+        rotated: true,
+        x: {
+        type: 'category',
+        categories: [ 'Aguascalientes',
+                      'Baja California',
+                      'Baja California Sur',
+                      'Campeche',
+                      'Coahuila de Zaragoza',
+                      'Colima',
+                      'Chiapas',
+                      'Chihuahua',
+                      'Ciudad de México',
+                      'Durango',
+                      'Guanajuato',
+                      'Guerrero',
+                      'Hidalgo',
+                      'Jalisco',
+                      'México',
+                      'Michoacán de Ocampo',
+                      'Morelos',
+                      'Nayarit',
+                      'Nuevo León',
+                      'Oaxaca',
+                      'Puebla',
+                      'Querétaro',
+                      'Quintana Roo',
+                      'San Luis Potosí',
+                      'Sinaloa',
+                      'Sonora',
+                      'Tabasco',
+                      'Tamaulipas',
+                      'Tlaxcala',
+                      'Veracruz de Ignacio de la Llave',
+                      'Yucatán',
+                      'Zacatecas',
+                      'Estados Unidos Mexicanos',
+                    ],
+              height: 100,
+                tick:{
+                  rotate: 270,
+                  multiline: false
+                },
+              } ,
+              //  y : {
+              //         tick: {
+              //             format: d3.format(".2f")
+              //         }
+              //     }
             },
-          } ,
-           y : {
-                  tick: {
-                      format: d3.format(".2f")
-                  }
-              }
-          },
       });//fin de grafica
     datosGrafica(2015);
 });
@@ -1094,7 +1141,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   console.log(series);
   console.log(categories);
   cat_global = categories;
-  chart.load({
+  chartBarras.load({
     columns: [series],
     categories: categories,
     unload: [Descrip_ind],
@@ -1141,11 +1188,11 @@ function sortFunction(a, b) {
             ]
           },
         tooltip: {
-          format: {
-              value: function(value) {
-                  return d3.format(",.2f")(value)
-              }
-          }
+          // format: {
+          //     value: function(value) {
+          //         return d3.format(",.2f")(value)
+          //     }
+          // }
         },
           axis: {
               x: {
@@ -1482,16 +1529,23 @@ $(document).ready(function(){
     $(document).ready(function(){
 
           $('#indicador-panel').hide();
-          $('.modal-trigger').leanModal();
-
+          //$('.modal-trigger').leanModal();
+  
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
-
 
           var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
                             '<table class="bordered" id="miTabla2" class="miTabla2">';
+
+
+          var datos_doble_22 =  ' <div class="cuadro_titulo"> ' + titulo +
+            //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+          '</div>' +
+                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_22">'+
+                            '<table class="bordered" id="miTabla22" class="miTabla22">';
+
 
            var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
@@ -1507,16 +1561,19 @@ $(document).ready(function(){
                if(i == 0){
                 // datos_doble +=  '<thead><tr>';
                 datos_doble_2 +=  '<thead><tr>';
+                datos_doble_22 +=  '<thead><tr>';
                 datos_doble_3 +=  '<thead><tr>';
               }
                else if(i == 1){
                 //  datos_doble +=  '<tbody><tr>';
                  datos_doble_2 +=  '<tbody><tr>';
+                 datos_doble_22 +=  '<tbody><tr>';
                  datos_doble_3 +=  '<tbody><tr>';
                }
                else {
                   // datos_doble +=  '<tr>';
                   datos_doble_2 +=  '<tr>';
+                  datos_doble_22 +=  '<tr>';
                   datos_doble_3 +=  '<tr>';
                }
 
@@ -1524,32 +1581,43 @@ $(document).ready(function(){
                 if(i == 0 && j == estados[0].length -1){
                   // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                   datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                  datos_doble_22 +=  '  <td  class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] .split('-')[0]+'</td>';
+                  // for(k = 0; k > estados[i][j].length; k++){
+                  //     datos_doble_22 += '<td>'+ estados[i][j] .split('-')[0]+'</td>';
+                  // }
+
+
                   datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                 }
                 else if( i == 0 && j == estados[0].length -1 ){
                   // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_22 += '<td class"padding-200">'+ estados[i][j].split('-')[0] +'</td>';
                   datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if( i == 0 ){
                   // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                  datos_doble_22 += '<td>'+ estados[i][j].split('-')[0] +'</td>';
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == estados[0].length -1 ) {
                   var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   // datos_doble += varia;
                   datos_doble_2 += varia;
+                  datos_doble_22 += varia;
                   datos_doble_3 += varia;
                 }
                 else if(j == estados[0].length -2){
                     // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                 else{
                   // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                 }
                }
@@ -1559,10 +1627,12 @@ $(document).ready(function(){
                if(i == 0){
                 //  datos_doble +=  '</tr></thead>';
                  datos_doble_2 +=  '</tr></thead>';
+                 datos_doble_22 +=  '</tr></thead>';
                  datos_doble_3 +=  '</tr></thead>';
                }else{
                 //  datos_doble +=  '</tr>';
                  datos_doble_2 +=  '</tr>';
+                 datos_doble_22 +=  '</tr>';
                  datos_doble_3 +=  '</tr>';
                }
              }
@@ -1572,6 +1642,10 @@ $(document).ready(function(){
             datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
+
+             datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+             ' <div class="pie_cuadro2">'+ pie +
+              '</div></div>';
 
             datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
@@ -1583,7 +1657,10 @@ $(document).ready(function(){
           //$('#datos-panel-dos').html(select_2+datos_doble_2);
           $('#serie_panel_tablas').html(datos_doble_2);
 
+
           $('#tabla_export').html(datos_doble_2);
+          $('#tabla_export2').html(datos_doble_22);
+
 
           $('#tabla_nacional').html(datos_doble_2);
 
@@ -1636,9 +1713,9 @@ $(document).ready(function(){
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
                 }
-                
 
-                    
+
+
                 if(arre.length > 17){
                  $('#miTabla2').DataTable( {
                         scrollY:        "600px",
@@ -1655,7 +1732,7 @@ $(document).ready(function(){
                     } );
                 }
 
-              
+
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1791,7 +1868,7 @@ $(document).ready(function(){
 
 
       if(cadena !=  ''){
-        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 13px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 8px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
       //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
         $('#anios').html(cadena);
@@ -2288,13 +2365,31 @@ var contaAnios = arrray_anios.length - 1;
     // This must be a hyperlink
     $(".exportCSV").on('click', function (event) {
         // CSV
-        var args = [$('#tabla_export table'), 'Indicador.csv'];
+        var args = [$('#tabla_export2 table'), 'Indicador.csv'];
 
         exportTableToCSV.apply(this, args);
 
         // If CSV, don't do event.preventDefault() or return false
         // We actually need this to be a typical hyperlink
     });
+
+    if ($('.select_datos').val() != -1) {
+      $(".exportCSVDatos").show();
+    }else{
+      $(".exportCSVDatos").hide();
+    }
+
+    $(".exportCSVDatos").on('click', function (event) {
+        // CSV
+        var args = [$('#miTablaDat'), 'DatosParaElCalculo.csv'];
+
+        exportTableToCSV.apply(this, args);
+
+        // If CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+
+
 });
 </script>
 <script type="text/javascript">

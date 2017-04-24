@@ -14,5 +14,10 @@
   $dompdf->set_paper('letter', 'landscape');
   $dompdf->loadHtml($html);
   $dompdf->render();
-  $dompdf->stream("demo");
+  //$dompdf->stream("demo");
+
+  $pdf = $dompdf->output();
+  file_put_contents("ODS.pdf", $pdf);
+  var_dump($_SERVER['HTTP_HOST']);
+  header("Location: http://104.236.211.149/ods/ODS.pdf");
 ?>
