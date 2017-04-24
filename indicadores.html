@@ -880,7 +880,7 @@
       },
       bindto: '#barras',
       size: {
-            height: 1280
+            height: 400
           },
       data: {
       columns: [
@@ -944,7 +944,7 @@
             },
 
           axis: {
-    rotated: true,
+    rotated: false,
     x: {
     type: 'category',
     categories: [ 'Aguascalientes',
@@ -981,7 +981,11 @@
                   'Zacatecas',
                   'Estados Unidos Mexicanos',
                 ],
-          height: 40,
+          height: 100,
+            tick:{
+              rotate: 270,
+              multiline: false
+            },
           } ,
            y : {
                   tick: {

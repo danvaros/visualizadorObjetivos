@@ -18,7 +18,70 @@
 
     <!-- Load c3.css -->
     <link href="lib/c3.css" rel="stylesheet" type="text/css">
+    <style>
 
+    .bar {
+      fill: #2c7fb8;
+    }
+
+    .axis text {
+      font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .x.axis path {
+      display: none;
+    }
+
+    .tooltip {
+      background-color: rgba(255,255,255,0.9);
+      padding: 5px;
+      width: 230px;
+      position: absolute;
+      left: 700px;
+      top: 70px;
+      z-index: 20;
+      box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    }
+    .tooltip-nombre, .tooltip-origin {
+      padding: 3px;
+    }
+    .tooltip-nombre {
+      background-color: #333;
+      color: #fff;
+      font-family: 'Rockwell', serif;
+      text-align: center;
+      font-weight: 700;
+      font-size: 17px;
+      max-width: 350px;
+      white-space: normal;
+      margin-bottom: 4px;
+      padding: 3px;
+    }
+    .tooltip-origin {
+      font-family: 'Rockwell', serif;
+      font-size: 18px;
+      max-width: 350px;
+      text-align: center;
+    }
+    .tooltip-inner {
+      font-family: 'Helvetica Neue', 'Lato', 'Helvetica', 'Arial', sans-serif;
+      padding: 10px;
+      text-align: center;
+    }
+    .tooltip-dist {
+      font-size: 15px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    </style>
       <style>
 .cuadro_titulo{
     background-color: #fff;
@@ -751,6 +814,110 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
+  <script>
+
+  var tooltip;
+
+  var margin = {top: 60, right: 30, bottom: 40, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  var x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1);
+
+  var y = d3.scale.linear()
+      .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // d3.csv("data.csv", type, function(error, data) {
+  //   x.domain(data.sort(
+  //        function(a, b) { return b.value - a.value; },
+  //        function(a, b) { return d3.ascending(a.value, b.value); })
+  //        .map(function(d) { return d.edo; }))
+  //        .copy();
+  //   y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+  d3.json(dataTablaJSON(categories,series), function(data) {
+    console.log(data[0]);
+  });
+
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", "-.60em")
+        .attr("transform", function(d) {
+            return "rotate(-90)"
+            });
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.edo); })
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) { return height - y(d.value); })
+        .attr("width", x.rangeBand())
+        .on("mouseover", function(d) {
+              tooltip.html("<div class='tooltip-nombre'><strong>"+d.estado+"</strong></div><div class='tooltip-origin'><span>"+d.value+"</span> <span> " +d.unidad+"</span> </div>");
+              return tooltip
+               .style("visibility", "visible"); })
+        .on("mousemove", function(){
+              return tooltip
+               })
+         .on("mouseout", function(){
+              return tooltip
+              .style("visibility", "hidden");
+         });
+
+    tooltip = d3.select("body")
+           .append("div")
+           .attr('class','tooltip')
+           .style("position", "absolute")
+           .style("z-index", "10")
+           .style("visibility", "hidden")
+           .text("");
+
+  svg.append("text")
+     .attr("class", "titulografica")
+       .attr("x", (width / 2))
+       .attr("y", 0 - (margin.top / 2))
+       .attr("text-anchor", "middle")
+     .attr("font-family", "Helvetica Neue")
+       .attr("font-size", "20px")
+       .style("text-decoration", "bold")
+       .text("Porcentaje que cree que un gobierno autoritario puede ser preferible a uno democrático, 2012");
+  });
+
+
+  function type(d) {
+    d.value = +d.value; // coerce to number
+    return d;
+  }
+
+  </script>
 
   <script>
   var titulo_des_graf="Razón de mortalidad materna";
@@ -1073,7 +1240,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(2));
 
 }
-
+console.log('--n-n-n-n-n-n-n-n-nn-n--n-nn--n-n');
   console.log(series);
   console.log(categories);
   cat_global = categories;
@@ -1087,6 +1254,15 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   $('.tabla_dos').html(tabla_dos);
 }
 
+function dataTablaJSON (categories, series)
+{
+  var datosTabla = {};
+  for (var i = 0; i < categories.length; i++) {
+    datosTabla[i] = {category: + '"' + categories[i] + '"' +, serie: '"'+series[i]+'"'};
+  }
+    return datosTabla;
+
+}
 
 function regresa_estados_unidos(){
   return index_estados;
