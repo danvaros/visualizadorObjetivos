@@ -155,11 +155,11 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-    <script src="image.js"></script>
+  <!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="image.js"></script> -->
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
@@ -168,7 +168,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
   </head>
   <body>
-
+  
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -530,80 +530,84 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       <div class="footer-copyright light-blue">
       </div>
     </footer>
-  <!-- Modal Structure -->
-  <div id="modalMapa" class="modal">
-    <div class="modal-content">
-      <h5>Compartir</h5>
-      <div class="row">
-        <b>Redes Sociales</b>
-        <ul class="cuadrosSocial">
-          <li>
-            <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
-          </li>
-          <li>
-            <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-          </li>
-        </ul>
-      </div>
-      <div class="row">
-        <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-        <div class="input-field col s12">
-         <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-         <label for="">Copia este código para insertar el mapa en una página HTML</label>
-       </div>
-      </div>
-
-      <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-        <div class="input-field col s12">
-            <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
-       </div>
-      </div>
-
-      <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-        <div class="input-field col s12">
-            <a id="pdf_descarga" class="waves-effect btn color claro">Descargar PDF</a>
-       </div>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-      </div>
-    </div>
-  </div>
 
 <!-- Modal Grafica -->
-<div id="modalGrafica" class="modal">
+<div id="modalGrafica" class="modal" >
   <div class="modal-content">
     <h5>Compartir</h5>
     <div class="row">
       <b>Redes Sociales</b>
       <ul class="cuadrosSocial">
         <li>
-          <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
+          <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
         </li>
         <li>
-          <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+           <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
         </li>
       </ul>
     </div>
+
     <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+      <!-- <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
       <div class="input-field col s12">
        <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
        <label for="">Copia este código para insertar el mapa en una página HTML</label>
-     </div>
+     </div> -->
     </div>
+
     <div class="row">
     <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
       <div class="input-field col s12">
-          <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#grafica">
+          <input placeholder="Placeholder" class="liga" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#grafica">
      </div>
     </div>
+
     <div class="row">
     <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
       <div class="input-field col s12">
           <a class="waves-effect btn color claro">Descargar PDF</a>
+     </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modalMapa" class="modal">
+  <div class="modal-content">
+    <h5>Compartir</h5>
+    <div class="row">
+      <b>Redes Sociales</b>
+      <ul class="cuadrosSocial">
+        <li>
+          <a id="share_mapa" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
+        </li>
+        <li>
+            <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="row">
+      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+      <div class="input-field col s12">
+       <input placeholder="++" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+       <label for="">Copia este código para insertar el mapa en una página HTML</label>
+     </div>
+    </div> -->
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+      <div class="input-field col s12">
+          <input placeholder="++" class="liga" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
+     </div>
+    </div>
+
+    <div class="row">
+    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+      <div class="input-field col s12">
+          <a id="pdf_descarga" class="waves-effect btn color claro">Descargar PDF</a>
      </div>
     </div>
     <div class="modal-footer">
@@ -651,10 +655,20 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         var primera_carga =  true;
         $(document).ready(function()
         {
-           $('.modal').modal(); 
-          //activamos el modal
-          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-          // $('.modal').modal();
+          // $('.modal').modal(); 
+          $('.modal-trigger').leanModal();
+          var textoTwitterGrafica = 'Comparto esta grafica';
+          var textoTwitterMapa    = 'Comparto este mapa';
+          var URLactual = window.location;
+          $('.liga').val(URLactual);
+
+          var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
+          var urlTwitterGrafica = 'https://twitter.com/intent/tweet?text='+textoTwitterGrafica+';url='+URLactual;
+
+          $('#share_grafica').attr('href',urlTwitterGrafica);
+          $('#share_mapa').attr('href',urlTwitterMapa);
+
+
           console.log('al inicio',$('#tit_map_des').html());
           llamada(2,3);
           //$("#obj_name").html('<option value="-1">Selecciona un Objetivo</option>');
