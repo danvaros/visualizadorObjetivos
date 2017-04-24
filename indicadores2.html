@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Indicadores</title>
-
     	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
 	  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,12 +18,71 @@
 
     <!-- Load c3.css -->
     <link href="lib/c3.css" rel="stylesheet" type="text/css">
+    <style>
 
+    .bar {
+      fill: #2c7fb8;
+    }
+
+    .axis text {
+      font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .x.axis path {
+      display: none;
+    }
+
+    .tooltip {
+      background-color: rgba(255,255,255,0.9);
+      padding: 5px;
+      width: 230px;
+      position: absolute;
+      left: 700px;
+      top: 70px;
+      z-index: 20;
+      box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    }
+    .tooltip-nombre, .tooltip-origin {
+      padding: 3px;
+    }
+    .tooltip-nombre {
+      background-color: #333;
+      color: #fff;
+      font-family: 'Rockwell', serif;
+      text-align: center;
+      font-weight: 700;
+      font-size: 17px;
+      max-width: 350px;
+      white-space: normal;
+      margin-bottom: 4px;
+      padding: 3px;
+    }
+    .tooltip-origin {
+      font-family: 'Rockwell', serif;
+      font-size: 18px;
+      max-width: 350px;
+      text-align: center;
+    }
+    .tooltip-inner {
+      font-family: 'Helvetica Neue', 'Lato', 'Helvetica', 'Arial', sans-serif;
+      padding: 10px;
+      text-align: center;
+    }
+    .tooltip-dist {
+      font-size: 15px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    </style>
       <style>
-
-      .owl-carousel{
-        padding-left:5px;
-      }
 .cuadro_titulo{
     background-color: #fff;
     padding: 30px;
@@ -49,7 +107,7 @@
 .pie_cuadro2{
   background-color: #fff;
   color: #083362;
-  padding: 20px 20px 20px 5px;
+  padding: 20px 20px 20px 0px;
 }
 .pie_cuadro2 div{
   margin-top:6px;
@@ -216,10 +274,6 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-     <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-     -->
-
     <script src="image.js"></script>
 
     <!-- <script type="text/javascript" charset="utf8" src="DataTables/jQuery-1.12.4/jquery-1.12.4.js"></script> -->
@@ -269,7 +323,7 @@
     </div>
 <!-- menu -->
 <!-- // verde #299e33 -->
-    <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 999; color: #fff;padding:5px 0px 0px 0px; ">
+    <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 9999; color: #fff;padding:5px 0px 0px 0px; ">
       <div class="container" style="margin-top: 0 !important;">
       <div class="row" style="margin-top: 8px;margin-bottom:8px;">
         <div class="col s2 center-align iconoObjetivo">
@@ -347,23 +401,15 @@
       </div>
 
 
-      <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top exportCSVDatos">Exportar datos para el cálculo</a>
+      <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
 
-      <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
-
-
-        <div class="row" id="row_filtros_serie" style="display: none">
-          <div class="col s2 " >
-            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
-          </div>
-          <div class="col s4 " >
-            <div class="input-field col s12" style="margin-bottom:20px;">
-              <select id="filtros_serie" style="display:block !important; background-color: #f2f2f2;"></select>
+      <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
+        <div class="col s12">
+           <div class="pie_cuadro2">
+              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
+              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
-          </div>
-        </div>
-
-        <div class="row" id="serie_panel_tablas">
         </div>
       </div>
 
@@ -418,9 +464,7 @@
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
             <div class="col s4"  id="chart2btn">
-
-                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
-
+                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;margin-top:42px;">Exportar gráfica</a>
             </div>
 
           <div class="row" id="footmap">
@@ -433,9 +477,7 @@
               </div>
 
             <div class="col s4" >
-
-                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
-
+                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px; margin-top: 43px;float: right;margin-right: 10px;">Exportar mapa</a>
             </div>
           </div>
         </div>
@@ -508,16 +550,60 @@
         <div class="col s12" style="margin-top: -10px;">
            <hr>
         </div>
-            <!-- <div class="col s6">
+            <div class="col s6">
               <strong>Estados Unidos Mexicanos</strong>
             </div>
             <div class="col s6 right-align pais">
-            </div> -->
+            </div>
 
 
                 <div class="col s12">
                   <p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
                 </div>
+
+
+
+        <div id="modalMapa" class="modal">
+          <div class="modal-content">
+            <h5>Compartir</h5>
+            <div class="row">
+              <b>Redes Sociales</b>
+              <ul class="cuadrosSocial">
+                <li>
+                  <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
+                </li>
+                <li>
+                  <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+              <div class="input-field col s12">
+               <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+               <label for="">Copia este código para insertar el mapa en una página HTML</label>
+             </div>
+            </div>
+
+            <div class="row">
+            <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+              <div class="input-field col s12">
+                  <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
+             </div>
+            </div>
+
+            <div class="row">
+            <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+              <div class="input-field col s12">
+                  <a class="waves-effect btn color claro">Descargar PDF</a>
+             </div>
+            </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+          </div>
+        </div>
+      </div>
+
 
       </div>
 
@@ -538,12 +624,51 @@
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
         </div>
+
+        <div id="modalMapa" class="modal">
+          <div class="modal-content">
+            <h5>Compartir</h5>
+            <div class="row">
+              <b>Redes Sociales</b>
+              <ul class="cuadrosSocial">
+                <li>
+                  <a class="waves-effect" href="https://twitter.com/intent/tweet?text=aqui va el texto;url=http://104.236.211.149/ods/compara.html#!"><i class="fa fa-twitter fa-lg"></i></a>
+                </li>
+                <li>
+                  <a class="waves-effect "><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
+              <div class="input-field col s12">
+               <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
+               <label for="">Copia este código para insertar el mapa en una página HTML</label>
+             </div>
+            </div>
+
+            <div class="row">
+            <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
+              <div class="input-field col s12">
+                  <input placeholder="Placeholder" id="" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
+             </div>
+            </div>
+
+            <div class="row">
+            <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
+              <div class="input-field col s12">
+                  <a class="waves-effect btn color claro">Descargar PDF</a>
+             </div>
+            </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+          </div>
+        </div>
+      </div>
       </div>
     <div class="row">
       <div class="col s4 offset-s8 right-align" >
-
-        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
-
+        <a class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;    margin-top: 43px;">Exportar gráfica</a>
       </div>
     </div>
   </div>
@@ -598,7 +723,6 @@
                       <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
                       <!-- <a class="icnSDMX">SDMX</a> -->
                       <!-- <a class="icnPDF">PDF</a> -->
-
                 </div>
                 <div class="col s12">
                       <li class="divider griss"></li>
@@ -671,92 +795,6 @@
 <!-- footer -->
 
 
-
-<!-- Modal Grafica -->
-<div id="modalGrafica" class="modal" >
-  <div class="modal-content">
-    <h5>Compartir</h5>
-    <div class="row">
-      <b>Redes Sociales</b>
-      <ul class="cuadrosSocial">
-        <li>
-          <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
-        </li>
-        <li>
-           <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="row">
-      <!-- <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-      <div class="input-field col s12">
-       <input placeholder="Placeholder" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-       <label for="">Copia este código para insertar el mapa en una página HTML</label>
-     </div> -->
-    </div>
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-      <div class="input-field col s12">
-          <input placeholder="Placeholder" class="liga" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#grafica">
-     </div>
-    </div>
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-      <div class="input-field col s12">
-          <a class="waves-effect btn color claro">Descargar PDF</a>
-     </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Structure -->
-<div id="modalMapa" class="modal">
-  <div class="modal-content">
-    <h5>Compartir</h5>
-    <div class="row">
-      <b>Redes Sociales</b>
-      <ul class="cuadrosSocial">
-        <li>
-          <a id="share_mapa" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
-        </li>
-        <li>
-            <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
-        </li>
-      </ul>
-    </div>
-    <!-- <div class="row">
-      <i class="fa fa-code" aria-hidden="true"></i> <b>Embed</b>
-      <div class="input-field col s12">
-       <input placeholder="++" id="" type="text" class="validate" value="<script src='http://104.236.211.149/ods/embed.js'></script>">
-       <label for="">Copia este código para insertar el mapa en una página HTML</label>
-     </div>
-    </div> -->
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-      <div class="input-field col s12">
-          <input placeholder="++" class="liga" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
-     </div>
-    </div>
-
-    <div class="row">
-    <i class="fa fa-code" aria-hidden="true"></i> <b>PDF</b>
-      <div class="input-field col s12">
-          <a id="pdf_descarga" class="waves-effect btn color claro">Descargar PDF</a>
-     </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-    </div>
-  </div>
-</div>
-
     <script src="cobertura.js"></script>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
@@ -776,6 +814,110 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
+  <script>
+
+  var tooltip;
+
+  var margin = {top: 60, right: 30, bottom: 40, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  var x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1);
+
+  var y = d3.scale.linear()
+      .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // d3.csv("data.csv", type, function(error, data) {
+  //   x.domain(data.sort(
+  //        function(a, b) { return b.value - a.value; },
+  //        function(a, b) { return d3.ascending(a.value, b.value); })
+  //        .map(function(d) { return d.edo; }))
+  //        .copy();
+  //   y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+  d3.json(dataTablaJSON(categories,series), function(data) {
+    console.log(data[0]);
+  });
+
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", "-.60em")
+        .attr("transform", function(d) {
+            return "rotate(-90)"
+            });
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.edo); })
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) { return height - y(d.value); })
+        .attr("width", x.rangeBand())
+        .on("mouseover", function(d) {
+              tooltip.html("<div class='tooltip-nombre'><strong>"+d.estado+"</strong></div><div class='tooltip-origin'><span>"+d.value+"</span> <span> " +d.unidad+"</span> </div>");
+              return tooltip
+               .style("visibility", "visible"); })
+        .on("mousemove", function(){
+              return tooltip
+               })
+         .on("mouseout", function(){
+              return tooltip
+              .style("visibility", "hidden");
+         });
+
+    tooltip = d3.select("body")
+           .append("div")
+           .attr('class','tooltip')
+           .style("position", "absolute")
+           .style("z-index", "10")
+           .style("visibility", "hidden")
+           .text("");
+
+  svg.append("text")
+     .attr("class", "titulografica")
+       .attr("x", (width / 2))
+       .attr("y", 0 - (margin.top / 2))
+       .attr("text-anchor", "middle")
+     .attr("font-family", "Helvetica Neue")
+       .attr("font-size", "20px")
+       .style("text-decoration", "bold")
+       .text("Porcentaje que cree que un gobierno autoritario puede ser preferible a uno democrático, 2012");
+  });
+
+
+  function type(d) {
+    d.value = +d.value; // coerce to number
+    return d;
+  }
+
+  </script>
 
   <script>
   var titulo_des_graf="Razón de mortalidad materna";
@@ -785,7 +927,6 @@
   var table3 = null;
   var table2 = null;
   var table1  = null;
-
 
   console.log(codigoDg.replace(/\s/g,''),"por aca");
   if(codigoDg.replace(/\s/g,'') == 'N')
@@ -887,20 +1028,6 @@
 
   $(document).ready(function()
   {
-    //$('.modal').modal();
-    $('.modal-trigger').leanModal();
-    
-    var textoTwitterGrafica = 'Comparto esta grafica';
-    var textoTwitterMapa    = 'Comparto este mapa';
-    var URLactual = window.location;
-    $('.liga').val(URLactual);
-
-    var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
-    var urlTwitterGrafica = 'https://twitter.com/intent/tweet?text='+textoTwitterGrafica+';url='+URLactual;
-
-    $('#share_grafica').attr('href',urlTwitterGrafica);
-    $('#share_mapa').attr('href',urlTwitterMapa);
-
     $('#chart2btn').hide();
     chart = c3.generate({
       legend: {
@@ -908,7 +1035,7 @@
       },
       bindto: '#barras',
       size: {
-            height: 400
+            height: 1280
           },
       data: {
       columns: [
@@ -972,7 +1099,7 @@
             },
 
           axis: {
-    rotated: false,
+    rotated: true,
     x: {
     type: 'category',
     categories: [ 'Aguascalientes',
@@ -1009,11 +1136,7 @@
                   'Zacatecas',
                   'Estados Unidos Mexicanos',
                 ],
-          height: 100,
-            tick:{
-              rotate: 270,
-              multiline: false
-            },
+          height: 40,
           } ,
            y : {
                   tick: {
@@ -1117,7 +1240,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(2));
 
 }
-
+console.log('--n-n-n-n-n-n-n-n-nn-n--n-nn--n-n');
   console.log(series);
   console.log(categories);
   cat_global = categories;
@@ -1131,6 +1254,15 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   $('.tabla_dos').html(tabla_dos);
 }
 
+function dataTablaJSON (categories, series)
+{
+  var datosTabla = {};
+  for (var i = 0; i < categories.length; i++) {
+    datosTabla[i] = {category: + '"' + categories[i] + '"' +, serie: '"'+series[i]+'"'};
+  }
+    return datosTabla;
+
+}
 
 function regresa_estados_unidos(){
   return index_estados;
@@ -1166,14 +1298,19 @@ function sortFunction(a, b) {
               props,
               busqueda_mexico()
             ]
+
+
           },
-        tooltip: {
-          format: {
-              value: function(value) {
-                  return d3.format(",.2f")(value)
-              }
-          }
-        },
+          tooltip: {
+            format: {
+        title: function (d) { return 'Data ' + d; },
+        value: function (value, ratio, id) {
+            var format = id === 'data1' ? d3.format(',') : d3.format('$');
+            return format(value);
+        }
+//            value: d3.format(',') // apply this format to both y and y2
+    }
+            },
           axis: {
               x: {
                   type: 'timeseries',
@@ -1505,19 +1642,19 @@ $(document).ready(function(){
 });
 </script> -->
   <script type="text/javascript">
-
     $(document).ready(function(){
 
           $('#indicador-panel').hide();
-          //$('.modal-trigger').leanModal();
-  
+          $('.modal-trigger').leanModal();
+
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
 
           var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
-                            '<table class="bordered" id="miTabla2" class="miTabla2">';
+                            '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
 
            var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
@@ -1581,39 +1718,37 @@ $(document).ready(function(){
                }
 
 
-
-               if(i == 0){
-                //  datos_doble +=  '</tr></thead>';
-                 datos_doble_2 +=  '</tr></thead>';
-                 datos_doble_3 +=  '</tr></thead>';
-               }else{
-                //  datos_doble +=  '</tr>';
-                 datos_doble_2 +=  '</tr>';
-                 datos_doble_3 +=  '</tr>';
-               }
+                 if(i == 0){
+                  //  datos_doble +=  '</tr></thead>';
+                   datos_doble_2 +=  '</tr></thead>';
+                   datos_doble_3 +=  '</tr></thead>';
+                 }else{
+                  //  datos_doble +=  '</tr>';
+                   datos_doble_2 +=  '</tr>';
+                   datos_doble_3 +=  '</tr>';
+                 }
              }
 
 
 
-            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+               datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
-            datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+               datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
 
 
 
-          //$('#datos-panel-dos').html(select_2+datos_doble_2);
-          $('#serie_panel_tablas').html(datos_doble_2);
+          $('#datos-panel-dos').html(select_2+datos_doble_2);
+          $('#serie-panel').html(datos_doble_3);
 
 
-          $('#tabla_export').html(datos_doble_2);
+          $('#tabla_export').html(datos_doble_3);
 
-
-          $('#tabla_nacional').html(datos_doble_2);
+          $('#tabla_nacional').html(datos_doble_3);
 
           $('.scroller').scroll(function(e) {
             console.log("aca");
@@ -1664,26 +1799,22 @@ $(document).ready(function(){
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
                 }
-
-
-
-                if(arre.length > 17){
-                 $('#miTabla2').DataTable( {
-                        scrollY:        "600px",
-                        scrollX:        true,
-                        scrollCollapse: true,
-                        paging:         false,
-                        aoColumnDefs: [
-                          { 'bSortable': false,
-                            'aTargets': arre }
-                        ],
-                        fixedColumns:   {
-                            leftColumns: 1
-                        }
-                    } );
+                if(table3 == null){
+                  table3 = $('#miTabla3').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    searching: false,
+                    retrieve: true,
+                    aoColumnDefs: [
+                      { 'bSortable': false, 'aTargets': arre }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                  });
                 }
-
-
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -1819,7 +1950,7 @@ $(document).ready(function(){
 
 
       if(cadena !=  ''){
-        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 13px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 5px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
       //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
         $('#anios').html(cadena);
@@ -2323,24 +2454,6 @@ var contaAnios = arrray_anios.length - 1;
         // If CSV, don't do event.preventDefault() or return false
         // We actually need this to be a typical hyperlink
     });
-
-    if ($('.select_datos').val() != -1) {
-      $(".exportCSVDatos").show();
-    }else{
-      $(".exportCSVDatos").hide();
-    }
-
-    $(".exportCSVDatos").on('click', function (event) {
-        // CSV
-        var args = [$('#miTabla'), 'DatosParaElCalculo.csv'];
-
-        exportTableToCSV.apply(this, args);
-
-        // If CSV, don't do event.preventDefault() or return false
-        // We actually need this to be a typical hyperlink
-    });
-
-
 });
 </script>
 <script type="text/javascript">

@@ -19,7 +19,7 @@ function getInd(indicador){
         estados = arma_tabla(0);
         poner_filtros();
       }
-    
+
       console.log("ya termino las llamadas");
       $('#loader').delay(2000).fadeOut("slow");
     },
@@ -43,7 +43,8 @@ function valorDato(data){
     var temporal = [];
     temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
     for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-      temporal.push(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
+      var dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+      temporal.push(dato_formato);
     }
     estados.push(temporal);
   }
@@ -128,7 +129,9 @@ function getIndicador(indicador,ser){
     				var temporal = [];
     				temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
     				for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-    					temporal.push(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
+    					//temporal.push(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
+              var dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+              temporal.push(dato_formato);
     				}
     				estados.push(temporal);
     			}

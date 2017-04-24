@@ -52,17 +52,19 @@
     async:true
   });
 
+
   // $.ajax({
   //   type: 'POST',
   //   url: "https://operativos.inegi.org.mx/datos/api/Metadato/PorClave",
   //   data: {'PCveInd':vars , 'PIdioma':'ES'},
   //   success: function( data, textStatus, jqxhr ) {
   //     Algoritmo_ft = data.Algoritmo_ft;
-  //     console.log('.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l.l');
-  //     console.log(Algoritmo_ft);
+  //
   //     var dasdasd = '<img src="img/algoritmos/'+Algoritmo_ft+'.gif" alt="Algoritmo '+Algoritmo_ft+'" />';
-  //     console.log(dasdasd);
+  //
   //     $('.imgAlgoritmo').html(dasdasd);
+  //
+  //
   //   },
   //   async:false
   // });
