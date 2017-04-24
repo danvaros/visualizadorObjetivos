@@ -515,8 +515,8 @@
             </div> -->
 
 
-                <div class="col s12">
-                  <p class="nota" style="color:#8694a8;">Nota: A partir de 2006 se utiliza la ENIGH con factores ajustados a la proyección de la población de CONAPO, estimados por INEGI. La información de 1989 se toma de los datos históricos del indicador.<br>Fuente: Estimaciones de CONEVAL con información de INEGI. ENIGH (varios años)</p>
+                <div class="col s12 pie_cuadro2">
+                  <!-- <p class="nota" style="color:#8694a8;"></p> -->
                 </div>
 
       </div>
@@ -2381,7 +2381,7 @@ var contaAnios = arrray_anios.length - 1;
 
     $(".exportCSVDatos").on('click', function (event) {
         // CSV
-        var args = [$('#miTabla'), 'DatosParaElCalculo.csv'];
+        var args = [$('#miTablaDat'), 'DatosParaElCalculo.csv'];
 
         exportTableToCSV.apply(this, args);
 
