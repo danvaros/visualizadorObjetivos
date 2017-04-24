@@ -15,7 +15,7 @@
 				console.log(data.Series[0].Coberturas);
 				console.log(data.Series[0].Coberturas.length);
 
-	  
+
 	    			var temporal = [];
 	    			temporal.push('Entidad');
 	    			for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
@@ -130,7 +130,3 @@ function getAtr(indicador){
 
 	    return atr;
 }
-
-
-
-	

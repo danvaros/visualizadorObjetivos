@@ -503,6 +503,7 @@
   }
 
   function valorDatoInsumos(data){
+    console.log("comparacion1");
     lista_insumos = [];
     var temporal = [];
     var individual = [];
@@ -679,6 +680,7 @@
   }
 
   function valorDato(data){
+    console.log("comparacion2");
     console.log(data);
     var temporal = [];
     temporal.push('Entidad');
@@ -691,7 +693,15 @@
       var temporal = [];
       temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-        var dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+        var dato_formato;
+        console.log("comparacion",data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == "");
+        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == "")
+        {
+          dato_formato =  data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
+        }
+        else {
+          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+        }
         temporal.push(dato_formato);
       }
       estados.push(temporal);
@@ -754,13 +764,10 @@
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
-        actualizacion = (atributos.FechaAct_atr == null || atributos.FechaAct_atr == '') ? '' : ' <div><strong>Fecha de última actualización:</strong> '+ atributos.FecAct_atr +'</div>';
-
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
-                  actualizacion +
-                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
 
         $('.pie_cuadro2').html(pie);
