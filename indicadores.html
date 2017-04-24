@@ -1138,7 +1138,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
 
 }
 
-  console.log(series);
+  console.log("--->>>>las series",series);
   console.log(categories);
   cat_global = categories;
   chartBarras.load({
@@ -1161,7 +1161,7 @@ function sortFunction(a, b) {
         return 0;
     }
     else {
-        return (a.numero < b.numero) ? -1 : 1;
+        return (a.numero > b.numero) ? -1 : 1;
     }
 }
 
