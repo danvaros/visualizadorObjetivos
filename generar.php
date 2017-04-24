@@ -14,5 +14,9 @@
   $dompdf->set_paper('letter', 'landscape');
   $dompdf->loadHtml($html);
   $dompdf->render();
-  $dompdf->stream("demo");
+  //$dompdf->stream("demo");
+
+  $pdf = $dompdf->output();
+  file_put_contents("ODS.pdf", $pdf);
+  header("Location: http://localhost/visualizadorObjetivos/ODS.pdf");
 ?>
