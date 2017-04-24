@@ -342,11 +342,11 @@
       </div>
 
 
-      <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
+      <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top exportCSVDatos">Exportar datos para el cálculo</a>
 
       <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
-        
-         
+
+
         <div class="row" id="row_filtros_serie" style="display: none">
           <div class="col s2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
@@ -356,7 +356,7 @@
               <select id="filtros_serie" style="display:block !important; background-color: #f2f2f2;"></select>
             </div>
           </div>
-        </div> 
+        </div>
 
         <div class="row" id="serie_panel_tablas">
         </div>
@@ -499,11 +499,11 @@
         <div class="col s12" style="margin-top: -10px;">
            <hr>
         </div>
-            <div class="col s6">
+            <!-- <div class="col s6">
               <strong>Estados Unidos Mexicanos</strong>
             </div>
             <div class="col s6 right-align pais">
-            </div>
+            </div> -->
 
 
                 <div class="col s12">
@@ -672,7 +672,7 @@
                       <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
                       <!-- <a class="icnSDMX">SDMX</a> -->
                       <!-- <a class="icnPDF">PDF</a> -->
-                      
+
                 </div>
                 <div class="col s12">
                       <li class="divider griss"></li>
@@ -1638,9 +1638,9 @@ $(document).ready(function(){
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
                 }
-                
 
-                    
+
+
                 if(arre.length > 17){
                  $('#miTabla2').DataTable( {
                         scrollY:        "600px",
@@ -1657,7 +1657,7 @@ $(document).ready(function(){
                     } );
                 }
 
-              
+
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
@@ -2297,6 +2297,24 @@ var contaAnios = arrray_anios.length - 1;
         // If CSV, don't do event.preventDefault() or return false
         // We actually need this to be a typical hyperlink
     });
+
+    if ($('.select_datos').val() != -1) {
+      $(".exportCSVDatos").show();
+    }else{
+      $(".exportCSVDatos").hide();
+    }
+
+    $(".exportCSVDatos").on('click', function (event) {
+        // CSV
+        var args = [$('#miTabla'), 'DatosParaElCalculo.csv'];
+
+        exportTableToCSV.apply(this, args);
+
+        // If CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+
+
 });
 </script>
 <script type="text/javascript">
