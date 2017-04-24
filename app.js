@@ -757,7 +757,7 @@
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
-                  ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
 
         $('.pie_cuadro2').html(pie);
