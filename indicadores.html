@@ -1172,6 +1172,7 @@ function sortFunction(a, b) {
 
   function gen(props)
   {
+    console.log("los props son",props);
     var chart = c3.generate({
         bindto: '.info',
         padding: {
@@ -1180,19 +1181,19 @@ function sortFunction(a, b) {
               right: 10
           },
           data: {
-              x: 'x',
+              x: 'Entidad',
           columns: [
-            ['x','2016-01-01','2015-01-01','2014-01-01','2013-01-01','2012-01-01','2011-01-01','2010-01-01','2009-01-01','2008-01-01','2007-01-01','2006-01-01','2005-01-01','2004-01-01','2003-01-01','2002-01-01','2001-01-01','2000-01-01','1999-01-01','1998-01-01','1997-01-01','1996-01-01','1995-01-01','1994-01-01','1993-01-01','1992-01-01','1991-01-01','1990-01-01'],
+            estados[0],
               props,
               busqueda_mexico()
             ]
           },
         tooltip: {
-          // format: {
-          //     value: function(value) {
-          //         return d3.format(",.2f")(value)
-          //     }
-          // }
+          format: {
+              value: function(value) {
+                  return d3.format(",.2f")(value)
+              }
+          }
         },
           axis: {
               x: {
@@ -1334,6 +1335,7 @@ function sortFunction(a, b) {
   		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
+          console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
           gen(estados[busqueda_indice(props.nom_ent)]);
           $(".crop").dotdotdot();
   	     }
@@ -2075,6 +2077,7 @@ var contaAnios = arrray_anios.length - 1;
           this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
+        console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
         gen(estados[busqueda_indice(props.nom_ent)]);
         $(".crop").dotdotdot();
        }
