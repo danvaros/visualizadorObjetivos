@@ -173,7 +173,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script src="lib/owl.carousel.min.js"></script>
   </head>
   <body>
-  
+
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -549,7 +549,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       <b>Redes Sociales</b>
       <ul class="cuadrosSocial">
         <li>
-          <!-- <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a> 
+          <!-- <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
           -->
                     <a class="twitter-share-button waves-effect"
   href="https://twitter.com/share"
@@ -644,7 +644,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   </div>
 </div>
 
-    
+
 <div class="row" style="display:none;">
 
 </div>
@@ -690,7 +690,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         $(document).ready(function()
         {
 
-          // $('.modal').modal(); 
+          // $('.modal').modal();
           $('.modal-trigger').leanModal();
           var textoTwitterGrafica = 'Comparto esta grafica';
           var textoTwitterMapa    = 'Comparto este mapa';
@@ -994,11 +994,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                 },
                 size : 80
             },
-            Y : {
-              // padding: {top: 0, bottom: 0},
-              // tick: {
-              //       format: d3.format(".2f")
-              //   }
+            y : {
+              // inner: true,
+              tick: {
+                  count: 10,
+                  format: d3.format(".0f")
+                }
                 // tick: {
                 //     format: function (d) {
                 //         return (parseInt(d) == d) ? d : null;
@@ -1461,7 +1462,7 @@ function busqueda_anio(cadena)
                     //format: '%Y' // format string is also available for timeseries data
                   }
               },
-              Y : {
+              y : {
                 // padding: {top: 0, bottom: 0},
                 // tick: {
                 //       format: d3.format(".2f")
@@ -1472,7 +1473,8 @@ function busqueda_anio(cadena)
                 //     }
                 // }
                 tick: {
-                    format: d3.format(".0f")
+                  count: 10,
+                  format: d3.format(".0f"),
                 }
               }
           },tooltip: {
