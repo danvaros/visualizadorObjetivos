@@ -754,9 +754,12 @@
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
+        actualizacion = (atributos.FechaAct_atr == null || atributos.FechaAct_atr == '') ? '' : ' <div><strong>Fecha de última actualización:</strong> '+ atributos.FecAct_atr +'</div>';
+
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
+                  actualizacion +
                   ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
 
