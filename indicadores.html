@@ -344,13 +344,21 @@
 
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top">Exportar datos para el cálculo</a>
 
-      <div class="row card tablaPadding scroller" id="serie-panel" style=" border-radius: 20px;">
-        <div class="col s12">
-           <div class="pie_cuadro2">
-              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
-              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
-              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+      <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
+        
+         
+        <div class="row" id="row_filtros_serie" style="display: none">
+          <div class="col s2 " >
+            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
+          </div>
+          <div class="col s4 " >
+            <div class="input-field col s12" style="margin-bottom:20px;">
+              <select id="filtros_serie" style="display:block !important; background-color: #f2f2f2;"></select>
             </div>
+          </div>
+        </div> 
+
+        <div class="row" id="serie_panel_tablas">
         </div>
       </div>
 
@@ -1130,19 +1138,14 @@ function sortFunction(a, b) {
               props,
               busqueda_mexico()
             ]
-
-
           },
-          tooltip: {
-            format: {
-        title: function (d) { return 'Data ' + d; },
-        value: function (value, ratio, id) {
-            var format = id === 'data1' ? d3.format(',') : d3.format('$');
-            return format(value);
-        }
-//            value: d3.format(',') // apply this format to both y and y2
-    }
-            },
+        tooltip: {
+          format: {
+              value: function(value) {
+                  return d3.format(",.2f")(value)
+              }
+          }
+        },
           axis: {
               x: {
                   type: 'timeseries',
@@ -1474,6 +1477,7 @@ $(document).ready(function(){
 });
 </script> -->
   <script type="text/javascript">
+
     $(document).ready(function(){
 
           $('#indicador-panel').hide();
@@ -1486,7 +1490,7 @@ $(document).ready(function(){
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
-                            '<table class="bordered" id="miTabla2" class="miTabla2" style="display:none">';
+                            '<table class="bordered" id="miTabla2" class="miTabla2">';
 
            var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
@@ -1550,36 +1554,39 @@ $(document).ready(function(){
                }
 
 
-                 if(i == 0){
-                  //  datos_doble +=  '</tr></thead>';
-                   datos_doble_2 +=  '</tr></thead>';
-                   datos_doble_3 +=  '</tr></thead>';
-                 }else{
-                  //  datos_doble +=  '</tr>';
-                   datos_doble_2 +=  '</tr>';
-                   datos_doble_3 +=  '</tr>';
-                 }
+
+               if(i == 0){
+                //  datos_doble +=  '</tr></thead>';
+                 datos_doble_2 +=  '</tr></thead>';
+                 datos_doble_3 +=  '</tr></thead>';
+               }else{
+                //  datos_doble +=  '</tr>';
+                 datos_doble_2 +=  '</tr>';
+                 datos_doble_3 +=  '</tr>';
+               }
              }
 
 
 
-               datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
-               datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
 
 
 
 
-          $('#datos-panel-dos').html(select_2+datos_doble_2);
-          $('#serie-panel').html(datos_doble_3);
+          //$('#datos-panel-dos').html(select_2+datos_doble_2);
+          $('#serie_panel_tablas').html(datos_doble_2);
+
 
           $('#tabla_export').html(datos_doble_2);
 
-          $('#tabla_nacional').html(datos_doble_3);
+
+          $('#tabla_nacional').html(datos_doble_2);
 
           $('.scroller').scroll(function(e) {
             console.log("aca");
@@ -1630,22 +1637,26 @@ $(document).ready(function(){
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
                 }
-                if(table3 == null){
-                  table3 = $('#miTabla3').DataTable( {
-                    scrollY:        "600px",
-                    scrollX:        true,
-                    scrollCollapse: true,
-                    paging:         false,
-                    searching: false,
-                    retrieve: true,
-                    aoColumnDefs: [
-                      { 'bSortable': false, 'aTargets': arre }
-                    ],
-                    fixedColumns:   {
-                        leftColumns: 1
-                    }
-                  });
+                
+
+                    
+                if(arre.length > 17){
+                 $('#miTabla2').DataTable( {
+                        scrollY:        "600px",
+                        scrollX:        true,
+                        scrollCollapse: true,
+                        paging:         false,
+                        aoColumnDefs: [
+                          { 'bSortable': false,
+                            'aTargets': arre }
+                        ],
+                        fixedColumns:   {
+                            leftColumns: 1
+                        }
+                    } );
                 }
+
+              
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
