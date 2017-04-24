@@ -907,7 +907,7 @@
   {
     //$('.modal').modal();
     $('.modal-trigger').leanModal();
-    
+
     var textoTwitterGrafica = 'Comparto esta grafica';
     var textoTwitterMapa    = 'Comparto este mapa';
     var URLactual = window.location;
@@ -1524,12 +1524,13 @@ $(document).ready(function(){
 });
 </script> -->
   <script type="text/javascript">
-
+  var flag_valor_nd=false;
+  var arreglo_valor_nd=[];
     $(document).ready(function(){
 
           $('#indicador-panel').hide();
           //$('.modal-trigger').leanModal();
-  
+          console.log("---->>>>>estados tabla",estados);
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
           var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
@@ -1601,7 +1602,17 @@ $(document).ready(function(){
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == estados[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    var varia;
+                  if(estados[i][j] == "ND" || estados[i][j] == "NA")
+                  {
+                    flag_valor_nd=true;
+                    if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+                      arreglo_valor_nd.push(estados[i][j]);
+                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                  }
+                  else {
+                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
                   // datos_doble += varia;
                   datos_doble_2 += varia;
                   datos_doble_22 += varia;
@@ -1609,15 +1620,37 @@ $(document).ready(function(){
                 }
                 else if(j == estados[0].length -2){
                     // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    if(estados[i][j] == "ND" || estados[i][j] == "NA")
+                    {
+                      flag_valor_nd=true;
+                      if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+                        arreglo_valor_nd.push(estados[i][j]);
+                      datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                      datos_doble_22 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                      datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    }
+                    else {
+                      datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    }
                 }
                 else{
                   // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  if(estados[i][j] == "ND" || estados[i][j] == "NA")
+                  {
+                    flag_valor_nd=true;
+                    if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+                      arreglo_valor_nd.push(estados[i][j]);
+                    datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
+                    datos_doble_22 +=  '  <td>'+ estados[i][j] +'</td>';
+                    datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
+                  }
+                  else {
+                    datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
                 }
                }
 
@@ -1636,22 +1669,48 @@ $(document).ready(function(){
                }
              }
 
+            console.log("bandera",flag_valor_nd,arreglo_valor_nd);
 
+            if(flag_valor_nd)
+            {
+              var mensaje_nd='';
+              for(var i=0;i<arreglo_valor_nd.length;i++)
+              {
+                if(arreglo_valor_nd[i]=='ND')
+                {
+                  mensaje_nd=mensaje_nd+'<div><strong>ND:</strong> No disponible</div>';
+                }
+                if(arreglo_valor_nd[i]=='NA')
+                {
+                  mensaje_nd=mensaje_nd+'<div><strong>NA:</strong> No aplicable</div>';
+                }
+              }
+              console.log("mensaje",mensaje_nd);
+              datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
+               '</div></div>';
 
-            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
-             '</div></div>';
+               datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+               ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
+                '</div></div>';
 
-             datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-             ' <div class="pie_cuadro2">'+ pie +
-              '</div></div>';
+              datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
+               '</div></div>';
+            }
+            else {
+              datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
 
-            datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
-             '</div></div>';
+               datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+               ' <div class="pie_cuadro2">'+ pie +
+                '</div></div>';
 
-
-
+              datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
+            }
 
           //$('#datos-panel-dos').html(select_2+datos_doble_2);
           $('#serie_panel_tablas').html(datos_doble_2);
