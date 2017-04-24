@@ -799,6 +799,7 @@
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
   var chart;
+  var chartBarras;
   var index_estados;
   var table3 = null;
   var table2 = null;
@@ -921,7 +922,7 @@
     $('#share_mapa').attr('href',urlTwitterMapa);
 
     $('#chart2btn').hide();
-    chart = c3.generate({
+    chartBarras = c3.generate({
       legend: {
         show: false
       },
@@ -986,60 +987,60 @@
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
                          return d[0].index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
                     };
-                    return chart.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
+                    return chartBarras.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
                 }
             },
 
-          axis: {
-    rotated: true,
-    x: {
-    type: 'category',
-    categories: [ 'Aguascalientes',
-                  'Baja California',
-                  'Baja California Sur',
-                  'Campeche',
-                  'Coahuila de Zaragoza',
-                  'Colima',
-                  'Chiapas',
-                  'Chihuahua',
-                  'Ciudad de México',
-                  'Durango',
-                  'Guanajuato',
-                  'Guerrero',
-                  'Hidalgo',
-                  'Jalisco',
-                  'México',
-                  'Michoacán de Ocampo',
-                  'Morelos',
-                  'Nayarit',
-                  'Nuevo León',
-                  'Oaxaca',
-                  'Puebla',
-                  'Querétaro',
-                  'Quintana Roo',
-                  'San Luis Potosí',
-                  'Sinaloa',
-                  'Sonora',
-                  'Tabasco',
-                  'Tamaulipas',
-                  'Tlaxcala',
-                  'Veracruz de Ignacio de la Llave',
-                  'Yucatán',
-                  'Zacatecas',
-                  'Estados Unidos Mexicanos',
-                ],
-          height: 100,
-            tick:{
-              rotate: 270,
-              multiline: false
+    axis: {
+        rotated: true,
+        x: {
+        type: 'category',
+        categories: [ 'Aguascalientes',
+                      'Baja California',
+                      'Baja California Sur',
+                      'Campeche',
+                      'Coahuila de Zaragoza',
+                      'Colima',
+                      'Chiapas',
+                      'Chihuahua',
+                      'Ciudad de México',
+                      'Durango',
+                      'Guanajuato',
+                      'Guerrero',
+                      'Hidalgo',
+                      'Jalisco',
+                      'México',
+                      'Michoacán de Ocampo',
+                      'Morelos',
+                      'Nayarit',
+                      'Nuevo León',
+                      'Oaxaca',
+                      'Puebla',
+                      'Querétaro',
+                      'Quintana Roo',
+                      'San Luis Potosí',
+                      'Sinaloa',
+                      'Sonora',
+                      'Tabasco',
+                      'Tamaulipas',
+                      'Tlaxcala',
+                      'Veracruz de Ignacio de la Llave',
+                      'Yucatán',
+                      'Zacatecas',
+                      'Estados Unidos Mexicanos',
+                    ],
+              height: 100,
+                tick:{
+                  rotate: 270,
+                  multiline: false
+                },
+              } ,
+              //  y : {
+              //         tick: {
+              //             format: d3.format(".2f")
+              //         }
+              //     }
             },
-          } ,
-           y : {
-                  tick: {
-                      format: d3.format(".2f")
-                  }
-              }
-          },
       });//fin de grafica
     datosGrafica(2015);
 });
@@ -1140,7 +1141,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
   console.log(series);
   console.log(categories);
   cat_global = categories;
-  chart.load({
+  chartBarras.load({
     columns: [series],
     categories: categories,
     unload: [Descrip_ind],
@@ -1187,11 +1188,11 @@ function sortFunction(a, b) {
             ]
           },
         tooltip: {
-          format: {
-              value: function(value) {
-                  return d3.format(",.2f")(value)
-              }
-          }
+          // format: {
+          //     value: function(value) {
+          //         return d3.format(",.2f")(value)
+          //     }
+          // }
         },
           axis: {
               x: {
@@ -1867,7 +1868,7 @@ $(document).ready(function(){
 
 
       if(cadena !=  ''){
-        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 13px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 8px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
       //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
         $('#anios').html(cadena);

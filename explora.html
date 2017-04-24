@@ -170,7 +170,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> -->
 
     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
-
+    <script src="lib/owl.carousel.min.js"></script>
   </head>
   <body>
   
@@ -337,9 +337,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 }
 </style>
 
-
             <!-- <div id="map"></div> -->
-            <div class="row" id="footmap">
+            <div class="row" id="footmap" style="padding-left: 31px;">
 	            <div id="anios" class="col s8">
 	            	<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
@@ -1538,7 +1537,7 @@ function busqueda_anio(cadena)
       }
 
       if(cadena !=  ''){
-        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 10px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 0px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
         $('#anios').html(cadena);
 
         $('#'+anio_mas_actual).trigger( "click" );
