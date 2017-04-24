@@ -680,7 +680,15 @@
       <b>Redes Sociales</b>
       <ul class="cuadrosSocial">
         <li>
-          <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
+          <!-- <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a> -->
+          <a class="twitter-share-button waves-effect"
+  href="https://twitter.com/share"
+  data-size="large"
+  data-text="custom share text"
+  data-url="https://dev.twitter.com/web/tweet-button"
+  data-hashtags="example,demo"
+  data-via="twitterdev"
+  data-related="twitterapi,twitter"><i class="fa fa-twitter fa-lg"></i></a>
         </li>
         <li>
            <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
@@ -723,7 +731,15 @@
       <b>Redes Sociales</b>
       <ul class="cuadrosSocial">
         <li>
-          <a id="share_mapa" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
+          <!-- <a id="share_mapa" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a> -->
+          <a class="twitter-share-button waves-effect"
+          href="https://twitter.com/share"
+          data-size="large"
+          data-text="custom share text"
+          data-url="https://dev.twitter.com/web/tweet-button"
+          data-hashtags="example,demo"
+          data-via="twitterdev"
+          data-related="twitterapi,twitter"><i class="fa fa-twitter fa-lg"></i></a>
         </li>
         <li>
             <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
@@ -893,6 +909,7 @@
     var textoTwitterGrafica = 'Comparto esta grafica';
     var textoTwitterMapa    = 'Comparto este mapa';
     var URLactual = window.location;
+    console.log(URLactual);
     $('.liga').val(URLactual);
 
     var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
