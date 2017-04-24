@@ -623,7 +623,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   </div>
 </div>
 </div>
-<div class="row" style="display:none;">
+<div class="row" id="show_grafica">
   <div id="copia" style="width:100%; height:600px;"></div>
   <div id="copias" style="width:100%; height:600px;"></div>
   <div id="fondo" style="width:100%; height:600px;"></div>
@@ -665,6 +665,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         var primera_carga =  true;
         $(document).ready(function()
         {
+          $('#show_grafica').hide();
           console.log('al inicio',$('#tit_map_des').html());
           llamada(2,3);
           //$("#obj_name").html('<option value="-1">Selecciona un Objetivo</option>');
@@ -1028,9 +1029,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 			            }
 			        },
 			        y : {
-			            tick: {
-			                format: d3.format(".2f")
-			            }
+			            // tick: {
+			            //     format: d3.format(".2f")
+			            // }
+                  tick: {
+                      format: d3.format(".0f")
+                  }
 			        }
 			    },
 			    color: {
@@ -1422,10 +1426,13 @@ function busqueda_anio(cadena)
                 // tick: {
                 //       format: d3.format(".2f")
                 //   }
-                 tick: {
-                    format: function (d) {
-                        return (parseInt(d) == d) ? d : null;
-                    }
+                //  tick: {
+                //     format: function (d) {
+                //         return (parseInt(d) == d) ? d : null;
+                //     }
+                // }
+                tick: {
+                    format: d3.format(".0f")
                 }
               }
           },tooltip: {
@@ -1776,6 +1783,20 @@ var contaAnios = arrray_anios.length - 1;
 
       $('#pdf_descarga').click(function()
 			{
+        $('#show_grafica').show();
+        $('#copia').html("");
+        $('#copias').html("");
+        $('#fondo').html("");
+        $('#todo').html("");
+        $('#todo_listo').html("");
+        $('#images').html("");
+        $('#forms').html("");
+
+        $(".infos").css("border-top","7px solid #f6f6f6");
+        $(".infos").css("border-left","7px solid #f6f6f6");
+        $(".infos").css("border-right","7px solid #f6f6f6");
+        $(".infos").css("border-bottom","7px solid #f6f6f6");
+
             var copias_canvas;
         leafletImage(map, function(err, canvas) {
     				// now you have canvas
@@ -1799,12 +1820,15 @@ var contaAnios = arrray_anios.length - 1;
 
             document.getElementById('copias').innerHTML='<canvas id="canvas_tol" width="1298px" height="600px"></canvas>';
             var canvas2 = document.getElementById('canvas_tol');
-            var c = mapa.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[1].childNodes[4].childNodes[2].childNodes[0].childNodes[0].childNodes[0].style.fill='none';
 
+            //[7].childNodes
+
+
+            var c = mapa.childNodes[1].childNodes[1].childNodes[0];
+             var c = mapa.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[1].childNodes[4].childNodes[2].childNodes[0].childNodes[0].childNodes[0].style.fill='none';
 
              var c = mapa.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[1].childNodes;
-
-//[7].childNodes
+             console.log(c);
             for(var j=0;j<c.length;j++)
             {
               console.log(c[j],c[j].classList.value);
@@ -1845,6 +1869,7 @@ var contaAnios = arrray_anios.length - 1;
                 }
               }
             }
+            $('.c3-line-Estados-Unidos-Mexicanos')[0].style.fill='none';
             var svg2 = nodeToString(mapa.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0]);
             canvg(canvas2, svg2);
 
@@ -1861,7 +1886,7 @@ var contaAnios = arrray_anios.length - 1;
                     theCanvas = canvas;
                     $("#fondo").append(canvas);
                     fondo = document.getElementById('fondo').childNodes[0].toDataURL('image/png');
-                    $('#todo').html('<div id="todo_junto" style="width:1298px; height:600px; background-image: url('+normal+'), url('+data_url+'); background-repeat: no-repeat;"><div style="width:296px; height:314px;  background-image: url('+copias_canvas+'); background-repeat: no-repeat;"><img src="'+document.getElementById('canvas_tol').toDataURL('image/png')+'" style="margin-top: 100px; margin-left: 10px;"></div></div>');
+                    $('#todo').html('<div id="todo_junto" style="width:1298px; height:600px; background-image: url('+normal+'), url('+data_url+'); background-repeat: no-repeat;"><div style="width:296px; height:314px; position: absolute; right: 30%;  background-image: url('+copias_canvas+'); background-repeat: no-repeat;"><img src="'+document.getElementById('canvas_tol').toDataURL('image/png')+'" style="margin-top: 100px; margin-left: 10px;"></div></div>');
 
                     html2canvas($("#todo"), {
                         onrendered: function(canvas) {
@@ -1870,7 +1895,7 @@ var contaAnios = arrray_anios.length - 1;
                             // Canvas2Image.saveAsPNG(canvas);
                             $("#todo_listo").append(canvas);
                             todo = document.getElementById('todo_listo').childNodes[0].toDataURL('image/png');
-                            console.log(todo);
+                            //console.log(todo);
                             var method = "post";
                     				var form = document.createElement("form");
                     				form.setAttribute("method", method);
@@ -1882,6 +1907,10 @@ var contaAnios = arrray_anios.length - 1;
                     				form.appendChild(hiddenField);
                     				document.getElementById('forms').appendChild(form);
                     				console.log("Envia");
+                            $(".infos").css("border","none");
+                            $(".info2").css("border","none");
+                            locked=false;
+                            $('#show_grafica').hide();
                     				form.submit();
                         }
                     });
@@ -2017,13 +2046,13 @@ var contaAnios = arrray_anios.length - 1;
 
 
 
-                 datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-              ' <div class="pie_cuadro2">'+ pie +
-               '</div></div>';
-
-                 datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-              ' <div class="pie_cuadro2">'+ pie +
-               '</div></div>';
+              //    datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              // ' <div class="pie_cuadro2">'+ pie +
+              //  '</div></div>';
+              //
+              //    datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              // ' <div class="pie_cuadro2">'+ pie +
+              //  '</div></div>';
 
             $('#tabla_export').html(datos_doble_3);
 
