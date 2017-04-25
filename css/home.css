@@ -912,9 +912,13 @@ margin-left: 60%; */
 -moz-margin-top: 12%;
 -moz-width: 35%; */
 
-    margin-left: 50%;
+    /*margin-left: 50%;
     margin-top: 15px;
-    width: 40px;
+    width: 40px;*/
+
+    margin-left: 30%;
+    margin-top: 10px;
+    width: 80px;
   }
 
 @media only screen and (max-width: 992px){
@@ -996,6 +1000,3 @@ animation-name: scroll;
       display: none;
     }
 }
-
-
-    

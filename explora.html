@@ -240,7 +240,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
@@ -277,9 +277,12 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <h3 class="fuerte t_principal">EXPLORA</h3>
           <li class="divider"></li>
           <br>
-          <p class="gris t_sm">
+          <!-- <p class="gris t_sm">
           Esta sección permite visuallizar los indicadores de los cuales se dispone información para 11 de los 17 objetivos de la Agenda 2030 para el Desarrollo Sostenible. Igualmente ofrece la posiblilidad de filtrar la información por tipo de desagregación y unidades territoriales menores, en el caso de que esta se encuentre disponible, y exportarla para su manipulacion al igual que los materiales graficos que se generen por el usuario.
-          </p>
+          </p> -->
+          <p class="gris t_sm">
+          Esta sección permite visualizar los indicadores de los Objetivos de Desarrollo Sostenible y ofrece la posibilidad de filtrar la información por cobertura geográfica, y exportar las series estadísticas así como los gráficos que el usuario genere durante la navegación.
+        </p>
         </div>
       </div>
       <div class="row">
@@ -563,12 +566,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     </div>
 
 <div id="tabla_export" style="display: none;"></div>
+<div id="tabla_export2" style="display: none;"></div>
 
     <footer class="page-footer id">
       <div class="container">
         <div class="row" id="fot">
           <div class="col l3 s12">
-            <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
+            <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
             <br>
             <br>
             <div class="" style="display:inline;">
@@ -737,12 +741,14 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
         var primera_carga =  true;
+        var initialLoad = true;
+
         $(document).ready(function()
         {
 
           // $('.modal').modal();
           $('.modal-trigger').leanModal();
-             
+
           compartir();
 
 
@@ -996,7 +1002,7 @@ function carga_selectes(){
         }
       }
     }
-     $('select').material_select(); 
+     $('select').material_select();
 }
 
 
@@ -1469,6 +1475,81 @@ function busqueda_anio(cadena)
       //   columns: estados,
       //    unload:estados
       // });
+
+
+      var datos_doble_22 =  ' <div class="cuadro_titulo"> TABLA'+
+        //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+      '</div>' +
+                        '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
+                        '<table class="bordered" id="miTabla22" class="miTabla22" style="display:none">';
+
+
+
+         for (var i = 0; i < estados.length; i++) {
+           if(i == 0){
+            // datos_doble +=  '<thead><tr>';
+            datos_doble_22 +=  '<thead><tr>';
+          }
+           else if(i == 1){
+            //  datos_doble +=  '<tbody><tr>';
+             datos_doble_22 +=  '<tbody><tr>';
+           }
+           else {
+              // datos_doble +=  '<tr>';
+              datos_doble_22 +=  '<tr>';
+           }
+
+           for (var j = estados[0].length -1 ; j > 0 ; j--) {
+            if(i == 0 && j == estados[0].length -1){
+              // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+              datos_doble_22 +=  '  <td  class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] .split('-')[0]+'</td>';
+            }
+            else if( i == 0 && j == estados[0].length -1 ){
+              // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+              datos_doble_22 += '<td class"padding-200">'+ estados[i][j].split('-')[0] +'</td>';
+            }
+            else if( i == 0 ){
+              // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+              datos_doble_22 += '<td>'+ estados[i][j].split('-')[0] +'</td>';
+            }
+            else if(j == estados[0].length -1 ) {
+              var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+              // datos_doble += varia;
+              datos_doble_22 += varia;
+            }
+            else if(j == estados[0].length -2){
+                // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+            }
+            else{
+              // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+              datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+            }
+           }
+
+
+             if(i == 0){
+              //  datos_doble +=  '</tr></thead>';
+               datos_doble_22 +=  '</tr></thead>';
+             }else{
+              //  datos_doble +=  '</tr>';
+               datos_doble_22 +=  '</tr>';
+             }
+         }
+
+
+
+        //    datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+        // ' <div class="pie_cuadro2">'+ pie +
+        //  '</div></div>';
+        //
+        //    datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+        // ' <div class="pie_cuadro2">'+ pie +
+        //  '</div></div>';
+
+      $('#tabla_export2').html(datos_doble_22);
+
+
 
       $('#chart2').html('');
       chart2 = c3.generate({
@@ -2160,6 +2241,7 @@ var contaAnios = arrray_anios.length - 1;
           });
 </script>
     <script type="text/javascript">
+
     $(document).ready(function () {
 
     function exportTableToCSV($table, filename) {
@@ -2229,16 +2311,42 @@ var contaAnios = arrray_anios.length - 1;
         }
     }
 
-    // This must be a hyperlink
-    $(".exportCSV").on('click', function (event) {
-        // CSV
-        var args = [$('#tabla_export table'), 'Indicador.csv'];
+    // // This must be a hyperlink
+    // $(".exportCSV").on('click', function (event) {
+    //     // CSV
+    //
+    //
+    //
+    //
+    //     var args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
+    //
+    //     exportTableToCSV.apply(this, args);
+    //
+    //     // If CSV, don't do event.preventDefault() or return false
+    //     // We actually need this to be a typical hyperlink
+    // });
 
-        exportTableToCSV.apply(this, args);
 
-        // If CSV, don't do event.preventDefault() or return false
-        // We actually need this to be a typical hyperlink
-    });
+      // This must be a hyperlink
+      $(".exportCSV").on('click', function (event) {
+          // CSV
+          var args;
+
+          if (initialLoad) {
+              //Do work that is done when the page was first refreshed/loaded.
+              args = [$('#miTabla33'), 'IndicadorExp.csv'];
+              initialLoad = false;
+          } else {
+              //Do work when it's not the initial load.
+              args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
+          }
+
+          exportTableToCSV.apply(this, args);
+
+          // If CSV, don't do event.preventDefault() or return false
+          // We actually need this to be a typical hyperlink
+      });
+
 });
 </script>
 <script type="text/javascript">
@@ -2352,6 +2460,9 @@ $(".exportXLS").on('click', function (event) {
     // If CSV, don't do event.preventDefault() or return false
     // We actually need this to be a typical hyperlink
 });
+
+
+
 });
 
 // function exportXXLS()
@@ -2371,49 +2482,49 @@ $(".exportXLS").on('click', function (event) {
   function selects_aut(){
 //$('#loader').show();
 if(tipo == 1){
- $('#seccion_mapa').hide();//panel de datos de descarga 
+ $('#seccion_mapa').hide();//panel de datos de descarga
 }
- 
+
   console.log('------------------ hacemos los chage --------------');
   $('#agregacion').val(tipo);
 
   carga_selectes_compartir(tipo);
-  
+
   $("#obj_name").val(objetivo).trigger('change');
   $("#indicadores").val(indicador_sel).trigger('change');
-  $('select').material_select(); 
-  setTimeout(function(){  
+  $('select').material_select();
+  setTimeout(function(){
         // carga_selectes_compartir(tipo);
 
         //$('#indicadores').val(indicador_sel);
         //$('select').material_select();
- 
+
     }, 1000);
 
 /*
 console.log('test');
-  setTimeout(function(){  
-       
+  setTimeout(function(){
+
        $('#indicadores').trigger('change');
     }, 3000);
 */
   // $("#obj_name").html('<option value="-1" disabled selected>Elige un objetivo</option>');
   // $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');
   // carga_selectes();
-   
-  //$('#obj_name').val(objetivo); 
+
+  //$('#obj_name').val(objetivo);
   // $('select').material_select();
-  // setTimeout(function(){  
-  //     alert("Hello"); 
-     
-       
+  // setTimeout(function(){
+  //     alert("Hello");
+
+
   //   }, 3000);
- 
-  // setTimeout(function(){ 
-  //   alert("Hello");  
+
+  // setTimeout(function(){
+  //   alert("Hello");
   //   //$('#indicadores').val(indicador_sel).trigger('change');
   // }, 3000);
- 
+
 
  $('select').material_select();
 }
@@ -2437,7 +2548,7 @@ function compartir(){
 
     var urlTwitterGrafica = 'http://twitter.com/share?text='+textoTwitterGrafica+'&amp;url='+URLactual+'&amp;hashtags=stackoverflow,example,youssefusf';
     console.log('url grafica : '+urlTwitterGrafica);
-    
+
     var cadena = '<a class="waves-effect" id="share_mapa" href="'+urlTwitterMapa+'"><i class="fa fa-twitter fa-lg"></i></a>';
     $('#share_tw_mapa').html(cadena);
 
@@ -2504,8 +2615,6 @@ function ind_change(indicador){
             // }
 }
 
-</script> 
+</script>
   </body>
 </html>
-
-
