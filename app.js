@@ -254,6 +254,11 @@
                       '</div>' +
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
+
+                      var datos_dobleDat = '<div class="cuadro_titulo"> ' + titulo +
+                                        '</div>' +
+                                        '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                                        '<table class="bordered" id="miTablaDat" class="miTablaDat">';
     console.log('--------------- insu cobertura ----------');
     console.log(insumos_cobertura[$('#insumo_change_cob').val()]);
     console.log(insumos_cobertura[$('#insumo_change_cob').val()][filtro]);
@@ -264,33 +269,42 @@
       for (var i = 0; i < tabla_armada.length; i++) {
                if(i == 0){
                 datos_doble +=  '<thead><tr>';
+                datos_dobleDat +=  '<thead><tr>';
               }
                else if(i == 1){
                  datos_doble +=  '<tbody><tr>';
+                 datos_dobleDat +=  '<tbody><tr>';
                }
                else {
                   datos_doble +=  '<tr>';
+                  datos_dobleDat +=  '<tr>';
                }
 
                for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
                 if(i == 0 && j == tabla_armada[0].length -1){
                   datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                  datos_dobleDat +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
                 }
                 else if( i == 0 && j == tabla_armada[0].length -1 ){
                   datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_dobleDat += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if( i == 0 ){
                   datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
                   var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
                   datos_doble += varia;
+                  datos_dobleDat += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
                     datos_doble +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
                 }
                 else{
                   datos_doble +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  datos_dobleDat +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
                 }
                }
 
@@ -298,8 +312,10 @@
 
                if(i == 0){
                  datos_doble +=  '</tr></thead>';
+                 datos_dobleDat +=  '</tr></thead>';
                }else{
                  datos_doble +=  '</tr>';
+                 datos_dobleDat +=  '</tr>';
                }
              }
 
@@ -308,6 +324,10 @@
             datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
+
+             datos_dobleDat +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+             ' <div class="pie_cuadro2">'+ pie +
+              '</div></div>';
 
 
 
@@ -344,6 +364,7 @@
 
     //sin pie y cabezera de la pagina
     $('#insumos_cont').html(datos_doble);
+    $('#insumos_contDat').html(datos_dobleDat);
     var arre = [];
     for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
       arre.push(i)
