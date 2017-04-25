@@ -2063,6 +2063,12 @@ var contaAnios = arrray_anios.length - 1;
             '</div>' +
                               '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
                               '<table class="bordered" id="miTabla3" class="miTabla3" >';
+
+                              var datos_doble_33 =  ' <div class="cuadro_titulo"> TABLA'+
+                               //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
+                             '</div>' +
+                                               '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
+                                               '<table class="bordered" id="miTabla33" class="miTabla33" >';
               // console.log(estados);
               // console.log(estados.length);
               // console.log(estados[0].length);
@@ -2073,16 +2079,19 @@ var contaAnios = arrray_anios.length - 1;
                   // datos_doble +=  '<thead><tr>';
                   datos_doble_2 +=  '<thead><tr>';
                   datos_doble_3 +=  '<thead><tr>';
+                  datos_doble_33 +=  '<thead><tr>';
                 }
                  else if(i == 1){
                   //  datos_doble +=  '<tbody><tr>';
                    datos_doble_2 +=  '<tbody><tr>';
                    datos_doble_3 +=  '<tbody><tr>';
+                   datos_doble_33 +=  '<tbody><tr>';
                  }
                  else {
                     // datos_doble +=  '<tr>';
                     datos_doble_2 +=  '<tr>';
                     datos_doble_3 +=  '<tr>';
+                    datos_doble_33 +=  '<tr>';
                  }
 
                  for (var j = estados[0].length -1 ; j > 0 ; j--) {
@@ -2090,32 +2099,38 @@ var contaAnios = arrray_anios.length - 1;
                     // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                     datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                     datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+                    datos_doble_33 +=  '  <td  class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] .split('-')[0]+'</td>';
                   }
                   else if( i == 0 && j == estados[0].length -1 ){
                     // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                     datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                     datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_33 += '<td class"padding-200">'+ estados[i][j].split('-')[0] +'</td>';
                   }
                   else if( i == 0 ){
                     // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                     datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                     datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+                    datos_doble_33 += '<td>'+ estados[i][j].split('-')[0] +'</td>';
                   }
                   else if(j == estados[0].length -1 ) {
                     var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     // datos_doble += varia;
                     datos_doble_2 += varia;
                     datos_doble_3 += varia;
+                    datos_doble_33 += varia;
                   }
                   else if(j == estados[0].length -2){
                       // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                       datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                       datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_33 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   }
                   else{
                     // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_33 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                   }
                  }
 
@@ -2124,10 +2139,12 @@ var contaAnios = arrray_anios.length - 1;
                     //  datos_doble +=  '</tr></thead>';
                      datos_doble_2 +=  '</tr></thead>';
                      datos_doble_3 +=  '</tr></thead>';
+                     datos_doble_33 +=  '</tr></thead>';
                    }else{
                     //  datos_doble +=  '</tr>';
                      datos_doble_2 +=  '</tr>';
                      datos_doble_3 +=  '</tr>';
+                     datos_doble_33 +=  '</tr>';
                    }
                }
 
@@ -2141,7 +2158,7 @@ var contaAnios = arrray_anios.length - 1;
               // ' <div class="pie_cuadro2">'+ pie +
               //  '</div></div>';
 
-            $('#tabla_export').html(datos_doble_3);
+            $('#tabla_export').html(datos_doble_33);
 
           });
 </script>
@@ -2230,6 +2247,11 @@ var contaAnios = arrray_anios.length - 1;
 <script type="text/javascript">
 $(document).ready(function () {
 
+  function deselect(e) {
+    $('.pop').slideFadeToggle(function() {
+      e.removeClass('selected');
+    });
+  }
   $("#contact").hover(
    function() {
      if($(this).hasClass('selected')) {

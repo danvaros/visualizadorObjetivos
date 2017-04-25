@@ -490,7 +490,11 @@ $('#loader').show();
     var visibles =  true;
 
     $(document).ready(function(){
-
+      function deselect(e) {
+        $('.pop').slideFadeToggle(function() {
+          e.removeClass('selected');
+        });
+      }
       $("#contact").hover(
        function() {
          if($(this).hasClass('selected')) {

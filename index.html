@@ -2769,6 +2769,15 @@ Comité Técnico Especializado de los ODS y Unidades del Estado responsables
       }
 
 
+      if(!!('ontouchstart' in window)){//check for touch device
+        $('#contact').unbind('click mouseenter mouseleave'); //use off if you used on, to unbind usual listeners
+        $('#contact').on('click',function(){
+          //slide down code
+          $(this).addClass('selected');
+          $('.pop').slideFadeToggle();
+          });
+      }
+
        $("#contact").hover(
         function() {
           if($(this).hasClass('selected')) {
