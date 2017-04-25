@@ -924,11 +924,16 @@
                   format: function (x) { return x.getFullYear(); }
                 //format: '%Y' // format string is also available for timeseries data
               },
-              y : {
-                  tick: {
-                      format: d3.format(".0f")
-                  },
-                  padding: {top: 35, bottom: 0}
+              // y : {
+              //     tick: {
+              //         format: d3.format(".0f")
+              //     },
+              //     padding: {top: 35, bottom: 0}
+              // }
+          },
+          y : {
+            tick: {
+                format: d3.format(".1f")
               }
           }
       },tooltip: {
