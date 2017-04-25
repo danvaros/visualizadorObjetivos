@@ -26,86 +26,86 @@
         .infoPadre {
             width: 276px;
         }
-        
+
         .cuadrosSocial li {
             display: inline;
         }
-        
+
         .cuadrosSocial li a {
             border: 1px solid #ccc;
             padding: 10px;
             transition: all 1.0s ease;
             width: 40px;
         }
-        
+
         .cuadrosSocial li a:hover {
             background-color: #ccc;
         }
-        
+
         .select-dropdown {
             padding-left: 10px !important;
         }
-        
+
         .select-wrapper span.caret {
             padding-right: 10px;
             font-size: 14px;
             color: #666;
         }
-        
+
         .espacio_seccion {
             height: 40px;
         }
-        
+
         .leaflet-right {
             width: 295px;
         }
-        
+
         .infos {
             box-shadow: 0 0 0 0 !important;
         }
-        
+
         td {
             padding: 1px !important;
             border-radius: 0 !important;
         }
-        
+
         .section-bullets li a:before {
             background-color: #00aeef;
         }
-        
+
         .section-bullets li:hover {
             background-color: #eee;
         }
-        
+
         .section-bullets .active a {
             color: #fff;
         }
-        
+
         .section-bullets .active a:after {
             background-color: #FFF;
         }
-        
+
         .btn-edo {
             text-align: left;
             /* background: #F6F6F6; */
             color: #0A254F;
         }
-        
+
         .btn-edo div {
             padding: 15px 20px !important;
             background: #F6F6F6;
         }
-        
+
         .btn-edo div:first-child {
             border-top-left-radius: 15px;
             border-bottom-left-radius: 15px;
         }
-        
+
         .btn-edo div:last-child {
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
         }
-        
+
         .btn-edo img {
             vertical-align: middle;
             margin-right: 15px;
@@ -170,7 +170,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+                <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
                     <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
@@ -207,7 +207,7 @@
     <div class="container">
         <div class="row">
             <div class="col s8">
-                <h3 class="fuerte t_principal">CALENDARIO DE ACTUALIZACIONES</h3>  
+                <h3 class="fuerte t_principal">CALENDARIO DE ACTUALIZACIONES</h3>
             </div>
             <div class="input-field col s4">
                 <i class="material-icons prefix caja_i">search</i>
@@ -240,7 +240,7 @@
                         </tr>
                     </thead>
                     <tbody id="cuerpo">
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -253,7 +253,7 @@
         <div class="container">
             <div class="row" id="fot">
                 <div class="col l3 s12">
-                    <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
+                    <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
                     <br>
                     <br>
                     <div class="" style="display:inline;">
@@ -305,7 +305,7 @@
         for (var j = 0; j < indicadores[i].Meta.length; j++) {
             for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
                 if(indicadores[i].Meta[j].Indicador[k].TieneValores){
-                    
+
                     var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
                     var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
                     //Descrip_cla
@@ -346,9 +346,9 @@ $('#example').DataTable({
     $('#loader').delay(2000).fadeOut("slow");
     //hagamos la llada de los indicadores primero
     // requerimos todos estos datos ------------------
-    // Número  
-    // Clasificación   
-    // Indicador   
+    // Número
+    // Clasificación
+    // Indicador
     // Institución
     // responsable Proxima
     // actualizacion
