@@ -43,6 +43,71 @@
       //});
   </script>
   <style media="screen">
+
+  a.selected {
+    background-color:#1F75CC;
+    color:white;
+    z-index:100;
+    right:0;
+    bottom:15%;
+    position:absolute;
+  }
+   #contact{
+     position: fixed;
+      right: 0;
+      bottom: 15%;
+      background:#EFD331;
+      color:#ffffff;
+      padding:5px 10px;
+      text-decoration:none;
+      z-index: 99999;
+   }
+
+   #contact img{
+     padding: 8px;
+     max-width: 64px;
+   }
+
+  .disclaimer {
+    background-color:#FFFFFF;
+    cursor:default;
+    display:none;
+    margin-top: 0px;
+    position:fixed;
+    text-align:left;
+    width:394px;
+    z-index:50;
+    padding: 15px 25px;
+    right:84px;
+    bottom:15%;
+    position:fixed;
+    z-index: 99999;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 3px;
+    padding-left: 15px;
+    text-indent: -15px;
+  }
+
+
+  .disclaimer p, .disclaimer.div {
+    margin: 8px 0;
+    padding-bottom: 8px;
+    font-family:'Helvetica';
+    font-weight:300;
+    text-align:justify;
+  }
+
+  .disclaimer h1{
+    font-size:30px;
+    font-family:'Helvetica';
+    font-weight:800;
+  }
+
+
+
     #loader {
       display: block;
       background: rgba(62, 60, 60, 0.6);
@@ -252,11 +317,11 @@
         <div class="fondo">
           <nav class="trans sin_sombra">
             <div class="nav-wrapper">
-              <ul id="nav-mobile2" class="right hide-on-med-and-down">
+              <!-- <ul id="nav-mobile2" class="right hide-on-med-and-down">
                 <li><a id="esp" class="t_sm" href="#!">ESP</a></li>
                 <span class="claro left">/</span>
                 <li><a id="ing" class="t_sm" href="#!">ENG</a></li>
-              </ul>
+              </ul> -->
             </div>
           </nav>
           <div class="head_cont">
@@ -1688,6 +1753,14 @@ border-bottom-right-radius: 15px;
     </div>
   </footer>
 
+  <div class="disclaimer pop">
+    <h1>Aviso</h1>
+    <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+</div>
+
+<a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
+
+
   <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
   <!-- <script type="text/javascript" src="entidad.json"></script> -->
   <script type="text/javascript" src="entidad2.json"></script>
@@ -1812,7 +1885,7 @@ border-bottom-right-radius: 15px;
                                     props,
                                     busqueda_mexico(),
                                   ]
-                                },   
+                                },
                                 tooltip: {
                                   format: {
                                       value: function(value) {
@@ -2346,6 +2419,36 @@ border-bottom-right-radius: 15px;
         console.log($(document).height());
         console.log($(window).height());
       });
+
+      function deselect(e) {
+        $('.pop').slideFadeToggle(function() {
+          e.removeClass('selected');
+        });
+      }
+
+
+       $("#contact").hover(
+        function() {
+          if($(this).hasClass('selected')) {
+            deselect($(this));
+          } else {
+            $(this).addClass('selected');
+            $('.pop').slideFadeToggle();
+          }
+          return false;
+        }, function() {
+          deselect($('#contact'));
+          return false;
+        }
+      );
+
+
+      $.fn.slideFadeToggle = function(easing, callback) {
+        return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+      };
+
+
+
 
     });
   </script>

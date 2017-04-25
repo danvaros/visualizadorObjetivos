@@ -364,10 +364,10 @@
                     }
                 } );
     }
-    
+
     //agregamos titulo del insumo seleccionado
     $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change_cob').val()]);
-    $('#descrip_uni').html(''); 
+    $('#descrip_uni').html('');
   }
 
   function put_filtros_insumo_cob(insumo){
@@ -388,44 +388,60 @@
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
 
+                      var datos_dobleDat = '<div class="cuadro_titulo"> ' + titulo +
+                                        '</div>' +
+                                        '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_122">'+
+                                        '<table class="bordered" id="miTablaDat" class="miTablaDat">';
+
 
       for (var i = 0; i < insumos_general[insumo].length; i++) {
                if(i == 0){
                 datos_doble +=  '<thead><tr>';
+                datos_dobleDat +=  '<thead><tr>';
               }
                else if(i == 1){
                  datos_doble +=  '<tbody><tr>';
+                 datos_dobleDat +=  '<tbody><tr>';
                }
                else {
                   datos_doble +=  '<tr>';
+                  datos_dobleDat +=  '<tr>';
                }
 
                for (var j = insumos_general[insumo][0].length -1 ; j > 0 ; j--) {
                 if(i == 0 && j == insumos_general[insumo][0].length -1){
                   datos_doble +=  '  <th  class="headcol">'+ insumos_general[insumo][i][0] +'</th><th>'+ insumos_general[insumo][i][j] .split('-')[0]+'</th>';
+                  datos_dobleDat +=  '  <td  class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ insumos_general[insumo][i][j] .split('-')[0]+'</td>';
                 }
                 else if( i == 0 && j == insumos_general[insumo][0].length -1 ){
                   datos_doble += '<th class"padding-200">'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                  datos_dobleDat += '<td class"padding-200">'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                 }
                 else if( i == 0 ){
                   datos_doble += '<th>'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                  datos_dobleDat += '<td>'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                 }
                 else if(j == insumos_general[insumo][0].length -1 ) {
                   var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
                   datos_doble += varia;
+                  datos_dobleDat += varia;
                 }
                 else if(j == insumos_general[insumo][0].length -2){
                     datos_doble +=  '  <td class="laque">'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
                 }
                 else{
                   datos_doble +=  '  <td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                  datos_dobleDat +=  '  <td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
                 }
                }
 
                if(i == 0){
                  datos_doble +=  '</tr></thead>';
+                 datos_dobleDat +=  '</tr></thead>';
                }else{
                  datos_doble +=  '</tr>';
+                 datos_dobleDat +=  '</tr>';
                }
              }
 
@@ -434,6 +450,10 @@
             datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
             ' <div class="pie_cuadro2">'+ pie +
              '</div></div>';
+
+             datos_dobleDat +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+             ' <div class="pie_cuadro2">'+ pie +
+              '</div></div>';
 
 
 
@@ -469,6 +489,7 @@
 
     //sin pie y cabezera de la pagina
     $('#insumos_cont').html(datos_doble);
+    $('#insumos_contDat').html(datos_dobleDat);
     var arre = [];
     for (var i = 0; i < insumos_general[insumo][0].length - 1; i++) {
       arre.push(i)
@@ -491,10 +512,11 @@
     }
     //agregamos titulo del insumo seleccionado
     $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change').val()]);
-    $('#descrip_uni').html(''); 
+    $('#descrip_uni').html('');
   }
 
   function valorDatoInsumos(data){
+    console.log("comparacion1");
     lista_insumos = [];
     var temporal = [];
     var individual = [];
@@ -516,7 +538,8 @@
           temporal = [];
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
-            var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             temporal.push(dato_formato);
           }
           individual.push(temporal);
@@ -533,7 +556,7 @@
       select += '<option value="'+idx+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="insumos_cont"></div>';
+    select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
@@ -671,6 +694,7 @@
   }
 
   function valorDato(data){
+    console.log("comparacion2");
     console.log(data);
     var temporal = [];
     temporal.push('Entidad');
@@ -683,7 +707,15 @@
       var temporal = [];
       temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-        var dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+        var dato_formato;
+        console.log("comparacion",data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == "");
+        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == "")
+        {
+          dato_formato =  data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
+        }
+        else {
+          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+        }
         temporal.push(dato_formato);
       }
       estados.push(temporal);
