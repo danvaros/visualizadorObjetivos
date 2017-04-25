@@ -204,14 +204,14 @@
                   datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
                 }
                }
 
@@ -297,17 +297,17 @@
                   datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
-                  datos_dobleDat +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j]+'</td>';
+                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j]+'</td>';
                 }
                }
 
@@ -447,17 +447,17 @@
                   datos_dobleDat += '<td>'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                 }
                 else if(j == insumos_general[insumo][0].length -1 ) {
-                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ insumos_general[insumo][i][j]+'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == insumos_general[insumo][0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ insumos_general[insumo][i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ insumos_general[insumo][i][j]+'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
-                  datos_dobleDat +=  '  <td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                  datos_doble +=  '  <td>'+ insumos_general[insumo][i][j] +'</td>';
+                  datos_dobleDat +=  '  <td>'+ insumos_general[insumo][i][j] +'</td>';
                 }
                }
 
@@ -564,7 +564,14 @@
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-            var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
+              
+               var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);  
+            }else{
+             var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser;
+            }
+            
+            //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             temporal.push(dato_formato);
           }
           individual.push(temporal);
@@ -739,7 +746,13 @@
           dato_formato =  data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }
         else {
-          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+          //dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+          if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null){
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser; 
+          }else{
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1); 
+          }
+          
         }
         temporal.push(dato_formato);
       }
