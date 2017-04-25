@@ -5,7 +5,7 @@ var es_cobertura =  false;
 
 //variables de url compartida
 var tipo = getParameterByName("tipo");
-var objetivo = getParameterByName("objetivo");;
+var objetivo = getParameterByName("objetivo")+'';
 var indicador_sel = getParameterByName("indicador_sel");;
 
 if(indicador_sel == ""){

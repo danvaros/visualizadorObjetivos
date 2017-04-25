@@ -727,7 +727,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           titulos(26);
           $('#indicadores').on('change',function(){
             $('#loader').show();
-            var indicador = $(this).val().split(".")[0];
+           // var indicador = $(this).val().split(".")[0];
             llamar_api();
             $('#grafica_c').show();
             $('#datos_descarga').show();//panel de datos de descarga
@@ -922,10 +922,6 @@ function carga_selectes(){
           break;
         }
       }
-    }
-    $('select').material_select();
-    if(true){
-      $("#obj_name").val('1.').trigger('change');
     }
 }
 
@@ -1483,6 +1479,7 @@ function busqueda_anio(cadena)
     }//fin de la función
  var arrray_anios = [];
     var anio_mas_actual;
+
     function put_anios(){
       var cadena='';
 
@@ -2251,16 +2248,34 @@ $(".exportXLS").on('click', function (event) {
 
 <script>
   function selects_aut(){
-
+//$('#loader').show();
+if(tipo == 1){
+ $('#seccion_mapa').hide();//panel de datos de descarga 
+}
+ 
   console.log('------------------ hacemos los chage --------------');
   $('#agregacion').val(tipo);
+
   carga_selectes_compartir(tipo);
-
+  
+  $("#obj_name").val(objetivo).trigger('change');
+  $("#indicadores").val(indicador_sel).trigger('change');
+  $('select').material_select(); 
   setTimeout(function(){  
-       $('#indicadores').val(indicador_sel).trigger('change');
-       $('select').material_select();
-    }, 3000);
+        // carga_selectes_compartir(tipo);
 
+        //$('#indicadores').val(indicador_sel);
+        //$('select').material_select();
+ 
+    }, 1000);
+
+/*
+console.log('test');
+  setTimeout(function(){  
+       
+       $('#indicadores').trigger('change');
+    }, 3000);
+*/
   // $("#obj_name").html('<option value="-1" disabled selected>Elige un objetivo</option>');
   // $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');
   // carga_selectes();
@@ -2289,8 +2304,9 @@ function compartir(){
 
 
      var textoTwitterGrafica = 'Comparto%20esta%20grafica';
-          var textoTwitterMapa    = 'Comparto%20este%20mapa';
-          var URLactual = window.location+'?tipo='+tipo+'&objetivo='+objetivo+'&indicador_sel='+indicador_sel;
+     var textoTwitterMapa    = 'Comparto%20este%20mapa';
+     var URLactual_arr = window.location + '';
+     var URLactual = URLactual_arr.split('?')[0] + '?tipo='+tipo+'&objetivo='+objetivo+'&indicador_sel='+indicador_sel;
           $('.liga').val(URLactual);
 
 
@@ -2312,13 +2328,15 @@ function compartir(){
 
 function carga_selectes_compartir(tipo){
   //borramos el select
+  $("#obj_name").html('<option value="-1" disabled selected>Elige un objetivo</option>');
+  $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');
   console.log('------------------------ nuevo ---------------------');
     for(var i=0; i<objeto.length;i++)
     {
       var bkr =  false;
       for (var j = 0; j < objeto[i].Meta.length; j++) {
         for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
-          if($('#agregacion').val() ==  1 ){
+          if(tipo ==  1 ){
             if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
               console.log('nacional '+ objeto[i].Meta[j].Indicador[k].TieneValores);
               $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
@@ -2339,12 +2357,34 @@ function carga_selectes_compartir(tipo){
         }
       }
     }
-    
-    if(true){
-      $("#obj_name").val('1.').trigger('change');
-      $('select').material_select();
-    }
   }
+
+
+function ind_change(indicador){
+   $('#loader').show();
+            var indicador = $(this).val().split(".")[0];
+            llamar_api();
+            $('#grafica_c').show();
+            $('#datos_descarga').show();//panel de datos de descarga
+
+            if($('#agregacion').val() != 1){
+              $('#datosNacional').hide( );
+              $('#datosEstatal').hide( );
+              $('#seccion_mapa').show();//panel de datos de descarga
+              put_anios();
+            }
+
+            actualiza_grafica();
+            //else{
+            //   // $('#headmap').show();
+            //   // $('#footmapdatos').show();
+            //   // $('#footmap').show();
+            //   // $('#map').show();
+            // }
+}
+
 </script> 
   </body>
 </html>
+
+
