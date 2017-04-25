@@ -100,6 +100,19 @@
       $('.Descrip_ind').html(Descrip_ind);
 
       titulos(PCveInd);
+
+
+      if(PCveInd ==  333 || PCveInd == 276){
+        $('#map').remove();    
+        $('#footmap').remove();
+        $('#grafs').remove();
+        $('#indicador-grafica').remove();
+        $('#indicador-panel').hide();
+        $('.ocultar').hide();
+        //datos a mostrar
+        $('#serie-panel2').show();
+      }
+
       $('#loader').delay(2000).fadeOut("slow");
     },
     async:false

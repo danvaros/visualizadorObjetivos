@@ -350,8 +350,6 @@
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top exportCSVDatos">Exportar datos para el cálculo</a>
 
       <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
-
-
         <div class="row" id="row_filtros_serie" style="display: none">
           <div class="col s2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
@@ -374,7 +372,7 @@
 <!--  -->
 
       <div class="row" id="botonera_nacional" style="display: none; ">
-        <div class="col s6">
+        <div class="col s6 ocultar">
           <a id="ver_grafica_nacional" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla_nacional()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
           <a id="ver_tabla_nacional" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica_nacional()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
         </div>
@@ -390,58 +388,50 @@
       </div>
 
 
-      <div id="mapas_hide">
-        <div class="row" id="row_filtros" style="display: none;">
-          <div class="col s2 " >
-            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
-          </div>
-          <div class="col s4 " >
-            <div class="input-field col s12 caja_s">
-              <select id="filtros_es">
-              </select>
-            </div>
+    <div id="mapas_hide">
+      <div class="row" id="row_filtros" style="display: none;">
+        <div class="col s2 " >
+          <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
+        </div>
+        <div class="col s4 " >
+          <div class="input-field col s12 caja_s">
+            <select id="filtros_es"></select>
           </div>
         </div>
-        <div class="row card tablaPadding">
+      </div>
+      <div class="row card tablaPadding ocultar">
         <div class="col s12">
           <div class="cuadro_titulo">
-              <h4>Razón de mortalidad materna</h4>
-              <li class="divider"></li>
-              <p>1990-2015</p>
-              <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
+            <h4>Razón de mortalidad materna</h4>
+            <li class="divider"></li>
+            <p>1990-2015</p>
+            <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
           </div>
           <div id="map"></div>
           <div id="chart2"></div>
-             <div class="pie_cuadro2">
-              <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
-              <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
-              <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+          <div class="pie_cuadro2">
+            <div>
+              <strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas
             </div>
-            <div class="col s4"  id="chart2btn">
-
-                  <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
-
-            </div>
-
+            <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
+            <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+          </div>
+          <div class="col s4"  id="chart2btn">
+            <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
+          </div>
           <div class="row" id="footmap">
-
-              <div id="anios" class="col s8 center-align">
-                <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
-                <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
-                <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
-                <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
-              </div>
-
+            <div id="anios" class="col s8 center-align">
+              <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
+              <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
+              <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
+              <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
+            </div>
             <div class="col s4" >
-
-                  <a style="margin-top: 42px; float: right;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
-
+              <a style="margin-top: 42px; float: right;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
             </div>
           </div>
         </div>
-        </div>
-
-
+      </div>
       <div class="row" id="grafs">
         <div class="col s10">
           <a id="ver_grafica" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
@@ -453,8 +443,23 @@
           <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
       </div>
+      <div class="row card tablaPadding scroller"  id="serie-panel2" style=" border-radius: 20px; display: none;">
+        <div class="row" id="row_filtros_serie2" style="display: none">
+          <div class="col s2 " >
+            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
+          </div>
+          <div class="col s4 " >
+            <div class="input-field col s12" style="margin-bottom:20px;">
+              <select id="filtros_serie2" style="display:block !important; background-color: #f2f2f2;"></select>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="serie_panel_tablas2"></div>
+      </div>
 
 
+
+    </div> <!-- fin del panel -->
 
 
       <div class="row card tablaPadding" id="indicador-panel" style="display:none">
@@ -538,15 +543,13 @@
               <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
             </div>
         </div>
+        <div class="row">
+          <div class="col s4 offset-s8 right-align" >
+            <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
+          </div>
+        </div>
       </div>
-    <div class="row">
-      <div class="col s4 offset-s8 right-align" >
-
-        <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
-
-      </div>
-    </div>
-  </div>
+  
 
   <!-- <div id="tabla_nacional" style="display: none;"><h1>Que tabla es la que se  mostrara la de una linea</h1></div> -->
 
@@ -1656,6 +1659,7 @@ $(document).ready(function(){
 
           //$('#datos-panel-dos').html(select_2+datos_doble_2);
           $('#serie_panel_tablas').html(datos_doble_2);
+          $('#serie_panel_tablas2').html(datos_doble_2);
 
 
           $('#tabla_export').html(datos_doble_2);
@@ -1718,6 +1722,20 @@ $(document).ready(function(){
 
                 if(arre.length > 17){
                  $('#miTabla2').DataTable( {
+                        scrollY:        "600px",
+                        scrollX:        true,
+                        scrollCollapse: true,
+                        paging:         false,
+                        aoColumnDefs: [
+                          { 'bSortable': false,
+                            'aTargets': arre }
+                        ],
+                        fixedColumns:   {
+                            leftColumns: 1
+                        }
+                    } );
+
+                  $('.miTabla2').DataTable( {
                         scrollY:        "600px",
                         scrollX:        true,
                         scrollCollapse: true,
