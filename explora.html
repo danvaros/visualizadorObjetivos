@@ -22,6 +22,70 @@
     <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
 
 <style media="screen">
+
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+  right:0;
+  bottom:15%;
+  position:absolute;
+}
+ #contact{
+   position: fixed;
+    right: 0;
+    bottom: 15%;
+    background:#EFD331;
+    color:#ffffff;
+    padding:5px 10px;
+    text-decoration:none;
+    z-index: 99999;
+ }
+
+ #contact img{
+   padding: 8px;
+   max-width: 64px;
+ }
+
+.disclaimer {
+  background-color:#FFFFFF;
+  cursor:default;
+  display:none;
+  margin-top: 0px;
+  position:fixed;
+  text-align:left;
+  width:394px;
+  z-index:50;
+  padding: 15px 25px;
+  right:84px;
+  bottom:15%;
+  position:fixed;
+  z-index: 99999;
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+
+.disclaimer p, .disclaimer.div {
+  margin: 8px 0;
+  padding-bottom: 8px;
+  font-family:'Helvetica';
+  font-weight:300;
+  text-align:justify;
+}
+
+.disclaimer h1{
+  font-size:30px;
+  font-family:'Helvetica';
+  font-weight:800;
+}
+
+
 svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   fill: #f00 !important;
 }
@@ -540,6 +604,15 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       <!-- <div class="footer-copyright light-blue">
       </div> -->
     </footer>
+
+
+    <div class="disclaimer pop">
+      <h1>Aviso</h1>
+      <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+    </div>
+
+    <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
+
 
 <!-- Modal Grafica -->
 <div id="modalGrafica" class="modal" >
@@ -2185,6 +2258,28 @@ var contaAnios = arrray_anios.length - 1;
 </script>
 <script type="text/javascript">
 $(document).ready(function () {
+
+  $("#contact").hover(
+   function() {
+     if($(this).hasClass('selected')) {
+       deselect($(this));
+     } else {
+       $(this).addClass('selected');
+       $('.pop').slideFadeToggle();
+     }
+     return false;
+   }, function() {
+     deselect($('#contact'));
+     return false;
+   }
+  );
+
+
+  $.fn.slideFadeToggle = function(easing, callback) {
+   return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+  };
+
+
 
 function exportTableToXLS($table1, filename1) {
 
