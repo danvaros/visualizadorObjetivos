@@ -522,7 +522,10 @@
 
       <nav id="normal">
         <div class="nav-wrapper">
-          <a href="index.html" id="imago" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="index.html" id="imago" class="brand-logo">
+            <!-- <img src="img/logo.png" alt="" /> -->
+            <img src="img/icono_header.svg" alt="" />
+          </a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_stick nab">
             <li class="tam t_sm"><a href="objetivos.html">Indicadores</a></li>
@@ -2038,7 +2041,7 @@ Comité Técnico Especializado de los ODS y Unidades del Estado responsables
     <div class="container">
       <div class="row" id="fot">
         <div class="col l3 s12">
-          <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
+          <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
           <br>
           <br>
           <div class="" style="display:inline;">
@@ -2137,7 +2140,7 @@ Comité Técnico Especializado de los ODS y Unidades del Estado responsables
                   preventPageScroll: true,
                   hoverDelay: 250,
                   activateOnHover:true,
-                  // anchorPattern: /(nb(\d)+(footnote|appendix))/gi
+                   anchorPattern: /(fn|footnote|note)[:\-_\d]/gi
                   //allowMultipleFN:true
               }
             );
@@ -2681,7 +2684,7 @@ Comité Técnico Especializado de los ODS y Unidades del Estado responsables
             }
             else {
               $("#imago img").animate({
-                width: "50%"
+                width: "30%"
               }, 1500);
             }
 
