@@ -22,6 +22,70 @@
 
       <style>
 
+      a.selected {
+        background-color:#1F75CC;
+        color:white;
+        z-index:100;
+        right:0;
+        bottom:15%;
+        position:absolute;
+      }
+       #contact{
+         position: fixed;
+          right: 0;
+          bottom: 15%;
+          background:#EFD331;
+          color:#ffffff;
+          padding:5px 10px;
+          text-decoration:none;
+          z-index: 99999;
+       }
+
+       #contact img{
+         padding: 8px;
+         max-width: 64px;
+       }
+
+      .disclaimer {
+        background-color:#FFFFFF;
+        cursor:default;
+        display:none;
+        margin-top: 0px;
+        position:fixed;
+        text-align:left;
+        width:394px;
+        z-index:50;
+        padding: 15px 25px;
+        right:84px;
+        bottom:15%;
+        position:fixed;
+        z-index: 99999;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 3px;
+        padding-left: 15px;
+        text-indent: -15px;
+      }
+
+
+      .disclaimer p, .disclaimer.div {
+        margin: 8px 0;
+        padding-bottom: 8px;
+        font-family:'Helvetica';
+        font-weight:300;
+        text-align:justify;
+      }
+
+      .disclaimer h1{
+        font-size:30px;
+        font-family:'Helvetica';
+        font-weight:800;
+      }
+
+
+
       .owl-carousel{
         padding-left:5px;
       }
@@ -570,7 +634,7 @@
                 <div class="col s2">
                       <p class="fuerte t_normal">Grafica</p>
                 </div> -->
-                <div class="col s2">
+                <div class="col s4">
               				<p class="fuerte t_normal" >Institución</p>
     		  			</div>
                 <div class="col s3">
@@ -590,10 +654,10 @@
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div> -->
-                <div class="col s2">
+                <div class="col s4">
               				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
-                <div class="col s6" style="margin-top: 10px;">
+                <div class="col s3" style="margin-top: 10px;">
                       <a class="icn exportCSV">CSV</a>
                       <!-- <a download="indicador.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a> -->
                       <!-- <a download="indid.csv" href="#" class="icns" onclick="return ExcellentExport.csv(this, 'tabla_export');">csv2</a> -->
@@ -672,6 +736,12 @@
     </footer>
 <!-- footer -->
 
+<div class="disclaimer pop">
+  <h1>Aviso</h1>
+  <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+</div>
+
+<a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
 
 
 <!-- Modal Grafica -->
@@ -908,7 +978,7 @@
   {
     //$('.modal').modal();
     $('.modal-trigger').leanModal();
-    
+
     var textoTwitterGrafica = 'Comparto esta grafica';
     var textoTwitterMapa    = 'Comparto este mapa';
     var URLactual = window.location;
@@ -1138,7 +1208,7 @@ for (var i = 0; i < nuevos_estados_dobles.length; i++) {
 
 }
 
-  console.log(series);
+  console.log("--->>>>las series",series);
   console.log(categories);
   cat_global = categories;
   chartBarras.load({
@@ -1161,7 +1231,7 @@ function sortFunction(a, b) {
         return 0;
     }
     else {
-        return (a.numero < b.numero) ? -1 : 1;
+        return (a.numero > b.numero) ? -1 : 1;
     }
 }
 
@@ -1172,6 +1242,7 @@ function sortFunction(a, b) {
 
   function gen(props)
   {
+    console.log("los props son",props);
     var chart = c3.generate({
         bindto: '.info',
         padding: {
@@ -1180,19 +1251,19 @@ function sortFunction(a, b) {
               right: 10
           },
           data: {
-              x: 'x',
+              x: 'Entidad',
           columns: [
-            ['x','2016-01-01','2015-01-01','2014-01-01','2013-01-01','2012-01-01','2011-01-01','2010-01-01','2009-01-01','2008-01-01','2007-01-01','2006-01-01','2005-01-01','2004-01-01','2003-01-01','2002-01-01','2001-01-01','2000-01-01','1999-01-01','1998-01-01','1997-01-01','1996-01-01','1995-01-01','1994-01-01','1993-01-01','1992-01-01','1991-01-01','1990-01-01'],
+            estados[0],
               props,
               busqueda_mexico()
             ]
           },
         tooltip: {
-          // format: {
-          //     value: function(value) {
-          //         return d3.format(",.2f")(value)
-          //     }
-          // }
+          format: {
+              value: function(value) {
+                  return d3.format(",.2f")(value)
+              }
+          }
         },
           axis: {
               x: {
@@ -1334,6 +1405,7 @@ function sortFunction(a, b) {
   		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
+          console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
           gen(estados[busqueda_indice(props.nom_ent)]);
           $(".crop").dotdotdot();
   	     }
@@ -1525,12 +1597,13 @@ $(document).ready(function(){
 });
 </script> -->
   <script type="text/javascript">
-
+  var flag_valor_nd=false;
+  var arreglo_valor_nd=[];
     $(document).ready(function(){
 
           $('#indicador-panel').hide();
           //$('.modal-trigger').leanModal();
-  
+          console.log("---->>>>>estados tabla",estados);
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
           var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
@@ -1602,7 +1675,17 @@ $(document).ready(function(){
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == estados[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    var varia;
+                  if(estados[i][j] == "ND" || estados[i][j] == "NA")
+                  {
+                    flag_valor_nd=true;
+                    if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+                      arreglo_valor_nd.push(estados[i][j]);
+                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+                  }
+                  else {
+                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
                   // datos_doble += varia;
                   datos_doble_2 += varia;
                   datos_doble_22 += varia;
@@ -1610,15 +1693,37 @@ $(document).ready(function(){
                 }
                 else if(j == estados[0].length -2){
                     // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    if(estados[i][j] == "ND" || estados[i][j] == "NA")
+                    {
+                      flag_valor_nd=true;
+                      if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+                        arreglo_valor_nd.push(estados[i][j]);
+                      datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                      datos_doble_22 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                      datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+                    }
+                    else {
+                      datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    }
                 }
                 else{
                   // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  if(estados[i][j] == "ND" || estados[i][j] == "NA")
+                  {
+                    flag_valor_nd=true;
+                    if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+                      arreglo_valor_nd.push(estados[i][j]);
+                    datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
+                    datos_doble_22 +=  '  <td>'+ estados[i][j] +'</td>';
+                    datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
+                  }
+                  else {
+                    datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                  }
                 }
                }
 
@@ -1637,22 +1742,48 @@ $(document).ready(function(){
                }
              }
 
+            console.log("bandera",flag_valor_nd,arreglo_valor_nd);
 
+            if(flag_valor_nd)
+            {
+              var mensaje_nd='';
+              for(var i=0;i<arreglo_valor_nd.length;i++)
+              {
+                if(arreglo_valor_nd[i]=='ND')
+                {
+                  mensaje_nd=mensaje_nd+'<div><strong>ND:</strong> No disponible</div>';
+                }
+                if(arreglo_valor_nd[i]=='NA')
+                {
+                  mensaje_nd=mensaje_nd+'<div><strong>NA:</strong> No aplicable</div>';
+                }
+              }
+              console.log("mensaje",mensaje_nd);
+              datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
+               '</div></div>';
 
-            datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
-             '</div></div>';
+               datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+               ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
+                '</div></div>';
 
-             datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-             ' <div class="pie_cuadro2">'+ pie +
-              '</div></div>';
+              datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
+               '</div></div>';
+            }
+            else {
+              datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
 
-            datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
-             '</div></div>';
+               datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+               ' <div class="pie_cuadro2">'+ pie +
+                '</div></div>';
 
-
-
+              datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+              ' <div class="pie_cuadro2">'+ pie +
+               '</div></div>';
+            }
 
           //$('#datos-panel-dos').html(select_2+datos_doble_2);
           $('#serie_panel_tablas').html(datos_doble_2);
@@ -2016,6 +2147,7 @@ var contaAnios = arrray_anios.length - 1;
           this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
+        console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
         gen(estados[busqueda_indice(props.nom_ent)]);
         $(".crop").dotdotdot();
        }
@@ -2394,6 +2526,27 @@ var contaAnios = arrray_anios.length - 1;
 </script>
 <script type="text/javascript">
 $(document).ready(function () {
+
+
+  $("#contact").hover(
+   function() {
+     if($(this).hasClass('selected')) {
+       deselect($(this));
+     } else {
+       $(this).addClass('selected');
+       $('.pop').slideFadeToggle();
+     }
+     return false;
+   }, function() {
+     deselect($('#contact'));
+     return false;
+   }
+ );
+
+
+ $.fn.slideFadeToggle = function(easing, callback) {
+   return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+ };
 
 function exportTableToXLS($table1, filename1) {
 
