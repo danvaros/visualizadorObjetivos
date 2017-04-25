@@ -1,6 +1,29 @@
 var estados = [];
+var clave_ser = '';
+var claveInd_ser = '';
 var es_cobertura =  false;
-getIndicador(26,87);
+
+//variables de url compartida
+var tipo = getParameterByName("tipo");
+var objetivo = getParameterByName("objetivo");;
+var indicador_sel = getParameterByName("indicador_sel");;
+
+if(indicador_sel == ""){
+  console.log('vacio llamada normal');
+  getIndicador(26,87);    
+}else{
+  console.log('la otra llamada');
+  //getIndicador(indicador,serie);  
+  getIndicador(26,87);  
+  setTimeout(function(){ selects_aut(); }, 1000);  
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 function getInd(indicador){
   estados = [];
@@ -12,6 +35,10 @@ function getInd(indicador){
     success: function( data, textStatus, jqxhr ) {
       console.log('-------------------- valorDato ----------------');
       console.log(data.Series[0].Coberturas[0].ValorDato);
+      clave_ser       = data.Series[0].Clave_ser;
+      claveInd_ser    = data.ClaveInd_ser;
+
+
       if(data.Series[0].Coberturas[0].ValorDato != 0){
         valorDato(data);
       }else{
@@ -19,8 +46,8 @@ function getInd(indicador){
         estados = arma_tabla(0);
         poner_filtros();
       }
-
-      console.log("ya termino las llamadas");
+      console.log("------------------------ ya termino las llamadas --------------------");
+      compartir();
       $('#loader').delay(2000).fadeOut("slow");
     },
     async:false
@@ -28,10 +55,6 @@ function getInd(indicador){
 }
 
 function valorDato(data){
-  //alert( "Exito" );
-  console.log('------------------------------------- datos que trae  --------------------');
-  console.log(data);
-
   var temporal = [];
   temporal.push('Entidad');
   for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
@@ -109,6 +132,9 @@ function getIndicador(indicador,ser){
 			console.log(data.Series[0].Coberturas);
 			console.log(data.Series[0].Coberturas.length);
 
+      clave_ser       = data.Series[0].Clave_ser;
+      claveInd_ser    = data.ClaveInd_ser;
+
       if(data.Series[0].Coberturas.length  < 32 )
       {
         //alert("La llamada no contiene valores para todos los estados");
@@ -155,7 +181,7 @@ function getIndicador(indicador,ser){
 
 function arma_tabla(num_cobertura){
   var cobertura_tabla = [];
-  console.log('------------------------ probando funcion  -------------------');
+  console.log('------------------------ probando function  -------------------');
   console.log(anios_cob);
   console.log(arreglo_datos[num_cobertura]);
 
@@ -166,3 +192,4 @@ function arma_tabla(num_cobertura){
 
   return cobertura_tabla;
 }
+
