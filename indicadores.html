@@ -2531,7 +2531,11 @@ var contaAnios = arrray_anios.length - 1;
 <script type="text/javascript">
 $(document).ready(function () {
 
-
+  function deselect(e) {
+    $('.pop').slideFadeToggle(function() {
+      e.removeClass('selected');
+    });
+  }
   $("#contact").hover(
    function() {
      if($(this).hasClass('selected')) {
