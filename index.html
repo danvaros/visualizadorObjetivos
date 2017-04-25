@@ -43,6 +43,70 @@
       //});
   </script>
   <style media="screen">
+
+  a.selected {
+    background-color:#1F75CC;
+    color:white;
+    z-index:100;
+    right:0;
+    bottom:15%;
+    position:absolute;
+  }
+   #contact{
+     position: absolute;
+      right: 0;
+      bottom: 15%;
+      background:#EFD331;
+      color:#ffffff;
+      padding:5px 10px;
+      text-decoration:none;
+      z-index: 99999;
+   }
+
+   #contact img{
+     padding: 8px;
+     max-width: 64px;
+   }
+
+  .disclaimer {
+    background-color:#FFFFFF;
+    cursor:default;
+    display:none;
+    margin-top: 0px;
+    text-align:left;
+    width:394px;
+    z-index:50;
+    padding: 15px 25px;
+    right:84px;
+    bottom:15%;
+    position:absolute;
+    z-index: 99999;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 3px;
+    padding-left: 15px;
+    text-indent: -15px;
+  }
+
+
+  .disclaimer p, .disclaimer.div {
+    margin: 8px 0;
+    padding-bottom: 8px;
+    font-family:'Helvetica';
+    font-weight:300;
+    text-align:justify;
+  }
+
+  .disclaimer h1{
+    font-size:30px;
+    font-family:'Helvetica';
+    font-weight:800;
+  }
+
+
+
     #loader {
       display: block;
       background: rgba(62, 60, 60, 0.6);
@@ -149,10 +213,79 @@
       fill: rgb(226, 204, 6);
     }
 
+    .bullets-container{
+      top:50%;
+    }
+
     @media only screen and (max-width: 1555px) {
         .bullets-container{
           display: none;
         }
+}
+@media only screen and (max-width:460px){
+        a.selected {
+          background-color:#1F75CC;
+          color:white;
+          z-index:100;
+          right:0;
+          bottom:15%;
+          position:absolute;
+        }
+         #contact{
+           position: absolute;
+            right: 0;
+            bottom: 15%;
+            background:#EFD331;
+            color:#ffffff;
+            padding:5px 10px;
+            text-decoration:none;
+            z-index: 99999;
+         }
+
+         #contact img{
+           padding: 8px;
+           max-width: 35px;
+         }
+
+        .disclaimer {
+          background-color:#FFFFFF;
+          cursor:default;
+          display:none;
+          margin-top: 0px;
+          text-align:left;
+          width:70%;
+          z-index:50;
+          padding: 15px 25px;
+          right:55px;
+          bottom:15%;
+          position:absolute;
+          z-index: 99999;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 3px;
+          padding-left: 15px;
+          text-indent: -15px;
+        }
+
+
+        .disclaimer p, .disclaimer.div {
+          margin: 8px 0;
+          padding-bottom: 8px;
+          font-family:'Helvetica';
+          font-weight:300;
+          text-align:justify;
+        }
+
+        .disclaimer h1{
+          font-size:20px;
+          font-family:'Helvetica';
+          font-weight:800;
+        }
+
+
+
     }
   </style>
 
@@ -252,11 +385,11 @@
         <div class="fondo">
           <nav class="trans sin_sombra">
             <div class="nav-wrapper">
-              <ul id="nav-mobile2" class="right hide-on-med-and-down">
+              <!-- <ul id="nav-mobile2" class="right hide-on-med-and-down">
                 <li><a id="esp" class="t_sm" href="#!">ESP</a></li>
                 <span class="claro left">/</span>
                 <li><a id="ing" class="t_sm" href="#!">ENG</a></li>
-              </ul>
+              </ul> -->
             </div>
           </nav>
           <div class="head_cont">
@@ -273,9 +406,9 @@
               <div class="col s6 left-align pad_l">
                 <a href="http://www.inegi.org.mx" target="_blank"><img class="logo2" src="img/logoINEGI.png" alt="" /></a>
               </div>
-              <div class="raton">
+              <!-- <div class="raton">
                 <div class='icon-scroll'></div>
-              </div>
+              </div> -->
               <!--
               <div class="col s12 marg_top">
                 <a class="claro t_sm modal-trigger" href="#modal1">VER VIDEO</a>
@@ -303,11 +436,11 @@
             <li class="tam t_sm"><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a href="compara.html">Compara</a></li> -->
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;"
                 onfocusout="esconder()" />
-            </li>
+            </li> -->
             <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
@@ -1674,7 +1807,7 @@ border-bottom-right-radius: 15px;
           <ul class="fuerte">
             <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
-            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li> -->
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
           </ul>
         </div>
@@ -1687,6 +1820,14 @@ border-bottom-right-radius: 15px;
     <div class="footer-copyright light-blue">
     </div>
   </footer>
+
+  <div class="disclaimer pop">
+    <h1>Aviso</h1>
+    <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+</div>
+
+<a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
+
 
   <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
   <!-- <script type="text/javascript" src="entidad.json"></script> -->
@@ -1812,7 +1953,7 @@ border-bottom-right-radius: 15px;
                                     props,
                                     busqueda_mexico(),
                                   ]
-                                },   
+                                },
                                 tooltip: {
                                   format: {
                                       value: function(value) {
@@ -2346,6 +2487,36 @@ border-bottom-right-radius: 15px;
         console.log($(document).height());
         console.log($(window).height());
       });
+
+      function deselect(e) {
+        $('.pop').slideFadeToggle(function() {
+          e.removeClass('selected');
+        });
+      }
+
+
+       $("#contact").hover(
+        function() {
+          if($(this).hasClass('selected')) {
+            deselect($(this));
+          } else {
+            $(this).addClass('selected');
+            $('.pop').slideFadeToggle();
+          }
+          return false;
+        }, function() {
+          deselect($('#contact'));
+          return false;
+        }
+      );
+
+
+      $.fn.slideFadeToggle = function(easing, callback) {
+        return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+      };
+
+
+
 
     });
   </script>

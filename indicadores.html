@@ -22,6 +22,69 @@
 
       <style>
 
+      a.selected {
+        background-color:#1F75CC;
+        color:white;
+        z-index:100;
+        right:0;
+        bottom:15%;
+        position:absolute;
+      }
+       #contact{
+         position: absolute;
+          right: 0;
+          bottom: 15%;
+          background:#EFD331;
+          color:#ffffff;
+          padding:5px 10px;
+          text-decoration:none;
+          z-index: 99999;
+       }
+
+       #contact img{
+         padding: 8px;
+         max-width: 64px;
+       }
+
+      .disclaimer {
+        background-color:#FFFFFF;
+        cursor:default;
+        display:none;
+        margin-top: 0px;
+        position:absolute;
+        text-align:left;
+        width:394px;
+        z-index:50;
+        padding: 15px 25px;
+        right:84px;
+        bottom:15%;
+        z-index: 99999;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 3px;
+        padding-left: 15px;
+        text-indent: -15px;
+      }
+
+
+      .disclaimer p, .disclaimer.div {
+        margin: 8px 0;
+        padding-bottom: 8px;
+        font-family:'Helvetica';
+        font-weight:300;
+        text-align:justify;
+      }
+
+      .disclaimer h1{
+        font-size:30px;
+        font-family:'Helvetica';
+        font-weight:800;
+      }
+
+
+
       .owl-carousel{
         padding-left:5px;
       }
@@ -244,10 +307,10 @@
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;"   onfocusout="esconder()" />
-            </li>
+            </li> -->
               <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
@@ -570,7 +633,7 @@
                 <div class="col s2">
                       <p class="fuerte t_normal">Grafica</p>
                 </div> -->
-                <div class="col s2">
+                <div class="col s4">
               				<p class="fuerte t_normal" >Institución</p>
     		  			</div>
                 <div class="col s3">
@@ -590,10 +653,10 @@
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div> -->
-                <div class="col s2">
+                <div class="col s4">
               				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
-                <div class="col s6" style="margin-top: 10px;">
+                <div class="col s3" style="margin-top: 10px;">
                       <a class="icn exportCSV">CSV</a>
                       <!-- <a download="indicador.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a> -->
                       <!-- <a download="indid.csv" href="#" class="icns" onclick="return ExcellentExport.csv(this, 'tabla_export');">csv2</a> -->
@@ -672,6 +735,12 @@
     </footer>
 <!-- footer -->
 
+<div class="disclaimer pop">
+  <h1>Aviso</h1>
+  <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+</div>
+
+<a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
 
 
 <!-- Modal Grafica -->
@@ -2456,6 +2525,27 @@ var contaAnios = arrray_anios.length - 1;
 </script>
 <script type="text/javascript">
 $(document).ready(function () {
+
+
+  $("#contact").hover(
+   function() {
+     if($(this).hasClass('selected')) {
+       deselect($(this));
+     } else {
+       $(this).addClass('selected');
+       $('.pop').slideFadeToggle();
+     }
+     return false;
+   }, function() {
+     deselect($('#contact'));
+     return false;
+   }
+ );
+
+
+ $.fn.slideFadeToggle = function(easing, callback) {
+   return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+ };
 
 function exportTableToXLS($table1, filename1) {
 

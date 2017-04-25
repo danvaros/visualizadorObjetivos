@@ -22,6 +22,69 @@
     <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
 
 <style media="screen">
+
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+  right:0;
+  bottom:15%;
+  position:absolute;
+}
+ #contact{
+   position: absolute;
+    right: 0;
+    bottom: 15%;
+    background:#EFD331;
+    color:#ffffff;
+    padding:5px 10px;
+    text-decoration:none;
+    z-index: 99999;
+ }
+
+ #contact img{
+   padding: 8px;
+   max-width: 64px;
+ }
+
+.disclaimer {
+  background-color:#FFFFFF;
+  cursor:default;
+  display:none;
+  margin-top: 0px;
+  position:absolute;
+  text-align:left;
+  width:394px;
+  z-index:50;
+  padding: 15px 25px;
+  right:84px;
+  bottom:15%;
+  z-index: 99999;
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+
+.disclaimer p, .disclaimer.div {
+  margin: 8px 0;
+  padding-bottom: 8px;
+  font-family:'Helvetica';
+  font-weight:300;
+  text-align:justify;
+}
+
+.disclaimer h1{
+  font-size:30px;
+  font-family:'Helvetica';
+  font-weight:800;
+}
+
+
 svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   fill: #f00 !important;
 }
@@ -185,10 +248,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
-            </li>
+            </li> -->
               <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
@@ -381,7 +444,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
 
-      <div id="datosEstatal" style="display:none;">
+    <!--   <div id="datosEstatal" style="display:none;">
         <div class="row scrollable-section" data-section-title="Tablas" >
           <div class="col s12">
             <h3 class="fuerte t_principal">Top 3 estados</h3>
@@ -431,7 +494,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             <h4 class="fuerte t_principal"><strong>13.1</strong></h4>
           </div>
         </div>
-      </div>
+      </div> -->
 
   <!--     <div id="datosNacional">
         <div class="row">
@@ -464,25 +527,25 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <div class="row">
           	<div class="col s10 offset-s1">
           		<div class="row">
-          			<div class="col s6">
+          			<div class="col s4">
           				<p class="fuerte t_normal">Nombre</p>
 		  			    </div>
-    		  			<div class="col s2">
+    		  			<div class="col s4">
               				<p class="fuerte t_normal" >Institución</p>
     		  			</div>
-    		  			<div class="col s4">
+    		  			<div class="col s3">
               				<p class="fuerte t_normal">Formato</p>
     		  			</div>
     		  			<div class="col s12">
               				<li class="divider griss"></li>
     		  			</div>
-    		  			<div class="col s6">
+    		  			<div class="col s4">
               				<p class="gris t_sm" id="da_indicador">Razón de mortalidad materna</p>
     		  			</div>
-    		  			<div class="col s2">
+    		  			<div class="col s4">
               				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
-    		  			<div class="col s4" style="margin-top: 10px;">
+    		  			<div class="col s3" style="margin-top: 10px;">
               				<a class="icn  exportCSV">CSV</a>
                       <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
                       <!-- <a class="icns">XLS</a> -->
@@ -500,7 +563,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     </div>
 
 <div id="tabla_export" style="display: none;"></div>
-
 
     <footer class="page-footer id">
       <div class="container">
@@ -541,6 +603,15 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       </div> -->
     </footer>
 
+
+    <div class="disclaimer pop">
+      <h1>Aviso</h1>
+      <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+    </div>
+
+    <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
+
+
 <!-- Modal Grafica -->
 <div id="modalGrafica" class="modal" >
   <div class="modal-content">
@@ -548,18 +619,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <div class="row">
       <b>Redes Sociales</b>
       <ul class="cuadrosSocial">
-        <li>
-          <!-- <a id="share_grafica" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a>
-          -->
-                    <a class="twitter-share-button waves-effect"
-  href="https://twitter.com/share"
-  data-size="large"
-  data-text="custom share text"
-  data-url="https://dev.twitter.com/web/tweet-button"
-  data-hashtags="example,demo"
-  data-via="twitterdev"
-  data-related="twitterapi,twitter"><i class="fa fa-twitter fa-lg"></i></a>
-        </li>
+
+        <li id="share_tw_grafica"></li>
         <li>
            <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
         </li>
@@ -588,7 +649,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
      </div>
     </div> -->
     <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
     </div>
   </div>
 </div>
@@ -600,18 +661,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <div class="row">
       <b>Redes Sociales</b>
       <ul class="cuadrosSocial">
-        <li>
-          <!-- <a id="share_mapa" class="waves-effect" href=""><i class="fa fa-twitter fa-lg"></i></a> -->
-
-                    <a class="twitter-share-button waves-effect"
-  href="https://twitter.com/share"
-  data-size="large"
-  data-text="custom share text"
-  data-url="https://dev.twitter.com/web/tweet-button"
-  data-hashtags="example,demo"
-  data-via="twitterdev"
-  data-related="twitterapi,twitter"><i class="fa fa-twitter fa-lg"></i></a>
-        </li>
+        <li id="share_tw_mapa"></li>
         <li>
             <a class="waves-effect" href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u='+ window.location ,'ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="fa fa-facebook fa-lg" style="padding-left: 4px;"></i></a>
         </li>
@@ -639,7 +689,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
      </div>
     </div> -->
     <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
     </div>
   </div>
 </div>
@@ -665,7 +715,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     <script type="text/javascript" src="entidad2.json"></script>
     <!-- <script type="text/javascript" src="estados_indicador3.js"></script> -->
     <script type="text/javascript" src="variable.js"></script>
-    <script type="text/javascript" src="appExplora.js"></script>
     <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script>
     <script src="lib/excellentexport.js"></script>
@@ -683,6 +732,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script src='funcionesApi.js'></script>
   <script src="lib/jquery.dotdotdot.js"></script>
   <script src="cobertura.js"></script>
+  <script type="text/javascript" src="appExplora.js"></script>
   <script type="text/javascript">
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
@@ -692,17 +742,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
           // $('.modal').modal();
           $('.modal-trigger').leanModal();
-          var textoTwitterGrafica = 'Comparto esta grafica';
-          var textoTwitterMapa    = 'Comparto este mapa';
-          var URLactual = window.location;
-          $('.liga').val(URLactual);
-
-          var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
-          var urlTwitterGrafica = 'https://twitter.com/intent/tweet?text='+textoTwitterGrafica+';url='+URLactual;
-
-          $('#share_grafica').attr('href',urlTwitterGrafica);
-          $('#share_mapa').attr('href',urlTwitterMapa);
-
+             
+          compartir();
 
 
           $('#show_grafica').hide();
@@ -753,14 +794,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                 }
               }
             }
-            $('select').material_select();
+             $('select').material_select();
           });
-
 
           titulos(26);
           $('#indicadores').on('change',function(){
             $('#loader').show();
-            var indicador = $(this).val().split(".")[0];
+           // var indicador = $(this).val().split(".")[0];
             llamar_api();
             $('#grafica_c').show();
             $('#datos_descarga').show();//panel de datos de descarga
@@ -878,7 +918,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         $('#seccion_mapa').hide();//panel de datos de descarga
         $('#grafica_c').hide();
         $('#datosEstatal').hide();
-        $('#row_filtros').hide();
+       // $('#row_filtros').hide();
 
 
         // $('#headmap').hide();
@@ -920,45 +960,45 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
         //$('select').material_select();
         //cargamos los selects correspondientes
+
         carga_selectes();
       });
 
 
   });// fin segundo document ready
 
-
-      function carga_selectes()
-      {
-        //borramos el select
-        console.log('------------------------ nuevo ---------------------');
-          for(var i=0;i<objeto.length;i++)
-          {
-            var bkr =  false;
-            for (var j = 0; j < objeto[i].Meta.length; j++) {
-              for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
-                if($('#agregacion').val() ==  1 ){
-                  if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
-                    console.log('nacional '+ objeto[i].Meta[j].Indicador[k].TieneValores);
-                    $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
-                    bkr =  true;
-                    break;
-                  }
-                }else{
-                  if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NE'  || $.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NEE'){
-                    console.log('estatal '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
-                    $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
-                    bkr =  true;
-                    break;
-                  }
-                }
-              }
-              if(bkr){
-                break;
-              }
+function carga_selectes(){
+  //borramos el select
+  console.log('------------------------ nuevo ---------------------');
+    for(var i=0; i<objeto.length;i++)
+    {
+      var bkr =  false;
+      for (var j = 0; j < objeto[i].Meta.length; j++) {
+        for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
+          if($('#agregacion').val() ==  1 ){
+            if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
+              console.log('nacional '+ objeto[i].Meta[j].Indicador[k].TieneValores);
+              $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+              bkr =  true;
+              break;
+            }
+          }else{
+            if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NE'  || $.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NEE'){
+              console.log('estatal '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
+              $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+              bkr =  true;
+              break;
             }
           }
-          $('select').material_select();
+        }
+        if(bkr){
+          break;
+        }
       }
+    }
+     $('select').material_select(); 
+}
+
 
 	  function commaSeparateNumber(x){var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");}
     console.log("@@@@-----",estados);
@@ -1516,6 +1556,7 @@ function busqueda_anio(cadena)
     }//fin de la función
  var arrray_anios = [];
     var anio_mas_actual;
+
     function put_anios(){
       var cadena='';
 
@@ -1594,7 +1635,7 @@ var contaAnios = arrray_anios.length - 1;
       for (var i = 0; i < arreglo_cla.length; i++) {
         $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
       }
-      $('#row_filtros').show();
+      //$('#row_filtros').show();
       $('select').material_select();
     }
 
@@ -2186,6 +2227,28 @@ var contaAnios = arrray_anios.length - 1;
 <script type="text/javascript">
 $(document).ready(function () {
 
+  $("#contact").hover(
+   function() {
+     if($(this).hasClass('selected')) {
+       deselect($(this));
+     } else {
+       $(this).addClass('selected');
+       $('.pop').slideFadeToggle();
+     }
+     return false;
+   }, function() {
+     deselect($('#contact'));
+     return false;
+   }
+  );
+
+
+  $.fn.slideFadeToggle = function(easing, callback) {
+   return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+  };
+
+
+
 function exportTableToXLS($table1, filename1) {
 
     var $rows1 = $table1.find('tr:has(td)'),
@@ -2280,5 +2343,147 @@ $(".exportXLS").on('click', function (event) {
 
 
 </script>
+
+
+<script>
+  function selects_aut(){
+//$('#loader').show();
+if(tipo == 1){
+ $('#seccion_mapa').hide();//panel de datos de descarga 
+}
+ 
+  console.log('------------------ hacemos los chage --------------');
+  $('#agregacion').val(tipo);
+
+  carga_selectes_compartir(tipo);
+  
+  $("#obj_name").val(objetivo).trigger('change');
+  $("#indicadores").val(indicador_sel).trigger('change');
+  $('select').material_select(); 
+  setTimeout(function(){  
+        // carga_selectes_compartir(tipo);
+
+        //$('#indicadores').val(indicador_sel);
+        //$('select').material_select();
+ 
+    }, 1000);
+
+/*
+console.log('test');
+  setTimeout(function(){  
+       
+       $('#indicadores').trigger('change');
+    }, 3000);
+*/
+  // $("#obj_name").html('<option value="-1" disabled selected>Elige un objetivo</option>');
+  // $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');
+  // carga_selectes();
+   
+  //$('#obj_name').val(objetivo); 
+  // $('select').material_select();
+  // setTimeout(function(){  
+  //     alert("Hello"); 
+     
+       
+  //   }, 3000);
+ 
+  // setTimeout(function(){ 
+  //   alert("Hello");  
+  //   //$('#indicadores').val(indicador_sel).trigger('change');
+  // }, 3000);
+ 
+
+ $('select').material_select();
+}
+
+function compartir(){
+  var tipo = $('#agregacion').val();
+  var objetivo = $('#obj_name').val();
+  var indicador_sel = $('#indicadores').val();
+
+
+     var textoTwitterGrafica = 'Comparto%20esta%20grafica';
+     var textoTwitterMapa    = 'Comparto%20este%20mapa';
+     var URLactual_arr = window.location + '';
+     var URLactual = URLactual_arr.split('?')[0] + '?tipo='+tipo+'&objetivo='+objetivo+'&indicador_sel='+indicador_sel;
+          $('.liga').val(URLactual);
+
+
+  console.log('------------------ empezamos con la validacion por que parece que hay pedo-----------------');
+    var urlTwitterMapa  = 'http://twitter.com/share?text='+textoTwitterMapa+'&amp;url='+URLactual+'&amp;hashtags=stackoverflow,example,youssefusf';
+    console.log('url mapa : '+urlTwitterMapa);
+
+    var urlTwitterGrafica = 'http://twitter.com/share?text='+textoTwitterGrafica+'&amp;url='+URLactual+'&amp;hashtags=stackoverflow,example,youssefusf';
+    console.log('url grafica : '+urlTwitterGrafica);
+    
+    var cadena = '<a class="waves-effect" id="share_mapa" href="'+urlTwitterMapa+'"><i class="fa fa-twitter fa-lg"></i></a>';
+    $('#share_tw_mapa').html(cadena);
+
+    cadena = '<a class="waves-effect" id="share_mapa" href="'+urlTwitterGrafica+'"><i class="fa fa-twitter fa-lg"></i></a>';
+    $('#share_tw_grafica').html(cadena);
+
+    console.log('----------- en teoria deberia poner los enlaces ya ---------------');
+}
+
+function carga_selectes_compartir(tipo){
+  //borramos el select
+  $("#obj_name").html('<option value="-1" disabled selected>Elige un objetivo</option>');
+  $("#indicadores").html('<option value="-1" disabled selected>Elige un indicador</option>');
+  console.log('------------------------ nuevo ---------------------');
+    for(var i=0; i<objeto.length;i++)
+    {
+      var bkr =  false;
+      for (var j = 0; j < objeto[i].Meta.length; j++) {
+        for (var k = 0; k < objeto[i].Meta[j].Indicador.length; k++) {
+          if(tipo ==  1 ){
+            if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'N'){
+              console.log('nacional '+ objeto[i].Meta[j].Indicador[k].TieneValores);
+              $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+              bkr =  true;
+              break;
+            }
+          }else{
+            if($.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NE'  || $.trim(objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg) == 'NEE'){
+              console.log('estatal '+ k + objeto[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
+              $("#obj_name").append('<option value="'+objeto[i].Codigo_des+'">'+objeto[i].Abrevia_des+'</option>');
+              bkr =  true;
+              break;
+            }
+          }
+        }
+        if(bkr){
+          break;
+        }
+      }
+    }
+  }
+
+
+function ind_change(indicador){
+   $('#loader').show();
+            var indicador = $(this).val().split(".")[0];
+            llamar_api();
+            $('#grafica_c').show();
+            $('#datos_descarga').show();//panel de datos de descarga
+
+            if($('#agregacion').val() != 1){
+              $('#datosNacional').hide( );
+              $('#datosEstatal').hide( );
+              $('#seccion_mapa').show();//panel de datos de descarga
+              put_anios();
+            }
+
+            actualiza_grafica();
+            //else{
+            //   // $('#headmap').show();
+            //   // $('#footmapdatos').show();
+            //   // $('#footmap').show();
+            //   // $('#map').show();
+            // }
+}
+
+</script> 
   </body>
 </html>
+
+

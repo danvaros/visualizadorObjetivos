@@ -11,6 +11,68 @@
     <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
     <style media="screen">
+
+    a.selected {
+      background-color:#1F75CC;
+      color:white;
+      z-index:100;
+      right:0;
+      bottom:15%;
+      position:absolute;
+    }
+     #contact{
+       position: absolute;
+        right: 0;
+        bottom: 15%;
+        background:#EFD331;
+        color:#ffffff;
+        padding:5px 10px;
+        text-decoration:none;
+        z-index: 99999;
+     }
+
+     #contact img{
+       padding: 8px;
+       max-width: 64px;
+     }
+
+    .disclaimer {
+      background-color:#FFFFFF;
+      cursor:default;
+      display:none;
+      margin-top: 0px;
+      position:absolute;
+      text-align:left;
+      width:394px;
+      z-index:50;
+      padding: 15px 25px;
+      right:84px;
+      bottom:15%;
+      z-index: 99999;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 3px;
+      padding-left: 15px;
+      text-indent: -15px;
+    }
+
+
+    .disclaimer p, .disclaimer.div {
+      margin: 8px 0;
+      padding-bottom: 8px;
+      font-family:'Helvetica';
+      font-weight:300;
+      text-align:justify;
+    }
+
+    .disclaimer h1{
+      font-size:30px;
+      font-family:'Helvetica';
+      font-weight:800;
+    }
+
         .ns{
             background-color: #afaaaa;
             color: black;
@@ -85,10 +147,10 @@ $('#loader').show();
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
-            </li>
+            </li> -->
               <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
@@ -136,7 +198,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="fin_pobreza_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo                      
+                  No se tiene indicadores disponibles para este objetivo
                 </div>
              </div>
            </li>
@@ -149,7 +211,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="hambre_cero_cont">
                <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo                      
+                  No se tiene indicadores disponibles para este objetivo
                 </div>
              </div>
            </li>
@@ -174,7 +236,7 @@ $('#loader').show();
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -190,7 +252,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -206,7 +268,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -222,7 +284,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -236,7 +298,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="trabajo_docente_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo                      
+                  No se tiene indicadores disponibles para este objetivo
                 </div>
              </div>
            </li>
@@ -249,7 +311,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="industria_innovacion_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo                      
+                  No se tiene indicadores disponibles para este objetivo
                 </div>
              </div>
            </li>
@@ -264,7 +326,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -280,7 +342,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -296,7 +358,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -312,7 +374,7 @@ $('#loader').show();
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo                      
+                    No se tiene indicadores disponibles para este objetivo
                   </div>
                 </div>
              </div>
@@ -326,7 +388,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_submarina_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo                      
+                No se tiene indicadores disponibles para este objetivo
               </div>
              </div>
            </li>
@@ -339,7 +401,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_ecosistemas_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo                      
+                No se tiene indicadores disponibles para este objetivo
               </div>
              </div>
            </li>
@@ -352,7 +414,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="paz_justicia_cont">
               <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo                      
+                  No se tiene indicadores disponibles para este objetivo
               </div>
              </div>
            </li>
@@ -365,7 +427,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="alianzas_objetivos_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo                      
+                No se tiene indicadores disponibles para este objetivo
               </div>
              </div>
            </li>
@@ -416,13 +478,38 @@ $('#loader').show();
     </footer>
 <!-- footer -->
 
+<div class="disclaimer pop">
+  <h1>Aviso</h1>
+  <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+</div>
 
+<a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
     <script type="text/javascript">
     var objetivoId = getParameterByName('objetivoId');
     var lupa = false;
     var visibles =  true;
 
     $(document).ready(function(){
+
+      $("#contact").hover(
+       function() {
+         if($(this).hasClass('selected')) {
+           deselect($(this));
+         } else {
+           $(this).addClass('selected');
+           $('.pop').slideFadeToggle();
+         }
+         return false;
+       }, function() {
+         deselect($('#contact'));
+         return false;
+       }
+     );
+
+
+     $.fn.slideFadeToggle = function(easing, callback) {
+       return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+     };
 
       $('#icon_prefix').keyup(function () {
             var rex = new RegExp($(this).val(), 'i');
