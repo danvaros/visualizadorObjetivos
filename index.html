@@ -19,7 +19,7 @@
   <!-- Load c3.css -->
   <link href="lib/c3.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="css/section-scroll.css">
-
+  <link rel="stylesheet" type="text/css" href="lib/bigfoot/bigfoot-number.css">
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="lib/fakeLoader.min.js"></script>
@@ -287,6 +287,100 @@
 
 
     }
+
+    .bigfoot-footnote__container, .bigfoot-footnote__wrapper, .bigfoot-footnote__content
+    {
+      margin: 0 !important;
+    }
+
+    aside[data-footnote-identifier="2"]
+    {
+      width: 600px;
+      height: 400px;
+      text-align: left;
+    }
+    aside[data-footnote-identifier="2"] > .bigfoot-footnote__wrapper, .bigfoot-footnote__content
+    {
+      max-height: 400px;
+      width: 600px;
+      height: 400px;
+      text-align: left;
+    }
+
+    aside[data-footnote-identifier="4"]
+    {
+      width: 600px;
+      height: 400px;
+      text-align: left;
+    }
+    aside[data-footnote-identifier="4"] > .bigfoot-footnote__wrapper, .bigfoot-footnote__content
+    {
+      max-height: 400px;
+      width: 600px;
+      height: 400px;
+      text-align: left;
+    }
+
+    aside[data-footnote-identifier="5"]
+    {
+      width: 600px;
+      height: 400px;
+      text-align: left;
+    }
+    aside[data-footnote-identifier="5"] > .bigfoot-footnote__wrapper, .bigfoot-footnote__content
+    {
+      max-height: 400px;
+      width: 600px;
+      height: 400px;
+      text-align: left;
+    }
+
+    aside[data-footnote-identifier="1"]
+    {
+      width: 400px;
+      height: 100px;
+      text-align: left;
+    }
+    aside[data-footnote-identifier="1"]   .bigfoot-footnote__content, .bigfoot-footnote__wrapper
+    {
+      max-height: 100px;
+      width: 400px;
+      height: 100px;
+      text-align: center;
+    }
+
+    aside[data-footnote-identifier="1"]   .bigfoot-footnote__content
+    {
+      color: black !important;
+    }
+
+    button[data-footnote-identifier="1"]
+    {
+      background-color: white;
+      color: black;
+    }
+
+    aside[data-footnote-identifier="3"]
+    {
+      width: 400px;
+      height: 120px;
+      text-align: left;
+    }
+
+    aside[data-footnote-identifier="3"]   .bigfoot-footnote__content, .bigfoot-footnote__wrapper
+    {
+      max-height: 120px;
+      width: 400px;
+      height: 120px;
+      text-align: center;
+    }
+
+    #obje_tool > a
+    {
+      color: white !important;
+    }
+
+
   </style>
 
   <style media="screen">
@@ -481,8 +575,22 @@
         <a href="objetivos.html">
           <div class="card-panel id posicion">
             <h5 class="white-text t_normal">Objetivos</h5>
-            <span class="white-text texto-abajo describe t_sm">2016 presenta una oportunidad sin precedentes para que los paises y los cuidadanos del mundo emprenda un nuevo camino para mejorar las vidas de las personas en todas partes. Los paises han adoptado un nuevo programa de desarrollo sostenible y un nuevo acuerdo mundial sobre el cambio climatico. Explore este sitio para obtener mas informacion sobre los esfuerzos de la ONU y sus socios para construir un mundo mejor, en el que nadie se quede atras.
-              </span>
+            <div id="obje_tool" class="white-text texto-abajo describe t_sm" style="text-decoration:none; color:white !important;">
+El 1º de enero de 2016 entró en vigor la  la Agenda 2030 para el Desarrollo Sostenible. El plan de acción está basado en 17 Objetivos de Desarrollo Sostenible (ODS) que abordan los urgentes desafíos globales en el curso de los próximos quince años.<br>
+Esta agenda asegurará el progreso social y económico sostenible en todo el mundo,   y está construida  con base en  los Objetivos de Desarrollo del Milenio.  No solamente busca erradicar la pobreza extrema, sino integrar y equilibrar las tres dimensiones del desarrollo sostenible —económico, social y ambiental— en una visión global e integral.<br>
+Los objetivos son de aplicación universal. “Todas las naciones deberán aplicar los ODS en sus políticas y planes nacionales, si es que queremos alcanzarlos.” (BAN Ki-moon citado en Naciones Unidas, 2016; pp. 2)
+<!-- <sup id="tol_html" data-position="bottom" data-tooltip='Naciones Unidas (2016). Informe de los Objetivos de Desarrollo Sostenible. Nueva York: Naciones Unidas. Consultado el 5 de abril en sitio oficial: <a href="https://unstats.un.org/sdgs/report/2016/">https://unstats.un.org/sdgs/report/2016/</a>' class="tooltipped">1</sup> -->
+                <sup id="fnref:1" data-footnote-style="numeric">
+                    <a href="#fn:1" rel="footnote">1</a>
+                </sup>
+        </div>
+          </div>
+          <div class="footnotes">
+            <ol>
+              <li class="footnote" id="fn:1">
+                  <p>Naciones Unidas (2016). Informe de los Objetivos de Desarrollo Sostenible. Nueva York: Naciones Unidas. Consultado el 5 de abril en sitio oficial: <a href="https://unstats.un.org/sdgs/report/2016/">https://unstats.un.org/sdgs/report/2016/</a><p>
+              </li>
+            </ol>
           </div>
 
         </div>
@@ -1682,7 +1790,31 @@ border-bottom-right-radius: 15px;
               <div class="caja-cafe" style="padding-bottom: 72px;">
                 <p style="color: #9c9c9c; margin-left: 30px;">Acerca de los ODS</p>
                 <div class="">
-                  <a href="#">Documentos importantes</a>
+                  <a href="#"><span data-position="right" data-tooltip='<div style="width:700px; height:610px; text-align:left;">●	Los 17 Objetivos de Desarrollo Sostenible (ODS) con las 169 metas tienen un alcance más amplio y van más allá que los Objetivos de Desarrollo del Milenio (ODM) al abordar las causas fundamentales de la pobreza y la necesidad universal de lograr un desarrollo a favor de todas las personas. Los objetivos abarcan las tres dimensiones del desarrollo sostenible: el crecimiento económico, la inclusión social y la protección del medio ambiente.<br>
+●	Sobre la base del éxito y el impulso de los ODM, los nuevos objetivos mundiales abarcan más con la pretensión de afrontar las desigualdades, el crecimiento económico, el acceso a un trabajo decente, las ciudades y los asentamientos humanos, la industrialización, los océanos, los ecosistemas, la energía, el cambio climático, el consumo y la producción sostenibles, la paz y la justicia.<br>
+●	Los nuevos objetivos son de aplicación universal para todos los países, mientras que los ODM únicamente estaban dirigidos a los países en desarrollo.<br>
+●	Un elemento fundamental de los ODS es la gran atención que prestan a los medios de aplicación —la movilización de recursos financieros—, el desarrollo de la capacidad y la tecnología, los datos y las instituciones.<br>
+●	Los nuevos objetivos reconocen que es esencial luchar contra el cambio climático a fin de lograr el desarrollo sostenible y la erradicación de la pobreza.<br>
+<br>
+<b style="text-align:center;">Cómo se aplican los ODS, según Naciones Unidas (2017):</b><br>
+<br>
+●	La Agenda de Acción Addis Abeba, que fue el resultado de la Tercera Conferencia Internacional sobre la Financiación para el Desarrollo, preveía políticas y medidas concretas para apoyar la aplicación de la nueva agenda.<br>
+●	El cumplimiento y el éxito de la agenda se basarán en las políticas, planes y programas de desarrollo sostenible de los países y estarán dirigidos por estos. Los Objetivos de Desarrollo Sostenible (ODS) actuarán como una brújula a la hora de armonizar los planes nacionales con los compromisos mundiales de los países.<br>
+●	Las estrategias de desarrollo sostenible asumidas como propias por los países e impulsadas por ellos requerirán estrategias de financiación y movilización de recursos.<br>
+●	Se espera que todas las partes interesadas, a saber, los gobiernos, la sociedad civil y el sector privado, entre otros, contribuyan a la consecución de la nueva agenda.<br>
+●	Se necesita una alianza mundial revitalizada para apoyar las iniciativas nacionales. Así se reconoce en la Agenda 2030.<br>
+●	Igualmente, se reconoce que las alianzas entre múltiples interesados son un componente importante de toda estrategia que pretenda movilizar a todas las partes interesadas en torno a la nueva agenda.</div>' class="tooltipped">¿En qué se diferencian los Objetivos de Desarrollo Sostenible (ODS) de los Objetivos de Desarrollo del Milenio (ODM)?</span>
+                    <!-- <sup data-position="bottom" data-tooltip="Naciones Unidas (2017): Objetivos de Desarrollo Sostenible: 17 objetivos para transformar nuestro mundo. Nueva York: Naciones Unidas. Consultado el 5 de abril en sitio oficial: <a href='http://www.un.org/sustainabledevelopment/es/la-agenda-de-desarrollo-sostenible/'>http://www.un.org/sustainabledevelopment/es/la-agenda-de-desarrollo-sostenible/.</a>" class="tooltipped" >1</sup> -->
+                    <sup id="fnref:2" data-footnote-style="numeric">
+                        <a class="bigfoot_abajo" data-footnote-style="numeric" id="fnref:2" href="#fn:2" rel="footnote2">1</a>
+                    </sup>
+                    <sup id="fnref:5" data-footnote-style="numeric">
+                        <a class="bigfoot_abajo" data-footnote-style="numeric" id="fnref:5" href="#fn:5" rel="footnote5">1</a>
+                    </sup>
+                   </a>
+                </div>
+                <div class="">
+                  <a href="#">Documentos relevantes</a>
                 </div>
                 <div class="">
                   <a href="#">Acuerdos de creación</a>
@@ -1690,9 +1822,9 @@ border-bottom-right-radius: 15px;
                 <div class="">
                   <a href="#">Informes de América Latina y el Caribe</a>
                 </div>
-                <div class="">
+                <!-- <div class="">
                   <a href="#">Video: ODS mejoran la vida de todos alrededor del planeta</a>
-                </div>
+                </div> -->
                 <div class="">
                   <div class="">
                     <a href="#"></a>
@@ -1700,17 +1832,126 @@ border-bottom-right-radius: 15px;
                 </div>
               </div>
             </div>
+            <div class="footnotes ">
+              <ol>
+                <li class="footnote5" id="fn:5">
+                  Naciones Unidas (2017): Objetivos de Desarrollo Sostenible: 17 objetivos para transformar nuestro mundo. Nueva York: Naciones Unidas. Consultado el 5 de abril en sitio oficial: <a href='http://www.un.org/sustainabledevelopment/es/la-agenda-de-desarrollo-sostenible/'>http://www.un.org/sustainabledevelopment/es/la-agenda-de-desarrollo-sostenible/.</a>
+                </li>
+              </ol>
+            </div>
+            <div class="footnotes bigfoot_abajo">
+              <ol>
+                <li class="footnote2 bigfoot_abajo" id="fn:2">
+                  <div>●	Los 17 Objetivos de Desarrollo Sostenible (ODS) con las 169 metas tienen un alcance más amplio y van más allá que los Objetivos de Desarrollo del Milenio (ODM) al abordar las causas fundamentales de la pobreza y la necesidad universal de lograr un desarrollo a favor de todas las personas. Los objetivos abarcan las tres dimensiones del desarrollo sostenible: el crecimiento económico, la inclusión social y la protección del medio ambiente.<br>
+●	Sobre la base del éxito y el impulso de los ODM, los nuevos objetivos mundiales abarcan más con la pretensión de afrontar las desigualdades, el crecimiento económico, el acceso a un trabajo decente, las ciudades y los asentamientos humanos, la industrialización, los océanos, los ecosistemas, la energía, el cambio climático, el consumo y la producción sostenibles, la paz y la justicia.<br>
+●	Los nuevos objetivos son de aplicación universal para todos los países, mientras que los ODM únicamente estaban dirigidos a los países en desarrollo.<br>
+●	Un elemento fundamental de los ODS es la gran atención que prestan a los medios de aplicación —la movilización de recursos financieros—, el desarrollo de la capacidad y la tecnología, los datos y las instituciones.<br>
+●	Los nuevos objetivos reconocen que es esencial luchar contra el cambio climático a fin de lograr el desarrollo sostenible y la erradicación de la pobreza.<br>
+<br>
+<b style="text-align:center;">Cómo se aplican los ODS, según Naciones Unidas (2017):</b><br>
+<br>
+●	La Agenda de Acción Addis Abeba, que fue el resultado de la Tercera Conferencia Internacional sobre la Financiación para el Desarrollo, preveía políticas y medidas concretas para apoyar la aplicación de la nueva agenda.<br>
+●	El cumplimiento y el éxito de la agenda se basarán en las políticas, planes y programas de desarrollo sostenible de los países y estarán dirigidos por estos. Los Objetivos de Desarrollo Sostenible (ODS) actuarán como una brújula a la hora de armonizar los planes nacionales con los compromisos mundiales de los países.<br>
+●	Las estrategias de desarrollo sostenible asumidas como propias por los países e impulsadas por ellos requerirán estrategias de financiación y movilización de recursos.<br>
+●	Se espera que todas las partes interesadas, a saber, los gobiernos, la sociedad civil y el sector privado, entre otros, contribuyan a la consecución de la nueva agenda.<br>
+●	Se necesita una alianza mundial revitalizada para apoyar las iniciativas nacionales. Así se reconoce en la Agenda 2030.<br>
+●	Igualmente, se reconoce que las alianzas entre múltiples interesados son un componente importante de toda estrategia que pretenda movilizar a todas las partes interesadas en torno a la nueva agenda.</div>
+                </li>
+              </ol>
+            </div>
             <div class="col l6 m12 s12 ">
               <div class="caja-cafe">
                 <p style="color: #9c9c9c; margin-left: 30px;">Los ODS en México</p>
                 <div class="">
+                  <a href="#"><span data-position="left" data-tooltip='<div style="width:700px; height:1000px; text-align:left">México ha sido un actor activo en la definición de la nueva Agenda de Desarrollo post-2015, participando en 2013 y 2014 en las consultas y negociaciones realizadas en el Grupo de Trabajo Abierto de la Asamblea General sobre los Objetivos de Desarrollo Sostenible (GTA-ODS), el cual generó un informe final que contiene la propuesta de ODS y que por acuerdo de la Asamblea General de Naciones Unidas será la base principal para integrar la nueva Agenda de Desarrollo (ONU México, 2017).<br><br>
+Algunas actividades notables del país durante este proceso en 2014 fueron las siguientes (ONU México, 2017)<br><sup>1</sup>:
+●	Organizó una consulta regional de la cual surgió la Declaración de Guadalajara, la cual destaca la necesidad de que los grupos vulnerables sean considerados de forma transversal en políticas públicas. Estas conclusiones fueron presentadas ante el Grupo de Alto Nivel de Personas Eminentes sobre la Agenda para el Desarrollo Post-2015.<br>
+●	Realizó tres talleres internacionales sobre el concepto de desarrollo social y económico, inclusión y la importancia de la medición del progreso en la Nueva Agenda de Desarrollo, donde se compartieron opiniones sobre los retos del desarrollo incluyente, se intercambiaron experiencias sobre cómo integrar los objetivos de la Nueva Agenda y se discutió la medición de las nuevas metas bajo el enfoque de inclusión social y económica.<br>
+●	Patrocinó la consulta temática sobre energía, en conjunto con los gobiernos de Tanzania y Noruega.<br>
+●	Escaló compromisos durante consultas regionales y foros en materia de igualdad de género y derechos de las mujeres.
+<br>
+<br>
+En México se ha decidido que la Oficina de la Presidencia de la República tenga el liderazgo para la implementación de la Agenda 2030, para así lograr un compromiso de Estado que permee en todos los niveles de gobierno. Respecto a los gobiernos estatales y municipales, se ha identificado dos espacios de deliberación de acuerdos para impulsar el desarrollo local y promover transformaciones institucionales, estas son: la Conferencia Nacional de Gobernadores (CONAGO) y la Conferencia Nacional de Municipios de México (CONAMM). Por su parte, el Poder Legislativo creó un mecanismo parlamentario para el fortalecimiento del cumplimiento de la Agenda 2030. Durante el proceso de negociación de los ODS y la agenda se logró establecer un diálogo constructivo con las organizaciones de la sociedad civil involucradas en el proceso: contribuyeron a la posición de nuestro país a nivel internacional, además de que algunos de sus miembros asistieron como parte de la Delegación de México en las negociaciones de la Agenda 2030. La participación del sector privado es fundamental, para ello la AMEXCID estableció la Alianza por la Sostenibilidad, como plataforma de diálogo y acción que incluye a 80 empresas mexicanas y multinacionales operando en México, para intercambiar información sobre la integración de los ODS en los modelos de negocio y diseñar proyectos de cooperación internacional alrededor de la Agenda 2030, entre otras acciones. <br><br>
+<b style="text-align:center;">¿Qué es el desarrollo sostenible?</b><br><br>
+
+La Agenda 2030 para el Desarrollo Sostenible es un plan de acción mundial en favor de las personas, el planeta y la prosperidad. Busca fortalecer la paz universal y la erradicación de la pobreza en todas sus formas y dimensiones, incluida la pobreza extrema, hacer realidad los derechos humanos en todas las personas y alcanzar la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas, para avanzar así hacia el desarrollo sostenible.<br>
+El desarrollo sostenible, según Naciones Unidas (2017), es el desarrollo capaz de satisfacer las necesidades del presente sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades. Este desarrollo exige esfuerzos concertados para construir un futuro inclusivo, sostenible y resiliente para las personas y el planeta. Es fundamental armonizar tres elementos básicos, a saber, el crecimiento económico, la inclusión social y la protección del medio ambiente. Estos elementos están interrelacionados y son todos esenciales para el bienestar de las personas y las sociedades.<br>
+La erradicación de la pobreza en todas sus formas y dimensiones es una condición indispensable para lograr el desarrollo sostenible. A tal fin, debe promoverse un crecimiento económico sostenible, inclusivo y equitativo, creando mayores oportunidades para todos, reduciendo las desigualdades, mejorando los niveles de vida básicos, fomentando el desarrollo social equitativo e inclusivo y promoviendo la ordenación integrada y sostenible de los recursos naturales y los ecosistemas<sup>2</sup>.</div>
+' class="tooltipped">
+                    El papel de México en la Agenda 2030
+                    <sup id="fnref:3" data-footnote-style="numeric">
+                        <a  data-footnote-style="numeric" id="fnref:3" href="#fn:3" rel="footnote3">1</a>
+                    </sup>
+                  </span>
+                  </a>
+                </div>
+                <div class="footnotes">
+                  <ol>
+                    <li class="footnote3" id="fn:3">
+                      <div>México ha sido un actor activo en la definición de la nueva Agenda de Desarrollo post-2015, participando en 2013 y 2014 en las consultas y negociaciones realizadas en el Grupo de Trabajo Abierto de la Asamblea General sobre los Objetivos de Desarrollo Sostenible (GTA-ODS), el cual generó un informe final que contiene la propuesta de ODS y que por acuerdo de la Asamblea General de Naciones Unidas será la base principal para integrar la nueva Agenda de Desarrollo (ONU México, 2017).<br><br>
+    Algunas actividades notables del país durante este proceso en 2014 fueron las siguientes (ONU México, 2017)
+    <sup>1</sup>:<br>
+    ●	Organizó una consulta regional de la cual surgió la Declaración de Guadalajara, la cual destaca la necesidad de que los grupos vulnerables sean considerados de forma transversal en políticas públicas. Estas conclusiones fueron presentadas ante el Grupo de Alto Nivel de Personas Eminentes sobre la Agenda para el Desarrollo Post-2015.<br>
+    ●	Realizó tres talleres internacionales sobre el concepto de desarrollo social y económico, inclusión y la importancia de la medición del progreso en la Nueva Agenda de Desarrollo, donde se compartieron opiniones sobre los retos del desarrollo incluyente, se intercambiaron experiencias sobre cómo integrar los objetivos de la Nueva Agenda y se discutió la medición de las nuevas metas bajo el enfoque de inclusión social y económica.<br>
+    ●	Patrocinó la consulta temática sobre energía, en conjunto con los gobiernos de Tanzania y Noruega.<br>
+    ●	Escaló compromisos durante consultas regionales y foros en materia de igualdad de género y derechos de las mujeres.
+    <br>
+    <br>
+    En México se ha decidido que la Oficina de la Presidencia de la República tenga el liderazgo para la implementación de la Agenda 2030, para así lograr un compromiso de Estado que permee en todos los niveles de gobierno. Respecto a los gobiernos estatales y municipales, se ha identificado dos espacios de deliberación de acuerdos para impulsar el desarrollo local y promover transformaciones institucionales, estas son: la Conferencia Nacional de Gobernadores (CONAGO) y la Conferencia Nacional de Municipios de México (CONAMM). Por su parte, el Poder Legislativo creó un mecanismo parlamentario para el fortalecimiento del cumplimiento de la Agenda 2030. Durante el proceso de negociación de los ODS y la agenda se logró establecer un diálogo constructivo con las organizaciones de la sociedad civil involucradas en el proceso: contribuyeron a la posición de nuestro país a nivel internacional, además de que algunos de sus miembros asistieron como parte de la Delegación de México en las negociaciones de la Agenda 2030. La participación del sector privado es fundamental, para ello la AMEXCID estableció la Alianza por la Sostenibilidad, como plataforma de diálogo y acción que incluye a 80 empresas mexicanas y multinacionales operando en México, para intercambiar información sobre la integración de los ODS en los modelos de negocio y diseñar proyectos de cooperación internacional alrededor de la Agenda 2030, entre otras acciones. <br><br>
+    <b style="text-align:center;">¿Qué es el desarrollo sostenible?</b><br><br>
+
+    La Agenda 2030 para el Desarrollo Sostenible es un plan de acción mundial en favor de las personas, el planeta y la prosperidad. Busca fortalecer la paz universal y la erradicación de la pobreza en todas sus formas y dimensiones, incluida la pobreza extrema, hacer realidad los derechos humanos en todas las personas y alcanzar la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas, para avanzar así hacia el desarrollo sostenible.<br>
+    El desarrollo sostenible, según Naciones Unidas (2017), es el desarrollo capaz de satisfacer las necesidades del presente sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades. Este desarrollo exige esfuerzos concertados para construir un futuro inclusivo, sostenible y resiliente para las personas y el planeta. Es fundamental armonizar tres elementos básicos, a saber, el crecimiento económico, la inclusión social y la protección del medio ambiente. Estos elementos están interrelacionados y son todos esenciales para el bienestar de las personas y las sociedades.<br>
+    La erradicación de la pobreza en todas sus formas y dimensiones es una condición indispensable para lograr el desarrollo sostenible. A tal fin, debe promoverse un crecimiento económico sostenible, inclusivo y equitativo, creando mayores oportunidades para todos, reduciendo las desigualdades, mejorando los niveles de vida básicos, fomentando el desarrollo social equitativo e inclusivo y promoviendo la ordenación integrada y sostenible de los recursos naturales y los ecosistemas<sup>2</sup>.
+<br>
+<br>
+  <span style="font-size:10px;"><sup>1</sup> ONU-México (2017). Objetivos de Desarrollo Sostenible. México: ONU. Consultado el 5 de abril de 2017: <a href="http://www.onu.org.mx/agenda-2030/objetivos-del-desarrollo-sostenible/">http://www.onu.org.mx/agenda-2030/objetivos-del-desarrollo-sostenible/</a></span>
+<br>
+<br>
+    <span style="font-size:10px;"><sup>2</sup> Naciones Unidas (2017): Objetivos de Desarrollo Sostenible: 17 objetivos para transformar nuestro mundo. Nueva York: Naciones Unidas. Consultado el 5 de abril en sitio oficial: <a href="http://www.un.org/sustainabledevelopment/es/la-agenda-de-desarrollo-sostenible/">http://www.un.org/sustainabledevelopment/es/la-agenda-de-desarrollo-sostenible/</a>.</span>
+</div>
+                    </li>
+                  </ol>
+                </div>
+                <!-- <div class="footnotes">
+                  <ol>
+                    <li class="footnote4" id="fn:4">
+                      ONU-México (2017). Objetivos de Desarrollo Sostenible. México: ONU. Consultado el 5 de abril de 2017: <a href="http://www.onu.org.mx/agenda-2030/objetivos-del-desarrollo-sostenible/">http://www.onu.org.mx/agenda-2030/objetivos-del-desarrollo-sostenible/</a>
+                    </li>
+                  </ol>
+                </div> -->
+                <!-- <div class="">
                   <a href="#">Comparativo indicadores globales ONU vs indicadores en México</a>
+                </div> -->
+                <div class="">
+                  <a href="#">
+                    <!-- <span data-position="left" data-tooltip='<div style="width:700px; height:500px; text-align:left;"><b>Programa de Trabajo 2016-2018</b> (se debe incorporar un vínculo sobre el texto “Programa de Trabajo 2016-2018” que descargue el documento completo del Programa de Trabajo, en formato PDF, el cual se adjunta)<br><br>
+El 6 de noviembre de 2015, la Junta de Gobierno del Instituto Nacional de Estadística y Geografía aprobó (acuerdo 8ª/V/2015) la modificación del acuerdo de creación del Comité Técnico Especializado del Sistema de Información de los Objetivos de Desarrollo del Milenio (CTESIODM), para convertirlo en el Comité Técnico Especializado de los Objetivos de Desarrollo Sostenible (CTEODS), cuyo objetivo es coordinar los trabajos de carácter conceptual, metodológico y operativo que, en el marco del Sistema Nacional de Información Estadística y Geográfica, permitan generar y actualizar periódicamente los indicadores a partir de los cuales se diseñen y evalúen políticas públicas para el cumplimiento de los Objetivos de Desarrollo Sostenible (ODS) correspondientes a la Agenda 2030 para el Desarrollo Sostenible promovida por la Organización de las Naciones Unidas (ONU).
+<br><br>
+<b style="text-align:center !important;">Incorporación de los ODS a los marcos nacionales</b><br><br>
+El Estado mexicano es responsable de la rectoría del desarrollo nacional, el cual debe ser integral y sustentable, a fin de fortalecer la soberanía nacional y el régimen político democrático; así lo mandata el artículo 25 de la Constitución Política de los Estados Unidos Mexicanos; dicho artículo también sirve de base al sistema nacional de planeación democrática, el cual deriva en el Plan Nacional de Desarrollo (PND), que es presentado por el titular del Poder Ejecutivo Federal sexenalmente.<br>
+El PND, es elaborado por el Poder Ejecutivo Federal con el objetivo de marcar el rumbo del país cada sexenio, con el fin de lograr el bienestar común, fin primigenio del Estado. La elaboración del mismo toma en cuenta diferentes factores, tales como dinámica poblacional, los recursos naturales y, las necesidades sociales, económicas y políticas del país; de igual forma se toman en cuenta para su elaboración los acuerdos suscritos por México con la comunidad internacional y las políticas de la agenda global producto de foros y reuniones de análisis y trabajo respecto a los retos mundiales.</div>
+' class="tooltipped"> -->
+Comité Técnico Especializado de los ODS y Unidades del Estado responsables
+<!-- <span> -->
+  <sup id="fnref:4" data-footnote-style="numeric">
+      <a  data-footnote-style="numeric" id="fnref:4" href="#fn:4" rel="footnote4">1</a>
+  </sup></a>
+                </div>
+                <div class="footnotes">
+                  <ol>
+                    <li class="footnote4" id="fn:4">
+                      <div><b>Programa de Trabajo 2016-2018</b> (se debe incorporar un vínculo sobre el texto “Programa de Trabajo 2016-2018” que descargue el documento completo del Programa de Trabajo, en formato PDF, el cual se adjunta)<br><br>
+    El 6 de noviembre de 2015, la Junta de Gobierno del Instituto Nacional de Estadística y Geografía aprobó (acuerdo 8ª/V/2015) la modificación del acuerdo de creación del Comité Técnico Especializado del Sistema de Información de los Objetivos de Desarrollo del Milenio (CTESIODM), para convertirlo en el Comité Técnico Especializado de los Objetivos de Desarrollo Sostenible (CTEODS), cuyo objetivo es coordinar los trabajos de carácter conceptual, metodológico y operativo que, en el marco del Sistema Nacional de Información Estadística y Geográfica, permitan generar y actualizar periódicamente los indicadores a partir de los cuales se diseñen y evalúen políticas públicas para el cumplimiento de los Objetivos de Desarrollo Sostenible (ODS) correspondientes a la Agenda 2030 para el Desarrollo Sostenible promovida por la Organización de las Naciones Unidas (ONU).
+    <br><br>
+    <b style="text-align:center !important;">Incorporación de los ODS a los marcos nacionales</b><br><br>
+    El Estado mexicano es responsable de la rectoría del desarrollo nacional, el cual debe ser integral y sustentable, a fin de fortalecer la soberanía nacional y el régimen político democrático; así lo mandata el artículo 25 de la Constitución Política de los Estados Unidos Mexicanos; dicho artículo también sirve de base al sistema nacional de planeación democrática, el cual deriva en el Plan Nacional de Desarrollo (PND), que es presentado por el titular del Poder Ejecutivo Federal sexenalmente.<br>
+    El PND, es elaborado por el Poder Ejecutivo Federal con el objetivo de marcar el rumbo del país cada sexenio, con el fin de lograr el bienestar común, fin primigenio del Estado. La elaboración del mismo toma en cuenta diferentes factores, tales como dinámica poblacional, los recursos naturales y, las necesidades sociales, económicas y políticas del país; de igual forma se toman en cuenta para su elaboración los acuerdos suscritos por México con la comunidad internacional y las políticas de la agenda global producto de foros y reuniones de análisis y trabajo respecto a los retos mundiales.</div>
+                    </li>
+                  </ol>
                 </div>
                 <div class="">
-                  <a href="#">Comité Técnico especializado en los ODS y Unidades del estado Responsable </a>
-                </div>
-                <div class="">
-                  <a href="#">Calendario de Actualización de indicadores</a>
+                  <a href="calendario.html">Calendario de Actualización de indicadores</a>
                 </div>
                 <div class="">
                   <a href="#">Consulta de información de los indicadores</a>
@@ -1735,6 +1976,11 @@ border-bottom-right-radius: 15px;
 
               .caja-cafe a {
                 color: #142a4f;
+              }
+
+              aside[data-footnote-identifier="3"]  a
+              {
+                color: #039be5 ;
               }
             </style>
 
@@ -1843,7 +2089,7 @@ border-bottom-right-radius: 15px;
   <script src="classybrew/build/classybrew.min.js"></script>
 
   <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
-
+  <script src="lib/bigfoot/bigfoot.min.js"></script>
   <script type="text/javascript">
     var titulo_des_graf="Razón de Mortalidad Materna";
 
@@ -1877,6 +2123,25 @@ border-bottom-right-radius: 15px;
     $(document).ready(function () {
       $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
       $('.bullets-container').hide(); //oculta los bullets para que no se vean en la parte del header
+      var bigfoot = $.bigfoot(
+              {
+                  positionContent:true,
+                  deleteOnUnhover: false,
+                  preventPageScroll: true,
+                  hoverDelay: 250,
+                  activateOnHover:true,
+                  //allowMultipleFN:true
+              }
+            );
+            $('*[data-footnote-identifier="2"]').data('data-footnote-number','Más');
+            console.log('el elemento es',$('[data-footnote-identifier="2"]'));
+      $('.tooltipped').tooltip(
+        {
+          delay: 500,
+          tooltip: 'some text',
+          html: true
+        }
+      );
 
       // var atributos = getAtributos(27);
 
@@ -2478,7 +2743,8 @@ border-bottom-right-radius: 15px;
         animation: 'fade',
         delay: 200,
         theme: 'tooltipster-light',
-        trigger: 'hover'
+        trigger: 'hover',
+        interactive:true
       });
 
 
@@ -2523,9 +2789,6 @@ border-bottom-right-radius: 15px;
       $.fn.slideFadeToggle = function(easing, callback) {
         return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
       };
-
-
-
 
     });
   </script>
