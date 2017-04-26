@@ -633,7 +633,7 @@ Los objetivos son de aplicación universal. “Todas las naciones deberán aplic
           </div> -->
         </div>
         <div class="col s12 m3 l3">
-        <!-- <a href="objetivos.html?objetivoId=1"> -->
+        <a href="objetivos.html?objetivoId=1">
           <div class="card-panel id_1 posicion">
             <div class="row">
               <div class="col s6">
@@ -647,7 +647,7 @@ Los objetivos son de aplicación universal. “Todas las naciones deberán aplic
             <span class="white-text descrip texto-abajo t_sm">Poner fin a todas las formas de pobreza en el mundo antes del 2030.
               </span>
           </div>
-        <!-- </a> -->
+        </a>
         </div>
         <div class="col s12 m6 l3">
         <a href="objetivos.html?objetivoId=2">
@@ -2892,6 +2892,29 @@ Comité Técnico Especializado de los ODS y Unidades del Estado responsables
   </script>
   <script>
     $(document).ready(function () {
+
+      var touch = 'ontouchstart' in document.documentElement
+            || navigator.maxTouchPoints > 0
+            || navigator.msMaxTouchPoints > 0;
+
+      if (touch) { // remove all :hover stylesheets
+          try { // prevent exception on browsers not supporting DOM styleSheets properly
+              for (var si in document.styleSheets) {
+                  var styleSheet = document.styleSheets[si];
+                  if (!styleSheet.rules) continue;
+
+                  for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+                      if (!styleSheet.rules[ri].selectorText) continue;
+
+                      if (styleSheet.rules[ri].selectorText.match(':hover')) {
+                          styleSheet.deleteRule(ri);
+                      }
+                  }
+              }
+          } catch (ex) {}
+      }
+
+
       $('.tooltip').tooltipster({
         contentCloning: true,
         animation: 'fade',
