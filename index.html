@@ -1829,7 +1829,7 @@ border-bottom-right-radius: 15px;
               <div class="caja-cafe" style="padding-bottom: 72px;">
                 <p style="color: #9c9c9c; margin-left: 30px;">Acerca de los ODS</p>
                 <div class="">
-                  <a id="modal1">
+                  <a id="modal1" class="modal-trigger">
                     <!-- <sup id="modal1">1</sup> -->
                     <!-- <span data-position="right" data-tooltip='<div style="width:700px; height:610px; text-align:left;">●	Los 17 Objetivos de Desarrollo Sostenible (ODS) con las 169 metas tienen un alcance más amplio y van más allá que los Objetivos de Desarrollo del Milenio (ODM) al abordar las causas fundamentales de la pobreza y la necesidad universal de lograr un desarrollo a favor de todas las personas. Los objetivos abarcan las tres dimensiones del desarrollo sostenible: el crecimiento económico, la inclusión social y la protección del medio ambiente.<br>
 ●	Sobre la base del éxito y el impulso de los ODM, los nuevos objetivos mundiales abarcan más con la pretensión de afrontar las desigualdades, el crecimiento económico, el acceso a un trabajo decente, las ciudades y los asentamientos humanos, la industrialización, los océanos, los ecosistemas, la energía, el cambio climático, el consumo y la producción sostenibles, la paz y la justicia.<br>
@@ -1857,7 +1857,7 @@ border-bottom-right-radius: 15px;
                    </a>
                 </div>
                 <div class="">
-                  <a  id="modal2">
+                  <a  id="modal2" class="modal-trigger">
                     Documentos relevantes
                   </a>
                 </div>
@@ -1908,7 +1908,7 @@ border-bottom-right-radius: 15px;
               <div class="caja-cafe">
                 <p style="color: #9c9c9c; margin-left: 30px;">Los ODS en México</p>
                 <div class="">
-                  <a id="modal3">
+                  <a id="modal3" class="modal-trigger">
 <!-- <span data-position="left" data-tooltip='<div style="width:700px; height:1000px; text-align:left">México ha sido un actor activo en la definición de la nueva Agenda de Desarrollo post-2015, participando en 2013 y 2014 en las consultas y negociaciones realizadas en el Grupo de Trabajo Abierto de la Asamblea General sobre los Objetivos de Desarrollo Sostenible (GTA-ODS), el cual generó un informe final que contiene la propuesta de ODS y que por acuerdo de la Asamblea General de Naciones Unidas será la base principal para integrar la nueva Agenda de Desarrollo (ONU México, 2017).<br><br>
 Algunas actividades notables del país durante este proceso en 2014 fueron las siguientes (ONU México, 2017)<br><sup>1</sup>:
 ●	Organizó una consulta regional de la cual surgió la Declaración de Guadalajara, la cual destaca la necesidad de que los grupos vulnerables sean considerados de forma transversal en políticas públicas. Estas conclusiones fueron presentadas ante el Grupo de Alto Nivel de Personas Eminentes sobre la Agenda para el Desarrollo Post-2015.<br>
@@ -1973,7 +1973,7 @@ La erradicación de la pobreza en todas sus formas y dimensiones es una condici�
                   <a href="#">Comparativo indicadores globales ONU vs indicadores en México</a>
                 </div> -->
                 <div class="">
-                  <a id="modal4">
+                  <a id="modal4" class="modal-trigger">
                     <!-- <span data-position="left" data-tooltip='<div style="width:700px; height:500px; text-align:left;"><b>Programa de Trabajo 2016-2018</b> (se debe incorporar un vínculo sobre el texto “Programa de Trabajo 2016-2018” que descargue el documento completo del Programa de Trabajo, en formato PDF, el cual se adjunta)<br><br>
 El 6 de noviembre de 2015, la Junta de Gobierno del Instituto Nacional de Estadística y Geografía aprobó (acuerdo 8ª/V/2015) la modificación del acuerdo de creación del Comité Técnico Especializado del Sistema de Información de los Objetivos de Desarrollo del Milenio (CTESIODM), para convertirlo en el Comité Técnico Especializado de los Objetivos de Desarrollo Sostenible (CTEODS), cuyo objetivo es coordinar los trabajos de carácter conceptual, metodológico y operativo que, en el marco del Sistema Nacional de Información Estadística y Geográfica, permitan generar y actualizar periódicamente los indicadores a partir de los cuales se diseñen y evalúen políticas públicas para el cumplimiento de los Objetivos de Desarrollo Sostenible (ODS) correspondientes a la Agenda 2030 para el Desarrollo Sostenible promovida por la Organización de las Naciones Unidas (ONU).
 <br><br>
@@ -2248,7 +2248,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
   <script src="lib/c3.min.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> -->
   <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
   <script src="lib/bigfoot/bigfoot.min.js"></script>
   <script type="text/javascript">
@@ -2283,15 +2283,15 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
      $("#modal1").hover(
          function() {
            console.log("hover...");
-           $('#abrir1').modal(
-             {
-               dismissible: true,
-               opacity: .5, // Opacity of modal background
-               inDuration: 300, // Transition in duration
-               outDuration: 200,
-             }
-           );
-           $('#abrir1').modal('open');
+          //  $('#abrir1').modal(
+          //    {
+          //      dismissible: true,
+          //      opacity: .5, // Opacity of modal background
+          //      inDuration: 300, // Transition in duration
+          //      outDuration: 200,
+          //    }
+          //  );
+           $('#abrir1').openModal('open');
          }
         //  function () {
         //     $('#abrir1').modal('close');
@@ -2299,34 +2299,34 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
      );
 
      $("#cerrar1").on('click',function(){
-           $('#abrir1').modal('close');
+           $('#abrir1').closeModal('close');
      });
 
      $("#modal2").hover(
          function() {
-           $('#abrir2').modal('open');
+           $('#abrir2').openModal('open');
          }
      );
      $("#cerrar2").on('click',function(){
-           $('#abrir2').modal('close');
+           $('#abrir2').closeModal('close');
      });
 
      $("#modal3").hover(
          function() {
-           $('#abrir3').modal('open');
+           $('#abrir3').openModal('open');
          }
      );
      $("#cerrar3").on('click',function(){
-           $('#abrir3').modal('close');
+           $('#abrir3').closeModal('close');
      });
 
      $("#modal4").hover(
          function() {
-           $('#abrir4').modal('open');
+           $('#abrir4').openModal('open');
          }
      );
      $("#cerrar4").on('click',function(){
-           $('#abrir4').modal('close');
+           $('#abrir4').closeModal('close');
      });
 
     // $("#modal1").on('click',function(){
@@ -2338,14 +2338,15 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
     $(document).ready(function () {
       $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
       $('.bullets-container').hide(); //oculta los bullets para que no se vean en la parte del header
-      $('.modal').modal(
-        {
-          dismissible: true,
-          opacity: .5, // Opacity of modal background
-          inDuration: 300, // Transition in duration
-          outDuration: 200,
-        }
-      );
+      $('.modal-trigger').leanModal();
+      // $('.modal').modal(
+      //   {
+      //     dismissible: true,
+      //     opacity: .5, // Opacity of modal background
+      //     inDuration: 300, // Transition in duration
+      //     outDuration: 200,
+      //   }
+      // );
       // var bigfoot = $.bigfoot(
       //         {
       //             positionContent:true,
@@ -2960,6 +2961,29 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
   </script>
   <script>
     $(document).ready(function () {
+
+      var touch = 'ontouchstart' in document.documentElement
+            || navigator.maxTouchPoints > 0
+            || navigator.msMaxTouchPoints > 0;
+
+      if (touch) { // remove all :hover stylesheets
+          try { // prevent exception on browsers not supporting DOM styleSheets properly
+              for (var si in document.styleSheets) {
+                  var styleSheet = document.styleSheets[si];
+                  if (!styleSheet.rules) continue;
+
+                  for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+                      if (!styleSheet.rules[ri].selectorText) continue;
+
+                      if (styleSheet.rules[ri].selectorText.match(':hover')) {
+                          styleSheet.deleteRule(ri);
+                      }
+                  }
+              }
+          } catch (ex) {}
+      }
+
+
       $('.tooltip').tooltipster({
         contentCloning: true,
         animation: 'fade',
