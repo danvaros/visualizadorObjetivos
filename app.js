@@ -150,6 +150,7 @@
     $('#insumo_change_cob').on('change',function(){
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
+      $('#insumos_contDat').html('');
     });
 
     $('#este').on('change', function(){
@@ -436,15 +437,18 @@
 
                for (var j = insumos_general[insumo][0].length -1 ; j > 0 ; j--) {
                 if(i == 0 && j == insumos_general[insumo][0].length -1){
-                  datos_doble +=  '  <th  class="headcol">'+ insumos_general[insumo][i][0] +'</th><th>'+ insumos_general[insumo][i][j] .split('-')[0]+'</th>';
+                  //datos_doble +=  '  <th  class="headcol">'+ insumos_general[insumo][i][0] +'</th><th>'+ insumos_general[insumo][i][j] .split('-')[0]+'</th>';
+                  datos_doble +=  '  <td  class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ insumos_general[insumo][i][j] .split('-')[0]+'</td>';
                   datos_dobleDat +=  '  <td  class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ insumos_general[insumo][i][j] .split('-')[0]+'</td>';
                 }
                 else if( i == 0 && j == insumos_general[insumo][0].length -1 ){
-                  datos_doble += '<th class"padding-200">'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                  //datos_doble += '<th class"padding-200">'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td class"padding-200">'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                   datos_dobleDat += '<td class"padding-200">'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                 }
                 else if( i == 0 ){
-                  datos_doble += '<th>'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                  //datos_doble += '<th>'+ insumos_general[insumo][i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td>'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                   datos_dobleDat += '<td>'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                 }
                 else if(j == insumos_general[insumo][0].length -1 ) {
