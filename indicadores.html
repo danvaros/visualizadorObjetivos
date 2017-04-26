@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Indicadores</title>
-
+<!-- hola soy daniel y estoy chambiando sale ppp  -->
     	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
 	  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -413,6 +413,22 @@
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top exportCSVDatos">Exportar datos para el cálculo</a>
 
       <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
+
+         <div class="row" id="row_filtros_serie_101" style="display: none">
+          <div class="col s2 " >
+            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros tipo</p>
+          </div>
+          <div class="col s4 " >
+            <div class="input-field col s12" style="margin-bottom:20px;">
+              <select id="filtros_serie_101" style="display:block !important; background-color: #f2f2f2;">
+                <option value="0">Total</option>
+                <option value="1">Hombres</option>
+                <option value="2">Mujeres</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <div class="row" id="row_filtros_serie" style="display: none">
           <div class="col s2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
@@ -423,7 +439,6 @@
             </div>
           </div>
         </div>
-
         <div class="row" id="serie_panel_tablas">
         </div>
       </div>
@@ -725,7 +740,7 @@
             <ul class="fuerte">
           <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
-            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li> -->
+            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>   -->
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
@@ -1026,6 +1041,9 @@
         }
       },
           tooltip: {
+            format: {
+              title: function (d) { return d.name; },
+            },
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
@@ -1144,12 +1162,12 @@ function adelante(){
       serie.push(Descrip_ind);
     }else{
       if(i < 17){
-        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
+        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(1)+'</td></tr>' ;
       } else if(i == 33){
-        $('.pais').html(parseFloat(estados[i][indice]).toFixed(2));
+        $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
       }
       else {
-        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
+        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(1)+'</td></tr>' ;
       }
 
       var valueToPush = {'numero':parseFloat(estados[i][indice]).toFixed(1), 'estado':estados[i][0]};
@@ -1237,7 +1255,7 @@ function sortFunction(a, b) {
         tooltip: {
           format: {
               value: function(value) {
-                  return d3.format(",.2f")(value)
+                  return d3.format(",.1f")(value)
               }
           }
         },
@@ -1378,7 +1396,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(2)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -1526,7 +1544,7 @@ function sortFunction(a, b) {
             console.log(from,from+1,res,grades);
             labels.push(
               '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+')+'</div>');
+              from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
           }
           div.innerHTML = labels.join('');
           return div;
@@ -1660,7 +1678,7 @@ $(document).ready(function(){
                     varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
                   }
                   else {
-                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]).toFixed(1) +'</td>';
                   }
                   // datos_doble += varia;
                   datos_doble_2 += varia;
@@ -1679,9 +1697,9 @@ $(document).ready(function(){
                       datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
                     }
                     else {
-                      datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                      datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                      datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                      datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(1) +'</td>';
+                      datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(1) +'</td>';
+                      datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(1) +'</td>';
                     }
                 }
                 else{
@@ -1696,9 +1714,9 @@ $(document).ready(function(){
                     datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
                   }
                   else {
-                    datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
+                    datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(1) +'</td>';
+                    datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(1) +'</td>';
+                    datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(1) +'</td>';
                   }
                 }
                }
@@ -1802,6 +1820,7 @@ $(document).ready(function(){
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
+                $('#no_va_serie').show();
 
                 $('#indicador').addClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -1817,6 +1836,7 @@ $(document).ready(function(){
                 $('#serie-panel').show();
                 $('#botonera_nacional').hide();
                 $('#indicador-grafica').hide();
+                $('#no_va_serie').hide();
                 var arre = [];
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
@@ -1876,6 +1896,7 @@ $(document).ready(function(){
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').show();
                 $('#indicador-grafica').hide();
+                $('#no_va_serie').show();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -1894,6 +1915,7 @@ $(document).ready(function(){
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
                 $('#botonera_nacional').hide();
+                $('#no_va_serie').show();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -2135,7 +2157,7 @@ var contaAnios = arrray_anios.length - 1;
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(2) + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -2281,7 +2303,7 @@ var contaAnios = arrray_anios.length - 1;
           console.log(from,from+1,res,grades);
           labels.push(
             '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-            from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+')+'</div>');
+            from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
         }
         div.innerHTML = labels.join('');
         return div;

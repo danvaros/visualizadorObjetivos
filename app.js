@@ -85,16 +85,25 @@
         valorDato(data);
         valorDatoInsumos(data);
       }else{
-        console.log('------------------------ analisis de datos que se enstan mostrando --------------');
-       //console.log(data);
-        cobertura(data);
-        estados = arma_tabla(0);
-        coberturaInsumos(data);
-        console.log(estados);
-        poner_filtros();
-        poner_filtros_serie();
-        $('#row_filtros_serie').show();
-        cobertura_notas = true;
+        if(PCveInd == 101)
+        {
+          //alert('es el eindicador especial');
+          cobertura_101(data);
+          $('#row_filtros_serie_101').show();
+        }else{
+          console.log('------------------------ analisis de datos que se enstan mostrando --------------');
+         //console.log(data);
+          cobertura(data);
+        }
+
+          estados = arma_tabla(0);
+          coberturaInsumos(data);
+          console.log(estados);
+          poner_filtros();
+          poner_filtros_serie();
+          $('#row_filtros_serie').show();
+          cobertura_notas = true;
+     
       }
       var codigo_indicador = data.Codigo_ind;
       var descripcion = data.Descrip_ind;
@@ -165,8 +174,14 @@
     $('#filtros_serie').on('change', function(){
       console.log('-------------------- validemos ---------------');
       console.log(arreglo_datos);
-
-      put_tabla_serie_cob($(this).val());
+      var filtro = $(this).val();
+      var tipo_101 =  $('#filtros_serie_101').val();
+      if(PCveInd == 101){
+        put_tabla_serie_cob_101(filtro,tipo_101);
+      }else{
+        put_tabla_serie_cob($(this).val());  
+      }
+      
     });
   });//fin document ready
 
@@ -178,6 +193,93 @@
         cobertura_tabla.push(arreglo_datos[num_cobertura][i]);
     }
     return cobertura_tabla;
+  }
+
+
+ function put_tabla_serie_cob_101(filtro,tipo_101){
+
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+                      '</div>' +
+                      '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                      '<table class="bordered" id="miTabla" class="miTabla">';
+    console.log('-------------------- validemos ---------------');
+    
+    if(tipo_101 == 0){
+      var tabla_armada = arma_tabla_insumo(arreglo_datos,filtro);
+    }else if(tipo_101 == 1){
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_hombre,filtro);
+    }else if(tipo_101 == 2){
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_mujeres,filtro);
+    }
+    
+    console.log(tabla_armada);
+
+      for (var i = 0; i < tabla_armada.length; i++) {
+               if(i == 0){
+                datos_doble +=  '<thead><tr>';
+              }
+               else if(i == 1){
+                 datos_doble +=  '<tbody><tr>';
+               }
+               else {
+                  datos_doble +=  '<tr>';
+               }
+
+               for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == tabla_armada[0].length -1){
+                  datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                }
+                else if( i == 0 && j == tabla_armada[0].length -1 ){
+                  datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                }
+                else if( i == 0 ){
+                  datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                }
+                else if(j == tabla_armada[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
+                  datos_doble += varia;
+                }
+                else if(j == tabla_armada[0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                }
+                else{
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
+                }
+               }
+
+               if(i == 0){
+                 datos_doble +=  '</tr></thead>';
+               }else{
+                 datos_doble +=  '</tr>';
+               }
+             }
+
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+ pie +
+             '</div></div>';
+
+    //sin pie y cabezera de la pagina
+    $('#serie_panel_tablas').html(datos_doble);
+    var arre = [];
+    for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
+      arre.push(i)
+    }
+
+    if(arre.length > 17){
+      $('#miTabla').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    aoColumnDefs: [
+                      { 'bSortable': false,
+                        'aTargets': arre }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                } );
+    }
   }
 
  function put_tabla_serie_cob(filtro){
@@ -764,9 +866,10 @@
         else {
           //dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
           if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null){
-            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser;
-          }else{
+
             dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
+          }else{
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser;
           }
 
         }
@@ -878,8 +981,11 @@
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
-                        '<p><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>'
+
+
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>'
+
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
