@@ -1026,7 +1026,6 @@
           },
       data: {
       columns: [],
-      order: 'asc',
       type: 'bar',
       color:
         function (color, d) {
@@ -1042,7 +1041,7 @@
       },
           tooltip: {
             format: {
-              title: function (d) { return d.name;},
+              title: function (d) { return d.name; },
             },
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
