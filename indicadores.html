@@ -1042,7 +1042,7 @@
           tooltip: {
             format: {
               title: function (d) { return d.name; },
-            },
+            }, 
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
@@ -1215,18 +1215,26 @@ function regresa_estados_unidos(){
   return index_estados;
 }
 
-// function sortFunction(a, b) {
-//     if (a.numero === b.numero) {
-//         return 0;
-//     }
-//     else {
-//         return (a.numero > b.numero) ? -1 : 1;
-//     }
-// }
-
 function sortFunction(a, b) {
+    if (a.numero === b.numero) {
+        return 0;
+    }
+    else {
         return b.numero - a.numero;
+    }
 }
+
+// function sortFunction(a, b) {
+// if(b.numero == 'NaN'){
+//   return 0;
+// }
+// if(a.numero == 'NaN'){
+//   return 0;
+// }
+//
+//         return b.numero - a.numero;
+//
+// }
 
   function commaSeparateNumber(x)
   {
@@ -1253,6 +1261,7 @@ function sortFunction(a, b) {
           },
         tooltip: {
           format: {
+              title: function (d) {return d.name;},
               value: function(value) {
                   return d3.format(",.1f")(value)
               }
