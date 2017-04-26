@@ -1026,6 +1026,9 @@
         }
       },
           tooltip: {
+            format: {
+              title: function (d) { return d.name; },
+            },
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
