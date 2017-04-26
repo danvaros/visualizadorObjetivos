@@ -615,7 +615,9 @@ $('#loader').show();
               var codigo_dg     = datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg;
               var descrip_des   = datos[i].Meta[j].Indicador[k].Descrip_des;
               var codigo_des    = datos[i].Meta[j].Indicador[k].Codigo_des;
+            if(clave_arb == 333 || clave_arb == 210 ||  clave_arb == 118 ){
 
+            }else{
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
                   '<a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
@@ -643,7 +645,7 @@ $('#loader').show();
               }
 
             }//fin for mas interno
-
+          }
           contenido = contenido +     '</p></div>'+'</div>';
 
           // if(checar < 2 ){
