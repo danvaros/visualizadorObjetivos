@@ -1026,7 +1026,6 @@
           },
       data: {
       columns: [],
-      order: 'asc',
       type: 'bar',
       color:
         function (color, d) {
@@ -1042,8 +1041,8 @@
       },
           tooltip: {
             format: {
-              title: function (d) { return d.name;},
-            },
+              title: function (d) { return d.name; },
+            }, 
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
@@ -1170,7 +1169,16 @@ function adelante(){
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(1)+'</td></tr>' ;
       }
 
-      var valueToPush = {'numero':parseFloat(estados[i][indice]).toFixed(1), 'estado':estados[i][0]};
+      console.log('____________________________ vamos aver que show --------------');
+      if(estados[i][indice] == null){
+        var numero =  0;
+      }else{
+        var numero =  parseFloat(estados[i][indice]).toFixed(1);
+      }
+
+      console.log(numero);
+
+      var valueToPush = {'numero':numero, 'estado':estados[i][0]};
       nuevos_estados_dobles.push(valueToPush);
 
       serie.push(parseFloat(estados[i][indice]).toFixed(1));
@@ -1189,6 +1197,7 @@ function adelante(){
 
   //separar el areglo
   series.push(Descrip_ind);
+  categories.push(Descrip_ind);
   for (var i = 0; i < nuevos_estados_dobles.length; i++) {
    // console.log(nuevos_estados_dobles[i].estado);
     if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
@@ -1200,6 +1209,8 @@ function adelante(){
 
   console.log("--->>>>las series",series);
   console.log(categories);
+  console.log(Descrip_ind);
+
   cat_global = categories;
   chartBarras.load({
     columns: [series],
@@ -1221,13 +1232,33 @@ function regresa_estados_unidos(){
 //         return 0;
 //     }
 //     else {
-//         return (a.numero > b.numero) ? -1 : 1;
+//         return b.numero - a.numero;
 //     }
 // }
 
 function sortFunction(a, b) {
+  // if(b.numero == 'NaN'){
+  //   return 0;
+  // }
+  // if(a.numero == 'NaN'){
+  //   return 0;
+  // }
+
         return b.numero - a.numero;
+
 }
+
+// function sortFunction(a, b) {
+// if(b.numero == 'NaN'){
+//   return 0;
+// }
+// if(a.numero == 'NaN'){
+//   return 0;
+// }
+//
+//         return b.numero - a.numero;
+//
+// }
 
   function commaSeparateNumber(x)
   {
@@ -1254,6 +1285,7 @@ function sortFunction(a, b) {
           },
         tooltip: {
           format: {
+              title: function (d) {return d.name;},
               value: function(value) {
                   return d3.format(",.1f")(value)
               }
@@ -1811,10 +1843,12 @@ $(document).ready(function(){
           // select de metadatos
           $('#indicador').click(function(){
 
-            if(codigoDg.replace(/\s/g,'') == 'N'){
-              $('#tabla_nacional').show();  
+            if(codigoDg.replace(/\s/g,'') == 'N' ){
+              if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312){
+                  $('#tabla_nacional').show();
+              }
             }
-            
+
                 $('#metadato-panel').hide();
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
@@ -1834,7 +1868,7 @@ $(document).ready(function(){
           });
 
           $('#serie').click(function(){
-                $('#tabla_nacional').hide();  
+                $('#tabla_nacional').hide();
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
@@ -1892,7 +1926,7 @@ $(document).ready(function(){
           });
 
           $('#datos').click(function(){
-                $('#tabla_nacional').hide();  
+                $('#tabla_nacional').hide();
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
@@ -1912,7 +1946,7 @@ $(document).ready(function(){
           });
 
           $('#metadato').click(function(){
-                $('#tabla_nacional').hide();  
+                $('#tabla_nacional').hide();
                 $('#metadato-panel').show();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();

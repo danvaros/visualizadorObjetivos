@@ -927,7 +927,8 @@ margin-left: 60%; */
 
 @media only screen and (max-width: 992px){
 nav .brand-logo {
-  left: 0%;
+  left: 15%;
+  margin-top: -5px;
 }
 
 

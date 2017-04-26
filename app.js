@@ -41,8 +41,6 @@
 
       Codigo_ind 	=	data.Codigo_ind;
 
-      Descrip_ind = data.Descrip_ind;
-
       colorObjetivo(obj);
       iconoObjetivo(obj);
 
@@ -103,7 +101,7 @@
           poner_filtros_serie();
           $('#row_filtros_serie').show();
           cobertura_notas = true;
-     
+
       }
       var codigo_indicador = data.Codigo_ind;
       var descripcion = data.Descrip_ind;
@@ -112,7 +110,7 @@
       $('.Descrip_ind').html(Descrip_ind);
 
       titulos(PCveInd);
-
+      $('#tabla_nacional').hide();
       if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312){
         $('#tabla_nacional').show();
         $('#mapas_hide').remove();
@@ -179,9 +177,9 @@
       if(PCveInd == 101){
         put_tabla_serie_cob_101(filtro,tipo_101);
       }else{
-        put_tabla_serie_cob($(this).val());  
+        put_tabla_serie_cob($(this).val());
       }
-      
+
     });
   });//fin document ready
 
@@ -203,7 +201,7 @@
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
     console.log('-------------------- validemos ---------------');
-    
+
     if(tipo_101 == 0){
       var tabla_armada = arma_tabla_insumo(arreglo_datos,filtro);
     }else if(tipo_101 == 1){
@@ -211,7 +209,7 @@
     }else if(tipo_101 == 2){
       var tabla_armada = arma_tabla_insumo(arreglo_datos_mujeres,filtro);
     }
-    
+
     console.log(tabla_armada);
 
       for (var i = 0; i < tabla_armada.length; i++) {
@@ -847,6 +845,11 @@
     console.log("comparacion2");
     console.log(data);
     var temporal = [];
+    console.log('******************** des');
+    console.log(data.Descrip_ind);
+    Descrip_ind = data.Descrip_ind;
+
+
     temporal.push('Entidad');
     for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
       temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
