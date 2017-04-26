@@ -1810,10 +1810,6 @@ $(document).ready(function(){
 
           // select de metadatos
           $('#indicador').click(function(){
-                if(codigoDg.replace(/\s/g,'') == 'N'){
-                  $('#tabla_nacional').show();  
-                }
-              
                 $('#metadato-panel').hide();
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
@@ -1841,7 +1837,6 @@ $(document).ready(function(){
                 $('#botonera_nacional').hide();
                 $('#indicador-grafica').hide();
                 $('#no_va_serie').hide();
-                $('#tabla_nacional').hide();
                 var arre = [];
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
@@ -1902,7 +1897,6 @@ $(document).ready(function(){
                 $('#link-datos-panel').show();
                 $('#indicador-grafica').hide();
                 $('#no_va_serie').show();
-                $('#tabla_nacional').hide();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -1922,7 +1916,6 @@ $(document).ready(function(){
                 $('#link-datos-panel').hide();
                 $('#botonera_nacional').hide();
                 $('#no_va_serie').show();
-                $('#tabla_nacional').hide();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
