@@ -44,13 +44,17 @@ html
 }
 .logo1
 {
-  width: 22%;
-  margin-top: 5%;
+  margin-left: 22px;
+    margin-top: 5%;
+    max-width: 200px;
+    width: 22%;
 }
 .logo2
 {
-  width: 13%;
-  margin-top: 5%;
+  margin-left: 10px;
+    margin-top: 5%;
+    max-width: 104px;
+    width: 13%;
 }
 .caja_i
 {
@@ -996,6 +1000,3 @@ animation-name: scroll;
       display: none;
     }
 }
-
-
-    
