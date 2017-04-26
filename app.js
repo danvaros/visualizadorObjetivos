@@ -6,6 +6,7 @@
   var insumos_general = [];
   var insumos_cobertura = [];
   var insumo_cober_clasifica = [];
+  var cobertura_notas = false;
 
   var query_string = {};
   var query = window.location.search.substring(1);
@@ -24,7 +25,8 @@
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
+    // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
+    url: "http://agenda2030.mx/datos/api/Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -71,7 +73,7 @@
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
+    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -92,6 +94,7 @@
         poner_filtros();
         poner_filtros_serie();
         $('#row_filtros_serie').show();
+        cobertura_notas = true;
       }
       var codigo_indicador = data.Codigo_ind;
       var descripcion = data.Descrip_ind;
@@ -100,6 +103,24 @@
       $('.Descrip_ind').html(Descrip_ind);
 
       titulos(PCveInd);
+
+      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312){
+        $('#tabla_nacional').show();
+        $('#mapas_hide').remove();
+        $('#botonera_nacional').remove();
+      }
+
+      if(PCveInd ==  333 || PCveInd == 276){
+        $('#map').remove();    
+        $('#footmap').remove();
+        $('#grafs').remove();
+        $('#indicador-grafica').remove();
+        $('#indicador-panel').hide();
+        $('.ocultar').hide();
+        //datos a mostrar
+        $('#serie-panel2').show();
+      }
+
       $('#loader').delay(2000).fadeOut("slow");
     },
     async:false
@@ -193,14 +214,14 @@
                   datos_doble += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
                 }
                }
 
@@ -241,7 +262,8 @@
 
 
   function put_tabla_insumo_cob(filtro){
-    var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+    generar_titulos_cob();
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo_insumo +
                       '</div>' +
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
@@ -288,17 +310,17 @@
                   datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
-                  datos_dobleDat +=  '  <td>'+ numberWithCommas(tabla_armada[i][j]) +'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j]+'</td>';
+                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j]+'</td>';
                 }
                }
 
@@ -316,7 +338,7 @@
 
 
             datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
+            ' <div class="pie_cuadro2">'+ pie_insumo +
              '</div></div>';
 
              datos_dobleDat +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
@@ -398,7 +420,8 @@
   }
 
   function put_tabla_insumo(insumo){
-    var datos_doble = '<div class="cuadro_titulo"> ' + titulo +
+    generar_titulos();
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo_insumo +
                       '</div>' +
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
@@ -440,17 +463,17 @@
                   datos_dobleDat += '<td>'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                 }
                 else if(j == insumos_general[insumo][0].length -1 ) {
-                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ insumos_general[insumo][i][j]+'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == insumos_general[insumo][0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ insumos_general[insumo][i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ insumos_general[insumo][i][j]+'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
-                  datos_dobleDat +=  '  <td>'+ numberWithCommas(insumos_general[insumo][i][j]) +'</td>';
+                  datos_doble +=  '  <td>'+ insumos_general[insumo][i][j] +'</td>';
+                  datos_dobleDat +=  '  <td>'+ insumos_general[insumo][i][j] +'</td>';
                 }
                }
 
@@ -466,7 +489,7 @@
 
 
             datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-            ' <div class="pie_cuadro2">'+ pie +
+            ' <div class="pie_cuadro2">'+ pie_insumo +
              '</div></div>';
 
              datos_dobleDat +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
@@ -557,7 +580,14 @@
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-            var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
+              
+               var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);  
+            }else{
+             var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser;
+            }
+            
+            //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             temporal.push(dato_formato);
           }
           individual.push(temporal);
@@ -732,7 +762,13 @@
           dato_formato =  data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }
         else {
-          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Ser.replace(",", "");
+          //dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+          if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null){
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser; 
+          }else{
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1); 
+          }
+          
         }
         temporal.push(dato_formato);
       }
@@ -786,21 +822,83 @@
     });
   });
 
-  var titulo ;
-  var pie ;
+  var titulo;
+  var titulo_insumo;
+  var pie;
+  var pie_insumo;
+  var atributos_general;
+
+  function generar_titulos_cob(){
+      var serie_insumo =  $('#insumo_change_cob').val();
+      serie_insumo++;
+      console.log(serie_insumo);
+      console.log(atributos);
+      console.log(atributos.Serie[2]);
+      console.log(atributos.Serie[serie_insumo].NotaSer_not);
+      
+        titulo_insumo = '<h4 id="titulo_cabezeras">'+atributos.DescripInd_des+'</h4>' +
+                        '<li class="divider"></li> '+
+                        '<p>' + ((atributos.DescripSer_des != null || atributos.DescripSer_des != "") ? ''  : '<strong>Serie: </strong>' + atributos.DescripSer_des) +'</p>';
+                        '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
+
+        pie_insumo =  ' <div> '+ ((atributos.Serie[serie_insumo].NotaSer_not != null) ? '<strong>Nota serie:</strong>' + atributos.Serie[serie_insumo].NotaSer_not : "") +'</div>'+
+                      ' <div> '+ ((atributos.Serie[serie_insumo].DescripSer_fue != null) ? '<strong>Fuente:</strong>' + atributos.Serie[serie_insumo].DescripSer_fue : "") +'</div>'+
+                      ' <div> '+ ((atributos.Serie[serie_insumo].DescripSer_uni != null) ? '<strong>Unidad de medida:</strong>' + atributos.Serie[serie_insumo].DescripSer_uni : "") +'</div>';
+  }
+
+  function generar_titulos(){
+      var serie_insumo =  $('#insumo_change').val();
+      serie_insumo++;
+      console.log(serie_insumo);
+      console.log(atributos);
+      console.log(atributos.Serie[2]);
+      console.log(atributos.Serie[serie_insumo].NotaSer_not);
+
+        titulo_insumo = '<h4 id="titulo_cabezeras">'+atributos.DescripInd_des+'</h4>' +
+                        '<li class="divider"></li> '+
+                        '<p>' + ((atributos.DescripSer_des != null || atributos.DescripSer_des != "") ? ''  : '<strong>Serie: </strong>' + atributos.DescripSer_des) +'</p>';
+                        '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
+
+        pie_insumo =  ' <div> '+ ((atributos.Serie[serie_insumo].NotaSer_not != null) ? '<strong>Nota serie:</strong>' + atributos.Serie[serie_insumo].NotaSer_not : "") +'</div>'+
+                      ' <div> '+ ((atributos.Serie[serie_insumo].DescripSer_fue != null) ? '<strong>Fuente:</strong>' + atributos.Serie[serie_insumo].DescripSer_fue : "") +'</div>'+
+                      ' <div> '+ ((atributos.Serie[serie_insumo].DescripSer_uni != null) ? '<strong>Unidad de medida:</strong>' + atributos.Serie[serie_insumo].DescripSer_uni : "") +'</div>';
+
+
+
+  }
 
   function titulos(indicador){
-        var atributos = getAtributos(indicador);
+        var serie_insumo =  $('insumo_change').val();
+        atributos_general = getAtributos(indicador);
+        atributos = atributos_general;
+
+      if(cobertura_notas){
+        titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
+                        '<li class="divider"></li> ' +
+                        '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<p><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>'
+
+        pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
+                  ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
+                  ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización:</strong>' + atributos.FecAct_atr : "") +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' </div>';
+      }else{
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
-
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
-                  ' <div><strong>Fecha de actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización:</strong>' + atributos.FecAct_atr : "") +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
+      }
+       
 
         $('.pie_cuadro2').html(pie);
         $('.cuadro_titulo').html(titulo);

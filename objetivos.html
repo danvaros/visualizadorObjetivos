@@ -139,7 +139,7 @@ $('#loader').show();
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
@@ -442,15 +442,15 @@ $('#loader').show();
       <div class="container">
         <div class="row" id="fot">
           <div class="col l3 s12">
-            <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
+            <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
             <br>
             <br>
-            <div class="" style="display:inline;">
+   <!--          <div class="" style="display:inline;">
               <a href="https://www.facebook.com" style="margin-right: 12%;"><img src="img/fill2.png" alt="" style="width:3%;"/></a>
               <a href="https://twitter.com" style="margin-right: 12%;"><img src="img/fill1.png" alt="" style="width:7%;"/></a>
               <a href="#"><img src="img/fill3.png" alt="" style="width:7%;"/></a>
             </div>
-          </div>
+ -->          </div>
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
@@ -574,7 +574,7 @@ $('#loader').show();
     });
 
     function llamada(indicador, ser){
-      var url = 'https://operativos.inegi.org.mx/datos/api/Tematica/Todos';
+      var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}
       //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
@@ -615,7 +615,9 @@ $('#loader').show();
               var codigo_dg     = datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg;
               var descrip_des   = datos[i].Meta[j].Indicador[k].Descrip_des;
               var codigo_des    = datos[i].Meta[j].Indicador[k].Codigo_des;
+            if(clave_arb == 333 || clave_arb == 210 ||  clave_arb == 118 ){
 
+            }else{
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
                   '<a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
@@ -643,7 +645,7 @@ $('#loader').show();
               }
 
             }//fin for mas interno
-
+          }
           contenido = contenido +     '</p></div>'+'</div>';
 
           // if(checar < 2 ){

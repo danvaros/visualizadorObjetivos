@@ -278,26 +278,26 @@ nav
 {
 	background-color: #D8AE2B;
 }
-.tres
+/*.tres
 {
   background: url('../img/fondoODS3.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_3
 {
 	background-color: #299E32;
 }
-.cuatro
+/*.cuatro
 {
   background: url('../img/fondoODS4.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_4
 {
 	background-color: #BD052D;
@@ -306,26 +306,26 @@ nav
 {
 	background-color: #E23429;
 }
-.seis
+/*.seis
 {
   background: url('../img/fondoODS6.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_6
 {
 	background-color: #56BCE3;
 }
-.siete
+/*.siete
 {
   background: url('../img/fondoODS7.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_7
 {
 	background-color: #F2CB02;
@@ -334,14 +334,14 @@ nav
 {
 	background-color: #9D063D;
 }
-.nueve
+/*.nueve
 {
   background: url('../img/fondoODS9.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_9
 {
 	background-color: #E86A26;
@@ -354,14 +354,14 @@ nav
 {
 	background-color: #F0A612;
 }
-.doce
+/*.doce
 {
   background: url('../img/fondoODS12.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_12
 {
 	background-color: #B99319;
@@ -370,26 +370,26 @@ nav
 {
 	background-color: #2D7D3B;
 }
-.catorce
+/*.catorce
 {
   background: url('../img/fondoODS14.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_14
 {
 	background-color: #4B95CF;
 }
-.quince
+/*.quince
 {
   background: url('../img/fondoODS15.png') no-repeat center;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 .id_15
 {
 	background-color: #37B72F;
@@ -916,9 +916,13 @@ margin-left: 60%; */
 -moz-margin-top: 12%;
 -moz-width: 35%; */
 
-    margin-left: 50%;
+    /*margin-left: 50%;
     margin-top: 15px;
-    width: 40px;
+    width: 40px;*/
+
+    margin-left: 30%;
+    margin-top: 10px;
+    width: 80px;
   }
 
 @media only screen and (max-width: 992px){
