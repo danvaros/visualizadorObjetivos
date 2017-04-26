@@ -793,7 +793,7 @@
       </div> -->
     </footer>
 <!-- footer -->
-
+<div id="barras2"></div>
 
     <script src="cobertura.js"></script>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
@@ -814,110 +814,189 @@
   <script src="lib/jquery.mousewheel.js"></script>
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
-  <script>
+  <style>
 
-  var tooltip;
+  .axis text {
+font: 10px sans-serif;
+}
 
-  var margin = {top: 60, right: 30, bottom: 40, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+.axis path,
+.axis line {
+fill: none;
+stroke: #000;
+shape-rendering: crispEdges;
+}
 
-  var x = d3.scale.ordinal()
-      .rangeRoundBands([0, width], .1);
+.bar {
+fill: steelblue;
+fill-opacity: .9;
+}
 
-  var y = d3.scale.linear()
-      .range([height, 0]);
+.x.axis path {
+display: none;
+}
 
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom");
+label {
+position: absolute;
+top: 10px;
+right: 10px;
+}
 
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left");
-
-
-  var svg = d3.select("body").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  // d3.csv("data.csv", type, function(error, data) {
-  //   x.domain(data.sort(
-  //        function(a, b) { return b.value - a.value; },
-  //        function(a, b) { return d3.ascending(a.value, b.value); })
-  //        .map(function(d) { return d.edo; }))
-  //        .copy();
-  //   y.domain([0, d3.max(data, function(d) { return d.value; })]);
-
-  d3.json(dataTablaJSON(categories,series), function(data) {
-    console.log(data[0]);
-  });
+  	</style>
 
 
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis)
-        .selectAll("text")
-        .style("text-anchor", "end")
-        .attr("dx", "-.8em")
-        .attr("dy", "-.60em")
-        .attr("transform", function(d) {
-            return "rotate(-90)"
-            });
+    <script>
 
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
-
-    svg.selectAll(".bar")
-        .data(data)
-      .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return x(d.edo); })
-        .attr("y", function(d) { return y(d.value); })
-        .attr("height", function(d) { return height - y(d.value); })
-        .attr("width", x.rangeBand())
-        .on("mouseover", function(d) {
-              tooltip.html("<div class='tooltip-nombre'><strong>"+d.estado+"</strong></div><div class='tooltip-origin'><span>"+d.value+"</span> <span> " +d.unidad+"</span> </div>");
-              return tooltip
-               .style("visibility", "visible"); })
-        .on("mousemove", function(){
-              return tooltip
-               })
-         .on("mouseout", function(){
-              return tooltip
-              .style("visibility", "hidden");
-         });
-
-    tooltip = d3.select("body")
-           .append("div")
-           .attr('class','tooltip')
-           .style("position", "absolute")
-           .style("z-index", "10")
-           .style("visibility", "hidden")
-           .text("");
-
-  svg.append("text")
-     .attr("class", "titulografica")
-       .attr("x", (width / 2))
-       .attr("y", 0 - (margin.top / 2))
-       .attr("text-anchor", "middle")
-     .attr("font-family", "Helvetica Neue")
-       .attr("font-size", "20px")
-       .style("text-decoration", "bold")
-       .text("Porcentaje que cree que un gobierno autoritario puede ser preferible a uno democrático, 2012");
-  });
+console.log('--------estados estados estados -----------------');
+console.log(estados);
 
 
-  function type(d) {
-    d.value = +d.value; // coerce to number
-    return d;
-  }
+    function cates(year){
+       var indice = 0;
+       var serie = [];
+       var nuevos_estados_dobles = new Array();
+       console.log(nuevos_estados_dobles);
 
-  </script>
+       var tabla_uno = tabla_dos =  '';
+
+       for (var i = 0; i < estados[0].length; i++) {
+         if(estados[0][i].includes(year)){
+           indice = i;
+         }
+       }
+
+       for (var i = 0; i < estados.length; i++) {
+         if(i==0){
+           serie.push(Descrip_ind);
+         }else{
+           if(i < 17){
+             tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
+           } else if(i == 33){
+             $('.pais').html(parseFloat(estados[i][indice]).toFixed(2));
+           }
+           else {
+             tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
+           }
+
+           var valueToPush = {'category':parseFloat(estados[i][indice]).toFixed(2), 'serie':estados[i][0]};
+           nuevos_estados_dobles.push(valueToPush);
+
+           serie.push(parseFloat(estados[i][indice]).toFixed(2));
+        }
+     }
+
+
+
+    function dataTablaJSON(categories, series)
+    {
+
+      console.log('ihdfblshdhbfalsihdbfailshdbfsjhdbvshdjfbjdhfbjdhfgblashfbsjhdfkgd');
+      console.log(categories);
+      var datosTabla = {};
+      for (var i = 0; i < categories.length; i++) {
+        datosTabla[i] = {category: + '"' + categories[i] + '"' , serie: '"'+series[i]+'"'};
+      }
+        return datosTabla;
+
+    }
+
+
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    var formatPercent = d3.format(".0%");
+
+    var x = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1, 1);
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickFormat(formatPercent);
+
+    var svg = d3.select("#barras2").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.json(dataTablaJSON(categories, series), function(error, data) {
+
+      data.forEach(function(d) {
+        d.letter = d.Letter;
+        d.frequency = +d.Freq;
+    });
+
+      x.domain(data.map(function(d) { return d.letter; }));
+      y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Porcentaje");
+
+      svg.selectAll(".bar")
+          .data(data)
+        .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.letter); })
+          .attr("width", x.rangeBand())
+          .attr("y", function(d) { return y(d.frequency); })
+          .attr("height", function(d) { return height - y(d.frequency); });
+
+      d3.select("input").on("change", change);
+
+      var sortTimeout = setTimeout(function() {
+        d3.select("input").property("checked", true).each(change);
+      }, 2000);
+
+      function change() {
+        clearTimeout(sortTimeout);
+
+        // Copy-on-write since tweens are evaluated after a delay.
+        var x0 = x.domain(data.sort(this.checked
+            ? function(a, b) { return b.frequency - a.frequency; }
+            : function(a, b) { return d3.ascending(a.letter, b.letter); })
+            .map(function(d) { return d.letter; }))
+            .copy();
+
+        svg.selectAll(".bar")
+            .sort(function(a, b) { return x0(a.letter) - x0(b.letter); });
+
+        var transition = svg.transition().duration(750),
+            delay = function(d, i) { return i * 50; };
+
+        transition.selectAll(".bar")
+            .delay(delay)
+            .attr("x", function(d) { return x0(d.letter); });
+
+        transition.select(".x.axis")
+            .call(xAxis)
+          .selectAll("g")
+            .delay(delay);
+      }
+    });
+    </script>
+
+
 
   <script>
   var titulo_des_graf="Razón de mortalidad materna";
@@ -1258,7 +1337,7 @@ function dataTablaJSON (categories, series)
 {
   var datosTabla = {};
   for (var i = 0; i < categories.length; i++) {
-    datosTabla[i] = {category: + '"' + categories[i] + '"' +, serie: '"'+series[i]+'"'};
+    datosTabla[i] = {category: + '"' + categories[i] + '"' +','+ serie: '"'+series[i]+'"'};
   }
     return datosTabla;
 
