@@ -597,6 +597,9 @@ $('#loader').show();
       for (var i = 0; i < datos.length; i++) {
         var contenido='';
         for (var j = 0; j < datos[i].Meta.length; j++) {
+var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
+        if(clave_arb_meta != 333  &&  clave_arb_meta != 118 ){
+          if(clave_arb_meta != 210){
           if(j > 2){
                 contenido = contenido + '<div class="row borde_b fond ocultar" >';
               }else{
@@ -647,6 +650,11 @@ $('#loader').show();
             }//fin for mas interno
           }
           contenido = contenido +     '</p></div>'+'</div>';
+          }
+        }else {
+          var mensa = 'No se tiene indicadores disponibles para este objetivo';
+          contenido =  '<div class="col s12">'+mensa+'</div>';
+        }//fin condicion para no ver las metas
 
           // if(checar < 2 ){
           //   console.log(contenido);
