@@ -197,13 +197,16 @@
 
                for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
                 if(i == 0 && j == tabla_armada[0].length -1){
-                  datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                  //datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                  datos_doble +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
                 }
                 else if( i == 0 && j == tabla_armada[0].length -1 ){
-                  datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  //datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if( i == 0 ){
-                  datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  //datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
                   var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
