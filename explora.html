@@ -550,7 +550,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     		  			</div>
     		  			<div class="col s3" style="margin-top: 10px;">
               				<a class="icn  exportCSV">CSV</a>
-                      <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
+                      <span id="exportarXLS"></span>
                       <!-- <a class="icns">XLS</a> -->
                       <!-- <a class="icnSDMX">SDMX</a>
                       <a class="icnPDF">PDF</a> -->
@@ -743,8 +743,38 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         var primera_carga =  true;
         var initialLoad = true;
 
+
+
         $(document).ready(function()
         {
+
+          function pruebaInicio(initialLoad){
+              if (initialLoad == true) {
+                  console.log(':::::::::::::::::::::::: Indicador Inicial :::::::::::::::::::::::');
+                  $("#exportarXLS").html('<a href="#" class="icns " download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla33'"+', '+"'Indicadores'"+');">XLS</a>');
+                  $(".exportCSV").on('click', function (event) {
+                      var args;
+                          args = [$('#miTabla33'), 'IndicadorExp.csv'];
+                      exportTableToCSV.apply(this, args);
+                  });
+                  initialLoad = false;
+              } else {
+                console.log(':::::::::::::::::::::::: Indicador Diferente :::::::::::::::::::::::');
+                  $("#exportarXLS").html('<a href="#" class="icns " download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla22'"+', '+"'Indicadores'"+');">XLS</a>');
+                  $(".exportCSV").on('click', function (event) {
+                      // CSV
+                      var args;
+                          //Do work when it's not the initial load.
+                          args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
+                      exportTableToCSV.apply(this, args);
+                      initialLoad = false;
+                      // If CSV, don't do event.preventDefault() or return false
+                      // We actually need this to be a typical hyperlink
+                  });
+              }
+          }
+
+          pruebaInicio(initialLoad);
 
           // $('.modal').modal();
           $('.modal-trigger').leanModal();
@@ -762,6 +792,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           {
             if($('#agregacion').val() ==  1)
             {
+              initialLoad = false;
+              pruebaInicio(initialLoad);
               var indicador = $(this).val().split(".")[0];
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
@@ -783,6 +815,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               }
             }else if($('#agregacion').val() ==  -1){/*no hacemos nada */}
             else{
+              initialLoad = false;
+              pruebaInicio(initialLoad);
               var indicador = $(this).val().split(".")[0];
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
@@ -2327,27 +2361,88 @@ var contaAnios = arrray_anios.length - 1;
     // });
 
 
+
+// function pruebaInicio(initialLoad){
+//     if (initialLoad) {
+//         console.log(':::::::::::::::::::::::: Indicador Inicial :::::::::::::::::::::::');
+//         $("#exportarXLS").html('<a href="#" class="icns " download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla33'"+', '+"'Indicadores'"+');">XLS</a>');
+//         $(".exportCSV").on('click', function (event) {
+//             // CSV
+//             var args;
+//                 //Do work that is done when the page was first refreshed/loaded.
+//                 args = [$('#miTabla33'), 'IndicadorExp.csv'];
+//
+//             exportTableToCSV.apply(this, args);
+//
+//             // If CSV, don't do event.preventDefault() or return false
+//             // We actually need this to be a typical hyperlink
+//         });
+//         initialLoad = false;
+//     } else {
+//       console.log(':::::::::::::::::::::::: Indicador Diferente :::::::::::::::::::::::');
+//         $("#exportarXLS").html('<a href="#" class="icns " download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla22'"+', '+"'Indicadores'"+');">XLS</a>');
+//         $(".exportCSV").on('click', function (event) {
+//             // CSV
+//             var args;
+//                 //Do work when it's not the initial load.
+//                 args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
+//             exportTableToCSV.apply(this, args);
+//
+//             // If CSV, don't do event.preventDefault() or return false
+//             // We actually need this to be a typical hyperlink
+//         });
+//     }
+// }
+
+//pruebaInicio(initialLoad);
+
+
       // This must be a hyperlink
-      $(".exportCSV").on('click', function (event) {
-          // CSV
-          var args;
+      // $(".exportCSV").on('click', function (event) {
+      //     // CSV
+      //     var args;
+      //
+      //     if (initialLoad) {
+      //         //Do work that is done when the page was first refreshed/loaded.
+      //         args = [$('#miTabla33'), 'IndicadorExp.csv'];
+      //         initialLoad = false;
+      //     } else {
+      //         //Do work when it's not the initial load.
+      //         args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
+      //     }
+      //
+      //     exportTableToCSV.apply(this, args);
+      //
+      //     // If CSV, don't do event.preventDefault() or return false
+      //     // We actually need this to be a typical hyperlink
+      // });
 
-          if (initialLoad) {
-              //Do work that is done when the page was first refreshed/loaded.
-              args = [$('#miTabla33'), 'IndicadorExp.csv'];
-              initialLoad = false;
-          } else {
-              //Do work when it's not the initial load.
-              args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
-          }
 
-          exportTableToCSV.apply(this, args);
 
-          // If CSV, don't do event.preventDefault() or return false
-          // We actually need this to be a typical hyperlink
-      });
+// .on('load', function (event) {
+//
+//     if (initialLoad) {
+//         //Do work that is done when the page was first refreshed/loaded.
+//
+//         $(this).attr({
+//             download: "Indicador.xls",
+//             onclick: "return ExcellentExport.excel(this, 'miTabla33', 'Indicadores');"
+//           });
+//         initialLoad = false;
+//
+//     } else {
+//         //Do work when it's not the initial load.
+//         $(this).attr({
+//             download: "Indicador.xls",
+//             onclick: "return ExcellentExport.excel(this, 'miTabla22', 'Indicadores');"
+//           });
+//         initialLoad = false;
+//     }
 
+    // If CSV, don't do event.preventDefault() or return false
+    // We actually need this to be a typical hyperlink
 });
+
 </script>
 <script type="text/javascript">
 $(document).ready(function () {
