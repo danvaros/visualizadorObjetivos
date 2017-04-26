@@ -57,7 +57,7 @@ function cobertura(data){
 		  			temporal.push(cober_inter[i].Descrip_cg);
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
 		  				//varios problemas
-		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato.replace(",", "");
+		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_ser.toFixed(1);
 		  				temporal.push(dato_formato);
 		  			}
 		  			arreglo_datos_tem.push(temporal)
@@ -122,7 +122,7 @@ function cobertura_series(data,i){
 		  			var temporal2 = [];
 		  			temporal2.push(cober_inter[i].Descrip_cg);
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
-		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato.replace(",", "");
+		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_ser.toFixed(1);
 		  				temporal2.push(dato_formato);
 		  			}
 		  			arreglo_datos_tem2.push(temporal2)
