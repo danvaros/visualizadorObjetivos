@@ -864,8 +864,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           {
             if($('#agregacion').val() ==  1)
             {
-              initialLoad = false;
-              pruebaInicio(initialLoad);
+              // initialLoad = false;
+              // pruebaInicio(initialLoad);
               var indicador = $(this).val().split(".")[0];
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
@@ -887,8 +887,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               }
             }else if($('#agregacion').val() ==  -1){/*no hacemos nada */}
             else{
-              initialLoad = false;
-              pruebaInicio(initialLoad);
+              // initialLoad = false;
+              // pruebaInicio(initialLoad);
               var indicador = $(this).val().split(".")[0];
               console.log("entro",indicador);
               console.log("Meta",objeto[indicador-1].Meta.length);
@@ -912,6 +912,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           titulos(26);
           $('#indicadores').on('change',function(){
             $('#loader').show();
+            initialLoad = false;
+           pruebaInicio(initialLoad);
            // var indicador = $(this).val().split(".")[0];
             llamar_api();
 
