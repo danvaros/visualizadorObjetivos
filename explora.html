@@ -808,14 +808,17 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             $('#loader').show();
            // var indicador = $(this).val().split(".")[0];
             llamar_api();
-            $('#grafica_c').show();
+            
             $('#datos_descarga').show();//panel de datos de descarga
 
             if($('#agregacion').val() != 1){
               $('#datosNacional').hide( );
               $('#datosEstatal').hide( );
               $('#seccion_mapa').show();//panel de datos de descarga
+              $('#grafica_c').hide();
               put_anios();
+            }else{
+              $('#grafica_c').show();
             }
 
             actualiza_grafica();
@@ -895,6 +898,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   var normal,fondo,todo;
     $(document).ready(function()
     {
+      $('#grafica_c').hide();
       var lupa =  false;
       $('#buscar').click(function(){
         if(lupa){
