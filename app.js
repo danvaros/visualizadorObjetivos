@@ -977,20 +977,32 @@
         atributos_general = getAtributos(indicador);
         atributos = atributos_general;
 
-      if(cobertura_notas){
+
+      if(PCveInd == 1 || PCveInd == 2 || PCveInd == 105 || PCveInd == 208 || PCveInd == 212 || PCveInd == 213 || PCveInd == 224 || PCveInd == 101){
+           titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
+                        '<li class="divider"></li> ' +
+                        '<p> '+ atributos.CobTemporal_ser +' </p>' +
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<p id="no_va_serie"><strong>Total<strong></p>';
+
+                         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
+                  ' <div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' </div>';
+      }
+      else if(cobertura_notas){
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-
-
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
-                        '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>'
+                        '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>';
 
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-                  ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
-                  ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización:</strong>' + atributos.FecAct_atr : "") +'</div>'+
-                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' <div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
       }else{
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
@@ -998,10 +1010,10 @@
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
-        pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-                  ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
-                  ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización:</strong>' + atributos.FecAct_atr : "") +'</div>'+
-                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+        pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
+                  ' <div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
       }
 
@@ -1010,7 +1022,7 @@
         $('.cuadro_titulo').html(titulo);
         titulo_des_graf = atributos.DescripInd_des;
 
-            put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
+        put_datos(atributos.DescripInd_des, atributos.Descrip_ins);
   }
 
   function iconoObjetivo(objetivo){
