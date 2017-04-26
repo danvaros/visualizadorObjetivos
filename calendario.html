@@ -233,7 +233,7 @@
                     <thead>
                         <tr style="background-color:#ccc; ">
                             <th class="center">Número</th>
-                            <th class="center">Clasificación</th>
+                            
                             <th class="center">Indicador</th>
                             <th class="center">Institución<br>responsable</th>
                             <th class="center">Próxima<br>actualización</th>
@@ -256,11 +256,11 @@
                     <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
                     <br>
                     <br>
-                    <div class="" style="display:inline;">
+                 <!--    <div class="" style="display:inline;">
                         <a href="https://www.facebook.com" style="margin-right: 12%;"><img src="img/fill2.png" alt="" style="width:3%;" /></a>
                         <a href="https://twitter.com" style="margin-right: 12%;"><img src="img/fill1.png" alt="" style="width:7%;" /></a>
                         <a href="#"><img src="img/fill3.png" alt="" style="width:7%;" /></a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col l3 s12">
                     <ul class="fuerte">
@@ -312,7 +312,7 @@
                     //console.log(atr.Descrip_cla);
                     contenido =  contenido +'<tr>'+
                                             '<td class="center">'+ indice +'</td>'+
-                                            '<td>Pendiente de conectar a la API</td>'+
+                                            
                                             '<td>'+ '<a href="indicadores.html?indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des +'</a>'   +'</td>'+
                                             '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
                                             '<td>'+ metadatos.FecProxAct_eic+'</td>'+
