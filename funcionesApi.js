@@ -4,7 +4,7 @@
 	  console.log("Indicador",indicador," -> Serie",ser);
 		$.ajax({
 		  type: 'POST',
-		  url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie",
+		  url: "http://agenda2030.mx/datos/api/Valores/PorClaveSerie",
 		  data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'},
 		  success: function( data, textStatus, jqxhr ) {
 		  		//alert( "Exito" );
@@ -53,7 +53,7 @@
 		var atributos = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave",
+	   	  url: "http://agenda2030.mx/datos/api/AtrIndicador/PorClave",
 	   	  data: {'PCveInd':indicador, 'PIdioma':'ES'},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
@@ -74,7 +74,7 @@
 		var indicadores = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://operativos.inegi.org.mx/datos/api/Tematica/todos",
+	   	  url: "http://agenda2030.mx/datos/api/Tematica/todos",
 	   	  data: {'PIdioma':'ES'},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
@@ -94,7 +94,7 @@ function getMetadatos(indicador){
 	var metadatos = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://operativos.inegi.org.mx/datos/api/Metadato/PorClave",
+	   	  url: "http://agenda2030.mx/datos/api/Metadato/PorClave",
 	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
@@ -115,7 +115,7 @@ function getAtr(indicador){
 	var atr = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave",
+	   	  url: "http://agenda2030.mx/datos/api/AtrIndicador/PorClave",
 	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
 	   	  success: function( data, textStatus, jqxhr )
 	      {

@@ -25,7 +25,8 @@
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
+    // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
+    url: "http://agenda2030.mx/datos/api/Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -72,7 +73,7 @@
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
+    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
