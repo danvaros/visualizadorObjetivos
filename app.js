@@ -869,7 +869,7 @@
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización:</strong>' + atributos.FecAct_atr : "") +'</div>'+
-                  ' <div><strong>Fecha de proxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
       }else{
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
@@ -880,7 +880,7 @@
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   ' <div><strong>Fuente:</strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización:</strong>' + atributos.FecAct_atr : "") +'</div>'+
-                  ' <div><strong>Fecha de proxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
+                  ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
       }
        
