@@ -111,7 +111,7 @@
 
       titulos(PCveInd);
       $('#tabla_nacional').hide();
-      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312){
+      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
         $('#tabla_nacional').show();
         $('#mapas_hide').remove();
         $('#botonera_nacional').remove();
