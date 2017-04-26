@@ -757,7 +757,7 @@
 
 <div class="disclaimer pop">
   <h1>Aviso</h1>
-  <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 28 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+  <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
 </div>
 
 <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
@@ -1039,7 +1039,7 @@
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
             //}
         }
-          },
+      },
           tooltip: {
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
@@ -2519,7 +2519,7 @@ var contaAnios = arrray_anios.length - 1;
 
     $(".exportCSVDatos").on('click', function (event) {
         // CSV
-        var args = [$('#miTablaDat'), 'DatosParaElCalculo.csv'];
+        var args = [$('#miTabla'), 'DatosParaElCalculo.csv'];
 
         exportTableToCSV.apply(this, args);
 
