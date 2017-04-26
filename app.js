@@ -866,6 +866,7 @@
         else {
           //dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
           if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null){
+
             dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
           }else{
             dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser;
@@ -981,9 +982,9 @@
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
 
+
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
                         '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>'
-
 
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
