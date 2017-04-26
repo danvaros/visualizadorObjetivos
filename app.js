@@ -111,7 +111,7 @@
       }
 
       if(PCveInd ==  333 || PCveInd == 276){
-        $('#map').remove();    
+        $('#map').remove();
         $('#footmap').remove();
         $('#grafs').remove();
         $('#indicador-grafica').remove();
@@ -581,12 +581,12 @@
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
-              
-               var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);  
+
+               var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);
             }else{
              var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser;
             }
-            
+
             //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             temporal.push(dato_formato);
           }
@@ -764,11 +764,11 @@
         else {
           //dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
           if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null){
-            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser; 
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser;
           }else{
-            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1); 
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
           }
-          
+
         }
         temporal.push(dato_formato);
       }
@@ -835,7 +835,7 @@
       console.log(atributos);
       console.log(atributos.Serie[2]);
       console.log(atributos.Serie[serie_insumo].NotaSer_not);
-      
+
         titulo_insumo = '<h4 id="titulo_cabezeras">'+atributos.DescripInd_des+'</h4>' +
                         '<li class="divider"></li> '+
                         '<p>' + ((atributos.DescripSer_des != null || atributos.DescripSer_des != "") ? ''  : '<strong>Serie: </strong>' + atributos.DescripSer_des) +'</p>';
@@ -878,7 +878,7 @@
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
                         '<p><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>'
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
@@ -898,7 +898,7 @@
                   ' <div><strong>Fecha de próxima actualización:</strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
       }
-       
+
 
         $('.pie_cuadro2').html(pie);
         $('.cuadro_titulo').html(titulo);
