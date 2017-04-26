@@ -38,7 +38,7 @@
           color:#ffffff;
           padding:5px 10px;
           text-decoration:none;
-          z-index: 99999;
+          z-index: 99;
        }
 
        #contact img{
@@ -1041,6 +1041,9 @@
         }
       },
           tooltip: {
+            format: {
+              title: function (d) { return d.name; },
+            },
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
@@ -1213,13 +1216,17 @@ function regresa_estados_unidos(){
   return index_estados;
 }
 
+// function sortFunction(a, b) {
+//     if (a.numero === b.numero) {
+//         return 0;
+//     }
+//     else {
+//         return (a.numero > b.numero) ? -1 : 1;
+//     }
+// }
+
 function sortFunction(a, b) {
-    if (a.numero === b.numero) {
-        return 0;
-    }
-    else {
-        return (a.numero > b.numero) ? -1 : 1;
-    }
+        return b.numero - a.numero;
 }
 
   function commaSeparateNumber(x)
