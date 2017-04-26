@@ -849,7 +849,7 @@
     console.log(data.Descrip_ind);
     Descrip_ind = data.Descrip_ind;
 
-    
+
     temporal.push('Entidad');
     for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
       temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');

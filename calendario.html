@@ -23,6 +23,133 @@
     <!--     <link rel="stylesheet" type="text/css" href="css/section-scroll.css"> -->
 
     <style media="screen">
+    a.selected {
+      background-color:#1F75CC;
+      color:white;
+      z-index:100;
+      right:0;
+      top:90px;
+      position:absolute;
+    }
+     #contact{
+       position: absolute;
+        right: 0;
+        top: 90px;
+        background:#EFD331;
+        color:#ffffff;
+        padding:5px 10px;
+        text-decoration:none;
+        z-index: 99;
+     }
+
+     #contact img{
+       padding: 8px;
+       max-width: 40px;
+     }
+
+    .disclaimer {
+      background-color:#FFFFFF;
+      cursor:default;
+      display:none;
+      margin-top: 0px;
+      text-align:left;
+      width:394px;
+      z-index:50;
+      padding: 15px 25px;
+      right:84px;
+      top:90px;
+      position:absolute;
+      z-index: 99999;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 3px;
+      padding-left: 15px;
+      text-indent: -15px;
+    }
+
+
+    .disclaimer p, .disclaimer.div {
+      margin: 8px 0;
+      padding-bottom: 8px;
+      font-family:'Helvetica';
+      font-weight:300;
+      text-align:justify;
+    }
+
+    .disclaimer h1{
+      font-size:30px;
+      font-family:'Helvetica';
+      font-weight:800;
+    }
+
+    @media only screen and (max-width:460px){
+            a.selected {
+              background-color:#1F75CC;
+              color:white;
+              z-index:100;
+              right:0;
+              bottom:15%;
+              position:absolute;
+            }
+             #contact{
+               position: absolute;
+                right: 0;
+                bottom: 15%;
+                background:#EFD331;
+                color:#ffffff;
+                padding:5px 10px;
+                text-decoration:none;
+                z-index: 99999;
+             }
+
+             #contact img{
+               padding: 8px;
+               max-width: 35px;
+             }
+
+            .disclaimer {
+              background-color:#FFFFFF;
+              cursor:default;
+              display:none;
+              margin-top: 0px;
+              text-align:left;
+              width:70%;
+              z-index:50;
+              padding: 15px 25px;
+              right:55px;
+              bottom:15%;
+              position:absolute;
+              z-index: 99999;
+            }
+
+            label {
+              display: block;
+              margin-bottom: 3px;
+              padding-left: 15px;
+              text-indent: -15px;
+            }
+
+
+            .disclaimer p, .disclaimer.div {
+              margin: 8px 0;
+              padding-bottom: 8px;
+              font-family:'Helvetica';
+              font-weight:300;
+              text-align:justify;
+            }
+
+            .disclaimer h1{
+              font-size:20px;
+              font-family:'Helvetica';
+              font-weight:800;
+            }
+
+
+
+        }
+
         .infoPadre {
             width: 276px;
         }
@@ -233,7 +360,7 @@
                     <thead>
                         <tr style="background-color:#ccc; ">
                             <th class="center">Número</th>
-                            
+
                             <th class="center">Indicador</th>
                             <th class="center">Institución<br>responsable</th>
                             <th class="center">Próxima<br>actualización</th>
@@ -284,10 +411,17 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright light-blue">
-        </div>
+
     </footer>
     <!-- footer -->
+
+
+    <div class="disclaimer pop">
+      <h1>Aviso</h1>
+      <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+  </div>
+
+  <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
 
 <script type="text/javascript" src="funcionesApi.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -312,7 +446,7 @@
                     //console.log(atr.Descrip_cla);
                     contenido =  contenido +'<tr>'+
                         '<td class="center">'+ indice +'</td>'+
-                                            
+
 '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb+'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'   +'</td>'+
                                             '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
                                             '<td>'+ metadatos.FecProxAct_eic+'</td>'+
@@ -350,6 +484,44 @@ $('#example').DataTable({
     // Institución
     // responsable Proxima
     // actualizacion
+
+
+    function deselect(e) {
+      $('.pop').slideFadeToggle(function() {
+        e.removeClass('selected');
+      });
+    }
+
+
+    if(!!('ontouchstart' in window)){//check for touch device
+      $('#contact').unbind('click mouseenter mouseleave'); //use off if you used on, to unbind usual listeners
+      $('#contact').on('click',function(){
+        //slide down code
+        $(this).addClass('selected');
+        $('.pop').slideFadeToggle();
+        });
+    }
+
+     $("#contact").hover(
+      function() {
+        if($(this).hasClass('selected')) {
+          deselect($(this));
+        } else {
+          $(this).addClass('selected');
+          $('.pop').slideFadeToggle();
+        }
+        return false;
+      }, function() {
+        deselect($('#contact'));
+        return false;
+      }
+    );
+
+
+    $.fn.slideFadeToggle = function(easing, callback) {
+      return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+    };
+
 
 
   });
