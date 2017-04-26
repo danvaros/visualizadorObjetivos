@@ -681,10 +681,10 @@
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
-
-               var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);
+               var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);
             }else{
-             var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_ser === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_ser;
+             var dato_formato =  'ND' ;
+             /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
             }
 
             //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
@@ -861,20 +861,16 @@
       temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
         var dato_formato;
-        console.log("comparacion",data.Series[0].Coberturas[i].ValorDato[j].Dato_Ser == "");
-        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Ser == "")
+        console.log('-------------------- comparamos --------------------');
+        console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
+        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null)
         {
-          dato_formato =  data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
+         
+          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
+          //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }
         else {
-          //dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
-          if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null){
-
-            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
-          }else{
-            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser;
-          }
-
+             dato_formato = 'ND';
         }
         temporal.push(dato_formato);
       }
