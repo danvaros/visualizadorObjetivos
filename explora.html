@@ -844,7 +844,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
             $('#loader').show();
            // var indicador = $(this).val().split(".")[0];
             llamar_api();
-            
+
             $('#datos_descarga').show();//panel de datos de descarga
 
             if($('#agregacion').val() != 1){
@@ -2403,25 +2403,25 @@ var contaAnios = arrray_anios.length - 1;
 //pruebaInicio(initialLoad);
 
 
-      // This must be a hyperlink
-      // $(".exportCSV").on('click', function (event) {
-      //     // CSV
-      //     var args;
-      //
-      //     if (initialLoad) {
-      //         //Do work that is done when the page was first refreshed/loaded.
-      //         args = [$('#miTabla33'), 'IndicadorExp.csv'];
-      //         initialLoad = false;
-      //     } else {
-      //         //Do work when it's not the initial load.
-      //         args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
-      //     }
-      //
-      //     exportTableToCSV.apply(this, args);
-      //
-      //     // If CSV, don't do event.preventDefault() or return false
-      //     // We actually need this to be a typical hyperlink
-      // });
+      //This must be a hyperlink
+      $(".exportCSV").on('click', function (event) {
+          // CSV
+          var args;
+
+          if (initialLoad) {
+              //Do work that is done when the page was first refreshed/loaded.
+              args = [$('#miTabla33'), 'IndicadorExp.csv'];
+              initialLoad = false;
+          } else {
+              //Do work when it's not the initial load.
+              args = [$('#tabla_export2 table'), 'IndicadorExplora.csv'];
+          }
+
+          exportTableToCSV.apply(this, args);
+
+          // If CSV, don't do event.preventDefault() or return false
+          // We actually need this to be a typical hyperlink
+      });
 
 
 
