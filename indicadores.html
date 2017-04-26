@@ -1810,6 +1810,11 @@ $(document).ready(function(){
 
           // select de metadatos
           $('#indicador').click(function(){
+
+            if(codigoDg.replace(/\s/g,'') == 'N'){
+              $('#tabla_nacional').show();  
+            }
+            
                 $('#metadato-panel').hide();
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
@@ -1829,6 +1834,7 @@ $(document).ready(function(){
           });
 
           $('#serie').click(function(){
+                $('#tabla_nacional').hide();  
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
@@ -1886,6 +1892,7 @@ $(document).ready(function(){
           });
 
           $('#datos').click(function(){
+                $('#tabla_nacional').hide();  
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
@@ -1905,6 +1912,7 @@ $(document).ready(function(){
           });
 
           $('#metadato').click(function(){
+                $('#tabla_nacional').hide();  
                 $('#metadato-panel').show();
                 $('#indicador-panel').hide();
                 $('#mapas_hide').hide();
