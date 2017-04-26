@@ -413,6 +413,22 @@
       <a id="link-datos-panel" class="waves-effect waves-light btn color right claro t_sm sin_sombra marg_top exportCSVDatos">Exportar datos para el cálculo</a>
 
       <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
+         
+         <div class="row" id="row_filtros_serie_101" style="display: none">
+          <div class="col s2 " >
+            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros tipo</p>
+          </div>
+          <div class="col s4 " >
+            <div class="input-field col s12" style="margin-bottom:20px;">
+              <select id="filtros_serie_101" style="display:block !important; background-color: #f2f2f2;">
+                <option value="0">Total</option>
+                <option value="1">Hombres</option>
+                <option value="2">Mujeres</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <div class="row" id="row_filtros_serie" style="display: none">
           <div class="col s2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
@@ -423,7 +439,6 @@
             </div>
           </div>
         </div>
-
         <div class="row" id="serie_panel_tablas">
         </div>
       </div>
@@ -1805,6 +1820,7 @@ $(document).ready(function(){
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
+                $('#no_va_serie').show();
 
                 $('#indicador').addClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -1820,6 +1836,7 @@ $(document).ready(function(){
                 $('#serie-panel').show();
                 $('#botonera_nacional').hide();
                 $('#indicador-grafica').hide();
+                $('#no_va_serie').hide();
                 var arre = [];
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
@@ -1879,6 +1896,7 @@ $(document).ready(function(){
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').show();
                 $('#indicador-grafica').hide();
+                $('#no_va_serie').show();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
@@ -1897,6 +1915,7 @@ $(document).ready(function(){
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
                 $('#botonera_nacional').hide();
+                $('#no_va_serie').show();
 
                 $('#indicador').removeClass('indicadores-taps-active');
                 $('#serie').removeClass('indicadores-taps-active');
