@@ -866,9 +866,9 @@
         else {
           //dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
           if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null){
-            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser;
-          }else{
             dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
+          }else{
+            dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser;
           }
 
         }
