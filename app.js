@@ -756,8 +756,8 @@
       temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
         var dato_formato;
-        console.log("comparacion",data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == "");
-        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == "")
+        console.log("comparacion",data.Series[0].Coberturas[i].ValorDato[j].Dato_Ser == "");
+        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Ser == "")
         {
           dato_formato =  data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }

@@ -1198,13 +1198,17 @@ function regresa_estados_unidos(){
   return index_estados;
 }
 
+// function sortFunction(a, b) {
+//     if (a.numero === b.numero) {
+//         return 0;
+//     }
+//     else {
+//         return (a.numero > b.numero) ? -1 : 1;
+//     }
+// }
+
 function sortFunction(a, b) {
-    if (a.numero === b.numero) {
-        return 0;
-    }
-    else {
-        return (a.numero > b.numero) ? -1 : 1;
-    }
+        return b.numero - a.numero;
 }
 
   function commaSeparateNumber(x)
