@@ -590,12 +590,9 @@
             </div>
             <div class="col s6 right-align pais">
             </div> -->
-
-
-                <div class="col s12 pie_cuadro2">
-                  <!-- <p class="nota" style="color:#8694a8;"></p> -->
-                </div>
-
+            <div class="col s12 pie_cuadro2">
+              <!-- <p class="nota" style="color:#8694a8;"></p> -->
+            </div>
       </div>
 
       <div class="row card tablaPadding" id="indicador-grafica">
@@ -1014,6 +1011,7 @@
           },
       data: {
       columns: [],
+      order: 'asc',
       type: 'bar',
       color:
         function (color, d) {
@@ -1025,8 +1023,8 @@
             //     console.log(d.index);
                  //return (d.value >= 45) ? '#00ff00' : '#ff0000';
             //}
-        },
-          },
+        }
+      },
           tooltip: {
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
@@ -1154,10 +1152,10 @@ function adelante(){
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(2)+'</td></tr>' ;
       }
 
-      var valueToPush = {'numero':parseFloat(estados[i][indice]).toFixed(2), 'estado':estados[i][0]};
+      var valueToPush = {'numero':parseFloat(estados[i][indice]).toFixed(1), 'estado':estados[i][0]};
       nuevos_estados_dobles.push(valueToPush);
 
-      serie.push(parseFloat(estados[i][indice]).toFixed(2));
+      serie.push(parseFloat(estados[i][indice]).toFixed(1));
     }
   }
 
@@ -1168,21 +1166,19 @@ function adelante(){
   var categories = [];
   var series = [];
 
-console.log('estados dobles');
-console.log(nuevos_estados_dobles);
+  console.log('estados dobles');
+  console.log(nuevos_estados_dobles);
 
-
-//separar el areglo
-series.push(Descrip_ind);
-for (var i = 0; i < nuevos_estados_dobles.length; i++) {
- // console.log(nuevos_estados_dobles[i].estado);
-  if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
-      index_estados = i;
+  //separar el areglo
+  series.push(Descrip_ind);
+  for (var i = 0; i < nuevos_estados_dobles.length; i++) {
+   // console.log(nuevos_estados_dobles[i].estado);
+    if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
+        index_estados = i;
+    }
+    categories[i] = nuevos_estados_dobles[i].estado;
+    series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(1));
   }
-  categories[i] = nuevos_estados_dobles[i].estado;
-  series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(2));
-
-}
 
   console.log("--->>>>las series",series);
   console.log(categories);
