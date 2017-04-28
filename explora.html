@@ -239,6 +239,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   </head>
   <body>
 
+ <!-- menu -->
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -254,25 +255,30 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li> -->
-              <li class="tamps">
+            <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
-          <!--   <li class="tamps">
+            <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
             </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
+          <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
-            <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
-            <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+           <!--  <li><a href="estados.html">Indicadores por unidad geográfica</a></li> -->
+           <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
-            <li><a href="compara.html">Compara</a></li>
+            <!-- <li><a href="compara.html">Compara</a></li> -->
+           <!--  <li class="tamps">
+             <a id="busca" href="calendario.html">Calendario</a>
+           </li> -->
           </ul>
         </div>
       </nav>
     </div>
+<!-- menu -->
     <div class="container">
       <div class="row scrollable-section" data-section-title="Menú de selección" >
         <div class="col s12">
@@ -1020,7 +1026,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       });
 
 
-      // $(".button-collapse").sideNav();
+     $(".button-collapse").sideNav();
 
       $('select').material_select();
       // $('.collapsible').collapsible(

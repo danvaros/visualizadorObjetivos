@@ -530,6 +530,10 @@
         </div>
       </div>
 
+
+
+
+
       <nav id="normal">
         <div class="nav-wrapper">
           <a href="index.html" id="imago" class="brand-logo">
@@ -558,24 +562,24 @@
             </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
+            <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
             <!-- <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
             <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
             <!-- <li><a href="compara.html">Compara</a></li> -->
-            <li class="tamps">
-              <a id="buscar"><img src="img/search.png" alt="" /></a>
-              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;"
-                onfocusout="esconder()" />
-            </li>
-            <li class="tamps">
-              <a id="busca"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
-                  alt="" /></a>
-            </li>
-            <li class="tamps">
-              <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
-                  alt="" /></a>
-            </li>
+        <!--     <li class="tamps">
+          <a id="buscar"><img src="img/search.png" alt="" /></a>
+          <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 10px;height:35px;"
+            onfocusout="esconder()" />
+        </li> -->
+          <!--   <li class="tamps">
+            <a id="calendario.html">Calendario</a>
+          </li> -->
+          <!--   <li class="tamps">
+            <a id="busca"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
+                alt="" /></a>
+          </li> -->
           </ul>
         </div>
       </nav>
@@ -2262,7 +2266,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
   <script src="classybrew/build/classybrew.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> -->
   <script type="text/javascript" src="lib/jquery.section-scroll.js"></script>
-  <script src="lib/bigfoot/bigfoot.min.js"></script>
+  <!-- <script src="lib/bigfoot/bigfoot.min.js"></script> -->
   <script type="text/javascript">
     var titulo_des_graf="Razón de Mortalidad Materna";
 
@@ -2352,6 +2356,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
 
     // docuemento general
     $(document).ready(function () {
+      $(".button-collapse").sideNav();
       $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
       $('.bullets-container').hide(); //oculta los bullets para que no se vean en la parte del header
       $('.modal-trigger').leanModal();
