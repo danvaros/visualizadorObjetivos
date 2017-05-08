@@ -164,15 +164,20 @@ input[type=text]:focus:not([readonly])
 }
 .ico_obj
 {
-  width: 34%;
+  vertical-align: middle;
+    width: 70%;
+}
+
+.collapsible-header{
+  line-height: 4rem !important;
 }
 .ico_top
 {
-  margin-bottom: -9px;
+  margin-bottom: 0px;
 }
 .marg_obj
 {
-  margin-left: 2%;
+  margin-left: 2% !important;
   font-weight: bolder;
 }
 .collapsible-header
@@ -260,6 +265,7 @@ ul a:hover
 .gris
 {
   color: #4A4A4A;
+  margin:20px 0px;
 }
 .t_principal
 {
@@ -948,14 +954,22 @@ margin-left: 60%; */
     width: 80px;
   }
 
-@media only screen and (max-width: 992px){
-nav .brand-logo {
-  left: 15%;
-  margin-top: -5px;
-}
+  @media only screen and (max-width: 992px){
+  nav .brand-logo {
+    left: 15%;
+    margin-top: -5px;
+  }
+
+  }
+
+  @media only screen and (max-width: 675px){
+
+  .obj_icon{
+    width: 14%;
+  }
 
 
-}
+  }
 
 
 
