@@ -865,7 +865,7 @@
         console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
         if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null)
         {
-         
+
           dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
           //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }
@@ -981,7 +981,7 @@
            titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
                         '<p id="no_va_serie"><strong>Total<strong></p>';
 
                          pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
@@ -994,7 +994,7 @@
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
                         '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>';
 
 
@@ -1027,71 +1027,71 @@
   function iconoObjetivo(objetivo){
     switch(objetivo){
       case "1.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-01.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-01.png">');
         //return '<img class="ico_obj" src="img/ods-01.png">';
       break;
       case "2.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-02.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-02.png">');
         //return '<img class="ico_obj" src="img/ods-02.png">';
       break;
       case "3.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-03.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-03.png">');
         //return '<img class="ico_obj" src="img/ods-03.png">';
       break;
       case "4.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-04.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-04.png">');
         //return '<img class="ico_obj" src="img/ods-04.png">';
       break;
       case "5.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-05.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-05.png">');
         //return '<img class="ico_obj" src="img/ods-05.png">';
       break;
       case "6.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-06.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-06.png">');
         //return '<img class="ico_obj" src="img/ods-06.png">';
       break;
       case "7.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-07.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-07.png">');
         //return '<img class="ico_obj" src="img/ods-07.png">';
       break;
       case "8.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-08.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-08.png">');
         //return '<img class="ico_obj" src="img/ods-08.png">';
       break;
       case "9.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-09.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-09.png">');
         //return '<img class="ico_obj" src="img/ods-09.png">';
       break;
       case "10.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-10.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-10.png">');
         //return '<img class="ico_obj" src="img/ods-10.png">';
       break;
       case "11.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-11.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-11.png">');
         //return '<img class="ico_obj" src="img/ods-11.png">';
       break;
       case "12.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-12.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-12.png">');
         //return '<img class="ico_obj" src="img/ods-12.png">';
       break;
       case "13.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-13.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-13.png">');
         //return '<img class="ico_obj" src="img/ods-13.png">';
       break;
       case "14.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-14.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-14.png">');
         //return '<img class="ico_obj" src="img/ods-14.png">';
       break;
       case "15.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-15.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-15.png">');
         //return '<img class="ico_obj" src="img/ods-15.png">';
       break;
       case "16.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-16.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-16.png">');
         //return '<img class="ico_obj" src="img/ods-16.png">';
       break;
       case "17.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-17.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-17.png">');
         //return '<img class="ico_obj" src="img/ods-17.png">';
       break;
 
@@ -1103,70 +1103,87 @@
       case "1.":
         $('.headerObje').addClass('id_1');
         $('#sti').addClass('id_1');
+        $('.indicadores-taps-active').css({backgroundColor:'#D90A38 !important'});
       break;
       case "2.":
         $('.headerObje').addClass('id_2');
         $('#sti').addClass('id_2');
+$('.indicadores-taps-active').css({backgroundColor:'#D8AE2B !important'});
       break;
       case "3.":
         $('.headerObje').addClass('id_3');
         $('#sti').addClass('id_3');
+$('.indicadores-taps-active').css({backgroundColor:'#299E32 !important'});
       break;
       case "4.":
         $('.headerObje').addClass('id_4');
         $('#sti').addClass('id_4');
+$('.indicadores-taps-active').css({backgroundColor:'#BD052D !important'});
       break;
       case "5.":
         $('.headerObje').addClass('id_5');
         $('#sti').addClass('id_5');
+$('.indicadores-taps-active').css({backgroundColor:'#E23429 !important'});
       break;
       case "6.":
         $('.headerObje').addClass('id_6');
         $('#sti').addClass('id_6');
+$('.indicadores-taps-active').css({backgroundColor:'#56BCE3 !important'});
       break;
       case "7.":
         $('.headerObje').addClass('id_7');
         $('#sti').addClass('id_7');
+$('.indicadores-taps-active').css({backgroundColor:'#F2CB02 !important'});
       break;
       case "8.":
         $('.headerObje').addClass('id_8');
         $('#sti').addClass('id_8');
+$('.indicadores-taps-active').css({backgroundColor:'#9D063D !important'});
       break;
       case "9.":
         $('.headerObje').addClass('id_9');
         $('#sti').addClass('id_9');
+$('.indicadores-taps-active').css({backgroundColor:'#E86A26 !important'});
       break;
       case "10.":
         $('.headerObje').addClass('id_10');
         $('#sti').addClass('id_10');
+$('.indicadores-taps-active').css({backgroundColor:'#D4015E !important'});
       break;
       case "11.":
         $('.headerObje').addClass('id_11');
         $('#sti').addClass('id_11');
+$('.indicadores-taps-active').css({backgroundColor:'#F0A612 !important'});
       break;
       case "12.":
         $('.headerObje').addClass('id_12');
         $('#sti').addClass('id_12');
+$('.indicadores-taps-active').css({backgroundColor:'#B99319 !important'});
       break;
       case "13.":
         $('.headerObje').addClass('id_13');
         $('#sti').addClass('id_13');
+$('.indicadores-taps-active').css({backgroundColor:'#2D7D3B !important'});
       break;
       case "14.":
         $('.headerObje').addClass('id_14');
         $('#sti').addClass('id_14');
+$('.indicadores-taps-active').css({backgroundColor:'#4B95CF !important'});
       break;
       case "15.":
         $('.headerObje').addClass('id_15');
         $('#sti').addClass('id_15');
+$('.indicadores-taps-active').css({backgroundColor:'#37B72F !important'});
       break;
       case "16.":
         $('.headerObje').addClass('id_16');
         $('#sti').addClass('id_16');
+$('.indicadores-taps-active').css({backgroundColor:'#336198 !important'});
       break;
       case "17.":
         $('.headerObje').addClass('id_17');
         $('#sti').addClass('id_17');
+$('.indicadores-taps-active').css({backgroundColor:'#2B3E63 !important'});
       break;
 
     }

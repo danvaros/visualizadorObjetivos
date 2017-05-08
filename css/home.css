@@ -3,7 +3,7 @@ html
   font-family: 'Roboto', sans-serif !important;
 }
 
-h5{
+h5, h4{
   margin:0px;
 }
 
@@ -168,6 +168,12 @@ input[type=text]:focus:not([readonly])
     width: 70%;
 }
 
+.ico_obj1
+{
+  vertical-align: middle;
+    width: 35%;
+}
+
 .collapsible-header{
   line-height: 4rem !important;
 }
@@ -300,11 +306,11 @@ nav
 }
 .id_1
 {
-	background-color: #D90A38;
+	background-color: #D90A38 !important;
 }
 .id_2
 {
-	background-color: #D8AE2B;
+	background-color: #D8AE2B !important;
 }
 /*.tres
 {
@@ -316,7 +322,7 @@ nav
 }*/
 .id_3
 {
-	background-color: #299E32;
+	background-color: #299E32 !important;
 }
 /*.cuatro
 {
@@ -328,11 +334,11 @@ nav
 }*/
 .id_4
 {
-	background-color: #BD052D;
+	background-color: #BD052D !important;
 }
 .id_5
 {
-	background-color: #E23429;
+	background-color: #E23429 !important;
 }
 /*.seis
 {
@@ -344,7 +350,7 @@ nav
 }*/
 .id_6
 {
-	background-color: #56BCE3;
+	background-color: #56BCE3 !important;
 }
 /*.siete
 {
@@ -356,11 +362,11 @@ nav
 }*/
 .id_7
 {
-	background-color: #F2CB02;
+	background-color: #F2CB02 !important;
 }
 .id_8
 {
-	background-color: #9D063D;
+	background-color: #9D063D !important;
 }
 /*.nueve
 {
@@ -372,15 +378,15 @@ nav
 }*/
 .id_9
 {
-	background-color: #E86A26;
+	background-color: #E86A26 !important;
 }
 .id_10
 {
-	background-color: #D4015E;
+	background-color: #D4015E !important;
 }
 .id_11
 {
-	background-color: #F0A612;
+	background-color: #F0A612 !important;
 }
 /*.doce
 {
@@ -392,11 +398,11 @@ nav
 }*/
 .id_12
 {
-	background-color: #B99319;
+	background-color: #B99319 !important;
 }
 .id_13
 {
-	background-color: #2D7D3B;
+	background-color: #2D7D3B !important;
 }
 /*.catorce
 {
@@ -408,7 +414,7 @@ nav
 }*/
 .id_14
 {
-	background-color: #4B95CF;
+	background-color: #4B95CF !important;
 }
 /*.quince
 {
@@ -420,15 +426,15 @@ nav
 }*/
 .id_15
 {
-	background-color: #37B72F;
+	background-color: #37B72F !important;
 }
 .id_16
 {
-	background-color: #336198;
+	background-color: #336198 !important;
 }
 .id_17
 {
-	background-color: #2B3E63;
+	background-color: #2B3E63 !important;
 }
 .id_m1
 {
@@ -849,6 +855,7 @@ border-radius: 0 !important;
   border-color: #ccc;
   border-width: 1px;
   border-radius: 0px 5px 5px 0px;
+  color:#999999 !important;
 }
 
 .indicadores-taps:hover{
@@ -857,7 +864,7 @@ border-radius: 0 !important;
 .indicadores-taps-active
 {
   background-color: #00AEEF;
-  color: #fff;
+  color: #fff !important;
 }
 
 .indicadores-taps-active:hover{
