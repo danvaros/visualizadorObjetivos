@@ -683,7 +683,7 @@
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
-               var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);
+               var dato_formato = (Math.round(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser * 100) / 100).toFixed(1);
             }else{
              var dato_formato =  'ND' ;
              /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
@@ -868,7 +868,7 @@
         if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null)
         {
 
-          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
+          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(2);
           //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }
         else {
