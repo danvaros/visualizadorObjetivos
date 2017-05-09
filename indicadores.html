@@ -1166,15 +1166,18 @@ function adelante(){
       serie.push(Descrip_ind);
     }else{
       if(i < 18){
-        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(1)+'</td></tr>' ;
+        var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
+        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+ unods + '</td></tr>' ;
       } else if(i == 35){
         $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
       }
       else {
-        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(1)+'</td></tr>' ;
+        var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
+        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
       }
 
       console.log('____________________________ vamos aver que show --------------');
+
       if(estados[i][indice] == 'ND'){
         var numero =  0;
       }else{
