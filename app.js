@@ -178,11 +178,27 @@
       var tipo_101 =  $('#filtros_serie_101').val();
       if(PCveInd == 101){
         put_tabla_serie_cob_101(filtro,tipo_101);
+        poner_filtros();
       }else{
         put_tabla_serie_cob($(this).val());
+        poner_filtros();
       }
 
     });
+
+    $('#filtros_serie_101').on('change', function(){
+      var filtro2 = $(this).val();
+      var tipo_1011 =  $('#filtros_serie_101').val();
+      if(PCveInd == 101){
+        put_tabla_serie_cob_101(filtro2,tipo_1011);
+        poner_filtros();
+      }else{
+        put_tabla_serie_cob($(this).val());
+        poner_filtros();
+      }
+    });
+
+
   });//fin document ready
 
   function arma_tabla_insumo(arreglo_datos,num_cobertura){
@@ -837,7 +853,7 @@
   function poner_filtros_serie(){
     $("#filtros_serie").html('');
     for (var i = 0; i < arreglo_cla.length; i++) {
-      $("#filtros_serie").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
+      $("#filtros_serie").append('<option value="'+i+'" >'+arreglo_cla[i]+'</option>');
     }
     //$('.cob_sel_nac').show();
     //$('select').material_select();
@@ -901,9 +917,6 @@
 
   $(document).ready(function()
   {
-    if(PCveInd == 101 || PCveInd == 2){
-      $('#link-datos-panel').hide();
-    }
 
     titulos(PCveInd);
 
