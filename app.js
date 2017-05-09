@@ -108,7 +108,9 @@
 
       $('.Codigo_ind').html(Codigo_ind);
       $('.Descrip_ind').html(Descrip_ind);
-
+      if(PCveInd == 101 || PCveInd == 2){
+        $('#link-datos-panel').hide();
+      }
       titulos(PCveInd);
       $('#tabla_nacional').hide();
       if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
@@ -899,6 +901,10 @@
 
   $(document).ready(function()
   {
+    if(PCveInd == 101 || PCveInd == 2){
+      $('#link-datos-panel').hide();
+    }
+
     titulos(PCveInd);
 
     $('#filtros_es').on('change',function(){
@@ -970,6 +976,7 @@
 
 
   }
+
 
   function titulos(indicador){
         var serie_insumo =  $('insumo_change').val();
