@@ -858,12 +858,9 @@
             if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
 
               var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser)
-              console.log(flot);
+
                var dato_formato2 = Math.round(flot * 10) / 10;
 
-               console.log('.-.-.-.-.-.-.-.--.-. DATO FORMATO -.-.-.-.-.-.--.-.-.-.');
-               console.log(dato_formato2);
-               
                var dato_formato = +dato_formato2.toFixed(1);
             }else{
              var dato_formato =  'ND' ;
