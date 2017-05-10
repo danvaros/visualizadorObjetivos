@@ -6,6 +6,7 @@
   var insumos_general = [];
   var insumos_cobertura = [];
   var insumo_cober_clasifica = [];
+  var insumo_cober_clasifica_tipo = [];
   var cobertura_notas = false;
 
   var query_string = {};
@@ -22,6 +23,8 @@
   var titulo ;
   var pie ;
   var Algoritmo_ft = '';
+
+  var data_local = '';
 
   $.ajax({
     type: 'POST',
@@ -87,9 +90,9 @@
         {
           //alert('es el eindicador especial');
           cobertura_101(data);
+          data_local = data;
           $('#row_filtros_serie_101').show();
         }else{
-          console.log('------------------------ analisis de datos que se enstan mostrando --------------');
          //console.log(data);
           cobertura(data);
         }
@@ -165,11 +168,23 @@
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
       $('#insumos_contDat').html('');
+
+      if(PCveInd == 101){
+        put_filtros_insumo_cob1($(this).val());
+      }
     });
 
     $('#este').on('change', function(){
-      put_tabla_insumo_cob($(this).val());
+      if(PCveInd == 101){
+        put_tabla_insumo_cob_insumo($(this).val());
+      }else{
+        put_tabla_insumo_cob($(this).val());
+      }
+
     });
+    // $('#este2').on('change', function(){
+    //   put_tabla_insumo_cob1($(this).val());
+    // });
 
     $('#filtros_serie').on('change', function(){
       console.log('-------------------- validemos ---------------');
@@ -198,6 +213,10 @@
       }
     });
 
+    $('#este2').on('change', function(){
+      console.log('------------------------ analisis de datos que se enstan mostrando --------------');
+      cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
+    });
 
   });//fin document ready
 
@@ -378,6 +397,128 @@
     }
   }
 
+  function put_tabla_insumo_cob_insumo(filtro){
+    generar_titulos_cob();
+
+    if($('#este2').val() == 0){
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_insumos,filtro);
+    }else if($('#este2').val() == 1){
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_hombre_insumos,filtro);
+    }else{
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_mujeres_insumos,filtro);
+    }
+
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo_insumo +
+                      '</div>' +
+                      '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                      '<table class="bordered" id="miTabla" class="miTabla">';
+
+                      var datos_dobleDat = '<div class="cuadro_titulo"> ' + titulo +
+                                        '</div>' +
+                                        '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                                        '<table class="bordered" id="miTablaDat" class="miTablaDat">';
+
+
+    console.log('--------------- tabla armada ----------');
+    console.log(tabla_armada);
+
+
+
+      for (var i = 0; i < tabla_armada.length; i++) {
+               if(i == 0){
+                datos_doble +=  '<thead><tr>';
+                datos_dobleDat +=  '<thead><tr>';
+              }
+               else if(i == 1){
+                 datos_doble +=  '<tbody><tr>';
+                 datos_dobleDat +=  '<tbody><tr>';
+               }
+               else {
+                  datos_doble +=  '<tr>';
+                  datos_dobleDat +=  '<tr>';
+               }
+
+               for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == tabla_armada[0].length -1){
+                  //datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                  datos_doble +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
+                  datos_dobleDat +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
+                }
+                else if( i == 0 && j == tabla_armada[0].length -1 ){
+                  //datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                  datos_dobleDat += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                }
+                else if( i == 0 ){
+                  //datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                  datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                }
+                else if(j == tabla_armada[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
+                  datos_doble += varia;
+                  datos_dobleDat += varia;
+                }
+                else if(j == tabla_armada[0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                }
+                else{
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j]+'</td>';
+                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j]+'</td>';
+                }
+               }
+
+
+
+               if(i == 0){
+                 datos_doble +=  '</tr></thead>';
+                 datos_dobleDat +=  '</tr></thead>';
+               }else{
+                 datos_doble +=  '</tr>';
+                 datos_dobleDat +=  '</tr>';
+               }
+             }
+
+
+
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+ pie_insumo +
+             '</div></div>';
+
+             datos_dobleDat +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+             ' <div class="pie_cuadro2">'+ pie +
+              '</div></div>';
+
+    //sin pie y cabezera de la pagina
+    $('#insumos_cont').html(datos_doble);
+    $('#insumos_contDat').html(datos_dobleDat);
+    var arre = [];
+    for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
+      arre.push(i)
+    }
+
+    if(arre.length > 17){
+      $('#miTabla').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    aoColumnDefs: [
+                      { 'bSortable': false,
+                        'aTargets': arre }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                } );
+    }
+
+    //agregamos titulo del insumo seleccionado
+    $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change_cob').val()]);
+    $('#descrip_uni').html('');
+  }
+
 
   function put_tabla_insumo_cob(filtro){
     generar_titulos_cob();
@@ -536,6 +677,20 @@
 
     $('#este').html(insumo_filtro);
   }
+
+
+  function put_filtros_insumo_cob1(insumo){
+    $('#este2').show();
+
+    var tipo_gen = '<option value="-1"> Selecciona una género </option>';
+
+  //$.each(insumo_cober_clasifica[insumo], function(idx, value){
+      tipo_gen += '<option value="0">Total</option><option value="1">Hombre</option><option value="2">Mujer</option>';
+  //});
+
+    $('#este2').html(tipo_gen);
+  }
+
 
   function put_tabla_insumo(insumo){
     generar_titulos();
@@ -736,6 +891,7 @@
         lista_insumos.push(data.Series[i].Descrip_ser);
         insumos_cobertura.push(cobertura_series(data,i));
         insumo_cober_clasifica.push(clasificaciones(data,i));
+        //insumo_cober_clasifica_tipo.push();
       }
     }
 
@@ -744,10 +900,10 @@
 
     select += '<option value="0"> Selecciona una opción </option>';
     $.each(lista_insumos, function(idx, value){
-      select += '<option value="'+idx+'">'+value+'</option>';
+      select += '<option value="'+(idx+1)+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div>';
+    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
