@@ -2269,6 +2269,23 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
   <script type="text/javascript">
     var titulo_des_graf="Razón de Mortalidad Materna";
 
+// var img = ['fondo1.jpg','fondo2.jpg','fondo3.jpg'];
+//     // function rotarImagen(){
+//        setTimeout(function(){
+//
+//         var rand = img[Math.floor(Math.random() * img.length)];
+//
+// console.log(rand);
+//         $('.imagen').css("background-image","url('img/"+rand+"') !important");
+//
+// console.log($('.imagen').css("background-image","url('img/"+rand+"') !important"));
+//
+//        }, 3000);
+    // }
+    //
+    // rotarImagen();
+
+
     // llamamos a la funcion que genera la variable que alimenta el mapa
     //se llama fuera del documento por que queremos que se ejecute antes de mostrar el docuemento
     var estados = [];
@@ -2355,6 +2372,20 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
 
     // docuemento general
     $(document).ready(function () {
+      var img = ['fondo1.jpg','fondo2.jpg','fondo3.jpg'];
+          // function rotarImagen(){
+             setTimeout(function(){
+
+              var rand = img[Math.floor(Math.random() * img.length)];
+      console.log(rand);
+              $('.imagen').attr({style: "background-image:url('img/"+rand+"') !important;"});
+              //console.log($('.imagen').css("background-image","url('img/"+rand+"') !important"));
+    }, 3000);
+
+
+
+
+
       $(".button-collapse").sideNav();
       $('body').sectionScroll(); // Easy Peasy Lemon Squeezy
       $('.bullets-container').hide(); //oculta los bullets para que no se vean en la parte del header
