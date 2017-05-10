@@ -187,7 +187,7 @@
     });
 
     $('#filtros_serie_101').on('change', function(){
-      var filtro2 = $(this).val();
+      var filtro2 = $('#filtros_serie').val();
       var tipo_1011 =  $('#filtros_serie_101').val();
       if(PCveInd == 101){
         put_tabla_serie_cob_101(filtro2,tipo_1011);
