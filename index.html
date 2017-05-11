@@ -3,16 +3,6 @@
 <html>
 
 <head>
-  <!--[if IE 6]>
-<script>alert("Esta plataforma funciona de forma adecuada si es consultada en alguno de los siguientes navegadores: Chrome, Edge, Firefox o Safari");</script>
-<![endif]-->
-
-<!--[if IE 9]>
-<script>alert("Esta plataforma funciona de forma adecuada si es consultada en alguno de los siguientes navegadores: Chrome, Edge, Firefox o Safari");</script>
-<![endif]-->
-<!--[if IE 11]>
-<script>alert("Esta plataforma funciona de forma adecuada si es consultada en alguno de los siguientes navegadores: Chrome, Edge, Firefox o Safari");</script>
-<![endif]-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Objetivos de Desarrollo Sostenible</title>
@@ -32,6 +22,8 @@
   <link rel="stylesheet" type="text/css" href="lib/bigfoot/bigfoot-number.css">
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="lib/iealert.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="lib/iealert/style.css" />
   <script type="text/javascript" src="lib/fakeLoader.min.js"></script>
   <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
@@ -2391,6 +2383,14 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
               $('.imagen').attr({style: "background-image:url('img/"+rand+"') !important;"});
               //console.log($('.imagen').css("background-image","url('img/"+rand+"') !important"));
     }, 3000);
+
+    $("body").iealert({
+      support: "ie9",
+      title: "Actualiza tu navegador",
+      text: "Esta plataforma funciona de forma adecuada si es consultada en alguno de los siguientes navegadores: Chrome, Edge, Firefox o Safari"
+    });
+
+
 
 
 
