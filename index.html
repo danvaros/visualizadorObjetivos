@@ -195,7 +195,7 @@
       height: 18px;
       float: left;
       margin-right: 4.0pc;
-      opacity: 0.7;
+      opacity: 1;
     }
 
     .c3-ygrids line {
@@ -2513,7 +2513,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
                                       rotate: -90,
                                       format: function (x) { return x.getFullYear(); }
                                     },
-                                    height: 100,
+                                    height: 35,
                                   },
                                   y: {
                                     tick: {
@@ -2730,7 +2730,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
         opacity: 1,
         color: '#000',
         dashArray: '1',
-        fillOpacity: 0.6,
+        fillOpacity: 1,
         // fillColor: getColoR(feature.properties.density),
         fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
         className: "c" + res[1]
@@ -2743,7 +2743,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
           weight: 2,
           color: '#ccc',
           dashArray: '',
-          fillOpacity: 0.7
+          fillOpacity: 1
         });
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
           layer.bringToFront();

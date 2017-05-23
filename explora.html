@@ -1151,11 +1151,12 @@ function carga_selectes(){
             x : {
                 type : 'timeseries',
                 tick: {
-                    rotate:90,
+                    rotate:-90,
                     format: function (x) { return x.getFullYear(); }
                   //format: '%Y' // format string is also available for timeseries data
                 },
-                size : 80
+                size : 80,
+                height: 35
             },
             y : {
               // inner: true,
@@ -1411,7 +1412,7 @@ function busqueda_anio(cadena)
           opacity: 1,
           color: '#000',
           dashArray: '1',
-          fillOpacity: 0.6,
+          fillOpacity: 1,
           // fillColor: getColoR(feature.properties.density),
           fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
            className: "c"+res[1]
@@ -1927,7 +1928,7 @@ var contaAnios = arrray_anios.length - 1;
               opacity: 1,
               color: '#000',
               dashArray: '1',
-              fillOpacity: 0.6,
+              fillOpacity: 1,
               fillColor: getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi)),
                className: "c"+res[1]
             };
