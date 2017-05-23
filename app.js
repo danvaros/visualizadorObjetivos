@@ -80,6 +80,7 @@
 
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
+      colorObjetivo(obj);
 
       // separamos para ver que funcion es la que debemos usar
       if(data.Series[0].Coberturas[0].ValorDato != 0){
@@ -140,6 +141,7 @@
 
   $(document).ready(function()
   {
+
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales
     $('#filtros_es').on('change',function(){
@@ -1286,87 +1288,121 @@
       case "1.":
         $('.headerObje').addClass('id_1');
         $('#sti').addClass('id_1');
-        $('.indicadores-taps-active').css({backgroundColor:'#D90A38 !important'});
+        $('.indicadores-taps').removeClass('id_1');
+        $('.indicadores-taps-active').addClass('id_1');
+        // $('.indicadores-taps-active').css('background-color', '#D90A38 !important');
       break;
       case "2.":
         $('.headerObje').addClass('id_2');
         $('#sti').addClass('id_2');
-$('.indicadores-taps-active').css({backgroundColor:'#D8AE2B !important'});
+        $('.indicadores-taps').removeClass('id_2');
+        $('.indicadores-taps-active').addClass('id_2');
+        // $('.indicadores-taps-active').css('background-color','#D8AE2B !important');
       break;
       case "3.":
         $('.headerObje').addClass('id_3');
         $('#sti').addClass('id_3');
-$('.indicadores-taps-active').css({backgroundColor:'#299E32 !important'});
+        $('.indicadores-taps').removeClass('id_3');
+        $('.indicadores-taps-active').addClass('id_3');
+        // $('.indicadores-taps-active').css('background-color','#299E32 !important');
       break;
       case "4.":
         $('.headerObje').addClass('id_4');
         $('#sti').addClass('id_4');
-$('.indicadores-taps-active').css({backgroundColor:'#BD052D !important'});
+        $('.indicadores-taps').removeClass('id_4');
+        $('.indicadores-taps-active').addClass('id_4');
+        // $('.indicadores-taps-active').css('background-color','#BD052D !important');
       break;
       case "5.":
         $('.headerObje').addClass('id_5');
         $('#sti').addClass('id_5');
-$('.indicadores-taps-active').css({backgroundColor:'#E23429 !important'});
+        $('.indicadores-taps').removeClass('id_5');
+        $('.indicadores-taps-active').addClass('id_5');
+        // $('.indicadores-taps-active').css('background-color','#E23429 !important');
       break;
       case "6.":
         $('.headerObje').addClass('id_6');
         $('#sti').addClass('id_6');
-$('.indicadores-taps-active').css({backgroundColor:'#56BCE3 !important'});
+        $('.indicadores-taps').removeClass('id_6');
+        $('.indicadores-taps-active').addClass('id_6');
+        // $('.indicadores-taps-active').css('background-color','#56BCE3 !important');
       break;
       case "7.":
         $('.headerObje').addClass('id_7');
         $('#sti').addClass('id_7');
-$('.indicadores-taps-active').css({backgroundColor:'#F2CB02 !important'});
+        $('.indicadores-taps').removeClass('id_7');
+        $('.indicadores-taps-active').addClass('id_7');
+        // $('.indicadores-taps-active').css('background-color','#F2CB02 !important');
       break;
       case "8.":
         $('.headerObje').addClass('id_8');
         $('#sti').addClass('id_8');
-$('.indicadores-taps-active').css({backgroundColor:'#9D063D !important'});
+        $('.indicadores-taps').removeClass('id_8');
+        $('.indicadores-taps-active').addClass('id_8');
+        // $('.indicadores-taps-active').css('background-color','#9D063D !important');
       break;
       case "9.":
         $('.headerObje').addClass('id_9');
         $('#sti').addClass('id_9');
-$('.indicadores-taps-active').css({backgroundColor:'#E86A26 !important'});
+        $('.indicadores-taps').removeClass('id_9');
+        $('.indicadores-taps-active').addClass('id_9');
+        // $('.indicadores-taps-active').css('background-color','#E86A26 !important');
       break;
       case "10.":
         $('.headerObje').addClass('id_10');
         $('#sti').addClass('id_10');
-$('.indicadores-taps-active').css({backgroundColor:'#D4015E !important'});
+        $('.indicadores-taps').removeClass('id_10');
+        $('.indicadores-taps-active').addClass('id_10');
+        // $('.indicadores-taps-active').css('background-color','#D4015E !important');
       break;
       case "11.":
         $('.headerObje').addClass('id_11');
         $('#sti').addClass('id_11');
-$('.indicadores-taps-active').css({backgroundColor:'#F0A612 !important'});
+        $('.indicadores-taps').removeClass('id_11');
+        $('.indicadores-taps-active').addClass('id_11');
+        // $('.indicadores-taps-active').css('background-color','#F0A612 !important');
       break;
       case "12.":
         $('.headerObje').addClass('id_12');
         $('#sti').addClass('id_12');
-$('.indicadores-taps-active').css({backgroundColor:'#B99319 !important'});
+        $('.indicadores-taps').removeClass('id_12');
+        $('.indicadores-taps-active').addClass('id_12');
+        // $('.indicadores-taps-active').css('background-color','#B99319 !important');
       break;
       case "13.":
         $('.headerObje').addClass('id_13');
         $('#sti').addClass('id_13');
-$('.indicadores-taps-active').css({backgroundColor:'#2D7D3B !important'});
+        $('.indicadores-taps').removeClass('id_13');
+        $('.indicadores-taps-active').addClass('id_13');
+        // $('.indicadores-taps-active').css('background-color','#2D7D3B !important');
       break;
       case "14.":
         $('.headerObje').addClass('id_14');
         $('#sti').addClass('id_14');
-$('.indicadores-taps-active').css({backgroundColor:'#4B95CF !important'});
+        $('.indicadores-taps').removeClass('id_14');
+        $('.indicadores-taps-active').addClass('id_14');
+        // $('.indicadores-taps-active').css('background-color','#4B95CF !important');
       break;
       case "15.":
         $('.headerObje').addClass('id_15');
         $('#sti').addClass('id_15');
-$('.indicadores-taps-active').css({backgroundColor:'#37B72F !important'});
+        $('.indicadores-taps').removeClass('id_15');
+        $('.indicadores-taps-active').addClass('id_15');
+        // $('.indicadores-taps-active').css('background-color','#37B72F !important');
       break;
       case "16.":
         $('.headerObje').addClass('id_16');
         $('#sti').addClass('id_16');
-$('.indicadores-taps-active').css({backgroundColor:'#336198 !important'});
+        $('.indicadores-taps').removeClass('id_16');
+        $('.indicadores-taps-active').addClass('id_16');
+        // $('.indicadores-taps-active').css('background-color','#336198 !important');
       break;
       case "17.":
         $('.headerObje').addClass('id_17');
         $('#sti').addClass('id_17');
-$('.indicadores-taps-active').css({backgroundColor:'#2B3E63 !important'});
+        $('.indicadores-taps').removeClass('id_17');
+        $('.indicadores-taps-active').addClass('id_17');
+        // $('.indicadores-taps-active').css('background-color','#2B3E63 !important');
       break;
 
     }

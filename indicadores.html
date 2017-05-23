@@ -1027,7 +1027,7 @@
       },
       bindto: '#barras',
       size: {
-            height: 1280
+            height: 600
           },
       data: {
       columns: [],
@@ -1058,7 +1058,7 @@
             },
 
     axis: {
-        rotated: true,
+        rotated: false,
         x: {
         type: 'category',
         categories: [ 'Aguascalientes',
@@ -1436,7 +1436,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -1847,10 +1847,10 @@ $(document).ready(function(){
             }
           });
 
-
+$('#indicador').trigger("click");
           // select de metadatos
           $('#indicador').click(function(){
-
+colorObjetivo(obj);
             if(codigoDg.replace(/\s/g,'') == 'N' ){
               if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312){
                   $('#tabla_nacional').show();
@@ -1876,6 +1876,7 @@ $(document).ready(function(){
           });
 
           $('#serie').click(function(){
+            colorObjetivo(obj);
                 $('#tabla_nacional').hide();
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
@@ -1934,6 +1935,7 @@ $(document).ready(function(){
           });
 
           $('#datos').click(function(){
+            colorObjetivo(obj);
                 $('#tabla_nacional').hide();
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
@@ -1954,6 +1956,7 @@ $(document).ready(function(){
           });
 
           $('#metadato').click(function(){
+            colorObjetivo(obj);
                 $('#tabla_nacional').hide();
                 $('#metadato-panel').show();
                 $('#indicador-panel').hide();
@@ -2207,7 +2210,7 @@ var contaAnios = arrray_anios.length - 1;
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><p style="position: relative; top:-29px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
