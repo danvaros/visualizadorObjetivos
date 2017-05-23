@@ -1030,20 +1030,20 @@
             height: 600
           },
       data: {
-      columns: [],
-      type: 'bar',
-      color:
-        function (color, d) {
-            return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+        columns: [],
+        type: 'bar',
+        color:
+          function (color, d) {
+              return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
 
-            // Descrip_ind : function (d) {
-            //     return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
-            //     console.log('x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-');
-            //     console.log(d.index);
-                 //return (d.value >= 45) ? '#00ff00' : '#ff0000';
-            //}
-        }
-      },
+              // Descrip_ind : function (d) {
+              //     return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+              //     console.log('x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-');
+              //     console.log(d.index);
+                   //return (d.value >= 45) ? '#00ff00' : '#ff0000';
+              //}
+          }
+        },
           tooltip: {
             format: {
               title: function (d) { return d.name; },
@@ -1060,41 +1060,41 @@
     axis: {
         rotated: false,
         x: {
-        type: 'category',
-        categories: [ 'Aguascalientes',
-                      'Baja California',
-                      'Baja California Sur',
-                      'Campeche',
-                      'Coahuila de Zaragoza',
-                      'Colima',
-                      'Chiapas',
-                      'Chihuahua',
-                      'Ciudad de México',
-                      'Durango',
-                      'Guanajuato',
-                      'Guerrero',
-                      'Hidalgo',
-                      'Jalisco',
-                      'México',
-                      'Michoacán de Ocampo',
-                      'Morelos',
-                      'Nayarit',
-                      'Nuevo León',
-                      'Oaxaca',
-                      'Puebla',
-                      'Querétaro',
-                      'Quintana Roo',
-                      'San Luis Potosí',
-                      'Sinaloa',
-                      'Sonora',
-                      'Tabasco',
-                      'Tamaulipas',
-                      'Tlaxcala',
-                      'Veracruz de Ignacio de la Llave',
-                      'Yucatán',
-                      'Zacatecas',
-                      'Estados Unidos Mexicanos',
-                    ],
+          type: 'category',
+          categories: [ 'Aguascalientes',
+                        'Baja California',
+                        'Baja California Sur',
+                        'Campeche',
+                        'Coahuila de Zaragoza',
+                        'Colima',
+                        'Chiapas',
+                        'Chihuahua',
+                        'Ciudad de México',
+                        'Durango',
+                        'Guanajuato',
+                        'Guerrero',
+                        'Hidalgo',
+                        'Jalisco',
+                        'México',
+                        'Michoacán de Ocampo',
+                        'Morelos',
+                        'Nayarit',
+                        'Nuevo León',
+                        'Oaxaca',
+                        'Puebla',
+                        'Querétaro',
+                        'Quintana Roo',
+                        'San Luis Potosí',
+                        'Sinaloa',
+                        'Sonora',
+                        'Tabasco',
+                        'Tamaulipas',
+                        'Tlaxcala',
+                        'Veracruz de Ignacio de la Llave',
+                        'Yucatán',
+                        'Zacatecas',
+                        'Estados Unidos Mexicanos',
+                      ],
               height: 100,
                 tick:{
                   rotate: 270,
@@ -1436,7 +1436,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-29px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -1899,6 +1899,7 @@ colorObjetivo(obj);
                         scrollX:        true,
                         scrollCollapse: true,
                         paging:         false,
+                        searching: false,
                         aoColumnDefs: [
                           { 'bSortable': false,
                             'aTargets': arre }
@@ -1913,6 +1914,7 @@ colorObjetivo(obj);
                         scrollX:        true,
                         scrollCollapse: true,
                         paging:         false,
+                        searching: false,
                         aoColumnDefs: [
                           { 'bSortable': false,
                             'aTargets': arre }
@@ -1995,6 +1997,7 @@ colorObjetivo(obj);
                       scrollX:        true,
                       scrollCollapse: true,
                       paging:         false,
+                      searching: false,
                       aoColumnDefs: [
                         { 'bSortable': false, 'aTargets': arre }
                       ],
@@ -2197,6 +2200,8 @@ var contaAnios = arrray_anios.length - 1;
       var anio_buscar=$('#opciones_anio').val();
       var posi = busqueda_anio(cadena);
 
+var anioo = cadena.split('-');
+
       locked =false;
 
       var info = L.control();
@@ -2210,7 +2215,7 @@ var contaAnios = arrray_anios.length - 1;
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><p style="position: relative; top:-29px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="position: relative; top:-29px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
