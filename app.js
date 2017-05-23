@@ -6,6 +6,7 @@
   var insumos_general = [];
   var insumos_cobertura = [];
   var insumo_cober_clasifica = [];
+  var insumo_cober_clasifica_tipo = [];
   var cobertura_notas = false;
 
   var query_string = {};
@@ -22,6 +23,8 @@
   var titulo ;
   var pie ;
   var Algoritmo_ft = '';
+
+  var data_local = '';
 
   $.ajax({
     type: 'POST',
@@ -77,6 +80,7 @@
 
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
+      colorObjetivo(obj);
 
       // separamos para ver que funcion es la que debemos usar
       if(data.Series[0].Coberturas[0].ValorDato != 0){
@@ -87,9 +91,9 @@
         {
           //alert('es el eindicador especial');
           cobertura_101(data);
+          data_local = data;
           $('#row_filtros_serie_101').show();
         }else{
-          console.log('------------------------ analisis de datos que se enstan mostrando --------------');
          //console.log(data);
           cobertura(data);
         }
@@ -108,7 +112,9 @@
 
       $('.Codigo_ind').html(Codigo_ind);
       $('.Descrip_ind').html(Descrip_ind);
-
+      if(PCveInd == 101 || PCveInd == 2){
+        $('#link-datos-panel').hide();
+      }
       titulos(PCveInd);
       $('#tabla_nacional').hide();
       if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
@@ -135,6 +141,7 @@
 
   $(document).ready(function()
   {
+
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales
     $('#filtros_es').on('change',function(){
@@ -163,11 +170,23 @@
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
       $('#insumos_contDat').html('');
+
+      if(PCveInd == 101){
+        put_filtros_insumo_cob1($(this).val());
+      }
     });
 
     $('#este').on('change', function(){
-      put_tabla_insumo_cob($(this).val());
+      if(PCveInd == 101){
+        put_tabla_insumo_cob_insumo($(this).val());
+      }else{
+        put_tabla_insumo_cob($(this).val());
+      }
+
     });
+    // $('#este2').on('change', function(){
+    //   put_tabla_insumo_cob1($(this).val());
+    // });
 
     $('#filtros_serie').on('change', function(){
       console.log('-------------------- validemos ---------------');
@@ -176,11 +195,31 @@
       var tipo_101 =  $('#filtros_serie_101').val();
       if(PCveInd == 101){
         put_tabla_serie_cob_101(filtro,tipo_101);
+        poner_filtros();
       }else{
         put_tabla_serie_cob($(this).val());
+        poner_filtros();
       }
 
     });
+
+    $('#filtros_serie_101').on('change', function(){
+      var filtro2 = $('#filtros_serie').val();
+      var tipo_1011 =  $('#filtros_serie_101').val();
+      if(PCveInd == 101){
+        put_tabla_serie_cob_101(filtro2,tipo_1011);
+        poner_filtros();
+      }else{
+        put_tabla_serie_cob($(this).val());
+        poner_filtros();
+      }
+    });
+
+    $('#este2').on('change', function(){
+      console.log('------------------------ analisis de datos que se enstan mostrando --------------');
+      cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
+    });
+
   });//fin document ready
 
   function arma_tabla_insumo(arreglo_datos,num_cobertura){
@@ -234,14 +273,14 @@
                   datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
                   datos_doble += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
+                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
                 }
                }
 
@@ -314,14 +353,14 @@
                   datos_doble += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
                   datos_doble += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
+                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] *  100) / 100)  +'</td>';
                 }
                }
 
@@ -358,6 +397,128 @@
                     }
                 } );
     }
+  }
+
+  function put_tabla_insumo_cob_insumo(filtro){
+    generar_titulos_cob();
+
+    if($('#este2').val() == 0){
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_insumos,filtro);
+    }else if($('#este2').val() == 1){
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_hombre_insumos,filtro);
+    }else{
+      var tabla_armada = arma_tabla_insumo(arreglo_datos_mujeres_insumos,filtro);
+    }
+
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo_insumo +
+                      '</div>' +
+                      '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                      '<table class="bordered" id="miTabla" class="miTabla">';
+
+                      var datos_dobleDat = '<div class="cuadro_titulo"> ' + titulo +
+                                        '</div>' +
+                                        '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
+                                        '<table class="bordered" id="miTablaDat" class="miTablaDat">';
+
+
+    console.log('--------------- tabla armada ----------');
+    console.log(tabla_armada);
+
+
+
+      for (var i = 0; i < tabla_armada.length; i++) {
+               if(i == 0){
+                datos_doble +=  '<thead><tr>';
+                datos_dobleDat +=  '<thead><tr>';
+              }
+               else if(i == 1){
+                 datos_doble +=  '<tbody><tr>';
+                 datos_dobleDat +=  '<tbody><tr>';
+               }
+               else {
+                  datos_doble +=  '<tr>';
+                  datos_dobleDat +=  '<tr>';
+               }
+
+               for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
+                if(i == 0 && j == tabla_armada[0].length -1){
+                  //datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
+                  datos_doble +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
+                  datos_dobleDat +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
+                }
+                else if( i == 0 && j == tabla_armada[0].length -1 ){
+                  //datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                  datos_dobleDat += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                }
+                else if( i == 0 ){
+                  //datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
+                  datos_doble += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                  datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                }
+                else if(j == tabla_armada[0].length -1 ) {
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                  datos_doble += varia;
+                  datos_dobleDat += varia;
+                }
+                else if(j == tabla_armada[0].length -2){
+                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                }
+                else{
+                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
+                  datos_dobleDat +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
+                }
+               }
+
+
+
+               if(i == 0){
+                 datos_doble +=  '</tr></thead>';
+                 datos_dobleDat +=  '</tr></thead>';
+               }else{
+                 datos_doble +=  '</tr>';
+                 datos_dobleDat +=  '</tr>';
+               }
+             }
+
+
+
+            datos_doble +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+            ' <div class="pie_cuadro2">'+ pie_insumo +
+             '</div></div>';
+
+             datos_dobleDat +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+             ' <div class="pie_cuadro2">'+ pie +
+              '</div></div>';
+
+    //sin pie y cabezera de la pagina
+    $('#insumos_cont').html(datos_doble);
+    $('#insumos_contDat').html(datos_dobleDat);
+    var arre = [];
+    for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
+      arre.push(i)
+    }
+
+    if(arre.length > 17){
+      $('#miTabla').DataTable( {
+                    scrollY:        "600px",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         false,
+                    aoColumnDefs: [
+                      { 'bSortable': false,
+                        'aTargets': arre }
+                    ],
+                    fixedColumns:   {
+                        leftColumns: 1
+                    }
+                } );
+    }
+
+    //agregamos titulo del insumo seleccionado
+    $('#titulo_cabezeras').html(lista_insumos[$('#insumo_change_cob').val()]);
+    $('#descrip_uni').html('');
   }
 
 
@@ -410,17 +571,17 @@
                   datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ tabla_armada[i][j]+'</td>';
-                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j]+'</td>';
+                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
+                  datos_dobleDat +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
                 }
                }
 
@@ -519,6 +680,20 @@
     $('#este').html(insumo_filtro);
   }
 
+
+  function put_filtros_insumo_cob1(insumo){
+    $('#este2').show();
+
+    var tipo_gen = '<option value="-1"> Selecciona una género </option>';
+
+  //$.each(insumo_cober_clasifica[insumo], function(idx, value){
+      tipo_gen += '<option value="0">Total</option><option value="1">Hombre</option><option value="2">Mujer</option>';
+  //});
+
+    $('#este2').html(tipo_gen);
+  }
+
+
   function put_tabla_insumo(insumo){
     generar_titulos();
     var datos_doble = '<div class="cuadro_titulo"> ' + titulo_insumo +
@@ -563,17 +738,19 @@
                   datos_dobleDat += '<td>'+ insumos_general[insumo][i][j].split('-')[0] +'</td>';
                 }
                 else if(j == insumos_general[insumo][0].length -1 ) {
-                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ insumos_general[insumo][i][j]+'</td>';
+                  //(Math.round(insumos_general[insumo][i][j] + "e+2")  + "e-2")
+                  //var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ (Math.ceil(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
+                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == insumos_general[insumo][0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ insumos_general[insumo][i][j] +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ insumos_general[insumo][i][j]+'</td>';
+                    datos_doble +=  '  <td class="laque dos">'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
+                    datos_dobleDat +=  '  <td class="laque dos">'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ insumos_general[insumo][i][j] +'</td>';
-                  datos_dobleDat +=  '  <td>'+ insumos_general[insumo][i][j] +'</td>';
+                  datos_doble +=  '  <td>'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
+                  datos_dobleDat +=  '  <td>'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
                 }
                }
 
@@ -681,7 +858,12 @@
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
             if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
-               var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_ser.toFixed(1);
+
+              var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser)
+
+               var dato_formato2 = Math.round(flot * 10) / 10;
+
+               var dato_formato = +dato_formato2.toFixed(1);
             }else{
              var dato_formato =  'ND' ;
              /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
@@ -718,6 +900,7 @@
         lista_insumos.push(data.Series[i].Descrip_ser);
         insumos_cobertura.push(cobertura_series(data,i));
         insumo_cober_clasifica.push(clasificaciones(data,i));
+        //insumo_cober_clasifica_tipo.push();
       }
     }
 
@@ -726,10 +909,10 @@
 
     select += '<option value="0"> Selecciona una opción </option>';
     $.each(lista_insumos, function(idx, value){
-      select += '<option value="'+idx+'">'+value+'</option>';
+      select += '<option value="'+(idx+1)+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div>';
+    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
@@ -835,7 +1018,7 @@
   function poner_filtros_serie(){
     $("#filtros_serie").html('');
     for (var i = 0; i < arreglo_cla.length; i++) {
-      $("#filtros_serie").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
+      $("#filtros_serie").append('<option value="'+i+'" >'+arreglo_cla[i]+'</option>');
     }
     //$('.cob_sel_nac').show();
     //$('select').material_select();
@@ -865,8 +1048,8 @@
         console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
         if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null)
         {
-         
-          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(1);
+
+          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(2);
           //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }
         else {
@@ -899,6 +1082,7 @@
 
   $(document).ready(function()
   {
+
     titulos(PCveInd);
 
     $('#filtros_es').on('change',function(){
@@ -971,6 +1155,7 @@
 
   }
 
+
   function titulos(indicador){
         var serie_insumo =  $('insumo_change').val();
         atributos_general = getAtributos(indicador);
@@ -981,7 +1166,7 @@
            titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
                         '<p id="no_va_serie"><strong>Total<strong></p>';
 
                          pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
@@ -994,7 +1179,7 @@
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
-                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' + 
+                        '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
                         '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>';
 
 
@@ -1027,71 +1212,71 @@
   function iconoObjetivo(objetivo){
     switch(objetivo){
       case "1.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-01.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-01.png">');
         //return '<img class="ico_obj" src="img/ods-01.png">';
       break;
       case "2.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-02.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-02.png">');
         //return '<img class="ico_obj" src="img/ods-02.png">';
       break;
       case "3.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-03.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-03.png">');
         //return '<img class="ico_obj" src="img/ods-03.png">';
       break;
       case "4.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-04.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-04.png">');
         //return '<img class="ico_obj" src="img/ods-04.png">';
       break;
       case "5.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-05.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-05.png">');
         //return '<img class="ico_obj" src="img/ods-05.png">';
       break;
       case "6.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-06.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-06.png">');
         //return '<img class="ico_obj" src="img/ods-06.png">';
       break;
       case "7.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-07.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-07.png">');
         //return '<img class="ico_obj" src="img/ods-07.png">';
       break;
       case "8.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-08.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-08.png">');
         //return '<img class="ico_obj" src="img/ods-08.png">';
       break;
       case "9.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-09.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-09.png">');
         //return '<img class="ico_obj" src="img/ods-09.png">';
       break;
       case "10.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-10.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-10.png">');
         //return '<img class="ico_obj" src="img/ods-10.png">';
       break;
       case "11.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-11.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-11.png">');
         //return '<img class="ico_obj" src="img/ods-11.png">';
       break;
       case "12.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-12.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-12.png">');
         //return '<img class="ico_obj" src="img/ods-12.png">';
       break;
       case "13.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-13.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-13.png">');
         //return '<img class="ico_obj" src="img/ods-13.png">';
       break;
       case "14.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-14.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-14.png">');
         //return '<img class="ico_obj" src="img/ods-14.png">';
       break;
       case "15.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-15.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-15.png">');
         //return '<img class="ico_obj" src="img/ods-15.png">';
       break;
       case "16.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-16.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-16.png">');
         //return '<img class="ico_obj" src="img/ods-16.png">';
       break;
       case "17.":
-        $('.iconoObjetivo').html('<img class="ico_obj" src="img/ods-17.png">');
+        $('.iconoObjetivo').html('<img class="ico_obj1" src="img/ods-17.png">');
         //return '<img class="ico_obj" src="img/ods-17.png">';
       break;
 
@@ -1103,70 +1288,121 @@
       case "1.":
         $('.headerObje').addClass('id_1');
         $('#sti').addClass('id_1');
+        $('.indicadores-taps').removeClass('id_1');
+        $('.indicadores-taps-active').addClass('id_1');
+        // $('.indicadores-taps-active').css('background-color', '#D90A38 !important');
       break;
       case "2.":
         $('.headerObje').addClass('id_2');
         $('#sti').addClass('id_2');
+        $('.indicadores-taps').removeClass('id_2');
+        $('.indicadores-taps-active').addClass('id_2');
+        // $('.indicadores-taps-active').css('background-color','#D8AE2B !important');
       break;
       case "3.":
         $('.headerObje').addClass('id_3');
         $('#sti').addClass('id_3');
+        $('.indicadores-taps').removeClass('id_3');
+        $('.indicadores-taps-active').addClass('id_3');
+        // $('.indicadores-taps-active').css('background-color','#299E32 !important');
       break;
       case "4.":
         $('.headerObje').addClass('id_4');
         $('#sti').addClass('id_4');
+        $('.indicadores-taps').removeClass('id_4');
+        $('.indicadores-taps-active').addClass('id_4');
+        // $('.indicadores-taps-active').css('background-color','#BD052D !important');
       break;
       case "5.":
         $('.headerObje').addClass('id_5');
         $('#sti').addClass('id_5');
+        $('.indicadores-taps').removeClass('id_5');
+        $('.indicadores-taps-active').addClass('id_5');
+        // $('.indicadores-taps-active').css('background-color','#E23429 !important');
       break;
       case "6.":
         $('.headerObje').addClass('id_6');
         $('#sti').addClass('id_6');
+        $('.indicadores-taps').removeClass('id_6');
+        $('.indicadores-taps-active').addClass('id_6');
+        // $('.indicadores-taps-active').css('background-color','#56BCE3 !important');
       break;
       case "7.":
         $('.headerObje').addClass('id_7');
         $('#sti').addClass('id_7');
+        $('.indicadores-taps').removeClass('id_7');
+        $('.indicadores-taps-active').addClass('id_7');
+        // $('.indicadores-taps-active').css('background-color','#F2CB02 !important');
       break;
       case "8.":
         $('.headerObje').addClass('id_8');
         $('#sti').addClass('id_8');
+        $('.indicadores-taps').removeClass('id_8');
+        $('.indicadores-taps-active').addClass('id_8');
+        // $('.indicadores-taps-active').css('background-color','#9D063D !important');
       break;
       case "9.":
         $('.headerObje').addClass('id_9');
         $('#sti').addClass('id_9');
+        $('.indicadores-taps').removeClass('id_9');
+        $('.indicadores-taps-active').addClass('id_9');
+        // $('.indicadores-taps-active').css('background-color','#E86A26 !important');
       break;
       case "10.":
         $('.headerObje').addClass('id_10');
         $('#sti').addClass('id_10');
+        $('.indicadores-taps').removeClass('id_10');
+        $('.indicadores-taps-active').addClass('id_10');
+        // $('.indicadores-taps-active').css('background-color','#D4015E !important');
       break;
       case "11.":
         $('.headerObje').addClass('id_11');
         $('#sti').addClass('id_11');
+        $('.indicadores-taps').removeClass('id_11');
+        $('.indicadores-taps-active').addClass('id_11');
+        // $('.indicadores-taps-active').css('background-color','#F0A612 !important');
       break;
       case "12.":
         $('.headerObje').addClass('id_12');
         $('#sti').addClass('id_12');
+        $('.indicadores-taps').removeClass('id_12');
+        $('.indicadores-taps-active').addClass('id_12');
+        // $('.indicadores-taps-active').css('background-color','#B99319 !important');
       break;
       case "13.":
         $('.headerObje').addClass('id_13');
         $('#sti').addClass('id_13');
+        $('.indicadores-taps').removeClass('id_13');
+        $('.indicadores-taps-active').addClass('id_13');
+        // $('.indicadores-taps-active').css('background-color','#2D7D3B !important');
       break;
       case "14.":
         $('.headerObje').addClass('id_14');
         $('#sti').addClass('id_14');
+        $('.indicadores-taps').removeClass('id_14');
+        $('.indicadores-taps-active').addClass('id_14');
+        // $('.indicadores-taps-active').css('background-color','#4B95CF !important');
       break;
       case "15.":
         $('.headerObje').addClass('id_15');
         $('#sti').addClass('id_15');
+        $('.indicadores-taps').removeClass('id_15');
+        $('.indicadores-taps-active').addClass('id_15');
+        // $('.indicadores-taps-active').css('background-color','#37B72F !important');
       break;
       case "16.":
         $('.headerObje').addClass('id_16');
         $('#sti').addClass('id_16');
+        $('.indicadores-taps').removeClass('id_16');
+        $('.indicadores-taps-active').addClass('id_16');
+        // $('.indicadores-taps-active').css('background-color','#336198 !important');
       break;
       case "17.":
         $('.headerObje').addClass('id_17');
         $('#sti').addClass('id_17');
+        $('.indicadores-taps').removeClass('id_17');
+        $('.indicadores-taps-active').addClass('id_17');
+        // $('.indicadores-taps-active').css('background-color','#2B3E63 !important');
       break;
 
     }
