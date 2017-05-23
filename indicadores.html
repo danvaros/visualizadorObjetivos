@@ -1303,9 +1303,10 @@ function sortFunction(a, b) {
               x: {
                   type: 'timeseries',
                   tick: {
-                       rotate:90,
+                       rotate:-90,
                        format: function (x) { return x.getFullYear(); }
-                  }
+                  },
+                  height:40
               },
               y : {
                   tick: {
@@ -1466,7 +1467,7 @@ function sortFunction(a, b) {
             opacity: 1,
             color: '#000',
             dashArray: '1',
-            fillOpacity: 0.6,
+            fillOpacity: 1,
             fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
              className: "c"+res[1]
           };
