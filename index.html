@@ -2510,9 +2510,10 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
                                   x: {
                                     type: 'timeseries',
                                     tick: {
-                                      rotate: 90,
+                                      rotate: -90,
                                       format: function (x) { return x.getFullYear(); }
-                                    }
+                                    },
+                                    height: 100,
                                   },
                                   y: {
                                     tick: {
