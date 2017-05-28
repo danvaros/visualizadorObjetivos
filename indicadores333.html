@@ -1351,7 +1351,15 @@ function sortFunction(a, b) {
     {
       if(estados[i][0] == cadena)
       {
+        console.log("valorNull",cadena,estados[i][1],estados[i][1]=="ND");
+        if(estados[i][1]=="ND")
+        {
+          return -1;
+        }
+        else
+        {
           return parseFloat(estados[i][1]);
+        }
       }
     }
   }
@@ -1383,7 +1391,15 @@ function sortFunction(a, b) {
     {
       if(estados[i][0] == cadena)
       {
+        console.log("aca el error",cadena,estados[i][posicion]);
+        if(estados[i][posicion] == "ND")
+        {
+          return -1;
+        }
+        else
+        {
           return parseFloat(estados[i][posicion]);
+        }
       }
     }
   }
@@ -1441,7 +1457,15 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+           var va;
+           if(busqueda_estado(props.nom_ent).toFixed(1) != -1)
+           {
+             va=busqueda_estado(props.nom_ent).toFixed(1)
+           }
+           else {
+             va='NA';
+           }
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + va/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -1451,17 +1475,30 @@ function sortFunction(a, b) {
         };
         info.addTo(map);
 
-        function getColo(d) {
-          return d >= 100 ? '#004b67' :
-                 d > 50  ? '#007dab' :
-                 d > 20  ? '#01baff' :
-                           '#eff3ff';
+        function getColoR(d) {
+          console.log("comp0",d,d>20,d >= 90);
+          // var colsr= d >= 0 ? '#004b67' :
+          //           //  d > 50  ? '#007dab' :
+          //           //  d > 20  ? '#01baff' :
+          //                  '#eff3ff';
+          var colsr= d >= 0 ? 'rgb(0,75,103)' :
+                           'rgb(239,243,255)';
+        console.log("elcolorsera",colsr);
+         return colsr
         }
 
-        function getColoR(number)
+        function getColo(number)
         {
+          console.log("coloressss",number,brew.getColorInRange(number),brew.getColorInRange(99));
+          if(number == -1)
+          {
+            return '#eff3ff';
+          }
+          else {
             return brew.getColorInRange(number);
-  	    }
+          }
+
+  	  }
 
         function style(feature) {
   	    var res=String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
@@ -1569,14 +1606,14 @@ function sortFunction(a, b) {
   		brew.setColorCode("Blues");
   		brew.classify('jenks');
       var alfr=brew.getBreaks();
-      var brea =[];
-      for(var ii=0;ii<alfr.length;ii++)
-      {
-        if(alfr[ii] != -1)
-        {
-          brea.push(alfr[ii]);
-        }
-      }
+      var brea =[-1,0,100];
+      // for(var ii=0;ii<alfr.length;ii++)
+      // {
+      //   if(alfr[ii] != -1)
+      //   {
+      //     brea.push(alfr[ii]);
+      //   }
+      // }
       console.log("breaks0",brea,brew.getBreaks());
         geojson = L.geoJson(statesData, {
           style: style,
@@ -1588,14 +1625,14 @@ function sortFunction(a, b) {
         var legend = L.control();
         legend.onAdd = function (map) {
           var div = L.DomUtil.create('div', 'info2 legend hide'),
-            grades = brew.getBreaks(),//[0, 20, 50, 100],
+            grades = brea,//brew.getBreaks(),//[0, 20, 50, 100],
             labels = [],
             from, to;
           for (var i = 0; i < grades.length-1; i++) {
             from = grades[i];
             to = grades[i + 1];
             var res=String(getColoR(from)).split(",");
-            console.log(from,from+1,res,grades);
+            console.log("lofrs",from,from+1,res,grades);
             labels.push(
               '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
               from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
@@ -2237,7 +2274,15 @@ var anioo = cadena.split('-');
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
+         var va;
+         if(busqueda_estado(props.nom_ent).toFixed(1) != -1)
+         {
+           va=busqueda_estado(props.nom_ent).toFixed(1)
+         }
+         else {
+           va='NA';
+         }
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + va + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -2247,16 +2292,27 @@ var anioo = cadena.split('-');
       };
       info.addTo(map);
 
-      function getColo(d) {
-        return d >= 100 ? '#004b67' :
-               d > 50  ? '#007dab' :
-               d > 20  ? '#01baff' :
-                         '#eff3ff';
+      function getColoR(d) {
+        console.log("comp0",d,d>20,d >= 90);
+        // var colsr= d >= 0 ? '#004b67' :
+        //           //  d > 50  ? '#007dab' :
+        //           //  d > 20  ? '#01baff' :
+        //                  '#eff3ff';
+       var colsr= d >= 0 ? 'rgb(0,75,103)' :
+                        'rgb(239,243,255)';
+      console.log("elcolorsera",colsr);
+       return colsr
       }
 
-      function getColoR(number)
+      function getColo(number)
       {
+        if(number == -1)
+        {
+          return '#eff3ff';
+        }
+        else {
           return brew.getColorInRange(number);
+        }
       }
 
       function style(feature) {
@@ -2364,14 +2420,14 @@ var anioo = cadena.split('-');
     brew.setColorCode("Blues");
     brew.classify('jenks');
     var alfr=brew.getBreaks();
-    var brea =[];
-    for(var ii=0;ii<alfr.length;ii++)
-    {
-      if(alfr[ii] != -1)
-      {
-        brea.push(alfr[ii]);
-      }
-    }
+    var brea =[-1,0,100];
+    // for(var ii=0;ii<alfr.length;ii++)
+    // {
+    //   if(alfr[ii] != -1)
+    //   {
+    //     brea.push(alfr[ii]);
+    //   }
+    // }
     console.log("breaks0",brea);
 
       geojson = L.geoJson(statesData, {
@@ -2383,7 +2439,7 @@ var anioo = cadena.split('-');
       var legend = L.control();
       legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info2 legend hide'),
-          grades = brew.getBreaks(),//[0, 20, 50, 100],
+          grades = brea,//brew.getBreaks(),//[0, 20, 50, 100],
           labels = [],
           from, to;
         for (var i = 0; i < grades.length-1; i++) {
