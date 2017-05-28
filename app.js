@@ -71,7 +71,77 @@
   //   },
   //   async:false
   // });
+if(PCveInd == 118){
+  $.ajax({
+    type: 'POST',
+    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+    data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+    success: function( data, textStatus, jqxhr ) {
 
+      Codigo_ind  = data.Codigo_ind;
+      Descrip_ind = data.Descrip_ind;
+      colorObjetivo(obj);
+
+      // separamos para ver que funcion es la que debemos usar
+      if(data.Series[0].Coberturas[0].ValorDato != 0){
+        valorDato(data);
+        valorDatoInsumos(data);
+      }else{
+        if(PCveInd == 101)
+        {
+          //alert('es el eindicador especial');
+          cobertura_101(data);
+          data_local = data;
+          $('#row_filtros_serie_101').show();
+        }else{
+         //console.log(data);
+          cobertura(data);
+        }
+
+          estados = arma_tabla(0);
+          coberturaInsumos(data);
+          console.log(estados);
+          poner_filtros();
+          poner_filtros_serie();
+          $('#row_filtros_serie').show();
+          cobertura_notas = true;
+
+      }
+      var codigo_indicador = data.Codigo_ind;
+      var descripcion = data.Descrip_ind;
+
+      $('.Codigo_ind').html(Codigo_ind);
+      $('.Descrip_ind').html(Descrip_ind);
+      if(PCveInd == 101 || PCveInd == 2){
+        $('#link-datos-panel').hide();
+      }
+      titulos(PCveInd);
+      $('#tabla_nacional').hide();
+      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
+        $('#tabla_nacional').show();
+        $('#mapas_hide').remove();
+        $('#botonera_nacional').remove();
+      }
+
+      if(PCveInd ==  333 || PCveInd == 276){
+        $('#map').remove();
+        $('#footmap').remove();
+        $('#grafs').remove();
+        $('#indicador-grafica').remove();
+        $('#indicador-panel').hide();
+        $('.ocultar').hide();
+        //datos a mostrar
+        $('#serie-panel2').show();
+      }
+
+      $('#loader').delay(2000).fadeOut("slow");
+    },
+    error: function() {
+            //alert('Error occured');
+        },
+    async:false
+  });
+}else{
   $.ajax({
     type: 'POST',
     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
@@ -136,9 +206,12 @@
 
       $('#loader').delay(2000).fadeOut("slow");
     },
+    error: function() {
+            //alert('Error occured');
+        },
     async:false
   });
-
+}
   $(document).ready(function()
   {
 
