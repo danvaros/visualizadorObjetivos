@@ -90,7 +90,7 @@
       }
 .cuadro_titulo{
     background-color: #fff;
-    padding: 30px;
+    padding: 20px 20px 20px 0px;
     color: #083362;
 }
 
@@ -295,10 +295,10 @@
   </span>
   <body>
 
-    <!-- menu -->
+      <!-- menu -->
     <div class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
+        <div class=" container nav-wrapper" style="margin-top:0px;">
           <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
@@ -309,9 +309,9 @@
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
             <!-- <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
-              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;"   onfocusout="esconder()" />
+              <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li> -->
-              <li class="tamps">
+            <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
@@ -321,16 +321,21 @@
             </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
+          <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
-            <!-- <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
-            <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
+           <!--  <li><a href="estados.html">Indicadores por unidad geográfica</a></li> -->
+           <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
             <!-- <li><a href="compara.html">Compara</a></li> -->
+           <!--  <li class="tamps">
+             <a id="busca" href="calendario.html">Calendario</a>
+           </li> -->
           </ul>
         </div>
       </nav>
     </div>
 <!-- menu -->
+
 <!-- // verde #299e33 -->
     <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 999; color: #fff;padding:5px 0px 0px 0px; ">
       <div class="container" style="margin-top: 0 !important;">
@@ -385,10 +390,10 @@
 
       <div class="row">
         <div class="col s12 center-align">
-          <a id="indicador" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 5px 0px 0px 5px;">INDICADOR</a>
+          <a id="indicador" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps indicadores-taps-active" style =" border-radius: 5px 0px 0px 5px;">INDICADOR</a>
           <a id="metadato" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0;">METADATO</a>
           <a id="serie" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0">SERIE HISTÓRICA</a>
-          <a id="datos" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps indicadores-taps-active" style =" border-radius: 0px 5px 5px 0px;">DATOS PARA EL CÁLCULO</a>
+          <a id="datos" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0px 5px 5px 0px;">DATOS PARA EL CÁLCULO</a>
         </div>
       </div>
 
@@ -940,8 +945,10 @@
       axis : {
           x : {
               type : 'timeseries',
+              height: 120,
               tick: {
-                  format: function (x) { return x.getFullYear(); }
+                  format: function (x) { return x.getFullYear();},
+                  rotate: -90
                 //format: '%Y' // format string is also available for timeseries data
               },
               // y : {
@@ -1002,7 +1009,7 @@
   {
     //$('.modal').modal();
     $('.modal-trigger').leanModal();
-
+    $(".button-collapse").sideNav();
     var textoTwitterGrafica = 'Comparto esta grafica';
     var textoTwitterMapa    = 'Comparto este mapa';
     var URLactual = window.location;
@@ -1022,27 +1029,27 @@
       },
       bindto: '#barras',
       size: {
-            height: 1280
+            height: 500
           },
       data: {
-      columns: [],
-      type: 'bar',
-      color:
-        function (color, d) {
-            return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+        columns: [],
+        type: 'bar',
+        color:
+          function (color, d) {
+              return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
 
-            // Descrip_ind : function (d) {
-            //     return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
-            //     console.log('x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-');
-            //     console.log(d.index);
-                 //return (d.value >= 45) ? '#00ff00' : '#ff0000';
-            //}
-        }
-      },
+              // Descrip_ind : function (d) {
+              //     return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+              //     console.log('x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-');
+              //     console.log(d.index);
+                   //return (d.value >= 45) ? '#00ff00' : '#ff0000';
+              //}
+          }
+        },
           tooltip: {
             format: {
               title: function (d) { return d.name; },
-            }, 
+            },
                 contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                     color = function() {
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
@@ -1053,46 +1060,48 @@
             },
 
     axis: {
-        rotated: true,
+        rotated: false,
         x: {
-        type: 'category',
-        categories: [ 'Aguascalientes',
-                      'Baja California',
-                      'Baja California Sur',
-                      'Campeche',
-                      'Coahuila de Zaragoza',
-                      'Colima',
-                      'Chiapas',
-                      'Chihuahua',
-                      'Ciudad de México',
-                      'Durango',
-                      'Guanajuato',
-                      'Guerrero',
-                      'Hidalgo',
-                      'Jalisco',
-                      'México',
-                      'Michoacán de Ocampo',
-                      'Morelos',
-                      'Nayarit',
-                      'Nuevo León',
-                      'Oaxaca',
-                      'Puebla',
-                      'Querétaro',
-                      'Quintana Roo',
-                      'San Luis Potosí',
-                      'Sinaloa',
-                      'Sonora',
-                      'Tabasco',
-                      'Tamaulipas',
-                      'Tlaxcala',
-                      'Veracruz de Ignacio de la Llave',
-                      'Yucatán',
-                      'Zacatecas',
-                      'Estados Unidos Mexicanos',
-                    ],
-              height: 100,
+          type: 'category',
+          categories: [ 'Aguascalientes',
+                        'Baja California',
+                        'Baja California Sur',
+                        'Campeche',
+                        'Coahuila de Zaragoza',
+                        'Colima',
+                        'Chiapas',
+                        'Chihuahua',
+                        'Ciudad de México',
+                        'Durango',
+                        'Guanajuato',
+                        'Guerrero',
+                        'Hidalgo',
+                        'Jalisco',
+                        'México',
+                        'Michoacán de Ocampo',
+                        'Morelos',
+                        'Nayarit',
+                        'Nuevo León',
+                        'Oaxaca',
+                        'Puebla',
+                        'Querétaro',
+                        'Quintana Roo',
+                        'San Luis Potosí',
+                        'Sinaloa',
+                        'Sonora',
+                        'Tabasco',
+                        'Tamaulipas',
+                        'Tlaxcala',
+                        'Veracruz de Ignacio de la Llave',
+                        'Yucatán',
+                        'Zacatecas',
+                        'Estados Unidos Mexicanos',
+                      ],
+              height: 170,
                 tick:{
-                  rotate: 270,
+
+                  rotate: -90,
+
                   multiline: false
                 },
               } ,
@@ -1160,17 +1169,20 @@ function adelante(){
     if(i==0){
       serie.push(Descrip_ind);
     }else{
-      if(i < 17){
-        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(1)+'</td></tr>' ;
-      } else if(i == 33){
+      if(i < 18){
+        var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
+        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+ unods + '</td></tr>' ;
+      } else if(i == 35){
         $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
       }
       else {
-        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+parseFloat(estados[i][indice]).toFixed(1)+'</td></tr>' ;
+        var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
+        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
       }
 
       console.log('____________________________ vamos aver que show --------------');
-      if(estados[i][indice] == null){
+
+      if(estados[i][indice] == 'ND'){
         var numero =  0;
       }else{
         var numero =  parseFloat(estados[i][indice]).toFixed(1);
@@ -1295,9 +1307,10 @@ function sortFunction(a, b) {
               x: {
                   type: 'timeseries',
                   tick: {
-                       rotate:90,
+                       rotate:-90,
                        format: function (x) { return x.getFullYear(); }
-                  }
+                  },
+                  height:40
               },
               y : {
                   tick: {
@@ -1428,7 +1441,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -1458,7 +1471,7 @@ function sortFunction(a, b) {
             opacity: 1,
             color: '#000',
             dashArray: '1',
-            fillOpacity: 0.6,
+            fillOpacity: 1,
             fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
              className: "c"+res[1]
           };
@@ -1839,7 +1852,7 @@ $(document).ready(function(){
             }
           });
 
-
+$('#indicador').trigger("click");
           // select de metadatos
           $('#indicador').click(function(){
 
@@ -1865,9 +1878,12 @@ $(document).ready(function(){
                 $('#serie').removeClass('indicadores-taps-active');
                 $('#datos').removeClass('indicadores-taps-active');
                 $('#metadato').removeClass('indicadores-taps-active');
+
+                colorObjetivo(obj);
           });
 
           $('#serie').click(function(){
+
                 $('#tabla_nacional').hide();
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
@@ -1890,6 +1906,7 @@ $(document).ready(function(){
                         scrollX:        true,
                         scrollCollapse: true,
                         paging:         false,
+                        searching: false,
                         aoColumnDefs: [
                           { 'bSortable': false,
                             'aTargets': arre }
@@ -1904,6 +1921,7 @@ $(document).ready(function(){
                         scrollX:        true,
                         scrollCollapse: true,
                         paging:         false,
+                        searching: false,
                         aoColumnDefs: [
                           { 'bSortable': false,
                             'aTargets': arre }
@@ -1923,9 +1941,12 @@ $(document).ready(function(){
                 $('#serie').addClass('indicadores-taps-active');
                 $('#datos').removeClass('indicadores-taps-active');
                 $('#metadato').removeClass('indicadores-taps-active');
+
+                colorObjetivo(obj);
           });
 
           $('#datos').click(function(){
+
                 $('#tabla_nacional').hide();
                 $('#metadato-panel').hide();
                 $('#indicador-panel').hide();
@@ -1943,9 +1964,12 @@ $(document).ready(function(){
                 $('#serie').removeClass('indicadores-taps-active');
                 $('#datos').addClass('indicadores-taps-active');
                 $('#metadato').removeClass('indicadores-taps-active');
+
+                colorObjetivo(obj);
           });
 
           $('#metadato').click(function(){
+
                 $('#tabla_nacional').hide();
                 $('#metadato-panel').show();
                 $('#indicador-panel').hide();
@@ -1963,6 +1987,8 @@ $(document).ready(function(){
                 $('#serie').removeClass('indicadores-taps-active');
                 $('#datos').removeClass('indicadores-taps-active');
                 $('#metadato').addClass('indicadores-taps-active');
+
+                colorObjetivo(obj);
           });
 
           $('#indicador').trigger("click");
@@ -1984,6 +2010,7 @@ $(document).ready(function(){
                       scrollX:        true,
                       scrollCollapse: true,
                       paging:         false,
+                      searching: false,
                       aoColumnDefs: [
                         { 'bSortable': false, 'aTargets': arre }
                       ],
@@ -2186,6 +2213,8 @@ var contaAnios = arrray_anios.length - 1;
       var anio_buscar=$('#opciones_anio').val();
       var posi = busqueda_anio(cadena);
 
+var anioo = cadena.split('-');
+
       locked =false;
 
       var info = L.control();
@@ -2199,7 +2228,7 @@ var contaAnios = arrray_anios.length - 1;
        $('.info2').removeClass('hide');
        if(props != undefined)
        {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><p style="position: relative; top:-29px; left: 20%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
+          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
         console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
@@ -2482,6 +2511,133 @@ var contaAnios = arrray_anios.length - 1;
     <script type="text/javascript">
     $(document).ready(function () {
 
+      function colorBtn(objetivo){
+        switch(objetivo){
+          case "1.":
+            $('.headerObje').addClass('id_1');
+            $('#sti').addClass('id_1');
+            $('.indicadores-taps').removeClass('id_1');
+            $('.indicadores-taps-active').addClass('id_1');
+            $('.indicadores-taps-active').css('background-color', '#D90A38 !important');
+          break;
+          case "2.":
+            $('.headerObje').addClass('id_2');
+            $('#sti').addClass('id_2');
+            $('.indicadores-taps').removeClass('id_2');
+            $('.indicadores-taps-active').addClass('id_2');
+            $('.indicadores-taps-active').css('background-color','#D8AE2B !important');
+          break;
+          case "3.":
+            $('.headerObje').addClass('id_3');
+            $('#sti').addClass('id_3');
+            $('.indicadores-taps').removeClass('id_3');
+            $('.indicadores-taps-active').addClass('id_3');
+            $('.indicadores-taps-active').css('background-color','#299E32 !important');
+          break;
+          case "4.":
+            $('.headerObje').addClass('id_4');
+            $('#sti').addClass('id_4');
+            $('.indicadores-taps').removeClass('id_4');
+            $('.indicadores-taps-active').addClass('id_4');
+            $('.indicadores-taps-active').css('background-color','#BD052D !important');
+          break;
+          case "5.":
+            $('.headerObje').addClass('id_5');
+            $('#sti').addClass('id_5');
+            $('.indicadores-taps').removeClass('id_5');
+            $('.indicadores-taps-active').addClass('id_5');
+            $('.indicadores-taps-active').css('background-color','#E23429 !important');
+          break;
+          case "6.":
+            $('.headerObje').addClass('id_6');
+            $('#sti').addClass('id_6');
+            $('.indicadores-taps').removeClass('id_6');
+            $('.indicadores-taps-active').addClass('id_6');
+            $('.indicadores-taps-active').css('background-color','#56BCE3 !important');
+          break;
+          case "7.":
+            $('.headerObje').addClass('id_7');
+            $('#sti').addClass('id_7');
+            $('.indicadores-taps').removeClass('id_7');
+            $('.indicadores-taps-active').addClass('id_7');
+            $('.indicadores-taps-active').css('background-color','#F2CB02 !important');
+          break;
+          case "8.":
+            $('.headerObje').addClass('id_8');
+            $('#sti').addClass('id_8');
+            $('.indicadores-taps').removeClass('id_8');
+            $('.indicadores-taps-active').addClass('id_8');
+            $('.indicadores-taps-active').css('background-color','#9D063D !important');
+          break;
+          case "9.":
+            $('.headerObje').addClass('id_9');
+            $('#sti').addClass('id_9');
+            $('.indicadores-taps').removeClass('id_9');
+            $('.indicadores-taps-active').addClass('id_9');
+            $('.indicadores-taps-active').css('background-color','#E86A26 !important');
+          break;
+          case "10.":
+            $('.headerObje').addClass('id_10');
+            $('#sti').addClass('id_10');
+            $('.indicadores-taps').removeClass('id_10');
+            $('.indicadores-taps-active').addClass('id_10');
+            $('.indicadores-taps-active').css('background-color','#D4015E !important');
+          break;
+          case "11.":
+            $('.headerObje').addClass('id_11');
+            $('#sti').addClass('id_11');
+            $('.indicadores-taps').removeClass('id_11');
+            $('.indicadores-taps-active').addClass('id_11');
+            $('.indicadores-taps-active').css('background-color','#F0A612 !important');
+          break;
+          case "12.":
+            $('.headerObje').addClass('id_12');
+            $('#sti').addClass('id_12');
+            $('.indicadores-taps').removeClass('id_12');
+            $('.indicadores-taps-active').addClass('id_12');
+            $('.indicadores-taps-active').css('background-color','#B99319 !important');
+          break;
+          case "13.":
+            $('.headerObje').addClass('id_13');
+            $('#sti').addClass('id_13');
+            $('.indicadores-taps').removeClass('id_13');
+            $('.indicadores-taps-active').addClass('id_13');
+            $('.indicadores-taps-active').css('background-color','#2D7D3B !important');
+          break;
+          case "14.":
+            $('.headerObje').addClass('id_14');
+            $('#sti').addClass('id_14');
+            $('.indicadores-taps').removeClass('id_14');
+            $('.indicadores-taps-active').addClass('id_14');
+            $('.indicadores-taps-active').css('background-color','#4B95CF !important');
+          break;
+          case "15.":
+            $('.headerObje').addClass('id_15');
+            $('#sti').addClass('id_15');
+            $('.indicadores-taps').removeClass('id_15');
+            $('.indicadores-taps-active').addClass('id_15');
+            $('.indicadores-taps-active').css('background-color','#37B72F !important');
+          break;
+          case "16.":
+            $('.headerObje').addClass('id_16');
+            $('#sti').addClass('id_16');
+            $('.indicadores-taps').removeClass('id_16');
+            $('.indicadores-taps-active').addClass('id_16');
+            $('.indicadores-taps-active').css('background-color','#336198 !important');
+          break;
+          case "17.":
+            $('.headerObje').addClass('id_17');
+            $('#sti').addClass('id_17');
+            $('.indicadores-taps').removeClass('id_17');
+            $('.indicadores-taps-active').addClass('id_17');
+            $('.indicadores-taps-active').css('background-color','#2B3E63 !important');
+          break;
+
+        }
+      }
+
+
+
     function exportTableToCSV($table, filename) {
 
         var $rows = $table.find('tr:has(td)'),
@@ -2561,7 +2717,7 @@ var contaAnios = arrray_anios.length - 1;
     });
 
     if ($('.select_datos').val() != -1) {
-      $(".exportCSVDatos").show();
+      $(".exportCSVDatos").hide();
     }else{
       $(".exportCSVDatos").hide();
     }

@@ -239,9 +239,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   </head>
   <body>
 
+ <!-- menu -->
     <div class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
+        <div class=" container nav-wrapper" style="margin-top:0px;">
           <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
@@ -254,31 +255,35 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li> -->
-              <li class="tamps">
+            <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
-          <!--   <li class="tamps">
+            <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
             </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
+          <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
-            <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
-            <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+           <!--  <li><a href="estados.html">Indicadores por unidad geográfica</a></li> -->
+           <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
-            <li><a href="compara.html">Compara</a></li>
+            <!-- <li><a href="compara.html">Compara</a></li> -->
+           <!--  <li class="tamps">
+             <a id="busca" href="calendario.html">Calendario</a>
+           </li> -->
           </ul>
         </div>
       </nav>
     </div>
+<!-- menu -->
     <div class="container">
       <div class="row scrollable-section" data-section-title="Menú de selección" >
         <div class="col s12">
           <h3 class="fuerte t_principal">EXPLORA</h3>
           <li class="divider"></li>
-          <br>
           <!-- <p class="gris t_sm">
           Esta sección permite visuallizar los indicadores de los cuales se dispone información para 11 de los 17 objetivos de la Agenda 2030 para el Desarrollo Sostenible. Igualmente ofrece la posiblilidad de filtrar la información por tipo de desagregación y unidades territoriales menores, en el caso de que esta se encuentre disponible, y exportarla para su manipulacion al igual que los materiales graficos que se generen por el usuario.
           </p> -->
@@ -1020,7 +1025,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       });
 
 
-      // $(".button-collapse").sideNav();
+     $(".button-collapse").sideNav();
 
       $('select').material_select();
       // $('.collapsible').collapsible(
@@ -1146,11 +1151,12 @@ function carga_selectes(){
             x : {
                 type : 'timeseries',
                 tick: {
-                    rotate:90,
+                    rotate:-90,
                     format: function (x) { return x.getFullYear(); }
                   //format: '%Y' // format string is also available for timeseries data
                 },
-                size : 80
+                size : 80,
+                height: 35
             },
             y : {
               // inner: true,
@@ -1406,7 +1412,7 @@ function busqueda_anio(cadena)
           opacity: 1,
           color: '#000',
           dashArray: '1',
-          fillOpacity: 0.6,
+          fillOpacity: 1,
           // fillColor: getColoR(feature.properties.density),
           fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
            className: "c"+res[1]
@@ -1922,7 +1928,7 @@ var contaAnios = arrray_anios.length - 1;
               opacity: 1,
               color: '#000',
               dashArray: '1',
-              fillOpacity: 0.6,
+              fillOpacity: 1,
               fillColor: getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi)),
                className: "c"+res[1]
             };

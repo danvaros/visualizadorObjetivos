@@ -138,7 +138,7 @@ $('#loader').show();
     <!-- menu -->
     <div class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
+        <div class=" container nav-wrapper" style="margin-top:0px;">
           <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
@@ -151,7 +151,7 @@ $('#loader').show();
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li> -->
-              <li class="tamps">
+            <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
@@ -161,16 +161,22 @@ $('#loader').show();
             </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
+          <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
-            <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
-            <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+           <!--  <li><a href="estados.html">Indicadores por unidad geográfica</a></li> -->
+           <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
-            <li><a href="compara.html">Compara</a></li>
+            <!-- <li><a href="compara.html">Compara</a></li> -->
+         <!--    <li class="tamps">
+           <a id="busca" href="calendario.html">Calendario</a>
+         </li> -->
           </ul>
         </div>
       </nav>
     </div>
 <!-- menu -->
+
+
     <div class="container" id="objetivo0">
       <div class="row">
         <div class="col s12">
@@ -179,7 +185,7 @@ $('#loader').show();
         </div>
    <!--      <div class="col s12">
           <br>
-          <div class="input-field col s4">
+          <div class="input-field col s4" style="margin-left:15px;">
             <i class="material-icons prefix caja_i">search</i>
             <input id="icon_prefix" type="text" class="validate caja_d autocomplete" placeholder=" Buscar indicadores" style="padding-left: 12px;">
 
@@ -597,6 +603,9 @@ $('#loader').show();
       for (var i = 0; i < datos.length; i++) {
         var contenido='';
         for (var j = 0; j < datos[i].Meta.length; j++) {
+var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
+        if(clave_arb_meta != 333  &&  clave_arb_meta != 118 ){
+          if(clave_arb_meta != 210){
           if(j > 2){
                 contenido = contenido + '<div class="row borde_b fond ocultar" >';
               }else{
@@ -647,6 +656,11 @@ $('#loader').show();
             }//fin for mas interno
           }
           contenido = contenido +     '</p></div>'+'</div>';
+          }
+        }else {
+          var mensa = 'No se tiene indicadores disponibles para este objetivo';
+          contenido =  '<div class="col s12">'+mensa+'</div>';
+        }//fin condicion para no ver las metas
 
           // if(checar < 2 ){
           //   console.log(contenido);
