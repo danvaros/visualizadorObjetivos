@@ -604,7 +604,7 @@ $('#loader').show();
         var contenido='';
         for (var j = 0; j < datos[i].Meta.length; j++) {
 var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
-        if(/*clave_arb_meta != 333  &&*/  clave_arb_meta != 118 ){
+        if(true){
           if(clave_arb_meta != 210){
           if(j > 2){
                 contenido = contenido + '<div class="row borde_b fond ocultar" >';
@@ -624,7 +624,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
               var codigo_dg     = datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg;
               var descrip_des   = datos[i].Meta[j].Indicador[k].Descrip_des;
               var codigo_des    = datos[i].Meta[j].Indicador[k].Codigo_des;
-            if(/*clave_arb == 333 ||*/ clave_arb == 210 ||  clave_arb == 118 ){
+            if( clave_arb == 210){
 
             }else if(clave_arb == 333)
             {
