@@ -71,11 +71,11 @@
   //   },
   //   async:false
   // });
-
+if(PCveInd == 118){
   $.ajax({
     type: 'POST',
-    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
-    data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
+    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+    data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       Codigo_ind  = data.Codigo_ind;
@@ -136,9 +136,88 @@
 
       $('#loader').delay(2000).fadeOut("slow");
     },
+    error: function() {
+            //alert('Error occured');
+        },
     async:false
   });
+}else{
+  $.ajax({
+    type: 'POST',
+    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
+    data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
+    success: function( data, textStatus, jqxhr ) {
 
+      Codigo_ind  = data.Codigo_ind;
+      Descrip_ind = data.Descrip_ind;
+      colorObjetivo(obj);
+
+      // separamos para ver que funcion es la que debemos usar
+      if(data.Series[0].Coberturas[0].ValorDato != 0){
+        valorDato(data);
+        valorDatoInsumos(data);
+      }else{
+        if(PCveInd == 101)
+        {
+          //alert('es el eindicador especial');
+          cobertura_101(data);
+          data_local = data;
+          $('#row_filtros_serie_101').show();
+        }else{
+         //console.log(data);
+          cobertura(data);
+        }
+
+          estados = arma_tabla(0);
+          coberturaInsumos(data);
+          console.log(estados);
+          poner_filtros();
+          poner_filtros_serie();
+          $('#row_filtros_serie').show();
+          cobertura_notas = true;
+
+      }
+      var codigo_indicador = data.Codigo_ind;
+      var descripcion = data.Descrip_ind;
+
+      $('.Codigo_ind').html(Codigo_ind);
+      $('.Descrip_ind').html(Descrip_ind);
+      if(PCveInd == 101 || PCveInd == 2){
+        $('#link-datos-panel').hide();
+      }
+      titulos(PCveInd);
+      $('#tabla_nacional').hide();
+      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
+        $('#tabla_nacional').show();
+        $('#mapas_hide').remove();
+        $('#botonera_nacional').remove();
+      }
+      if(PCveInd ==  333)
+      {
+        // $('#map').hide();
+        // $('#conten_maps').append('<div id="map333"></div>');
+        // mapa_333();
+      }
+
+      if(/*PCveInd ==  333 ||*/ PCveInd == 276){
+        $('#map').remove();
+        $('#footmap').remove();
+        $('#grafs').remove();
+        $('#indicador-grafica').remove();
+        $('#indicador-panel').hide();
+        $('.ocultar').hide();
+        //datos a mostrar
+        $('#serie-panel2').show();
+      }
+
+      $('#loader').delay(2000).fadeOut("slow");
+    },
+    error: function() {
+            //alert('Error occured');
+        },
+    async:false
+  });
+}
   $(document).ready(function()
   {
 
@@ -1170,7 +1249,7 @@
                         '<p id="no_va_serie"><strong>Total<strong></p>';
 
                          pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-                  ' <div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  '<div><strong>NA:</strong> No aplicable</div><div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
                   ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
@@ -1184,7 +1263,7 @@
 
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-                  ' <div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  '<div><strong>NA:</strong> No aplicable</div><div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
                   ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
@@ -1195,7 +1274,7 @@
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
-                  ' <div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  '<div><strong>NA:</strong> No aplicable</div><div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
                   ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
@@ -1411,4 +1490,273 @@
   function put_datos(indicador, institucion){
       // $('#da_indicador').html(indicador);
       $('#da_institucion').html(institucion);
+  }
+
+  function mapa_333()
+  {
+
+    function busqueda_estado(cadena)
+    {
+      for(var i=0;i<estados.length;i++)
+      {
+        if(estados[i][0] == cadena)
+        {
+          console.log("valorNull",cadena,estados[i][1],estados[i][1]=="ND");
+          if(estados[i][1]=="ND")
+          {
+            return -1;
+          }
+          else
+          {
+            return parseFloat(estados[i][1]);
+          }
+        }
+      }
+    }
+
+    function busqueda_indice(cadena) {
+      for (var i = 0; i < estados.length; i++) {
+        if (estados[i][0] == cadena) {
+          return parseFloat(i);
+        }
+      }
+    }
+
+    function busqueda_mexico() {
+      var arrray=[];
+      for (var i = 0; i < estados.length; i++) {
+        if (estados[i][0] == "Estados Unidos Mexicanos") {
+          for(var j=0;j< estados[i].length;j++)
+          {
+            arrray.push(estados[i][j])
+          }
+        }
+      }
+      return arrray;
+    }
+
+    function busqueda_estado_posicion(cadena,posicion)
+    {
+      for(var i=0;i<estados.length;i++)
+      {
+        if(estados[i][0] == cadena)
+        {
+          console.log("aca el error",cadena,estados[i][posicion]);
+          if(estados[i][posicion] == "ND")
+          {
+            return -1;
+          }
+          else
+          {
+            return parseFloat(estados[i][posicion]);
+          }
+        }
+      }
+    }
+
+    function busqueda_anio(cadena)
+    {
+      for(var i=0;i<estados[0].length;i++)
+      {
+        if(estados[0][i] == cadena)
+        {
+          console.log(estados[0][i]);
+          return i;
+        }
+      }
+    }
+
+    var img;
+    var data_url;
+    var locked=false;
+    var map = L.map('map333' ,
+    {
+        scrollWheelZoom: false,
+        maxZoom: 14,
+    minZomm:5,
+    }).setView([24.8, -100], 5);
+
+
+  L.tileLayer('http://{s}.google.com/vt/?hl=es&x={x}&y={y}&z={z}&s={s}&apistyle=s.t%3A5|p.l%3A53%2Cs.t%3A1314|p.v%3Aoff%2Cp.s%3A-100%2Cs.t%3A3|p.v%3Aon%2Cs.t%3A2|p.v%3Aoff%2Cs.t%3A4|p.v%3Aoff%2Cs.t%3A3|s.e%3Ag.f|p.w%3A1|p.l%3A100%2Cs.t%3A18|p.v%3Aoff%2Cs.t%3A49|s.e%3Ag.s|p.v%3Aon|p.s%3A-19|p.l%3A24%2Cs.t%3A50|s.e%3Ag.s|p.v%3Aon|p.l%3A15&style=47,37', {
+  subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
+      maxZoom: 14,
+      minZomm:5,
+      attribution: '&copy <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> &copy <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+      id: 'mapbox.light',
+    }).addTo(map);
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) )
+    {
+    map.dragging.disable();
+  }
+
+
+
+    var info = L.control();
+    info.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'infos hide');
+      this.update();
+      return this._div;
+    };
+
+
+
+
+    info.update = function (props) {
+     $('.infos').removeClass('hide');
+     $('.info2').removeClass('hide');
+     if(props != undefined)
+     {
+        this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+
+      // gen(estados[props.cve]);
+      console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
+      gen(estados[busqueda_indice(props.nom_ent)]);
+      $(".crop").dotdotdot();
+     }
+    };
+    info.addTo(map);
+
+    function getColoR(d) {
+      return d >= 100 ? '#004b67' :
+             d > 50  ? '#007dab' :
+             d > 20  ? '#01baff' :
+                       '#eff3ff';
+    }
+
+    function style(feature) {
+    var res=String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
+    console.log(res,'hhhh',"c"+res[1]);
+      return {
+        weight: 0.5,
+        opacity: 1,
+        color: '#000',
+        dashArray: '1',
+        fillOpacity: 1,
+        fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
+         className: "c"+res[1]
+      };
+    }
+    function highlightFeature(e) {
+     if(locked == false)
+     {
+        var layer = e.target;
+        layer.setStyle({
+          weight: 2,
+          color: '#ccc',
+          dashArray: '',
+          fillOpacity: 0.7
+        });
+        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+          layer.bringToFront();
+        }
+        info.update(layer.feature.properties);
+     }
+    }
+    var geojson;
+    function resetHighlight(e) {
+
+       geojson.resetStyle(e.target);
+     info.update();
+    }
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        mousedown: function(e)
+        {
+    if (locked == true) {
+      locked = false;
+      (function ($) {
+               $(".info2").css("border","none");
+               $(".infos").css("border","none");
+               }(jQuery));
+    }
+    else {
+      locked = true;
+      (function ($) {
+              $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+              $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+              $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+               }(jQuery));
+    }
+   },
+      });
+    }
+
+    function highlightFromLegend(e)
+      {
+    (function ($) {
+      $("svg path."+e).addClass("highlighted");
+      var r=$("svg path."+e);
+      for(var i=0;i<r.length;i++)
+      {
+        r[i].classList.add("highlighted");
+      }
+    }(jQuery));
+  }
+
+  function clearHighlight() {
+    (function ($) {
+
+      $("path").removeClass("highlighted");
+      var r=$("path");
+      for(var i=0;i<r.length;i++)
+      {
+        r[i].classList.remove("highlighted");
+      }
+    }(jQuery));
+  }
+
+  var values = [];
+  var values2 = [];
+  for (var i = 0; i < statesData.features.length; i++)
+  {
+    console.log(statesData.features[i].properties.nom_ent);
+    if (statesData.features[i].properties.nom_ent == null) continue;
+    values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
+  }
+
+  console.log(values,values2);
+  var brea =[-1,0,100];
+  // for(var ii=0;ii<alfr.length;ii++)
+  // {
+  //   if(alfr[ii] != -1)
+  //   {
+  //     brea.push(alfr[ii]);
+  //   }
+  // }
+  // console.log("breaks0",brea,brew.getBreaks());
+  //   geojson = L.geoJson(statesData, {
+  //     style: style,
+  //     onEachFeature: onEachFeature
+  //   }).addTo(map);
+
+
+    map.attributionControl.addAttribution('');
+    var legend = L.control();
+    legend.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'info2 legend hide'),
+        grades = brea,//brew.getBreaks(),//[0, 20, 50, 100],
+        labels = [],
+        from, to;
+      for (var i = 0; i < grades.length-1; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+        var res=String(getColoR(from)).split(",");
+        console.log(from,from+1,res,grades);
+        labels.push(
+          '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+          from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
+      }
+      div.innerHTML = labels.join('');
+      return div;
+    };
+    legend.addTo(map);
   }
