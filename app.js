@@ -78,6 +78,33 @@ if(PCveInd == 118){
     data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
+      $.ajax({
+        type: 'POST',
+        url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+        data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"595","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+        success: function( data1, textStatus, jqxhr ) {
+          data.Series[1] = data1.Series[0];
+        },
+        error: function() {
+                //alert('Error occured');
+            },
+        async:false
+      });
+
+      $.ajax({
+        type: 'POST',
+        url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+        data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"596","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+        success: function( data2, textStatus, jqxhr ) {
+          data.Series[2] = data2.Series[0];
+        },
+        error: function() {
+                //alert('Error occured');
+            },
+        async:false
+      });
+
+
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
       colorObjetivo(obj);
@@ -87,16 +114,9 @@ if(PCveInd == 118){
         valorDato(data);
         valorDatoInsumos(data);
       }else{
-        if(PCveInd == 101)
-        {
-          //alert('es el eindicador especial');
-          cobertura_101(data);
-          data_local = data;
-          $('#row_filtros_serie_101').show();
-        }else{
+     
          //console.log(data);
           cobertura(data);
-        }
 
           estados = arma_tabla(0);
           coberturaInsumos(data);
@@ -112,27 +132,9 @@ if(PCveInd == 118){
 
       $('.Codigo_ind').html(Codigo_ind);
       $('.Descrip_ind').html(Descrip_ind);
-      if(PCveInd == 101 || PCveInd == 2){
-        $('#link-datos-panel').hide();
-      }
+     
       titulos(PCveInd);
       $('#tabla_nacional').hide();
-      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
-        $('#tabla_nacional').show();
-        $('#mapas_hide').remove();
-        $('#botonera_nacional').remove();
-      }
-
-      if(PCveInd ==  333 || PCveInd == 276){
-        $('#map').remove();
-        $('#footmap').remove();
-        $('#grafs').remove();
-        $('#indicador-grafica').remove();
-        $('#indicador-panel').hide();
-        $('.ocultar').hide();
-        //datos a mostrar
-        $('#serie-panel2').show();
-      }
 
       $('#loader').delay(2000).fadeOut("slow");
     },
@@ -141,6 +143,12 @@ if(PCveInd == 118){
         },
     async:false
   });
+  //Proporción de la población con inseguridad alimentaria moderada o severa (carencia por acceso a la alimentación)
+  //Población con inseguridad alimentaria  moderada o severa",
+ //Población total
+
+
+
 }else{
   $.ajax({
     type: 'POST',
