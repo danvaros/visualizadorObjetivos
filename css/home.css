@@ -1020,6 +1020,10 @@ margin-left: 60%; */
 #map{
   height:400px !important;
 }
+.rengal a{
+  float:none !important;
+  text-align: center;
+}
 
 
 }
