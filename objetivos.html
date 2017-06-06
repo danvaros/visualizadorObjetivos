@@ -205,7 +205,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="fin_pobreza_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                 <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
@@ -218,7 +218,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="hambre_cero_cont">
                <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
@@ -243,7 +243,7 @@ $('#loader').show();
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -259,7 +259,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -275,7 +275,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -291,7 +291,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -305,7 +305,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="trabajo_docente_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
@@ -318,7 +318,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="industria_innovacion_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
@@ -333,7 +333,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -349,7 +349,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -365,7 +365,7 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -381,7 +381,7 @@ $('#loader').show();
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
@@ -395,7 +395,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_submarina_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo
+                <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
@@ -408,7 +408,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_ecosistemas_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo
+                <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
@@ -421,7 +421,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="paz_justicia_cont">
               <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
@@ -434,7 +434,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="alianzas_objetivos_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo
+                <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
@@ -522,30 +522,6 @@ $('#loader').show();
        return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
      };
 
-      $('#icon_prefix').keyup(function () {
-            var rex = new RegExp($(this).val(), 'i');
-            $('.buscar div.col').hide();
-            $('.buscar div.col').filter(function () {
-                return rex.test($(this).text());
-            }).show();
-        })
-
-
-      $('.uno').hide();
-      $('.dos').hide();
-      $('.link_less').hide();
-      var lupa =  false;
-      $('#buscar').click(function(){
-        if(lupa){
-          $('#cam_bus').hide();
-          lupa =  false;
-        }else{
-          $('#cam_bus').show();
-          $('#buscar').hide();
-          lupa =  true;
-        }
-      });
-
       $('.collapsible').collapsible({
         accordion : true
       });
@@ -579,6 +555,10 @@ $('#loader').show();
     }
 
     });
+
+    function buscar(busqueda){
+      $('li:not(:contains("'+ busqueda +'"))').hide();
+    }
 
     function llamada(indicador, ser){
       var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
@@ -687,7 +667,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
           contenido = contenido +     '</p></div>'+'</div>';
           }
         }else {
-          var mensa = 'No se tiene indicadores disponibles para este objetivo';
+          var mensa = '<p>No se tiene indicadores disponibles para este objetivo</p>';
           contenido =  '<div class="col s12">'+mensa+'</div>';
         }//fin condicion para no ver las metas
 
