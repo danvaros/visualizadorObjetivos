@@ -973,12 +973,65 @@ margin-left: 60%; */
 
   }
 
+
+
+/* --------- Responsive --------------- */
+@media only screen and (max-width: 375px){
+
+.marmar{
+  padding-left:50px !important;
+}
+
+.disclaimer {
+    background-color: #FFFFFF;
+    cursor: default;
+    display: none;
+    margin-top: 0px;
+    position: absolute;
+    text-align: left;
+    width: 254px !important;
+    z-index: 50;
+    padding: 15px 25px;
+    right: 84px;
+    bottom: 15%;
+    z-index: 99999;
+}
+
+#contact img {
+    padding: 3px !important;
+    max-width: 38px !important;
+}
+
+.page-footer img{
+  width:40% !important;
+  text-align: center !important;
+  margin:0 auto !important;
+}
+
+#fot{
+  text-align: center;
+}
+
+.caja-cafe{
+  margin:0 !important;
+  margin-top:10px !important;
+}
+
+#map{
+  height:400px !important;
+}
+
+
+}
+
+
+
+
   @media only screen and (max-width: 675px){
 
   .obj_icon{
     width: 14%;
   }
-
 
   }
 
