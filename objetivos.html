@@ -547,7 +547,7 @@ $('#loader').show();
         window.onload = function () {
 
           $('#buscar').click(function () {
-            if (lupa) {
+            if(lupa) {
               $('#cam_bus').hide();
               lupa = false;
             } else {
@@ -587,6 +587,11 @@ $('#loader').show();
           success: function( data, textStatus, jqxhr ) {
              console.log(data);
              ponObjetivos(data);
+
+              var obj = getParameterByName("busqueda");
+              if(obj != null){
+                buscar(obj);
+              }
 
               $('#loader').delay(2000).fadeOut("slow");
           },
@@ -835,6 +840,13 @@ if(datos[i].Meta.length > 2){
     {
       $('#objetivo'+objetivoId+' > div').click();
       window.location.href = '#objetivo'+ (objetivoId-1);
+    }
+
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
     </script>
