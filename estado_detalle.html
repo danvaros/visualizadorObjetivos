@@ -68,27 +68,18 @@
 
 td
 {
-  padding: 1px !important;
-  border-radius: 0 !important;
+  padding: 3px !important;
 }
-
-
 .section-bullets li a:before {
     background-color: #00aeef;
 }
-
-
 .section-bullets li:hover {
     background-color: #eee;
 
 }
-
-
-
 .section-bullets .active a {
   color: #fff;
 }
-
  .section-bullets .active a:after {
     background-color: #FFF;
 }
@@ -156,6 +147,33 @@ border-bottom-width: 0px !important;
   height: auto !important;
 }
 
+ #loader {
+      display: block;
+      background: rgba(62, 60, 60, 0.6);
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
+
+  #loader p {
+      display: block;
+      font-size: 40px;
+      position: absolute;
+      top: -70px;
+      /* left: 0; */
+      bottom: 0;
+      right: 15px;
+      color: #fff !important /*margin: auto;*/;
+      text-align: right;
+    }
+
+     #loader p #tex{
+      width: 300px;
+    }
 </style>
 
 
@@ -169,46 +187,52 @@ border-bottom-width: 0px !important;
 
 <!--     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script> -->
 
-   </head>
+  </head>
+  <span id="loader">
+    <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
+  </span>
   <body>
-   <!-- menu -->
+    <!-- menu -->
     <div class="navbar-fixed">
       <nav>
         <div class=" container nav-wrapper" style="margin-top:0px;">
-          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+             <li class="tam t_sm"><a href="estado_detalle.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <!-- 
+            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
+            <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
             <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li>
-              <li class="tamps">
+            <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
-            </li>
+            </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
+          <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
-            <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
-            <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+           <!--  <li><a href="estados.html">Indicadores por unidad geográfica</a></li> -->
+           <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
-            <li><a href="compara.html">Compara</a></li>
+            <!-- <li><a href="compara.html">Compara</a></li> -->
+           <!--  <li class="tamps">
+             <a id="busca" href="calendario.html">Calendario</a>
+           </li> -->
           </ul>
         </div>
       </nav>
     </div>
 <!-- menu -->
-
-
     <div class="container">
       <div class="row scrollable-section" data-section-title="Menú de selección">
         <div class="col s12">
@@ -217,48 +241,48 @@ border-bottom-width: 0px !important;
         </div>
       </div>
       <div class="row">
-          <div class="col l4">
-            <div class="col s3">
+        <div class="col s11 l4">
+          <div class="col s3">
             <p>Estado</p>
-            </div>
-            <div class="col s9 caja_s">
-              <select class="icons">
-                <option value="" data-icon="img/edos/aguascalientes.png" class="left circle">Aguascalientes</option>
-                <option value="" data-icon="img/edos/bajacalifornia.png" class="left circle">Baja California</option>
-                <option value="" data-icon="img/edos/bajacaliforniasur.png" class="left circle">Baja California Sur</option>
-                <option value="" data-icon="img/edos/campeche.png" class="left circle">Campeche</option>
-                <option value="" data-icon="img/edos/coahuila.png" class="left circle">Coahuila de Zaragoza</option>
-                <option value="" data-icon="img/edos/colima.png" class="left circle">Colima</option>
-                <option value="" data-icon="img/edos/chiapas.png" class="left circle">Chiapas</option>
-                <option value="" data-icon="img/edos/chihuahua.png" class="left circle">Chihuahua</option>
-                <option value="" data-icon="img/edos/ciudaddemexico.png" class="left circle">Ciudad de México</option>
-                <option value="" data-icon="img/edos/durango.png" class="left circle">Durango</option>
-                <option value="" data-icon="img/edos/guanajuato.png" class="left circle">Guanajuato</option>
-                <option value="" data-icon="img/edos/guerrero.png" class="left circle">Guerrero</option>
-                <option value="" data-icon="img/edos/hidalgo.png" class="left circle">Hidalgo</option>
-                <option value="" data-icon="img/edos/jalisco.png" class="left circle">Jalisco</option>
-                <option value="" data-icon="img/edos/estadodemexico.png" class="left circle">México</option>
-                <option value="" data-icon="img/edos/michoacan.png" class="left circle">Michoacán de Ocampo</option>
-                <option value="" data-icon="img/edos/morelos.png" class="left circle">Morelos</option>
-                <option value="" data-icon="img/edos/nayarit.png" class="left circle">Nayarit</option>
-                <option value="" data-icon="img/edos/nuevoleon.png" class="left circle">Nuevo León</option>
-                <option value="" data-icon="img/edos/oaxaca.png" class="left circle">Oaxaca</option>
-                <option value="" data-icon="img/edos/puebla.png" class="left circle">Puebla</option>
-                <option value="" data-icon="img/edos/queretaro.png" class="left circle">Querétaro</option>
-                <option value="" data-icon="img/edos/quintanaroo.png" class="left circle">Quintana Roo</option>
-                <option value="" data-icon="img/edos/sanluispotosi.png" class="left circle">San Luis Potosí</option>
-                <option value="" data-icon="img/edos/sinaloa.png" class="left circle">Sinaloa</option>
-                <option value="" data-icon="img/edos/sonora.png" class="left circle">Sonora</option>
-                <option value="" data-icon="img/edos/tabasco.png" class="left circle">Tabasco</option>
-                <option value="" data-icon="img/edos/tamaulipas.png" class="left circle">Tamaulipas</option>
-                <option value="" data-icon="img/edos/tlaxcala.png" class="left circle">Tlaxcala</option>
-                <option value="" data-icon="img/edos/veracruz.png" class="left circle">Veracruz de Ignacio de la Llave</option>
-                <option value="" data-icon="img/edos/yucatan.png" class="left circle">Yucatán</option>
-                <option value="" data-icon="img/edos/zacatecas.png" class="left circle">Zacatecas</option>
-              </select>
-            </div>
           </div>
-          <div class="col l4 offset-l1">
+          <div class="col s9 caja_s">
+            <select class="icons" id="estado">
+              <option value="01" data-icon="img/edos/aguascalientes.png" class="left circle">Aguascalientes</option>
+              <option value="02" data-icon="img/edos/bajacalifornia.png" class="left circle">Baja California</option>
+              <option value="03" data-icon="img/edos/bajacaliforniasur.png" class="left circle">Baja California Sur</option>
+              <option value="04" data-icon="img/edos/campeche.png" class="left circle">Campeche</option>
+              <option value="05" data-icon="img/edos/coahuila.png" class="left circle">Coahuila de Zaragoza</option>
+              <option value="06" data-icon="img/edos/colima.png" class="left circle">Colima</option>
+              <option value="07" data-icon="img/edos/chiapas.png" class="left circle">Chiapas</option>
+              <option value="08" data-icon="img/edos/chihuahua.png" class="left circle">Chihuahua</option>
+              <option value="09" data-icon="img/edos/ciudaddemexico.png" class="left circle">Ciudad de México</option>
+              <option value="10" data-icon="img/edos/durango.png" class="left circle">Durango</option>
+              <option value="11" data-icon="img/edos/guanajuato.png" class="left circle">Guanajuato</option>
+              <option value="12" data-icon="img/edos/guerrero.png" class="left circle">Guerrero</option>
+              <option value="13" data-icon="img/edos/hidalgo.png" class="left circle">Hidalgo</option>
+              <option value="14" data-icon="img/edos/jalisco.png" class="left circle">Jalisco</option>
+              <option value="15" data-icon="img/edos/estadodemexico.png" class="left circle">México</option>
+              <option value="16" data-icon="img/edos/michoacan.png" class="left circle">Michoacán de Ocampo</option>
+              <option value="17" data-icon="img/edos/morelos.png" class="left circle">Morelos</option>
+              <option value="18" data-icon="img/edos/nayarit.png" class="left circle">Nayarit</option>
+              <option value="19" data-icon="img/edos/nuevoleon.png" class="left circle">Nuevo León</option>
+              <option value="20" data-icon="img/edos/oaxaca.png" class="left circle">Oaxaca</option>
+              <option value="21" data-icon="img/edos/puebla.png" class="left circle">Puebla</option>
+              <option value="22" data-icon="img/edos/queretaro.png" class="left circle">Querétaro</option>
+              <option value="23" data-icon="img/edos/quintanaroo.png" class="left circle">Quintana Roo</option>
+              <option value="24" data-icon="img/edos/sanluispotosi.png" class="left circle">San Luis Potosí</option>
+              <option value="25" data-icon="img/edos/sinaloa.png" class="left circle">Sinaloa</option>
+              <option value="26" data-icon="img/edos/sonora.png" class="left circle">Sonora</option>
+              <option value="27" data-icon="img/edos/tabasco.png" class="left circle">Tabasco</option>
+              <option value="28" data-icon="img/edos/tamaulipas.png" class="left circle">Tamaulipas</option>
+              <option value="29" data-icon="img/edos/tlaxcala.png" class="left circle">Tlaxcala</option>
+              <option value="30" data-icon="img/edos/veracruz.png" class="left circle">Veracruz de Ignacio de la Llave</option>
+              <option value="31" data-icon="img/edos/yucatan.png" class="left circle">Yucatán</option>
+              <option value="32" data-icon="img/edos/zacatecas.png" class="left circle">Zacatecas</option>
+            </select>
+          </div>
+        </div>
+        <div class="col s11 l4 offset-l1">
             <div class="col s3">
             <p>Municipio</p>
             </div>
@@ -272,8 +296,9 @@ border-bottom-width: 0px !important;
             </div>
           </div>
       </div>
+
       <div class="row region">
-         <div class="col l4">
+         <div class="col s11 l4">
               <div class="col s3">
               <p>Región</p>
               </div>
@@ -286,7 +311,7 @@ border-bottom-width: 0px !important;
                 </select>
               </div>
             </div>
-             <div class="col l4 offset-l1">
+             <div class="col s11 l4 offset-l1">
               <div class="col s3">
               <p>Ciudad</p>
               </div>
@@ -321,11 +346,14 @@ border-bottom-width: 0px !important;
           height: 40px;
           color: #6c6c6c;
         }
+
+        table, th, td {
+          border: 1px solid black;
+        }
+
       </style>
 
-
-
-      <div class="row tabla">
+ <!--      <div class="row tabla">
         <div class="col l4 sin_borde_arri  sin_borde_izq">
           Indicadores
         </div>
@@ -358,7 +386,7 @@ border-bottom-width: 0px !important;
           </div>
 
 
-        <div class="col l12 titu valign-wrapper sin_borde_arri  sin_borde_izq">
+        <div class="col s12 titu valign-wrapper sin_borde_arri  sin_borde_izq">
           <span class="noObj">1</span> - <span class="tituloObj">Fin de la pobreza</span>
         </div>
 
@@ -501,7 +529,7 @@ border-bottom-width: 0px !important;
           1 - Lograr la enseñanza primaria universal
         </div>
 
-      </div>
+      </div> -->
     </div>
 
     <div id="ejemplo"></div>
@@ -546,158 +574,169 @@ border-bottom-width: 0px !important;
     </footer>
 <!-- footer -->
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-
+  var coloresEstados = ['#D90A38','#D8AE2B','#299E32','#BD052D','#E23429','#56BCE3','#F2CB02','#9D063D','#E86A26','#D4015E','#F0A612','#B99319','#2D7D3B','#4B95CF','#37B72F','#336198','#2B3E63'];
+  
+  var lupa = false;
+  
   $(document).ready(function() {
-   $('select').material_select();
-   OMITabla('01');
- });
+     $('#cam_bus').keypress(function(e) {
+        if(e.which == 13) {
+          buscar($('#cam_bus').val());  
+        }
+    });
 
+    $('#buscar').click(function () {
+      if(lupa) {
+        $('#cam_bus').hide();
+        lupa = false;
+      } else {
+        $('#cam_bus').show();
+        $('#buscar').hide();
+        document.getElementById("cam_bus").focus();
+        lupa = true;
+      }
+    });
 
+    $('select').material_select();
 
-  function OMITabla(claveCobertura){
+    //llamada por default
+    OMITabla('01','Aguascalientes');
+
+    //llamada al cambiar el select
+    $('#estado').change(function(){
+      OMITabla($('#estado').val(), $('#estado option:selected').text());    
+    });
+
+  });
+
+  //funcion para crear la tabla de resultado
+  function OMITabla(claveCobertura,label){
+    $('#loader').show();
     var url = 'https://operativos.inegi.org.mx/datos/api/Tematica/PorCobertura';
-    //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
     var parametros =  {'PIdioma':'ES', 'PCveCob':claveCobertura}
-    //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
-
-    var dataItems = '<div class="col l4 sin_borde_arri  sin_borde_izq">'+
-      'Indicadores'+
-    '</div>'+
-    '<div class="col l3 sin_borde_arri  sin_borde_izq">'+
-        'Estados Unidos Mexicanos'+
-    '</div>'+
-    '<div class="col l3 sin_borde_arri  sin_borde_izq">'+
-          'Aguascalientes'+
-    '</div>'+
-    '<div class="col l2 sin_borde_arri  sin_borde_izq sin_borde_der">'+
-        'Meta de México'+
-    '</div>'+
-
-      '<div class="col s1 offset-l4 sin_borde_arri ">'+
-      '  Línea base'+
-      '</div>'+
-      '<div class="col s2 sin_borde_arri  sin_borde_izq">'+
-      '  Dato más recinete'+
-      '</div>'+
-      '<div class="col s1 sin_borde_arri  sin_borde_izq">'+
-      '  Línea base'+
-      '</div>'+
-      '<div class="col s2 sin_borde_arri  sin_borde_izq">'+
-      '  Dato mas recinete'+
-      '</div>'+
-
-      '<div class="col s2 sin_borde_arri  sin_borde_izq sin_borde_der">'+
-          'Dato mas recinete</div>';
+//stringEstados[claveCobertura]
+    var dataItems =  '<div class="container">'+
+    '<table>'+
+        '<tr>'+
+          '<td colspan="2">Indicadores</td>'+
+          '<td colspan="2">Estados Unidos Mexicanos</td>'+
+          '<td colspan="2"> '+ label +'</td>'+
+          '<td>Meta de México</td>'+
+        '</tr>'+
+        '<tr>'+
+          '<td colspan="2"></td>'+
+          '<td>Línea base</td>'+
+          '<td>Dato más recinete</td>'+
+          '<td>Línea base</td>'+
+          '<td>Dato mas recinete</td>'+
+          '<td>Dato mas recinete</td>'+
+        '</tr>';
+       
+ 
 
       $.ajax({
         type: 'POST',
         url: url,
         data: parametros,
         success: function( data, textStatus, jqxhr ) {
-          //$.each(data,function(i){
-
-          console.log(data);
+          console.log(data);            
           for (var i = 0; i < data.length; i++) {
-            dataItems =  dataItems +
-              '<div class="col l12 titu valign-wrapper sin_borde_arri  sin_borde_izq">'+
-                '<span class="noObj"> ' + data[i].Codigo_des + ' </span> - <span class="tituloObj"> '+ data[i].Abrevia_des +'</span>'+
-              '</div>';
-              for (var j = 0; j < data[i].Meta.length; j++) {
+            color = coloresEstados[(data[i].Codigo_des.substring(0, 1))-1];
+            dataItems += '<tr>'+
+              '<td colspan="7" style="background-color: '+ color +'; color: white;">'+ data[i].Codigo_des +' '+ data[i].Descrip_des +'</td>'+
+            '</tr>';
+            for (var j = 0; j < data[i].Meta.length; j++) {
+              dataItems += '<tr>'+
+              '<td >'+data[i].Meta[j].Codigo_des+'</td>'+
+                '<td colspan="6">'+data[i].Meta[j].Descrip_des+'</td>'+
+                '</tr>';
 
-              dataItems = dataItems + '<div class="col l1 subti sin_borde_der center-align">'+
-                  '<p class="center-align">'+data[i].Meta[j].Codigo_des+'</p>'+
-                '</div>' +
-                '<div class="col l11 subti sin_borde_izq">' +
-                  '<p>'+ data[i].Meta[j].Descrip_des +'</p>' +
-                '</div>';
-                for (var k = 0; k < data[i].Meta[j].Indicador.length; k++) {
-                  var indicador =  data[i].Meta[j].Indicador[k];
+              for (var k = 0; k < data[i].Meta[j].Indicador.length; k++) {
+                var indicador = data[i].Meta[j].Indicador[k].ClaveInd_arb;
+                var claveSerie = getClaveSerie(indicador);
+                console.log(claveSerie);
 
-                  dataItems = dataItems + '<div class="col l1 alto_col sin_borde_der center-align">'+
-                  '<p class="center-align">'+indicador.Codigo_des+'</p>' +
-                  '</div>' +
-                  '<div class="col l3 valign-wrapper alto_col sin_borde_izq">' +
-                    '<p>'+indicador.Descrip_des+'</p> '+
-                  '</div>'+
-                  '<div class="col l1 alto_col center-align">' +
-                    '<p class="valign">9.3<br>(1989)</p>' +
-                  '</div>' +
-                  '<div class="col l2 alto_col center-align">' +
-                    '<p class="valign">3.7<br>(2014)</p>' +
-                  '</div>' +
-                  '<div class="col l1 alto_col center-align">' +
-                    '<p class="valign">ND<br>(1989)</p>' +
-                  '</div>' +
-                  '<div class="col l2 alto_col center-align">' +
-                    '<p class="valign">2.4<br>(2014)</p>' +
-                  '</div>' +
-                  '<div class="col l2 alto_col center-align">' +
-                    '<p class="valign">Meta nacional 2015:<br>' +
-                    '4.6</p>'+
-                  '</div>';
-
-                }
-
-              }
-          }
-
-          console.log(dataItems);
-          $('.tabla').html(dataItems);
-
-          // <div class="col l1 subti sin_borde_der center-align">
-          //   <p class="center-align">1.A.</p>
-          // </div>
-          // <div class="col l11 subti sin_borde_izq">
-          //   <p>Reducir a la mitad, entre 1990 y 2015, el porcentaje de personas cuyos ingresos sean inferiores a 1.25 dólares por día</p>
-          // </div>
-          //
-          // <div class="col l1 alto_col sin_borde_der center-align">
-          //   <p class="center-align">1.1.</p>
-          // </div>
-          // <div class="col l3 valign-wrapper alto_col sin_borde_izq">
-          //   <p>Proporción de la poblacion con ingresos per cápita inferiores a 1.25 dólares diarios (Paridad de Poder de Compra respecto al dólar)-Lista oficial de la ONU Nacional y desglose por entidad federativa.</p>
-          // </div>
-          // <div class="col l1 alto_col center-align">
-          //   <p class="valign">9.3<br>(1989)</p>
-          // </div>
-          // <div class="col l2 alto_col center-align">
-          //   <p class="valign">3.7<br>(2014)</p>
-          // </div>
-          // <div class="col l1 alto_col center-align">
-          //   <p class="valign">ND<br>(1989)</p>
-          // </div>
-          // <div class="col l2 alto_col center-align">
-          //   <p class="valign">2.4<br>(2014)</p>
-          // </div>
-          // <div class="col l2 alto_col center-align">
-          //   <p class="valign">Meta nacional 2015:<br>
-          //   4.6</p>
-          // </div>
-
-
-
-
-
-
-
-            // $.each(data, function (index, itemData) {
-            //     dataItems = index + ": " + itemData + "\n";
-            //     $.each(dataItems,function()){
-            //       $('#ejemplo').append(dataItems);
-            //     }
-            // });
-            // $.each(i,function(j){
-            //     content = '<div class="col l12 titu valign-wrapper sin_borde_arri sin_borde_izq"><span>'+[j].Codigo_des+'</span> - <span>'+[j].Abrevia_des+'</span></div>';
-            //     content2 ='<span>'+i.Abrevia_des+'<br />'+i.Name+'<br /></span>';
-            //     console.log (i);
-            //     $('#ejemplo').append(content);
-            // });
-         //});
+                console.log('++++++++++++++++++++++++++ valores ++++++++++++++');
+                console.log('indicador: '+indicador+' '+'serie: '+claveSerie+' '+'cobertura: '+claveCobertura);
+                var estadoReciente    = getMasReciente(indicador,claveSerie,claveCobertura);
+                var estadoRecienteN   = getMasReciente(indicador,claveSerie,'00');
+                dataItems +=  '<tr>'+
+                  '<td>'+ data[i].Meta[j].Indicador[k].Codigo_des +'</td>'+
+                  '<td>'+ data[i].Meta[j].Indicador[k].Descrip_des +'</td>'+
+                  '<td>9.3 <br> (1989)</td>'+
+                  '<td>'+ estadoReciente +'</td>'+
+                  '<td>ND  <br> (1989)</td>'+
+                  '<td>'+ estadoRecienteN +'</td>'+
+                  '<td>Meta nacional 2015: <br> 4.6</td>'+
+                  '</tr>';
+              }//for k
+            }// for j
+          }// for i
         },
         async:false
-      });
+      });// ajax
+
+      dataItems += '</table></div>';
+
+      $('#ejemplo').html(dataItems);
+      $('#loader').delay(2000).fadeOut("slow");
+  }
+
+  function getMasReciente(indicador,serie,cobertura){
+    var url = "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla";
+    var parametros = {"PCveInd":indicador, "PAnoFin":"0", "PCveSer":serie, "PCveCob":cobertura,
+"PCveAgrupaCla":"99", "POrden":"DESC", "PIdioma":"ES"};
+    var reciente;
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: parametros,
+      success: function( data, textStatus, jqxhr ) {
+        var coberturas = data.Series[0].Coberturas;
+        if(typeof coberturas[0].ValorDato[0] !== "undefined"){
+          var anio   = coberturas[0].ValorDato[0].AADato_ser;
+          var valor  = coberturas[0].ValorDato[0].Dato_Formato;
+          reciente = valor + '<br> (' + anio + ')';
+        }else{
+          var anio   = coberturas[0].Clasificaciones[0].ValorDato.AADato_ser;
+          var valor  = coberturas[0].Clasificaciones[0].ValorDato.Dato_Formato;
+          reciente = valor + '<br> (' + anio + ')';
+        } 
+       
+      },
+      async:false
+    });// ajax
+
+    return reciente;
+  }
+
+  function getClaveSerie(indicador){
+    var url = "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave";
+    var parametros = {"PCveInd": indicador, "PIdioma":"ES"};
+    var claveSerie;
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: parametros,
+      success: function( data, textStatus, jqxhr ) {
+        claveSerie = data.Serie[0].ClaveSer_ats;
+      },
+      async:false
+    });// ajax
+
+    return claveSerie;
+  }
+
+  function buscar(busqueda){
+    window.location.replace("objetivos.html?busqueda=" + busqueda);
+  }
+  
+  function esconder() {
+    $('#cam_bus').hide();
+    $('#buscar').show();
+    lupa = false;
   }
 
   </script>

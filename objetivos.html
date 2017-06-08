@@ -143,14 +143,15 @@ $('#loader').show();
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <!-- <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+             <li class="tam t_sm"><a href="estado_detalle.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <!-- 
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
-            <!-- <li class="tamps">
+            <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
-            </li> -->
+            </li>
             <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
@@ -183,19 +184,18 @@ $('#loader').show();
           <h3 class="fuerte t_principal">INDICADORES</h3>
           <li class="divider"></li>
         </div>
-   <!--      <div class="col s12">
+        <div class="col s12">
           <br>
           <div class="input-field col s4" style="margin-left:15px;">
             <i class="material-icons prefix caja_i">search</i>
             <input id="icon_prefix" type="text" class="validate caja_d autocomplete" placeholder=" Buscar indicadores" style="padding-left: 12px;">
-
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="row">
         <div class="col s12">
           <ul id="objetivos" class="collapsible popout" data-collapsible="accordion">
-           <li id="objetivo1">
+           <li id="objetivo1" class="objetivos">
              <div id="fin_pobreza" class="collapsible-header fin_pobreza">
                <div class="obj_icon center-align id_1">
                  <img class="ico_obj" src="img/ods-01.png" alt="" />
@@ -204,11 +204,11 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="fin_pobreza_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                 <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
-           <li id="objetivo2">
+           <li id="objetivo2" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_2" id="id_2">
                  <img class="ico_obj" src="img/ods-02.png" alt="" />
@@ -217,11 +217,11 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="hambre_cero_cont">
                <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
-           <li id="objetivo3">
+           <li id="objetivo3" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_3" id="id_3">
                  <img class="ico_obj" src="img/ods-03.png" alt="" />
@@ -231,7 +231,7 @@ $('#loader').show();
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="salud_bienestar_cont">
              </div>
            </li>
-           <li id="objetivo4">
+           <li id="objetivo4" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_4" id="id_4">
                  <img class="ico_obj" src="img/ods-04.png" alt="" />
@@ -242,12 +242,12 @@ $('#loader').show();
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo5">
+           <li id="objetivo5" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_5" id="id_5">
                  <img class="ico_obj ico_top" src="img/ods-05.png" alt="" />
@@ -258,12 +258,12 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo6">
+           <li id="objetivo6" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_6" id="id_6">
                  <img class="ico_obj ico_top" src="img/ods-06.png" alt="" />
@@ -274,12 +274,12 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo7">
+           <li id="objetivo7" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_7" id="id_7">
                  <img class="ico_obj" src="img/ods-07.png" alt="" />
@@ -290,12 +290,12 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo8">
+           <li id="objetivo8" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_8" id="id_8">
                  <img class="ico_obj" src="img/ods-08.png" alt="" />
@@ -304,11 +304,11 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="trabajo_docente_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
-           <li id="objetivo9">
+           <li id="objetivo9" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_9" id="id_9">
                  <img class="ico_obj" src="img/ods-09.png" alt="" />
@@ -317,11 +317,11 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="industria_innovacion_cont">
                 <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
-           <li id="objetivo10">
+           <li id="objetivo10" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_10" id="id_10">
                  <img class="ico_obj" src="img/ods-10.png" alt="" />
@@ -332,12 +332,12 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo11">
+           <li id="objetivo11" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_11" id="id_11">
                  <img class="ico_obj" src="img/ods-11.png" alt="" />
@@ -348,12 +348,12 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo12">
+           <li id="objetivo12" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_12" id="id_12">
                  <img class="ico_obj" src="img/ods-12.png" alt="" />
@@ -364,12 +364,12 @@ $('#loader').show();
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo13">
+           <li id="objetivo13" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_13" id="id_13">
                  <img class="ico_obj" src="img/ods-13.png" alt="" />
@@ -380,12 +380,12 @@ $('#loader').show();
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
-                    No se tiene indicadores disponibles para este objetivo
+                    <p>No se tiene indicadores disponibles para este objetivo</p>
                   </div>
                 </div>
              </div>
            </li>
-           <li id="objetivo14">
+           <li id="objetivo14" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_14" id="id_14">
                  <img class="ico_obj" src="img/ods-14.png" alt="" />
@@ -394,11 +394,11 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_submarina_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo
+                <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
-           <li id="objetivo15">
+           <li id="objetivo15" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_15" id="id_15">
                  <img class="ico_obj" src="img/ods-15.png" alt="" />
@@ -407,11 +407,11 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_ecosistemas_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo
+                <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
-           <li id="objetivo16">
+           <li id="objetivo16" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_16" id="id_16">
                  <img class="ico_obj" src="img/ods-16.png" alt="" />
@@ -420,11 +420,11 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="paz_justicia_cont">
               <div class="col s12">
-                  No se tiene indicadores disponibles para este objetivo
+                  <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
-           <li id="objetivo17">
+           <li id="objetivo17" class="objetivos">
              <div class="collapsible-header">
                <div class="obj_icon center-align id_17" id="id_17">
                  <img class="ico_obj" src="img/ods-17.png" alt="" />
@@ -433,7 +433,7 @@ $('#loader').show();
              </div>
              <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="alianzas_objetivos_cont">
               <div class="col s12">
-                No se tiene indicadores disponibles para este objetivo
+                <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
@@ -496,11 +496,24 @@ $('#loader').show();
     var visibles =  true;
 
     $(document).ready(function(){
+      $('#cam_bus').keypress(function(e) {
+          if(e.which == 13) {
+            buscar($('#cam_bus').val());  
+          }
+      });
+
+      $('#icon_prefix').keypress(function(e) {
+          if(e.which == 13) {
+            buscar($('#icon_prefix').val());  
+          }
+      });
+
       function deselect(e) {
         $('.pop').slideFadeToggle(function() {
           e.removeClass('selected');
         });
       }
+
       $("#contact").hover(
        function() {
          if($(this).hasClass('selected')) {
@@ -521,30 +534,6 @@ $('#loader').show();
        return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
      };
 
-      $('#icon_prefix').keyup(function () {
-            var rex = new RegExp($(this).val(), 'i');
-            $('.buscar div.col').hide();
-            $('.buscar div.col').filter(function () {
-                return rex.test($(this).text());
-            }).show();
-        })
-
-
-      $('.uno').hide();
-      $('.dos').hide();
-      $('.link_less').hide();
-      var lupa =  false;
-      $('#buscar').click(function(){
-        if(lupa){
-          $('#cam_bus').hide();
-          lupa =  false;
-        }else{
-          $('#cam_bus').show();
-          $('#buscar').hide();
-          lupa =  true;
-        }
-      });
-
       $('.collapsible').collapsible({
         accordion : true
       });
@@ -558,8 +547,7 @@ $('#loader').show();
         window.onload = function () {
 
           $('#buscar').click(function () {
-            console.log("aca");
-            if (lupa) {
+            if(lupa) {
               $('#cam_bus').hide();
               lupa = false;
             } else {
@@ -579,6 +567,14 @@ $('#loader').show();
 
     });
 
+    function buscar(busqueda){
+      if(busqueda != ''){
+        $('.objetivos:not(:contains("'+ busqueda +'"))').hide();        
+      }else{
+        $('.objetivos').show();
+      }
+    }
+
     function llamada(indicador, ser){
       var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
@@ -591,6 +587,11 @@ $('#loader').show();
           success: function( data, textStatus, jqxhr ) {
              console.log(data);
              ponObjetivos(data);
+
+              var obj = getParameterByName("busqueda");
+              if(obj != null){
+                buscar(obj);
+              }
 
               $('#loader').delay(2000).fadeOut("slow");
           },
@@ -686,7 +687,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
           contenido = contenido +     '</p></div>'+'</div>';
           }
         }else {
-          var mensa = 'No se tiene indicadores disponibles para este objetivo';
+          var mensa = '<p>No se tiene indicadores disponibles para este objetivo</p>';
           contenido =  '<div class="col s12">'+mensa+'</div>';
         }//fin condicion para no ver las metas
 
@@ -823,7 +824,6 @@ if(datos[i].Meta.length > 2){
     }
 
     function esconder() {
-      console.log("focusout");
       $('#cam_bus').hide();
       $('#buscar').show();
       lupa = false;
@@ -840,6 +840,13 @@ if(datos[i].Meta.length > 2){
     {
       $('#objetivo'+objetivoId+' > div').click();
       window.location.href = '#objetivo'+ (objetivoId-1);
+    }
+
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
     </script>

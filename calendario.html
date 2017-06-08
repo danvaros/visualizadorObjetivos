@@ -301,14 +301,15 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <!-- <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+             <li class="tam t_sm"><a href="estado_detalle.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <!-- 
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
-            <!-- <li class="tamps">
+            <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
-            </li> -->
+            </li>
             <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
@@ -429,8 +430,27 @@
 <script type="text/javascript" src="funcionesApi.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
-
+  var lupa = false;
+  
   $(document).ready(function() {
+    $('#cam_bus').keypress(function(e) {
+        if(e.which == 13) {
+          buscar($('#cam_bus').val());  
+        }
+    });
+
+    $('#buscar').click(function () {
+      if(lupa) {
+        $('#cam_bus').hide();
+        lupa = false;
+      } else {
+        $('#cam_bus').show();
+        $('#buscar').hide();
+        document.getElementById("cam_bus").focus();
+        lupa = true;
+      }
+    });
+
     $(".button-collapse").sideNav();
     $('select').material_select();
 
@@ -524,10 +544,17 @@ $('#example').DataTable({
     $.fn.slideFadeToggle = function(easing, callback) {
       return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
     };
-
-
-
   });
+
+  function buscar(busqueda){
+    window.location.replace("objetivos.html?busqueda=" + busqueda);
+  }
+
+  function esconder() {
+    $('#cam_bus').hide();
+    $('#buscar').show();
+    lupa = false;
+  }
 
 </script>
 </body>
