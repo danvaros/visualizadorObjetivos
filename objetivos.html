@@ -144,7 +144,7 @@ $('#loader').show();
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
              <li class="tam t_sm"><a href="estado_detalle.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <!-- 
+            <!--
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
@@ -186,7 +186,7 @@ $('#loader').show();
         </div>
         <div class="col s12">
           <br>
-          <div class="input-field col s4" style="margin-left:15px;">
+          <div class="input-field col s10 l4" style="margin-left:15px;">
             <i class="material-icons prefix caja_i">search</i>
             <input id="icon_prefix" type="text" class="validate caja_d autocomplete" placeholder=" Buscar indicadores" style="padding-left: 12px;">
           </div>
@@ -498,13 +498,13 @@ $('#loader').show();
     $(document).ready(function(){
       $('#cam_bus').keypress(function(e) {
           if(e.which == 13) {
-            buscar($('#cam_bus').val());  
+            buscar($('#cam_bus').val());
           }
       });
 
       $('#icon_prefix').keypress(function(e) {
           if(e.which == 13) {
-            buscar($('#icon_prefix').val());  
+            buscar($('#icon_prefix').val());
           }
       });
 
@@ -569,7 +569,7 @@ $('#loader').show();
 
     function buscar(busqueda){
       if(busqueda != ''){
-        $('.objetivos:not(:contains("'+ busqueda +'"))').hide();        
+        $('.objetivos:not(:contains("'+ busqueda +'"))').hide();
       }else{
         $('.objetivos').show();
       }
