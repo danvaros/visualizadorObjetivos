@@ -74,7 +74,7 @@
           }
 
           .ico_obj1{
-            width: 15%;
+            width: 95%;
           }
 
 
@@ -399,10 +399,10 @@
     <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 999; color: #fff;padding:5px 0px 0px 0px; ">
       <div class="container" style="margin-top: 0 !important;">
       <div class="row" style="margin-top: 8px;margin-bottom:8px;">
-        <div class="col s12 l2 center-align iconoObjetivo">
+        <div class="col s2 l2 center-align iconoObjetivo">
             <!-- <img src="img/ods-03.png" style="width: 38%;" alt=""> -->
         </div>
-        <div class="col s12 l9 left-align">
+        <div class="col s10 l9 left-align">
             <hr>
             <p class="parrafo">
               Indicador <span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span>
@@ -415,10 +415,10 @@
     <div id="esconder" class="headerObje" style=" /*position:fixed;*/ z-index: 9999; width: 100%;">
       <div class="container">
         <div class="row" style="margin-bottom: 0;padding-top: 2px;">
-          <div class="col s12 l2 center-align iconoObjetivo">
+          <div class="col s2 l2 center-align iconoObjetivo">
               <!-- <img class="ico_obj" src="img/ods-03.png" alt="" style="position: fixed; width: 4.5%;"> -->
           </div>
-          <div class="col s12 l9 left-align">
+          <div class="col s10 l9 left-align">
               <h5 class="tituloObjetivo"></h5>
               <p id="parrafo">
                 <span class="Codigo_meta"></span> <span class="Descrip_meta">&nbsp; </span>
@@ -1176,6 +1176,13 @@
               //             format: d3.format(".2f")
               //         }
               //     }
+            },
+            zoom: {
+              enabled: true,
+              onzoom: function (domain) {
+                // do something with domain, which is the domain after zoomed
+                chart.zoom([1, 2]);
+              }
             },
       });//fin de grafica
     datosGrafica(2015);
