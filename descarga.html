@@ -12,6 +12,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
     <style media="screen">
 
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+
+  left: 0;
+    opacity: 1;
+    position: relative;
+}
+
+
+
     a.selected {
       background-color:#1F75CC;
       color:white;
@@ -186,18 +195,33 @@ $('#loader').show();
         </div>
         <div class="col s12">
           <br>
+          <div class="input-field col s10 l12" style="margin-left:15px;">
+            <p>Elementos a exportar</p>
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Indicador
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Metadato
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Serie histórica Datos para el cálculo
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Datos para el cálculo
+            <input type="submit" class="valdidate caja_d" style="padding-left:12px;" value="Enviar" />
+
+            <div>
+
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col s12">
+          <br>
           <div class="input-field col s10 l4" style="margin-left:15px;">
             <i class="material-icons prefix caja_i">search</i>
             <input id="icon_prefix" type="text" class="validate caja_d autocomplete" placeholder=" Buscar indicadores" style="padding-left: 12px;">
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <form action="#">
         <div class="col s12">
           <ul id="objetivos" class="collapsible popout" data-collapsible="accordion">
            <li id="objetivo1" class="objetivos">
-             <div id="fin_pobreza" class="collapsible-header fin_pobreza">
+             <div id="fin_pobreza" class="collapsible-header active fin_pobreza">
                <div class="obj_icon center-align id_1">
                  <img class="ico_obj" src="img/ods-01.png" alt="" />
                </div>
@@ -210,7 +234,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo2" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_2" id="id_2">
                  <img class="ico_obj" src="img/ods-02.png" alt="" />
                </div>
@@ -223,7 +247,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo3" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_3" id="id_3">
                  <img class="ico_obj" src="img/ods-03.png" alt="" />
                </div>
@@ -233,7 +257,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo4" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_4" id="id_4">
                  <img class="ico_obj" src="img/ods-04.png" alt="" />
                </div>
@@ -249,7 +273,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo5" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_5" id="id_5">
                  <img class="ico_obj ico_top" src="img/ods-05.png" alt="" />
                </div>
@@ -265,7 +289,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo6" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_6" id="id_6">
                  <img class="ico_obj ico_top" src="img/ods-06.png" alt="" />
                </div>
@@ -281,7 +305,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo7" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_7" id="id_7">
                  <img class="ico_obj" src="img/ods-07.png" alt="" />
                </div>
@@ -297,7 +321,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo8" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_8" id="id_8">
                  <img class="ico_obj" src="img/ods-08.png" alt="" />
                </div>
@@ -310,7 +334,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo9" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_9" id="id_9">
                  <img class="ico_obj" src="img/ods-09.png" alt="" />
                </div>
@@ -323,7 +347,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo10" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_10" id="id_10">
                  <img class="ico_obj" src="img/ods-10.png" alt="" />
                </div>
@@ -339,7 +363,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo11" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_11" id="id_11">
                  <img class="ico_obj" src="img/ods-11.png" alt="" />
                </div>
@@ -355,7 +379,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo12" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_12" id="id_12">
                  <img class="ico_obj" src="img/ods-12.png" alt="" />
                </div>
@@ -371,7 +395,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo13" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_13" id="id_13">
                  <img class="ico_obj" src="img/ods-13.png" alt="" />
                </div>
@@ -387,7 +411,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo14" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_14" id="id_14">
                  <img class="ico_obj" src="img/ods-14.png" alt="" />
                </div>
@@ -400,7 +424,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo15" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_15" id="id_15">
                  <img class="ico_obj" src="img/ods-15.png" alt="" />
                </div>
@@ -413,7 +437,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo16" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_16" id="id_16">
                  <img class="ico_obj" src="img/ods-16.png" alt="" />
                </div>
@@ -426,7 +450,7 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo17" class="objetivos">
-             <div class="collapsible-header">
+             <div class="collapsible-header active">
                <div class="obj_icon center-align id_17" id="id_17">
                  <img class="ico_obj" src="img/ods-17.png" alt="" />
                </div>
@@ -450,7 +474,7 @@ $('#loader').show();
       <div class="container">
         <div class="row" id="fot">
           <div class="col l3 s12">
-            <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
+            <a href="index.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
             <br>
             <br>
    <!--          <div class="" style="display:inline;">
