@@ -114,7 +114,7 @@ if(PCveInd == 118){
         valorDato(data);
         valorDatoInsumos(data);
       }else{
-     
+
          //console.log(data);
           cobertura(data);
 
@@ -132,7 +132,7 @@ if(PCveInd == 118){
 
       $('.Codigo_ind').html(Codigo_ind);
       $('.Descrip_ind').html(Descrip_ind);
-     
+
       titulos(PCveInd);
       $('#tabla_nacional').hide();
 
