@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Objetivos de Desarrollo Sostenible</title>
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
-	  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
@@ -93,8 +93,10 @@ td
 
 .btn-edo{
 	text-align: left;
-  /* background: #F6F6F6; */
-	color:#0A254F;
+    background: #F6F6F6;
+    color: #0A254F;
+    margin: 5px 0px;
+    border-radius: 20px;
 }
 
 .btn-edo div{
@@ -127,46 +129,48 @@ border-bottom-right-radius: 15px;
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="image.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
 <!--     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script> -->
 
    </head>
   <body>
 
-      <!-- menu -->
+ <!-- menu -->
     <div class="navbar-fixed">
       <nav>
         <div class=" container nav-wrapper" style="margin-top:0px;">
-          <a href="index.html" class="brand-logo"><img src="img/logo.png" alt="" /></a>
+          <a href="index.html" class="brand-logo"><img src="img/icono_header.svg" alt="" /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-            <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+             <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <!-- 
+            <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
-            <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li>
+            <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
             <li class="tamps">
               <a id="buscar"><img src="img/search.png" alt="" /></a>
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li>
-              <li class="tamps">
+            <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
                   alt="" /></a>
             </li>
-            <li class="tamps">
+            <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
-            </li>
+            </li> -->
           </ul>
           <ul class="side-nav" id="mobile-demo">
+          <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
-            <li><a href="estados.html">Indicadores por unidad geográfica</a></li>
-            <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li>
+           <!--  <li><a href="estados.html">Indicadores por unidad geográfica</a></li> -->
+           <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
-            <li><a href="compara.html">Compara</a></li>
+            <!-- <li><a href="compara.html">Compara</a></li> -->
+           <!--  <li class="tamps">
+             <a id="busca" href="calendario.html">Calendario</a>
+           </li> -->
           </ul>
         </div>
       </nav>
@@ -186,353 +190,345 @@ border-bottom-right-radius: 15px;
 
 
       <div class="row">
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="estado_ejemplo.html">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=01&label=Aguascalientes">
+			      <div class="col l2 m3 s3">
 			      	<img src="img/edos/aguascalientes.png" alt="" />
 			      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 			      	<h6>Aguascalientes</h6>
 			      </div>
-
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		     <a href="#">
-			     <div class="col l2 m3">
-			     <img src="img/edos/bajacalifornia.png" alt="" />
-			     </div>
-			      <div class="col l10 m9">
-		      <h6>Baja California</h6>
-		      </div>
-		      </a>
+	      <div class="col l3 m4 s12 btn-edo">
+		    <a href="estado_detalle.html?estad=02&label=Baja California">
+				<div class="col l2 m3 s3">
+					<img src="img/edos/bajacalifornia.png" alt="" />
+				</div>
+				<div class="col l10 m9 s9">
+					<h6>Baja California</h6>
+				</div>
+		    </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=03&label=Baja California Sur">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/bajacaliforniasur.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Baja California Sur</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=04&label=Campeche">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/campeche.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Campeche</h6>
 		      </div>
 		      </a>
 	      </div>
-      </div>
-      <div class="row">
+   
 
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=05&label=Chiapas">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/chiapas.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Chiapas</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=06&label=Chihuahua">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/chihuahua.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Chihuahua</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=07&label=Ciudad de México">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/ciudaddemexico.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Ciudad de México</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=08&label=Coahuila">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/coahuila.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Coahuila</h6>
 		      </div>
 		      </a>
 	      </div>
-      </div>
-      <div class="row">
+ 
 
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=09&label=Colima">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/colima.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Colima</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=10&label=Durango">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/durango.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Durango</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=11&label=Estado de México">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/estadodemexico.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Estado de México</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=12&label=Guanajuato">
+		      <a href="">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/guanajuato.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Guanajuato</h6>
 		      </div>
 		      </a>
 	      </div>
-      </div>
-      <div class="row">
 
 
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=13&label=Guerrero">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/guerrero.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Guerrero</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=14&label=Hidalgo">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/hidalgo.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Hidalgo</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=15&label=Jalisco">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/jalisco.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Jalisco</h6>
 		      </div>
 		      </a>
 	      </div>
 
-	      <div class="col l3 m3 s12 btn-edo">
-		     <a href="#">
-			     <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		     <a href="estado_detalle.html?estad=16&label=Michoacán">
+			     <div class="col l2 m3 s3">
 		      <img src="img/edos/michoacan.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		     <h6>Michoacán</h6>
 		     </div>
 		     </a>
 	      </div>
-      </div>
-      <div class="row">
 
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=17&label=Morelos">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/morelos.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Morelos</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=18&label=Nayarit">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/nayarit.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Nayarit</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=19&label=Nuevo León">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/nuevoleon.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Nuevo León</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=20&label=Oaxaca">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/oaxaca.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Oaxaca</h6>
 		      </div>
 		      </a>
 	      </div>
-      </div>
-      <div class="row">
 
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=21&label=Puebla">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/puebla.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Puebla</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=22&label=Querétaro">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/queretaro.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Querétaro</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=23&label=Quintana Roo">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/quintanaroo.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Quintana Roo</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=24&label=San Luis Potosí">
+			      <div class="col l2 m3 s3 ">
 		      <img src="img/edos/sanluispotosi.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>San Luis Potosí</h6>
 		      </div>
 		      </a>
 	      </div>
-      </div>
-      <div class="row">
 
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=25&label=Sinaloa">
+			      <div class="col l2 m3m s3">
 		      <img src="img/edos/sinaloa.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Sinaloa</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=26&label=Sonora">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/sonora.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Sonora</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=27&label=Tabasco">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/tabasco.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Tabasco</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=28&label=Tamaulipas">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/tamaulipas.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Tamaulipas</h6>
 		      </div>
 		      </a>
 	      </div>
-      </div>
-      <div class="row">
 
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=29&label=Tlaxcala">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/tlaxcala.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Tlaxcala</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		     <a href="#">
-			     <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		     <a href="estado_detalle.html?estad=30&label=Veracruz">
+			     <div class="col l2 m3 s3">
 		      <img src="img/edos/veracruz.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		     <h6>Veracruz</h6>
 		     </div>
 		     </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		      <a href="#">
-			      <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		      <a href="estado_detalle.html?estad=31&label=Yucatán">
+			      <div class="col l2 m3 s3">
 		      <img src="img/edos/yucatan.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		      <h6>Yucatán</h6>
 		      </div>
 		      </a>
 	      </div>
-	      <div class="col l3 m3 s12 btn-edo">
-		     <a href="#">
-			     <div class="col l2 m3">
+	      <div class="col l3 m4 s12 btn-edo">
+		     <a href="estado_detalle.html?estad=32&label=Zacatecas">
+			     <div class="col l2 m3 s3">
 		      <img src="img/edos/zacatecas.png" alt="" />
 		      </div>
-			      <div class="col l10 m9">
+			      <div class="col l10 m9 s9">
 		     <h6>Zacatecas</h6>
 		     </div>
 		     </a>
 	      </div>
       </div>
-    </div>
-
+</div>
 
 
 <!-- footer -->
@@ -590,16 +586,7 @@ border-bottom-right-radius: 15px;
  <script>
 
 	$( document ).ready(function() {
-		// $.post( "https://operativos.inegi.org.mx/datos/api/tematica/PorClave", {'PIdioma': 'ES','PClave': 'O'}, function( data, textStatus, jqxhr ) {
-		// 	alert( "Exito" );
-		// 	console.log(data);
-		// });
-
-		$.post( "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",{'PCveInd':'26', 'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'}, function( data, textStatus, jqxhr ) {
-			alert( "Exito" );
-			console.log(data);
-		});
-
+		
 
 
 	});
