@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Indicadores</title>
 <!-- hola soy daniel y estoy chambiando sale ppp  -->
     	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -21,6 +22,68 @@
     <link href="lib/c3.css" rel="stylesheet" type="text/css">
 
       <style>
+      @media only screen and (max-width: 375px){
+            html{
+                  font-size: 14px !important;
+            }
+          p{
+            font-size: 28px !important;
+          }
+
+          .pie_cuadro2 div{
+            font-size: 28px;
+          }
+
+          .cuadro_titulo h4{
+            font-size: 26px !important;
+          }
+
+          .cuadro_titulo p {
+            font-size: 20px !important;
+          }
+
+          .cuadro_titulo span{
+            font-size: 20px !important;
+          }
+
+          .t_principal{
+            font-size: 30px !important;
+          }
+          h5.tituloObjetivo{
+            font-size: 25px !important;
+          }
+
+          #parrafo{
+            font-size: 16px !important;
+          }
+
+          .parrafo{
+            font-size: 16px !important;
+          }
+
+          #primer{
+            font-size: 16px !important;
+          }
+
+          #bajo{
+            font-size: 16px !important;
+          }
+
+          .marg_top{
+            margin-top: 10px;
+          }
+
+          .ico_obj1{
+            width: 95%;
+          }
+
+          .icn{
+            line-height: 50px;
+          }
+
+
+      }
+
 
       a.selected {
         background-color:#1F75CC;
@@ -213,7 +276,6 @@
     }
 
 
-
   </style>
   <link rel="stylesheet" href="DataTables/datatables.css">
     <style>
@@ -295,7 +357,7 @@
   </span>
   <body>
 
-      
+
     <!-- menu -->
     <div class="navbar-fixed">
       <nav>
@@ -341,12 +403,12 @@
     <div id="sti" style="position:fixed; width:100%; height:auto; z-index: 999; color: #fff;padding:5px 0px 0px 0px; ">
       <div class="container" style="margin-top: 0 !important;">
       <div class="row" style="margin-top: 8px;margin-bottom:8px;">
-        <div class="col s2 center-align iconoObjetivo">
+        <div class="col s2 l2 center-align iconoObjetivo">
             <!-- <img src="img/ods-03.png" style="width: 38%;" alt=""> -->
         </div>
-        <div class="col s9 left-align">
+        <div class="col s10 l9 left-align">
             <hr>
-            <p>
+            <p class="parrafo">
               Indicador <span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span>
             </p>
             <hr>
@@ -357,10 +419,10 @@
     <div id="esconder" class="headerObje" style=" /*position:fixed;*/ z-index: 9999; width: 100%;">
       <div class="container">
         <div class="row" style="margin-bottom: 0;padding-top: 2px;">
-          <div class="col s2 center-align iconoObjetivo">
+          <div class="col s2 l2 center-align iconoObjetivo">
               <!-- <img class="ico_obj" src="img/ods-03.png" alt="" style="position: fixed; width: 4.5%;"> -->
           </div>
-          <div class="col s9 left-align">
+          <div class="col s10 l9 left-align">
               <h5 class="tituloObjetivo"></h5>
               <p id="parrafo">
                 <span class="Codigo_meta"></span> <span class="Descrip_meta">&nbsp; </span>
@@ -400,11 +462,11 @@
 
  <!-- style="overflow-x: scroll;border-radius: 20px;" -->
       <div class="row card tablaPadding" id="datos-panel">
-          <div class="col s6">PERIODO</div>
-          <div class="col s6">Proporción del consumo nacional que corresponde</div>
+          <div class="col s12 l6">PERIODO</div>
+          <div class="col s12 l6">Proporción del consumo nacional que corresponde</div>
           <hr>
-          <div class="col s6">2000</div>
-          <div class="col s6">6.3</div>
+          <div class="col s12 l6">2000</div>
+          <div class="col s12 l6">6.3</div>
             <div class="pie_cuadro2">
               <div><strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas</div>
               <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
@@ -421,10 +483,10 @@
       <div class="row card tablaPadding scroller"  id="serie-panel" style=" border-radius: 20px;">
 
          <div class="row" id="row_filtros_serie_101" style="display: none">
-          <div class="col s2 " >
+          <div class="col s4 l2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros tipo</p>
           </div>
-          <div class="col s4 " >
+          <div class="col s6 l4 " >
             <div class="input-field col s12" style="margin-bottom:20px;">
               <select id="filtros_serie_101" style="display:block !important; background-color: #f2f2f2;">
                 <option value="0">Total</option>
@@ -436,10 +498,10 @@
         </div>
 
         <div class="row" id="row_filtros_serie" style="display: none">
-          <div class="col s2 " >
+          <div class="col s4 l2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
           </div>
-          <div class="col s4 " >
+          <div class="col s4 l4 " >
             <div class="input-field col s12" style="margin-bottom:20px;">
               <select id="filtros_serie" style="display:block !important; background-color: #f2f2f2;"></select>
             </div>
@@ -450,20 +512,20 @@
       </div>
 
       <div class="row card tablaPadding" id="metadato-panel">
-        <div class="col s12" id="metadatosApi"></div>
+        <div class="col s12 l12" id="metadatosApi"></div>
       </div>
 
 <!--  -->
 
       <div class="row" id="botonera_nacional" style="display: none; ">
-        <div class="col s6 ocultar">
+        <div class="col s12 l6 ocultar">
           <a id="ver_grafica_nacional" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla_nacional()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
-          <a id="ver_tabla_nacional" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica_nacional()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+          <a id="ver_tabla_nacional" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica_nacional()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER DATOS</a>
         </div>
-        <div class="col s2" >
+        <div class="col s12 l2" >
           <p class="claro t_sm cob_sel_nac" style="display: none; margin-top: 25px; margin-right: 63px;">Filtros</p>
         </div>
-        <div class="col s4" >
+        <div class="col s12 l4" >
           <div class="input-field col s12 caja_s cob_sel_nac" style="display: none;">
             <select id="filtros_na">
             </select>
@@ -474,17 +536,17 @@
 
     <div id="mapas_hide">
       <div class="row" id="row_filtros" style="display: none;">
-        <div class="col s2 " >
+        <div class="col s12 l2 " >
           <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
         </div>
-        <div class="col s4 " >
+        <div class="col s12 l4 " >
           <div class="input-field col s12 caja_s">
             <select id="filtros_es"></select>
           </div>
         </div>
       </div>
       <div class="row card tablaPadding ocultar">
-        <div class="col s12">
+        <div class="col s12 l12">
           <div class="cuadro_titulo">
             <h4>Razón de mortalidad materna</h4>
             <li class="divider"></li>
@@ -502,28 +564,28 @@
             <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
             <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
           </div>
-          <div class="col s4"  id="chart2btn">
+          <div class="col s12 l4"  id="chart2btn">
             <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
           </div>
           <div class="row" id="footmap">
-            <div id="anios" class="col s8 center-align">
+            <div id="anios" class="col s12 l8 center-align">
               <a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
               <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
               <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
               <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
             </div>
-            <div class="col s4" >
+            <div class="col s12 l4" >
               <a style="margin-top: 42px; float: right;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalMapa" style="width: 250px;">Comparte este mapa</a>
             </div>
           </div>
         </div>
       </div>
       <div class="row" id="grafs">
-        <div class="col s10">
+        <div class="col s12 l10">
           <a id="ver_grafica" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style ="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
-          <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER TABLA</a>
+          <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style ="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER DATOS</a>
         </div>
-        <div class="col s2 right-align" style="margin-top: 60px;">
+        <div class="col s12 l2 right-align" style="margin-top: 60px;">
           <a href="#!" class="col s4 right-align" onclick="atras()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
           <a class="col s4 center-align numero" id="numero_anio">2015</a>
           <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
@@ -531,10 +593,10 @@
       </div>
       <div class="row card tablaPadding scroller"  id="serie-panel2" style=" border-radius: 20px; display: none;">
         <div class="row" id="row_filtros_serie2" style="display: none">
-          <div class="col s2 " >
+          <div class="col s12 l2 " >
             <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
           </div>
-          <div class="col s4 " >
+          <div class="col s12 l4 " >
             <div class="input-field col s12" style="margin-bottom:20px;">
               <select id="filtros_serie2" style="display:block !important; background-color: #f2f2f2;"></select>
             </div>
@@ -550,7 +612,7 @@
 
 
       <div class="row card tablaPadding" id="indicador-panel" style="display:none">
-          <div class="col s12 ">
+          <div class="col s12 l12 ">
            <div class="cuadro_titulo">
               <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
@@ -558,7 +620,7 @@
               <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
            </div>
         </div>
-        <div class="col s5 ">
+        <div class="col s12 l5 ">
           <table class="bordered">
             <thead>
               <tr>
@@ -581,8 +643,8 @@
               </tr>
           </table>
         </div>
-        <div class="col s1"></div>
-        <div class="col s5 ">
+        <div class="col s12 l1"></div>
+        <div class="col s12 l5 ">
           <table class="bordered">
             <thead>
               <tr>
@@ -605,7 +667,7 @@
               </tr>
           </table>
         </div>
-        <div class="col s12" style="margin-top: -10px;">
+        <div class="col s12 l12" style="margin-top: -10px;">
            <hr>
         </div>
             <!-- <div class="col s6">
@@ -613,13 +675,13 @@
             </div>
             <div class="col s6 right-align pais">
             </div> -->
-            <div class="col s12 pie_cuadro2">
+            <div class="col s12 l12 pie_cuadro2">
               <!-- <p class="nota" style="color:#8694a8;"></p> -->
             </div>
       </div>
 
       <div class="row card tablaPadding" id="indicador-grafica">
-        <div class="col s12">
+        <div class="col s12 l12">
           <div class="cuadro_titulo">
               <h4>Razón de mortalidad materna</h4>
               <li class="divider"></li>
@@ -634,7 +696,7 @@
             </div>
         </div>
         <div class="row">
-          <div class="col s4 offset-s8 right-align" >
+          <div class="col s12 l4 offset-l8 right-align" >
             <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
           </div>
         </div>
@@ -646,13 +708,13 @@
   <div id="tabla_export2" style="display: none;"></div>
 
   <div class="row scrollable-section" data-section-title="Descarga de datos">
-        <div class="col s12">
+        <div class="col s12 l12">
           <h3 class="fuerte t_principal">Descargar datos</h3>
           <li class="divider"></li>
           <div class="row">
-            <div class="col s11 offset-s1">
+            <div class="col s12 l11 offset-l1">
               <div class="row">
-                <div class="col s4">
+                <div class="col s4 l4">
                   <p class="fuerte t_normal">Nombre</p>
                 </div>
             <!--     <div class="col s2">
@@ -661,16 +723,16 @@
                 <div class="col s2">
                       <p class="fuerte t_normal">Grafica</p>
                 </div> -->
-                <div class="col s4">
+                <div class="col s4 l4">
               				<p class="fuerte t_normal" >Institución</p>
     		  			</div>
-                <div class="col s3">
+                <div class="col s3 l3">
                       <p class="fuerte t_normal">Datos del indicador</p>
                 </div>
-                <div class="col s12">
+                <div class="col s12 l12">
                       <li class="divider griss"></li>
                 </div>
-                <div class="col s4">
+                <div class="col s4 l4">
                       <p class="gris t_sm"><span class="Codigo_ind"></span> <span class="Descrip_ind">&nbsp; </span></p>
                 </div>
             <!--     <div class="col s2" style="margin-top: 10px;">
@@ -681,10 +743,10 @@
                   <a class="icn">SHP</a>
                   <a class="icns">SHP</a>
                 </div> -->
-                <div class="col s4">
+                <div class="col s4 l4">
               				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
-                <div class="col s3" style="margin-top: 10px;">
+                <div class="col s3 l3" style="margin-top: 10px;">
                       <a class="icn exportCSV">CSV</a>
                       <!-- <a download="indicador.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a> -->
                       <!-- <a download="indid.csv" href="#" class="icns" onclick="return ExcellentExport.csv(this, 'tabla_export');">csv2</a> -->
@@ -693,7 +755,7 @@
                       <!-- <a class="icnPDF">PDF</a> -->
 
                 </div>
-                <div class="col s12">
+                <div class="col s12 l12">
                       <li class="divider griss"></li>
                 </div>
                 <!-- <div class="col s4">
@@ -727,7 +789,7 @@
       <div class="container">
         <div class="row" id="fot">
           <div class="col l3 s12">
-            <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
+            <a href="index.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
             <br>
             <br>
             <div class="" style="display:inline;">
@@ -855,7 +917,7 @@
 
     <div class="row">
     <i class="fa fa-code" aria-hidden="true"></i> <b>Liga</b>
-      <div class="input-field col s12">
+      <div class="input-field col s12 l12">
           <input placeholder="++" class="liga" type="text" class="validate" value="http://104.236.211.149/ods/compara.html#mapa">
      </div>
     </div>
@@ -1012,7 +1074,7 @@
   {
     $('#cam_bus').keypress(function(e) {
         if(e.which == 13) {
-          //buscar($('#cam_bus').val());  
+          //buscar($('#cam_bus').val());
         }
     });
     //$('.modal').modal();
@@ -1071,39 +1133,39 @@
         rotated: false,
         x: {
           type: 'category',
-          categories: [ 'Aguascalientes',
-                        'Baja California',
-                        'Baja California Sur',
-                        'Campeche',
-                        'Coahuila de Zaragoza',
-                        'Colima',
-                        'Chiapas',
-                        'Chihuahua',
-                        'Ciudad de México',
-                        'Durango',
-                        'Guanajuato',
-                        'Guerrero',
-                        'Hidalgo',
-                        'Jalisco',
-                        'México',
-                        'Michoacán de Ocampo',
-                        'Morelos',
-                        'Nayarit',
-                        'Nuevo León',
-                        'Oaxaca',
-                        'Puebla',
-                        'Querétaro',
-                        'Quintana Roo',
-                        'San Luis Potosí',
-                        'Sinaloa',
-                        'Sonora',
-                        'Tabasco',
-                        'Tamaulipas',
-                        'Tlaxcala',
-                        'Veracruz de Ignacio de la Llave',
-                        'Yucatán',
-                        'Zacatecas',
-                        'Estados Unidos Mexicanos',
+          categories: [ 'Ags.',
+                        'BC.',
+                        'BCS.',
+                        'Camp.',
+                        'Coah.',
+                        'Col.',
+                        'Chis.',
+                        'Chih.',
+                        'CDMX.',
+                        'Dgo.',
+                        'Gto.',
+                        'Gro.',
+                        'Hgo.',
+                        'Jal.',
+                        'Mex.',
+                        'Mich.',
+                        'Mor.',
+                        'Nay.',
+                        'NL.',
+                        'Oax.',
+                        'Pue.',
+                        'Qro.',
+                        'Q Roo.',
+                        'SLP.',
+                        'Sin.',
+                        'Son.',
+                        'Tab.',
+                        'Tamps.',
+                        'Tlax.',
+                        'Ver.',
+                        'Yuc.',
+                        'Zac.',
+                        'Nal.',
                       ],
               height: 170,
                 tick:{
@@ -2096,7 +2158,7 @@ $('#indicador').trigger("click");
 
 
       if(cadena !=  ''){
-        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 8px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 8px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12 l12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
       //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
         $('#anios').html(cadena);
@@ -2132,7 +2194,7 @@ var contaAnios = arrray_anios.length - 1;
           navText:['< Años anteriores','Años posteriores >'],
           responsive:{
               0:{
-                  items:2
+                  items:3
               },
               600:{
                   items:5

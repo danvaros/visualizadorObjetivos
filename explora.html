@@ -247,8 +247,9 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
+
              <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <!-- 
+
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
@@ -294,10 +295,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
       <div class="row">
-        <div class="col s2" style="display: flex;">
+        <div class="col s4 l2" style="display: flex;">
           <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 20px;">1. Tipo de indicador</p>
         </div>
-        <div class="col s5" style="display: flex;">
+        <div class="col s8 l5" style="display: flex;">
           <div class="input-field col s12 caja_s">
             <select id="agregacion">
               <option value="" disabled selected>Elige una opción</option>
@@ -308,10 +309,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
       <div class="row">
-        <div class="col s2" style="display: flex;">
+        <div class="col s4 l2" style="display: flex;">
           <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">2. Objetivo</p>
         </div>
-        <div class="col s5" style="display: flex;">
+        <div class="col s8 l5" style="display: flex;">
           <div class="input-field col s12 caja_s">
             <select id="obj_name">
               <option value="-1" disabled="">Elige un objetivo</option>
@@ -323,10 +324,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div>
       </div>
       <div class="row">
-        <div class="col s2" style="display: flex;">
+        <div class="col s4 l2" style="display: flex;">
           <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">3. Indicador </p>
         </div>
-        <div class="col s5" style="display: flex;">
+        <div class="col s8 l5" style="display: flex;">
             <div class="input-field col s12 caja_s">
             <select id="indicadores">
               <!-- <option value="" disabled selected>Elige una opcion</option> -->
@@ -347,10 +348,10 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
         </div> -->
       </div>
       <div class="row" id="row_filtros" style="display: none;">
-        <div class="col s2" style="display: flex;">
+        <div class="col s4 l2" style="display: flex;">
           <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">4. filtros</p>
         </div>
-        <div class="col s5" style="display: flex;">
+        <div class="col s8 l5" style="display: flex;">
           <div class="input-field col s12 caja_s">
             <select id="filtros">
             </select>
@@ -413,13 +414,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
             <!-- <div id="map"></div> -->
             <div class="row" id="footmap" style="padding-left: 31px;">
-	            <div id="anios" class="col s8">
+	            <div id="anios" class="col s12 l8">
 	            	<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">2013</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0;">2014</a>
 		            <a class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" style ="margin-right: -5px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">2015</a>
 	            </div>
-	            <div class="col s4" >
+	            <div class="col s12 l4 rengal" >
                     <a style="margin-top: 42px; float: right;" class="waves-effect waves-light btn color claro t_sm sin_sombra modal-trigger" href="#modalMapa" style="width: 250px;margin-top:42px;">Comparte este mapa</a>
 	            </div>
             </div>
@@ -536,7 +537,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           <h3 class="fuerte t_principal">Descargar datos</h3>
           <li class="divider"></li>
           <div class="row">
-          	<div class="col s10 offset-s1">
+          	<div class="col s12 l10">
           		<div class="row">
           			<div class="col s4">
           				<p class="fuerte t_normal">Nombre</p>
@@ -557,8 +558,8 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
               				<p class="gris t_sm" id="da_institucion">Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).</p>
     		  			</div>
     		  			<div class="col s3" style="margin-top: 10px;">
-              				<a class="icn  exportCSV">CSV</a>
-                      <span id="exportarXLS"></span>
+              				<a class="icn col s12 l3  exportCSV">CSV</a>
+                      <span class="col s12 l3" style="margin-top:10px;" id="exportarXLS"></span>
                       <!-- <a class="icns">XLS</a> -->
                       <!-- <a class="icnSDMX">SDMX</a>
                       <a class="icnPDF">PDF</a> -->
@@ -580,7 +581,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
       <div class="container">
         <div class="row" id="fot">
           <div class="col l3 s12">
-            <a href="home.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
+            <a href="index.html"><img src="img/logo_footer.svg" alt="" style="width: 60%;"/></a>
             <br>
             <br>
             <div class="" style="display:inline;">
@@ -829,7 +830,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
           function pruebaInicio(initialLoad){
               if (initialLoad == true) {
                   console.log(':::::::::::::::::::::::: Indicador Inicial :::::::::::::::::::::::');
-                  $("#exportarXLS").html('<a href="#" class="icns " download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla33'"+', '+"'Indicadores'"+');">XLS</a>');
+                  $("#exportarXLS").html('<a href="#" class="icns col s12 l3" download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla33'"+', '+"'Indicadores'"+');">XLS</a>');
                   $(".exportCSV").on('click', function (event) {
                       var args;
                           args = [$('#miTabla33'), 'IndicadorExp.csv'];
@@ -838,7 +839,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                   initialLoad = false;
               } else {
                 console.log(':::::::::::::::::::::::: Indicador Diferente :::::::::::::::::::::::');
-                  $("#exportarXLS").html('<a href="#" class="icns " download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla22'"+', '+"'Indicadores'"+');">XLS</a>');
+                  $("#exportarXLS").html('<a href="#" class="icns col s12 l3" download="Indicador.xls" onclick="return ExcellentExport.excel(this, '+"'miTabla22'"+', '+"'Indicadores'"+');">XLS</a>');
                   $(".exportCSV").on('click', function (event) {
                       // CSV
                       var args;
@@ -1322,6 +1323,20 @@ function busqueda_anio(cadena)
     }
 }
 
+function setInitialMapZoom() {
+
+   var viewportWidth = window.innerWidth;
+   var mapZoom;
+
+   if (viewportWidth < 376) {
+        mapZoom = 4;
+    }else if (viewportWidth >= 376 && viewportWidth < 1920) {
+        mapZoom = 5;
+    }else {
+        mapZoom = 6;
+    }
+}
+
   //variable de mapa
   var img;
   var data_url;
@@ -1329,11 +1344,12 @@ function busqueda_anio(cadena)
   var map = L.map('map' ,
   {
     scrollWheelZoom: false,
-    maxZoom: 14,
-    minZomm:5,
+    zoom: setInitialMapZoom(),
+    //maxZoom: 14,
+    //minZomm:4,
     //zoomControl:false,
     //dragging: false
-  }).setView([24.8, -100], 5);
+  }).setView([24.8, -100], 4);
 
     //implementacion de mapa estandar y ubicacion haci como zoom
  //     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
@@ -1814,7 +1830,7 @@ var contaAnios = arrray_anios.length - 1;
           navText:['< Años anteriores','Años posteriores >'],
           responsive:{
               0:{
-                  items:2
+                  items:3
               },
               600:{
                   items:5
@@ -1856,7 +1872,7 @@ var contaAnios = arrray_anios.length - 1;
     $(document).ready(function() {
       $('#cam_bus').keypress(function(e) {
         if(e.which == 13) {
-          buscar($('#cam_bus').val());  
+          buscar($('#cam_bus').val());
         }
       });
 
@@ -2804,7 +2820,7 @@ function ind_change(indicador){
  function buscar(busqueda){
     window.location.replace("objetivos.html?busqueda=" + busqueda);
   }
-  
+
 </script>
   </body>
 </html>
