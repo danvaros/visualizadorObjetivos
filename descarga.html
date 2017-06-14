@@ -523,9 +523,9 @@ $('#loader').show();
 
     $(document).ready(function(){
 
-      $('.indi1 input:checkbox').change(function(){
+      $('#fin_pobreza input:checkbox').change(function(){
                   // Parent Checkbox Change //
-                  if ($(this).hasClass('indi1')){
+                  if ($('#fin_pobreza_cont').hasClass('child')){
                       if (!$(this).is(':checked')){
                           $('#fin_pobreza_cont input.child[name="'+$(this).attr('name')+'"]').removeAttr('checked');
                       }
@@ -693,7 +693,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
             {
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
-                  '<input type="checkbox" name="" class="child" /> <a class="buscar" href="indicadores333.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
+                  '<input type="checkbox" name="' + clave_arb + '" class="child" /> <a class="buscar" href="indicadores333.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
                     codigo_des +' '+ descrip_des +
                   '</a>'+
                   '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
@@ -708,7 +708,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
                   '<span class="buscar" >'+
                     codigo_des +' '+ descrip_des +
                   '</span>'+
-                  '<input type="checkbox" name="" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
+                  '<input type="checkbox" name="' + clave_arb + '" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
@@ -720,7 +720,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
             else{
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
-                  '<input type="checkbox" name="" class="child" /> <a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
+                  '<input type="checkbox" name="' + clave_arb + '" class="child" /> <a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
                     codigo_des +' '+ descrip_des +
                   '</a>'+
                   '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
@@ -735,7 +735,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
                   '<span class="buscar" >'+
                     codigo_des +' '+ descrip_des +
                   '</span>'+
-                  '<input type="checkbox" name="" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
+                  '<input type="checkbox" name="' + clave_arb + '" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
