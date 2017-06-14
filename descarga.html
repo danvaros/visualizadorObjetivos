@@ -12,6 +12,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
     <style media="screen">
 
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+
+  left: 0;
+    opacity: 1;
+    position: relative;
+}
+
+
+
     a.selected {
       background-color:#1F75CC;
       color:white;
@@ -143,9 +152,8 @@ $('#loader').show();
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
-
-             <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-
+             <li class="tam t_sm"><a href="estado_detalle.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
+            <!--
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
@@ -165,7 +173,7 @@ $('#loader').show();
           <ul class="side-nav" id="mobile-demo">
           <li><a href="index.html">Inicio</a></li>
             <li><a href="objetivos.html">Indicadores</a></li>
-           <!--  <li><a href="estados.html">Indicadores por unidad geográfica</a></li> -->
+            <li><a href="estado_detalle.html">Indicadores por unidad geográfica</a></li>
            <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
             <!-- <li><a href="compara.html">Compara</a></li> -->
@@ -182,64 +190,80 @@ $('#loader').show();
     <div class="container" id="objetivo0">
       <div class="row">
         <div class="col s12">
-          <h3 class="fuerte t_principal">INDICADORES</h3>
+          <h3 class="fuerte t_principal">DESCARGA MASIVA</h3>
           <li class="divider"></li>
         </div>
         <div class="col s12">
+          <br>
+          <div class="input-field col s10 l12" style="margin-left:15px;">
+            <p>Elementos a exportar</p>
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Indicador
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Metadato
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Serie histórica Datos para el cálculo
+            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Datos para el cálculo
+            <input type="submit" class="valdidate caja_d" style="padding-left:12px;" value="Enviar" />
+
+            <div>
+
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col s12">
           <br>
           <div class="input-field col s10 l4" style="margin-left:15px;">
             <i class="material-icons prefix caja_i">search</i>
             <input id="icon_prefix" type="text" class="validate caja_d autocomplete" placeholder=" Buscar indicadores" style="padding-left: 12px;">
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row">
+        <form action="#">
         <div class="col s12">
-          <ul id="objetivos" class="collapsible popout" data-collapsible="accordion">
+          <ul id="objetivos" class="" data-collapsible="accordion">
            <li id="objetivo1" class="objetivos">
-             <div id="fin_pobreza" class="collapsible-header fin_pobreza">
+             <div id="fin_pobreza" class=" active fin_pobreza">
                <div class="obj_icon center-align id_1">
                  <img class="ico_obj" src="img/ods-01.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">1- Fin de la pobreza<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi1" style="padding-left: 12px;"> 1- Fin de la pobreza<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="fin_pobreza_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="fin_pobreza_cont">
                 <div class="col s12">
                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo2" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_2" id="id_2">
                  <img class="ico_obj" src="img/ods-02.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">2- Hambre cero<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi2" style="padding-left: 12px;"> 2- Hambre cero<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="hambre_cero_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="hambre_cero_cont">
                <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo3" class="objetivos">
-             <div class="collapsible-header">
+             <div class="">
                <div class="obj_icon center-align id_3" id="id_3">
                  <img class="ico_obj" src="img/ods-03.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">3- Salud y bienestar<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi3" style="padding-left: 12px;"> 3- Salud y bienestar<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="salud_bienestar_cont">
+             <div class="back_gray t_sm gris" style="overflow: hidden;" id="salud_bienestar_cont">
              </div>
            </li>
            <li id="objetivo4" class="objetivos">
-             <div class="collapsible-header">
+             <div class="">
                <div class="obj_icon center-align id_4" id="id_4">
                  <img class="ico_obj" src="img/ods-04.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi4" style="padding-left: 12px;"> 4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="educacion_calidad_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="educacion_calidad_cont">
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -249,13 +273,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo5" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_5" id="id_5">
                  <img class="ico_obj ico_top" src="img/ods-05.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">5- Igualdad de género<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi5" style="padding-left: 12px;"> 5- Igualdad de género<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="igualdad_genero_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="igualdad_genero_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -265,13 +289,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo6" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_6" id="id_6">
                  <img class="ico_obj ico_top" src="img/ods-06.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">6- Agua limpia y saneamiento<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi6" style="padding-left: 12px;"> 6- Agua limpia y saneamiento<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="agua_limpia_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="agua_limpia_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -281,13 +305,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo7" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_7" id="id_7">
                  <img class="ico_obj" src="img/ods-07.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">7- Energía asequible y no contaminante<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi7" style="padding-left: 12px;"> 7- Energía asequible y no contaminante<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="energia_esequible_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="energia_esequible_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -297,39 +321,39 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo8" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_8" id="id_8">
                  <img class="ico_obj" src="img/ods-08.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">8- Trabajo decente y crecimiento económico<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi8" style="padding-left: 12px;"> 8- Trabajo decente y crecimiento económico<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="trabajo_docente_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="trabajo_docente_cont">
                 <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo9" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_9" id="id_9">
                  <img class="ico_obj" src="img/ods-09.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">9- Industria, innovación e infraestructura<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi9" style="padding-left: 12px;"> 9- Industria, innovación e infraestructura<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="industria_innovacion_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="industria_innovacion_cont">
                 <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo10" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_10" id="id_10">
                  <img class="ico_obj" src="img/ods-10.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">10- Reducción de las desigualdades<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi10" style="padding-left: 12px;"> 10- Reducción de las desigualdades<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="reduccion_desigualdades_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="reduccion_desigualdades_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -339,13 +363,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo11" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_11" id="id_11">
                  <img class="ico_obj" src="img/ods-11.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">11- Ciudades y comunidades sustentables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi11" style="padding-left: 12px;"> 11- Ciudades y comunidades sustentables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="ciudades_comunidades_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="ciudades_comunidades_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -355,13 +379,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo12" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_12" id="id_12">
                  <img class="ico_obj" src="img/ods-12.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">12- Producción y consumo responsables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi12" style="padding-left: 12px;"> 12- Producción y consumo responsables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="produccion_consumo_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="produccion_consumo_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -371,13 +395,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo13" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_13" id="id_13">
                  <img class="ico_obj" src="img/ods-13.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi13" style="padding-left: 12px;"> 13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="accion_clima_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="accion_clima_cont">
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -387,52 +411,52 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo14" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_14" id="id_14">
                  <img class="ico_obj" src="img/ods-14.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">14- Vida submarina<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi14" style="padding-left: 12px;"> 14- Vida submarina<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_submarina_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="vida_submarina_cont">
               <div class="col s12">
                 <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
            <li id="objetivo15" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_15" id="id_15">
                  <img class="ico_obj" src="img/ods-15.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">15- Vida de ecosistemas terrestres<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi15" style="padding-left: 12px;"> 15- Vida de ecosistemas terrestres<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="vida_ecosistemas_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="vida_ecosistemas_cont">
               <div class="col s12">
                 <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
            <li id="objetivo16" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_16" id="id_16">
                  <img class="ico_obj" src="img/ods-16.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">16- Paz, justicia e instituciones sólidas<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi16" style="padding-left: 12px;"> 16- Paz, justicia e instituciones sólidas<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="paz_justicia_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="paz_justicia_cont">
               <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
            <li id="objetivo17" class="objetivos">
-             <div class="collapsible-header">
+             <div class=" active">
                <div class="obj_icon center-align id_17" id="id_17">
                  <img class="ico_obj" src="img/ods-17.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris">17- Alianzas para lograr objetivos<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi17" style="padding-left: 12px;"> 17- Alianzas para lograr objetivos<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="collapsible-body back_gray t_sm gris" style="overflow: hidden;" id="alianzas_objetivos_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="alianzas_objetivos_cont">
               <div class="col s12">
                 <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
@@ -440,6 +464,7 @@ $('#loader').show();
            </li>
          </ul>
         </div>
+      </form>
       </div>
     </div>
 
@@ -497,6 +522,42 @@ $('#loader').show();
     var visibles =  true;
 
     $(document).ready(function(){
+
+      $('.indi1').change(function(){
+                  // Parent Checkbox Change //
+                  if ($(this).hasClass('indi1')){
+                      if (!$(this).is(':checked')){
+                          $('input.child[name="'+$(this).attr('name')+'"]').removeAttr('checked');
+                      }
+                  }
+                  // Child Checkbox Change //
+                  else if ($(this).hasClass('child')){
+                      if ($(this).is(':checked')){
+                          $('input.indi1[name="'+$(this).attr('name')+'"]').attr('checked', 'checked');
+                      } else {
+                          if ($('input.child[name="'+$(this).attr('name')+'"]:checked').length == 0){
+                              $('input.indi1[name="'+$(this).attr('name')+'"]').removeAttr('checked');
+                          }
+                      }
+                  }
+              });
+
+
+
+      // if($('.indi1').prop('checked', true)){
+      //   $('#fin_pobreza_cont').find('input[type=checkbox]').each(function() {
+      //     $('input[type=checkbox]').prop('checked', true);
+      //   });
+      // }
+
+
+
+
+
+
+
+
+
       $('#cam_bus').keypress(function(e) {
           if(e.which == 13) {
             buscar($('#cam_bus').val());
@@ -608,7 +669,7 @@ $('#loader').show();
 var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
         if(true){
           if(clave_arb_meta != 210){
-          if(j > 2){
+          if(j > 7){
                 contenido = contenido + '<div class="row borde_b fond ocultar" >';
               }else{
                 contenido = contenido + '<div class="row borde_b fond" >';
@@ -632,7 +693,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
             {
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
-                  '<a class="buscar" href="indicadores333.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
+                  '<input type="checkbox" name="" class="child" /><a class="buscar" href="indicadores333.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
                     codigo_des +' '+ descrip_des +
                   '</a>'+
                   '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
@@ -647,7 +708,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
                   '<span class="buscar" >'+
                     codigo_des +' '+ descrip_des +
                   '</span>'+
-                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
+                  '<input type="checkbox" name="" class="child" /><a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
@@ -659,7 +720,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
             else{
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
-                  '<a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
+                  '<input type="checkbox" name="" class="child" /><a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
                     codigo_des +' '+ descrip_des +
                   '</a>'+
                   '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
@@ -674,7 +735,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
                   '<span class="buscar" >'+
                     codigo_des +' '+ descrip_des +
                   '</span>'+
-                  '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
+                  '<input type="checkbox" name="" class="child" /><a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
@@ -828,6 +889,13 @@ if(datos[i].Meta.length > 2){
       $('#cam_bus').hide();
       $('#buscar').show();
       lupa = false;
+    }
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
     function desplegar(objetivoId)
