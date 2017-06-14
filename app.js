@@ -944,9 +944,9 @@ if(PCveInd == 118){
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser != null){
+            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato != null){
 
-              var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_ser)
+              var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato)
 
                var dato_formato2 = Math.round(flot * 10) / 10;
 
@@ -1132,11 +1132,11 @@ if(PCveInd == 118){
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
         var dato_formato;
         console.log('-------------------- comparamos --------------------');
-        console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
-        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser != null)
+        console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato);
+        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != null)
         {
 
-          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_ser.toFixed(2);
+          dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
           //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
         }
         else {
