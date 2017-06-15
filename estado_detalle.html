@@ -627,10 +627,10 @@ border-bottom-width: 0px !important;
         '<tr>'+
           '<td colspan="2"></td>'+
           '<td>Línea base</td>'+
-          '<td>Dato más recinete</td>'+
+          '<td>Dato más reciente</td>'+
           '<td>Línea base</td>'+
-          '<td>Dato mas recinete</td>'+
-          '<td>Dato mas recinete</td>'+
+          '<td>Dato más reciente</td>'+
+          '<td>Dato más reciente</td>'+
         '</tr>';
 
       $.ajax({
@@ -663,11 +663,11 @@ border-bottom-width: 0px !important;
                 dataItems +=  '<tr>'+
                   '<td>'+ data[i].Meta[j].Indicador[k].Codigo_des +'</td>'+
                   '<td>'+ data[i].Meta[j].Indicador[k].Descrip_des +'</td>'+
-                  '<td>9.3 <br> (1989)</td>'+
+                  '<td>NA</td>'+
                   '<td>'+ estadoRecienteN +'</td>'+
-                  '<td>ND  <br> (1989)</td>'+
+                  '<td>NA</td>'+
                   '<td>'+ estadoReciente +'</td>'+
-                  '<td>Meta nacional 2015: <br> 4.6</td>'+
+                  '<td>NA</td>'+
                   '</tr>';
               }//for k
             }// for j
@@ -728,7 +728,7 @@ border-bottom-width: 0px !important;
   }
 
   function buscar(busqueda){
-    window.location.replace("objetivos.html?busqueda=" + busqueda);
+    window.location.replace("busqueda.html?busqueda=" + busqueda);
   }
   
   function esconder() {
