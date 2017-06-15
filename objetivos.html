@@ -568,13 +568,17 @@ $('#loader').show();
 
     });
 
-    function buscar(busqueda){
+/*    function buscar(busqueda){
       if(busqueda != ''){
         $('.objetivos:not(:contains("'+ busqueda +'"))').hide();
       }else{
         $('.objetivos').show();
       }
     }
+*/
+     function buscar(busqueda){
+    window.location.replace("busqueda.html?busqueda=" + busqueda);
+  }
 
     function llamada(indicador, ser){
       var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
@@ -589,10 +593,10 @@ $('#loader').show();
              console.log(data);
              ponObjetivos(data);
 
-              var obj = getParameterByName("busqueda");
+              /*var obj = getParameterByName("busqueda");
               if(obj != null){
                 buscar(obj);
-              }
+              }*/
 
               $('#loader').delay(2000).fadeOut("slow");
           },

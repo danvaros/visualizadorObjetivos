@@ -235,7 +235,7 @@ México reafirma su compromiso como actor con responsabilidad global y asume el 
 
         $('#cam_bus').keypress(function(e) {
           if(e.which == 13) {
-            //buscar($('#cam_bus').val());
+            buscar($('#cam_bus').val());
           }
         });
 
@@ -263,7 +263,7 @@ México reafirma su compromiso como actor con responsabilidad global y asume el 
       });
 
   function buscar(busqueda){
-    window.location.replace("objetivos.html?busqueda=" + busqueda);
+    window.location.replace("busqueda.html?busqueda=" + busqueda);
   }
     </script>
   </body>

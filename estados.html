@@ -585,11 +585,39 @@ border-bottom-right-radius: 15px;
   <script src="classybrew/build/classybrew.min.js"></script>
  <script>
 
+      var lupa = false;
 	$( document ).ready(function() {
-		
+		$('#buscar').click(function(){
+        if(lupa){
+          $('#cam_bus').hide();
+          lupa =  false;
+        }else{
+          $('#cam_bus').show();
+          $('#buscar').hide();
+          lupa =  true;
+        }
+      });
+
+
+		 $('#cam_bus').keypress(function(e) {
+        if(e.which == 13) {
+          buscar($('#cam_bus').val());
+        }
+      });
 
 
 	});
+
+	  function esconder() {
+        console.log("focusout");
+        $('#cam_bus').hide();
+        $('#buscar').show();
+        lupa = false;
+      }
+
+       function buscar(busqueda){
+    window.location.replace("busqueda.html?busqueda=" + busqueda);
+  }
 
  </script>
 
