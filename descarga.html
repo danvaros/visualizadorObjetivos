@@ -765,7 +765,7 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
 if(datos[i].Meta.length > 2){
             contenido = contenido +    '<div class="row fond link_less">' +
                                           '<div class="col s12">'+
-                                            '<p style="text-align:right !important;"><a class="fond mensaje" href="#objetivoId'+(i+1)+'" onclick="show_less()">Ver menos</a></p>'+
+                                             //'<p style="text-align:right !important;"><a class="fond mensaje" href="#objetivoId'+(i+1)+'" onclick="show_less()">Ver menos</a></p>'+
                                           '</div>'+
                                         '</div>';
           }
@@ -863,7 +863,7 @@ if(datos[i].Meta.length > 2){
       }//fin for mas externo
 
 
-      show_less();
+      //show_less();
 
       $('.tooltipped').tooltip({delay: 50});
       // console.log(tabla);
