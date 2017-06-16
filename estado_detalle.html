@@ -619,18 +619,16 @@ border-bottom-width: 0px !important;
     var dataItems =  '<div class="container">'+
     '<table>'+
         '<tr>'+
-          '<td colspan="2">Indicadores</td>'+
-          '<td colspan="2">Estados Unidos Mexicanos</td>'+
-          '<td colspan="2"> '+ label +'</td>'+
-          '<td>Meta de México</td>'+
+          '<td colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">Indicadores</td>'+
+          '<td colspan="2" style="text-align: center;vertical-align: middle;">Estados Unidos Mexicanos</td>'+
+          '<td colspan="2" style="text-align: center;vertical-align: middle;"> '+ label +'</td>'+
+          '<td style="text-align: center;vertical-align: middle;" rowspan="2">Meta de México</td>'+
         '</tr>'+
         '<tr>'+
-          '<td colspan="2"></td>'+
-          '<td>Línea base</td>'+
-          '<td>Dato más reciente</td>'+
-          '<td>Línea base</td>'+
-          '<td>Dato más reciente</td>'+
-          '<td></td>'+
+          '<td style="text-align: center;vertical-align: middle;">Línea base</td>'+
+          '<td style="text-align: center;vertical-align: middle;">Dato más reciente</td>'+
+          '<td style="text-align: center;vertical-align: middle;">Línea base</td>'+
+          '<td style="text-align: center;vertical-align: middle;">Dato más reciente</td>'+
         '</tr>';
 
       $.ajax({
