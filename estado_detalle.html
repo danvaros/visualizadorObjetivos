@@ -282,7 +282,7 @@ border-bottom-width: 0px !important;
             </select>
           </div>
         </div>
-        <div class="col s11 l4 offset-l1">
+ <!--        <div class="col s11 l4 offset-l1">
             <div class="col s3">
             <p>Municipio</p>
             </div>
@@ -294,10 +294,10 @@ border-bottom-width: 0px !important;
                 <option value="3" class="left circle">Municipio 3</option>
               </select>
             </div>
-          </div>
+          </div> -->
       </div>
 
-      <div class="row region">
+<!--       <div class="row region">
          <div class="col s11 l4">
               <div class="col s3">
               <p>Región</p>
@@ -324,7 +324,7 @@ border-bottom-width: 0px !important;
                 </select>
               </div>
             </div>
-        </div>
+        </div> -->
 
       <style media="screen">
         .tabla{
@@ -630,7 +630,7 @@ border-bottom-width: 0px !important;
           '<td>Dato más reciente</td>'+
           '<td>Línea base</td>'+
           '<td>Dato más reciente</td>'+
-          '<td>Dato más reciente</td>'+
+          '<td></td>'+
         '</tr>';
 
       $.ajax({
@@ -663,11 +663,11 @@ border-bottom-width: 0px !important;
                 dataItems +=  '<tr>'+
                   '<td>'+ data[i].Meta[j].Indicador[k].Codigo_des +'</td>'+
                   '<td>'+ data[i].Meta[j].Indicador[k].Descrip_des +'</td>'+
-                  '<td>NA</td>'+
+                  '<td>ND</td>'+
                   '<td>'+ estadoRecienteN +'</td>'+
-                  '<td>NA</td>'+
+                  '<td>ND</td>'+
                   '<td>'+ estadoReciente +'</td>'+
-                  '<td>NA</td>'+
+                  '<td>ND</td>'+
                   '</tr>';
               }//for k
             }// for j
