@@ -644,7 +644,7 @@ border-bottom-width: 0px !important;
             '</tr>';
             for (var j = 0; j < data[i].Meta.length; j++) {
               dataItems += '<tr>'+
-              '<td >'+data[i].Meta[j].Codigo_des+'</td>'+
+              '<td style="text-align: center;vertical-align: middle;">'+data[i].Meta[j].Codigo_des+'</td>'+
                 '<td colspan="6">'+data[i].Meta[j].Descrip_des+'</td>'+
                 '</tr>';
 
@@ -659,13 +659,13 @@ border-bottom-width: 0px !important;
                 var estadoReciente    = getMasReciente(indicador,claveSerie,claveCobertura);
 
                 dataItems +=  '<tr>'+
-                  '<td>'+ data[i].Meta[j].Indicador[k].Codigo_des +'</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">'+ data[i].Meta[j].Indicador[k].Codigo_des +'</td>'+
                   '<td>'+ data[i].Meta[j].Indicador[k].Descrip_des +'</td>'+
-                  '<td>ND</td>'+
-                  '<td>'+ estadoRecienteN +'</td>'+
-                  '<td>ND</td>'+
-                  '<td>'+ estadoReciente +'</td>'+
-                  '<td>ND</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">ND</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">'+ estadoRecienteN +'</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">ND</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">'+ estadoReciente +'</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">ND</td>'+
                   '</tr>';
               }//for k
             }// for j
