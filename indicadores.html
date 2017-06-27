@@ -179,7 +179,7 @@
 }
 .pie_cuadro2 div{
   margin-top:6px;
-  font-weight: 100;
+  font-weight: 300;
   font-size: initial;
 }
 </style>
@@ -750,7 +750,7 @@
                       <a class="icn exportCSV">CSV</a>
                       <!-- <a download="indicador.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a> -->
                       <!-- <a download="indid.csv" href="#" class="icns" onclick="return ExcellentExport.csv(this, 'tabla_export');">csv2</a> -->
-                      <a download="indi.xls" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
+                      <a id="descargaXLS" href="#" class="icns" onclick="return ExcellentExport.excel(this, 'tabla_export', 'Indicadores');">XLS</a>
                       <!-- <a class="icnSDMX">SDMX</a> -->
                       <!-- <a class="icnPDF">PDF</a> -->
 
@@ -1167,7 +1167,7 @@
                         'Zac.',
                         'Nal.',
                       ],
-              height: 170,
+              height: 50,
                 tick:{
 
                   rotate: -90,
@@ -1272,6 +1272,7 @@ function adelante(){
 
 
   var categories = [];
+  //var categories2 = [];
   var series = [];
 
   console.log('estados dobles');
@@ -1280,6 +1281,7 @@ function adelante(){
   //separar el areglo
   series.push(Descrip_ind);
   categories.push(Descrip_ind);
+  //categories2.push(Abrevia_cg);
   for (var i = 0; i < nuevos_estados_dobles.length; i++) {
    // console.log(nuevos_estados_dobles[i].estado);
     if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
@@ -1296,7 +1298,7 @@ function adelante(){
   cat_global = categories;
   chartBarras.load({
     columns: [series],
-    categories: categories,
+    categories: categories2,
     unload: [Descrip_ind],
   });
 
@@ -1722,7 +1724,7 @@ $(document).ready(function(){
           console.log("---->>>>>estados tabla",estados);
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
-          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + titulo +
+          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + Codigo_ind + ' ' + titulo +
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
@@ -2795,7 +2797,7 @@ var anioo = cadena.split('-');
     // This must be a hyperlink
     $(".exportCSV").on('click', function (event) {
         // CSV
-        var args = [$('#tabla_export2 table'), 'Indicador.csv'];
+        var args = [$('#tabla_export2 table'), Descrip_ind+'.csv'];
 
         exportTableToCSV.apply(this, args);
 
@@ -2811,13 +2813,16 @@ var anioo = cadena.split('-');
 
     $(".exportCSVDatos").on('click', function (event) {
         // CSV
-        var args = [$('#miTabla'), 'DatosParaElCalculo.csv'];
+        var args = [$('#miTabla'), 'DatosParaElCalculo - '+Descrip_ind+'.csv'];
 
         exportTableToCSV.apply(this, args);
 
         // If CSV, don't do event.preventDefault() or return false
         // We actually need this to be a typical hyperlink
     });
+
+
+    $("#descargaXLS").attr('download',Descrip_ind+'.xls');
 
 
 });
@@ -2924,7 +2929,7 @@ function exportTableToXLS($table1, filename1) {
 // This must be a hyperlink
 $(".exportXLS").on('click', function (event) {
     // CSV
-    var args1 = [$('#tabla_export table'), 'Indicador.xls'];
+    var args1 = [$('#tabla_export table'), Descrip_ind+'.xls'];
 
     exportTableToXLS.apply(this, args1);
 
