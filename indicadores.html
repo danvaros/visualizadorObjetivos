@@ -1161,6 +1161,7 @@
                         //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
                          return d[0].index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
                     };
+
                     return chartBarras.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
                 }
             },
@@ -1203,20 +1204,20 @@
                         'Zac.',
                         'Nal.',
                       ],
-              height: 50,
+            height: 50,
                 tick:{
 
                   rotate: -90,
 
                   multiline: false
                 },
-              } ,
+            },
               //  y : {
               //         tick: {
               //             format: d3.format(".2f")
               //         }
               //     }
-            },
+        },
       });//fin de grafica
     datosGrafica(2015);
 });
@@ -1296,7 +1297,7 @@ function adelante(){
 
       console.log(numero);
 
-      var valueToPush = {'numero':numero, 'estado':estados[i][0]};
+      var valueToPush = {'numero':numero, 'estado':estados[i][0], 'abrevia':abrevia_edo(estados[i][0])};
       nuevos_estados_dobles.push(valueToPush);
 
       serie.push(parseFloat(estados[i][indice]).toFixed(1));
@@ -1308,7 +1309,7 @@ function adelante(){
 
 
   var categories = [];
-  //var categories2 = [];
+  var categories2 = [];
   var series = [];
 
   console.log('estados dobles');
@@ -1324,6 +1325,8 @@ function adelante(){
         index_estados = i;
     }
     categories[i] = nuevos_estados_dobles[i].estado;
+    categories2[i] = nuevos_estados_dobles[i].abrevia;
+
     series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(1));
   }
 
@@ -1334,7 +1337,7 @@ function adelante(){
   cat_global = categories;
   chartBarras.load({
     columns: [series],
-    categories: categories,
+    categories: categories2,
     unload: [Descrip_ind],
   });
 
@@ -1342,6 +1345,114 @@ function adelante(){
   $('.tabla_dos').html(tabla_dos);
 }
 
+
+function abrevia_edo(nombre){
+  switch(nombre){
+    case "Estados Unidos Mexicanos":
+      return "Nal.";
+    break;
+    case "Aguascalientes":
+      return "Ags.";
+    break;
+    case "Baja California":
+      return "BC.";
+    break;
+    case "Baja California Sur":
+      return "BCS.";
+    break;
+    case "Campeche":
+      return "Camp.";
+    break;
+    case "Coahuila de Zaragoza":
+      return "Coah.";
+    break;
+    case "Colima":
+      return "Col.";
+    break;
+    case "Chiapas":
+      return "Chis.";
+    break;
+    case "Chihuahua":
+      return "Chih.";
+    break;
+    case "Ciudad de México":
+      return "CDMX.";
+    break;
+    case "Durango":
+      return "Dgo.";
+    break;
+    case "Guanajuato":
+      return "Gto.";
+    break;
+    case "Guerrero":
+      return "Gro.";
+    break;
+    case "Hidalgo":
+      return "Hgo.";
+    break;
+    case "Jalisco":
+      return "Jal.";
+    break;
+    case "México":
+      return "Mex.";
+    break;
+    case "Michoacán de Ocampo":
+      return "Mich.";
+    break;
+    case "Morelos":
+      return "Mor.";
+    break;
+    case "Nayarit":
+      return "Nay.";
+    break;
+    case "Nuevo León":
+      return "NL.";
+    break;
+    case "Oaxaca":
+      return "Oax.";
+    break;
+    case "Puebla":
+      return "Pue.";
+    break;
+    case "Querétaro":
+      return "Qro.";
+    break;
+    case "Quintana Roo":
+      return "Q. Roo.";
+    break;
+    case "San Luis Potosí":
+      return "SLP.";
+    break;
+    case "Sinaloa":
+      return "Sin.";
+    break;
+    case "Sonora":
+      return "Son.";
+    break;
+    case "Tabasco":
+      return "Tab.";
+    break;
+    case "Tamaulipas":
+      return "Tamps.";
+    break;
+    case "Tlaxcala":
+      return "Tlax.";
+    break;
+    case "Veracruz de Ignacio de la Llave":
+      return "Ver.";
+    break;
+    case "Yucatán":
+      return "Yuc.";
+    break;
+    case "Zacatecas":
+      return "Zac.";
+    break;
+    case "Extranjera":
+      return "Ext.";
+    break;
+
+  }
+}
 
 function regresa_estados_unidos(){
   return index_estados;
