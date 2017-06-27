@@ -941,6 +941,9 @@ if(PCveInd == 118){
 
         for (var j = 0; j < data.Series[i].Coberturas.length; j++) {
           temporal = [];
+          categories2 = [];
+
+          categories2.push(data.Series[i].Coberturas[j].Abrevia_cg);
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
@@ -1128,6 +1131,8 @@ if(PCveInd == 118){
 
     for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
       var temporal = [];
+      var categories2 = [];
+      categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
       temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
         var dato_formato;
