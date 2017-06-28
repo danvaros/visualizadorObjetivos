@@ -275,6 +275,9 @@
      text-align: left;
     }
 
+  .dataTables_scrollHeadInner{
+        margin-left: -63px !important;
+  }
 
   </style>
   <link rel="stylesheet" href="DataTables/datatables.css">
@@ -1875,7 +1878,7 @@ $(document).ready(function(){
             //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
           '</div>' +
                             '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
-                            '<table class="bordered" id="miTabla2" class="miTabla2">';
+                            '<table class="bordered" id="miTabla2" class="miTabla2" style="width: 1726px;margin-left: -53px;">';
 
 
           var datos_doble_22 =  ' <div class="cuadro_titulo"> ' + titulo +
@@ -1895,7 +1898,8 @@ $(document).ready(function(){
             // console.log(estados[0].length);
 
 
-             for (var i = 0; i < estados.length; i++) {
+            // for (var i = 0; i < estados.length; i++) {
+            for (var i = 0; i < estados.length; i++) {
                if(i == 0){
                 // datos_doble +=  '<thead><tr>';
                 datos_doble_2 +=  '<thead><tr>';
@@ -1915,8 +1919,10 @@ $(document).ready(function(){
                   datos_doble_3 +=  '<tr>';
                }
 
-               for (var j = estados[0].length -1 ; j > 0 ; j--) {
-                if(i == 0 && j == estados[0].length -1){
+               //for (var j = estados[0].length -1 ; j > 0 ; j--) {
+              for (var j = 0 ; j < estados[0].length; j++) {
+                //if(i == 0 && j == estados[0].length -1){
+                if(i == 0 && j == 0){
                   // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                   datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                   datos_doble_22 +=  '  <td  class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] .split('-')[0]+'</td>';
@@ -1927,7 +1933,8 @@ $(document).ready(function(){
 
                   datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
                 }
-                else if( i == 0 && j == estados[0].length -1 ){
+                else if( i == 0 && j == 0 ){
+                  //else if( i == 0 && j == estados[0].length -1 ){
                   // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
                   datos_doble_22 += '<td class"padding-200">'+ estados[i][j].split('-')[0] +'</td>';
@@ -1939,7 +1946,8 @@ $(document).ready(function(){
                   datos_doble_22 += '<td>'+ estados[i][j].split('-')[0] +'</td>';
                   datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
                 }
-                else if(j == estados[0].length -1 ) {
+                else if(j == 0 ) {
+                  //else if(j == estados[0].length -1 ) {
                     var varia;
                   if(estados[i][j] == "ND" || estados[i][j] == "NA")
                   {
@@ -1956,7 +1964,8 @@ $(document).ready(function(){
                   datos_doble_22 += varia;
                   datos_doble_3 += varia;
                 }
-                else if(j == estados[0].length -2){
+                else if(j == 1){
+                //  else if(j == estados[0].length -2){
                     // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
                     if(estados[i][j] == "ND" || estados[i][j] == "NA")
                     {
