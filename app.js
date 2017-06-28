@@ -1128,7 +1128,8 @@ if(PCveInd == 118){
       temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
     }
     estados.push(temporal);
-
+    console.log('TemporalTemporalTemporalTemporalTemporalTemporalTemporalTemporalTemporalTemporal');
+console.log(temporal);
     for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
       var temporal = [];
       var categories2 = [];
