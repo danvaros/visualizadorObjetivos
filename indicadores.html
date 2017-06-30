@@ -446,6 +446,32 @@
       </div>
     </div>
     <div class="container" style="margin-top: 10px;">
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field col s10">
+            <select>
+              <optgroup label="1. Fin del hambre">
+                <option value="1">1.1.1. Proporción de la población que vive por debajo del umbral internacional de la pobreza, desglosada por sexo, edad, situación laboral y ubicación geográfica (urbana o rural)</option>
+                <option value="2">1.2.1. Proporción de la población que vive por debajo del umbral nacional de la pobreza, desglosada por sexo y edad</option>
+                <option value="3">1.2.2. Proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones, con arreglo a las definiciones nacionales</option>
+              </optgroup>
+              <optgroup label="2. Hambre cero">
+                <option value="4">2.1.2. Proporción de la población con inseguridad alimentaria moderada o severa (carencia por acceso a la alimentación)</option>
+              </optgroup>
+              <optgroup label="3. Salud y bienestar">
+                <option value="5">3.1.1. Razón de mortalidad materna</option>
+                <option value="6">3.1.2. Proporción de partos con asistencia de personal sanitario especializado</option>
+              </optgroup>
+            </select>
+            <label>Listado de indicadores</label>
+          </div>
+        </div>
+      </div>
+
+
+
+
       <!-- <div class="row">
         <div class="col s12">
       <h3 style="color:#0a254f">Indicador <span class="Codigo_ind">&nbsp; </span> <span class="Descrip_ind">&nbsp; </span></h3>
@@ -947,7 +973,7 @@
     <!-- <script type="text/javascript" src="entidad2.json"></script> -->
     <!-- <script type="text/javascript" src="municipio.json"></script>
     <script type="text/javascript" src="nacion.json"></script> -->
-<script src="lib/excellentexport.js"></script>
+    <script src="lib/excellentexport.js"></script>
 
     <!-- Load d3.js and c3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -958,6 +984,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
 
   <script>
+
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+
+  //console.log(atributos.Grafica);
+  //console.log(atributos.Grafica[3].Seccion_gra);
+
+  var k;
+
+  // function buscaSeccion(seccion) {
+  //   switch (seccion) {
+  //     case expression:
+  //
+  //       break;
+  //     default:
+  //
+  //   }
+  //
+  //   return seccion = 15;
+  // }
+
+
+  // for(k = 0;k)
+console.log(atributos.Grafica.find(buscaSeccion));
+  if(atributos.Grafica.indexOf('Seccion_gra') ){
+
+
+  }
+
+
+
+
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
   var chart;
@@ -968,11 +1027,16 @@
   var table1  = null;
 
 
-  console.log(codigoDg.replace(/\s/g,''),"por aca");
+  //console.log(codigoDg.replace(/\s/g,''),"por aca");
+  // ------------------------------------------ //
+  // ----------- Sabe si es Nacional ---------- //
+  // Sólo muestra una gráfica de linea para los
+  // valores Nacionales
+  // ------------------------------------------ //
   if(codigoDg.replace(/\s/g,'') == 'N')
   {
-    console.log('------------------------ arreglo -----------------');
-    console.log(arreglo_cla);
+    //console.log('------------------------ arreglo -----------------');
+    //console.log(arreglo_cla);
     if(arreglo_cla.length > 0){
       poner_filtros_na();
     }
@@ -986,7 +1050,7 @@
     $('#indicador-grafica').remove();
     $('#indicador-panel').hide();
     //$('#mapas_hide').remove();
-    console.log("hecho");
+    //console.log("hecho");
     var chart2 = c3.generate({
     bindto: '#chart2',
     size: {
@@ -1009,7 +1073,6 @@
     color: {
           pattern:['#f00']
       },
-
       axis : {
           x : {
               type : 'timeseries',
@@ -1086,7 +1149,7 @@
     var textoTwitterGrafica = 'Comparto esta grafica';
     var textoTwitterMapa    = 'Comparto este mapa';
     var URLactual = window.location;
-    console.log(URLactual);
+    //console.log(URLactual);
     $('.liga').val(URLactual);
 
     var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
@@ -1097,40 +1160,6 @@
 
     $('#chart2btn').hide();
 
-
-    function tooltip_contents(d, defaultTitleFormat, defaultValueFormat, color) {
-        var $$ = this, config = $$.config, CLASS = $$.CLASS,
-            titleFormat = config.tooltip_format_title || defaultTitleFormat,
-            nameFormat = config.tooltip_format_name || function (name) { return name; },
-            valueFormat = config.tooltip_format_value || defaultValueFormat,
-            text, i, title, value, name, bgcolor;
-
-        // You can access all of data like this:
-        //console.log($$.data.targets);
-        console.log(d);
-
-        for (i = 0; i < d.length; i++) {
-            if (! (d[i] && (d[i].value || d[i].value === 0))) { continue; }
-
-            // to exclude
-            //if (d[i].name === 'data2') { continue; }
-
-            if (! text) {
-                title = 'MY TOOLTIP @ ' + d[0].x.getFullYear();
-                text = "<table class='" + CLASS.tooltip + "'>" + (title || title === 0 ? "<tr><th colspan='2'>" + title + "</th></tr>" : "");
-            }
-
-            name = nameFormat(d[i].name);
-            value = valueFormat(d[i].value, d[i].ratio, d[i].id, d[i].index);
-            bgcolor = $$.levelColor ? $$.levelColor(d[i].value) : color(d[i].id);
-
-            text += "<tr class='" + CLASS.tooltipName + "-" + d[i].id + "'>";
-            text += "<td class='name'><span style='background-color:" + bgcolor + "'></span>" + name + "</td>";
-            text += "<td class='value'>" + value + "</td>";
-            text += "</tr>";
-        }
-        return text + "</table>";
-    }
     chartBarras = c3.generate({
       legend: {
         show: false
@@ -1173,45 +1202,12 @@
         rotated: false,
         x: {
           type: 'category',
-          categories: [ 'Ags.',
-                        'BC.',
-                        'BCS.',
-                        'Camp.',
-                        'Coah.',
-                        'Col.',
-                        'Chis.',
-                        'Chih.',
-                        'CDMX.',
-                        'Dgo.',
-                        'Gto.',
-                        'Gro.',
-                        'Hgo.',
-                        'Jal.',
-                        'Mex.',
-                        'Mich.',
-                        'Mor.',
-                        'Nay.',
-                        'NL.',
-                        'Oax.',
-                        'Pue.',
-                        'Qro.',
-                        'Q Roo.',
-                        'SLP.',
-                        'Sin.',
-                        'Son.',
-                        'Tab.',
-                        'Tamps.',
-                        'Tlax.',
-                        'Ver.',
-                        'Yuc.',
-                        'Zac.',
-                        'Nal.',
-                      ],
+          categories: [ 'Ags.','BC.','BCS.','Camp.','Coah.','Col.','Chis.','Chih.','CDMX.','Dgo.','Gto.','Gro.','Hgo.','Jal.','Mex.','Mich.',
+          'Mor.','Nay.','NL.','Oax.','Pue.','Qro.','Q Roo.','SLP.','Sin.','Son.','Tab.','Tamps.','Tlax.','Ver.','Yuc.','Zac.','Nal.',
+          ],
             height: 50,
                 tick:{
-
                   rotate: -90,
-
                   multiline: false
                 },
             },
@@ -1233,22 +1229,22 @@ function atras(){
   //   $('.numero').html(estadoYear);
   //   datosGrafica(estadoYear);
   // }
-console.log('------------ atras  -------------------');
+//console.log('------------ atras  -------------------');
    if((anio_activo+1)  < arrray_anios.length){
-    console.log('------------ entra atras  -------------------');
+    //console.log('------------ entra atras  -------------------');
     anio_activo++;
-    console.log(anio_activo);
+    //console.log(anio_activo);
     $('.numero').html(arrray_anios[anio_activo]);
     datosGrafica(arrray_anios[anio_activo]);
   }
 }
 
 function adelante(){
-  console.log('------------ adelante  -------------------');
+  //console.log('------------ adelante  -------------------');
   if(0 <= (anio_activo-1)){
-    console.log('------------ adelante entra  -------------------');
+    //console.log('------------ adelante entra  -------------------');
     anio_activo--;
-    console.log(anio_activo);
+    //console.log(anio_activo);
     $('.numero').html(arrray_anios[anio_activo]);
     datosGrafica(arrray_anios[anio_activo]);
   }
@@ -1265,7 +1261,7 @@ function adelante(){
   var indice = 0;
   var serie = [];
   var nuevos_estados_dobles = new Array();
-  console.log(nuevos_estados_dobles);
+  //console.log(nuevos_estados_dobles);
 
   var tabla_uno = tabla_dos =  '';
 
@@ -1290,7 +1286,7 @@ function adelante(){
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
       }
 
-      console.log('____________________________ vamos aver que show --------------');
+      //console.log('____________________________ vamos aver que show --------------');
 
       if(estados[i][indice] == 'ND'){
         var numero =  0;
@@ -1298,7 +1294,7 @@ function adelante(){
         var numero =  parseFloat(estados[i][indice]).toFixed(1);
       }
 
-      console.log(numero);
+      //console.log(numero);
 
       var valueToPush = {'numero':numero, 'estado':estados[i][0], 'abrevia':abrevia_edo(estados[i][0])};
       nuevos_estados_dobles.push(valueToPush);
@@ -1307,7 +1303,6 @@ function adelante(){
     }
   }
 
-
   nuevos_estados_dobles.sort(sortFunction);
 
 
@@ -1315,8 +1310,8 @@ function adelante(){
   var categories2 = [];
   var series = [];
 
-  console.log('estados dobles');
-  console.log(nuevos_estados_dobles);
+  //console.log('estados dobles');
+  //console.log(nuevos_estados_dobles);
 
   //separar el areglo
   series.push(Descrip_ind);
@@ -1333,9 +1328,9 @@ function adelante(){
     series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(1));
   }
 
-  console.log("--->>>>las series",series);
-  console.log(categories);
-  console.log(Descrip_ind);
+  //console.log("--->>>>las series",series);
+  //console.log(categories);
+  //console.log(Descrip_ind);
 
   cat_global = categories;
   chartBarras.load({
@@ -1501,7 +1496,7 @@ function sortFunction(a, b) {
 
   function gen(props)
   {
-    console.log("los props son",props);
+    //console.log("los props son",props);
     var chart = c3.generate({
         bindto: '.info',
         padding: {
@@ -1614,7 +1609,7 @@ function sortFunction(a, b) {
     {
       if(estados[0][i] == cadena)
       {
-        console.log(estados[0][i]);
+        //console.log(estados[0][i]);
         return i;
       }
     }
@@ -1664,7 +1659,7 @@ function sortFunction(a, b) {
   		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
-          console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
+          //console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
           gen(estados[busqueda_indice(props.nom_ent)]);
           $(".crop").dotdotdot();
   	     }
@@ -1685,7 +1680,7 @@ function sortFunction(a, b) {
 
         function style(feature) {
   	    var res=String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
-        console.log(res,'hhhh',"c"+res[1]);
+        //console.log(res,'hhhh',"c"+res[1]);
           return {
             weight: 0.5,
             opacity: 1,
@@ -1778,12 +1773,12 @@ function sortFunction(a, b) {
       var values2 = [];
   		for (var i = 0; i < statesData.features.length; i++)
       {
-        console.log(statesData.features[i].properties.nom_ent);
+        //console.log(statesData.features[i].properties.nom_ent);
         if (statesData.features[i].properties.nom_ent == null) continue;
   			values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
   		}
 
-      console.log(values,values2);
+      //console.log(values,values2);
   		brew.setSeries(values);
   		brew.setNumClasses(4);
   		brew.setColorCode("Blues");
@@ -1797,7 +1792,7 @@ function sortFunction(a, b) {
           brea.push(alfr[ii]);
         }
       }
-      console.log("breaks0",brea,brew.getBreaks());
+      //console.log("breaks0",brea,brew.getBreaks());
         geojson = L.geoJson(statesData, {
           style: style,
           onEachFeature: onEachFeature
@@ -1815,7 +1810,7 @@ function sortFunction(a, b) {
             from = grades[i];
             to = grades[i + 1];
             var res=String(getColoR(from)).split(",");
-            console.log(from,from+1,res,grades);
+            //console.log(from,from+1,res,grades);
             labels.push(
               '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
               from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
@@ -1871,7 +1866,7 @@ $(document).ready(function(){
 
           $('#indicador-panel').hide();
           //$('.modal-trigger').leanModal();
-          console.log("---->>>>>estados tabla",estados);
+          //console.log("---->>>>>estados tabla",estados);
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
 
           var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + Codigo_ind + ' ' + titulo +
@@ -2016,7 +2011,7 @@ $(document).ready(function(){
                }
              }
 
-            console.log("bandera",flag_valor_nd,arreglo_valor_nd);
+            //console.log("bandera",flag_valor_nd,arreglo_valor_nd);
 
             if(flag_valor_nd)
             {
@@ -2032,7 +2027,7 @@ $(document).ready(function(){
                   mensaje_nd=mensaje_nd+'<div><strong>NA:</strong> No aplicable</div>';
                 }
               }
-              console.log("mensaje",mensaje_nd);
+              //console.log("mensaje",mensaje_nd);
               datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
               ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
                '</div></div>';
@@ -2071,7 +2066,7 @@ $(document).ready(function(){
           $('#tabla_nacional').html(datos_doble_2);
 
           $('.scroller').scroll(function(e) {
-            console.log("aca");
+            //console.log("aca");
             $('.scroller').scrollLeft(e.target.scrollLeft);
             });
 
@@ -2330,13 +2325,13 @@ $('#indicador').trigger("click");
             estados[i][1] = 1;
           }
         }
-        console.log('--------------- estados fake ------------------');
-        console.log(estados);
+        //console.log('--------------- estados fake ------------------');
+        //console.log(estados);
         cambio_anio('2017-01-01',44);
       }
 
-      console.log('---------------- array_anios ---------------');
-      console.log(arrray_anios);
+      //console.log('---------------- array_anios ---------------');
+      //console.log(arrray_anios);
       $('.numero').html(arrray_anios[0]);
       datosGrafica(arrray_anios[0]);
 
@@ -2379,8 +2374,8 @@ var contaAnios = arrray_anios.length - 1;
     $('#filtros').on('change',function(){
       $('#loader').show();
       estados = arma_tabla($(this).val());
-      console.log('------------------------- estados tabala select-----------------');
-      console.log(estados);
+      //console.log('------------------------- estados tabala select-----------------');
+      //console.log(estados);
       actualiza_grafica();
       if($('#agregacion').val() != 1){
         $('#'+anio_mas_actual).trigger( "click" );
@@ -2466,7 +2461,7 @@ var anioo = cadena.split('-');
           this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
         // gen(estados[props.cve]);
-        console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
+        //console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
         gen(estados[busqueda_indice(props.nom_ent)]);
         $(".crop").dotdotdot();
        }
@@ -2487,7 +2482,7 @@ var anioo = cadena.split('-');
 
       function style(feature) {
       var res=String(getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi))).split(",");
-      console.log(res,'hhhh',"c"+res[1]);
+      //console.log(res,'hhhh',"c"+res[1]);
         return {
           weight: 0.5,
           opacity: 1,
@@ -2579,12 +2574,12 @@ var anioo = cadena.split('-');
     var values2 = [];
     for (var i = 0; i < statesData.features.length; i++)
     {
-      console.log(statesData.features[i].properties.nom_ent);
+      //console.log(statesData.features[i].properties.nom_ent);
       if (statesData.features[i].properties.nom_ent == null) continue;
       values.push(busqueda_estado_posicion(statesData.features[i].properties.nom_ent,posi));
     }
 
-    console.log(values,values2);
+    //console.log(values,values2);
     brew.setSeries(values);
     brew.setNumClasses(4);
     brew.setColorCode("Blues");
@@ -2598,7 +2593,7 @@ var anioo = cadena.split('-');
         brea.push(alfr[ii]);
       }
     }
-    console.log("breaks0",brea);
+    //console.log("breaks0",brea);
 
       geojson = L.geoJson(statesData, {
         style: style,
@@ -2616,7 +2611,7 @@ var anioo = cadena.split('-');
           from = grades[i];
           to = grades[i + 1];
           var res=String(getColoR(from)).split(",");
-          console.log(from,from+1,res,grades);
+          //console.log(from,from+1,res,grades);
           labels.push(
             '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
             from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
@@ -2641,10 +2636,10 @@ var anioo = cadena.split('-');
     }
 
     $( window ).scroll(function() {
-      console.log('bajando',isScrolledIntoView($("#parrafo")));
+      //console.log('bajando',isScrolledIntoView($("#parrafo")));
       if ($(window).scrollTop() == 0)
       {
-        console.log("arriba");
+        //console.log("arriba");
         $("#sti").fadeOut(200);
         $("#esconder").fadeIn(200);
         // $( "#sti" ).animate({
@@ -2664,7 +2659,7 @@ var anioo = cadena.split('-');
     var lupa = false;
 
     function esconder() {
-      console.log("focusout");
+      //console.log("focusout");
       $('#cam_bus').hide();
       $('#buscar').show();
       lupa = false;
@@ -2674,7 +2669,7 @@ var anioo = cadena.split('-');
         $("#sti").hide();
         window.onload = function () {
           $('#buscar').click(function () {
-            console.log("aca");
+            //console.log("aca");
             if (lupa) {
               $('#cam_bus').hide();
               lupa = false;
@@ -2694,8 +2689,8 @@ var anioo = cadena.split('-');
       function armaMetadatos(){
         var tablaMeta =  '';
         var metadatosArr =  getMetadatos(vars);
-        console.log('---------------------- metadatos -----------------');
-        console.log(metadatosArr);
+        //console.log('---------------------- metadatos -----------------');
+        //console.log(metadatosArr);
 
         tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
         '<tr><th>Objetivo</th><td>'+metadatosArr.Descrip_obj+'</td></tr>'+
