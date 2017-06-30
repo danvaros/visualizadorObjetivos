@@ -201,7 +201,7 @@ border-bottom-width: 0px !important;
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
              <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <!-- 
+            <!--
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
@@ -541,25 +541,25 @@ border-bottom-width: 0px !important;
             <a href="home.html"><img src="img/ods_logo_home2.png" alt="" /></a>
             <br>
             <br>
-            <div class="" style="display:inline;">
+            <!-- <div class="" style="display:inline;">
               <a href="https://www.facebook.com" style="margin-right: 12%;"><img src="img/fill2.png" alt="" style="width:3%;"/></a>
               <a href="https://twitter.com" style="margin-right: 12%;"><img src="img/fill1.png" alt="" style="width:7%;"/></a>
               <a href="#"><img src="img/fill3.png" alt="" style="width:7%;"/></a>
-            </div>
+            </div> -->
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
               <li><a class="fuerte t_sm" href="objetivos.html">Indicadores</a></li>
               <li><a class="fuerte t_sm" href="estados.html">Indicadores con desglose geográfico</a></li>
-              <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li>
+              <!-- <li><a class="fuerte t_sm" href="como_vamos.html">¿Cómo vamos?</a></li> -->
               <li><a class="fuerte t_sm" href="explora.html">Explora</a></li>
             </ul>
           </div>
           <div class="col l3 s12">
             <ul class="fuerte">
-              <li><a class="fuerte t_sm" href="compara.html">Compara</a></li>
+              <!-- <li><a class="fuerte t_sm" href="compara.html">Compara</a></li> -->
             <li><a class="fuerte t_sm" href="calendario.html">Calendario de actualizaciones</a></li>
-            <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li>
+            <!-- <li><a class="fuerte t_sm" href="exportacion.html">Exportación masiva</a></li> -->
             <li><a class="fuerte t_sm" href="acerca.html">Acerca de</a></li>
             </ul>
           </div>
@@ -569,8 +569,8 @@ border-bottom-width: 0px !important;
           </div>
         </div>
       </div>
-      <div class="footer-copyright light-blue">
-      </div>
+      <!-- <div class="footer-copyright light-blue">
+      </div> -->
     </footer>
 <!-- footer -->
 
@@ -579,11 +579,11 @@ border-bottom-width: 0px !important;
   var lupa = false;
   var estado = getParameterByName('estad');
   var label  = getParameterByName('label');
-  
+
   $(document).ready(function() {
      $('#cam_bus').keypress(function(e) {
         if(e.which == 13) {
-          buscar($('#cam_bus').val());  
+          buscar($('#cam_bus').val());
         }
     });
 
@@ -602,11 +602,11 @@ border-bottom-width: 0px !important;
     $('#estado > option[value="'+ estado +'"]').attr('selected', 'selected');
     $('select').material_select();
 
-    //hacemos la primera llamada 
+    //hacemos la primera llamada
     OMITabla(estado, label);
     //llamada al cambiar el select
     $('#estado').change(function(){
-      OMITabla($('#estado').val(), $('#estado option:selected').text());    
+      OMITabla($('#estado').val(), $('#estado option:selected').text());
     });
   });
 
@@ -619,18 +619,16 @@ border-bottom-width: 0px !important;
     var dataItems =  '<div class="container">'+
     '<table>'+
         '<tr>'+
-          '<td colspan="2">Indicadores</td>'+
-          '<td colspan="2">Estados Unidos Mexicanos</td>'+
-          '<td colspan="2"> '+ label +'</td>'+
-          '<td>Meta de México</td>'+
+          '<td colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">Indicadores</td>'+
+          '<td colspan="2" style="text-align: center;vertical-align: middle;">Estados Unidos Mexicanos</td>'+
+          '<td colspan="2" style="text-align: center;vertical-align: middle;"> '+ label +'</td>'+
+          '<td style="text-align: center;vertical-align: middle;" rowspan="2">Meta de México</td>'+
         '</tr>'+
         '<tr>'+
-          '<td colspan="2"></td>'+
-          '<td>Línea base</td>'+
-          '<td>Dato más reciente</td>'+
-          '<td>Línea base</td>'+
-          '<td>Dato más reciente</td>'+
-          '<td></td>'+
+          '<td style="text-align: center;vertical-align: middle;">Línea base</td>'+
+          '<td style="text-align: center;vertical-align: middle;">Dato más reciente</td>'+
+          '<td style="text-align: center;vertical-align: middle;">Línea base</td>'+
+          '<td style="text-align: center;vertical-align: middle;">Dato más reciente</td>'+
         '</tr>';
 
       $.ajax({
@@ -638,7 +636,7 @@ border-bottom-width: 0px !important;
         url: url,
         data: parametros,
         success: function( data, textStatus, jqxhr ) {
-          console.log(data);            
+          console.log(data);
           for (var i = 0; i < data.length; i++) {
             color = coloresEstados[(data[i].Codigo_des.substring(0, 1))-1];
             dataItems += '<tr>'+
@@ -646,7 +644,7 @@ border-bottom-width: 0px !important;
             '</tr>';
             for (var j = 0; j < data[i].Meta.length; j++) {
               dataItems += '<tr>'+
-              '<td >'+data[i].Meta[j].Codigo_des+'</td>'+
+              '<td style="text-align: center;vertical-align: middle;">'+data[i].Meta[j].Codigo_des+'</td>'+
                 '<td colspan="6">'+data[i].Meta[j].Descrip_des+'</td>'+
                 '</tr>';
 
@@ -659,15 +657,15 @@ border-bottom-width: 0px !important;
                 console.log('indicador: '+indicador+' '+'serie: '+claveSerie+' '+'cobertura: '+claveCobertura);
                 var estadoRecienteN   = getMasReciente(indicador,claveSerie,'00');
                 var estadoReciente    = getMasReciente(indicador,claveSerie,claveCobertura);
-                
+
                 dataItems +=  '<tr>'+
-                  '<td>'+ data[i].Meta[j].Indicador[k].Codigo_des +'</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">'+ data[i].Meta[j].Indicador[k].Codigo_des +'</td>'+
                   '<td>'+ data[i].Meta[j].Indicador[k].Descrip_des +'</td>'+
-                  '<td>ND</td>'+
-                  '<td>'+ estadoRecienteN +'</td>'+
-                  '<td>ND</td>'+
-                  '<td>'+ estadoReciente +'</td>'+
-                  '<td>ND</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">ND</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">'+ estadoRecienteN +'</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">ND</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">'+ estadoReciente +'</td>'+
+                  '<td style="text-align: center;vertical-align: middle;">ND</td>'+
                   '</tr>';
               }//for k
             }// for j
@@ -701,8 +699,8 @@ border-bottom-width: 0px !important;
           var anio   = coberturas[0].Clasificaciones[0].ValorDato.AADato_ser;
           var valor  = coberturas[0].Clasificaciones[0].ValorDato.Dato_Formato;
           reciente = valor + '<br> (' + anio + ')';
-        } 
-       
+        }
+
       },
       async:false
     });// ajax
@@ -730,7 +728,7 @@ border-bottom-width: 0px !important;
   function buscar(busqueda){
     window.location.replace("busqueda.html?busqueda=" + busqueda);
   }
-  
+
   function esconder() {
     $('#cam_bus').hide();
     $('#buscar').show();

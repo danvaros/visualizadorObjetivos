@@ -120,7 +120,7 @@ if(PCveInd == 118){
 
           estados = arma_tabla(0);
           coberturaInsumos(data);
-          console.log(estados);
+          //console.log(estados);
           poner_filtros();
           poner_filtros_serie();
           $('#row_filtros_serie').show();
@@ -178,7 +178,7 @@ if(PCveInd == 118){
 
           estados = arma_tabla(0);
           coberturaInsumos(data);
-          console.log(estados);
+          //console.log(estados);
           poner_filtros();
           poner_filtros_serie();
           $('#row_filtros_serie').show();
@@ -276,8 +276,8 @@ if(PCveInd == 118){
     // });
 
     $('#filtros_serie').on('change', function(){
-      console.log('-------------------- validemos ---------------');
-      console.log(arreglo_datos);
+      //console.log('-------------------- validemos ---------------');
+      //console.log(arreglo_datos);
       var filtro = $(this).val();
       var tipo_101 =  $('#filtros_serie_101').val();
       if(PCveInd == 101){
@@ -303,7 +303,7 @@ if(PCveInd == 118){
     });
 
     $('#este2').on('change', function(){
-      console.log('------------------------ analisis de datos que se enstan mostrando --------------');
+      //console.log('------------------------ analisis de datos que se enstan mostrando --------------');
       cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
     });
 
@@ -326,7 +326,7 @@ if(PCveInd == 118){
                       '</div>' +
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
-    console.log('-------------------- validemos ---------------');
+    //console.log('-------------------- validemos ---------------');
 
     if(tipo_101 == 0){
       var tabla_armada = arma_tabla_insumo(arreglo_datos,filtro);
@@ -336,7 +336,7 @@ if(PCveInd == 118){
       var tabla_armada = arma_tabla_insumo(arreglo_datos_mujeres,filtro);
     }
 
-    console.log(tabla_armada);
+    //console.log(tabla_armada);
 
       for (var i = 0; i < tabla_armada.length; i++) {
                if(i == 0){
@@ -411,8 +411,8 @@ if(PCveInd == 118){
                       '</div>' +
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
-    console.log('-------------------- validemos ---------------');
-    console.log(arreglo_datos);
+    //console.log('-------------------- validemos ---------------');
+    //console.log(arreglo_datos);
     var tabla_armada = arma_tabla_insumo(arreglo_datos,filtro);
 
       for (var i = 0; i < tabla_armada.length; i++) {
@@ -508,8 +508,8 @@ if(PCveInd == 118){
                                         '<table class="bordered" id="miTablaDat" class="miTablaDat">';
 
 
-    console.log('--------------- tabla armada ----------');
-    console.log(tabla_armada);
+    //onsole.log('--------------- tabla armada ----------');
+    //console.log(tabla_armada);
 
 
 
@@ -620,12 +620,12 @@ if(PCveInd == 118){
                                         '</div>' +
                                         '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                                         '<table class="bordered" id="miTablaDat" class="miTablaDat">';
-    console.log('--------------- insu cobertura ----------');
-    console.log(insumos_cobertura[$('#insumo_change_cob').val()]);
-    console.log(insumos_cobertura[$('#insumo_change_cob').val()][filtro]);
+    //console.log('--------------- insu cobertura ----------');
+    //console.log(insumos_cobertura[$('#insumo_change_cob').val()]);
+    //console.log(insumos_cobertura[$('#insumo_change_cob').val()][filtro]);
     var tabla_armada = arma_tabla_insumo(insumos_cobertura[$('#insumo_change_cob').val()],filtro);
-    console.log('--------------- tabla armada ----------');
-    console.log(tabla_armada);
+    //console.log('--------------- tabla armada ----------');
+    //console.log(tabla_armada);
 
       for (var i = 0; i < tabla_armada.length; i++) {
                if(i == 0){
@@ -921,7 +921,7 @@ if(PCveInd == 118){
   }
 
   function valorDatoInsumos(data){
-    console.log("comparacion1");
+    //console.log("comparacion1");
     lista_insumos = [];
     var temporal = [];
     var individual = [];
@@ -941,6 +941,9 @@ if(PCveInd == 118){
 
         for (var j = 0; j < data.Series[i].Coberturas.length; j++) {
           temporal = [];
+          categories2 = [];
+
+          categories2.push(data.Series[i].Coberturas[j].Abrevia_cg);
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
@@ -1112,11 +1115,11 @@ if(PCveInd == 118){
   }
 
   function valorDato(data){
-    console.log("comparacion2");
-    console.log(data);
+    //console.log("comparacion2");
+    //console.log(data);
     var temporal = [];
-    console.log('******************** des');
-    console.log(data.Descrip_ind);
+    //console.log('******************** des');
+    //console.log(data.Descrip_ind);
     Descrip_ind = data.Descrip_ind;
 
 
@@ -1125,14 +1128,17 @@ if(PCveInd == 118){
       temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
     }
     estados.push(temporal);
-
+    //console.log('TemporalTemporalTemporalTemporalTemporalTemporalTemporalTemporalTemporalTemporal');
+//console.log(temporal);
     for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
       var temporal = [];
+      var categories2 = [];
+      categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
       temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
         var dato_formato;
-        console.log('-------------------- comparamos --------------------');
-        console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato);
+        // console.log('-------------------- comparamos --------------------');
+        // console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato);
         if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != null)
         {
 
@@ -1151,8 +1157,8 @@ if(PCveInd == 118){
   function arma_tabla(num_cobertura){
     var cobertura_tabla = [];
 
-    console.log(arreglo_datos[num_cobertura]);
-    console.log(arreglo_datos);
+    //console.log(arreglo_datos[num_cobertura]);
+    //console.log(arreglo_datos);
     cobertura_tabla.push(anios_cob);
     for (var i = 0; i < arreglo_datos[num_cobertura].length; i++) {
         cobertura_tabla.push(arreglo_datos[num_cobertura][i]);
@@ -1175,8 +1181,8 @@ if(PCveInd == 118){
     $('#filtros_es').on('change',function(){
       $('#loader').show();
       estados = arma_tabla($(this).val());
-      console.log('------------------------- estados tabala select-----------------');
-      console.log(estados);
+      //console.log('------------------------- estados tabala select-----------------');
+      //console.log(estados);
       actualiza_grafica();
 
       $('#'+anio_mas_actual).trigger( "click" );
@@ -1187,8 +1193,8 @@ if(PCveInd == 118){
     $('#filtros_na').on('change',function(){
       $('#loader').show();
       estados = arma_tabla($(this).val());
-      console.log('------------------------- estados tabala select-----------------');
-      console.log(estados);
+      //console.log('------------------------- estados tabala select-----------------');
+      //console.log(estados);
       actualiza_grafica_na();
 
       $('#loader').delay(2000).fadeOut("slow");
@@ -1204,10 +1210,10 @@ if(PCveInd == 118){
   function generar_titulos_cob(){
       var serie_insumo =  $('#insumo_change_cob').val();
       serie_insumo++;
-      console.log(serie_insumo);
-      console.log(atributos);
-      console.log(atributos.Serie[2]);
-      console.log(atributos.Serie[serie_insumo].NotaSer_not);
+      //console.log(serie_insumo);
+      //console.log(atributos);
+      //console.log(atributos.Serie[2]);
+      //console.log(atributos.Serie[serie_insumo].NotaSer_not);
 
         titulo_insumo = '<h4 id="titulo_cabezeras">'+atributos.DescripInd_des+'</h4>' +
                         '<li class="divider"></li> '+
@@ -1223,10 +1229,10 @@ if(PCveInd == 118){
   function generar_titulos(){
       var serie_insumo =  $('#insumo_change').val();
       serie_insumo++;
-      console.log(serie_insumo);
-      console.log(atributos);
-      console.log(atributos.Serie[2]);
-      console.log(atributos.Serie[serie_insumo].NotaSer_not);
+      //console.log(serie_insumo);
+      //console.log(atributos);
+      //console.log(atributos.Serie[2]);
+      //console.log(atributos.Serie[serie_insumo].NotaSer_not);
 
         titulo_insumo = '<h4 id="titulo_cabezeras">'+atributos.DescripInd_des+'</h4>' +
                         '<li class="divider"></li> '+
@@ -1509,7 +1515,7 @@ if(PCveInd == 118){
       {
         if(estados[i][0] == cadena)
         {
-          console.log("valorNull",cadena,estados[i][1],estados[i][1]=="ND");
+          //console.log("valorNull",cadena,estados[i][1],estados[i][1]=="ND");
           if(estados[i][1]=="ND")
           {
             return -1;
@@ -1549,7 +1555,7 @@ if(PCveInd == 118){
       {
         if(estados[i][0] == cadena)
         {
-          console.log("aca el error",cadena,estados[i][posicion]);
+          //console.log("aca el error",cadena,estados[i][posicion]);
           if(estados[i][posicion] == "ND")
           {
             return -1;
@@ -1568,7 +1574,7 @@ if(PCveInd == 118){
       {
         if(estados[0][i] == cadena)
         {
-          console.log(estados[0][i]);
+          //console.log(estados[0][i]);
           return i;
         }
       }
@@ -1618,7 +1624,7 @@ if(PCveInd == 118){
         this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
       // gen(estados[props.cve]);
-      console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
+      //console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
       gen(estados[busqueda_indice(props.nom_ent)]);
       $(".crop").dotdotdot();
      }
@@ -1634,7 +1640,7 @@ if(PCveInd == 118){
 
     function style(feature) {
     var res=String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
-    console.log(res,'hhhh',"c"+res[1]);
+    //console.log(res,'hhhh',"c"+res[1]);
       return {
         weight: 0.5,
         opacity: 1,
@@ -1726,12 +1732,12 @@ if(PCveInd == 118){
   var values2 = [];
   for (var i = 0; i < statesData.features.length; i++)
   {
-    console.log(statesData.features[i].properties.nom_ent);
+    //console.log(statesData.features[i].properties.nom_ent);
     if (statesData.features[i].properties.nom_ent == null) continue;
     values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
   }
 
-  console.log(values,values2);
+  //console.log(values,values2);
   var brea =[-1,0,100];
   // for(var ii=0;ii<alfr.length;ii++)
   // {
@@ -1758,7 +1764,7 @@ if(PCveInd == 118){
         from = grades[i];
         to = grades[i + 1];
         var res=String(getColoR(from)).split(",");
-        console.log(from,from+1,res,grades);
+        //console.log(from,from+1,res,grades);
         labels.push(
           '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
           from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
