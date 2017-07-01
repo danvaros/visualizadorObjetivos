@@ -164,7 +164,7 @@ input[type=text]:focus:not([readonly])
 }
 .back_gray
 {
-  background-color: rgba(158, 158, 158,0.2);
+  background-color: rgba(158, 158, 158,0.06);
 }
 .ico_obj
 {

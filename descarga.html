@@ -89,7 +89,7 @@
         }
 
         .fond{
-          color: #afaaaa !important;
+          color: #6a6565 !important;
         }
 
         .fond_global{
@@ -98,7 +98,7 @@
         }
 
         .borde_b{
-          border-bottom: solid 1px #afaaaa;
+          border-top: solid 1px #afaaaa;
         }
            #loader {
       display: block;
@@ -127,6 +127,12 @@
      #loader p #tex{
       width: 300px;
     }
+
+    form p{
+      margin:15px;
+    }
+
+
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
@@ -189,23 +195,27 @@ $('#loader').show();
 
     <div class="container" id="objetivo0">
       <div class="row">
-        <div class="col s12">
+        <div class="col s12 l12">
           <h3 class="fuerte t_principal">DESCARGA MASIVA</h3>
           <li class="divider"></li>
         </div>
-        <div class="col s12">
-          <br>
-          <div class="input-field col s10 l12" style="margin-left:15px;">
-            <p>Elementos a exportar</p>
-            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Indicador
-            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Metadato
-            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Serie histórica Datos para el cálculo
-            <input type="checkbox" class="validate caja_d" style="padding-left: 12px;">Datos para el cálculo
-            <input type="submit" class="valdidate caja_d" style="padding-left:12px;" value="Enviar" />
-
-            <div>
-
-            </div>
+        <div class="col s12 l12">
+          <br />
+          <h5>Elementos a exportar</h5>
+          <br />
+          <div class="input-field col s12 l8" style="margin-left:0px;">
+            <input type="checkbox" class="validate caja_d indicadorDescarga" style="padding-left: 12px;">&nbsp;Indicador&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="validate caja_d metadatoDescarga" style="padding-left: 12px;">&nbsp;Metadato&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="validate caja_d serieDescarga" style="padding-left: 12px;">&nbsp;Serie histórica Datos para el cálculo&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="input-field col s12 l2">
+                  <b>Formato:</b>
+                <input type="checkbox" class="valdidate caja_d tipoCSV" style="padding-left:12px;" />&nbsp;CSV&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" class="valdidate caja_d tipoXLS" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="input-field col s12 l2">
+              <input type="submit" class="valdidate caja_d enviaDescarga" style="padding-left:12px;" value="Enviar" />
           </div>
         </div>
         <!-- <div class="col s12">
@@ -221,49 +231,49 @@ $('#loader').show();
         <div class="col s12">
           <ul id="objetivos" class="" data-collapsible="accordion">
            <li id="objetivo1" class="objetivos">
-             <div id="fin_pobreza" class=" active fin_pobreza">
+             <div id="fin_pobreza" class=" active fin_pobreza id_1" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_1">
                  <img class="ico_obj" src="img/ods-01.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi1" style="padding-left: 12px;"> 1- Fin de la pobreza<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm" style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi1" style="padding-left: 12px;"> 1- Fin de la pobreza<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="fin_pobreza_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="fin_pobreza_cont">
                 <div class="col s12">
                  <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo2" class="objetivos">
-             <div class=" active">
+             <div class=" active  id_2" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_2" id="id_2">
                  <img class="ico_obj" src="img/ods-02.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi2" style="padding-left: 12px;"> 2- Hambre cero<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi2" style="padding-left: 12px;"> 2- Hambre cero<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="hambre_cero_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="hambre_cero_cont">
                <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo3" class="objetivos">
-             <div class="">
+             <div class=" id_3" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_3" id="id_3">
                  <img class="ico_obj" src="img/ods-03.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi3" style="padding-left: 12px;"> 3- Salud y bienestar<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi3" style="padding-left: 12px;"> 3- Salud y bienestar<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class="back_gray t_sm gris" style="overflow: hidden;" id="salud_bienestar_cont">
+             <div class="back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="salud_bienestar_cont">
              </div>
            </li>
            <li id="objetivo4" class="objetivos">
-             <div class="">
+             <div class=" id_4" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_4" id="id_4">
                  <img class="ico_obj" src="img/ods-04.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi4" style="padding-left: 12px;"> 4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi4" style="padding-left: 12px;"> 4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="educacion_calidad_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="educacion_calidad_cont">
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -273,13 +283,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo5" class="objetivos">
-             <div class=" active">
+             <div class=" active id_5" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_5" id="id_5">
                  <img class="ico_obj ico_top" src="img/ods-05.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi5" style="padding-left: 12px;"> 5- Igualdad de género<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi5" style="padding-left: 12px;"> 5- Igualdad de género<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="igualdad_genero_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="igualdad_genero_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -289,13 +299,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo6" class="objetivos">
-             <div class=" active">
+             <div class=" active id_6" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_6" id="id_6">
                  <img class="ico_obj ico_top" src="img/ods-06.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi6" style="padding-left: 12px;"> 6- Agua limpia y saneamiento<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi6" style="padding-left: 12px;"> 6- Agua limpia y saneamiento<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="agua_limpia_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="agua_limpia_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -305,13 +315,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo7" class="objetivos">
-             <div class=" active">
+             <div class=" active id_7" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_7" id="id_7">
                  <img class="ico_obj" src="img/ods-07.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi7" style="padding-left: 12px;"> 7- Energía asequible y no contaminante<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi7" style="padding-left: 12px;"> 7- Energía asequible y no contaminante<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="energia_esequible_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="energia_esequible_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -321,39 +331,39 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo8" class="objetivos">
-             <div class=" active">
+             <div class=" active id_8" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_8" id="id_8">
                  <img class="ico_obj" src="img/ods-08.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi8" style="padding-left: 12px;"> 8- Trabajo decente y crecimiento económico<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi8" style="padding-left: 12px;"> 8- Trabajo decente y crecimiento económico<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="trabajo_docente_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="trabajo_docente_cont">
                 <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo9" class="objetivos">
-             <div class=" active">
+             <div class=" active id_9" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_9" id="id_9">
                  <img class="ico_obj" src="img/ods-09.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi9" style="padding-left: 12px;"> 9- Industria, innovación e infraestructura<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi9" style="padding-left: 12px;"> 9- Industria, innovación e infraestructura<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="industria_innovacion_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="industria_innovacion_cont">
                 <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
                 </div>
              </div>
            </li>
            <li id="objetivo10" class="objetivos">
-             <div class=" active">
+             <div class=" active id_10" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_10" id="id_10">
                  <img class="ico_obj" src="img/ods-10.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi10" style="padding-left: 12px;"> 10- Reducción de las desigualdades<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi10" style="padding-left: 12px;"> 10- Reducción de las desigualdades<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="reduccion_desigualdades_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="reduccion_desigualdades_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -363,13 +373,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo11" class="objetivos">
-             <div class=" active">
+             <div class=" active id_11" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_11" id="id_11">
                  <img class="ico_obj" src="img/ods-11.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi11" style="padding-left: 12px;"> 11- Ciudades y comunidades sustentables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi11" style="padding-left: 12px;"> 11- Ciudades y comunidades sustentables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="ciudades_comunidades_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="ciudades_comunidades_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -379,13 +389,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo12" class="objetivos">
-             <div class=" active">
+             <div class=" active id_12" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_12" id="id_12">
                  <img class="ico_obj" src="img/ods-12.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi12" style="padding-left: 12px;"> 12- Producción y consumo responsables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi12" style="padding-left: 12px;"> 12- Producción y consumo responsables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="produccion_consumo_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="produccion_consumo_cont">
                 <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -395,13 +405,13 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo13" class="objetivos">
-             <div class=" active">
+             <div class=" active id_13" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_13" id="id_13">
                  <img class="ico_obj" src="img/ods-13.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi13" style="padding-left: 12px;"> 13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi13" style="padding-left: 12px;"> 13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="accion_clima_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="accion_clima_cont">
                <div class="row" >
                   <div class="col s1"></div>
                   <div class="col s11">
@@ -411,52 +421,52 @@ $('#loader').show();
              </div>
            </li>
            <li id="objetivo14" class="objetivos">
-             <div class=" active">
+             <div class=" active id_14" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_14" id="id_14">
                  <img class="ico_obj" src="img/ods-14.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi14" style="padding-left: 12px;"> 14- Vida submarina<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi14" style="padding-left: 12px;"> 14- Vida submarina<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="vida_submarina_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="vida_submarina_cont">
               <div class="col s12">
                 <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
            <li id="objetivo15" class="objetivos">
-             <div class=" active">
+             <div class=" active id_15" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_15" id="id_15">
                  <img class="ico_obj" src="img/ods-15.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi15" style="padding-left: 12px;"> 15- Vida de ecosistemas terrestres<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi15" style="padding-left: 12px;"> 15- Vida de ecosistemas terrestres<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="vida_ecosistemas_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="vida_ecosistemas_cont">
               <div class="col s12">
                 <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
            <li id="objetivo16" class="objetivos">
-             <div class=" active">
+             <div class=" active id_16" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_16" id="id_16">
                  <img class="ico_obj" src="img/ods-16.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi16" style="padding-left: 12px;"> 16- Paz, justicia e instituciones sólidas<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi16" style="padding-left: 12px;"> 16- Paz, justicia e instituciones sólidas<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="paz_justicia_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="paz_justicia_cont">
               <div class="col s12">
                   <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
              </div>
            </li>
            <li id="objetivo17" class="objetivos">
-             <div class=" active">
+             <div class=" active id_17" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_17" id="id_17">
                  <img class="ico_obj" src="img/ods-17.png" alt="" />
                </div>
-               <span class="marg_obj t_sm gris"><input type="checkbox" class="validate caja_d indi17" style="padding-left: 12px;"> 17- Alianzas para lograr objetivos<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi17" style="padding-left: 12px;"> 17- Alianzas para lograr objetivos<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
-             <div class=" back_gray t_sm gris" style="overflow: hidden;" id="alianzas_objetivos_cont">
+             <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="alianzas_objetivos_cont">
               <div class="col s12">
                 <p>No se tiene indicadores disponibles para este objetivo</p>
               </div>
@@ -763,11 +773,11 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
         }//despues de este cambia el indicador
 
 if(datos[i].Meta.length > 2){
-            contenido = contenido +    '<div class="row fond link_less">' +
-                                          '<div class="col s12">'+
+            contenido = contenido; //+    '<div class="row fond link_less">' +
+                                  //        '<div class="col s12">'+
                                              //'<p style="text-align:right !important;"><a class="fond mensaje" href="#objetivoId'+(i+1)+'" onclick="show_less()">Ver menos</a></p>'+
-                                          '</div>'+
-                                        '</div>';
+                                    //      '</div>'+
+                                      //  '</div>';
           }
 
      // se asigna el codiogo de cada contenedor
