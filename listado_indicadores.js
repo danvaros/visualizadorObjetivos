@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	get_tematica();
 	$('#listado_indicadores').change(function(){
-		alert( $('#listado_indicadores select').val() );
+		//alert( $('#listado_indicadores select').val() );
 		window.location.href = ''+$('#listado_indicadores select').val();
 	});
 });
