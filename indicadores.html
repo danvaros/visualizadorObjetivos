@@ -1271,13 +1271,13 @@ function adelante(){
       serie.push(Descrip_ind);
     }else{
       if(i < 18){
-        var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
+        var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
         tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+ unods + '</td></tr>' ;
       } else if(i == 35){
         $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
       }
       else {
-        var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
+        var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
         tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
       }
 
@@ -1286,7 +1286,7 @@ function adelante(){
       if(estados[i][indice] == 'ND'){
         var numero =  0;
       }else{
-        var numero =  parseFloat(estados[i][indice]).toFixed(1);
+        var numero =  parseFloat(estados[i][indice]);//.toFixed(1);
       }
 
       //console.log(numero);
@@ -1294,7 +1294,7 @@ function adelante(){
       var valueToPush = {'numero':numero, 'estado':estados[i][0], 'abrevia':abrevia_edo(estados[i][0])};
       nuevos_estados_dobles.push(valueToPush);
 
-      serie.push(parseFloat(estados[i][indice]).toFixed(1));
+      serie.push(parseFloat(estados[i][indice]));
     }
   }
 
@@ -1320,7 +1320,7 @@ function adelante(){
     categories[i] = nuevos_estados_dobles[i].estado;
     categories2[i] = nuevos_estados_dobles[i].abrevia;
 
-    series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(1));
+    series.push(parseFloat(nuevos_estados_dobles[i].numero));
   }
 
   //console.log("--->>>>las series",series);
@@ -1651,7 +1651,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent)/*.toFixed(1)props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           //console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
