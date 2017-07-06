@@ -1263,7 +1263,7 @@ if(PCveInd == 118){
                         '<p id="no_va_serie"><strong>Total<strong></p>';
 
                          pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-                  '<div><strong>NA:</strong> No aplicable</div><div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
                   ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
@@ -1277,7 +1277,7 @@ if(PCveInd == 118){
 
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-                  '<div><strong>NA:</strong> No aplicable</div><div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
                   ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
@@ -1288,7 +1288,7 @@ if(PCveInd == 118){
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
-                  '<div><strong>NA:</strong> No aplicable</div><div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
+                  '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
                   ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';

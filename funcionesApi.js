@@ -53,8 +53,8 @@
 		var atributos = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "http://agenda2030.mx/datos/api/AtrIndicador/PorClave",
-	   	  data: {'PCveInd':indicador, 'PIdioma':'ES'},
+	   	  url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
+	   	  data: {'PCveInd':indicador, 'PIdioma':'ES', 'POpcion':'Cl'},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
 	        atributos = data;
