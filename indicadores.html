@@ -1229,6 +1229,23 @@ function atras(){
     anio_activo++;
     //console.log(anio_activo);
     $('.numero').html(arrray_anios[anio_activo]);
+
+          // var array_Graficas = atributos.Grafica;
+          //
+          // //console.log(array_Graficas);
+          // var g;
+          // var index;
+          // for(g = 0; g < array_Graficas.lenght; g++){
+          //     index = array_Graficas[g].indexOf('T');
+          //     if (array_Graficas[g].Seccion_gra == 'T'){
+          //       if (array_Graficas[g].Clave_gra == 0){
+          //         alert('No muestra gráfica');
+          //       }else if(array_Graficas[g].Clave_gra == 7){
+          //         alert('Gráfica Barras 32 edos');
+          //         datosGrafica(arrray_anios[anio_activo]);
+          //       }
+          //     }
+          // }
     datosGrafica(arrray_anios[anio_activo]);
   }
 }
@@ -1240,6 +1257,24 @@ function adelante(){
     anio_activo--;
     //console.log(anio_activo);
     $('.numero').html(arrray_anios[anio_activo]);
+
+    var array_Graficas = atributos.Grafica;
+
+    //console.log(array_Graficas);
+    // var g;
+    // var index;
+    // for(g = 0; g < array_Graficas.lenght; g++){
+    //     index = array_Graficas[g].indexOf('T');
+    //     if (array_Graficas[g].Seccion_gra == 'T'){
+    //       if (array_Graficas[g].Clave_gra == 0){
+    //         alert('No muestra gráfica');
+    //       }else if(array_Graficas[g].Clave_gra == 7){
+    //         alert('Gráfica Barras 32 edos');
+    //         datosGrafica(arrray_anios[anio_activo]);
+    //       }
+    //     }
+    // }
+
     datosGrafica(arrray_anios[anio_activo]);
   }
 
@@ -1250,6 +1285,38 @@ function adelante(){
   //   datosGrafica(estadoYear);
   // }
 }
+
+function tablaCoS(data){
+  var tabuladoCoS =  '<table><tr>';
+  var cabezera =  false;
+  for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
+
+    //tomamos las cabezeras, años del primer dato
+    if(!cabezera){
+      tabuladoCoS += '<th> Estados </th>';
+      for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
+        tabuladoCoS += '<th>' + data.Series[0].Coberturas[i].ValorDato[j].AADato_ser + '</th>';
+      }//fin for j
+      cabezera = true;
+    }
+
+    tabuladoCoS += '</tr><tr><td>' +  data.Series[0].Coberturas[i].Descrip_cg + '</td>'
+    for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
+      if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == ""){
+        tabuladoCoS += '<td> ND </td>';
+      }else{
+        tabuladoCoS += '<td>' + data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato + '</td>';
+      }
+    }//fin for j
+    tabuladoCoS += '</tr>';
+  }//fin for i
+    tabuladoCoS += '</table>';
+    console.log(tabuladoCoS);
+    $('#tabla').html(tabuladoCoS);
+}//fin funcion
+
+
+
 
  function datosGrafica(year){
   var indice = 0;
@@ -1267,13 +1334,13 @@ var tabla_nueva = '';
   }
 
   console.log(estados[0].length);
-tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
+  tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
   for (var i = 0; i < estados.length; i++) {
     if(i==0){
       serie.push(Descrip_ind);
     }else{
       if(i < estados.length){
-        var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
+        var unods = (estados[i][indice] == 'ND') ? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
         //tabla_uno += '<tr><td>'+estados[i][0]+'</td>';
         //tabla_uno += '<td>'+ unods + '</td></tr>' ;
         for(k=0; k < arrray_anios.length; k++){
@@ -1282,7 +1349,7 @@ tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
 
         tabla_nueva += '</tr></thead>';
         tabla_nueva += '<tbody class="tabla_uno"><tr><td>'+estados[i][0]+'</td>';
-        tabla_nueva += '<td>'+ unods + '</td></tr></tbody>' ;
+        tabla_nueva += '<td>' + unods + '</td></tr></tbody>' ;
 
 
       // } else if(i == 35){
@@ -2099,7 +2166,7 @@ $('#indicador').trigger("click");
                 $('#metadato-panel').hide();
                 $('#indicador-grafica').show();
                 $('#mapas_hide').show();
-                $('#chart2').show();
+                // $('#chart2').show();
                 $('#botonera_nacional').show();
                 $('#serie-panel').hide();
 
@@ -2337,7 +2404,50 @@ $('#indicador').trigger("click");
       //console.log('---------------- array_anios ---------------');
       //console.log(arrray_anios);
       $('.numero').html(arrray_anios[0]);
-      datosGrafica(arrray_anios[0]);
+
+
+      var array_Graficas = atributos.Grafica;
+
+      console.log(array_Graficas);
+      var g;
+      var index;
+      for(g = 0; g < array_Graficas.length; g++){
+          index = array_Graficas[g]['Seccion_gra'].indexOf('T');
+          console.log('index iindexindeixnidniedniendiendiednie');
+          console.log(index);
+          if (array_Graficas[g].Seccion_gra == 'T'){
+            if (array_Graficas[g].Clave_gra == 0){
+              alert(array_Graficas[g].Descrip_gra);
+            }else if(array_Graficas[g].Clave_gra == 1){
+              alert(array_Graficas[g].Descrip_gra);
+              datosGrafica(arrray_anios[0]);
+            }else if(array_Graficas[g].Clave_gra == 2){
+              alert(array_Graficas[g].Descrip_gra);
+              $('#chart2').show();
+              datosGrafica(arrray_anios[0]);
+            }else if(array_Graficas[g].Clave_gra == 3){
+              alert(array_Graficas[g].Descrip_gra);
+              datosGrafica(arrray_anios[0]);
+            }else if(array_Graficas[g].Clave_gra == 4){
+              alert(array_Graficas[g].Descrip_gra);
+              datosGrafica(arrray_anios[0]);
+            }else if(array_Graficas[g].Clave_gra == 5){
+              alert(array_Graficas[g].Descrip_gra);
+              datosGrafica(arrray_anios[0]);
+            }else if(array_Graficas[g].Clave_gra == 7){
+              alert(array_Graficas[g].Descrip_gra);
+              datosGrafica(arrray_anios[0]);
+            }
+          }
+      }
+
+
+      //datosGrafica(arrray_anios[0]);
+
+      // if (array_Graficas.Seccion_gra == 'T'){
+      //   datosGrafica(arrray_anios[0]);
+      // }
+
 
 var contaAnios = arrray_anios.length - 1;
 
