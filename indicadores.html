@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Indicadores</title>
-<!-- hola soy daniel y estoy chambiando sale ppp  -->
     	<link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
 	  <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -645,9 +644,9 @@
               <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
            </div>
         </div>
-        <div class="col s12 l5 ">
-          <table class="bordered">
-            <thead>
+        <div class="col s12 l12 ">
+          <table class="bordered tabla_completa">
+            <!-- <thead>
               <tr>
                 <th>Entidad Federativa</th>
                 <th class="numero">2015</th>
@@ -665,10 +664,10 @@
               <tr>
                 <td>Baja California Sur</td>
                 <td>6.3</td>
-              </tr>
+              </tr> -->
           </table>
         </div>
-        <div class="col s12 l1"></div>
+        <!-- <div class="col s12 l1"></div>
         <div class="col s12 l5 ">
           <table class="bordered">
             <thead>
@@ -691,7 +690,7 @@
                 <td>6.3</td>
               </tr>
           </table>
-        </div>
+        </div> -->
         <div class="col s12 l12" style="margin-top: -10px;">
            <hr>
         </div>
@@ -1004,11 +1003,11 @@
 
 
   // for(k = 0;k)
-console.log(atributos.Grafica.find(buscaSeccion));
-  if(atributos.Grafica.indexOf('Seccion_gra') ){
-
-
-  }
+  //console.log(atributos.Grafica.find(buscaSeccion));
+  // if(atributos.Grafica.indexOf('Seccion_gra') ){
+  //
+  //
+  // }
 
 
 
@@ -1214,7 +1213,7 @@ console.log(atributos.Grafica.find(buscaSeccion));
               //     }
         },
       });//fin de grafica
-    datosGrafica(2015);
+    //datosGrafica(2015);
 });
 
 
@@ -1258,8 +1257,9 @@ function adelante(){
   var serie = [];
   var nuevos_estados_dobles = new Array();
   //console.log(nuevos_estados_dobles);
-
-  var tabla_uno = tabla_dos =  '';
+var tabla_nueva = '';
+  var tabla_uno = '';
+    //var tabla_uno = tabla_dos =  '';
 
   for (var i = 0; i < estados[0].length; i++) {
     if(estados[0][i].includes(year)){
@@ -1267,35 +1267,44 @@ function adelante(){
     }
   }
 
+  console.log(estados[0].length);
+tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
   for (var i = 0; i < estados.length; i++) {
     if(i==0){
       serie.push(Descrip_ind);
     }else{
-      if(i < 18){
-        var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
-        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+ unods + '</td></tr>' ;
-      } else if(i == 35){
-        $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
-      }
-      else {
-        var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]).toFixed(1);
-        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
-      }
+      if(i < estados.length){
+        var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
+        //tabla_uno += '<tr><td>'+estados[i][0]+'</td>';
+        //tabla_uno += '<td>'+ unods + '</td></tr>' ;
+        for(k=0; k < arrray_anios.length; k++){
+          tabla_nueva += '<th>'+ arrray_anios[k] +'</th>';
+        }
 
-      //console.log('____________________________ vamos aver que show --------------');
+        tabla_nueva += '</tr></thead>';
+        tabla_nueva += '<tbody class="tabla_uno"><tr><td>'+estados[i][0]+'</td>';
+        tabla_nueva += '<td>'+ unods + '</td></tr></tbody>' ;
+
+
+      // } else if(i == 35){
+      //   $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
+      // }
+      // else {
+      //   var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
+      //   tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
+      }
 
       if(estados[i][indice] == 'ND'){
         var numero =  0;
       }else{
-        var numero =  parseFloat(estados[i][indice]).toFixed(1);
+        var numero =  parseFloat(estados[i][indice]);//.toFixed(1);
       }
 
-      //console.log(numero);
 
       var valueToPush = {'numero':numero, 'estado':estados[i][0], 'abrevia':abrevia_edo(estados[i][0])};
       nuevos_estados_dobles.push(valueToPush);
 
-      serie.push(parseFloat(estados[i][indice]).toFixed(1));
+      serie.push(parseFloat(estados[i][indice]));
     }
   }
 
@@ -1321,7 +1330,7 @@ function adelante(){
     categories[i] = nuevos_estados_dobles[i].estado;
     categories2[i] = nuevos_estados_dobles[i].abrevia;
 
-    series.push(parseFloat(nuevos_estados_dobles[i].numero).toFixed(1));
+    series.push(parseFloat(nuevos_estados_dobles[i].numero));
   }
 
   //console.log("--->>>>las series",series);
@@ -1335,8 +1344,8 @@ function adelante(){
     unload: [Descrip_ind],
   });
 
-  $('.tabla_uno').html(tabla_uno);
-  $('.tabla_dos').html(tabla_dos);
+  $('.tabla_completa').html(tabla_nueva);
+  // $('.tabla_dos').html(tabla_dos);
 }
 
 
@@ -1652,7 +1661,7 @@ function sortFunction(a, b) {
   	     $('.info2').removeClass('hide');
   	     if(props != undefined)
   	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent).toFixed(1)/*props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent)/*.toFixed(1)props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
   			  // gen(estados[props.cve]);
           //console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
