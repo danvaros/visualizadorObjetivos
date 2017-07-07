@@ -1,15 +1,17 @@
-// $(document).ready(function(){
-//   $.ajax({
-//     type: 'POST',
-//     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
-//     data: {'PCveInd': 103,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
-//     success: function( data, textStatus, jqxhr ) {
-//       tablaAS(data);
-//     },
-//     async:false
-//   });
-// });
+$(document).ready(function(){
+  $.ajax({
+    type: 'POST',
+    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
+    data: {'PCveInd': 276,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
+    success: function( data, textStatus, jqxhr ) {
+      tablaClA(data);
+    },
+    async:false
+  });
+});
 
+//ultimo indicador
+//210
 //funcion para quitar repetidos
 Array.prototype.unique=function(a){
   return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
@@ -183,4 +185,19 @@ function tablaAS(data){
   }//fin for i
   tabuladoAS += '</table>';
   $('#tabla').html(tabuladoAS);
+}
+
+function tablaClA(data){
+  var tabuladoClA =  '<table><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Series[0].Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr>';
+  for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
+    for (var j = 0; j < data.Series[0].Coberturas[i].Clasificaciones.length; j++) {
+      if(data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
+        tabuladoClA += '<tr><td>'+ data.Series[0].Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td> ND </td></tr>';
+      }else{
+        tabuladoClA += '<tr><td>'+ data.Series[0].Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td>' + data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td></tr>';
+      }
+    }//fin for J
+  }//fin for i
+  tabuladoClA += '</table>';
+  $('#tabla').html(tabuladoClA);
 }
