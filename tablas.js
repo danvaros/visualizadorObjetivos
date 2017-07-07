@@ -2,9 +2,9 @@
 //   $.ajax({
 //     type: 'POST',
 //     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
-//     data: {'PCveInd': 212,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
+//     data: {'PCveInd': 101,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
 //     success: function( data, textStatus, jqxhr ) {
-//       tablaCoCl(data);
+//       anidada(data);
 //     },
 //     async:false
 //   });
@@ -93,3 +93,49 @@ function tablaCoCl(data){
     console.log(tabuladoCoCl);
     $('#tabla').html(tabuladoCoCl);
 }//fin de la funsion
+
+function anidada(data){
+  console.log(data);
+  var labelYear = '';
+  var tabuladoAnidado =  '';
+  var subTabuladoAnidado =  '<table>';
+  var primera = true;
+  var cabezera =  false;
+  var labels   = [];
+
+  for (var i = 0; i < data.Series[0].Coberturas[0].Clasificaciones.length; i++) {
+
+    labels.push(data.Series[0].Coberturas[0].Clasificaciones[i].Descrip_cla);
+
+    if(labelYear == data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser){
+        tabuladoAnidado += '<td>' + data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato + '</td>';
+    }else if(primera){
+      primera=false;
+      tabuladoAnidado += '<tr><td>'+ data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td>'+data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
+      labelYear = data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser;
+    }
+    else{
+      tabuladoAnidado += '</tr><tr><td>'+ data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td>'+data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
+      labelYear = data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser;
+    }
+    console.log('año corriendo' + labelYear);
+    console.log(data.Series[0].Coberturas[0].Clasificaciones[i]);
+    console.log(data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser);
+    console.log(data.Series[0].Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato);
+
+  }//fin for i
+  tabuladoAnidado +=  '</tr></table>';
+  console.log(tabuladoAnidado);
+  console.log(labels);
+  labels =  labels.unique();
+  subTabuladoAnidado += '<tr><td rowspan="2">Periodo</td><td colspan="'+ labels.length +'">Total</td><td colspan="'+ labels.length +'">Hombres</td><td colspan="'+ labels.length +'">Mujeres</td></tr>'
+  subTabuladoAnidado += '<tr>';
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < labels.length; j++) {
+        subTabuladoAnidado += '<td>'+labels[j]+'</td>';
+    }
+  }
+  subTabuladoAnidado += '</tr>';
+  tabuladoAnidado = subTabuladoAnidado + tabuladoAnidado;
+  $('#tabla').html(tabuladoAnidado);
+}
