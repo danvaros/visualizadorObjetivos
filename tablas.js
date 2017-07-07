@@ -27,7 +27,7 @@ function tablaCoS(data){
     tabuladoCoS += '</tr><tr><td>' +  data.Series[0].Coberturas[i].Descrip_cg + '</td>'
     for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
       if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == ""){
-        tabuladoCoS += '<td> NA </td>';
+        tabuladoCoS += '<td> ND </td>';
       }else{
         tabuladoCoS += '<td>' + data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato + '</td>';
       }
