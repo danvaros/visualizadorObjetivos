@@ -644,9 +644,9 @@
               <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
            </div>
         </div>
-        <div class="col s12 l5 ">
-          <table class="bordered">
-            <thead>
+        <div class="col s12 l12 ">
+          <table class="bordered tabla_completa">
+            <!-- <thead>
               <tr>
                 <th>Entidad Federativa</th>
                 <th class="numero">2015</th>
@@ -664,10 +664,10 @@
               <tr>
                 <td>Baja California Sur</td>
                 <td>6.3</td>
-              </tr>
+              </tr> -->
           </table>
         </div>
-        <div class="col s12 l1"></div>
+        <!-- <div class="col s12 l1"></div>
         <div class="col s12 l5 ">
           <table class="bordered">
             <thead>
@@ -690,7 +690,7 @@
                 <td>6.3</td>
               </tr>
           </table>
-        </div>
+        </div> -->
         <div class="col s12 l12" style="margin-top: -10px;">
            <hr>
         </div>
@@ -1213,7 +1213,7 @@
               //     }
         },
       });//fin de grafica
-    datosGrafica(2015);
+    //datosGrafica(2015);
 });
 
 
@@ -1257,8 +1257,9 @@ function adelante(){
   var serie = [];
   var nuevos_estados_dobles = new Array();
   //console.log(nuevos_estados_dobles);
-
-  var tabla_uno = tabla_dos =  '';
+var tabla_nueva = '';
+  var tabla_uno = '';
+    //var tabla_uno = tabla_dos =  '';
 
   for (var i = 0; i < estados[0].length; i++) {
     if(estados[0][i].includes(year)){
@@ -1266,22 +1267,32 @@ function adelante(){
     }
   }
 
+  console.log(estados[0].length);
+tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
   for (var i = 0; i < estados.length; i++) {
     if(i==0){
       serie.push(Descrip_ind);
     }else{
-      if(i < 18){
+      if(i < estados.length){
         var unods = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
-        tabla_uno +='<tr><td>'+estados[i][0]+'</td><td>'+ unods + '</td></tr>' ;
-      } else if(i == 35){
-        $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
-      }
-      else {
-        var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
-        tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
-      }
+        //tabla_uno += '<tr><td>'+estados[i][0]+'</td>';
+        //tabla_uno += '<td>'+ unods + '</td></tr>' ;
+        for(k=0; k < arrray_anios.length; k++){
+          tabla_nueva += '<th>'+ arrray_anios[k] +'</th>';
+        }
 
-      //console.log('____________________________ vamos aver que show --------------');
+        tabla_nueva += '</tr></thead>';
+        tabla_nueva += '<tbody class="tabla_uno"><tr><td>'+estados[i][0]+'</td>';
+        tabla_nueva += '<td>'+ unods + '</td></tr></tbody>' ;
+
+
+      // } else if(i == 35){
+      //   $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
+      // }
+      // else {
+      //   var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
+      //   tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
+      }
 
       if(estados[i][indice] == 'ND'){
         var numero =  0;
@@ -1289,7 +1300,6 @@ function adelante(){
         var numero =  parseFloat(estados[i][indice]);//.toFixed(1);
       }
 
-      //console.log(numero);
 
       var valueToPush = {'numero':numero, 'estado':estados[i][0], 'abrevia':abrevia_edo(estados[i][0])};
       nuevos_estados_dobles.push(valueToPush);
@@ -1334,8 +1344,8 @@ function adelante(){
     unload: [Descrip_ind],
   });
 
-  $('.tabla_uno').html(tabla_uno);
-  $('.tabla_dos').html(tabla_dos);
+  $('.tabla_completa').html(tabla_nueva);
+  // $('.tabla_dos').html(tabla_dos);
 }
 
 
