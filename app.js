@@ -190,33 +190,33 @@ if(PCveInd == 118){
 
       $('.Codigo_ind').html(Codigo_ind);
       $('.Descrip_ind').html(Descrip_ind);
-      if(PCveInd == 101 || PCveInd == 2){
-        $('#link-datos-panel').hide();
-      }
+      // if(PCveInd == 101 || PCveInd == 2){
+      //   $('#link-datos-panel').hide();
+      // }
       titulos(PCveInd);
       $('#tabla_nacional').hide();
-      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
-        $('#tabla_nacional').show();
-        $('#mapas_hide').remove();
-        $('#botonera_nacional').remove();
-      }
-      if(PCveInd ==  333)
-      {
-        // $('#map').hide();
-        // $('#conten_maps').append('<div id="map333"></div>');
-        // mapa_333();
-      }
+      // if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
+      //   $('#tabla_nacional').show();
+      //   $('#mapas_hide').remove();
+      //   $('#botonera_nacional').remove();
+      // }
+      // if(PCveInd ==  333)
+      // {
+      //   // $('#map').hide();
+      //   // $('#conten_maps').append('<div id="map333"></div>');
+      //   // mapa_333();
+      // }
 
-      if(/*PCveInd ==  333 ||*/ PCveInd == 276){
-        $('#map').remove();
-        $('#footmap').remove();
-        $('#grafs').remove();
-        $('#indicador-grafica').remove();
-        $('#indicador-panel').hide();
-        $('.ocultar').hide();
-        //datos a mostrar
-        $('#serie-panel2').show();
-      }
+      // if(/*PCveInd ==  333 ||*/ PCveInd == 276){
+      //   $('#map').remove();
+      //   $('#footmap').remove();
+      //   $('#grafs').remove();
+      //   $('#indicador-grafica').remove();
+      //   $('#indicador-panel').hide();
+      //   $('.ocultar').hide();
+      //   //datos a mostrar
+      //   $('#serie-panel2').show();
+      // }
 
       $('#loader').delay(2000).fadeOut("slow");
     },
