@@ -27,6 +27,23 @@
   var data_local = '';
   var tabulado ;
   var tipoTabulado;
+  var clasif;
+
+  $.ajax({
+    type: 'POST',
+    url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
+    data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
+    success: function( data, textStatus, jqxhr ) {
+    //data.Series[1] = data1.Series[0];
+      clasif = data.AgrupaClas.TotalNivAgrupa_cla;
+      console.log('pspspsps');
+      console.log(clasif);
+    },
+    error: function() {
+            //alert('Error occured');
+        },
+    async:false
+  });
 
   $.ajax({
     type: 'POST',
@@ -152,6 +169,24 @@ if(PCveInd == 118){
 
 
 }else{
+
+  $.ajax({
+    type: 'POST',
+    url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
+    data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
+    success: function( data1, textStatus, jqxhr ) {
+    //data.Series[1] = data1.Series[0];
+      clasif = data1.AgrupaClas.TotalNivAgrupa_cla;
+      console.log('pspspsps');
+      console.log(clasif);
+    },
+    error: function() {
+            //alert('Error occured');
+        },
+    async:false
+  });
+
+
   $.ajax({
     type: 'POST',
     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
@@ -159,12 +194,19 @@ if(PCveInd == 118){
     success: function( data, textStatus, jqxhr ) {
       tipoTabulado = data.TipoCua_atr;
 
+      cason = data.ClaveAgrupaClas_atr;
+
+
       switch(tipoTabulado){
         case 'CoS':
           tabulado = tablaCoS(data);
         break;
         case 'CoCl':
-          tabulado = tablaCoCl(data);
+          //if(clasif > 1){
+            //tabulado = CoClanidada(data);
+          //}else{
+            tabulado = tablaCoCl(data);
+          //}
         break;
         case 'ACl':
           tabulado = tablaACl(data);
@@ -173,7 +215,7 @@ if(PCveInd == 118){
           tabulado = tablaAS(data);
         break;
         case 'ClA':
-          tabulado = anidada(data);
+          tabulado = AClanidada(data);
         break;
       }
 
@@ -229,16 +271,16 @@ if(PCveInd == 118){
       //   // mapa_333();
       // }
 
-      // if(/*PCveInd ==  333 ||*/ PCveInd == 276){
-      //   $('#map').remove();
-      //   $('#footmap').remove();
-      //   $('#grafs').remove();
-      //   $('#indicador-grafica').remove();
-      //   $('#indicador-panel').hide();
-      //   $('.ocultar').hide();
-      //   //datos a mostrar
-      //   $('#serie-panel2').show();
-      // }
+      if(/*PCveInd ==  333 ||*/ PCveInd == 276){
+        $('#map').remove();
+        $('#footmap').remove();
+        $('#grafs').remove();
+        $('#indicador-grafica').remove();
+        $('#indicador-panel').hide();
+        $('.ocultar').hide();
+        //datos a mostrar
+        $('#serie-panel2').show();
+      }
 
       $('#loader').delay(2000).fadeOut("slow");
     },
