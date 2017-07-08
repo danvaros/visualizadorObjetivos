@@ -25,6 +25,8 @@
   var Algoritmo_ft = '';
 
   var data_local = '';
+  var tabulado ;
+  var tipoTabulado;
 
   $.ajax({
     type: 'POST',
@@ -155,7 +157,27 @@ if(PCveInd == 118){
     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
+      tipoTabulado = data.TipoCua_atr;
 
+      switch(tipoTabulado){
+        case 'CoS':
+          tabulado = tablaCoS(data);
+        break;
+        case 'CoCl':
+          tabulado = tablaCoCl(data);
+        break;
+        case 'ACl':
+          tabulado = tablaACl(data);
+        break;
+        case 'AS':
+          tabulado = tablaAS(data);
+        break;
+        case 'ClA':
+          tabulado = anidada(data);
+        break;
+      }
+
+      //tabulado = tablaCoS(data);
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
       colorObjetivo(obj);
@@ -228,7 +250,7 @@ if(PCveInd == 118){
 }
   $(document).ready(function()
   {
-
+    $('.tabla_completa').html(tabulado);
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales
     $('#filtros_es').on('change',function(){
