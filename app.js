@@ -174,10 +174,10 @@ if(PCveInd == 118){
     type: 'POST',
     url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
     data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
-    success: function( data1, textStatus, jqxhr ) {
+    success: function( data, textStatus, jqxhr ) {
     //data.Series[1] = data1.Series[0];
-      clasif = data1.AgrupaClas.TotalNivAgrupa_cla;
-      console.log('pspspsps');
+      clasif = data.AgrupaClas.TotalNivAgrupa_cla;
+      console.log('psp______________________________spsps');
       console.log(clasif);
     },
     error: function() {
@@ -202,11 +202,11 @@ if(PCveInd == 118){
           tabulado = tablaCoS(data);
         break;
         case 'CoCl':
-          //if(clasif > 1){
-            //tabulado = CoClanidada(data);
-          //}else{
+          if(clasif > 1){
+            tabulado = CoClanidada(data);
+          }else{
             tabulado = tablaCoCl(data);
-          //}
+          }
         break;
         case 'ACl':
           tabulado = tablaACl(data);
@@ -293,6 +293,36 @@ if(PCveInd == 118){
   $(document).ready(function()
   {
     $('.tabla_completa').html(tabulado);
+
+    var nColumnas = $(".tablaArmada tr:last td").length;
+    var nFilas = $(".tabla_completa tr").length;
+
+    var arre = [];
+    for (var i = 0; i < nColumnas - 1; i++) {
+      arre.push(i)
+    }
+
+    if(nColumnas > 17){
+      $('.tablaArmada').DataTable( {
+             scrollY:        "600px",
+             scrollX:        true,
+             scrollCollapse: true,
+             paging:         false,
+             searching: false,
+             aoColumnDefs: [
+               { 'bSortable': false,
+                 'aTargets': arre }
+             ],
+             fixedColumns:   {
+                 leftColumns: 1
+             }
+         } );
+
+      $('.tablaArmada thead tr th:first').addClass('empuja_a_la_izquierda');
+    }
+
+    $('.tabla_completa').css('height','900px');
+
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales
     $('#filtros_es').on('change',function(){

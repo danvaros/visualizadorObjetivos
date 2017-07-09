@@ -351,6 +351,9 @@
         }*/
 
 
+.empuja_a_la_izquierda{
+  padding-left:90px !important;
+}
     </style>
 
 
@@ -675,7 +678,7 @@
            </div>
         </div>
         <div class="col s12 l12 ">
-          <table class="bordered tabla_completa">
+          <div class="bordered tabla_completa">
             <!-- <thead>
               <tr>
                 <th>Entidad Federativa</th>
@@ -695,7 +698,7 @@
                 <td>Baja California Sur</td>
                 <td>6.3</td>
               </tr> -->
-          </table>
+          </div>
           <div id="scrollableTable"></div>
         </div>
         <!-- <div class="col s12 l1"></div>
@@ -1016,6 +1019,7 @@
   <script>
 
   $(document).ready(function() {
+    $('#serie').hide();
     $('select').material_select();
   });
 
@@ -2169,6 +2173,10 @@ $('#indicador').trigger("click");
                 $('#indicador-grafica').hide();
                 $('#no_va_serie').hide();
                 var arre = [];
+
+
+
+
                 for (var i = 0; i < estados[0].length - 1; i++) {
                   arre.push(i)
                 }
@@ -2391,7 +2399,10 @@ $('#indicador').trigger("click");
           console.log(index);
           if (array_Graficas[g].Seccion_gra == 'T'){
             if (array_Graficas[g].Clave_gra == 0){
-              console.log(array_Graficas[g].Descrip_gra);
+              alert(array_Graficas[g].Descrip_gra);
+              $('#mapas_hide').hide();
+              $('#tabla_nacional').show();
+              $('#botonera_nacional').hide();
             }else if(array_Graficas[g].Clave_gra == 1){
               console.log(array_Graficas[g].Descrip_gra);
               datosGrafica(arrray_anios[0]);
