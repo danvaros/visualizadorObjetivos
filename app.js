@@ -302,6 +302,10 @@ if(PCveInd == 118){
       arre.push(i)
     }
 
+
+
+
+
     if(nColumnas > 17){
       $('.tablaArmada').DataTable( {
              scrollY:        "600px",
