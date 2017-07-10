@@ -74,22 +74,6 @@
     async:true
   });
 
-
-  // $.ajax({
-  //   type: 'POST',
-  //   url: "https://operativos.inegi.org.mx/datos/api/Metadato/PorClave",
-  //   data: {'PCveInd':vars , 'PIdioma':'ES'},
-  //   success: function( data, textStatus, jqxhr ) {
-  //     Algoritmo_ft = data.Algoritmo_ft;
-  //
-  //     var dasdasd = '<img src="img/algoritmos/'+Algoritmo_ft+'.gif" alt="Algoritmo '+Algoritmo_ft+'" />';
-  //
-  //     $('.imgAlgoritmo').html(dasdasd);
-  //
-  //
-  //   },
-  //   async:false
-  // });
 if(PCveInd == 118){
   $.ajax({
     type: 'POST',
@@ -122,7 +106,6 @@ if(PCveInd == 118){
             },
         async:false
       });
-
 
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
@@ -186,8 +169,6 @@ if(PCveInd == 118){
         break;
       }
 
-
-
       $('#loader').delay(2000).fadeOut("slow");
     },
     error: function() {
@@ -195,30 +176,9 @@ if(PCveInd == 118){
         },
     async:false
   });
-  //Proporción de la población con inseguridad alimentaria moderada o severa (carencia por acceso a la alimentación)
-  //Población con inseguridad alimentaria  moderada o severa",
- //Población total
-
-
-
-}else{
-
-  $.ajax({
-    type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
-    data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
-    success: function( data, textStatus, jqxhr ) {
-    //data.Series[1] = data1.Series[0];
-      clasif = data.AgrupaClas.TotalNivAgrupa_cla;
-      console.log('psp______________________________spsps');
-      console.log(clasif);
-    },
-    error: function() {
-            //alert('Error occured');
-        },
-    async:false
-  });
-
+}
+else
+{
 
   $.ajax({
     type: 'POST',
@@ -339,11 +299,11 @@ if(PCveInd == 118){
 
     var arre = [];
     for (var i = 0; i < nColumnas - 1; i++) {
-      arre.push(i)
+      arre.push(i);
     }
 
     if(nColumnas > 16){
-      $('.tabla_completa').css('height', '900px');
+      $('.tabla_completa').css('height', '700px');
       $('.tablaArmada').DataTable( {
              scrollY:        "600px",
              scrollX:        true,
@@ -1644,7 +1604,6 @@ if(PCveInd == 118){
 
   function mapa_333()
   {
-
     function busqueda_estado(cadena)
     {
       for(var i=0;i<estados.length;i++)
