@@ -2398,9 +2398,12 @@ $('#indicador').trigger("click");
           if (array_Graficas[g].Seccion_gra == 'T'){
             if (array_Graficas[g].Clave_gra == 0){
               //alert(array_Graficas[g].Descrip_gra);
-              $('#mapas_hide').hide();
               $('#tabla_nacional').hide();
               $('#botonera_nacional').hide();
+              $('#indicador-grafica').hide();
+              $('#indicador-panel').show();
+              $('#mapas_hide').hide();
+              $('.ocultar').hide();
             }else if(array_Graficas[g].Clave_gra == 1){
               console.log(array_Graficas[g].Descrip_gra);
               datosGrafica(arrray_anios[0]);
