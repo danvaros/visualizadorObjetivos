@@ -155,6 +155,38 @@ if(PCveInd == 118){
       titulos(PCveInd);
       $('#tabla_nacional').hide();
 
+
+      tipoTabulado = data.TipoCua_atr;
+      cason = data.ClaveAgrupaClas_atr;
+
+      switch(tipoTabulado){
+        case 'CoS':
+          tabulado = tablaCoS(data);
+        break;
+        case 'CoCl':
+          if(clasif > 1){
+            tabulado = CoClanidada(data);
+          }else{
+            tabulado = tablaCoCl(data);
+          }
+        break;
+        case 'ACl':
+          tabulado = tablaACl(data);
+        break;
+        case 'AS':
+          tabulado = tablaAS(data);
+          //alert('si entra');
+        break;
+        case 'ClA':
+          tabulado = AClanidada(data);
+        break;
+        default :
+          tabulado = AClanidada(data);
+        break;
+      }
+
+
+
       $('#loader').delay(2000).fadeOut("slow");
     },
     error: function() {
@@ -192,10 +224,10 @@ if(PCveInd == 118){
     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
+
       tipoTabulado = data.TipoCua_atr;
 
       cason = data.ClaveAgrupaClas_atr;
-
 
       switch(tipoTabulado){
         case 'CoS':
@@ -216,6 +248,9 @@ if(PCveInd == 118){
           //alert('si entra');
         break;
         case 'ClA':
+          tabulado = AClanidada(data);
+        break;
+        default :
           tabulado = AClanidada(data);
         break;
       }
@@ -303,11 +338,8 @@ if(PCveInd == 118){
       arre.push(i)
     }
 
-
-
-
-
-    if(nColumnas > 17){
+    if(nColumnas > 14){
+      $('.tabla_completa').css('height', '900px');
       $('.tablaArmada').DataTable( {
              scrollY:        "600px",
              scrollX:        true,
@@ -324,9 +356,10 @@ if(PCveInd == 118){
          } );
 
       $('.tablaArmada thead tr th:first').addClass('empuja_a_la_izquierda');
+    }else{
+      var alto =  (nFilas+2) * 47;
+      $('.tabla_completa').css('height', alto + 'px');
     }
-
-    $('.tabla_completa').css('height','900px');
 
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales
