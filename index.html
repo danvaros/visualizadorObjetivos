@@ -34,16 +34,6 @@
   <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
   </span>
-  <script type="text/javascript">
-    //$(window).load(function(){
-    if (sessionStorage.getItem('dontLoad') == null) {
-      //$('#loader').show();
-      // $('#loader').delay(2000).fadeOut("slow");
-      // sessionStorage.setItem('dontLoad', 'true');
-      // console.log(sessionStorage.getItem('dontLoad'));
-      }
-      //});
-  </script>
   <style media="screen">
 
   a.selected {
@@ -478,9 +468,6 @@
   max-width: 300px;
   opacity: 0.7;
 }
-
-
-
   </style>
 
 
@@ -2009,27 +1996,6 @@ Comité Técnico Especializado de los ODS y Unidades del Estado responsables
   </sup> -->
 </a>
                 </div>
-                <!-- <div class="footnotes">
-                  <ol>
-                    <li class="footnote4" id="fn:4">
-                      <div><b>Programa de Trabajo 2016-2018</b> (se debe incorporar un vínculo sobre el texto “Programa de Trabajo 2016-2018” que descargue el documento completo del Programa de Trabajo, en formato PDF, el cual se adjunta)<br><br>
-    El 6 de noviembre de 2015, la Junta de Gobierno del Instituto Nacional de Estadística y Geografía aprobó (acuerdo 8ª/V/2015) la modificación del acuerdo de creación del Comité Técnico Especializado del Sistema de Información de los Objetivos de Desarrollo del Milenio (CTESIODM), para convertirlo en el Comité Técnico Especializado de los Objetivos de Desarrollo Sostenible (CTEODS), cuyo objetivo es coordinar los trabajos de carácter conceptual, metodológico y operativo que, en el marco del Sistema Nacional de Información Estadística y Geográfica, permitan generar y actualizar periódicamente los indicadores a partir de los cuales se diseñen y evalúen políticas públicas para el cumplimiento de los Objetivos de Desarrollo Sostenible (ODS) correspondientes a la Agenda 2030 para el Desarrollo Sostenible promovida por la Organización de las Naciones Unidas (ONU).
-    <br><br>
-    <b style="text-align:center !important;">Incorporación de los ODS a los marcos nacionales</b><br><br>
-    El Estado mexicano es responsable de la rectoría del desarrollo nacional, el cual debe ser integral y sustentable, a fin de fortalecer la soberanía nacional y el régimen político democrático; así lo mandata el artículo 25 de la Constitución Política de los Estados Unidos Mexicanos; dicho artículo también sirve de base al sistema nacional de planeación democrática, el cual deriva en el Plan Nacional de Desarrollo (PND), que es presentado por el titular del Poder Ejecutivo Federal sexenalmente.<br>
-    El PND, es elaborado por el Poder Ejecutivo Federal con el objetivo de marcar el rumbo del país cada sexenio, con el fin de lograr el bienestar común, fin primigenio del Estado. La elaboración del mismo toma en cuenta diferentes factores, tales como dinámica poblacional, los recursos naturales y, las necesidades sociales, económicas y políticas del país; de igual forma se toman en cuenta para su elaboración los acuerdos suscritos por México con la comunidad internacional y las políticas de la agenda global producto de foros y reuniones de análisis y trabajo respecto a los retos mundiales.</div>
-                    </li>
-                  </ol>
-                </div> -->
-                <!-- <div class="">
-                  <a href="calendario.html">Calendario de Actualización de indicadores</a>
-                </div>
-                <div class="">
-                  <a href="#">Consulta de información de los indicadores</a>
-                </div> -->
-                <!-- <div class="">
-                  <a href="archivos/AcuerdoCrea.pdf">Acuerdos de Creación</a>
-                </div> -->
               </div>
             </div>
 
@@ -2272,7 +2238,6 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
   <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
   <!-- <script type="text/javascript" src="entidad.json"></script> -->
   <script type="text/javascript" src="entidad2.json"></script>
-  <script type="text/javascript" src="municipio.json"></script>
   <script type="text/javascript" src="nacion.json"></script>
   <!-- <script type="text/javascript" src="entidadCompara.json"></script> -->
   <!-- <script type="text/javascript" src="variable.js"></script> -->
@@ -2692,8 +2657,6 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
       map.dragging.disable();
     }
 
-
-
     // control that shows state info on hover
     var info = L.control();
     info.onAdd = function (map) {
@@ -2728,6 +2691,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
             }
       */
     };
+
     info.addTo(map);
     // get color depending on population density value
     // function getColor(d) {
@@ -2767,6 +2731,7 @@ En México se ha decidido que la Oficina de la Presidencia de la República teng
         className: "c" + res[1]
       };
     }
+
     function highlightFeature(e) {
       if (locked == false) {
         var layer = e.target;
