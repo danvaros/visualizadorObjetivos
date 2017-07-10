@@ -66,15 +66,15 @@ function tablaCoCl(data){
         total_columnas++;
       }//fin for j
 
-      tabuladoCoCl  +=  '</tr>';
+      tabuladoCoCl  +=  '</tr></thead>';
       years = years.unique();
       cabezera = true;
-      var subTabulado = '<table class="centered striped tablaArmada"><thead><tr><th rowspan="2"> Entidades federativas</th>';
+      var subTabulado = '<table class="tablaArmada centered striped "><thead><tr><th rowspan="2"> Entidades federativas</th>';
       var sizeYear =  total_columnas/years.length;
       for (var k = 0; k < years.length; k++) {
         subTabulado +=  '<th colspan="'+ sizeYear +'">' + years[k] +'</th>'
       }//fin for k
-      subTabulado += '</tr></thead>';
+      subTabulado += '</tr>';
 
       tabuladoCoCl =   subTabulado +' '+ tabuladoCoCl;
     }//fin if condicion cabezera
