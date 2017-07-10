@@ -342,7 +342,7 @@ if(PCveInd == 118){
       arre.push(i)
     }
 
-    if(nColumnas > 14){
+    if(nColumnas > 16){
       $('.tabla_completa').css('height', '900px');
       $('.tablaArmada').DataTable( {
              scrollY:        "600px",

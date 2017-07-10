@@ -97,7 +97,7 @@ function tablaCoCl(data){
 function AClanidada(data){
   var labelYear = '';
   var tabuladoAnidado =  '';
-  var subTabuladoAnidado =  '<table class="centered striped tablaArmada"><thead>';
+  var subTabuladoAnidado =  '<table class="tablaArmada centered striped "><thead>';
   var primera = true;
   var cabezera =  false;
   var labels   = [];
