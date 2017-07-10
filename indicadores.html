@@ -2137,7 +2137,7 @@ $('#indicador').trigger("click");
 
             if(codigoDg.replace(/\s/g,'') == 'N' ){
               if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312){
-                  $('#tabla_nacional').show();
+                  $('#tabla_nacional').hide();
               }
             }
 
@@ -2401,7 +2401,7 @@ $('#indicador').trigger("click");
             if (array_Graficas[g].Clave_gra == 0){
               //alert(array_Graficas[g].Descrip_gra);
               $('#mapas_hide').hide();
-              $('#tabla_nacional').show();
+              $('#tabla_nacional').hide();
               $('#botonera_nacional').hide();
             }else if(array_Graficas[g].Clave_gra == 1){
               console.log(array_Graficas[g].Descrip_gra);
@@ -2489,7 +2489,7 @@ var contaAnios = arrray_anios.length - 1;
       $('#ver_grafica').removeClass('active_anio');
       $('#ver_grafica').addClass('inactive_anio');
       $('#indicador-grafica').hide();
-      $('#indicador-panel').show();
+      $('#indicador-panel').hide();
     }
 
     function cambio_tabla()
@@ -2512,7 +2512,8 @@ var contaAnios = arrray_anios.length - 1;
       $('#ver_grafica_nacional').addClass('inactive_anio');
 
       $('#mapas_hide').hide();
-      $('#tabla_nacional').show();
+      $('#tabla_nacional').hide();
+      $('#indicador-panel').show();
     }
 
     function cambio_tabla_nacional()
@@ -2524,6 +2525,7 @@ var contaAnios = arrray_anios.length - 1;
 
       $('#mapas_hide').show();
       $('#tabla_nacional').hide();
+      $('#indicador-panel').hide();
     }
 
 

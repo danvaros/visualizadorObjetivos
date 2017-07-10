@@ -213,6 +213,7 @@ if(PCveInd == 118){
         break;
         case 'AS':
           tabulado = tablaAS(data);
+          //alert('si entra');
         break;
         case 'ClA':
           tabulado = AClanidada(data);
