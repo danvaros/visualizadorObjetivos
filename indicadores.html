@@ -668,7 +668,7 @@
     </div> <!-- fin del panel -->
 
 
-      <div class="row card tablaPadding" id="indicador-panel" style="display:none">
+      <div class="row card tablaPadding" id="indicador-panel" style="">
           <div class="col s12 l12 ">
            <div class="cuadro_titulo">
               <h4>Razón de mortalidad materna</h4>
@@ -1894,7 +1894,11 @@ $(document).ready(function(){
   var arreglo_valor_nd=[];
     $(document).ready(function(){
 
-          $('#indicador-panel').hide();
+        $('#indicador-panel').hide();
+        if(PCveInd == 276){
+          $('#indicador-panel').show();
+        }
+
           //$('.modal-trigger').leanModal();
           //console.log("---->>>>>estados tabla",estados);
           var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
@@ -2116,19 +2120,22 @@ $('#indicador').trigger("click");
           // select de metadatos
           $('#indicador').click(function(){
 
+            $('#indicador-panel').hide();
+            $('#mapas_hide').show();
+            $('#botonera_nacional').show();
+            $('#chart2').show();
             if(codigoDg.replace(/\s/g,'') == 'N' ){
-              if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312){
+              if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
                   $('#tabla_nacional').hide();
+                  $('#indicador-panel').show();
+                  $('#mapas_hide').hide();
+                  $('#botonera_nacional').hide();
+                  $('#chart2').hide();
               }
             }
-
                 $('#metadato-panel').hide();
                 $('#indicador-grafica').show();
-                $('#mapas_hide').show();
-                // $('#chart2').show();
-                $('#botonera_nacional').show();
                 $('#serie-panel').hide();
-
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
                 $('#link-datos-panel').hide();
