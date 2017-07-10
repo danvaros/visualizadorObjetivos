@@ -303,9 +303,8 @@ if(PCveInd == 118){
       arre.push(i)
     }
 
-
-
-
+    var alto =  (nFilas+2) * 47;
+    $('.tabla_completa').css('height', alto + 'px');
 
     if(nColumnas > 17){
       $('.tablaArmada').DataTable( {
@@ -325,8 +324,6 @@ if(PCveInd == 118){
 
       $('.tablaArmada thead tr th:first').addClass('empuja_a_la_izquierda');
     }
-
-    $('.tabla_completa').css('height','900px');
 
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales
