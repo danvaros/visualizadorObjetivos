@@ -202,7 +202,7 @@ function tablaClA(data){
 
 function CoClanidada(data){
   var tabulado =  '';
-  var subTabuladoAnidado =  '<table class="tablaArmada"><thead>';
+  var subTabuladoAnidado =  '<table class="tablaArmada striped"><thead>';
   var cabezera =  false;
   var clasificaciones = [];
   var years = [];

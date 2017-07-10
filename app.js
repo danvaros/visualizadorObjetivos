@@ -302,7 +302,7 @@ else
       arre.push(i);
     }
 
-    if(nColumnas > 16){
+    if(nColumnas > 12){
       $('.tabla_completa').css('height', '700px');
       $('.tablaArmada').DataTable( {
              scrollY:        "600px",
