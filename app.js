@@ -171,7 +171,11 @@ if(PCveInd == 118){
           }
         break;
         case 'ACl':
+        if(clasif > 1){
           tabulado = tablaACl(data);
+        }else{
+          tabulado = AClanidada(data);
+        }
         break;
         case 'AS':
           tabulado = tablaAS(data);
@@ -238,7 +242,11 @@ if(PCveInd == 118){
           }
         break;
         case 'ACl':
-          tabulado = tablaACl(data);
+          if(clasif > 1){
+            tabulado = AClanidada(data);
+          }else{
+            tabulado = tablaACl(data);
+          }
         break;
         case 'AS':
           tabulado = tablaAS(data);
@@ -301,18 +309,18 @@ if(PCveInd == 118){
       //   // mapa_333();
       // }
 
-      if(/*PCveInd ==  333 ||*/ PCveInd == 276){
-        $('#map').remove();
-        $('#footmap').remove();
-        $('#grafs').remove();
-        $('#indicador-grafica').remove();
-
-        $('.ocultar').hide();
-        //datos a mostrar
-        $('#serie-panel2').hide();
-        $('#indicador-panel').show();
-
-      }
+      // if(PCveInd ==  333 /*|| PCveInd == 276*/){
+      //   $('#map').remove();
+      //   $('#footmap').remove();
+      //   $('#grafs').remove();
+      //   $('#indicador-grafica').remove();
+      //
+      //   $('.ocultar').hide();
+      //   //datos a mostrar
+      //   $('#serie-panel2').hide();
+      //   $('#indicador-panel').show();
+      //
+      // }
 
       $('#loader').delay(2000).fadeOut("slow");
     },
