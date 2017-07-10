@@ -19,7 +19,7 @@ Array.prototype.unique=function(a){
 
 //tabla para cobertura series
 function tablaCoS(data){
-  var tabuladoCoS =  '<table><tr>';
+  var tabuladoCoS =  '<table class="centered striped"><tr>';
   var cabezera =  false;
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
 
@@ -43,16 +43,15 @@ function tablaCoS(data){
     tabuladoCoS += '</tr>';
   }//fin for i
     tabuladoCoS += '</table>';
-    console.log(tabuladoCoS);
-    $('#tabla').html(tabuladoCoS);
+
+    //$('#tabla').html(tabuladoCoS);
+    return tabuladoCoS;
 }//fin funcion
 
 function tablaCoCl(data){
   var tabuladoCoCl  =  '';
   var cabezera      =  false;
   var years         =  [];
-
-  console.log(data);
 
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
     if(!cabezera){
@@ -70,7 +69,7 @@ function tablaCoCl(data){
       tabuladoCoCl  +=  '</tr>';
       years = years.unique();
       cabezera = true;
-      var subTabulado = '<table><tr><th rowspan="2"> Entidades federativas</th>';
+      var subTabulado = '<table class="centered striped"><tr><th rowspan="2"> Entidades federativas</th>';
       var sizeYear =  total_columnas/years.length;
       for (var k = 0; k < years.length; k++) {
         subTabulado +=  '<th colspan="'+ sizeYear +'">' + years[k] +'</th>'
@@ -78,7 +77,6 @@ function tablaCoCl(data){
       subTabulado += '</tr>';
 
       tabuladoCoCl =   subTabulado +' '+ tabuladoCoCl;
-      console.log(tabuladoCoCl);
     }//fin if condicion cabezera
 
     tabuladoCoCl   +=  '<tr ><td>'+ data.Series[0].Coberturas[i].Descrip_cg +'</td>';
@@ -92,15 +90,14 @@ function tablaCoCl(data){
       tabuladoCoCl   += '</tr>';
   }//fin for i
     tabuladoCoCl   += '</table>';
-    console.log(tabuladoCoCl);
-    $('#tabla').html(tabuladoCoCl);
+    //$('#tabla').html(tabuladoCoCl);
+    return tabuladoCoCl;
 }//fin de la funsion
 
 function AClanidada(data){
-  console.log(data);
   var labelYear = '';
   var tabuladoAnidado =  '';
-  var subTabuladoAnidado =  '<table>';
+  var subTabuladoAnidado =  '<table class="centered striped">';
   var primera = true;
   var cabezera =  false;
   var labels   = [];
@@ -131,14 +128,14 @@ function AClanidada(data){
   }
   subTabuladoAnidado += '</tr>';
   tabuladoAnidado = subTabuladoAnidado + tabuladoAnidado;
-  $('#tabla').html(tabuladoAnidado);
+  //$('#tabla').html(tabuladoAnidado);
+  return tabuladoAnidado;
 }
 
 function tablaACl(data){
-  console.log(data);
   var labelYear = '';
   var tabuladoAnidado =  '';
-  var subTabuladoAnidado =  '<table>';
+  var subTabuladoAnidado =  '<table class="centered striped">';
   var primera = true;
   var cabezera =  false;
   var labels   = [];
@@ -160,8 +157,7 @@ function tablaACl(data){
     }
   }//fin for i
   tabuladoAnidado +=  '</tr></table>';
-  console.log(tabuladoAnidado);
-  console.log(labels);
+
   labels =  labels.unique();
 
   subTabuladoAnidado += '<tr><td>Periodo</td>';
@@ -172,19 +168,21 @@ function tablaACl(data){
 
   subTabuladoAnidado += '</tr>';
   tabuladoAnidado = subTabuladoAnidado + tabuladoAnidado;
-  $('#tabla').html(tabuladoAnidado);
+  //$('#tabla').html(tabuladoAnidado);
+  return tabuladoAnidado;
 }
 
 function tablaAS(data){
-  console.log(data);
-  var tabuladoAS =  '<table><tr><th>Periodo</th><th>'+ data.Descrip_ind +'</th></tr>';
+
+  var tabuladoAS =  '<table class="centered striped"><tr><th>Periodo</th><th>'+ data.Descrip_ind +'</th></tr>';
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
     for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
       tabuladoAS += '<tr><td>'+ data.Series[0].Coberturas[i].ValorDato[j].AADato_ser   +'</td><td>' + data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
     }//fin for J
   }//fin for i
   tabuladoAS += '</table>';
-  $('#tabla').html(tabuladoAS);
+  //$('#tabla').html(tabuladoAS);
+  return tabuladoAS;
 }
 
 function tablaClA(data){
@@ -203,9 +201,8 @@ function tablaClA(data){
 }
 
 function CoClanidada(data){
-  console.log(data);
   var tabulado =  '';
-  var subTabuladoAnidado =  '<table>';
+  var subTabuladoAnidado =  '<table class="tablaArmada"><thead>';
   var cabezera =  false;
   var clasificaciones = [];
   var years = [];
@@ -219,9 +216,7 @@ function CoClanidada(data){
       }
       years = years.unique();
       clasificaciones_diferentes = clasificaciones.unique().length;
-      console.log(years.length);
-      console.log(clasificaciones);
-      console.log(clasificaciones_diferentes);
+
       cabezera = true;
     }
 
@@ -256,6 +251,7 @@ function CoClanidada(data){
   }
 
   subTabuladoAnidado +=  '</tr>';
-  tabulado =  subTabuladoAnidado + tabulado;
-  $('#tabla').html(tabulado);
+  tabulado =  subTabuladoAnidado+'</thead>'+ tabulado;
+  //$('#tabla').html(tabulado);
+  return tabulado;
 }

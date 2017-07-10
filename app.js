@@ -25,6 +25,25 @@
   var Algoritmo_ft = '';
 
   var data_local = '';
+  var tabulado ;
+  var tipoTabulado;
+  var clasif;
+
+  $.ajax({
+    type: 'POST',
+    url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
+    data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
+    success: function( data, textStatus, jqxhr ) {
+    //data.Series[1] = data1.Series[0];
+      clasif = data.AgrupaClas.TotalNivAgrupa_cla;
+      console.log('pspspsps');
+      console.log(clasif);
+    },
+    error: function() {
+            //alert('Error occured');
+        },
+    async:false
+  });
 
   $.ajax({
     type: 'POST',
@@ -150,12 +169,57 @@ if(PCveInd == 118){
 
 
 }else{
+
+  $.ajax({
+    type: 'POST',
+    url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
+    data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
+    success: function( data, textStatus, jqxhr ) {
+    //data.Series[1] = data1.Series[0];
+      clasif = data.AgrupaClas.TotalNivAgrupa_cla;
+      console.log('psp______________________________spsps');
+      console.log(clasif);
+    },
+    error: function() {
+            //alert('Error occured');
+        },
+    async:false
+  });
+
+
   $.ajax({
     type: 'POST',
     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
+      tipoTabulado = data.TipoCua_atr;
 
+      cason = data.ClaveAgrupaClas_atr;
+
+
+      switch(tipoTabulado){
+        case 'CoS':
+          tabulado = tablaCoS(data);
+        break;
+        case 'CoCl':
+          if(clasif > 1){
+            tabulado = CoClanidada(data);
+          }else{
+            tabulado = tablaCoCl(data);
+          }
+        break;
+        case 'ACl':
+          tabulado = tablaACl(data);
+        break;
+        case 'AS':
+          tabulado = tablaAS(data);
+        break;
+        case 'ClA':
+          tabulado = AClanidada(data);
+        break;
+      }
+
+      //tabulado = tablaCoS(data);
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
       colorObjetivo(obj);
@@ -190,22 +254,22 @@ if(PCveInd == 118){
 
       $('.Codigo_ind').html(Codigo_ind);
       $('.Descrip_ind').html(Descrip_ind);
-      if(PCveInd == 101 || PCveInd == 2){
-        $('#link-datos-panel').hide();
-      }
+      // if(PCveInd == 101 || PCveInd == 2){
+      //   $('#link-datos-panel').hide();
+      // }
       titulos(PCveInd);
       $('#tabla_nacional').hide();
-      if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
-        $('#tabla_nacional').show();
-        $('#mapas_hide').remove();
-        $('#botonera_nacional').remove();
-      }
-      if(PCveInd ==  333)
-      {
-        // $('#map').hide();
-        // $('#conten_maps').append('<div id="map333"></div>');
-        // mapa_333();
-      }
+      // if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
+      //   $('#tabla_nacional').show();
+      //   $('#mapas_hide').remove();
+      //   $('#botonera_nacional').remove();
+      // }
+      // if(PCveInd ==  333)
+      // {
+      //   // $('#map').hide();
+      //   // $('#conten_maps').append('<div id="map333"></div>');
+      //   // mapa_333();
+      // }
 
       if(/*PCveInd ==  333 ||*/ PCveInd == 276){
         $('#map').remove();
@@ -228,6 +292,40 @@ if(PCveInd == 118){
 }
   $(document).ready(function()
   {
+    $('.tabla_completa').html(tabulado);
+
+    var nColumnas = $(".tablaArmada tr:last td").length;
+    var nFilas = $(".tabla_completa tr").length;
+
+    var arre = [];
+    for (var i = 0; i < nColumnas - 1; i++) {
+      arre.push(i)
+    }
+
+
+
+
+
+    if(nColumnas > 17){
+      $('.tablaArmada').DataTable( {
+             scrollY:        "600px",
+             scrollX:        true,
+             scrollCollapse: true,
+             paging:         false,
+             searching: false,
+             aoColumnDefs: [
+               { 'bSortable': false,
+                 'aTargets': arre }
+             ],
+             fixedColumns:   {
+                 leftColumns: 1
+             }
+         } );
+
+      $('.tablaArmada thead tr th:first').addClass('empuja_a_la_izquierda');
+    }
+
+    $('.tabla_completa').css('height','900px');
 
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales

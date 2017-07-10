@@ -65,7 +65,7 @@ function cobertura(data){
 		  			temporal.push(cober_inter[i].Descrip_cg);
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
 		  				//varios problemas
-		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_ser.toFixed(1);
+		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato;
 		  				temporal.push(dato_formato);
 		  			}
 		  			arreglo_datos_tem.push(temporal)
@@ -180,7 +180,7 @@ function cobertura_series(data,i){
 		  			var temporal2 = [];
 		  			temporal2.push(cober_inter[i].Descrip_cg);
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
-		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_ser.toFixed(1);
+		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato;
 		  				temporal2.push(dato_formato);
 		  			}
 		  			arreglo_datos_tem2.push(temporal2)
@@ -237,7 +237,7 @@ function cobertura_101(data){
 			  			temporal.push(cober_inter[j].Descrip_cg);
 			  			for (var k = 0; k < cober_inter[j].Clasificaciones.length; k++) {
 			  				//varios problemas
-			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_ser.toFixed(1);
+			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
 			  				temporal.push(dato_formato);
 			  			}
 			  			arreglo_datos_tem.push(temporal)
@@ -261,7 +261,7 @@ function cobertura_101(data){
 			  			temporal.push(cober_inter[j].Descrip_cg);
 			  			for (var k = 0; k < cober_inter[j].Clasificaciones.length; k++) {
 			  				//varios problemas
-			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_ser.toFixed(1);
+			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
 			  				temporal.push(dato_formato);
 			  			}
 			  			arreglo_datos_tem.push(temporal)
@@ -285,7 +285,7 @@ function cobertura_101(data){
 			  			temporal.push(cober_inter[j].Descrip_cg);
 			  			for (var k = 0; k < cober_inter[j].Clasificaciones.length; k++) {
 			  				//varios problemas
-			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_ser.toFixed(1);
+			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
 			  				temporal.push(dato_formato);
 			  			}
 			  			arreglo_datos_tem.push(temporal)
@@ -350,7 +350,7 @@ function cobertura_101_insumos(data,serie){
 			  			temporal.push(cober_inter[j].Descrip_cg);
 			  			for (var k = 0; k < cober_inter[j].Clasificaciones.length; k++) {
 			  				//varios problemas
-			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_ser.toFixed(1);
+			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
 			  				temporal.push(dato_formato);
 			  			}
 			  			arreglo_datos_tem.push(temporal)
@@ -374,7 +374,7 @@ function cobertura_101_insumos(data,serie){
 			  			temporal.push(cober_inter[j].Descrip_cg);
 			  			for (var k = 0; k < cober_inter[j].Clasificaciones.length; k++) {
 			  				//varios problemas
-			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_ser.toFixed(1);
+			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
 			  				temporal.push(dato_formato);
 			  			}
 			  			arreglo_datos_tem.push(temporal)
@@ -398,7 +398,7 @@ function cobertura_101_insumos(data,serie){
 			  			temporal.push(cober_inter[j].Descrip_cg);
 			  			for (var k = 0; k < cober_inter[j].Clasificaciones.length; k++) {
 			  				//varios problemas
-			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_ser.toFixed(1);
+			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
 			  				temporal.push(dato_formato);
 			  			}
 			  			arreglo_datos_tem.push(temporal)
