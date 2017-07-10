@@ -2403,9 +2403,9 @@ $('#indicador').trigger("click");
               $('#tabla_nacional').hide();
               $('#botonera_nacional').hide();
               $('#indicador-grafica').hide();
-              $('#indicador-panel').show();
-              $('#mapas_hide').hide();
-              $('.ocultar').hide();
+              // $('#indicador-panel').show();
+              // $('#mapas_hide').hide();
+              // $('.ocultar').hide();
             }else if(array_Graficas[g].Clave_gra == 1){
               console.log(array_Graficas[g].Descrip_gra);
               datosGrafica(arrray_anios[0]);
@@ -2770,6 +2770,7 @@ var anioo = cadena.split('-');
     }
 
       $(document).ready(function() {
+        armaMetadatos();
         $("#sti").hide();
         window.onload = function () {
           $('#buscar').click(function () {
@@ -2786,7 +2787,6 @@ var anioo = cadena.split('-');
           });
         }
 
-        armaMetadatos();
       });
 
 
@@ -2844,7 +2844,6 @@ var anioo = cadena.split('-');
 
         /* tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>'; */
         tablaMeta = tablaMeta +  '</td></tr></tbody></table></p>';
-
 
         $('#metadatosApi').html(tablaMeta);
 
