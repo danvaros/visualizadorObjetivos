@@ -178,10 +178,7 @@ if(PCveInd == 118){
           //alert('si entra');
         break;
         case 'ClA':
-          tabulado = AClanidada(data);
-        break;
-        default :
-          tabulado = AClanidada(data);
+          tabulado = tablaClA(data);
         break;
       }
 
@@ -248,10 +245,7 @@ if(PCveInd == 118){
           //alert('si entra');
         break;
         case 'ClA':
-          tabulado = AClanidada(data);
-        break;
-        default :
-          tabulado = AClanidada(data);
+          tabulado = tablaClA(data);
         break;
       }
 
@@ -312,10 +306,12 @@ if(PCveInd == 118){
         $('#footmap').remove();
         $('#grafs').remove();
         $('#indicador-grafica').remove();
-        $('#indicador-panel').hide();
+
         $('.ocultar').hide();
         //datos a mostrar
-        $('#serie-panel2').show();
+        $('#serie-panel2').hide();
+        $('#indicador-panel').show();
+
       }
 
       $('#loader').delay(2000).fadeOut("slow");

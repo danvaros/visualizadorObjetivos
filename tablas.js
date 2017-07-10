@@ -185,7 +185,7 @@ function tablaAS(data){
 }
 
 function tablaClA(data){
-  var tabuladoClA =  '<table class="tablaArmada"><thead><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Series[0].Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr></thead>';
+  var tabuladoClA =  '<table class="tablaArmada striped"><thead><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Series[0].Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr></thead>';
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
     for (var j = 0; j < data.Series[0].Coberturas[i].Clasificaciones.length; j++) {
       if(data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
@@ -196,7 +196,8 @@ function tablaClA(data){
     }//fin for J
   }//fin for i
   tabuladoClA += '</table>';
-  $('#tabla').html(tabuladoClA);
+  // $('#tabla').html(tabuladoClA);
+  return tabuladoClA;
 }
 
 function CoClanidada(data){
