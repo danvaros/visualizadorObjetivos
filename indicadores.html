@@ -2117,15 +2117,16 @@ $(document).ready(function(){
           });
 
 $('#indicador').trigger("click");
-          // select de metadatos
-          $('#indicador').click(function(){
+            // select de metadatos
+            $('#indicador').click(function(){
 
             $('#indicador-panel').hide();
             $('#mapas_hide').show();
             $('#botonera_nacional').show();
             $('#chart2').show();
+
             if(codigoDg.replace(/\s/g,'') == 'N' ){
-              if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
+              if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48 || PCveInd == 333){
                   $('#tabla_nacional').hide();
                   $('#indicador-panel').show();
                   $('#mapas_hide').hide();
@@ -2133,8 +2134,8 @@ $('#indicador').trigger("click");
                   $('#chart2').hide();
               }
             }
+
                 $('#metadato-panel').hide();
-                $('#indicador-grafica').show();
                 $('#serie-panel').hide();
                 $('#datos-panel').hide();
                 $('#datos-panel-dos').hide();
@@ -2145,6 +2146,15 @@ $('#indicador').trigger("click");
                 $('#serie').removeClass('indicadores-taps-active');
                 $('#datos').removeClass('indicadores-taps-active');
                 $('#metadato').removeClass('indicadores-taps-active');
+
+                if( PCveInd == 333){
+                    $('#tabla_nacional').hide();
+                    $('#indicador-panel').show();
+                    $('#mapas_hide').hide();
+                    $('#botonera_nacional').hide();
+                    $('#chart2').hide();
+                    $('#indicador-grafica').hide();
+                }
 
                 colorObjetivo(obj);
           });
