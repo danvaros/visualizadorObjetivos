@@ -19,7 +19,7 @@ Array.prototype.unique=function(a){
 
 //tabla para cobertura series
 function tablaCoS(data){
-  var tabuladoCoS =  '<table class="centered striped"><tr>';
+  var tabuladoCoS =  '<table class="centered striped tablaArmada"><tr>';
   var cabezera =  false;
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
 
@@ -69,7 +69,7 @@ function tablaCoCl(data){
       tabuladoCoCl  +=  '</tr>';
       years = years.unique();
       cabezera = true;
-      var subTabulado = '<table class="centered striped"><tr><th rowspan="2"> Entidades federativas</th>';
+      var subTabulado = '<table class="centered striped tablaArmada"><tr><th rowspan="2"> Entidades federativas</th>';
       var sizeYear =  total_columnas/years.length;
       for (var k = 0; k < years.length; k++) {
         subTabulado +=  '<th colspan="'+ sizeYear +'">' + years[k] +'</th>'
@@ -97,7 +97,7 @@ function tablaCoCl(data){
 function AClanidada(data){
   var labelYear = '';
   var tabuladoAnidado =  '';
-  var subTabuladoAnidado =  '<table class="centered striped">';
+  var subTabuladoAnidado =  '<table class="centered striped tablaArmada">';
   var primera = true;
   var cabezera =  false;
   var labels   = [];
@@ -135,7 +135,7 @@ function AClanidada(data){
 function tablaACl(data){
   var labelYear = '';
   var tabuladoAnidado =  '';
-  var subTabuladoAnidado =  '<table class="centered striped">';
+  var subTabuladoAnidado =  '<table class="centered striped tablaArmada">';
   var primera = true;
   var cabezera =  false;
   var labels   = [];
@@ -174,7 +174,7 @@ function tablaACl(data){
 
 function tablaAS(data){
 
-  var tabuladoAS =  '<table class="centered striped"><tr><th>Periodo</th><th>'+ data.Descrip_ind +'</th></tr>';
+  var tabuladoAS =  '<table class="centered striped tablaArmada"><tr><th>Periodo</th><th>'+ data.Descrip_ind +'</th></tr>';
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
     for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
       tabuladoAS += '<tr><td>'+ data.Series[0].Coberturas[i].ValorDato[j].AADato_ser   +'</td><td>' + data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
@@ -186,7 +186,7 @@ function tablaAS(data){
 }
 
 function tablaClA(data){
-  var tabuladoClA =  '<table><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Series[0].Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr>';
+  var tabuladoClA =  '<table class="tablaArmada"><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Series[0].Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr>';
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
     for (var j = 0; j < data.Series[0].Coberturas[i].Clasificaciones.length; j++) {
       if(data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
