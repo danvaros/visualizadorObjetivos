@@ -536,14 +536,14 @@ else
                   datos_doble += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] *  100) / 100)  +'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j]  +'</td>';
                 }
                }
 
@@ -640,17 +640,17 @@ else
                   datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
-                  datos_dobleDat +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
+                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j] +'</td>';
                 }
                }
 
@@ -754,17 +754,17 @@ else
                   datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j]  +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
-                  datos_dobleDat +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100)+'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
+                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j] +'</td>';
                 }
                }
 
