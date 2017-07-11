@@ -432,7 +432,7 @@ else
       var tabla_armada = arma_tabla_insumo(arreglo_datos_mujeres,filtro);
     }
 
-    //console.log(tabla_armada);
+    console.log(tabla_armada);
 
       for (var i = 0; i < tabla_armada.length; i++) {
                if(i == 0){
@@ -456,14 +456,14 @@ else
                   datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
-                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                  var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
-                    datos_doble +=  '  <td class="laque">'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                    datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ (Math.round(tabla_armada[i][j] * 100) / 100) +'</td>';
+                  datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
                 }
                }
 
@@ -923,17 +923,17 @@ else
                 else if(j == insumos_general[insumo][0].length -1 ) {
                   //(Math.round(insumos_general[insumo][i][j] + "e+2")  + "e-2")
                   //var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ (Math.ceil(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
-                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
+                  var varia = '<td class="headcol">'+ insumos_general[insumo][i][0] +'</td><td>'+ insumos_general[insumo][i][j] +'</td>';
                   datos_doble += varia;
                   datos_dobleDat += varia;
                 }
                 else if(j == insumos_general[insumo][0].length -2){
-                    datos_doble +=  '  <td class="laque dos">'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
-                    datos_dobleDat +=  '  <td class="laque dos">'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
+                    datos_doble +=  '  <td class="laque dos">'+ insumos_general[insumo][i][j]  +'</td>';
+                    datos_dobleDat +=  '  <td class="laque dos">'+ insumos_general[insumo][i][j] +'</td>';
                 }
                 else{
-                  datos_doble +=  '  <td>'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
-                  datos_dobleDat +=  '  <td>'+ +(Math.round(insumos_general[insumo][i][j] * 100) / 100) +'</td>';
+                  datos_doble +=  '  <td>'+ insumos_general[insumo][i][j]  +'</td>';
+                  datos_dobleDat +=  '  <td>'+insumos_general[insumo][i][j] +'</td>';
                 }
                }
 
@@ -1043,7 +1043,7 @@ else
           temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
           for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
             //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato != null){
+            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato != ''){
 
               var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato)
 
@@ -1235,7 +1235,7 @@ else
         var dato_formato;
         // console.log('-------------------- comparamos --------------------');
         // console.log(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato);
-        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != null)
+        if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
         {
 
           dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
@@ -1259,6 +1259,9 @@ else
     for (var i = 0; i < arreglo_datos[num_cobertura].length; i++) {
         cobertura_tabla.push(arreglo_datos[num_cobertura][i]);
     }
+    console.log('ñlñlñlñlñlñlñlñlññlñlñlñlñlñlñlñlñ');
+    console.log(arreglo_datos);
+    console.log(cobertura_tabla);
     return cobertura_tabla;
   }
 
