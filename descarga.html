@@ -534,11 +534,13 @@ $('#loader').show();
     $(document).ready(function(){
 
 
-      if( $('.indi1').attr('checked') ) {
-        //$('#fin_pobreza_cont input.child[name="'+$(this).attr('name')+'"]:checked');
-          alert('Seleccionado');
-      }
-
+      // if( $('.indi1').attr('checked') ) {
+      //   //$('#fin_pobreza_cont input.child[name="'+$(this).attr('name')+'"]:checked');
+      //     alert('Seleccionado');
+      // }
+      $('.indi1').change(function() {//do something when the user clicks the box
+        alert(this.checked);
+      });
 
 
 
