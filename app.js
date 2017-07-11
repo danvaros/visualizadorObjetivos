@@ -327,6 +327,10 @@ else
       $('.tabla_completa').css('height', alto + 'px');
     }
 
+    if(PCveInd ==  101){
+      $('.tabla_completa').addClass('scrollx-tabla');
+    }
+
     titulos(PCveInd);
     //llamada cuando cambia el select de los filtros estatales
     $('#filtros_es').on('change',function(){
