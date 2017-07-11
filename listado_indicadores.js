@@ -21,7 +21,7 @@ function get_tematica(){
 }
 
 function crea_lista(data){
-	var contenido =  '<select>';
+	var contenido =  '<select id="listaselect">';
 	var contenedor  = $('#listado_indicadores');
 	for (var i = 0; i < data.length; i++) {
 		contenido = contenido + '<optgroup label="'+ data[i].Abrevia_des +'">';
@@ -39,7 +39,7 @@ function crea_lista(data){
 	contenido = contenido + '</select>';
 	contenedor.html(contenido);
 
-	$('select').material_select();
+	$('#listaselect').material_select();
 }
 
 

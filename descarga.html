@@ -204,18 +204,17 @@ $('#loader').show();
           <h5>Elementos a exportar</h5>
           <br />
           <div class="input-field col s12 l8" style="margin-left:0px;">
-            <input type="checkbox" class="validate caja_d indicadorDescarga" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="validate caja_d metadatoDescarga" style="padding-left: 12px;">&nbsp;Metadato&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="validate caja_d serieDescarga" style="padding-left: 12px;">&nbsp;Serie histórica Datos para el cálculo&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="metadatoDescarga" class="validate caja_d metadatoDescarga" style="padding-left: 12px;">&nbsp;Metadato&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp;
           </div>
           <div class="input-field col s12 l2">
                   <b>Formato:</b>
-                <input type="checkbox" class="valdidate caja_d tipoCSV" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" class="valdidate caja_d tipoXLS" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="tipoCSV" class="valdidate caja_d" name="formato" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp;
           </div>
           <div class="input-field col s12 l2">
-              <input type="submit" class="valdidate caja_d enviaDescarga" style="padding-left:12px;" value="Enviar" />
+              <button id="enviaDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;" >Enviar</button>
           </div>
         </div>
         <!-- <div class="col s12">
@@ -266,7 +265,7 @@ $('#loader').show();
              <div class="back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="salud_bienestar_cont">
              </div>
            </li>
-           <li id="objetivo4" class="objetivos">
+           <!-- <li id="objetivo4" class="objetivos">
              <div class=" id_4" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_4" id="id_4">
                  <img class="ico_obj" src="img/ods-04.png" alt="" />
@@ -281,7 +280,7 @@ $('#loader').show();
                   </div>
                 </div>
              </div>
-           </li>
+           </li> -->
            <li id="objetivo5" class="objetivos">
              <div class=" active id_5" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_5" id="id_5">
@@ -372,7 +371,7 @@ $('#loader').show();
                 </div>
              </div>
            </li>
-           <li id="objetivo11" class="objetivos">
+           <!-- <li id="objetivo11" class="objetivos">
              <div class=" active id_11" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_11" id="id_11">
                  <img class="ico_obj" src="img/ods-11.png" alt="" />
@@ -419,7 +418,7 @@ $('#loader').show();
                   </div>
                 </div>
              </div>
-           </li>
+           </li> -->
            <li id="objetivo14" class="objetivos">
              <div class=" active id_14" style="padding-top:10px;padding-bottom: 30px">
                <div class="obj_icon center-align id_14" id="id_14">
@@ -533,12 +532,55 @@ $('#loader').show();
 
     $(document).ready(function(){
 
+      $('#tipoCSV').change(function() {//do something when the user clicks the box
+        if($('#tipoCSV').attr('checked')){
+          $('#tipoXLS').removeAttr('checked');
+        }else{
+          $('#tipoXLS').attr('checked');
+        }
+      });
 
-      if( $('.indi1').attr('checked') ) {
-        //$('#fin_pobreza_cont input.child[name="'+$(this).attr('name')+'"]:checked');
-          alert('Seleccionado');
+      $('#tipoXLS').change(function() {//do something when the user clicks the box
+        if($('#tipoXLS').attr('checked')){
+          $('#tipoCSV').removeAttr('checked');
+        }else{
+          $('#tipoCSV').attr('checked');
+        }
+      });
+
+      // if( $('.indi1').attr('checked') ) {
+      //   //$('#fin_pobreza_cont input.child[name="'+$(this).attr('name')+'"]:checked');
+      //     alert('Seleccionado');
+      // }
+
+      $('#enviaDescarga').on('click',function(){
+        //alert('Enviar');
+        descargaSeleccion();
+      });
+
+      function descargaSeleccion(){
+        var formato;
+        var descargas;
+        var tipoDescarga = [];
+        var indSel = $('#indicadorDescarga').attr('checked');
+
+
+
+
+        if(indSel){
+          alert('Enviar');
+          $('#indicadorDescarga').attr('checked');
+          $('#metadatoDescarga').attr('checked');
+          $('#calculoDescarga').attr('checked');
+        }else{
+          alert('Debe seleccionar al menos un tipo de descarga');
+        }
+
       }
 
+      $('.indi1').change(function() {//do something when the user clicks the box
+        alert(this.checked);
+      });
 
 
 
@@ -569,12 +611,6 @@ $('#loader').show();
       //     $('input[type=checkbox]').prop('checked', true);
       //   });
       // }
-
-
-
-
-
-
 
 
 
@@ -686,7 +722,8 @@ $('#loader').show();
       for (var i = 0; i < datos.length; i++) {
         var contenido='';
         for (var j = 0; j < datos[i].Meta.length; j++) {
-var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
+      var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
+
         if(true){
           if(clave_arb_meta != 210){
           if(j > 7){
@@ -777,8 +814,6 @@ var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
           //   console.log(contenido);
           //   checar ++;
           // }
-
-
 
         }//despues de este cambia el indicador
 
@@ -887,22 +922,6 @@ if(datos[i].Meta.length > 2){
 
       $('.tooltipped').tooltip({delay: 50});
       // console.log(tabla);
-    }
-
-    function show_less()
-    {
-      if(visibles){
-        $('.ocultar').hide();
-        console.log('oculta');
-        visibles = false;
-        $('.mensaje').html('Ver más');
-      }
-      else{
-       $('.ocultar').show();
-       console.log('muetra');
-       visibles = true;
-       $('.mensaje').html('Ver menos');
-      }
     }
 
     function esconder() {
