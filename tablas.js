@@ -135,7 +135,7 @@ function AClanidada(data){
 function tablaACl(data){
   var labelYear = '';
   var tabuladoAnidado =  '';
-  var subTabuladoAnidado =  '<table class="centered striped tablaArmada"><thead>';
+  var subTabuladoAnidado =  '<table class="striped tablaArmada"><thead>';
   var primera = true;
   var cabezera =  false;
   var labels   = [];

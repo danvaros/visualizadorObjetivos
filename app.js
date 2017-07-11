@@ -319,12 +319,41 @@ else
                  leftColumns: 1
              }
          } );
-
-      $('.tablaArmada thead tr th:first').addClass('empuja_a_la_izquierda');
     }else{
       var alto =  (nFilas+2) * 47;
       $('.tabla_completa').css('height', alto + 'px');
     }
+
+
+    switch(tipoTabulado){
+      case 'CoS':
+        $('.tablaArmada thead tr th:first').addClass('empujatablaCoS');
+      break;
+      case 'CoCl':
+        if(clasif > 1){
+          $('.tablaArmada thead tr th:first').addClass('empujaCoClanidada');
+        }else{
+          $('.tablaArmada thead tr th:first').addClass('empujatablaCoCl');
+        }
+      break;
+      case 'ACl':
+        if(clasif > 1){
+          $('.tablaArmada thead tr th:first').addClass('empujaAClanidada');
+        }else{
+          $('.tablaArmada thead tr th:first').addClass('empujatablaACl');
+        }
+      break;
+      case 'AS':
+        $('.tablaArmada thead tr th:first').addClass('empujatablaAS');
+        //alert('si entra');
+      break;
+      case 'ClA':
+        $('.tablaArmada thead tr th:first').addClass('empujatablaClA');
+      break;
+    }
+
+
+
 
     if(PCveInd ==  101){
       $('.tabla_completa').addClass('scrollx-tabla');
