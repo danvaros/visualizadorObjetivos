@@ -310,7 +310,7 @@ else
              scrollCollapse: true,
              "autoWidth":    false,
              paging:         false,
-             responsive:      true,
+             responsive:      false,
              searching: false,
              aoColumnDefs: [
                { 'bSortable': false,
