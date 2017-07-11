@@ -308,7 +308,6 @@ else
              scrollY:        "510px",
              scrollX:        true,
              scrollCollapse: true,
-             "autoWidth":    false,
              paging:         false,
              responsive:      false,
              searching: false,
