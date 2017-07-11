@@ -305,10 +305,12 @@ else
     if(nColumnas > 12){
       $('.tabla_completa').css('height', '700px');
       $('.tablaArmada').DataTable( {
-             scrollY:        "600px",
+             scrollY:        "510px",
              scrollX:        true,
              scrollCollapse: true,
+             "autoWidth":    false,
              paging:         false,
+             responsive:      true,
              searching: false,
              aoColumnDefs: [
                { 'bSortable': false,
