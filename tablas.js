@@ -19,7 +19,7 @@ Array.prototype.unique=function(a){
 
 //tabla para cobertura series
 function tablaCoS(data){
-  var tabuladoCoS =  '<table class="centered striped tablaArmada"><thead><tr>';
+  var tabuladoCoS =  '<table class="striped tablaArmada"><thead><tr>';
   var cabezera =  false;
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
 
@@ -32,7 +32,7 @@ function tablaCoS(data){
       cabezera = true;
     }
 
-    tabuladoCoS += '</tr></thead><tr><td>' +  data.Series[0].Coberturas[i].Descrip_cg + '</td>'
+    tabuladoCoS += '</tr></thead><tr><td>' +  '<span style="display:none;">'+data.Series[0].Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Series[0].Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
       if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == ""){
         tabuladoCoS += '<td> ND </td>';
@@ -79,7 +79,7 @@ function tablaCoCl(data){
       tabuladoCoCl =   subTabulado +' '+ tabuladoCoCl;
     }//fin if condicion cabezera
 
-    tabuladoCoCl   +=  '<tr ><td>'+ data.Series[0].Coberturas[i].Descrip_cg +'</td>';
+    tabuladoCoCl   +=  '<tr ><td>' +  '<span style="display:none;">'+data.Series[0].Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Series[0].Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Series[0].Coberturas[i].Clasificaciones.length; j++) {
       if(data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
         tabuladoCoCl   +=  '<td> ND </td>';
@@ -220,7 +220,7 @@ function CoClanidada(data){
       cabezera = true;
     }
 
-    tabulado += '<tr><td>' + data.Series[0].Coberturas[i].Descrip_cg + '</td>';
+    tabulado += '<tr><td>'+  '<span style="display:none;">'+data.Series[0].Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Series[0].Coberturas[i].Descrip_cg + '</td>';
     for (var j = 0; j < data.Series[0].Coberturas[i].Clasificaciones.length; j++) {
       if(data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
           tabulado += '<td> ND </td>';

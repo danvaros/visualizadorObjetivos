@@ -535,7 +535,7 @@ $('#loader').show();
 <script type="text/javascript" src="entidad2.json"></script>
 <script src="tablas.js"></script>
 <script src='funcionesApi.js'></script>
-<script src="app.js"></script>
+<script src="appDescarga.js"></script>
 
 <script src="lib/excellentexport.js"></script>
 
@@ -600,6 +600,13 @@ $('#loader').show();
 
         console.log(indDesc);
 
+        for(var k = 0; k < indDesc.length; k++){
+          listadoTablas(indDesc[k]);
+          alert('Se agrega' + indDesc[k]);
+        }
+
+
+
         if(indSel){
           alert('Enviar');
           $('#indicadorDescarga').attr('checked');
@@ -610,6 +617,13 @@ $('#loader').show();
         }
 
       }
+
+      function items(item, index) {
+          return item;
+      }
+
+
+
       //Termina función descargaSeleccion
 
 
