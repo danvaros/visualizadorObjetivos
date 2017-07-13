@@ -25,7 +25,7 @@ function tablaCoS(data){
 
     //tomamos las cabezeras, años del primer dato
     if(!cabezera){
-      tabuladoCoS += '<th> Estados </th>';
+      tabuladoCoS += '<th> Entidad Federativa </th>';
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
         tabuladoCoS += '<th>' + data.Series[0].Coberturas[i].ValorDato[j].AADato_ser + '</th>';
       }//fin for j
@@ -69,7 +69,7 @@ function tablaCoCl(data){
       tabuladoCoCl  +=  '</tr></thead>';
       years = years.unique();
       cabezera = true;
-      var subTabulado = '<table class="tablaArmada striped "><thead><tr><th rowspan="2"> Entidades federativas</th>';
+      var subTabulado = '<table class="tablaArmada striped "><thead><tr><th rowspan="2"> Entidad Federativa</th>';
       var sizeYear =  total_columnas/years.length;
       for (var k = 0; k < years.length; k++) {
         subTabulado +=  '<th colspan="'+ sizeYear +'">' + years[k] +'</th>'
