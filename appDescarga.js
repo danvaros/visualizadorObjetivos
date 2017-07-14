@@ -133,7 +133,7 @@ function listadoTablas(PCveInd){
       // }
 
 
-console.log(tabulado);
+        console.log(tabulado);
 
 
       $('#loader').delay(2000).fadeOut("slow");
@@ -143,6 +143,10 @@ console.log(tabulado);
         },
     async:false
   });
+
+  $('.tabla_completa').html(tabulado);
+
+
 }
 
 

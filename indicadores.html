@@ -2882,15 +2882,15 @@ var anioo = cadena.split('-');
         '<tr><th>Referencia nacional y/o internacional</th><td>';
 
         for (var i = 0; i < metadatosArr.RefInt.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.RefInt[i].Descrip_ri + '<br>';
+          tablaMeta = tablaMeta  +  nl2br(metadatosArr.RefInt[i].Descrip_ri) + '<br>';
         }
 
         tablaMeta = tablaMeta + '</td></tr>'+
-        '<tr><th>Observaciones</th><td>'+metadatosArr.Observacion_ft+'</td></tr>'+
+        '<tr><th>Observaciones</th><td>'+nl2br(metadatosArr.Observacion_ft)+'</td></tr>'+
         '<tr><th>Contacto</th><td>';
 
         for (var i = 0; i < metadatosArr.Contacto.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + metadatosArr.Contacto[i].Domicilio_con +'<br> <b>Teléfono: </b>' + metadatosArr.Contacto[i].Telefono_con + '<br><b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con;
+          tablaMeta = tablaMeta  +  metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + nl2br(metadatosArr.Contacto[i].Domicilio_con) +'<br> <b>Teléfono: </b>' + metadatosArr.Contacto[i].Telefono_con + '<br><b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con + '<br  /><br  />';
         }
 
 
@@ -2900,6 +2900,11 @@ var anioo = cadena.split('-');
         $('#metadatosApi').html(tablaMeta);
 
         // <img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas
+      }
+
+      function nl2br(str, is_xhtml) {
+          var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+          return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
       }
 
     </script>
