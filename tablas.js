@@ -19,20 +19,20 @@ Array.prototype.unique=function(a){
 
 //tabla para cobertura series
 function tablaCoS(data){
-  var tabuladoCoS =  '<table class="centered striped tablaArmada"><thead><tr>';
+  var tabuladoCoS =  '<table class="striped tablaArmada"><thead><tr>';
   var cabezera =  false;
   for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
 
     //tomamos las cabezeras, años del primer dato
     if(!cabezera){
-      tabuladoCoS += '<th> Estados </th>';
+      tabuladoCoS += '<th> Entidad Federativa </th>';
       for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
         tabuladoCoS += '<th>' + data.Series[0].Coberturas[i].ValorDato[j].AADato_ser + '</th>';
       }//fin for j
       cabezera = true;
     }
 
-    tabuladoCoS += '</tr></thead><tr><td>' +  data.Series[0].Coberturas[i].Descrip_cg + '</td>'
+    tabuladoCoS += '</tr></thead><tr><td>' +  '<span style="display:none;">'+data.Series[0].Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Series[0].Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
       if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato == ""){
         tabuladoCoS += '<td> ND </td>';
@@ -69,7 +69,7 @@ function tablaCoCl(data){
       tabuladoCoCl  +=  '</tr></thead>';
       years = years.unique();
       cabezera = true;
-      var subTabulado = '<table class="tablaArmada centered striped "><thead><tr><th rowspan="2"> Entidades federativas</th>';
+      var subTabulado = '<table class="tablaArmada striped "><thead><tr><th rowspan="2"> Entidad Federativa</th>';
       var sizeYear =  total_columnas/years.length;
       for (var k = 0; k < years.length; k++) {
         subTabulado +=  '<th colspan="'+ sizeYear +'">' + years[k] +'</th>'
@@ -79,7 +79,7 @@ function tablaCoCl(data){
       tabuladoCoCl =   subTabulado +' '+ tabuladoCoCl;
     }//fin if condicion cabezera
 
-    tabuladoCoCl   +=  '<tr ><td>'+ data.Series[0].Coberturas[i].Descrip_cg +'</td>';
+    tabuladoCoCl   +=  '<tr ><td>' +  '<span style="display:none;">'+data.Series[0].Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Series[0].Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Series[0].Coberturas[i].Clasificaciones.length; j++) {
       if(data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
         tabuladoCoCl   +=  '<td> ND </td>';
@@ -135,7 +135,7 @@ function AClanidada(data){
 function tablaACl(data){
   var labelYear = '';
   var tabuladoAnidado =  '';
-  var subTabuladoAnidado =  '<table class="centered striped tablaArmada"><thead>';
+  var subTabuladoAnidado =  '<table class="striped tablaArmada"><thead>';
   var primera = true;
   var cabezera =  false;
   var labels   = [];
@@ -220,7 +220,7 @@ function CoClanidada(data){
       cabezera = true;
     }
 
-    tabulado += '<tr><td>' + data.Series[0].Coberturas[i].Descrip_cg + '</td>';
+    tabulado += '<tr><td>'+  '<span style="display:none;">'+data.Series[0].Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Series[0].Coberturas[i].Descrip_cg + '</td>';
     for (var j = 0; j < data.Series[0].Coberturas[i].Clasificaciones.length; j++) {
       if(data.Series[0].Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
           tabulado += '<td> ND </td>';
