@@ -27,9 +27,11 @@
   var data_local = '';
   var tabulado ;
   var tipoTabulado;
+  var armaTabulado;
   var clasif;
 
 function listadoTablas(PCveInd){
+  $('#loader').delay(2000).fadeOut("slow");
   $.ajax({
     type: 'POST',
     url: "http://agenda2030.mx/datos/api/Valores/PorClave",
@@ -70,7 +72,7 @@ function listadoTablas(PCveInd){
       //tabulado = tablaCoS(data);
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
-      colorObjetivo(obj);
+      //colorObjetivo(obj);
 
       // separamos para ver que funcion es la que debemos usar
       if(data.Series[0].Coberturas[0].ValorDato != 0){
@@ -91,8 +93,8 @@ function listadoTablas(PCveInd){
           estados = arma_tabla(0);
           coberturaInsumos(data);
           //console.log(estados);
-          poner_filtros();
-          poner_filtros_serie();
+          //poner_filtros();
+          //poner_filtros_serie();
           $('#row_filtros_serie').show();
           cobertura_notas = true;
 
@@ -107,42 +109,22 @@ function listadoTablas(PCveInd){
       // }
       titulos(PCveInd);
       $('#tabla_nacional').hide();
-      // if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48){
-      //   $('#tabla_nacional').show();
-      //   $('#mapas_hide').remove();
-      //   $('#botonera_nacional').remove();
-      // }
-      // if(PCveInd ==  333)
-      // {
-      //   $('#map').hide();
-      //   $('#conten_maps').append('<div id="map333"></div>');
-      //   mapa_333();
-      // }
-
-      // if(PCveInd ==  333 /*|| PCveInd == 276*/){
-      //   $('#map').remove();
-      //   $('#footmap').remove();
-      //   $('#grafs').remove();
-      //   $('#indicador-grafica').remove();
-      //
-      //   $('.ocultar').hide();
-      //   //datos a mostrar
-      //   $('#serie-panel2').hide();
-      //   $('#indicador-panel').show();
-      //
-      // }
 
 
-console.log(tabulado);
+        console.log(tabulado);
 
-
-      $('#loader').delay(2000).fadeOut("slow");
+        armaTabulado = armaTabulado + tabulado;
+      // $('#loader').delay(2000).fadeOut("slow");
     },
     error: function() {
             //alert('Error occured');
         },
     async:false
   });
+
+  $('.tabla_completa').html(armaTabulado);
+
+
 }
 
 
