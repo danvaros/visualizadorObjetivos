@@ -1,4 +1,3 @@
-
   var titulo_des_graf=" ";
   var inicio = 0;
   var estados = [];
@@ -182,7 +181,7 @@ else
 
   $.ajax({
     type: 'POST',
-    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
+    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 

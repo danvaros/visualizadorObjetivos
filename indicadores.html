@@ -396,6 +396,14 @@
   width: 100%;
   overflow-x: scroll;
 }
+
+table.tablaArmada tbody tr td:first{
+  text-align: left;
+}
+
+
+
+
     </style>
 
 
@@ -647,9 +655,9 @@
       <div class="row card tablaPadding ocultar">
         <div class="col s12 l12">
           <div class="cuadro_titulo">
-            <h4>Razón de mortalidad materna</h4>
+            <h4>Nombre del indicador</h4>
             <li class="divider"></li>
-            <p>1990-2015</p>
+            <p>XXXX-XXXX</p>
             <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
           </div>
           <div id="conten_maps">
@@ -658,10 +666,10 @@
           <div id="chart2"></div>
           <div class="pie_cuadro2">
             <div>
-              <strong>Nota:</strong> A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 las defunciones extemporáneas
+              <strong>Nota:</strong>
             </div>
-            <div><strong>Fuente:</strong> SS. Dirección General de Información en Salud (DGIS)</div>
-            <div><strong>Fecha de actualización:</strong> Noviembre de 2016</div>
+            <div><strong>Fuente:</strong> </div>
+            <div><strong>Fecha de actualización:</strong> </div>
           </div>
           <div class="col s12 l4"  id="chart2btn">
             <a class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigger" href="#modalGrafica" style="width: 250px;">Comparte esta gráfica</a>
@@ -1351,7 +1359,7 @@ function adelante(){
 
         tabla_nueva += '</tr></thead>';
         tabla_nueva += '<tbody class="tabla_uno"><tr><td>'+estados[i][0]+'</td>';
-        tabla_nueva += '<td>' + unods + '</td></tr></tbody>' ;
+        tabla_nueva += '<td>' + unods + '</td></tr></tbody>';
 
 
       // } else if(i == 35){
@@ -1782,7 +1790,6 @@ function sortFunction(a, b) {
         }
         var geojson;
         function resetHighlight(e) {
-
   		     geojson.resetStyle(e.target);
   			 info.update();
         }
@@ -2861,7 +2868,7 @@ var anioo = cadena.split('-');
 
         tablaMeta = tablaMeta + '</td></tr>'+
         '<tr><th>Fecha de actualización del indicador</th><td>'+metadatosArr.FechaAct_atr+'</td></tr>'+
-        '<tr><th>Fecha próxima de actualización del indicador</th><td>'+metadatosArr.FecProxAct_eic+'</td></tr>'+
+        '<tr><th>Fecha de próxima actualización del indicador</th><td>'+metadatosArr.FecProxAct_eic+'</td></tr>'+
         '<tr><th>Unidad del Estado (UE) responsable de calcular el indicador</th><td>';
 
         for (var i = 0; i < metadatosArr.InsResp.length; i++) {
@@ -2874,15 +2881,15 @@ var anioo = cadena.split('-');
         '<tr><th>Referencia nacional y/o internacional</th><td>';
 
         for (var i = 0; i < metadatosArr.RefInt.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.RefInt[i].Descrip_ri + '<br>';
+          tablaMeta = tablaMeta  +  nl2br(metadatosArr.RefInt[i].Descrip_ri) + '<br>';
         }
 
         tablaMeta = tablaMeta + '</td></tr>'+
-        '<tr><th>Observaciones</th><td>'+metadatosArr.Observacion_ft+'</td></tr>'+
+        '<tr><th>Observaciones</th><td>'+nl2br(metadatosArr.Observacion_ft)+'</td></tr>'+
         '<tr><th>Contacto</th><td>';
 
         for (var i = 0; i < metadatosArr.Contacto.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br>' + metadatosArr.Contacto[i].Telefono_con + '<br>' + metadatosArr.Contacto[i].Correo_con + '<br>' + metadatosArr.Contacto[i].Domicilio_con;
+          tablaMeta = tablaMeta  +  metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + nl2br(metadatosArr.Contacto[i].Domicilio_con) +'<br> <b>Teléfono: </b>' + metadatosArr.Contacto[i].Telefono_con + '<br><b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con + '<br  /><br  />';
         }
 
 
@@ -2892,6 +2899,11 @@ var anioo = cadena.split('-');
         $('#metadatosApi').html(tablaMeta);
 
         // <img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas
+      }
+
+      function nl2br(str, is_xhtml) {
+          var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+          return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
       }
 
     </script>
@@ -3022,7 +3034,6 @@ var anioo = cadena.split('-');
 
         }
       }
-
 
 
     function exportTableToCSV($table, filename) {
