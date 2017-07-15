@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="lib/owl.carousel.min.css">
     <link rel="stylesheet" href="lib/owl.theme.default.min.css">
     <link type="text/css" href="css/tablescroller.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="DataTables/datatables.css">
     <!-- Load c3.css -->
     <link href="lib/c3.css" rel="stylesheet" type="text/css">
 
@@ -279,7 +279,7 @@
   }
 
   </style>
-  <link rel="stylesheet" href="DataTables/datatables.css">
+
     <style>
         /*th, td { white-space: nowrap; }*/
     div.dataTables_wrapper {
@@ -337,74 +337,69 @@
       width: 300px;
     }
 
-    /*table.tabla_completa th {
-            background-color: #333;
-            color:#fff;
-        }
+    .headcol {
+          /*position:absolute;*/
+          width:5em;
+          left:0;
+          top:auto;
+           border-right: 0px none black;
+        /* border-top-width:3px; only relevant for first row
+               // margin-top:-3px; compensate for top border */
+          background-color: #ffffff;
+          margin-left: 6px;
+          margin-top: 6px;
+          width: 230px;
+         margin: 5px;
+         padding-top: 26px !important;
+    }
 
-        table.tabla_completa th, table.tabla_completa td {
-            font-family: Verdana;
-            font-size: 16px;
-            padding: 2px;
-            border: 1px solid grey;
-            border-spacing: 0px;
-        }*/
+  .empujatablaCoS{
+    padding-left: 105px !important;
+    padding-right: 32px !important;
 
+  }
+  /*YA*/
+  .empujatablaCoCl{
+    padding-left:95px !important;
+    padding-right: 26px !important;
+  }
+  /*YA*/
+  .empujaAClanidada{
+    padding-left:95px !important;
+    padding-right: 32px !important;
+  }
 
-/*.empuja_a_la_izquierda{
-  padding-left:95px !important;
-}*/
-/*YA*/
-.empujatablaCoS{
-  padding-left: 105px !important;
-  padding-right: 32px !important;
+  .empujatablaACl{
+    padding-left:105px !important;
+    padding-right: 32px !important;
+  }
 
-}
-/*YA*/
-.empujatablaCoCl{
-  padding-left:95px !important;
-  padding-right: 26px !important;
-}
-/*YA*/
-.empujaAClanidada{
-  padding-left:95px !important;
-  padding-right: 32px !important;
-}
+  /*YA*/
+  .empujatablaAS{
+    padding-left:55px !important;
+    padding-right: 48px !important;
+  }
+  /*YA*/
+  .empujatablaClA{
+    padding-left:105px !important;
+    padding-right: 32px !important;
+  }
+  /*Ya 210*/
+  .empujaCoClanidada{
+    padding-left:85px !important;
+    padding-right: 32px !important;
+  }
 
-.empujatablaACl{
-  padding-left:105px !important;
-  padding-right: 32px !important;
-}
+  .scrollx-tabla{
+    width: 100%;
+    overflow-x: scroll;
+  }
 
-/*YA*/
-.empujatablaAS{
-  padding-left:55px !important;
-  padding-right: 48px !important;
-}
-/*YA*/
-.empujatablaClA{
-  padding-left:105px !important;
-  padding-right: 32px !important;
-}
-/*Ya 210*/
-.empujaCoClanidada{
-  padding-left:85px !important;
-  padding-right: 32px !important;
-}
+  table.tablaArmada tbody tr td:first{
+    text-align: left;
+  }
 
-.scrollx-tabla{
-  width: 100%;
-  overflow-x: scroll;
-}
-
-table.tablaArmada tbody tr td:first{
-  text-align: left;
-}
-
-
-
-
-    </style>
+</style>
 
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -653,12 +648,16 @@ table.tablaArmada tbody tr td:first{
         </div>
       </div>
       <div class="row card tablaPadding ocultar">
+        <div class="col s12 s12">
+          <a class="btn waves-effect waves-light" id="change_municipal"> Cambiar a municipal </a>
+        </div>
         <div class="col s12 l12">
           <div class="cuadro_titulo">
             <h4>Razón de mortalidad materna</h4>
             <li class="divider"></li>
             <p>1990-2015</p>
             <!-- <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span> -->
+
           </div>
           <div id="conten_maps">
             <div id="map"></div>
@@ -1045,44 +1044,9 @@ table.tablaArmada tbody tr td:first{
   <script src="classybrew/build/classybrew.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
   <script src="listado_indicadores.js"></script>
-
+  <script type="text/javascript" charset="utf-8" src="municipio.json"></script>
 
   <script>
-
-  $(document).ready(function() {
-    $('#serie').hide();
-    //$('#listaselect').material_select();
-    //$('select').material_select();
-  });
-
-  //console.log(atributos.Grafica);
-  //console.log(atributos.Grafica[3].Seccion_gra);
-
-  var k;
-
-  // function buscaSeccion(seccion) {
-  //   switch (seccion) {
-  //     case expression:
-  //
-  //       break;
-  //     default:
-  //
-  //   }
-  //
-  //   return seccion = 15;
-  // }
-
-
-  // for(k = 0;k)
-  //console.log(atributos.Grafica.find(buscaSeccion));
-  // if(atributos.Grafica.indexOf('Seccion_gra') ){
-  //
-  //
-  // }
-
-
-
-
   var titulo_des_graf="Razón de mortalidad materna";
   var estadoYear = 2015;
   var chart;
@@ -1091,18 +1055,537 @@ table.tablaArmada tbody tr td:first{
   var table3 = null;
   var table2 = null;
   var table1  = null;
+  var k;
+  var img;
+  var data_url;
+  var locked=false;
+  var geojson;
+  var brew = new classyBrew();
+  var values = [];
+  var values2 = [];
+  var flag_valor_nd=false;
+  var arreglo_valor_nd=[];
+  var arrray_anios = [];
+  var anio_activo = 0;
+  var anio_mas_actual;
+  var lupa = false;
 
+  var map = L.map('map' ,{
+              scrollWheelZoom: false,
+              maxZoom: 14,
+              minZomm:5,
+            }).setView([24.8, -100], 5);
 
-  //console.log(codigoDg.replace(/\s/g,''),"por aca");
+  $(document).ready(function() {
+    var textoTwitterGrafica = 'Comparto esta grafica';
+    var textoTwitterMapa    = 'Comparto este mapa';
+    var URLactual = window.location;
+    var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
+    var urlTwitterGrafica = 'https://twitter.com/intent/tweet?text='+textoTwitterGrafica+';url='+URLactual;
+
+    $('#serie').hide();
+    $('.modal-trigger').leanModal();
+    $(".button-collapse").sideNav();
+    $('#share_grafica').attr('href',urlTwitterGrafica);
+    $('#share_mapa').attr('href',urlTwitterMapa);
+    $('#chart2btn').hide();
+
+    $('#change_municipal').click(function(){
+      init_geojson();
+    });
+
+    chartBarras = c3.generate({
+      legend: {
+        show: false
+      },
+      bindto: '#barras',
+      size: {
+            height: 500
+          },
+      data: {
+        columns: [],
+        type: 'bar',
+        color:
+          function (color, d) {
+              return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+
+              // Descrip_ind : function (d) {
+              //     return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+              //     console.log('x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-');
+              //     console.log(d.index);
+                   //return (d.value >= 45) ? '#00ff00' : '#ff0000';
+              //}
+          }
+        },
+          tooltip: {
+            //format: {
+              // title: function (d) { return d.name; },
+              //title: function (d) { return '' + d.name; },
+            //},
+                contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+                    color = function() {
+                        //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
+                         return d[0].index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+                    };
+
+                    return chartBarras.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
+                }
+            },
+      axis: {
+        rotated: false,
+        x: {
+          type: 'category',
+          categories: [ 'Ags.','BC.','BCS.','Camp.','Coah.','Col.','Chis.','Chih.','CDMX.','Dgo.','Gto.','Gro.','Hgo.','Jal.','Mex.','Mich.',
+          'Mor.','Nay.','NL.','Oax.','Pue.','Qro.','Q Roo.','SLP.','Sin.','Son.','Tab.','Tamps.','Tlax.','Ver.','Yuc.','Zac.','Nal.',
+          ],
+            height: 50,
+                tick:{
+                  rotate: -90,
+                  multiline: false
+                },
+            },
+              //  y : {
+              //         tick: {
+              //             format: d3.format(".2f")
+              //         }
+              //     }
+        },
+      });//fin de grafica
+
+    $('.liga').val(URLactual);
+
+    $('#indicador-panel').hide();
+
+    if(PCveInd == 276){
+      $('#indicador-panel').show();
+    }
+
+    var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
+
+    var datos_doble_2 = '<div class="cuadro_titulo">' + Codigo_ind + ' ' + titulo +
+    '</div><div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2"><table class="bordered" id="miTabla2" class="miTabla2" style="width: 1726px;margin-left: -53px;">';
+
+    var datos_doble_22 =  ' <div class="cuadro_titulo"> ' + titulo +
+    '</div><div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_22"><table class="bordered" id="miTabla22" class="miTabla22">';
+
+     var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
+    '</div><div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3"><table class="bordered" id="miTabla3" class="miTabla3" >';
+
+    for (var i = 0; i < estados.length; i++) {
+      if(i == 0){
+        datos_doble_2 +=  '<thead><tr>';
+        datos_doble_22 +=  '<thead><tr>';
+        datos_doble_3 +=  '<thead><tr>';
+      }
+      else if(i == 1){
+        datos_doble_2 +=  '<tbody><tr>';
+        datos_doble_22 +=  '<tbody><tr>';
+        datos_doble_3 +=  '<tbody><tr>';
+      }
+      else {
+        datos_doble_2 +=  '<tr>';
+        datos_doble_22 +=  '<tr>';
+        datos_doble_3 +=  '<tr>';
+      }
+
+      for (var j = 0 ; j < estados[0].length; j++) {
+        if(i == 0 && j == 0){
+          datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+          datos_doble_22 +=  '  <td  class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] .split('-')[0]+'</td>';
+          datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
+        }
+        else if( i == 0 && j == 0 ){
+          datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+          datos_doble_22 += '<td class"padding-200">'+ estados[i][j].split('-')[0] +'</td>';
+          datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
+        }
+        else if( i == 0 ){
+          datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+          datos_doble_22 += '<td>'+ estados[i][j].split('-')[0] +'</td>';
+          datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
+        }
+        else if(j == 0 ) {
+          var varia;
+          if(estados[i][j] == "ND" || estados[i][j] == "NA"){
+            flag_valor_nd=true;
+            if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+              arreglo_valor_nd.push(estados[i][j]);
+            varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
+          }
+          else {
+            varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]) +'</td>';
+          }
+          datos_doble_2 += varia;
+          datos_doble_22 += varia;
+          datos_doble_3 += varia;
+        }
+        else if(j == 1){
+          if(estados[i][j] == "ND" || estados[i][j] == "NA")
+          {
+            flag_valor_nd=true;
+            if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+              arreglo_valor_nd.push(estados[i][j]);
+            datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+            datos_doble_22 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+            datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
+          }
+          else {
+            datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]) +'</td>';
+            datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]) +'</td>';
+            datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]) +'</td>';
+          }
+        }
+        else{
+          if(estados[i][j] == "ND" || estados[i][j] == "NA"){
+            flag_valor_nd=true;
+            if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
+              arreglo_valor_nd.push(estados[i][j]);
+            datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
+            datos_doble_22 +=  '  <td>'+ estados[i][j] +'</td>';
+            datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
+          }
+          else {
+            datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]) +'</td>';
+            datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]) +'</td>';
+            datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]) +'</td>';
+          }
+        }
+      }
+
+      if(i == 0){
+        datos_doble_2 +=  '</tr></thead>';
+        datos_doble_22 +=  '</tr></thead>';
+        datos_doble_3 +=  '</tr></thead>';
+      }
+      else{
+        datos_doble_2 +=  '</tr>';
+        datos_doble_22 +=  '</tr>';
+        datos_doble_3 +=  '</tr>';
+      }
+    }
+
+    if(flag_valor_nd){
+      var mensaje_nd='';
+      for(var i=0;i<arreglo_valor_nd.length;i++){
+        if(arreglo_valor_nd[i]=='ND'){
+          mensaje_nd=mensaje_nd+'<div><strong>ND:</strong> No disponible</div>';
+        }
+        if(arreglo_valor_nd[i]=='NA'){
+        mensaje_nd=mensaje_nd+'<div><strong>NA:</strong> No aplicable</div>';
+        }
+      }
+
+      datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ mensaje_nd +" "+ pie + '</div></div>';
+
+      datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+
+      mensaje_nd + " " + pie +
+      '</div></div>';
+
+      datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +'</div></div>';
+    }
+    else{
+      datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie + '</div></div>';
+
+      datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
+      '</div></div>';
+
+      datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;"><div class="pie_cuadro2">'+ pie +
+      '</div></div>';
+    }
+
+    $('#serie_panel_tablas').html(datos_doble_2);
+    $('#serie_panel_tablas2').html(datos_doble_2);
+
+    $('#tabla_export').html(datos_doble_2);
+    $('#tabla_export2').html(datos_doble_22);
+
+    $('#tabla_nacional').html(datos_doble_2);
+
+    $('.scroller').scroll(function(e) {
+      $('.scroller').scrollLeft(e.target.scrollLeft);
+    });
+
+    $('#buscar').click(function(){
+      if(lupa){
+        $('#cam_bus').hide();
+        lupa =  false;
+      }else{
+        $('#cam_bus').show();
+        $('#buscar').hide();
+        lupa =  true;
+      }
+    });
+
+    $('#indicador').trigger("click");
+
+    // select de metadatos
+    $('#indicador').click(function(){
+
+      $('#indicador-panel').hide();
+      $('#indicador-grafica').show();
+      $('#mapas_hide').show();
+      $('#botonera_nacional').show();
+      $('#chart2').show();
+
+      if(codigoDg.replace(/\s/g,'') == 'N' ){
+        if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48 || PCveInd == 333){
+          $('#tabla_nacional').hide();
+          $('#indicador-panel').show();
+          $('#mapas_hide').hide();
+          $('#botonera_nacional').hide();
+          $('#chart2').hide();
+        }
+      }
+
+      $('#metadato-panel').hide();
+      $('#serie-panel').hide();
+      $('#datos-panel').hide();
+      $('#datos-panel-dos').hide();
+      $('#link-datos-panel').hide();
+      $('#no_va_serie').show();
+
+      $('#indicador').addClass('indicadores-taps-active');
+      $('#serie').removeClass('indicadores-taps-active');
+      $('#datos').removeClass('indicadores-taps-active');
+      $('#metadato').removeClass('indicadores-taps-active');
+
+      if( PCveInd == 333){
+        $('#tabla_nacional').hide();
+        $('#indicador-panel').show();
+        $('#mapas_hide').hide();
+        $('#botonera_nacional').hide();
+        $('#chart2').hide();
+        $('#indicador-grafica').hide();
+      }
+
+      colorObjetivo(obj);
+    });
+
+    $('#serie').click(function(){
+
+      $('#tabla_nacional').hide();
+      $('#metadato-panel').hide();
+      $('#indicador-panel').hide();
+      $('#mapas_hide').hide();
+      $('#chart2').hide();
+      $('#serie-panel').show();
+      $('#botonera_nacional').hide();
+      $('#indicador-grafica').hide();
+      $('#no_va_serie').hide();
+
+      var arre = [];
+      for (var i = 0; i < estados[0].length - 1; i++) {
+        arre.push(i)
+      }
+
+      if(arre.length > 17){
+       $('#miTabla2').DataTable({
+              scrollY:        "600px",
+              scrollX:        true,
+              scrollCollapse: true,
+              paging:         false,
+              searching: false,
+              aoColumnDefs: [
+                { 'bSortable': false,
+                  'aTargets': arre }
+              ],
+              fixedColumns:   {
+                  leftColumns: 1
+              }
+          });
+
+        $('.miTabla2').DataTable({
+            scrollY:        "600px",
+            scrollX:        true,
+            scrollCollapse: true,
+            paging:         false,
+            searching: false,
+            aoColumnDefs: [{
+              'bSortable': false,
+              'aTargets': arre
+            }],
+            fixedColumns:{
+              leftColumns: 1
+            }
+          });
+      }
+
+      $('#datos-panel').hide();
+      $('#datos-panel-dos').hide();
+      $('#link-datos-panel').hide();
+
+      $('#indicador').removeClass('indicadores-taps-active');
+      $('#serie').addClass('indicadores-taps-active');
+      $('#datos').removeClass('indicadores-taps-active');
+      $('#metadato').removeClass('indicadores-taps-active');
+
+      colorObjetivo(obj);
+    });
+
+    $('#datos').click(function(){
+      $('#tabla_nacional').hide();
+      $('#metadato-panel').hide();
+      $('#indicador-panel').hide();
+      $('#mapas_hide').hide();
+      $('#chart2').hide();
+      $('#serie-panel').hide();
+      $('#botonera_nacional').hide();
+      $('#datos-panel').show();
+      $('#datos-panel-dos').hide();
+      $('#link-datos-panel').show();
+      $('#indicador-grafica').hide();
+      $('#no_va_serie').show();
+
+      $('#indicador').removeClass('indicadores-taps-active');
+      $('#serie').removeClass('indicadores-taps-active');
+      $('#datos').addClass('indicadores-taps-active');
+      $('#metadato').removeClass('indicadores-taps-active');
+
+      colorObjetivo(obj);
+    });
+
+    $('#metadato').click(function(){
+      if(PCveInd == 333)
+        armaMetadatos();
+
+      $('#tabla_nacional').hide();
+      $('#metadato-panel').show();
+      $('#indicador-panel').hide();
+      $('#mapas_hide').hide();
+      $('#chart2').hide();
+      $('#serie-panel').hide();
+      $('#indicador-grafica').hide();
+      $('#datos-panel').hide();
+      $('#datos-panel-dos').hide();
+      $('#link-datos-panel').hide();
+      $('#botonera_nacional').hide();
+      $('#no_va_serie').show();
+
+      $('#indicador').removeClass('indicadores-taps-active');
+      $('#serie').removeClass('indicadores-taps-active');
+      $('#datos').removeClass('indicadores-taps-active');
+      $('#metadato').addClass('indicadores-taps-active');
+
+      colorObjetivo(obj);
+    });
+
+    $('#indicador').trigger("click");
+
+    $('.select_datos_2').change(function(){
+      var osds=$('.select_datos_2').val();
+      if(osds == 1){
+        $('#datos_calculo_2').show();
+        if(table2 == null){
+          $('#miTabla2').show();
+          var arre = [];
+          for (var i = 0; i < estados[0].length - 1; i++) {
+            arre.push(i)
+          }
+
+          table2 = $('#miTabla2').DataTable({
+            scrollY:        "600px",
+            scrollX:        true,
+            scrollCollapse: true,
+            paging:         false,
+            searching: false,
+            aoColumnDefs: [{
+              'bSortable': false,
+              'aTargets': arre
+            }],
+            fixedColumns:{
+              leftColumns: 1
+            }
+          });
+        }
+      }
+      else
+        $('#datos_calculo_2').hide();
+    });
+
+    put_anios();
+
+    $('#filtros').on('change',function(){
+      $('#loader').show();
+      estados = arma_tabla($(this).val());
+      actualiza_grafica();
+      if($('#agregacion').val() != 1){
+        $('#'+anio_mas_actual).trigger( "click" );
+      }
+      $('#loader').delay(2000).fadeOut("slow");
+    });
+
+    armaMetadatos();
+    $("#sti").hide();
+    window.onload = function(){
+      $('#buscar').click(function(){
+        if (lupa){
+          $('#cam_bus').hide();
+          lupa = false;
+        }
+        else {
+          $('#cam_bus').show();
+          $('#buscar').hide();
+          document.getElementById("cam_bus").focus();
+          lupa = true;
+        }
+      });
+    }
+
+    // This must be a hyperlink
+    $(".exportCSV").on('click', function (event) {
+      // CSV
+      var args = [$('#tabla_export2 table'), Descrip_ind+'.csv'];
+      exportTableToCSV.apply(this, args);
+    });
+
+    if ($('.select_datos').val() != -1) {
+      $(".exportCSVDatos").hide();
+    }
+    else{
+      $(".exportCSVDatos").hide();
+    }
+
+    $(".exportCSVDatos").on('click', function (event) {
+      // CSV
+      var args = [$('#miTabla'), 'DatosParaElCalculo - '+Descrip_ind+'.csv'];
+      exportTableToCSV.apply(this, args);
+    });
+
+    $("#descargaXLS").attr('download',Descrip_ind+'.xls');
+
+    $("#contact").hover(
+      function() {
+        if($(this).hasClass('selected')) {
+          deselect($(this));
+        } else {
+          $(this).addClass('selected');
+          $('.pop').slideFadeToggle();
+        }
+        return false;
+      }, function() {
+        deselect($('#contact'));
+        return false;
+      }
+    );
+
+    $.fn.slideFadeToggle = function(easing, callback) {
+      return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+    };
+
+    // This must be a hyperlink
+    $(".exportXLS").on('click', function (event) {
+      var args1 = [$('#tabla_export table'), Descrip_ind+'.xls'];
+      exportTableToXLS.apply(this, args1);
+    });
+
+  });//fin del document ready
+
   // ------------------------------------------ //
   // ----------- Sabe si es Nacional ---------- //
   // Sólo muestra una gráfica de linea para los
   // valores Nacionales
   // ------------------------------------------ //
-  if(codigoDg.replace(/\s/g,'') == 'N')
-  {
-    //console.log('------------------------ arreglo -----------------');
-    //console.log(arreglo_cla);
+  if(codigoDg.replace(/\s/g,'') == 'N'){
     if(arreglo_cla.length > 0){
       poner_filtros_na();
     }
@@ -1198,386 +1681,228 @@ table.tablaArmada tbody tr td:first{
 
     $('#chart2btn').show();
     $('#botonera_nacional').show();
-  }else{
+  }
+  else{
     $('#botonera_nacional').remove();
   }
 
-  $(document).ready(function()
-  {
-    $('#cam_bus').keypress(function(e) {
-        if(e.which == 13) {
-          //buscar($('#cam_bus').val());
-        }
-    });
-    //$('.modal').modal();
-    $('.modal-trigger').leanModal();
-    $(".button-collapse").sideNav();
-    var textoTwitterGrafica = 'Comparto esta grafica';
-    var textoTwitterMapa    = 'Comparto este mapa';
-    var URLactual = window.location;
-    //console.log(URLactual);
-    $('.liga').val(URLactual);
+  //funcion atras de los controles de la grafica para cambiar de años
+  function atras(){
+    if((anio_activo+1)  < arrray_anios.length){
+      anio_activo++;
+      $('.numero').html(arrray_anios[anio_activo]);
+      datosGrafica(arrray_anios[anio_activo]);
+    }
+  }
 
-    var urlTwitterMapa = 'https://twitter.com/intent/tweet?text='+textoTwitterMapa+';url='+URLactual;
-    var urlTwitterGrafica = 'https://twitter.com/intent/tweet?text='+textoTwitterGrafica+';url='+URLactual;
+  //controles de la grafica para cambiar de años hacia delante
+  function adelante(){
+    if(0 <= (anio_activo-1)){
+      anio_activo--;
+      $('.numero').html(arrray_anios[anio_activo]);
+      var array_Graficas = atributos.Grafica;
+      datosGrafica(arrray_anios[anio_activo]);
+    }
+  }
 
-    $('#share_grafica').attr('href',urlTwitterGrafica);
-    $('#share_mapa').attr('href',urlTwitterMapa);
+  function datosGrafica(year){
+    var indice = 0;
+    var serie = [];
+    var nuevos_estados_dobles = new Array();
+    var tabla_nueva = '';
+    var tabla_uno = '';
 
-    $('#chart2btn').hide();
+    for (var i = 0; i < estados[0].length; i++) {
+      if(estados[0][i].includes(year)){
+        indice = i;
+      }
+    }
 
-    chartBarras = c3.generate({
-      legend: {
-        show: false
-      },
-      bindto: '#barras',
-      size: {
-            height: 500
-          },
-      data: {
-        columns: [],
-        type: 'bar',
-        color:
-          function (color, d) {
-              return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
+    console.log(estados[0].length);
+    tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
+    for (var i = 0; i < estados.length; i++) {
+      if(i==0){
+        serie.push(Descrip_ind);
+      }
+      else{
+        if(i < estados.length){
+          var unods = (estados[i][indice] == 'ND') ? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
 
-              // Descrip_ind : function (d) {
-              //     return d.index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
-              //     console.log('x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-');
-              //     console.log(d.index);
-                   //return (d.value >= 45) ? '#00ff00' : '#ff0000';
-              //}
+          for(k=0; k < arrray_anios.length; k++){
+            tabla_nueva += '<th>'+ arrray_anios[k] +'</th>';
           }
-        },
-          tooltip: {
-            //format: {
-              // title: function (d) { return d.name; },
-              //title: function (d) { return '' + d.name; },
-            //},
-                contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
-                    color = function() {
-                        //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
-                         return d[0].index === regresa_estados_unidos() ? "#e06666" : "#1f77b4";
-                    };
 
-                    return chartBarras.internal.getTooltipContent.call(this, d, defaultTitleFormat, defaultValueFormat, color)
-                }
-            },
-
-    axis: {
-        rotated: false,
-        x: {
-          type: 'category',
-          categories: [ 'Ags.','BC.','BCS.','Camp.','Coah.','Col.','Chis.','Chih.','CDMX.','Dgo.','Gto.','Gro.','Hgo.','Jal.','Mex.','Mich.',
-          'Mor.','Nay.','NL.','Oax.','Pue.','Qro.','Q Roo.','SLP.','Sin.','Son.','Tab.','Tamps.','Tlax.','Ver.','Yuc.','Zac.','Nal.',
-          ],
-            height: 50,
-                tick:{
-                  rotate: -90,
-                  multiline: false
-                },
-            },
-              //  y : {
-              //         tick: {
-              //             format: d3.format(".2f")
-              //         }
-              //     }
-        },
-      });//fin de grafica
-    //datosGrafica(2015);
-});
-
-
-function atras(){
-  // if(estadoYear != 1990){
-  //   estadoYear--;
-  //   console.log(estadoYear);
-  //   $('.numero').html(estadoYear);
-  //   datosGrafica(estadoYear);
-  // }
-//console.log('------------ atras  -------------------');
-   if((anio_activo+1)  < arrray_anios.length){
-    //console.log('------------ entra atras  -------------------');
-    anio_activo++;
-    //console.log(anio_activo);
-    $('.numero').html(arrray_anios[anio_activo]);
-
-    datosGrafica(arrray_anios[anio_activo]);
-  }
-}
-
-function adelante(){
-  //console.log('------------ adelante  -------------------');
-  if(0 <= (anio_activo-1)){
-    console.log('------------ adelante entra  -------------------');
-    anio_activo--;
-
-    $('.numero').html(arrray_anios[anio_activo]);
-
-    var array_Graficas = atributos.Grafica;
-
-    datosGrafica(arrray_anios[anio_activo]);
-  }
-
-  // if(estadoYear != 2015){
-  //   estadoYear++;
-  //   console.log(estadoYear);
-  //   $('.numero').html(estadoYear);
-  //   datosGrafica(estadoYear);
-  // }
-}
-
-
- function datosGrafica(year){
-  var indice = 0;
-  var serie = [];
-  var nuevos_estados_dobles = new Array();
-  //console.log(nuevos_estados_dobles);
-  var tabla_nueva = '';
-  var tabla_uno = '';
-    //var tabla_uno = tabla_dos =  '';
-
-  for (var i = 0; i < estados[0].length; i++) {
-    if(estados[0][i].includes(year)){
-      indice = i;
-    }
-  }
-
-  console.log(estados[0].length);
-  tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
-  for (var i = 0; i < estados.length; i++) {
-    if(i==0){
-      serie.push(Descrip_ind);
-    }else{
-      if(i < estados.length){
-        var unods = (estados[i][indice] == 'ND') ? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
-        //tabla_uno += '<tr><td>'+estados[i][0]+'</td>';
-        //tabla_uno += '<td>'+ unods + '</td></tr>' ;
-        for(k=0; k < arrray_anios.length; k++){
-          tabla_nueva += '<th>'+ arrray_anios[k] +'</th>';
+          tabla_nueva += '</tr></thead>';
+          tabla_nueva += '<tbody class="tabla_uno"><tr><td>'+estados[i][0]+'</td>';
+          tabla_nueva += '<td>' + unods + '</td></tr></tbody>';
         }
 
-        tabla_nueva += '</tr></thead>';
-        tabla_nueva += '<tbody class="tabla_uno"><tr><td>'+estados[i][0]+'</td>';
-        tabla_nueva += '<td>' + unods + '</td></tr></tbody>';
+        if(estados[i][indice] == 'ND'){
+          var numero =  0;
+        }
+        else{
+          var numero =  parseFloat(estados[i][indice]);//.toFixed(1);
+        }
 
 
-      // } else if(i == 35){
-      //   $('.pais').html(parseFloat(estados[i][indice]).toFixed(1));
-      // }
-      // else {
-      //   var unodsd = (estados[i][indice] == 'ND')? 'ND' : parseFloat(estados[i][indice]);//.toFixed(1);
-      //   tabla_dos +='<tr><td>'+estados[i][0]+'</td><td>'+ unodsd + '</td></tr>' ;
+        var valueToPush = {'numero':numero, 'estado':estados[i][0], 'abrevia':abrevia_edo(estados[i][0])};
+        nuevos_estados_dobles.push(valueToPush);
+
+        serie.push(parseFloat(estados[i][indice]));
       }
-
-      if(estados[i][indice] == 'ND'){
-        var numero =  0;
-      }else{
-        var numero =  parseFloat(estados[i][indice]);//.toFixed(1);
-      }
-
-
-      var valueToPush = {'numero':numero, 'estado':estados[i][0], 'abrevia':abrevia_edo(estados[i][0])};
-      nuevos_estados_dobles.push(valueToPush);
-
-      serie.push(parseFloat(estados[i][indice]));
     }
-  }
 
-  nuevos_estados_dobles.sort(sortFunction);
+    nuevos_estados_dobles.sort(sortFunction);
 
+    var categories = [];
+    var categories2 = [];
+    var series = [];
 
-  var categories = [];
-  var categories2 = [];
-  var series = [];
+    //separar el arreglo
+    series.push(Descrip_ind);
+    categories.push(Descrip_ind);
 
-  //console.log('estados dobles');
-  //console.log(nuevos_estados_dobles);
-
-  //separar el areglo
-  series.push(Descrip_ind);
-  categories.push(Descrip_ind);
-  //categories2.push(Abrevia_cg);
-  for (var i = 0; i < nuevos_estados_dobles.length; i++) {
-   // console.log(nuevos_estados_dobles[i].estado);
-    if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
+    for (var i = 0; i < nuevos_estados_dobles.length; i++) {
+      if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
         index_estados = i;
+      }
+      categories[i] = nuevos_estados_dobles[i].estado;
+      categories2[i] = nuevos_estados_dobles[i].abrevia;
+
+      series.push(parseFloat(nuevos_estados_dobles[i].numero));
     }
-    categories[i] = nuevos_estados_dobles[i].estado;
-    categories2[i] = nuevos_estados_dobles[i].abrevia;
 
-    series.push(parseFloat(nuevos_estados_dobles[i].numero));
+    cat_global = categories;
+    chartBarras.load({
+      columns: [series],
+      categories: categories2,
+      unload: [Descrip_ind],
+    });
   }
 
-  //console.log("--->>>>las series",series);
-  //console.log(categories);
-  //console.log(Descrip_ind);
+  //abreviaciones de estados
+  function abrevia_edo(nombre){
+    switch(nombre){
+      case "Estados Unidos Mexicanos":
+        return "Nal.";
+      break;
+      case "Aguascalientes":
+        return "Ags.";
+      break;
+      case "Baja California":
+        return "BC.";
+      break;
+      case "Baja California Sur":
+        return "BCS.";
+      break;
+      case "Campeche":
+        return "Camp.";
+      break;
+      case "Coahuila de Zaragoza":
+        return "Coah.";
+      break;
+      case "Colima":
+        return "Col.";
+      break;
+      case "Chiapas":
+        return "Chis.";
+      break;
+      case "Chihuahua":
+        return "Chih.";
+      break;
+      case "Ciudad de México":
+        return "CDMX.";
+      break;
+      case "Durango":
+        return "Dgo.";
+      break;
+      case "Guanajuato":
+        return "Gto.";
+      break;
+      case "Guerrero":
+        return "Gro.";
+      break;
+      case "Hidalgo":
+        return "Hgo.";
+      break;
+      case "Jalisco":
+        return "Jal.";
+      break;
+      case "México":
+        return "Mex.";
+      break;
+      case "Michoacán de Ocampo":
+        return "Mich.";
+      break;
+      case "Morelos":
+        return "Mor.";
+      break;
+      case "Nayarit":
+        return "Nay.";
+      break;
+      case "Nuevo León":
+        return "NL.";
+      break;
+      case "Oaxaca":
+        return "Oax.";
+      break;
+      case "Puebla":
+        return "Pue.";
+      break;
+      case "Querétaro":
+        return "Qro.";
+      break;
+      case "Quintana Roo":
+        return "Q. Roo.";
+      break;
+      case "San Luis Potosí":
+        return "SLP.";
+      break;
+      case "Sinaloa":
+        return "Sin.";
+      break;
+      case "Sonora":
+        return "Son.";
+      break;
+      case "Tabasco":
+        return "Tab.";
+      break;
+      case "Tamaulipas":
+        return "Tamps.";
+      break;
+      case "Tlaxcala":
+        return "Tlax.";
+      break;
+      case "Veracruz de Ignacio de la Llave":
+        return "Ver.";
+      break;
+      case "Yucatán":
+        return "Yuc.";
+      break;
+      case "Zacatecas":
+        return "Zac.";
+      break;
+      case "Extranjera":
+        return "Ext.";
+      break;
 
-  cat_global = categories;
-  chartBarras.load({
-    columns: [series],
-    categories: categories2,
-    unload: [Descrip_ind],
-  });
-
-  //$('.tabla_completa').html(tabla_nueva);
-  // $('.tabla_dos').html(tabla_dos);
-}
-
-
-function abrevia_edo(nombre){
-  switch(nombre){
-    case "Estados Unidos Mexicanos":
-      return "Nal.";
-    break;
-    case "Aguascalientes":
-      return "Ags.";
-    break;
-    case "Baja California":
-      return "BC.";
-    break;
-    case "Baja California Sur":
-      return "BCS.";
-    break;
-    case "Campeche":
-      return "Camp.";
-    break;
-    case "Coahuila de Zaragoza":
-      return "Coah.";
-    break;
-    case "Colima":
-      return "Col.";
-    break;
-    case "Chiapas":
-      return "Chis.";
-    break;
-    case "Chihuahua":
-      return "Chih.";
-    break;
-    case "Ciudad de México":
-      return "CDMX.";
-    break;
-    case "Durango":
-      return "Dgo.";
-    break;
-    case "Guanajuato":
-      return "Gto.";
-    break;
-    case "Guerrero":
-      return "Gro.";
-    break;
-    case "Hidalgo":
-      return "Hgo.";
-    break;
-    case "Jalisco":
-      return "Jal.";
-    break;
-    case "México":
-      return "Mex.";
-    break;
-    case "Michoacán de Ocampo":
-      return "Mich.";
-    break;
-    case "Morelos":
-      return "Mor.";
-    break;
-    case "Nayarit":
-      return "Nay.";
-    break;
-    case "Nuevo León":
-      return "NL.";
-    break;
-    case "Oaxaca":
-      return "Oax.";
-    break;
-    case "Puebla":
-      return "Pue.";
-    break;
-    case "Querétaro":
-      return "Qro.";
-    break;
-    case "Quintana Roo":
-      return "Q. Roo.";
-    break;
-    case "San Luis Potosí":
-      return "SLP.";
-    break;
-    case "Sinaloa":
-      return "Sin.";
-    break;
-    case "Sonora":
-      return "Son.";
-    break;
-    case "Tabasco":
-      return "Tab.";
-    break;
-    case "Tamaulipas":
-      return "Tamps.";
-    break;
-    case "Tlaxcala":
-      return "Tlax.";
-    break;
-    case "Veracruz de Ignacio de la Llave":
-      return "Ver.";
-    break;
-    case "Yucatán":
-      return "Yuc.";
-    break;
-    case "Zacatecas":
-      return "Zac.";
-    break;
-    case "Extranjera":
-      return "Ext.";
-    break;
-
-  }
-}
-
-function regresa_estados_unidos(){
-  return index_estados;
-}
-
-// function sortFunction(a, b) {
-//     if (a.numero === b.numero) {
-//         return 0;
-//     }
-//     else {
-//         return b.numero - a.numero;
-//     }
-// }
-
-function sortFunction(a, b) {
-  // if(b.numero == 'NaN'){
-  //   return 0;
-  // }
-  // if(a.numero == 'NaN'){
-  //   return 0;
-  // }
-
-        return b.numero - a.numero;
-
-}
-
-// function sortFunction(a, b) {
-// if(b.numero == 'NaN'){
-//   return 0;
-// }
-// if(a.numero == 'NaN'){
-//   return 0;
-// }
-//
-//         return b.numero - a.numero;
-//
-// }
-
-  function commaSeparateNumber(x)
-  {
-    var parts=x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return parts.join(".");
+    }
   }
 
-  function gen(props)
-  {
-    //console.log("los props son",props);
+  function regresa_estados_unidos(){
+    return index_estados;
+  }
+
+  function sortFunction(a, b) {
+    return b.numero - a.numero;
+  }
+
+  function commaSeparateNumber(x){
+    var parts = x.toString().split(".");parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");
+    return parts.join(".");
+  }
+
+  function gen(props){
     var chart = c3.generate({
         bindto: '.info',
         padding: {
@@ -1637,17 +1962,13 @@ function sortFunction(a, b) {
 
     });
   }
-  </script>
 
-  <script type="text/javascript">
-
-  function busqueda_estado(cadena)
-  {
+  function busqueda_estado(cadena){
     for(var i=0;i<estados.length;i++)
     {
       if(estados[i][0] == cadena)
       {
-          return parseFloat(estados[i][1]);
+        return parseFloat(estados[i][1]);
       }
     }
   }
@@ -1673,8 +1994,7 @@ function sortFunction(a, b) {
     return arrray;
   }
 
-  function busqueda_estado_posicion(cadena,posicion)
-  {
+  function busqueda_estado_posicion(cadena,posicion){
     for(var i=0;i<estados.length;i++)
     {
       if(estados[i][0] == cadena)
@@ -1684,30 +2004,16 @@ function sortFunction(a, b) {
     }
   }
 
-  function busqueda_anio(cadena)
-  {
-    for(var i=0;i<estados[0].length;i++)
-    {
+  function busqueda_anio(cadena){
+    for(var i=0;i<estados[0].length;i++){
       if(estados[0][i] == cadena)
       {
-        //console.log(estados[0][i]);
         return i;
       }
     }
   }
 
-        var img;
-        var data_url;
-        var locked=false;
-        var map = L.map('map' ,
-        {
-  	        scrollWheelZoom: false,
-  	        maxZoom: 14,
-  			minZomm:5,
-        }).setView([24.8, -100], 5);
-
-
-  	 	L.tileLayer('http://{s}.google.com/vt/?hl=es&x={x}&y={y}&z={z}&s={s}&apistyle=s.t%3A5|p.l%3A53%2Cs.t%3A1314|p.v%3Aoff%2Cp.s%3A-100%2Cs.t%3A3|p.v%3Aon%2Cs.t%3A2|p.v%3Aoff%2Cs.t%3A4|p.v%3Aoff%2Cs.t%3A3|s.e%3Ag.f|p.w%3A1|p.l%3A100%2Cs.t%3A18|p.v%3Aoff%2Cs.t%3A49|s.e%3Ag.s|p.v%3Aon|p.s%3A-19|p.l%3A24%2Cs.t%3A50|s.e%3Ag.s|p.v%3Aon|p.l%3A15&style=47,37', {
+  L.tileLayer('http://{s}.google.com/vt/?hl=es&x={x}&y={y}&z={z}&s={s}&apistyle=s.t%3A5|p.l%3A53%2Cs.t%3A1314|p.v%3Aoff%2Cp.s%3A-100%2Cs.t%3A3|p.v%3Aon%2Cs.t%3A2|p.v%3Aoff%2Cs.t%3A4|p.v%3Aoff%2Cs.t%3A3|s.e%3Ag.f|p.w%3A1|p.l%3A100%2Cs.t%3A18|p.v%3Aoff%2Cs.t%3A49|s.e%3Ag.s|p.v%3Aon|p.s%3A-19|p.l%3A24%2Cs.t%3A50|s.e%3Ag.s|p.v%3Aon|p.l%3A15&style=47,37', {
   		subdomains:['mt0', 'mt1', 'mt2', 'mt3'],
           maxZoom: 14,
           minZomm:5,
@@ -1715,993 +2021,441 @@ function sortFunction(a, b) {
           id: 'mapbox.light',
         }).addTo(map);
 
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) )
-        {
-  			map.dragging.disable();
-  	  }
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)){
+	  map.dragging.disable();
+  }
 
+  var info = L.control();
+  info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'infos hide');
+    this.update();
+    return this._div;
+  };
 
+  info.update = function (props) {
+    $('.infos').removeClass('hide');
+    $('.info2').removeClass('hide');
+    if(props != undefined){
+      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent)/*.toFixed(1)props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
 
-        var info = L.control();
-        info.onAdd = function (map) {
-          this._div = L.DomUtil.create('div', 'infos hide');
-          this.update();
-          return this._div;
-        };
-
-
-
-
-        info.update = function (props) {
-  	     $('.infos').removeClass('hide');
-  	     $('.info2').removeClass('hide');
-  	     if(props != undefined)
-  	     {
-  		      this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><br><div style="height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado(props.nom_ent)/*.toFixed(1)props.density*/ + '</b><b>(año)</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
-
-  			  // gen(estados[props.cve]);
-          //console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
-          gen(estados[busqueda_indice(props.nom_ent)]);
-          $(".crop").dotdotdot();
-  	     }
-        };
-        info.addTo(map);
-
-        function getColo(d) {
-          return d >= 100 ? '#004b67' :
-                 d > 50  ? '#007dab' :
-                 d > 20  ? '#01baff' :
-                           '#eff3ff';
-        }
-
-        function getColoR(number)
-        {
-            return brew.getColorInRange(number);
-  	    }
-
-        function style(feature) {
-  	    var res=String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
-        //console.log(res,'hhhh',"c"+res[1]);
-          return {
-            weight: 0.5,
-            opacity: 1,
-            color: '#000',
-            dashArray: '1',
-            fillOpacity: 1,
-            fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
-             className: "c"+res[1]
-          };
-        }
-        function highlightFeature(e) {
-  	     if(locked == false)
-  	     {
-  	        var layer = e.target;
-  	        layer.setStyle({
-  	          weight: 2,
-  	          color: '#ccc',
-  	          dashArray: '',
-  	          fillOpacity: 0.7
-  	        });
-  	        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-  	          layer.bringToFront();
-  	        }
-  	        info.update(layer.feature.properties);
-  	     }
-        }
-        var geojson;
-        function resetHighlight(e) {
-  		     geojson.resetStyle(e.target);
-  			 info.update();
-        }
-        function zoomToFeature(e) {
-          map.fitBounds(e.target.getBounds());
-        }
-        function onEachFeature(feature, layer) {
-          layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
-            mousedown: function(e)
-            {
-  			if (locked == true) {
-  				locked = false;
-  				(function ($) {
-  								 $(".info2").css("border","none");
-  								 $(".infos").css("border","none");
-  							   }(jQuery));
-  			}
-  			else {
-  				locked = true;
-  				(function ($) {
-  								$(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
-  								$(".info2").css("border-left","5px solid rgb(107, 174, 214)");
-  								$(".info2").css("border-right","5px solid rgb(107, 174, 214)");
-  								$(".infos").css("border-top","5px solid rgb(107, 174, 214)");
-  								$(".infos").css("border-left","5px solid rgb(107, 174, 214)");
-  								$(".infos").css("border-right","5px solid rgb(107, 174, 214)");
-  							   }(jQuery));
-  			}
-  		 },
-          });
-        }
-
-        function highlightFromLegend(e)
-        	{
-  			(function ($) {
-  				$("svg path."+e).addClass("highlighted");
-  				var r=$("svg path."+e);
-  				for(var i=0;i<r.length;i++)
-  				{
-  					r[i].classList.add("highlighted");
-  				}
-  			}(jQuery));
-  		}
-
-  		function clearHighlight() {
-  			(function ($) {
-
-  				$("path").removeClass("highlighted");
-  				var r=$("path");
-  				for(var i=0;i<r.length;i++)
-  				{
-  					r[i].classList.remove("highlighted");
-  				}
-  			}(jQuery));
-  		}
-
-  		var brew = new classyBrew();
-  		var values = [];
-      var values2 = [];
-  		for (var i = 0; i < statesData.features.length; i++)
-      {
-        //console.log(statesData.features[i].properties.nom_ent);
-        if (statesData.features[i].properties.nom_ent == null) continue;
-  			values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
-  		}
-
-      //console.log(values,values2);
-  		brew.setSeries(values);
-  		brew.setNumClasses(4);
-  		brew.setColorCode("Blues");
-  		brew.classify('jenks');
-      var alfr=brew.getBreaks();
-      var brea =[];
-      for(var ii=0;ii<alfr.length;ii++)
-      {
-        if(alfr[ii] != -1)
-        {
-          brea.push(alfr[ii]);
-        }
-      }
-      //console.log("breaks0",brea,brew.getBreaks());
-        geojson = L.geoJson(statesData, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-
-
-        map.attributionControl.addAttribution('');
-        var legend = L.control();
-        legend.onAdd = function (map) {
-          var div = L.DomUtil.create('div', 'info2 legend hide'),
-            grades = brew.getBreaks(),//[0, 20, 50, 100],
-            labels = [],
-            from, to;
-          for (var i = 0; i < grades.length-1; i++) {
-            from = grades[i];
-            to = grades[i + 1];
-            var res=String(getColoR(from)).split(",");
-            //console.log(from,from+1,res,grades);
-            labels.push(
-              '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-              from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
-          }
-          div.innerHTML = labels.join('');
-          return div;
-        };
-        legend.addTo(map);
-
-  </script>
-
-  <style media="screen">
- .headcol {
-       /*position:absolute;*/
-       width:5em;
-       left:0;
-       top:auto;
-        border-right: 0px none black;
-     /* border-top-width:3px; only relevant for first row
-            // margin-top:-3px; compensate for top border */
-       background-color: #ffffff;
-       margin-left: 6px;
-       margin-top: 6px;
-       width: 230px;
-      margin: 5px;
-      padding-top: 26px !important;
- }
-  </style>
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
+      gen(estados[busqueda_indice(props.nom_ent)]);
+      $(".crop").dotdotdot();
     }
-  });
-});
-</script> -->
-  <script type="text/javascript">
-  var flag_valor_nd=false;
-  var arreglo_valor_nd=[];
-    $(document).ready(function(){
+  };
 
-        $('#indicador-panel').hide();
-        if(PCveInd == 276){
-          $('#indicador-panel').show();
+  info.addTo(map);
+
+  function getColo(d) {
+    return d >= 100 ? '#004b67' :
+           d > 50  ? '#007dab' :
+           d > 20  ? '#01baff' :
+                     '#eff3ff';
+  }
+
+  function getColoR(number){
+    return brew.getColorInRange(number);
+  }
+
+  function style(feature) {
+    var res = String(getColoR(busqueda_estado(feature.properties.nom_ent))).split(",");
+    //console.log(res,'hhhh',"c"+res[1]);
+    return {
+      weight: 0.5,
+      opacity: 1,
+      color: '#000',
+      dashArray: '1',
+      fillOpacity: 1,
+      fillColor: getColoR(busqueda_estado(feature.properties.nom_ent)),
+       className: "c"+res[1]
+    };
+  }
+
+  function highlightFeature(e) {
+    if(locked == false){
+      var layer = e.target;
+      layer.setStyle({
+        weight: 2,
+        color: '#ccc',
+        dashArray: '',
+        fillOpacity: 0.7
+      });
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+      info.update(layer.feature.properties);
+    }
+  }
+
+  function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+	  info.update();
+  }
+
+  function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+  }
+
+  function onEachFeature(feature, layer) {
+    layer.on({
+      mouseover: highlightFeature,
+      mouseout: resetHighlight,
+      mousedown: function(e){
+        if (locked == true) {
+          locked = false;
+          (function ($) {
+            $(".info2").css("border","none");
+            $(".infos").css("border","none");
+          }(jQuery));
         }
-
-          //$('.modal-trigger').leanModal();
-          //console.log("---->>>>>estados tabla",estados);
-          var select_2 = '<div class="input-field col s12" style="margin-bottom:20px;"><select class="select_datos_2" style="display:block !important; background-color: #f2f2f2;"><option value="0">Selecciona</option><option value="1">Defunciones de mujeres mientras se encuentran embarazadas o dentro de los 42 dias siguientes a la terminación del embarazo</option></select></div>';
-
-          var datos_doble_2 =  ' <div class="cuadro_titulo"> ' + Codigo_ind + ' ' + titulo +
-            //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-          '</div>' +
-                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_2">'+
-                            '<table class="bordered" id="miTabla2" class="miTabla2" style="width: 1726px;margin-left: -53px;">';
-
-
-          var datos_doble_22 =  ' <div class="cuadro_titulo"> ' + titulo +
-            //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-          '</div>' +
-                            '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_22">'+
-                            '<table class="bordered" id="miTabla22" class="miTabla22">';
-
-
-           var datos_doble_3 =  ' <div class="cuadro_titulo"> ' + titulo +
-            //  ' <span>Defunciones de mujeres por cada 100 mil nacidos vivos</span>'+
-          '</div>' +
-                            '<div class="scroller" style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_3">'+
-                            '<table class="bordered" id="miTabla3" class="miTabla3" >';
-            // console.log(estados);
-            // console.log(estados.length);
-            // console.log(estados[0].length);
-
-
-            // for (var i = 0; i < estados.length; i++) {
-            for (var i = 0; i < estados.length; i++) {
-               if(i == 0){
-                // datos_doble +=  '<thead><tr>';
-                datos_doble_2 +=  '<thead><tr>';
-                datos_doble_22 +=  '<thead><tr>';
-                datos_doble_3 +=  '<thead><tr>';
-              }
-               else if(i == 1){
-                //  datos_doble +=  '<tbody><tr>';
-                 datos_doble_2 +=  '<tbody><tr>';
-                 datos_doble_22 +=  '<tbody><tr>';
-                 datos_doble_3 +=  '<tbody><tr>';
-               }
-               else {
-                  // datos_doble +=  '<tr>';
-                  datos_doble_2 +=  '<tr>';
-                  datos_doble_22 +=  '<tr>';
-                  datos_doble_3 +=  '<tr>';
-               }
-
-               //for (var j = estados[0].length -1 ; j > 0 ; j--) {
-              for (var j = 0 ; j < estados[0].length; j++) {
-                //if(i == 0 && j == estados[0].length -1){
-                if(i == 0 && j == 0){
-                  // datos_doble +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
-                  datos_doble_2 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
-                  datos_doble_22 +=  '  <td  class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] .split('-')[0]+'</td>';
-                  // for(k = 0; k > estados[i][j].length; k++){
-                  //     datos_doble_22 += '<td>'+ estados[i][j] .split('-')[0]+'</td>';
-                  // }
-
-
-                  datos_doble_3 +=  '  <th  class="headcol">'+ estados[i][0] +'</th><th>'+ estados[i][j] .split('-')[0]+'</th>';
-                }
-                else if( i == 0 && j == 0 ){
-                  //else if( i == 0 && j == estados[0].length -1 ){
-                  // datos_doble += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
-                  datos_doble_2 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
-                  datos_doble_22 += '<td class"padding-200">'+ estados[i][j].split('-')[0] +'</td>';
-                  datos_doble_3 += '<th class"padding-200">'+ estados[i][j].split('-')[0] +'</th>';
-                }
-                else if( i == 0 ){
-                  // datos_doble += '<th>'+ estados[i][j].split('-')[0] +'</th>';
-                  datos_doble_2 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
-                  datos_doble_22 += '<td>'+ estados[i][j].split('-')[0] +'</td>';
-                  datos_doble_3 += '<th>'+ estados[i][j].split('-')[0] +'</th>';
-                }
-                else if(j == 0 ) {
-                  //else if(j == estados[0].length -1 ) {
-                    var varia;
-                  if(estados[i][j] == "ND" || estados[i][j] == "NA")
-                  {
-                    flag_valor_nd=true;
-                    if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
-                      arreglo_valor_nd.push(estados[i][j]);
-                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ estados[i][j] +'</td>';
-                  }
-                  else {
-                    varia = '<td class="headcol">'+ estados[i][0] +'</td><td>'+ parseFloat(estados[i][j]) +'</td>';
-                  }
-                  // datos_doble += varia;
-                  datos_doble_2 += varia;
-                  datos_doble_22 += varia;
-                  datos_doble_3 += varia;
-                }
-                else if(j == 1){
-                //  else if(j == estados[0].length -2){
-                    // datos_doble +=  '  <td class="laque">'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                    if(estados[i][j] == "ND" || estados[i][j] == "NA")
-                    {
-                      flag_valor_nd=true;
-                      if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
-                        arreglo_valor_nd.push(estados[i][j]);
-                      datos_doble_2 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
-                      datos_doble_22 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
-                      datos_doble_3 +=  '  <td class="laque">'+ estados[i][j] +'</td>';
-                    }
-                    else {
-                      datos_doble_2 +=  '  <td class="laque">'+ parseFloat(estados[i][j]) +'</td>';
-                      datos_doble_22 +=  '  <td class="laque">'+ parseFloat(estados[i][j]) +'</td>';
-                      datos_doble_3 +=  '  <td class="laque">'+ parseFloat(estados[i][j]) +'</td>';
-                    }
-                }
-                else{
-                  // datos_doble +=  '  <td>'+ parseFloat(estados[i][j]).toFixed(2) +'</td>';
-                  if(estados[i][j] == "ND" || estados[i][j] == "NA")
-                  {
-                    flag_valor_nd=true;
-                    if(arreglo_valor_nd.indexOf(estados[i][j]) == -1)
-                      arreglo_valor_nd.push(estados[i][j]);
-                    datos_doble_2 +=  '  <td>'+ estados[i][j] +'</td>';
-                    datos_doble_22 +=  '  <td>'+ estados[i][j] +'</td>';
-                    datos_doble_3 +=  '  <td>'+ estados[i][j] +'</td>';
-                  }
-                  else {
-                    datos_doble_2 +=  '  <td>'+ parseFloat(estados[i][j]) +'</td>';
-                    datos_doble_22 +=  '  <td>'+ parseFloat(estados[i][j]) +'</td>';
-                    datos_doble_3 +=  '  <td>'+ parseFloat(estados[i][j]) +'</td>';
-                  }
-                }
-               }
-
-
-
-               if(i == 0){
-                //  datos_doble +=  '</tr></thead>';
-                 datos_doble_2 +=  '</tr></thead>';
-                 datos_doble_22 +=  '</tr></thead>';
-                 datos_doble_3 +=  '</tr></thead>';
-               }else{
-                //  datos_doble +=  '</tr>';
-                 datos_doble_2 +=  '</tr>';
-                 datos_doble_22 +=  '</tr>';
-                 datos_doble_3 +=  '</tr>';
-               }
-             }
-
-            //console.log("bandera",flag_valor_nd,arreglo_valor_nd);
-
-            if(flag_valor_nd)
-            {
-              var mensaje_nd='';
-              for(var i=0;i<arreglo_valor_nd.length;i++)
-              {
-                if(arreglo_valor_nd[i]=='ND')
-                {
-                  mensaje_nd=mensaje_nd+'<div><strong>ND:</strong> No disponible</div>';
-                }
-                if(arreglo_valor_nd[i]=='NA')
-                {
-                  mensaje_nd=mensaje_nd+'<div><strong>NA:</strong> No aplicable</div>';
-                }
-              }
-              //console.log("mensaje",mensaje_nd);
-              datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-              ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
-               '</div></div>';
-
-               datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-               ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
-                '</div></div>';
-
-              datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-              ' <div class="pie_cuadro2">'+ mensaje_nd +" "+ pie +
-               '</div></div>';
-            }
-            else {
-              datos_doble_2 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-              ' <div class="pie_cuadro2">'+ pie +
-               '</div></div>';
-
-               datos_doble_22 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-               ' <div class="pie_cuadro2">'+ pie +
-                '</div></div>';
-
-              datos_doble_3 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
-              ' <div class="pie_cuadro2">'+ pie +
-               '</div></div>';
-            }
-
-          //$('#datos-panel-dos').html(select_2+datos_doble_2);
-          $('#serie_panel_tablas').html(datos_doble_2);
-          $('#serie_panel_tablas2').html(datos_doble_2);
-
-
-          $('#tabla_export').html(datos_doble_2);
-          $('#tabla_export2').html(datos_doble_22);
-
-
-          $('#tabla_nacional').html(datos_doble_2);
-
-          $('.scroller').scroll(function(e) {
-            //console.log("aca");
-            $('.scroller').scrollLeft(e.target.scrollLeft);
-            });
-
-          var lupa =  false;
-          $('#buscar').click(function(){
-            if(lupa){
-              $('#cam_bus').hide();
-              lupa =  false;
-            }else{
-              $('#cam_bus').show();
-              $('#buscar').hide();
-              lupa =  true;
-            }
-          });
-
-$('#indicador').trigger("click");
-            // select de metadatos
-            $('#indicador').click(function(){
-
-            $('#indicador-panel').hide();
-            $('#indicador-grafica').show();
-            $('#mapas_hide').show();
-            $('#botonera_nacional').show();
-            $('#chart2').show();
-
-            if(codigoDg.replace(/\s/g,'') == 'N' ){
-              if(PCveInd == 236 || PCveInd == 311 || PCveInd == 312 || PCveInd == 48 || PCveInd == 333){
-                  $('#tabla_nacional').hide();
-                  $('#indicador-panel').show();
-                  $('#mapas_hide').hide();
-                  $('#botonera_nacional').hide();
-                  $('#chart2').hide();
-              }
-            }
-
-                $('#metadato-panel').hide();
-                $('#serie-panel').hide();
-                $('#datos-panel').hide();
-                $('#datos-panel-dos').hide();
-                $('#link-datos-panel').hide();
-                $('#no_va_serie').show();
-
-                $('#indicador').addClass('indicadores-taps-active');
-                $('#serie').removeClass('indicadores-taps-active');
-                $('#datos').removeClass('indicadores-taps-active');
-                $('#metadato').removeClass('indicadores-taps-active');
-
-                if( PCveInd == 333){
-                    $('#tabla_nacional').hide();
-                    $('#indicador-panel').show();
-                    $('#mapas_hide').hide();
-                    $('#botonera_nacional').hide();
-                    $('#chart2').hide();
-                    $('#indicador-grafica').hide();
-                }
-
-                colorObjetivo(obj);
-          });
-
-          $('#serie').click(function(){
-
-                $('#tabla_nacional').hide();
-                $('#metadato-panel').hide();
-                $('#indicador-panel').hide();
-                $('#mapas_hide').hide();
-                $('#chart2').hide();
-                $('#serie-panel').show();
-                $('#botonera_nacional').hide();
-                $('#indicador-grafica').hide();
-                $('#no_va_serie').hide();
-                var arre = [];
-
-
-
-
-                for (var i = 0; i < estados[0].length - 1; i++) {
-                  arre.push(i)
-                }
-
-
-
-                if(arre.length > 17){
-                 $('#miTabla2').DataTable( {
-                        scrollY:        "600px",
-                        scrollX:        true,
-                        scrollCollapse: true,
-                        paging:         false,
-                        searching: false,
-                        aoColumnDefs: [
-                          { 'bSortable': false,
-                            'aTargets': arre }
-                        ],
-                        fixedColumns:   {
-                            leftColumns: 1
-                        }
-                    } );
-
-                  $('.miTabla2').DataTable( {
-                        scrollY:        "600px",
-                        scrollX:        true,
-                        scrollCollapse: true,
-                        paging:         false,
-                        searching: false,
-                        aoColumnDefs: [
-                          { 'bSortable': false,
-                            'aTargets': arre }
-                        ],
-                        fixedColumns:   {
-                            leftColumns: 1
-                        }
-                    } );
-                }
-
-
-                $('#datos-panel').hide();
-                $('#datos-panel-dos').hide();
-                $('#link-datos-panel').hide();
-
-                $('#indicador').removeClass('indicadores-taps-active');
-                $('#serie').addClass('indicadores-taps-active');
-                $('#datos').removeClass('indicadores-taps-active');
-                $('#metadato').removeClass('indicadores-taps-active');
-
-                colorObjetivo(obj);
-          });
-
-          $('#datos').click(function(){
-
-                $('#tabla_nacional').hide();
-                $('#metadato-panel').hide();
-                $('#indicador-panel').hide();
-                $('#mapas_hide').hide();
-                $('#chart2').hide();
-                $('#serie-panel').hide();
-                $('#botonera_nacional').hide();
-                $('#datos-panel').show();
-                $('#datos-panel-dos').hide();
-                $('#link-datos-panel').show();
-                $('#indicador-grafica').hide();
-                $('#no_va_serie').show();
-
-                $('#indicador').removeClass('indicadores-taps-active');
-                $('#serie').removeClass('indicadores-taps-active');
-                $('#datos').addClass('indicadores-taps-active');
-                $('#metadato').removeClass('indicadores-taps-active');
-
-                colorObjetivo(obj);
-          });
-
-          $('#metadato').click(function(){
-                if(PCveInd == 333)
-                  armaMetadatos();
-
-                $('#tabla_nacional').hide();
-                $('#metadato-panel').show();
-                $('#indicador-panel').hide();
-                $('#mapas_hide').hide();
-                $('#chart2').hide();
-                $('#serie-panel').hide();
-                $('#indicador-grafica').hide();
-                $('#datos-panel').hide();
-                $('#datos-panel-dos').hide();
-                $('#link-datos-panel').hide();
-                $('#botonera_nacional').hide();
-                $('#no_va_serie').show();
-
-                $('#indicador').removeClass('indicadores-taps-active');
-                $('#serie').removeClass('indicadores-taps-active');
-                $('#datos').removeClass('indicadores-taps-active');
-                $('#metadato').addClass('indicadores-taps-active');
-
-                colorObjetivo(obj);
-          });
-
-          $('#indicador').trigger("click");
-
-
-           $('.select_datos_2').change(function(){
-             var osds=$('.select_datos_2').val();
-             if(osds == 1){
-
-               $('#datos_calculo_2').show();
-                  if(table2 == null){
-                    $('#miTabla2').show();
-                    var arre = [];
-                    for (var i = 0; i < estados[0].length - 1; i++) {
-                      arre.push(i)
-                    }
-                    table2 = $('#miTabla2').DataTable( {
-                      scrollY:        "600px",
-                      scrollX:        true,
-                      scrollCollapse: true,
-                      paging:         false,
-                      searching: false,
-                      aoColumnDefs: [
-                        { 'bSortable': false, 'aTargets': arre }
-                      ],
-                      fixedColumns:   {
-                          leftColumns: 1
-                      }
-                  } );
-                }
-            }
-             else
-                $('#datos_calculo_2').hide();
-          });
-
-
-          // var cadena='';
-          // for(var i=1;i<=7;i++)
-          // {
-          //   if(i == 1)
-          //   {
-          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0px 5px 5px 0px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-          //     console.log(i);
-          //   }
-          //   else if(i == 7)
-          //   {
-          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px 0px 0px 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-          //     console.log(i,'break');
-          //     break;
-          //   }
-          //   else if(i < estados[0].length-1)
-          //   {
-          //     cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 0;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-          //     console.log(i);
-          //   }
-          //   // cadena='<option value="'+estados[0][i]+'">'+estados[0][i].split('-')[0]+'</option>'+cadena;
-          // }
-          // // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a><select id="opciones_anio" onchange="cambio_anio()" style="display:block;"><option value=" " disabled selected>Selecciona un año</option>'+cadena;
-          // cadena='<a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;">Año</a>'+cadena;
-          // $('#anios').html(cadena);
-          put_anios();
+        else {
+          locked = true;
+          (function ($) {
+            $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+            $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+            $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+            $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+            $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+            $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+          }(jQuery));
+        }
+      },
     });
+  }
 
-   var arrray_anios = [];
-   var anio_activo = 0;
-   var anio_mas_actual;
-   function put_anios(){
-      arrray_anios = [];
-      var cadena='';
-      anio_mas_actual='';
-      // console.log('----------------------- estados anios -----------------');
-      // console.log(estados);
-      // console.log(estados[0]);
-      // console.log(estados[0].length);
-
-      for(var i = 1; i < estados[0].length; i++)
+  function highlightFromLegend(e){
+    (function ($) {
+      $("svg path."+e).addClass("highlighted");
+      var r=$("svg path."+e);
+      for(var i=0;i<r.length;i++)
       {
-        if(i == 1)
-        {
+        r[i].classList.add("highlighted");
+      }
+    }(jQuery));
+  }
+
+  function clearHighlight() {
+    (function ($){
+    	$("path").removeClass("highlighted");
+    	var r=$("path");
+    	for(var i=0;i<r.length;i++){
+    		r[i].classList.remove("highlighted");
+    	}
+    }(jQuery));
+  }
+
+
+	for (var i = 0; i < statesData.features.length; i++){
+    //console.log(statesData.features[i].properties.nom_ent);
+    if (statesData.features[i].properties.nom_ent == null) continue;
+		values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
+	}
+
+	brew.setSeries(values);
+	brew.setNumClasses(4);
+	brew.setColorCode("Blues");
+	brew.classify('jenks');
+  var alfr=brew.getBreaks();
+  var brea =[];
+  for(var ii=0;ii<alfr.length;ii++){
+    if(alfr[ii] != -1){
+      brea.push(alfr[ii]);
+    }
+  }
+
+  geojson = L.geoJson(statesData, {
+    style: style,
+    onEachFeature: onEachFeature
+  }).addTo(map);
+
+  map.attributionControl.addAttribution('');
+
+  var legend = L.control();
+
+  legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info2 legend hide'),
+    grades = brew.getBreaks(),//[0, 20, 50, 100],
+    labels = [],
+    from, to;
+    for (var i = 0; i < grades.length-1; i++) {
+      from = grades[i];
+      to = grades[i + 1];
+      var res=String(getColoR(from)).split(",");
+      //console.log(from,from+1,res,grades);
+      labels.push(
+      '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+      from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
+    }
+    div.innerHTML = labels.join('');
+    return div;
+  };
+  legend.addTo(map);
+
+
+  function put_anios(){
+    arrray_anios = [];
+    var cadena='';
+    anio_mas_actual='';
+
+    for(var i = 1; i < estados[0].length; i++){
+      if(i == 1){
         anio_mas_actual = 'anio_'+i;
         cadena = '<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-          arrray_anios.push(estados[0][i].split('-')[0]);
-        }
-        else if(i <= estados[0].length-1)
-        {
-        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
-          arrray_anios.push(estados[0][i].split('-')[0]);
-        }
+        arrray_anios.push(estados[0][i].split('-')[0]);
       }
+      else if(i <= estados[0].length-1){
+        cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+        arrray_anios.push(estados[0][i].split('-')[0]);
+      }
+    }
 
 
-      if(cadena !=  ''){
-        cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 8px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12 l12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
+    if(cadena !=  ''){
+      cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 8px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12 l12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
       //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
-        $('#anios').html(cadena);
+      $('#anios').html(cadena);
 
-        $('#'+anio_mas_actual).trigger( "click" );
-      }else{
-        for (var i = 0; i < estados.length; i++) {
-          if(i == 0){
-            estados[i][1] =  '2017-01-01';
-          }else{
-            estados[i][1] = 1;
-          }
+      $('#'+anio_mas_actual).trigger( "click" );
+    }
+    else{
+      for (var i = 0; i < estados.length; i++){
+        if(i == 0){
+          estados[i][1] =  '2017-01-01';
         }
-        //console.log('--------------- estados fake ------------------');
-        //console.log(estados);
-        cambio_anio('2017-01-01',44);
+        else{
+          estados[i][1] = 1;
+        }
       }
 
-      //console.log('---------------- array_anios ---------------');
-      //console.log(arrray_anios);
-      $('.numero').html(arrray_anios[0]);
+      cambio_anio('2017-01-01',44);
+    }
 
+    $('.numero').html(arrray_anios[0]);
 
-      var array_Graficas = atributos.Grafica;
+    var array_Graficas = atributos.Grafica;
 
-      console.log(array_Graficas);
-      var g;
-      var index;
-      for(g = 0; g < array_Graficas.length; g++){
-          index = array_Graficas[g]['Seccion_gra'].indexOf('T');
-          console.log('index iindexindeixnidniedniendiendiednie');
-          console.log(index);
-          if (array_Graficas[g].Seccion_gra == 'T'){
-            if (array_Graficas[g].Clave_gra == 0){
-              //alert(array_Graficas[g].Descrip_gra);
-              $('#tabla_nacional').hide();
-              $('#botonera_nacional').hide();
-              $('#indicador-grafica').hide();
-              // $('#indicador-panel').show();
-              // $('#mapas_hide').hide();
-              // $('.ocultar').hide();
-            }else if(array_Graficas[g].Clave_gra == 1){
-              console.log(array_Graficas[g].Descrip_gra);
-              datosGrafica(arrray_anios[0]);
-            }else if(array_Graficas[g].Clave_gra == 2){
-              console.log(array_Graficas[g].Descrip_gra);
-              $('#chart2').show();
-              datosGrafica(arrray_anios[0]);
-            }else if(array_Graficas[g].Clave_gra == 3){
-              console.log(array_Graficas[g].Descrip_gra);
-              datosGrafica(arrray_anios[0]);
-            }else if(array_Graficas[g].Clave_gra == 4){
-              console.log(array_Graficas[g].Descrip_gra);
-              datosGrafica(arrray_anios[0]);
-            }else if(array_Graficas[g].Clave_gra == 5){
-              console.log(array_Graficas[g].Descrip_gra);
-              datosGrafica(arrray_anios[0]);
-            }else if(array_Graficas[g].Clave_gra == 7){
-              console.log(array_Graficas[g].Descrip_gra);
-              datosGrafica(arrray_anios[0]);
-            }
-          }
+    var g;
+    var index;
+    for(g = 0; g < array_Graficas.length; g++){
+      index = array_Graficas[g]['Seccion_gra'].indexOf('T');
+      console.log('index iindexindeixnidniedniendiendiednie');
+      console.log(index);
+      if (array_Graficas[g].Seccion_gra == 'T'){
+        if (array_Graficas[g].Clave_gra == 0){
+          $('#tabla_nacional').hide();
+          $('#botonera_nacional').hide();
+          $('#indicador-grafica').hide();
+        }
+        else if(array_Graficas[g].Clave_gra == 1){
+          console.log(array_Graficas[g].Descrip_gra);
+          datosGrafica(arrray_anios[0]);
+        }
+        else if(array_Graficas[g].Clave_gra == 2){
+          console.log(array_Graficas[g].Descrip_gra);
+          $('#chart2').show();
+          datosGrafica(arrray_anios[0]);
+        }
+        else if(array_Graficas[g].Clave_gra == 3){
+          console.log(array_Graficas[g].Descrip_gra);
+          datosGrafica(arrray_anios[0]);
+        }
+        else if(array_Graficas[g].Clave_gra == 4){
+          console.log(array_Graficas[g].Descrip_gra);
+          datosGrafica(arrray_anios[0]);
+        }
+        else if(array_Graficas[g].Clave_gra == 5){
+          console.log(array_Graficas[g].Descrip_gra);
+          datosGrafica(arrray_anios[0]);
+        }
+        else if(array_Graficas[g].Clave_gra == 7){
+          console.log(array_Graficas[g].Descrip_gra);
+          datosGrafica(arrray_anios[0]);
+        }
       }
+    }
 
+    var contaAnios = arrray_anios.length - 1;
 
-      //datosGrafica(arrray_anios[0]);
-
-      // if (array_Graficas.Seccion_gra == 'T'){
-      //   datosGrafica(arrray_anios[0]);
-      // }
-
-
-var contaAnios = arrray_anios.length - 1;
-
-      $('.owl-carousel').owlCarousel({
-          loop:false,
-          rtl:false,
-          margin:10,
-          rewind:false,
-          startPosition: contaAnios,
-          nav:true,
-          navText:['< Años anteriores','Años posteriores >'],
-          responsive:{
-              0:{
-                  items:3
-              },
-              600:{
-                  items:5
-              },
-              1000:{
-                  items:7
-              }
-          }
-      });
-
-
-    }//fin funcion
-
-   // function poner_filtros(){
-   //    console.log('--------------------- ponemos filtros ------------------');
-   //    $("#filtros").html('');
-   //    for (var i = 0; i < arreglo_cla.length; i++) {
-   //      $("#filtros").append('<option value="'+i+'">'+arreglo_cla[i]+'</option>');
-   //    }
-   //    $('#row_filtros').show();
-   //    $('select').material_select();
-   //  }
-
-    $('#filtros').on('change',function(){
-      $('#loader').show();
-      estados = arma_tabla($(this).val());
-      //console.log('------------------------- estados tabala select-----------------');
-      //console.log(estados);
-      actualiza_grafica();
-      if($('#agregacion').val() != 1){
-        $('#'+anio_mas_actual).trigger( "click" );
+    $('.owl-carousel').owlCarousel({
+      loop:false,
+      rtl:false,
+      margin:10,
+      rewind:false,
+      startPosition: contaAnios,
+      nav:true,
+      navText:['< Años anteriores','Años posteriores >'],
+      responsive:{
+        0:{
+          items:3
+        },
+        600:{
+          items:5
+        },
+        1000:{
+          items:7
+        }
       }
-      $('#loader').delay(2000).fadeOut("slow");
     });
+  }//fin funcion
 
-    function cambio_grafica()
-    {
-      $('#ver_tabla').removeClass('inactive_anio');
-      $('#ver_tabla').addClass('active_anio');
-      $('#ver_grafica').removeClass('active_anio');
-      $('#ver_grafica').addClass('inactive_anio');
-      $('#indicador-grafica').hide();
-      $('#indicador-panel').show();
+  function cambio_grafica(){
+    $('#ver_tabla').removeClass('inactive_anio');
+    $('#ver_tabla').addClass('active_anio');
+    $('#ver_grafica').removeClass('active_anio');
+    $('#ver_grafica').addClass('inactive_anio');
+    $('#indicador-grafica').hide();
+    $('#indicador-panel').show();
+  }
+
+  function cambio_tabla(){
+    $('#ver_grafica').removeClass('inactive_anio');
+    $('#ver_grafica').addClass('active_anio');
+    $('#ver_tabla').removeClass('active_anio');
+    $('#ver_tabla').addClass('inactive_anio');
+
+    $('#mapas_hide').show();
+    $('#indicador-grafica').show();
+    $('#indicador-panel').hide();
+  }
+
+  function cambio_grafica_nacional(){
+    $('#ver_tabla_nacional').removeClass('inactive_anio');
+    $('#ver_tabla_nacional').addClass('active_anio');
+    $('#ver_grafica_nacional').removeClass('active_anio');
+    $('#ver_grafica_nacional').addClass('inactive_anio');
+
+    $('#mapas_hide').hide();
+    $('#tabla_nacional').hide();
+    $('#indicador-panel').show();
+  }
+
+  function cambio_tabla_nacional(){
+    $('#ver_grafica_nacional').removeClass('inactive_anio');
+    $('#ver_grafica_nacional').addClass('active_anio');
+    $('#ver_tabla_nacional').removeClass('active_anio');
+    $('#ver_tabla_nacional').addClass('inactive_anio');
+
+    $('#mapas_hide').show();
+    $('#tabla_nacional').hide();
+    $('#indicador-panel').hide();
+  }
+
+  function cambio_anio(cadena, i){
+    for(var j=1;j<=25;j++){
+      $('#anio_'+j).removeClass('active_anio');
+      $('#anio_'+j).addClass('inactive_anio');
     }
 
-    function cambio_tabla()
-    {
-      $('#ver_grafica').removeClass('inactive_anio');
-      $('#ver_grafica').addClass('active_anio');
-      $('#ver_tabla').removeClass('active_anio');
-      $('#ver_tabla').addClass('inactive_anio');
+    $('#anio_'+i).removeClass('inactive_anio');
+    $('#anio_'+i).addClass('active_anio');
+    $('.infos').remove();
+    $('.info2').remove();
 
-      $('#mapas_hide').show();
-      $('#indicador-grafica').show();
-      $('#indicador-panel').hide();
-    }
+    var anio_buscar=$('#opciones_anio').val();
+    var posi = busqueda_anio(cadena);
+    var anioo = cadena.split('-');
 
-      function cambio_grafica_nacional()
-    {
-      $('#ver_tabla_nacional').removeClass('inactive_anio');
-      $('#ver_tabla_nacional').addClass('active_anio');
-      $('#ver_grafica_nacional').removeClass('active_anio');
-      $('#ver_grafica_nacional').addClass('inactive_anio');
+    locked =false;
 
-      $('#mapas_hide').hide();
-      $('#tabla_nacional').hide();
-      $('#indicador-panel').show();
-    }
+    var info = L.control();
+    info.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'infos hide');
+      this.update();
+      return this._div;
+    };
 
-    function cambio_tabla_nacional()
-    {
-      $('#ver_grafica_nacional').removeClass('inactive_anio');
-      $('#ver_grafica_nacional').addClass('active_anio');
-      $('#ver_tabla_nacional').removeClass('active_anio');
-      $('#ver_tabla_nacional').addClass('inactive_anio');
+    info.update = function (props) {
+      $('.infos').removeClass('hide');
+      $('.info2').removeClass('hide');
+      if(props != undefined){
+        this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
 
-      $('#mapas_hide').show();
-      $('#tabla_nacional').hide();
-      $('#indicador-panel').hide();
-    }
-
-
-    function cambio_anio(cadena, i)
-    {
-      for(var j=1;j<=25;j++)
-      {
-        $('#anio_'+j).removeClass('active_anio');
-        $('#anio_'+j).addClass('inactive_anio');
-      }
-      $('#anio_'+i).removeClass('inactive_anio');
-      $('#anio_'+i).addClass('active_anio');
-      // $('#map').html('');
-      $('.infos').remove();
-      $('.info2').remove();
-      var anio_buscar=$('#opciones_anio').val();
-      var posi = busqueda_anio(cadena);
-
-var anioo = cadena.split('-');
-
-      locked =false;
-
-      var info = L.control();
-      info.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'infos hide');
-        this.update();
-        return this._div;
-      };
-      info.update = function (props) {
-       $('.infos').removeClass('hide');
-       $('.info2').removeClass('hide');
-       if(props != undefined)
-       {
-          this._div.innerHTML='<div><h5 style="font-weight:bold">' + props.nom_ent +'</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_estado_posicion(props.nom_ent,posi).toFixed(1) + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="position: relative; top:-31px; left: 13%;" class="crop">'+titulo_des_graf+'</p></p></div><div class="info"></div>';
-
-        // gen(estados[props.cve]);
-        //console.log("---->estados a ver",estados[busqueda_indice(props.nom_ent)]);
         gen(estados[busqueda_indice(props.nom_ent)]);
         $(".crop").dotdotdot();
-       }
+      }
+    };
+    info.addTo(map);
+
+    function getColo(d) {
+      return d >= 100 ? '#004b67' :
+      d > 50  ? '#007dab' :
+      d > 20  ? '#01baff' :
+      '#eff3ff';
+    }
+
+    function getColoR(number){
+      return brew.getColorInRange(number);
+    }
+
+    function style(feature) {
+      var res = String(getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi))).split(",");
+      return {
+        weight: 0.5,
+        opacity: 1,
+        color: '#000',
+        dashArray: '1',
+        fillOpacity: 0.6,
+        fillColor: getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi)),
+        className: "c"+res[1]
       };
-      info.addTo(map);
+    }
 
-      function getColo(d) {
-        return d >= 100 ? '#004b67' :
-               d > 50  ? '#007dab' :
-               d > 20  ? '#01baff' :
-                         '#eff3ff';
-      }
-
-      function getColoR(number)
+    function highlightFeature(e) {
+      if(locked == false)
       {
-          return brew.getColorInRange(number);
-      }
-
-      function style(feature) {
-      var res=String(getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi))).split(",");
-      //console.log(res,'hhhh',"c"+res[1]);
-        return {
-          weight: 0.5,
-          opacity: 1,
-          color: '#000',
-          dashArray: '1',
-          fillOpacity: 0.6,
-          fillColor: getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi)),
-           className: "c"+res[1]
-        };
-      }
-      function highlightFeature(e) {
-       if(locked == false)
-       {
-          var layer = e.target;
-          layer.setStyle({
-            weight: 2,
-            color: '#ccc',
-            dashArray: '',
-            fillOpacity: 0.7
-          });
-          if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-            layer.bringToFront();
-          }
-          info.update(layer.feature.properties);
-       }
-      }
-      var geojson;
-      function resetHighlight(e) {
-         geojson.resetStyle(e.target);
-       info.update();
-      }
-      function zoomToFeature(e) {
-        map.fitBounds(e.target.getBounds());
-      }
-      function onEachFeature(feature, layer) {
-        layer.on({
-          mouseover: highlightFeature,
-          mouseout: resetHighlight,
-          mousedown: function(e)
-          {
-      if (locked == true) {
-        locked = false;
-        (function ($) {
-                 $(".info2").css("border","none");
-                 $(".infos").css("border","none");
-                 }(jQuery));
-      }
-      else {
-        locked = true;
-        (function ($) {
-                $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
-                $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
-                $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
-                $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
-                $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
-                $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
-                 }(jQuery));
-      }
-     },
+        var layer = e.target;
+        layer.setStyle({
+          weight: 2,
+          color: '#ccc',
+          dashArray: '',
+          fillOpacity: 0.7
         });
+        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+          layer.bringToFront();
+        }
+        info.update(layer.feature.properties);
       }
+    }
 
-      function highlightFromLegend(e)
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+      info.update();
+    }
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer){
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        mousedown: function(e)
         {
+          if (locked == true) {
+            locked = false;
+            (function ($) {
+              $(".info2").css("border","none");
+              $(".infos").css("border","none");
+            }(jQuery));
+          }
+          else {
+            locked = true;
+            (function ($) {
+              $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+              $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+              $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+              $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+            }(jQuery));
+          }
+        },
+      });
+    }
+
+    function highlightFromLegend(e)
+    {
       (function ($) {
         $("svg path."+e).addClass("highlighted");
         var r=$("svg path."+e);
@@ -2729,12 +2483,10 @@ var anioo = cadena.split('-');
     var values2 = [];
     for (var i = 0; i < statesData.features.length; i++)
     {
-      //console.log(statesData.features[i].properties.nom_ent);
       if (statesData.features[i].properties.nom_ent == null) continue;
       values.push(busqueda_estado_posicion(statesData.features[i].properties.nom_ent,posi));
     }
 
-    //console.log(values,values2);
     brew.setSeries(values);
     brew.setNumClasses(4);
     brew.setColorCode("Blues");
@@ -2748,517 +2500,370 @@ var anioo = cadena.split('-');
         brea.push(alfr[ii]);
       }
     }
-    //console.log("breaks0",brea);
 
-      geojson = L.geoJson(statesData, {
-        style: style,
-        onEachFeature: onEachFeature
-      }).addTo(map);
+    geojson = L.geoJson(statesData, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
 
-      map.attributionControl.addAttribution('');
-      var legend = L.control();
-      legend.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'info2 legend hide'),
-          grades = brew.getBreaks(),//[0, 20, 50, 100],
-          labels = [],
-          from, to;
-        for (var i = 0; i < grades.length-1; i++) {
-          from = grades[i];
-          to = grades[i + 1];
-          var res=String(getColoR(from)).split(",");
-          //console.log(from,from+1,res,grades);
-          labels.push(
-            '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-            from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
+    map.attributionControl.addAttribution('');
+    var legend = L.control();
+    legend.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'info2 legend hide'),
+      grades = brew.getBreaks(),//[0, 20, 50, 100],
+      labels = [],
+      from, to;
+      for (var i = 0; i < grades.length-1; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+        var res=String(getColoR(from)).split(",");
+        //console.log(from,from+1,res,grades);
+        labels.push(
+          '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+          from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
         }
         div.innerHTML = labels.join('');
         return div;
       };
       legend.addTo(map);
     }
+  //fin de la función
 
-    function isScrolledIntoView(elem)
-    {
-      //alert("method invoked");
-      var docViewTop = $(window).scrollTop();
-      var docViewBottom = docViewTop + $(window).height();
-      var elemTop = $(elem).offset().top;
-      var elemBottom = elemTop + $(elem).height();
-      //console.log(docViewTop , docViewBottom , elemTop , elemBottom);
-      // return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+  function isScrolledIntoView(elem){
 
-      return (elemTop > docViewTop);
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return (elemTop > docViewTop);
+  }
+
+  $( window ).scroll(function(){
+    if ($(window).scrollTop() == 0){
+      $("#sti").fadeOut(200);
+      $("#esconder").fadeIn(200);
+    }
+    if(!isScrolledIntoView($("#parrafo"))){
+      $("#esconder").fadeOut(200);
+      $("#sti").fadeIn(200);
+    }
+  });
+
+  function esconder() {
+    $('#cam_bus').hide();
+    $('#buscar').show();
+    lupa = false;
+  }
+
+  function armaMetadatos(){
+    var tablaMeta =  '';
+    var metadatosArr =  getMetadatos(vars);
+
+    tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
+    '<tr><th>Objetivo</th><td>'+metadatosArr.Descrip_obj+'</td></tr>'+
+    '<tr><th>Meta</th><td>'+metadatosArr.Descrip_met+'</td></tr>'+
+    '<tr><th>Nombre del Indicador</th><td>'+metadatosArr.Descrip_ind+'</td></tr>'+
+    '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
+    '<tr><th>Tipo de Indicador</th><td>'+metadatosArr.DesTipoInd_ft+'</td></tr>'+
+    '<tr><th>Algoritmo</th><td><div class="imgAlgoritmo"><img src="img/algoritmos/'+metadatosArr.Algoritmo_ft+'.gif" alt="Algoritmo '+metadatosArr.Algoritmo_ft+'" /></div></td></tr>'+
+    '<tr><th>Descripción narrativa del cálculo del indicador</th><td>'+metadatosArr.DescripCal_ft+'</td></tr>'+
+    '<tr><th>Unidad de medida</th><td>'+metadatosArr.Descrip_uni+'</td></tr>'+
+    '<tr><th>Cobertura geográfica</th><td>'+metadatosArr.Descrip_fdg+'</td></tr>'+
+    '<tr><th>Referencia temporal</th><td>'+metadatosArr.CobTem_ft+'</td></tr>'+
+    '<tr><th>Oportunidad</th><td>'+metadatosArr.Oportunidad_ft+'</td></tr>'+
+    '<tr><th>Periodicidad del indicador</th><td>'+metadatosArr.Descrip_per+'</td></tr>'+
+    '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador</th><td>';
+
+    for (var i = 0; i < metadatosArr.Fuente.length; i++) {
+      tablaMeta = tablaMeta  +  metadatosArr.Fuente[i].Descrip_fue + '<br>';
     }
 
-    $( window ).scroll(function() {
-      //console.log('bajando',isScrolledIntoView($("#parrafo")));
-      if ($(window).scrollTop() == 0)
-      {
-        //console.log("arriba");
-        $("#sti").fadeOut(200);
-        $("#esconder").fadeIn(200);
-        // $( "#sti" ).animate({
-        //   height: "0px"
-        // }, 1500 );
-        // $( "#esconder" ).animate({
-        //   height: "200px"
-        // }, 1500 );
-      }
-      if(!isScrolledIntoView($("#parrafo")))
-      {
-        $("#esconder").fadeOut(200);
-        $("#sti").fadeIn(200);
-      }
-    });
+    tablaMeta = tablaMeta + '</td></tr>'+
+    '<tr><th>Fecha de actualización del indicador</th><td>'+metadatosArr.FechaAct_atr+'</td></tr>'+
+    '<tr><th>Fecha de próxima actualización del indicador</th><td>'+metadatosArr.FecProxAct_eic+'</td></tr>'+
+    '<tr><th>Unidad del Estado (UE) responsable de calcular el indicador</th><td>';
 
-    var lupa = false;
-
-    function esconder() {
-      //console.log("focusout");
-      $('#cam_bus').hide();
-      $('#buscar').show();
-      lupa = false;
+    for (var i = 0; i < metadatosArr.InsResp.length; i++) {
+      tablaMeta = tablaMeta  +  metadatosArr.InsResp[i].Descrip_ins + '<br>';
     }
 
-      $(document).ready(function() {
-        armaMetadatos();
-        $("#sti").hide();
-        window.onload = function () {
-          $('#buscar').click(function () {
-            //console.log("aca");
-            if (lupa) {
-              $('#cam_bus').hide();
-              lupa = false;
-            } else {
-              $('#cam_bus').show();
-              $('#buscar').hide();
-              document.getElementById("cam_bus").focus();
-              lupa = true;
-            }
-          });
-        }
 
+    tablaMeta = tablaMeta + '</td></tr>'+
+    '<tr><th>Importancia y utilidad del indicador</th><td>'+metadatosArr.Importancia_ft+'</td></tr>'+
+    '<tr><th>Referencia nacional y/o internacional</th><td>';
+
+    for (var i = 0; i < metadatosArr.RefInt.length; i++) {
+      tablaMeta = tablaMeta  +  metadatosArr.RefInt[i].Descrip_ri + '<br>';
+    }
+
+    tablaMeta = tablaMeta + '</td></tr>'+
+    '<tr><th>Observaciones</th><td>'+nl2br(metadatosArr.Observacion_ft)+'</td></tr>'+
+    '<tr><th>Contacto</th><td>';
+
+    for (var i = 0; i < metadatosArr.Contacto.length; i++) {
+      tablaMeta = tablaMeta  +  metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + metadatosArr.Contacto[i].Domicilio_con +'<br> <b>Teléfono: </b>' + metadatosArr.Contacto[i].Telefono_con + '<br><b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con;
+    }
+
+    tablaMeta = tablaMeta +  '</td></tr></tbody></table></p>';
+
+    $('#metadatosApi').html(tablaMeta);
+  }
+
+  function nl2br(str, is_xhtml) {
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+  }
+
+  function colorBtn(objetivo){
+    switch(objetivo){
+      case "1.":
+        $('.headerObje').addClass('id_1');
+        $('#sti').addClass('id_1');
+        $('.indicadores-taps').removeClass('id_1');
+        $('.indicadores-taps-active').addClass('id_1');
+        $('.indicadores-taps-active').css('background-color', '#D90A38 !important');
+      break;
+      case "2.":
+        $('.headerObje').addClass('id_2');
+        $('#sti').addClass('id_2');
+        $('.indicadores-taps').removeClass('id_2');
+        $('.indicadores-taps-active').addClass('id_2');
+        $('.indicadores-taps-active').css('background-color','#D8AE2B !important');
+      break;
+      case "3.":
+        $('.headerObje').addClass('id_3');
+        $('#sti').addClass('id_3');
+        $('.indicadores-taps').removeClass('id_3');
+        $('.indicadores-taps-active').addClass('id_3');
+        $('.indicadores-taps-active').css('background-color','#299E32 !important');
+      break;
+      case "4.":
+        $('.headerObje').addClass('id_4');
+        $('#sti').addClass('id_4');
+        $('.indicadores-taps').removeClass('id_4');
+        $('.indicadores-taps-active').addClass('id_4');
+        $('.indicadores-taps-active').css('background-color','#BD052D !important');
+      break;
+      case "5.":
+        $('.headerObje').addClass('id_5');
+        $('#sti').addClass('id_5');
+        $('.indicadores-taps').removeClass('id_5');
+        $('.indicadores-taps-active').addClass('id_5');
+        $('.indicadores-taps-active').css('background-color','#E23429 !important');
+      break;
+      case "6.":
+        $('.headerObje').addClass('id_6');
+        $('#sti').addClass('id_6');
+        $('.indicadores-taps').removeClass('id_6');
+        $('.indicadores-taps-active').addClass('id_6');
+        $('.indicadores-taps-active').css('background-color','#56BCE3 !important');
+      break;
+      case "7.":
+        $('.headerObje').addClass('id_7');
+        $('#sti').addClass('id_7');
+        $('.indicadores-taps').removeClass('id_7');
+        $('.indicadores-taps-active').addClass('id_7');
+        $('.indicadores-taps-active').css('background-color','#F2CB02 !important');
+      break;
+      case "8.":
+        $('.headerObje').addClass('id_8');
+        $('#sti').addClass('id_8');
+        $('.indicadores-taps').removeClass('id_8');
+        $('.indicadores-taps-active').addClass('id_8');
+        $('.indicadores-taps-active').css('background-color','#9D063D !important');
+      break;
+      case "9.":
+        $('.headerObje').addClass('id_9');
+        $('#sti').addClass('id_9');
+        $('.indicadores-taps').removeClass('id_9');
+        $('.indicadores-taps-active').addClass('id_9');
+        $('.indicadores-taps-active').css('background-color','#E86A26 !important');
+      break;
+      case "10.":
+        $('.headerObje').addClass('id_10');
+        $('#sti').addClass('id_10');
+        $('.indicadores-taps').removeClass('id_10');
+        $('.indicadores-taps-active').addClass('id_10');
+        $('.indicadores-taps-active').css('background-color','#D4015E !important');
+      break;
+      case "11.":
+        $('.headerObje').addClass('id_11');
+        $('#sti').addClass('id_11');
+        $('.indicadores-taps').removeClass('id_11');
+        $('.indicadores-taps-active').addClass('id_11');
+        $('.indicadores-taps-active').css('background-color','#F0A612 !important');
+      break;
+      case "12.":
+        $('.headerObje').addClass('id_12');
+        $('#sti').addClass('id_12');
+        $('.indicadores-taps').removeClass('id_12');
+        $('.indicadores-taps-active').addClass('id_12');
+        $('.indicadores-taps-active').css('background-color','#B99319 !important');
+      break;
+      case "13.":
+        $('.headerObje').addClass('id_13');
+        $('#sti').addClass('id_13');
+        $('.indicadores-taps').removeClass('id_13');
+        $('.indicadores-taps-active').addClass('id_13');
+        $('.indicadores-taps-active').css('background-color','#2D7D3B !important');
+      break;
+      case "14.":
+        $('.headerObje').addClass('id_14');
+        $('#sti').addClass('id_14');
+        $('.indicadores-taps').removeClass('id_14');
+        $('.indicadores-taps-active').addClass('id_14');
+        $('.indicadores-taps-active').css('background-color','#4B95CF !important');
+      break;
+      case "15.":
+        $('.headerObje').addClass('id_15');
+        $('#sti').addClass('id_15');
+        $('.indicadores-taps').removeClass('id_15');
+        $('.indicadores-taps-active').addClass('id_15');
+        $('.indicadores-taps-active').css('background-color','#37B72F !important');
+      break;
+      case "16.":
+        $('.headerObje').addClass('id_16');
+        $('#sti').addClass('id_16');
+        $('.indicadores-taps').removeClass('id_16');
+        $('.indicadores-taps-active').addClass('id_16');
+        $('.indicadores-taps-active').css('background-color','#336198 !important');
+      break;
+      case "17.":
+        $('.headerObje').addClass('id_17');
+        $('#sti').addClass('id_17');
+        $('.indicadores-taps').removeClass('id_17');
+        $('.indicadores-taps-active').addClass('id_17');
+        $('.indicadores-taps-active').css('background-color','#2B3E63 !important');
+      break;
+    }
+  }
+
+  function exportTableToCSV($table, filename) {
+    var $rows = $table.find('tr:has(td)'),
+    tmpColDelim = String.fromCharCode(11), // vertical tab character
+    tmpRowDelim = String.fromCharCode(0), // null character
+    // actual delimiter characters for CSV format
+    colDelim = '","',
+    rowDelim = '"\r\n"',
+
+    // Grab text from table into CSV formatted string
+    csv = '"' + $rows.map(function (i, row) {
+      var $row = $(row),
+      $cols = $row.find('td');
+
+      return $cols.map(function (j, col) {
+        var $col = $(col),
+        text = $col.text();
+
+        return text.replace(/"/g, '""'); // escape double quotes
+
+      }).get().join(tmpColDelim);
+
+    }).get().join(tmpRowDelim)
+    .split(tmpRowDelim).join(rowDelim)
+    .split(tmpColDelim).join(colDelim) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+
+      var blob = new Blob([decodeURIComponent(csv)], {
+        type: 'text/csv;charset=utf8'
       });
 
-
-      function armaMetadatos(){
-        var tablaMeta =  '';
-        var metadatosArr =  getMetadatos(vars);
-        //console.log('---------------------- metadatos -----------------');
-        //console.log(metadatosArr);
-
-        tablaMeta =  tablaMeta + ' <table class="bordered"><tbody>'+
-        '<tr><th>Objetivo</th><td>'+metadatosArr.Descrip_obj+'</td></tr>'+
-        '<tr><th>Meta</th><td>'+metadatosArr.Descrip_met+'</td></tr>'+
-        '<tr><th>Nombre del Indicador</th><td>'+metadatosArr.Descrip_ind+'</td></tr>'+
-        '<tr><th>Definición</th><td><p>'+metadatosArr.Definicion_ft+'</p></td></tr>'+
-        '<tr><th>Tipo de Indicador</th><td>'+metadatosArr.DesTipoInd_ft+'</td></tr>'+
-        '<tr><th>Algoritmo</th><td><div class="imgAlgoritmo"><img src="img/algoritmos/'+metadatosArr.Algoritmo_ft+'.gif" alt="Algoritmo '+metadatosArr.Algoritmo_ft+'" /></div></td></tr>'+
-        '<tr><th>Descripción narrativa del cálculo del indicador</th><td>'+metadatosArr.DescripCal_ft+'</td></tr>'+
-        '<tr><th>Unidad de medida</th><td>'+metadatosArr.Descrip_uni+'</td></tr>'+
-        '<tr><th>Cobertura geográfica</th><td>'+metadatosArr.Descrip_fdg+'</td></tr>'+
-        '<tr><th>Referencia temporal</th><td>'+metadatosArr.CobTem_ft+'</td></tr>'+
-        '<tr><th>Oportunidad</th><td>'+metadatosArr.Oportunidad_ft+'</td></tr>'+
-        '<tr><th>Periodicidad del indicador</th><td>'+metadatosArr.Descrip_per+'</td></tr>'+
-        '<tr><th>Fuente generadora de la información estadística utilizada para el cálculo del indicador</th><td>';
-
-        for (var i = 0; i < metadatosArr.Fuente.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.Fuente[i].Descrip_fue + '<br>';
-        }
-
-        tablaMeta = tablaMeta + '</td></tr>'+
-        '<tr><th>Fecha de actualización del indicador</th><td>'+metadatosArr.FechaAct_atr+'</td></tr>'+
-        '<tr><th>Fecha de próxima actualización del indicador</th><td>'+metadatosArr.FecProxAct_eic+'</td></tr>'+
-        '<tr><th>Unidad del Estado (UE) responsable de calcular el indicador</th><td>';
-
-        for (var i = 0; i < metadatosArr.InsResp.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.InsResp[i].Descrip_ins + '<br>';
-        }
-
-
-        tablaMeta = tablaMeta + '</td></tr>'+
-        '<tr><th>Importancia y utilidad del indicador</th><td>'+metadatosArr.Importancia_ft+'</td></tr>'+
-        '<tr><th>Referencia nacional y/o internacional</th><td>';
-
-        for (var i = 0; i < metadatosArr.RefInt.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.RefInt[i].Descrip_ri + '<br>';
-        }
-
-        tablaMeta = tablaMeta + '</td></tr>'+
-        '<tr><th>Observaciones</th><td>'+nl2br(metadatosArr.Observacion_ft)+'</td></tr>'+
-        '<tr><th>Contacto</th><td>';
-
-        for (var i = 0; i < metadatosArr.Contacto.length; i++) {
-          tablaMeta = tablaMeta  +  metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + metadatosArr.Contacto[i].Domicilio_con +'<br> <b>Teléfono: </b>' + metadatosArr.Contacto[i].Telefono_con + '<br><b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con;
-        }
-
-
-        /* tablaMeta = tablaMeta +  '</td></tr></tbody></table>'+pie+'</p>'; */
-        tablaMeta = tablaMeta +  '</td></tr></tbody></table></p>';
-
-        $('#metadatosApi').html(tablaMeta);
-
-        // <img src="img/formula.png" alt=""><p>Significado de las siglas o abreviaturas:</p>PPIDt: Porcentaje de la población con ingresos per cápital menosrea a 1.25 dólares diarios,<br>qt: Número de las personas con ingreso per cápita inferior a 1.25 dólares, y <br>nt: Número de personas
-      }
-
-      function nl2br(str, is_xhtml) {
-          var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
-          return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-      }
-
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-
-      function colorBtn(objetivo){
-        switch(objetivo){
-          case "1.":
-            $('.headerObje').addClass('id_1');
-            $('#sti').addClass('id_1');
-            $('.indicadores-taps').removeClass('id_1');
-            $('.indicadores-taps-active').addClass('id_1');
-            $('.indicadores-taps-active').css('background-color', '#D90A38 !important');
-          break;
-          case "2.":
-            $('.headerObje').addClass('id_2');
-            $('#sti').addClass('id_2');
-            $('.indicadores-taps').removeClass('id_2');
-            $('.indicadores-taps-active').addClass('id_2');
-            $('.indicadores-taps-active').css('background-color','#D8AE2B !important');
-          break;
-          case "3.":
-            $('.headerObje').addClass('id_3');
-            $('#sti').addClass('id_3');
-            $('.indicadores-taps').removeClass('id_3');
-            $('.indicadores-taps-active').addClass('id_3');
-            $('.indicadores-taps-active').css('background-color','#299E32 !important');
-          break;
-          case "4.":
-            $('.headerObje').addClass('id_4');
-            $('#sti').addClass('id_4');
-            $('.indicadores-taps').removeClass('id_4');
-            $('.indicadores-taps-active').addClass('id_4');
-            $('.indicadores-taps-active').css('background-color','#BD052D !important');
-          break;
-          case "5.":
-            $('.headerObje').addClass('id_5');
-            $('#sti').addClass('id_5');
-            $('.indicadores-taps').removeClass('id_5');
-            $('.indicadores-taps-active').addClass('id_5');
-            $('.indicadores-taps-active').css('background-color','#E23429 !important');
-          break;
-          case "6.":
-            $('.headerObje').addClass('id_6');
-            $('#sti').addClass('id_6');
-            $('.indicadores-taps').removeClass('id_6');
-            $('.indicadores-taps-active').addClass('id_6');
-            $('.indicadores-taps-active').css('background-color','#56BCE3 !important');
-          break;
-          case "7.":
-            $('.headerObje').addClass('id_7');
-            $('#sti').addClass('id_7');
-            $('.indicadores-taps').removeClass('id_7');
-            $('.indicadores-taps-active').addClass('id_7');
-            $('.indicadores-taps-active').css('background-color','#F2CB02 !important');
-          break;
-          case "8.":
-            $('.headerObje').addClass('id_8');
-            $('#sti').addClass('id_8');
-            $('.indicadores-taps').removeClass('id_8');
-            $('.indicadores-taps-active').addClass('id_8');
-            $('.indicadores-taps-active').css('background-color','#9D063D !important');
-          break;
-          case "9.":
-            $('.headerObje').addClass('id_9');
-            $('#sti').addClass('id_9');
-            $('.indicadores-taps').removeClass('id_9');
-            $('.indicadores-taps-active').addClass('id_9');
-            $('.indicadores-taps-active').css('background-color','#E86A26 !important');
-          break;
-          case "10.":
-            $('.headerObje').addClass('id_10');
-            $('#sti').addClass('id_10');
-            $('.indicadores-taps').removeClass('id_10');
-            $('.indicadores-taps-active').addClass('id_10');
-            $('.indicadores-taps-active').css('background-color','#D4015E !important');
-          break;
-          case "11.":
-            $('.headerObje').addClass('id_11');
-            $('#sti').addClass('id_11');
-            $('.indicadores-taps').removeClass('id_11');
-            $('.indicadores-taps-active').addClass('id_11');
-            $('.indicadores-taps-active').css('background-color','#F0A612 !important');
-          break;
-          case "12.":
-            $('.headerObje').addClass('id_12');
-            $('#sti').addClass('id_12');
-            $('.indicadores-taps').removeClass('id_12');
-            $('.indicadores-taps-active').addClass('id_12');
-            $('.indicadores-taps-active').css('background-color','#B99319 !important');
-          break;
-          case "13.":
-            $('.headerObje').addClass('id_13');
-            $('#sti').addClass('id_13');
-            $('.indicadores-taps').removeClass('id_13');
-            $('.indicadores-taps-active').addClass('id_13');
-            $('.indicadores-taps-active').css('background-color','#2D7D3B !important');
-          break;
-          case "14.":
-            $('.headerObje').addClass('id_14');
-            $('#sti').addClass('id_14');
-            $('.indicadores-taps').removeClass('id_14');
-            $('.indicadores-taps-active').addClass('id_14');
-            $('.indicadores-taps-active').css('background-color','#4B95CF !important');
-          break;
-          case "15.":
-            $('.headerObje').addClass('id_15');
-            $('#sti').addClass('id_15');
-            $('.indicadores-taps').removeClass('id_15');
-            $('.indicadores-taps-active').addClass('id_15');
-            $('.indicadores-taps-active').css('background-color','#37B72F !important');
-          break;
-          case "16.":
-            $('.headerObje').addClass('id_16');
-            $('#sti').addClass('id_16');
-            $('.indicadores-taps').removeClass('id_16');
-            $('.indicadores-taps-active').addClass('id_16');
-            $('.indicadores-taps-active').css('background-color','#336198 !important');
-          break;
-          case "17.":
-            $('.headerObje').addClass('id_17');
-            $('#sti').addClass('id_17');
-            $('.indicadores-taps').removeClass('id_17');
-            $('.indicadores-taps-active').addClass('id_17');
-            $('.indicadores-taps-active').css('background-color','#2B3E63 !important');
-          break;
-
-        }
-      }
-
-
-
-    function exportTableToCSV($table, filename) {
-
-        var $rows = $table.find('tr:has(td)'),
-
-            // Temporary delimiter characters unlikely to be typed by keyboard
-            // This is to avoid accidentally splitting the actual contents
-            tmpColDelim = String.fromCharCode(11), // vertical tab character
-            tmpRowDelim = String.fromCharCode(0), // null character
-
-            // actual delimiter characters for CSV format
-            colDelim = '","',
-            rowDelim = '"\r\n"',
-
-            // Grab text from table into CSV formatted string
-            csv = '"' + $rows.map(function (i, row) {
-                var $row = $(row),
-                    $cols = $row.find('td');
-
-                return $cols.map(function (j, col) {
-                    var $col = $(col),
-                        text = $col.text();
-
-                    return text.replace(/"/g, '""'); // escape double quotes
-
-                }).get().join(tmpColDelim);
-
-            }).get().join(tmpRowDelim)
-                .split(tmpRowDelim).join(rowDelim)
-                .split(tmpColDelim).join(colDelim) + '"';
-
-				// Deliberate 'false', see comment below
-        if (false && window.navigator.msSaveBlob) {
-
-						var blob = new Blob([decodeURIComponent(csv)], {
-	              type: 'text/csv;charset=utf8'
-            });
-
-            // Crashes in IE 10, IE 11 and Microsoft Edge
-            // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
-            // Hence, the deliberate 'false'
-            // This is here just for completeness
-            // Remove the 'false' at your own risk
-            window.navigator.msSaveBlob(blob, filename);
-
-        } else if (window.Blob && window.URL) {
-						// HTML5 Blob
-            var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
-            var csvUrl = URL.createObjectURL(blob);
-
-            $(this)
-            		.attr({
-                		'download': filename,
-                		'href': csvUrl
-		            });
-				} else {
-            // Data URI
-            var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
-
-						$(this)
-                .attr({
-               		  'download': filename,
-                    'href': csvData,
-                    'target': '_blank'
-            		});
-        }
+      window.navigator.msSaveBlob(blob, filename);
     }
+    else if (window.Blob && window.URL) {
+      var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
+      var csvUrl = URL.createObjectURL(blob);
 
-    // This must be a hyperlink
-    $(".exportCSV").on('click', function (event) {
-        // CSV
-        var args = [$('#tabla_export2 table'), Descrip_ind+'.csv'];
-
-        exportTableToCSV.apply(this, args);
-
-        // If CSV, don't do event.preventDefault() or return false
-        // We actually need this to be a typical hyperlink
-    });
-
-    if ($('.select_datos').val() != -1) {
-      $(".exportCSVDatos").hide();
-    }else{
-      $(".exportCSVDatos").hide();
+      $(this)
+      .attr({
+        'download': filename,
+        'href': csvUrl
+      });
     }
-
-    $(".exportCSVDatos").on('click', function (event) {
-        // CSV
-        var args = [$('#miTabla'), 'DatosParaElCalculo - '+Descrip_ind+'.csv'];
-
-        exportTableToCSV.apply(this, args);
-
-        // If CSV, don't do event.preventDefault() or return false
-        // We actually need this to be a typical hyperlink
-    });
-
-
-    $("#descargaXLS").attr('download',Descrip_ind+'.xls');
-
-
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function () {
+    else {
+      var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+      $(this)
+      .attr({
+        'download': filename,
+        'href': csvData,
+        'target': '_blank'
+      });
+    }
+  }
 
   function deselect(e) {
     $('.pop').slideFadeToggle(function() {
       e.removeClass('selected');
     });
   }
-  $("#contact").hover(
-   function() {
-     if($(this).hasClass('selected')) {
-       deselect($(this));
-     } else {
-       $(this).addClass('selected');
-       $('.pop').slideFadeToggle();
-     }
-     return false;
-   }, function() {
-     deselect($('#contact'));
-     return false;
-   }
- );
-
-
- $.fn.slideFadeToggle = function(easing, callback) {
-   return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
- };
-
-function exportTableToXLS($table1, filename1) {
-
-    var $rows1 = $table1.find('tr:has(td)'),
-
-        // Temporary delimiter characters unlikely to be typed by keyboard
-        // This is to avoid accidentally splitting the actual contents
-        tmpColDelim1 = String.fromCharCode(11), // vertical tab character
-        tmpRowDelim1 = String.fromCharCode(0), // null character
-
-        // actual delimiter characters for CSV format
-        colDelim1 = '","',
-        rowDelim1 = '"\r\n"',
-
-        // Grab text from table into CSV formatted string
-        xls = '"' + $rows1.map(function (i, row) {
-            var $row1 = $(row),
-                $cols1 = $row1.find('td');
-
-            return $cols1.map(function (j, col) {
-                var $col1 = $(col),
-                    text1 = $col1.text();
-
-                return text1.replace(/"/g, '""'); // escape double quotes
-
-            }).get().join(tmpColDelim1);
-
-        }).get().join(tmpRowDelim1)
-            .split(tmpRowDelim1).join(rowDelim1)
-            .split(tmpColDelim1).join(colDelim1) + '"';
-
-    // Deliberate 'false', see comment below
-    if (false && window.navigator.msSaveBlob) {
-
-        var blob1 = new Blob([decodeURIComponent($table1)], {
-            type: 'text/plain;charset=utf8'
-        });
-
-        // Crashes in IE 10, IE 11 and Microsoft Edge
-        // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
-        // Hence, the deliberate 'false'
-        // This is here just for completeness
-        // Remove the 'false' at your own risk
-        window.navigator.msSaveBlob(blob1, filename1);
-
-    } else if (window.Blob && window.URL) {
-        // HTML5 Blob
-        var blob1 = new Blob([xls], { type: 'text/plain;charset=utf8' });
-        var xlsUrl = URL.createObjectURL(blob1);
-
-        $(this)
-            .attr({
-                'download': filename1,
-                'href': xlsUrl
-            });
-    } else {
-        // Data URI
-        var xlsData = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(xls);
-
-        $(this)
-            .attr({
-                'download': filename1,
-                'href': xlsData,
-                'target': '_blank'
-            });
-    }
-}
-
-
-
-
-
-// This must be a hyperlink
-$(".exportXLS").on('click', function (event) {
-    // CSV
-    var args1 = [$('#tabla_export table'), Descrip_ind+'.xls'];
-
-    exportTableToXLS.apply(this, args1);
-
-    // If CSV, don't do event.preventDefault() or return false
-    // We actually need this to be a typical hyperlink
-});
-});
-
-// function exportXXLS()
-// {
-//   var blob = new Blob([document.getElementById('tabla_export').innerHTML], {
-//           type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-//       });
-// saveAs(blob, "Report.xls");
-// }
-
 
   function buscar(busqueda){
     window.location.replace("busqueda.html?busqueda=" + busqueda);
+  }
+
+  function exportTableToXLS($table1, filename1) {
+    var $rows1 = $table1.find('tr:has(td)'),
+    tmpColDelim1 = String.fromCharCode(11), // vertical tab character
+    tmpRowDelim1 = String.fromCharCode(0), // null character
+
+    // actual delimiter characters for CSV format
+    colDelim1 = '","',
+    rowDelim1 = '"\r\n"',
+
+    // Grab text from table into CSV formatted string
+    xls = '"' + $rows1.map(function (i, row) {
+      var $row1 = $(row),
+      $cols1 = $row1.find('td');
+
+      return $cols1.map(function (j, col) {
+        var $col1 = $(col),
+        text1 = $col1.text();
+        return text1.replace(/"/g, '""'); // escape double quotes
+      }).get().join(tmpColDelim1);
+    }).get().join(tmpRowDelim1)
+    .split(tmpRowDelim1).join(rowDelim1)
+    .split(tmpColDelim1).join(colDelim1) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+      var blob1 = new Blob([decodeURIComponent($table1)], {
+        type: 'text/plain;charset=utf8'
+      });
+      window.navigator.msSaveBlob(blob1, filename1);
+    }
+    else if (window.Blob && window.URL) {
+      // HTML5 Blob
+      var blob1 = new Blob([xls], { type: 'text/plain;charset=utf8' });
+      var xlsUrl = URL.createObjectURL(blob1);
+
+      $(this)
+      .attr({
+        'download': filename1,
+        'href': xlsUrl
+      });
+    } else {
+      // Data URI
+      var xlsData = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(xls);
+
+      $(this)
+      .attr({
+        'download': filename1,
+        'href': xlsData,
+        'target': '_blank'
+      });
+    }
+  }
+
+  //---------------------------------- codigo nuevo -----------//
+  function init_geojson(){
+    console.log(geojson.options);
+    map.removeLayer(geojson);
+    geojson = L.geoJson(municipio, {
+      style: style
+    }).addTo(map);
   }
 </script>
   </body>
