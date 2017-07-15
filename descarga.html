@@ -569,12 +569,20 @@ $('#loader').show();
       // }
 
       $('#enviaDescarga').on('click',function(){
-        //alert('Enviar');
-        descargaSeleccion();
 
-            var args = [$('.tabla_completa'), 'DescargaMasiva.csv'];
+        // alert('Enviar');
+        // descargaSeleccion();
 
-            exportTableToCSV.apply(this, args);
+        if(descargaSeleccion()){
+
+          var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
+
+          exportTableToCSV.apply(this, args);
+          
+        }
+            // var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
+            //
+            // exportTableToCSV.apply(this, args);
 
       });
 
@@ -1138,7 +1146,7 @@ $(".exportXLS").on('click', function (event) {
     // This must be a hyperlink
     $(".exportCSV").on('click', function (event) {
         // CSV
-        var args = [$('.tabla_completa'), 'DescargaMasiva.csv'];
+        var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
 
         exportTableToCSV.apply(this, args);
 
