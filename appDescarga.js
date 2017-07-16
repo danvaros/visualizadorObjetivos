@@ -104,12 +104,9 @@ function listadoTablas(PCveInd){
 
       $('.Codigo_ind').html(Codigo_ind);
       $('.Descrip_ind').html(Descrip_ind);
-      // if(PCveInd == 101 || PCveInd == 2){
-      //   $('#link-datos-panel').hide();
-      // }
+
       titulos(PCveInd);
       $('#tabla_nacional').hide();
-
 
         console.log(tabulado);
 
@@ -121,10 +118,7 @@ function listadoTablas(PCveInd){
         },
     async:false
   });
-
   $('.tabla_completa').html(armaTabulado);
-
-
 }
 
 
