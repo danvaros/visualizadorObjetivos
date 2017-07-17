@@ -1420,6 +1420,10 @@
       var args1 = [$('#tabla_export table'), Descrip_ind+'.xls'];
       exportTableToXLS.apply(this, args1);
     });
+    //ocultamos el boton de municipios si no es para el 118
+    if(PCveInd != 118){
+        $("#boton_municipal").hide();
+    }
 
   });//fin del document ready
 
