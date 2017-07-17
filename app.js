@@ -116,10 +116,8 @@ if(PCveInd == 118){
         valorDato(data);
         valorDatoInsumos(data);
       }else{
-
          //console.log(data);
           cobertura(data);
-
           estados = arma_tabla(0);
           coberturaInsumos(data);
           //console.log(estados);
@@ -252,39 +250,37 @@ else
   });
 }
 
-
   function get_tabulado(tTabulado, serie){
-  var t;
-  switch(tTabulado){
-    case 'CoS':
-      t = tablaCoS(serie);
-    break;
-    case 'CoCl':
-      if(clasif > 1){
-        t = CoClanidada(serie);
-      }else{
-        t = tablaCoCl(serie);
+      var t;
+      switch(tTabulado){
+        case 'CoS':
+          t = tablaCoS(serie);
+        break;
+        case 'CoCl':
+          if(clasif > 1){
+            t = CoClanidada(serie);
+          }else{
+            t = tablaCoCl(serie);
+          }
+        break;
+        case 'ACl':
+          if(clasif > 1){
+            t = AClanidada(serie);
+          }else{
+            t = tablaACl(serie);
+          }
+        break;
+        case 'AS':
+          t = tablaAS(serie);
+        break;
+        case 'ClA':
+          t = tablaClA(serie);
+        break;
       }
-    break;
-    case 'ACl':
-      if(clasif > 1){
-        t = AClanidada(serie);
-      }else{
-        t = tablaACl(serie);
-      }
-    break;
-    case 'AS':
-      t = tablaAS(serie);
-    break;
-    case 'ClA':
-      t = tablaClA(serie);
-    break;
+      return t;
   }
-  return t;
-}
 
-  $(document).ready(function()
-  {
+  $(document).ready(function(){
     $('.tabla_completa').html(tabulado);
 
     var nColumnas = $(".tablaArmada tr:last td").length;
@@ -345,9 +341,6 @@ else
       break;
     }
 
-
-
-
     if(PCveInd ==  101){
       $('.tabla_completa').addClass('scrollx-tabla');
     }
@@ -374,10 +367,12 @@ else
 
     $('#insumo_change').on('change',function(){
       put_tabla_insumo($(this).val());
-      $('#nueva_tabla_serie').html(tabulado_series[$(this).val()]);
+      $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
+      $('#insumos_cont').hide();
     });
 
     $('#insumo_change_cob').on('change',function(){
+      $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
       $('#insumos_contDat').html('');
@@ -385,6 +380,8 @@ else
       if(PCveInd == 101){
         put_filtros_insumo_cob1($(this).val());
       }
+
+      $('#insumo_filtro').hide();
     });
 
     $('#este').on('change', function(){
@@ -1092,14 +1089,14 @@ else
     }
 
     //Armamos el select para que tenga todas las series que pueden existir
-    var select='<div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div><div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
+    var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
     select += '<option value="-1"> Selecciona una opción </option>';
     $.each(lista_insumos, function(idx, value){
       select += '<option value="'+idx+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div>';
+    select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
@@ -1118,14 +1115,14 @@ else
     }
 
     //Armamos el select para que tenga todas las series que pueden existir
-    var select='<div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div><div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
+    var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
-    select += '<option value="0"> Selecciona una opción </option>';
+    select += '<option value="-1"> Selecciona una opción </option>';
     $.each(lista_insumos, function(idx, value){
-      select += '<option value="'+(idx+1)+'">'+value+'</option>';
+      select += '<option value="'+(idx)+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div>';
+    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);

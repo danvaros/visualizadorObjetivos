@@ -173,7 +173,8 @@ function tablaACl(data){
 }
 
 function tablaAS(data){
-  var tabuladoAS =  '<table class="tablaArmada centered striped "><thead><tr><th>Periodo</th><th>'+ data.Descrip_ind +'</th></tr></thead>';
+  console.log(data);
+  var tabuladoAS =  '<table class="tablaArmada centered striped "><thead><tr><th>Periodo</th><th>'+ data.Descrip_ser +'</th></tr></thead>';
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].ValorDato.length; j++) {
       tabuladoAS += '<tr><td>'+ data.Coberturas[i].ValorDato[j].AADato_ser   +'</td><td>' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
