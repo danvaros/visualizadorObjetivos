@@ -369,6 +369,7 @@ else
       put_tabla_insumo($(this).val());
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
       $('#insumos_cont').hide();
+      $('#este2').hide();
     });
 
     $('#insumo_change_cob').on('change',function(){
@@ -382,6 +383,7 @@ else
       }
 
       $('#insumo_filtro').hide();
+      $('#este2').hide();
     });
 
     $('#este').on('change', function(){
