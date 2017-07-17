@@ -374,6 +374,7 @@ else
 
     $('#insumo_change').on('change',function(){
       put_tabla_insumo($(this).val());
+      $('#nueva_tabla_serie').html(tabulado_series[$(this).val()]);
     });
 
     $('#insumo_change_cob').on('change',function(){
@@ -1052,7 +1053,7 @@ else
     for (var i = 0; i < data.Series.length; i++) {
       var temporal = [];
       if(data.Series[i].Tipo_ser == "I"){
-        arre_series.push();
+
         lista_insumos.push(data.Series[i].Descrip_ser);
         temporal.push('Entidad');
 
@@ -1091,7 +1092,7 @@ else
     }
 
     //Armamos el select para que tenga todas las series que pueden existir
-    var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
+    var select='<div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div><div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
     select += '<option value="-1"> Selecciona una opción </option>';
     $.each(lista_insumos, function(idx, value){
@@ -1117,7 +1118,7 @@ else
     }
 
     //Armamos el select para que tenga todas las series que pueden existir
-    var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
+    var select='<div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div><div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
     select += '<option value="0"> Selecciona una opción </option>';
     $.each(lista_insumos, function(idx, value){
