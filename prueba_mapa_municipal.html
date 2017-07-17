@@ -53,15 +53,6 @@
       }
     }
 
-    var partes = [];
-    console.log(valuesMunicipio);
-    for (var i = 0; i < 919; i++) {
-      //;console.log('indice'+ i + ' : ' + valuesMunicipio[i]);
-      partes.push(valuesMunicipio[i]);
-    }
-
-    //valuesMunicipio = [30, 14.9, 22.71, 24.96, 7.17,12,23];
-
     brew.setSeries(valuesMunicipio);
     brew.setNumClasses(4);
     brew.setColorCode("Blues");
@@ -70,8 +61,7 @@
     var alfr=brew.getBreaks();
     var brea =[];
 
-    for(var ii=0;ii<alfr.length;ii++)
-    {
+    for(var ii=0;ii<alfr.length;ii++){
       if(alfr[ii] != -1)
       {
         brea.push(alfr[ii]);
@@ -219,7 +209,6 @@
       this.update();
       return this._div;
     };
-
     info.update = function (props) {
       //this._div = L.DomUtil.create('div', 'infos');
       $('.infos').removeClass('hide');

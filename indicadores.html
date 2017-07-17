@@ -886,6 +886,11 @@
     <script src="listado_indicadores.js"></script>
     <script type="text/javascript" charset="utf-8" src="municipio.json"></script>
 
+    <!--  ayuda para el mapa municipal y geojson -->
+    <script type="text/javascript" charset="utf-8" src="municipio.json"></script>
+    <script type="text/javascript" src="consulta_municipal.json"></script>
+
+
     <script>
     var titulo_des_graf="Razón de mortalidad materna";
     var estadoYear = 2015;
@@ -1979,7 +1984,6 @@
     }(jQuery));
   }
 
-
   for (var i = 0; i < statesData.features.length; i++){
     //console.log(statesData.features[i].properties.nom_ent);
     if (statesData.features[i].properties.nom_ent == null) continue;
@@ -2175,18 +2179,247 @@
       $('#indicador-panel').hide();
     }
 
+    //cosas por acomodar las deja aqui por el tiempo :)
+
+
+
     function cambio_anio(cadena, i){
       $('.infos').remove();
       $('.info2').remove();
 
       if(cadena  == 'municipal'){
+        //PCveInd indecacdor 118
+        var municipios = []; //arreglo con los valores de la llamada a la api
+        var valuesMunicipio = [];
+        var brew = new classyBrew();
+
         $('#anios').hide();
-        console.log(geojson.options);
+        valorDato(dataLocal);
+
+        for (var i = 0; i < municipio.features.length; i++){
+          //console.log(statesData.features[i].properties.nom_ent);
+          if (municipio.features[i].properties.nom_mun == null) continue;
+          valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun));
+          if(busqueda_municipio(municipio.features[i].properties.nom_mun) == undefined){
+            //console.log(municipio.features[i].properties.nom_mun);
+          }
+        }
+
+        brew.setSeries(valuesMunicipio);
+        brew.setNumClasses(4);
+        brew.setColorCode("Blues");
+        brew.classify('jenks');
+        var alfr=brew.getBreaks();
+        var brea =[];
+        for(var ii=0;ii<alfr.length;ii++)
+        {
+          if(alfr[ii] != -1)
+          {
+            brea.push(alfr[ii]);
+          }
+        }
+
+
+
         map.removeLayer(geojson);
         geojson = L.geoJson(municipio, {
-          style: style
+          style: style,
+          onEachFeature: onEachFeature
         }).addTo(map);
-      }
+
+        map.attributionControl.addAttribution('');
+
+        var info = L.control();
+        info.onAdd = function (map) {
+          this._div = L.DomUtil.create('div', 'infos hide');
+          this.update();
+          return this._div;
+        };
+        info.update = function (props) {
+          //this._div = L.DomUtil.create('div', 'infos');
+          $('.infos').removeClass('hide');
+          $('.info2').removeClass('hide');
+          if (props != undefined) {
+            this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 57%; left: 35%; font-size: 15px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+            //console.log("aca ---> ",estados[busqueda_indice(props.nom_ent)]);
+            // gen(estados[props.cve]);
+            gen(municipios[busqueda_indice(props.nom_mun)]);
+            //console.log("busqueda",busqueda_mexico());
+            //console.log("--->>>>>>>",titulo_des_graf);
+            //console.log("props",props);
+          }
+        }
+        info.addTo(map);
+
+        var legend = L.control();
+        legend.onAdd = function (map) {
+          var div = L.DomUtil.create('div', 'info2 legend hide'),
+            grades = brew.getBreaks(),//[0, 20, 50, 100],
+            labels = [],
+            from, to;
+          for (var i = 0; i < grades.length - 1; i++) {
+            from = grades[i];
+            to = grades[i + 1];
+            var res = String(getColoR(from)).split(",");
+            //console.log(from, from + 1, res, grades);
+            labels.push(
+              '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+              from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+') + '</div>');
+          }
+          div.innerHTML = labels.join('');
+          return div;
+        };
+        legend.addTo(map);
+
+
+        function valorDato(data){
+            var temporal = [];
+            var Descrip_ind = data.Descrip_ind;
+
+            temporal.push('Munisipio');
+            for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
+              temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
+            }
+            municipios.push(temporal);
+            var imprime = false;
+
+            for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
+
+              var temporal = [];
+              var categories2 = [];
+              categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
+              temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
+
+              for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
+                var dato_formato;
+                if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
+                {
+                  dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
+                }
+                else {
+                  dato_formato = 0;
+                }
+                temporal.push(dato_formato);
+              }
+              municipios.push(temporal);
+            }
+          }//fin funcion valorDato
+
+        function busqueda_municipio(cadena) {
+          //console.log("super log",cadena,estados);
+          for (var i = 0; i < municipios.length; i++) {
+            if (municipios[i][0] == cadena) {
+              //console.log(cadena,municipios[i][1],i);
+              return parseFloat(municipios[i][1]);
+            }
+          }
+        }
+
+        function getColoR(number){
+          return brew.getColorInRange(number);
+        }
+
+        function style(feature) {
+          var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun))).split(",");
+          //console.log(res, 'hhhh', "c" + res[1]);
+          //console.log("hola->",res[1]);
+          return {
+            weight: 0.5,
+            opacity: 1,
+            color: '#000',
+            dashArray: '1',
+            fillOpacity: 1,
+            // fillColor: getColoR(feature.properties.density),
+            fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun)),
+            className: "c" + res[1]
+          };
+        }
+
+        function highlightFeature(e) {
+          if(locked == false)
+          {
+            var layer = e.target;
+            layer.setStyle({
+              weight: 2,
+              color: '#ccc',
+              dashArray: '',
+              fillOpacity: 0.7
+            });
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+              layer.bringToFront();
+            }
+            info.update(layer.feature.properties);
+          }
+        }
+
+        function resetHighlight(e) {
+          geojson.resetStyle(e.target);
+          info.update();
+        }
+
+        function zoomToFeature(e) {
+          map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer){
+          layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            mousedown: function(e)
+            {
+              if (locked == true) {
+                locked = false;
+                (function ($) {
+                  $(".info2").css("border","none");
+                  $(".infos").css("border","none");
+                }(jQuery));
+              }
+              else {
+                locked = true;
+                (function ($) {
+                  $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+                  $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+                  $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+                  $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+                  $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+                  $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+                }(jQuery));
+              }
+            },
+          });
+        }
+
+        function highlightFromLegend(e){
+          (function ($) {
+            $("svg path."+e).addClass("highlighted");
+            var r=$("svg path."+e);
+            for(var i=0;i<r.length;i++)
+            {
+              r[i].classList.add("highlighted");
+            }
+          }(jQuery));
+        }
+
+        function clearHighlight() {
+          (function ($) {
+
+            $("path").removeClass("highlighted");
+            var r=$("path");
+            for(var i=0;i<r.length;i++)
+            {
+              r[i].classList.remove("highlighted");
+            }
+          }(jQuery));
+        }
+
+        function busqueda_indice(cadena) {
+          for (var i = 0; i < municipios.length; i++) {
+            if (municipios[i][0] == cadena) {
+              return parseFloat(i);
+            }
+          }
+        }
+      }//fin if
       else{
         for(var j=1;j<=25;j++){
           $('#anio_'+j).removeClass('active_anio');
@@ -2371,6 +2604,14 @@
             return div;
           };
           legend.addTo(map);
+
+          function busqueda_indice(cadena) {
+            for (var i = 0; i < estados.length; i++) {
+              if (estados[i][0] == cadena) {
+                return parseFloat(i);
+              }
+            }
+          }
         }
       }
 
