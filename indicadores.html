@@ -598,7 +598,9 @@
         </div>
         <div class="row card tablaPadding ocultar">
           <div class="col s12 s12">
-            <a class="btn waves-effect waves-light" onclick="cambio_anio('municipal',1)"> Cambiar a municipal </a>
+            <!-- <a class="btn waves-effect waves-light" onclick="cambio_anio('municipal',1)"> Cambiar a municipal </a> -->
+            <a id="boton_municipal" style="margin-top: 42px; float: left;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge" onclick="cambio_anio('municipal',1)">Cambiar a municipal</a>
+            <a id="boton_estatal" style="margin-top: 42px; float: left; display:none;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge" onclick="cambio_anio('2014-01-01',1)">Cambiar a estatal</a>
           </div>
           <div class="col s12 l12">
             <div class="cuadro_titulo">
@@ -2186,8 +2188,11 @@
     function cambio_anio(cadena, i){
       $('.infos').remove();
       $('.info2').remove();
+      map.removeLayer(geojson);
 
       if(cadena  == 'municipal'){
+        $("#boton_municipal").hide();
+        $("#boton_estatal").show();
         //PCveInd indecacdor 118
         var municipios = []; //arreglo con los valores de la llamada a la api
         var valuesMunicipio = [];
@@ -2219,9 +2224,6 @@
           }
         }
 
-
-
-        map.removeLayer(geojson);
         geojson = L.geoJson(municipio, {
           style: style,
           onEachFeature: onEachFeature
