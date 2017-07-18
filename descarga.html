@@ -168,8 +168,7 @@ $('#loader').show();
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li>
             <li class="tamps">
-              <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
-                  alt="" /></a>
+              <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a>
             </li>
             <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
@@ -477,7 +476,6 @@ $('#loader').show();
       </div>
     </div>
 
-
 <!-- footer -->
     <footer class="page-footer id">
       <div class="container">
@@ -519,8 +517,7 @@ $('#loader').show();
     </footer>
 <!-- footer -->
 
-<div class="tabla_completa" style="display:block;">
-</div>
+<div class="tabla_completa" style="display:none;height:0 !important;"></div>
 
 <div class="disclaimer pop">
   <h1>Aviso</h1>
@@ -536,9 +533,7 @@ $('#loader').show();
 <script src="tablas.js"></script>
 <script src='funcionesApi.js'></script>
 <script src="appDescarga.js"></script>
-
 <script src="lib/excellentexport.js"></script>
-
 
     <script type="text/javascript">
     var objetivoId = getParameterByName('objetivoId');
@@ -555,7 +550,6 @@ $('#loader').show();
       //     $('#tipoXLS').attr('checked');
       //   }
       // });
-      //
       // $('#tipoXLS').change(function() {//do something when the user clicks the box
       //   if($('#tipoXLS').attr('checked')){
       //     $('#tipoCSV').removeAttr('checked');
@@ -564,14 +558,13 @@ $('#loader').show();
       //   }
       // });
 
-      // if( $('.indi1').attr('checked') ) {
-      //   //$('#fin_pobreza_cont input.child[name="'+$(this).attr('name')+'"]:checked');
-      //     alert('Seleccionado');
-      // }
-
       $('#enviaDescarga').on('click',function(){
-        //alert('Enviar');
         descargaSeleccion();
+        //if(descargaSeleccion()){
+          Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
+        //}
+            // var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
+            // exportTableToCSV.apply(this, args);
       });
 
       function descargaSeleccion(){
@@ -602,43 +595,30 @@ $('#loader').show();
 
         for(var k = 0; k < indDesc.length; k++){
           listadoTablas(indDesc[k]);
-          alert('Se agrega' + indDesc[k]);
+          console.log('Se agrega' + indDesc[k]);
         }
 
-
-
         if(indSel){
-          alert('Enviar');
+          //alert('Enviar');
           $('#indicadorDescarga').attr('checked');
           $('#metadatoDescarga').attr('checked');
           $('#calculoDescarga').attr('checked');
         }else{
           alert('Debe seleccionar al menos un tipo de descarga');
         }
-
       }
 
       function items(item, index) {
           return item;
       }
-
-
-
       //Termina función descargaSeleccion
-
 
       //   var res = str.split("ind");
       //   document.getElementById("demo").innerHTML = res[1];
-      //
-      //
-      //
+
       // $('.indi1').change(function() {//do something when the user clicks the box
       //   alert(this.checked);
       // });
-
-
-
-
 
       $('#cam_bus').keypress(function(e) {
           if(e.which == 13) {
@@ -658,20 +638,19 @@ $('#loader').show();
         });
       }
 
-      $("#contact").hover(
-       function() {
-         if($(this).hasClass('selected')) {
-           deselect($(this));
-         } else {
-           $(this).addClass('selected');
-           $('.pop').slideFadeToggle();
-         }
-         return false;
-       }, function() {
-         deselect($('#contact'));
-         return false;
-       }
-     );
+      // $("#contact").hover(
+      //  function() {
+      //    if($(this).hasClass('selected')) {
+      //      deselect($(this));
+      //    } else {
+      //      $(this).addClass('selected');
+      //      $('.pop').slideFadeToggle();
+      //    }
+      //    return false;
+      //  }, function() {
+      //    deselect($('#contact'));
+      //    return false;
+      //  });
 
 
      $.fn.slideFadeToggle = function(easing, callback) {
@@ -682,11 +661,9 @@ $('#loader').show();
         accordion : true
       });
 
-      console.log($('#objetivos').find('li.active').children().children());
       $(".button-collapse").sideNav();
 
-
-              $("#sti").hide();
+      $("#sti").hide();
 
         window.onload = function () {
 
@@ -974,6 +951,240 @@ if(datos[i].Meta.length > 2){
       var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
       results = regex.exec(location.search);
       return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+// Descargar  CSV Y xls
+
+
+function exportTableToXLS($table1, filename1) {
+
+    var $rows1 = $table1.find('tr:has(td)'),
+
+        // Temporary delimiter characters unlikely to be typed by keyboard
+        // This is to avoid accidentally splitting the actual contents
+        tmpColDelim1 = String.fromCharCode(11), // vertical tab character
+        tmpRowDelim1 = String.fromCharCode(0), // null character
+
+        // actual delimiter characters for CSV format
+        colDelim1 = '","',
+        rowDelim1 = '"\r\n"',
+
+        // Grab text from table into CSV formatted string
+        xls = '"' + $rows1.map(function (i, row) {
+            var $row1 = $(row),
+                $cols1 = $row1.find('td');
+
+            return $cols1.map(function (j, col) {
+                var $col1 = $(col),
+                    text1 = $col1.text();
+
+                return text1.replace(/"/g, '""'); // escape double quotes
+
+            }).get().join(tmpColDelim1);
+
+        }).get().join(tmpRowDelim1)
+            .split(tmpRowDelim1).join(rowDelim1)
+            .split(tmpColDelim1).join(colDelim1) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+
+        var blob1 = new Blob([decodeURIComponent($table1)], {
+            type: 'text/plain;charset=utf8'
+        });
+
+        // Crashes in IE 10, IE 11 and Microsoft Edge
+        // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+        // Hence, the deliberate 'false'
+        // This is here just for completeness
+        // Remove the 'false' at your own risk
+        window.navigator.msSaveBlob(blob1, filename1);
+
+    } else if (window.Blob && window.URL) {
+        // HTML5 Blob
+        var blob1 = new Blob([xls], { type: 'text/plain;charset=utf8' });
+        var xlsUrl = URL.createObjectURL(blob1);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsUrl
+            });
+    } else {
+        // Data URI
+        var xlsData = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(xls);
+
+        $(this)
+            .attr({
+                'download': filename1,
+                'href': xlsData,
+                'target': '_blank'
+            });
+    }
+}
+
+
+
+
+
+// This must be a hyperlink
+$(".exportXLS").on('click', function (event) {
+    // CSV
+    var args1 = [$('#tabla_export table'), Descrip_ind+'.xls'];
+
+    exportTableToXLS.apply(this, args1);
+
+    // If CSV, don't do event.preventDefault() or return false
+    // We actually need this to be a typical hyperlink
+});
+//});
+
+
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"';
+
+				// Deliberate 'false', see comment below
+        if (false && window.navigator.msSaveBlob) {
+
+						var blob = new Blob([decodeURIComponent(csv)], {
+	              type: 'text/csv;charset=utf8'
+            });
+
+            // Crashes in IE 10, IE 11 and Microsoft Edge
+            // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+            // Hence, the deliberate 'false'
+            // This is here just for completeness
+            // Remove the 'false' at your own risk
+            window.navigator.msSaveBlob(blob, filename);
+
+        } else if (window.Blob && window.URL) {
+						// HTML5 Blob
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
+            var csvUrl = URL.createObjectURL(blob);
+
+            $(this)
+            		.attr({
+                		'download': filename,
+                		'href': csvUrl
+		            });
+				} else {
+            // Data URI
+            var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+						$(this)
+                .attr({
+               		  'download': filename,
+                    'href': csvData,
+                    'target': '_blank'
+            		});
+        }
+    }
+
+    // This must be a hyperlink
+    $(".exportCSV").on('click', function (event) {
+        // CSV
+        var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
+
+        exportTableToCSV.apply(this, args);
+
+        // If CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+
+    if ($('.select_datos').val() != -1) {
+      $(".exportCSVDatos").hide();
+    }else{
+      $(".exportCSVDatos").hide();
+    }
+
+    $(".exportCSVDatos").on('click', function (event) {
+        // CSV
+        var args = [$('#miTabla'), 'DatosParaElCalculo - '+Descrip_ind+'.csv'];
+
+        exportTableToCSV.apply(this, args);
+
+        // If CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+
+
+    $("#descargaXLS").attr('download',Descrip_ind+'.xls');
+
+
+    // $(document).ready(function () {
+    //     Html2CSV('testbed_results', 'myfilename','export');
+    // });
+
+
+
+    function Html2CSV(tableId, filename,alinkButtonId) {
+        var array = [];
+        var headers = [];
+        var arrayItem = [];
+        var csvData = new Array();
+        $('.' + tableId + ' th').each(function (index, item) {
+            headers[index] = '"' + $(item).html() + '"';
+        });
+        csvData.push(headers);
+        $('.' + tableId + ' tr').has('td').each(function () {
+
+            $('td', $(this)).each(function (index, item) {
+                arrayItem[index] = '"' + $(item).html() + '"';
+            });
+            array.push(arrayItem);
+            csvData.push(arrayItem);
+        });
+
+        var fileName = filename + '.csv';
+        var buffer = csvData.join("\n");
+        var blob = new Blob([buffer], {
+            "type": "text/csv;charset=utf8;"
+        });
+        var link = document.getElementById(alinkButtonId);
+
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            link.setAttribute("href", window.URL.createObjectURL(blob));
+            link.setAttribute("download", fileName);
+        }
+        else if (navigator.msSaveBlob) { // IE 10+
+            link.setAttribute("href", "#");
+            link.addEventListener("click", function (event) {
+                navigator.msSaveBlob(blob, fileName);
+            }, false);
+        }
+        else {
+            // it needs to implement server side export
+            link.setAttribute("href", "http://www.example.com/export");
+        }
     }
 
     </script>
