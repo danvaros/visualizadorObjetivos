@@ -517,7 +517,7 @@ $('#loader').show();
     </footer>
 <!-- footer -->
 
-<div class="tabla_completa" style="display:none;height:0 !important;"></div>
+<div class="tabla_completa" style="display:block;height:0 !important;"></div>
 
 <div class="disclaimer pop">
   <h1>Aviso</h1>
@@ -561,10 +561,12 @@ $('#loader').show();
       $('#enviaDescarga').on('click',function(){
         descargaSeleccion();
         //if(descargaSeleccion()){
-          Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
+          //Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
         //}
-            // var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
-            // exportTableToCSV.apply(this, args);
+        $(this).on('click',function(){
+            var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
+            exportTableToCSV.apply(this, args);
+        });
       });
 
       function descargaSeleccion(){

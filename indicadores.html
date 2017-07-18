@@ -614,7 +614,7 @@
             <div id="chart2"></div>
             <div class="pie_cuadro2">
               <div>
-                <strong>Nota:</strong> 
+                <strong>Nota:</strong>
               </div>
               <div><strong>Fuente:</strong> </div>
               <div><strong>Fecha de actualización:</strong></div>
@@ -2201,6 +2201,8 @@
         var municipios = []; //arreglo con los valores de la llamada a la api
         var valuesMunicipio = [];
         var brew = new classyBrew();
+        console.log(cadena);
+        var anioo = cadena.split('-');
 
         $('#anios').hide();
         valorDato(dataLocal);
@@ -2245,8 +2247,9 @@
           //this._div = L.DomUtil.create('div', 'infos');
           $('.infos').removeClass('hide');
           $('.info2').removeClass('hide');
+          console.log(props);
           if (props != undefined) {
-            this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 57%; left: 35%; font-size: 15px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 31%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 185px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
             //console.log("aca ---> ",estados[busqueda_indice(props.nom_ent)]);
             // gen(estados[props.cve]);
             gen(municipios[busqueda_indice(props.nom_mun)]);
@@ -2282,7 +2285,7 @@
             var temporal = [];
             var Descrip_ind = data.Descrip_ind;
 
-            temporal.push('Munisipio');
+            temporal.push('Municipio');
             for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
               temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
             }
@@ -2427,6 +2430,9 @@
         }
       }//fin if
       else{
+        $("#boton_municipal").show();
+        $("#boton_estatal").hide();
+
         for(var j=1;j<=25;j++){
           $('#anio_'+j).removeClass('active_anio');
           $('#anio_'+j).addClass('inactive_anio');
@@ -2478,7 +2484,7 @@
             opacity: 1,
             color: '#000',
             dashArray: '1',
-            fillOpacity: 0.6,
+            fillOpacity: 1,
             fillColor: getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi)),
             className: "c"+res[1]
           };
@@ -2492,7 +2498,7 @@
               weight: 2,
               color: '#ccc',
               dashArray: '',
-              fillOpacity: 0.7
+              fillOpacity: 1
             });
             if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
               layer.bringToFront();
