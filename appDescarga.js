@@ -25,7 +25,7 @@
   var Algoritmo_ft = '';
 
   var data_local = '';
-  var tabulado ;
+  var tabulado;
   var tipoTabulado;
   var armaTabulado;
   var clasif;
@@ -42,32 +42,7 @@ function listadoTablas(PCveInd){
 
       cason = data.ClaveAgrupaClas_atr;
 
-      switch(tipoTabulado){
-        case 'CoS':
-          tabulado = tablaCoS(data);
-        break;
-        case 'CoCl':
-          if(clasif > 1){
-            tabulado = CoClanidada(data);
-          }else{
-            tabulado = tablaCoCl(data);
-          }
-        break;
-        case 'ACl':
-          if(clasif > 1){
-            tabulado = AClanidada(data);
-          }else{
-            tabulado = tablaACl(data);
-          }
-        break;
-        case 'AS':
-          tabulado = tablaAS(data);
-          //alert('si entra');
-        break;
-        case 'ClA':
-          tabulado = tablaClA(data);
-        break;
-      }
+      tabulado = get_tabulado(tipoTabulado,data.Series[0]);
 
       //tabulado = tablaCoS(data);
       Codigo_ind  = data.Codigo_ind;
@@ -383,6 +358,39 @@ else
     async:false
   });
 }
+
+function get_tabulado(tTabulado, serie){
+    var t;
+    switch(tTabulado){
+      case 'CoS':
+        t = tablaCoS(serie);
+      break;
+      case 'CoCl':
+        if(clasif > 1){
+          t = CoClanidada(serie);
+        }else{
+          t = tablaCoCl(serie);
+        }
+      break;
+      case 'ACl':
+        if(clasif > 1){
+          t = AClanidada(serie);
+        }else{
+          t = tablaACl(serie);
+        }
+      break;
+      case 'AS':
+        t = tablaAS(serie);
+      break;
+      case 'ClA':
+        t = tablaClA(serie);
+      break;
+    }
+    return t;
+}
+
+
+
   $(document).ready(function()
   {
     $('.tabla_completa').html(tabulado);
