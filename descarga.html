@@ -237,15 +237,27 @@ $('#loaderDescarga').hide();
           <br />
           <h5>Elementos a exportar</h5>
           <br />
-          <div class="input-field col s12 l8" style="margin-left:0px;">
-            <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
+          <div class="input-field col s12 l3" style="margin-left:0px;">
+            <select id="tipoSeleccion">
+              <option value="" disabled selected>Elige una opción</option>
+              <option id="indicadorDescarga" value="01">Indicador</option>
+              <option id="metadatoDescarga" value="02">Metadato</option>
+              <option id="calculoDescarga" value="03">Datos para el cálculo</option>
+            </select>
+            <label>Selección</label>
+            <!-- <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="metadatoDescarga" class="validate caja_d metadatoDescarga" style="padding-left: 12px;">&nbsp;Metadato&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp; -->
           </div>
           <div class="input-field col s12 l2">
-                  <b>Formato:</b>
-                <input type="checkbox" id="tipoCSV" class="valdidate caja_d" name="formato" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp;
+                  <!-- <b>Formato:</b> -->
+                  <select id="tipoFormato">
+                    <option id="tipoXLS" value="xls">XLS</option>
+                    <option id="tipoCSV" value="csv">CSV</option>
+                  </select>
+                  <label>Formato</label>
+                <!-- <input type="checkbox" id="tipoCSV" class="valdidate caja_d" name="formato" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp; -->
           </div>
           <div class="input-field col s12 l2">
               <button id="enviaDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;" >Descargar</button>
@@ -577,6 +589,10 @@ $('#loaderDescarga').hide();
     var classDescarga;
 
     $(document).ready(function(){
+
+      $(document).ready(function() {
+        $('select').material_select();
+      });
 
       // $('#tipoCSV').change(function() {//do something when the user clicks the box
       //   if($('#tipoCSV').attr('checked')){
