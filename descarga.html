@@ -602,8 +602,8 @@ $('#loaderDescarga').hide();
         //$(".tablaArmada").tableToCSV({filename: "Nombre"});
         $(".tablaArmada").table2excel({
           exclude: ".noExl",
-          name: "Worksheet Name",
-	        filename: "Indicador.xls" //do not include extension
+          name: Codigo_ind + ' ' + Descrip_ind,
+	        filename: Codigo_ind + ' ' + Descrip_ind + ".xls" //do not include extension
         });
         // $('#desca').on('click',function(){
         //   alert('Hace algo');
