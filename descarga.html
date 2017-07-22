@@ -615,7 +615,6 @@ $('#loaderDescarga').hide();
           quotes: "\""
         });
 
-
         // $(".tablaArmada").table2excel({
         //   exclude: ".noExl",
         //   name: Codigo_ind + ' ' + Descrip_ind,
@@ -631,6 +630,11 @@ $('#loaderDescarga').hide();
         //     //exportTableToCSV.apply(this, args);
         // });
         $('#loaderDescarga').hide();
+
+        $('.table_download_xls_link').trigger("click");
+
+
+
       });
 
       function descargaSeleccion(){
