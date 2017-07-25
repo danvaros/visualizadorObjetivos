@@ -54,7 +54,7 @@ function cobertura(data){
 	for (var i = 0; i < arreglo_agru.length; i++) {
 		$.ajax({
 		  type: 'POST',
-		  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+		  url: "https://ods.org.mx/API/Valores/PorCobCla",
 		  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru[i]},
 		  success: function( data2, textStatus, jqxhr ) {
 
@@ -173,7 +173,7 @@ function cobertura_series(data,i){
 	for (var i = 0; i < arreglo_agru2.length; i++) {
 		$.ajax({
 		  type: 'POST',
-		  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+		  url: "https://ods.org.mx/API/Valores/PorCobCla",
 		  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru2[i]},
 		  success: function( data2, textStatus, jqxhr ) {
 
@@ -231,7 +231,7 @@ function cobertura_101(data){
 		if(i < 5){
 			$.ajax({
 			  type: 'POST',
-			  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+			  url: "https://ods.org.mx/API/Valores/PorCobCla",
 			  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru[i]},
 			  success: function( data2, textStatus, jqxhr ) {
 			  	console.log(data2);
@@ -258,7 +258,7 @@ function cobertura_101(data){
 		}else if(i > 4 && i < 10){
 			$.ajax({
 			  type: 'POST',
-			  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+			  url: "https://ods.org.mx/API/Valores/PorCobCla",
 			  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru[i]},
 			  success: function( data2, textStatus, jqxhr ) {
 			  	console.log(data2);
@@ -285,7 +285,7 @@ function cobertura_101(data){
 		}else{
 			$.ajax({
 			  type: 'POST',
-			  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+			  url: "https://ods.org.mx/API/Valores/PorCobCla",
 			  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru[i]},
 			  success: function( data2, textStatus, jqxhr ) {
 			  	console.log(data2);
@@ -353,7 +353,7 @@ function cobertura_101_insumos(data,serie){
 		if(i < 5){
 			$.ajax({
 			  type: 'POST',
-			  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+			  url: "https://ods.org.mx/API/Valores/PorCobCla",
 			  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru_insumos[i]},
 			  success: function( data2, textStatus, jqxhr ) {
 			  	console.log(data2);
@@ -380,7 +380,7 @@ function cobertura_101_insumos(data,serie){
 		}else if(i > 4 && i < 10){
 			$.ajax({
 			  type: 'POST',
-			  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+			  url: "https://ods.org.mx/API/Valores/PorCobCla",
 			  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru_insumos[i]},
 			  success: function( data2, textStatus, jqxhr ) {
 			  	console.log(data2);
@@ -407,7 +407,7 @@ function cobertura_101_insumos(data,serie){
 		}else{
 			$.ajax({
 			  type: 'POST',
-			  url: "http://agenda2030.mx/datos/api/Valores/PorCobCla",
+			  url: "https://ods.org.mx/API/Valores/PorCobCla",
 			  data: {'PCveInd': data.ClaveInd_ser,'PAnoIni':'0', 'PAnoFin':'0', 'PCveSer': clave_ser, 'POrden':'DESC','PCveCob':'99', 'PIdioma':'ES','PCveAgrupaCla' : arreglo_agru_insumos[i]},
 			  success: function( data2, textStatus, jqxhr ) {
 			  	console.log(data2);

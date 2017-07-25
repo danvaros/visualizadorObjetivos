@@ -10,12 +10,12 @@ var indicador_sel = getParameterByName("indicador_sel");;
 
 if(indicador_sel == ""){
   console.log('vacio llamada normal');
-  getIndicador(26,87);    
+  getIndicador(26,87);
 }else{
   console.log('la otra llamada');
-  //getIndicador(indicador,serie);  
-  getIndicador(26,87);  
-  setTimeout(function(){ selects_aut(); }, 1000);  
+  //getIndicador(indicador,serie);
+  getIndicador(26,87);
+  setTimeout(function(){ selects_aut(); }, 1000);
 }
 
 function getParameterByName(name) {
@@ -30,7 +30,7 @@ function getInd(indicador){
 
   $.ajax({
     type: 'POST',
-    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
+    url: "https://ods.org.mx/API/Valores/PorClave",
     data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
       console.log('-------------------- valorDato ----------------');
@@ -192,4 +192,3 @@ function arma_tabla(num_cobertura){
 
   return cobertura_tabla;
 }
-

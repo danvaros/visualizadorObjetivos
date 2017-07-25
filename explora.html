@@ -972,7 +972,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
 
         function llamada(indicador, ser){
-          var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
+          var url = 'https://ods.org.mx/API/Tematica/Todos';
           //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
           var parametros =  {"PIdioma":"ES"}
           //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
@@ -1015,7 +1015,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     {
       $('#grafica_c').hide();
       var lupa =  false;
-      
+
       $('#buscar').click(function(){
         if(lupa){
           $('#cam_bus').hide();
