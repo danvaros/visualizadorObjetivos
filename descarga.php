@@ -31,44 +31,37 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Europe/London');
 
-if (PHP_SAPI == 'cli')
-	die('This example should only be run from a Web Browser');
+define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
-/** Include PHPExcel */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
+date_default_timezone_set('Europe/London');
 
+//include "Classes/05featuredemo.inc.php";
 
-// Create new PHPExcel object
-$objPHPExcel = new PHPExcel();
-
-// Set document properties
-$objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-							 ->setLastModifiedBy("Maarten Balliauw")
-							 ->setTitle("Office 2007 XLSX Test Document")
-							 ->setSubject("Office 2007 XLSX Test Document")
-							 ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-							 ->setKeywords("office 2007 openxml php")
-							 ->setCategory("Test result file");
+/** PHPExcel_IOFactory */
+require_once dirname(__FILE__) . '/Classes/PHPExcel/IOFactory.php';
 
 
-// Add some data
-$objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'Hello')
-            ->setCellValue('B2', 'world!')
-            ->setCellValue('C1', 'Hello')
-            ->setCellValue('D2', 'world!');
+echo date('H:i:s') , " Write to HTML format" , EOL;
+$callStartTime = microtime(true);
 
-// Miscellaneous glyphs, UTF-8
-$objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A4', 'Miscellaneous glyphs')
-            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'HTML');
+$objWriter->setSheetIndex(0);
+//$objWriter->setImagesRoot('http://www.example.com');
+$objWriter->save(str_replace('.php', '.htm', __FILE__));
+$callEndTime = microtime(true);
+$callTime = $callEndTime - $callStartTime;
+echo date('H:i:s') , " File written to " , str_replace('.php', '.htm', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+// Echo memory usage
+echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
 
-// Rename worksheet
-$objPHPExcel->getActiveSheet()->setTitle('Simple');
 
+// Echo memory peak usage
+echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
 
-// Set active sheet index to the first sheet, so Excel opens this as the first sheet
-$objPHPExcel->setActiveSheetIndex(0);
+// Echo done
+echo date('H:i:s') , " Done writing file" , EOL;
+echo 'File has been created in ' , getcwd() , EOL;
 
 
 // Redirect output to a client’s web browser (Excel5)
@@ -88,8 +81,7 @@ $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 $objWriter->save('php://output');
 exit;
 
-
- ?>
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -866,7 +858,8 @@ $('#loaderDescarga').hide();
     }
 
     function llamada(indicador, ser){
-      var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
+      var url = 'https://ods.org.mx/API/Tematica/Todos';
+			//var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}
       //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
