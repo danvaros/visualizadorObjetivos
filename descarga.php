@@ -130,32 +130,32 @@
     }
 
     #loaderDescarga {
-display: block;
-background: rgba(62, 60, 60, 0.6);
-color: white;
-width: 100%;
-height: 100%;
-position: fixed;
-top: 0;
-left: 0;
-z-index: 10000;
-}
+      display: block;
+      background: rgba(62, 60, 60, 0.6);
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
 
-#loaderDescarga p {
-display: block;
-font-size: 40px;
-position: absolute;
-top: -70px;
-/* left: 0; */
-bottom: 0;
-right: 15px;
-color: #fff !important /*margin: auto;*/;
-text-align: right;
-}
+    #loaderDescarga p {
+      display: block;
+      font-size: 40px;
+      position: absolute;
+      top: -70px;
+      /* left: 0; */
+      bottom: 0;
+      right: 15px;
+      color: #fff !important /*margin: auto;*/;
+      text-align: right;
+    }
 
-#loaderDescarga p #tex{
-width: 300px;
-}
+    #loaderDescarga p #tex{
+      width: 300px;
+    }
 
     form p{
       margin:15px;
