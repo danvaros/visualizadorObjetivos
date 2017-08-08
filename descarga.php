@@ -39,16 +39,16 @@ function leer_contenido_completo($url){
 // create curl resource
       $ch = curl_init();
 
-      $data = array(array (
+      $data = array (
           "PCveInd" => 26,
           "PIdioma" => "ES",
           "PAnoIni" => 0,
           "PAnoFin" => 0,
           "POrden" => "DESC"
-        ));
+        );
 
         //$data_string = json_encode($data);
-
+        //var_dump(json_encode($data));
         // Setup cURL
         $ch = curl_init('https://ods.org.mx/API/Valores/PorClave');
         curl_setopt_array($ch, array(
@@ -75,8 +75,6 @@ function leer_contenido_completo($url){
 
         // Print the date from the response
         echo $responseData['published'];
-
-
 
 
 
