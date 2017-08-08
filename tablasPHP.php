@@ -15,35 +15,35 @@
 //210
 //funcion para quitar repetidos
 Array.prototype.unique=function($a){
-  return function(){return this.filter($a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
+  return function(){return this.filter($a)}}(function($a,$b,$c){return $c.indexOf($a,$b+1)<0;
 });
 
 //tabla para cobertura series
 function tablaCoS($data){
   $tabuladoCoS =  '<table class="striped tablaArmada"><thead><tr>';
   $cabezera =  false;
-  for ($i = 0; $i < $data.Coberturas.length; $i++) {
+  for ($i = 0; $i < count($data['Coberturas']); $i++) {
 
     //tomamos las cabezeras, años del primer dato
     if(!$cabezera){
-      $tabuladoCoS += '<th> Entidad Federativa </th>';
+      $tabuladoCoS .= '<th> Entidad Federativa </th>';
       for ($j = 0; $j < $data.Coberturas[$i].ValorDato.length; $j++) {
-        $tabuladoCoS += '<th>' + $data.Coberturas[$i].ValorDato[$j].AADato_ser + '</th>';
+        $tabuladoCoS .= '<th>' . $data.Coberturas[$i].ValorDato[$j].AADato_ser . '</th>';
       }//fin for j
       $cabezera = true;
     }
 
-    $tabuladoCoS += '</tr></thead><tr><td>' +  '<span style="display:none;">'+$data.Coberturas[$i].ClaveCobGeo_cg+ '</span>' + $data.Coberturas[$i].Descrip_cg +'</td>';
+    $tabuladoCoS .= '</tr></thead><tr><td>' . '<span style="display:none;">'.$data.Coberturas[$i].ClaveCobGeo_cg. '</span>' . $data.Coberturas[$i].Descrip_cg .'</td>';
     for ($j = 0; $j < $data.Coberturas[$i].ValorDato.length; $j++) {
       if($data.Coberturas[$i].ValorDato[$j].Dato_Formato == ""){
-        $tabuladoCoS += '<td> ND </td>';
+        $tabuladoCoS .= '<td> ND </td>';
       }else{
-        $tabuladoCoS += '<td>' + $data.Coberturas[$i].ValorDato[$j].Dato_Formato + '</td>';
+        $tabuladoCoS .= '<td>' + $data.Coberturas[$i].ValorDato[$j].Dato_Formato + '</td>';
       }
     }//fin for j
-    $tabuladoCoS += '</tr>';
+    $tabuladoCoS .= '</tr>';
   }//fin for i
-    $tabuladoCoS += '</table>';
+    $tabuladoCoS .= '</table>';
 
     //$('#tabla').html(tabuladoCoS);
     return $tabuladoCoS;
@@ -58,39 +58,39 @@ function tablaCoCl($data){
     if(!$cabezera){
       $total_columnas = 0;
       //tabuladoCoCl  +=  '<tr><th rowspan="2"> Entidades federativas </th>';
-      $tabuladoCoCl  +=  '<tr>';
+      $tabuladoCoCl  .=  '<tr>';
       for ($j = 0; $j < data.Coberturas[$i].Clasificaciones.length; $j++) {
         $years.push($data.Coberturas[$i].Clasificaciones[$j].ValorDato.AADato_ser);
 
-        $tabuladoCoCl  +=  '<th> ' + $data.Coberturas[$i].Clasificaciones[$j].Descrip_cla + '</th>';
+        $tabuladoCoCl  .=  '<th> ' + $data.Coberturas[$i].Clasificaciones[$j].Descrip_cla + '</th>';
 
         $total_columnas++;
       }//fin for j
 
-      $tabuladoCoCl  +=  '</tr></thead>';
+      $tabuladoCoCl  .=  '</tr></thead>';
       $years = $years.unique();
       $cabezera = true;
       $subTabulado = '<table class="tablaArmada striped "><thead><tr><th rowspan="2"> Entidad Federativa</th>';
       $sizeYear =  $total_columnas/$years.length;
       for ($k = 0; $k < $years.length; $k++) {
-        $subTabulado +=  '<th colspan="'+ $sizeYear +'">' + $years[$k] +'</th>'
+        $subTabulado .=  '<th colspan="'+ $sizeYear +'">' + $years[$k] +'</th>'
       }//fin for k
-      $subTabulado += '</tr>';
+      $subTabulado .= '</tr>';
 
       $tabuladoCoCl =   $subTabulado +' '+ $tabuladoCoCl;
     }//fin if condicion cabezera
 
-    $tabuladoCoCl   +=  '<tr ><td>' +  '<span style="display:none;">'+$data.Coberturas[$i].ClaveCobGeo_cg+ '</span>' + $data.Coberturas[$i].Descrip_cg +'</td>';
+    $tabuladoCoCl   .=  '<tr ><td>' +  '<span style="display:none;">'+$data.Coberturas[$i].ClaveCobGeo_cg+ '</span>' + $data.Coberturas[$i].Descrip_cg +'</td>';
     for ($j = 0; $j < $data.Coberturas[$i].Clasificaciones.length; $j++) {
       if($data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato == ""){
-        $tabuladoCoCl   +=  '<td> ND </td>';
+        $tabuladoCoCl   .=  '<td> ND </td>';
       }else{
-        $tabuladoCoCl   +=  '<td>'+ $data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato +'</td>';
+        $tabuladoCoCl   .=  '<td>'+ $data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato +'</td>';
       }
     }//fin for j
-      $tabuladoCoCl   += '</tr>';
+      $tabuladoCoCl   .= '</tr>';
   }//fin for i
-    $tabuladoCoCl   += '</table>';
+    $tabuladoCoCl   .= '</table>';
     //$('#tabla').html(tabuladoCoCl);
     return $tabuladoCoCl;
 }//fin de la funsion
@@ -107,27 +107,27 @@ function AClanidada($data){
     $labels.push(data.Coberturas[0].Clasificaciones[$i].Descrip_cla);
 
     if($labelYear == $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser){
-        $tabuladoAnidado += '<td>' + $data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato + '</td>';
+        $tabuladoAnidado .= '<td>' + $data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato + '</td>';
     }else if($primera){
       $primera=false;
-      $tabuladoAnidado += '<tr><td>'+ data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
+      $tabuladoAnidado .= '<tr><td>'+ data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
       $labelYear = $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser;
     }
     else{
-      $tabuladoAnidado += '</tr><tr><td>'+ $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+$data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
+      $tabuladoAnidado .= '</tr><tr><td>'+ $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+$data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
       $labelYear = $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser;
     }
   }//fin for i
   $tabuladoAnidado +=  '</tr></table>';
   $labels =  $labels.unique();
-  $subTabuladoAnidado += '<tr><td rowspan="2">Periodo</td><td colspan="'+ $labels.length +'">Total</td><td colspan="'+ $labels.length +'">Hombres</td><td colspan="'+ $labels.length +'">Mujeres</td></tr>'
-  $subTabuladoAnidado += '<tr>';
+  $subTabuladoAnidado .= '<tr><td rowspan="2">Periodo</td><td colspan="'+ $labels.length +'">Total</td><td colspan="'+ $labels.length +'">Hombres</td><td colspan="'+ $labels.length +'">Mujeres</td></tr>'
+  $subTabuladoAnidado .= '<tr>';
   for ($i = 0; $i < 3; $i++) {
     for ($j = 0; $j < $labels.length; $j++) {
         $subTabuladoAnidado += '<td>'+$labels[$j]+'</td>';
     }
   }
-  $subTabuladoAnidado += '</tr></thead>';
+  $subTabuladoAnidado .= '</tr></thead>';
   $tabuladoAnidado = $subTabuladoAnidado + $tabuladoAnidado;
   //$('#tabla').html(tabuladoAnidado);
   return $tabuladoAnidado;
@@ -146,28 +146,28 @@ function tablaACl($data){
     $labels.push($data.Coberturas[0].Clasificaciones[$i].Descrip_cla);
 
     if($labelYear == $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser){
-        $tabuladoAnidado += '<td>' + $data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato + '</td>';
+        $tabuladoAnidado .= '<td>' + $data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato + '</td>';
     }else if($primera){
       $primera=false;
-      $tabuladoAnidado += '<tr><td>'+ $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+$data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
+      $tabuladoAnidado .= '<tr><td>'+ $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+$data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
       $labelYear = $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser;
     }
     else{
-      $tabuladoAnidado += '</tr><tr><td>'+ $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+$data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
+      $tabuladoAnidado .= '</tr><tr><td>'+ $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser +'</td><td>'+$data.Coberturas[0].Clasificaciones[$i].ValorDato.Dato_Formato+'</td>';
       $labelYear = $data.Coberturas[0].Clasificaciones[$i].ValorDato.AADato_ser;
     }
   }//fin for i
-  $tabuladoAnidado +=  '</tr></table>';
+  $tabuladoAnidado .=  '</tr></table>';
 
   $labels =  $labels.unique();
 
-  $subTabuladoAnidado += '<tr><td>Periodo</td>';
+  $subTabuladoAnidado .= '<tr><td>Periodo</td>';
 
     for ($j = 0; $j < $labels.length; $j++) {
-        $subTabuladoAnidado += '<td>'+$labels[$j]+'</td>';
+        $subTabuladoAnidado .= '<td>'+$labels[$j]+'</td>';
     }
 
-  $subTabuladoAnidado += '</tr></thead>';
+  $subTabuladoAnidado .= '</tr></thead>';
   $tabuladoAnidado = $subTabuladoAnidado + $tabuladoAnidado;
   //$('#tabla').html(tabuladoAnidado);
   return $tabuladoAnidado;
@@ -177,10 +177,10 @@ function tablaAS($data){
   $tabuladoAS =  '<table class="tablaArmada centered striped "><thead><tr><th>Periodo</th><th>'+ $data.Descrip_ser +'</th></tr></thead>';
   for ($i = 0; $i < $data.Coberturas.length; $i++) {
     for ($j = 0; $j < $data.Coberturas[$i].ValorDato.length; $j++) {
-      $tabuladoAS += '<tr><td>'+ $data.Coberturas[$i].ValorDato[$j].AADato_ser   +'</td><td>' + $data.Coberturas[$i].ValorDato[$j].Dato_Formato +'</td></tr>';
+      $tabuladoAS .= '<tr><td>'+ $data.Coberturas[$i].ValorDato[$j].AADato_ser   +'</td><td>' + $data.Coberturas[$i].ValorDato[$j].Dato_Formato +'</td></tr>';
     }//fin for J
   }//fin for i
-  $tabuladoAS += '</table>';
+  $tabuladoAS .= '</table>';
   //$('#tabla').html(tabuladoAS);
   return $tabuladoAS;
 }
@@ -190,13 +190,13 @@ function tablaClA($data){
   for ($i = 0; $i < data.Coberturas.length; $i++) {
     for ($j = 0; $j < $data.Coberturas[$i].Clasificaciones.length; $j++) {
       if($data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato == ""){
-        $tabuladoClA += '<tr><td>'+ $data.Coberturas[$i].Clasificaciones[$j].Descrip_cla   +'</td><td> ND </td></tr>';
+        $tabuladoClA .= '<tr><td>'+ $data.Coberturas[$i].Clasificaciones[$j].Descrip_cla   +'</td><td> ND </td></tr>';
       }else{
-        $tabuladoClA += '<tr><td>'+ $data.Coberturas[$i].Clasificaciones[$j].Descrip_cla   +'</td><td>' + $data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato +'</td></tr>';
+        $tabuladoClA .= '<tr><td>'+ $data.Coberturas[$i].Clasificaciones[$j].Descrip_cla   +'</td><td>' + $data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato +'</td></tr>';
       }
     }//fin for J
   }//fin for i
-  $tabuladoClA += '</table>';
+  $tabuladoClA .= '</table>';
   // $('#tabla').html(tabuladoClA);
   return $tabuladoClA;
 }
@@ -221,37 +221,37 @@ function CoClanidada($data){
       $cabezera = true;
     }
 
-    $tabulado += '<tr><td>'+  '<span style="display:none;">'+$data.Coberturas[$i].ClaveCobGeo_cg+ '</span>' + $data.Coberturas[$i].Descrip_cg + '</td>';
+    $tabulado .= '<tr><td>'+  '<span style="display:none;">'+$data.Coberturas[$i].ClaveCobGeo_cg+ '</span>' + $data.Coberturas[$i].Descrip_cg + '</td>';
     for ($j = 0; $j < $data.Coberturas[$i].Clasificaciones.length; $j++) {
       if($data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato == ""){
-          $tabulado += '<td> ND </td>';
+          $tabulado .= '<td> ND </td>';
       }else{
-        $tabulado += '<td>' + $data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato + '</td>';
+        $tabulado .= '<td>' + $data.Coberturas[$i].Clasificaciones[$j].ValorDato.Dato_Formato + '</td>';
       }
     }
-    $tabulado += '</tr>' ;
+    $tabulado .= '</tr>' ;
   }//fin for i
-  $tabulado += '</table>';
+  $tabulado .= '</table>';
   $total = (($clasificaciones.length) / $clasificaciones_diferentes ) / 3;
   $a = $clasificaciones.length / $years.length;
 
-  $subTabuladoAnidado +=  '<tr><th rowspan="3">Entidad Federativa</th>';
+  $subTabuladoAnidado .=  '<tr><th rowspan="3">Entidad Federativa</th>';
 
   for ($i = 0; i < $years.length; $i++) {
-    $subTabuladoAnidado += '<th colspan="'+ $a +'">'+ $years[$i]+'</th>';
+    $subTabuladoAnidado .= '<th colspan="'+ $a +'">'+ $years[$i]+'</th>';
   }
 
-  $subTabuladoAnidado +=  '</tr><tr>';
+  $subTabuladoAnidado .=  '</tr><tr>';
 
   for ($i = 0; $i < $total; $i++) {
-      $subTabuladoAnidado +=  '<th colspan="'+$clasificaciones_diferentes+'">Total</th><th colspan="'+$clasificaciones_diferentes+'">Hombres</th><th colspan="'+$clasificaciones_diferentes+'">Mujeres</th>';
+      $subTabuladoAnidado .=  '<th colspan="'+$clasificaciones_diferentes+'">Total</th><th colspan="'+$clasificaciones_diferentes+'">Hombres</th><th colspan="'+$clasificaciones_diferentes+'">Mujeres</th>';
   }
-  $subTabuladoAnidado +=  '</tr><tr>';
+  $subTabuladoAnidado .=  '</tr><tr>';
   for ($i = 0; $i < $clasificaciones.length; $i++) {
-    $subTabuladoAnidado +=  '<th>'+ $clasificaciones[$i]+'</th>';
+    $subTabuladoAnidado .=  '<th>'+ $clasificaciones[$i]+'</th>';
   }
 
-  $subTabuladoAnidado +=  '</tr>';
+  $subTabuladoAnidado .=  '</tr>';
   $tabulado =  $subTabuladoAnidado+'</thead>'+ $tabulado;
   //$('#tabla').html(tabulado);
   return $tabulado;
