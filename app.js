@@ -74,7 +74,7 @@
     async:true
   });
 
-if(PCveInd == 118){
+if(PCveInd == 118 ){
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorCobCla",
@@ -157,7 +157,6 @@ if(PCveInd == 118){
 }
 else
 {
-
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorClave",

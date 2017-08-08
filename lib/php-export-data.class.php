@@ -191,7 +191,7 @@ class ExportDataExcel extends ExportData {
 	function generateRow($row) {
 		$output = '';
 		$output .= "        <Row>\n";
-		var_dump($row[1].'<br/>');
+		//var_dump($row[1].'<br/>');
 		foreach ($row as $k => $v) {
 			//if($this->generateCell($v)){
 			// 	$output .= $this->generateCell($v);

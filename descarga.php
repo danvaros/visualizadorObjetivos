@@ -3,29 +3,127 @@
 // When executed in a browser, this script will prompt for download
 // of 'test.xls' which can then be opened by Excel or OpenOffice.
 
-require 'lib/php-export-data.class.php';
+//require 'lib/php-export-data.class.php';
 
 // 'browser' tells the library to stream the data directly to the browser.
 // other options are 'file' or 'string'
 // 'test.xls' is the filename that the browser will use when attempting to
 // save the download
-$exporter = new ExportDataExcel('browser', 'IndicadorDM.xls');
+//$exporter = new ExportDataExcel('browser', 'IndicadorDM.xls');
 
-$exporter->initialize(); // starts streaming data to web browser
+//$exporter->initialize(); // starts streaming data to web browser
 
 // pass addRow() an array and it converts it to Excel XML format and sends
 // it to the browser
-$exporter->addRow(array("This"));
-$exporter->addRow(array(1, 2, 3, "123-456-7890"));
+//$exporter->addRow(array("This"));
+//$exporter->addRow(array(1, 2, 3, "123-456-7890"));
 
 // doesn't care how many columns you give it
-$exporter->addRow(array("foo"));
+//$exporter->addRow(array("foo"));
 
-$exporter->finalize(); // writes the footer, flushes remaining data to browser.
+//$exporter->finalize(); // writes the footer, flushes remaining data to browser.
 
-exit(); // all done
+//exit(); // all done
+
+
+
+function leer_contenido_completo($url){
+   $fichero_url = fopen ($url, "r");
+   $texto = "";
+   while ($trozo = fgets($fichero_url, 1024)){
+      $texto .= $trozo;
+   }
+   return $texto;
+}
+
+// create curl resource
+      $ch = curl_init();
+
+      $data = array(array (
+          "PCveInd" => 26,
+          "PIdioma" => "ES",
+          "PAnoIni" => 0,
+          "PAnoFin" => 0,
+          "POrden" => "DESC"
+        ));
+
+        //$data_string = json_encode($data);
+
+        // Setup cURL
+        $ch = curl_init('https://ods.org.mx/API/Valores/PorClave');
+        curl_setopt_array($ch, array(
+            CURLOPT_POST => TRUE,
+            CURLOPT_RETURNTRANSFER => TRUE,
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+            CURLOPT_POSTFIELDS => json_encode($data)
+        ));
+
+        // Send the request
+        $response = curl_exec($ch);
+
+        // Check for errors
+        if($response === FALSE){
+            die(curl_error($ch));
+        }
+
+        // Decode the response
+        $responseData = json_decode($response, TRUE);
+
+        var_dump($responseData);
+
+        // Print the date from the response
+        echo $responseData['published'];
+
+
+
+
+
+        //
+        // curl_setopt($ch, CURLOPT_URL, "https://ods.org.mx/API/Valores/PorClave");
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        // curl_setopt($ch, CURLOPT_POST, true);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        // curl_setopt($ch, CURLOPT_HEADER, true);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        //     'Content-Type:application/json',
+        //     'Content-Length: ' . strlen($data_string)));   // API-TOKEN-KEY is keyword so change according to ur key word. like authorization
+        // // execute the request
+        // $output = curl_exec($ch);
+        // //echo $output;
+        // // Check for errors
+        // if($output === FALSE){
+        //     die(curl_error($ch));
+        // }
+        // echo($output) . PHP_EOL;
+        // // close curl resource to free up system resources
+        // curl_close($ch);
+
+
+//
+// $URL_API = "https://ods.org.mx/API/Valores/PorClave?PCveInd=26&PIdioma=ES&PAnoIni=0&PAnoFin=0&POrden=DESC";
+//
+// $contenido_url = leer_contenido_completo($URL_API);
+//
+// echo $contenido_url;
+//
+// $JSON_PANORAMIO_PHP = json_decode($contenido_url);
+//
+// for ($i=0; $i<count($JSON_PANORAMIO_PHP->photos); $i++){
+//    $foto_actual = $JSON_PANORAMIO_PHP->photos[$i];
+//    echo "<p>";
+//    echo "<img src='" . $foto_actual->photo_file_url . "' width='" . $foto_actual->width . "' height='" . $foto_actual->height . "'>";
+//    echo "<br>";
+//    echo "<small>" . $foto_actual->photo_title . ", por " . $foto_actual->owner_name . "</small>";
+//    echo "</p>";
+// }
+
 
 ?>
+
+
 
 
 <!DOCTYPE html>
