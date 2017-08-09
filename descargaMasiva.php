@@ -25,7 +25,7 @@
 
 //exit(); // all done
 
-
+$ind1 = $_POST['ind1'];
 $indicadores = array();
 
 $tipoSeleccion = $_POST['tipoSeleccion'];
@@ -39,7 +39,7 @@ if ($tipoSeleccion == 01){
   if($tipoFormato == "xls"){
     echo "Indicador XLS";
 
-    creaDoc($indicador, $tipoDato, $formato);
+    creaDoc($ind1, $tipoDato, $formato);
 
 
 
