@@ -48,40 +48,11 @@ for ($i=1; $i < count($indicadores); $i++) {
    echo "<br />". $foo[1];
 }
 
-// foreach ($datos as $key => $value) {
-//    if($keycontain(ind)){
-//      ind342
-//      342
-//    }
-// }
 
+require('lib/pclzip.lib.php');
+$zip = new PclZip('DM.zip');
+$zip->create('acerca.html,app.js');
 
-
-
-// if ($tipoSeleccion == 01){
-//   if($tipoFormato == "xls"){
-//     echo "Indicador XLS";
-//
-//     creaDoc($ind1, $tipoDato, $formato);
-//
-//
-//
-//   }elseif ($tipoFormato == "csv") {
-//     echo "Indicador CSV";
-//   }
-// }elseif ($tipoSeleccion == 02){
-//   if($tipoFormato == "xls"){
-//     echo "Metadato XLS";
-//   }elseif ($tipoFormato == "csv") {
-//     echo "Metadato CSV";
-//   }
-// }elseif ($tipoSeleccion == 03){
-//   if($tipoFormato == "xls"){
-//     echo "Datos para el Cálculo XLS";
-//   }elseif ($tipoFormato == "csv") {
-//     echo "Datos para el cálculo CSV";
-//   }
-// }
 
 
 function creaDoc($indicador,$tipoDato, $formato){
