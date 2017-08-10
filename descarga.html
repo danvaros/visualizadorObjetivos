@@ -228,7 +228,7 @@ $('#loaderDescarga').hide();
     </div>
 <!-- menu -->
 
-<form action="descargaMasiva.php" method="post">
+<form action="descargaMasiva.php" method="post" id="formulario">
 
     <div class="container" id="objetivo0">
       <div class="row">
@@ -262,8 +262,8 @@ $('#loaderDescarga').hide();
                 <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp; -->
           </div>
           <div class="input-field col s12 l2">
-              <input type="submit" value="Descargar" id="enviarDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;color:#ffffff;" />
-              <!-- <button id="enviaDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;" >Descargar</button> -->
+              <!-- <input type="submit" value="Descargar" id="enviarDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;color:#ffffff;" /> -->
+              <button id="enviarDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;" >Descargar</button>
           </div>
         </div>
         <!-- <div class="col s12">
@@ -521,7 +521,7 @@ $('#loaderDescarga').hide();
            </li>
          </ul>
         </div>
-
+        <input type="hidden" value="" id="indPost" name="indicadores" />
       </div>
     </div>
 </form>
@@ -572,7 +572,9 @@ $('#loaderDescarga').hide();
   <h1>Aviso</h1>
   <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
 </div>
+<div id="resp">
 
+</div>
 <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
 
 <script src="cobertura.js"></script>
@@ -594,9 +596,45 @@ $('#loaderDescarga').hide();
 
         $('select').material_select();
 
-      $('#enviaDescarga').on('click',function(){
+        $('#enviarDescarga').on('click',function(){
+
+          var indica = [];
+          var valor='';
+          var n = $('input[type=checkbox]:checked');
+          console.log(n);
+
+           $.each(n, function(){
+              //indica.push($('input[type="checkbox"]:checked').attr('name'));
+              //valor += valor + val + ',';
+                console.log($(this).attr('name'));
+                valor  +=  ',' + $(this).attr('name');
+           });
+           console.log(valor);
+
+          //indica.push($('input[type="checkbox"]:checked').val());
+
+          console.log('asdansjdnasjdasdasd');
+          console.log(indica);
+
+          $('#indPost').val(valor);
+
+
+
+        var url = "descargaMasiva.php";
+        $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#formulario").serialize(),
+           success: function(data)
+           {
+             $('#resp').html(data);
+           }
+       });
+
+
+
         $('#loaderDescarga').show();
-        descargaSeleccion();
+        //descargaSeleccion();
         //if(descargaSeleccion()){
           //Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
         //}
@@ -608,13 +646,13 @@ $('#loaderDescarga').hide();
         //   htmlContent:'true'
         // });
 
-        $( ".tablaArmada" ).table_download({
-          format: "xls",
-          separator: ",",
-          filename: Codigo_ind + ' ' + Descrip_ind,
-          linkname: "Descargar Excel",
-          quotes: "\""
-        });
+        // $( ".tablaArmada" ).table_download({
+        //   format: "xls",
+        //   separator: ",",
+        //   filename: Codigo_ind + ' ' + Descrip_ind,
+        //   linkname: "Descargar Excel",
+        //   quotes: "\""
+        // });
 
 
 
@@ -636,7 +674,7 @@ $('#loaderDescarga').hide();
         // });
         $('#loaderDescarga').hide();
 
-        $('.table_download_xls_link').trigger("click");
+        //$('.table_download_xls_link').trigger("click");
 
 
 

@@ -25,40 +25,63 @@
 
 //exit(); // all done
 
-$ind1 = $_POST['ind1'];
-$indicadores = array();
 
-$tipoSeleccion = $_POST['tipoSeleccion'];
+$datos = $_POST;
 
-$tipoFormato = $_POST['tipoFormato'];
+//var_dump($datos);
 
-$seleccion = array();
+$indicadores = $datos['indicadores'];
 
+$tipoSeleccion = $datos['tipoSeleccion'];
 
-if ($tipoSeleccion == 01){
-  if($tipoFormato == "xls"){
-    echo "Indicador XLS";
+$tipoFormato = $datos['tipoFormato'];
 
-    creaDoc($ind1, $tipoDato, $formato);
+//var_dump($indicadores);
 
+$indicadores = split(',',$indicadores);
 
+//var_dump($indicadores);
 
-  }elseif ($tipoFormato == "csv") {
-    echo "Indicador CSV";
-  }
-}elseif ($tipoSeleccion == 02){
-  if($tipoFormato == "xls"){
-    echo "Metadato XLS";
-  }elseif ($tipoFormato == "csv") {
-    echo "Metadato CSV";
-  }
-}elseif ($tipoSeleccion == 03){
-  if($tipoFormato == "xls"){
-    echo "Datos para el Cálculo XLS";
-  }elseif ($tipoFormato == "csv") {
-    echo "Datos para el cálculo CSV";
-  }
+for ($i=1; $i < count($indicadores); $i++) {
+   $otra = $indicadores[$i];
+   $foo = split('ind',$otra);
+   echo "<br />". $foo[1];
 }
+
+// foreach ($datos as $key => $value) {
+//    if($keycontain(ind)){
+//      ind342
+//      342
+//    }
+// }
+
+
+
+
+// if ($tipoSeleccion == 01){
+//   if($tipoFormato == "xls"){
+//     echo "Indicador XLS";
+//
+//     creaDoc($ind1, $tipoDato, $formato);
+//
+//
+//
+//   }elseif ($tipoFormato == "csv") {
+//     echo "Indicador CSV";
+//   }
+// }elseif ($tipoSeleccion == 02){
+//   if($tipoFormato == "xls"){
+//     echo "Metadato XLS";
+//   }elseif ($tipoFormato == "csv") {
+//     echo "Metadato CSV";
+//   }
+// }elseif ($tipoSeleccion == 03){
+//   if($tipoFormato == "xls"){
+//     echo "Datos para el Cálculo XLS";
+//   }elseif ($tipoFormato == "csv") {
+//     echo "Datos para el cálculo CSV";
+//   }
+// }
 
 
 function creaDoc($indicador,$tipoDato, $formato){
