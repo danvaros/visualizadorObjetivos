@@ -1,4 +1,180 @@
 <?php
+
+function indicadores(){
+  // create curl resource
+        $ch = curl_init();
+
+        $data = array (
+            "PIdioma" => "ES"
+          );
+
+          // Setup cURL
+          $ch = curl_init('https://ods.org.mx/API/Tematica/Todos');
+          curl_setopt_array($ch, array(
+              CURLOPT_POST => TRUE,
+              CURLOPT_RETURNTRANSFER => TRUE,
+              CURLOPT_HTTPHEADER => array(
+                  'Content-Type: application/json'
+              ),
+              CURLOPT_POSTFIELDS => json_encode($data)
+          ));
+
+          // Send the request
+          $response = curl_exec($ch);
+
+          // Check for errors
+          if($response === FALSE){
+              die(curl_error($ch));
+          }
+
+          // Decode the response
+          $responseData = json_decode($response, TRUE);
+
+          //var_dump($responseData);
+          return $responseData;
+}
+
+
+$bar = indicadores();
+$sumaInd = 0;
+$ClaveInd_arb = array();
+
+foreach($bar as $meta){
+  $indis = $meta['Meta'];
+    foreach($indis as $indi){
+      $india = $indi['Indicador'];
+
+      $indicas = count($india);
+      for ($i=0; $i < $indicas; $i++) {
+        $ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
+        //echo ' '.$india[$i]['ClaveInd_arb'].'<br/>';
+      }
+
+    }// Foreach Indicador
+}// Foreach Metas
+
+
+
+function datos($indicador){
+  $ch = curl_init();
+
+  $data = array (
+      "PCveInd" => $indicador,
+      "PAnoIni" => 0,
+      "PAnoFin" => 0,
+      "POrden" => "DESC",
+      "PIdioma" => "ES"
+    );
+
+    // Setup cURL
+    $ch = curl_init('https://ods.org.mx/API/Valores/PorClave');
+    curl_setopt_array($ch, array(
+        CURLOPT_POST => TRUE,
+        CURLOPT_RETURNTRANSFER => TRUE,
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+        CURLOPT_POSTFIELDS => json_encode($data)
+    ));
+
+    // Send the request
+    $response = curl_exec($ch);
+
+    // Check for errors
+    if($response === FALSE){
+        die(curl_error($ch));
+    }
+
+    // Decode the response
+    $responseData = json_decode($response, TRUE);
+
+    //var_dump($responseData);
+    return $responseData;
+}
+
+
+
+function nombreIndicador($indicador){
+  // create curl resource
+        $ch = curl_init();
+
+        $data = array (
+            "PCveInd" => $indicador,
+            "PIdioma" => "ES"
+          );
+
+          // Setup cURL
+          $ch = curl_init('https://ods.org.mx/API/AtrIndicador/PorClave');
+          curl_setopt_array($ch, array(
+              CURLOPT_POST => TRUE,
+              CURLOPT_RETURNTRANSFER => TRUE,
+              CURLOPT_HTTPHEADER => array(
+                  'Content-Type: application/json'
+              ),
+              CURLOPT_POSTFIELDS => json_encode($data)
+          ));
+
+          // Send the request
+          $response = curl_exec($ch);
+
+          // Check for errors
+          if($response === FALSE){
+              die(curl_error($ch));
+          }
+
+          // Decode the response
+          $responseData = json_decode($response, TRUE);
+
+          return $responseData['Codigo_des'] . " " . $responseData['DescripInd_des'];
+}
+
+
+
+function creaXLS($indicador){
+  
+}
+
+
+
+
+
+function tablaCoSPHP($data){
+  $tabuladoCoS =  '<table class="striped tablaArmada"><thead><tr>';
+  $cabezera =  false;
+  for ($i = 0; $i < count($data['Coberturas']); $i++) {
+
+    //tomamos las cabezeras, años del primer dato
+    if(!$cabezera){
+      $tabuladoCoS .= '<th> Entidad Federativa </th>';
+      for ($j = 0; $j < $data.Coberturas[$i].ValorDato.length; $j++) {
+        $tabuladoCoS .= '<th>' . $data.Coberturas[$i].ValorDato[$j].AADato_ser . '</th>';
+      }//fin for j
+      $cabezera = true;
+    }
+
+    $tabuladoCoS .= '</tr></thead><tr><td>' . '<span style="display:none;">'.$data.Coberturas[$i].ClaveCobGeo_cg. '</span>' . $data.Coberturas[$i].Descrip_cg .'</td>';
+    for ($j = 0; $j < $data.Coberturas[$i].ValorDato.length; $j++) {
+      if($data.Coberturas[$i].ValorDato[$j].Dato_Formato == ""){
+        $tabuladoCoS .= '<td> ND </td>';
+      }else{
+        $tabuladoCoS .= '<td>' + $data.Coberturas[$i].ValorDato[$j].Dato_Formato + '</td>';
+      }
+    }//fin for j
+    $tabuladoCoS .= '</tr>';
+  }//fin for i
+    $tabuladoCoS .= '</table>';
+
+    //$('#tabla').html(tabuladoCoS);
+    return $tabuladoCoS;
+}//fin funcion
+
+
+
+
+
+
+
+
 // $(document).ready(function(){
 //   $.ajax({
 //     type: 'POST',
@@ -14,9 +190,9 @@
 //ultimo indicador
 //210
 //funcion para quitar repetidos
-Array.prototype.unique=function($a){
-  return function(){return this.filter($a)}}(function($a,$b,$c){return $c.indexOf($a,$b+1)<0;
-});
+//Array.prototype.unique=function($a){
+  //return function(){return this.filter($a)}}(function($a,$b,$c){return $c.indexOf($a,$b+1)<0;
+//});
 
 //tabla para cobertura series
 function tablaCoS($data){
@@ -73,7 +249,7 @@ function tablaCoCl($data){
       $subTabulado = '<table class="tablaArmada striped "><thead><tr><th rowspan="2"> Entidad Federativa</th>';
       $sizeYear =  $total_columnas/$years.length;
       for ($k = 0; $k < $years.length; $k++) {
-        $subTabulado .=  '<th colspan="'+ $sizeYear +'">' + $years[$k] +'</th>'
+        $subTabulado .=  '<th colspan="'+ $sizeYear +'">' + $years[$k] +'</th>';
       }//fin for k
       $subTabulado .= '</tr>';
 
@@ -120,7 +296,7 @@ function AClanidada($data){
   }//fin for i
   $tabuladoAnidado +=  '</tr></table>';
   $labels =  $labels.unique();
-  $subTabuladoAnidado .= '<tr><td rowspan="2">Periodo</td><td colspan="'+ $labels.length +'">Total</td><td colspan="'+ $labels.length +'">Hombres</td><td colspan="'+ $labels.length +'">Mujeres</td></tr>'
+  $subTabuladoAnidado .= '<tr><td rowspan="2">Periodo</td><td colspan="'+ $labels.length +'">Total</td><td colspan="'+ $labels.length +'">Hombres</td><td colspan="'+ $labels.length +'">Mujeres</td></tr>';
   $subTabuladoAnidado .= '<tr>';
   for ($i = 0; $i < 3; $i++) {
     for ($j = 0; $j < $labels.length; $j++) {
@@ -216,7 +392,7 @@ function CoClanidada($data){
         $clasificaciones.push($data.Coberturas[$i].Clasificaciones[$j].Descrip_cla);
       }
       $years = $years.unique();
-      $clasificaciones_diferentes = c$lasificaciones.unique().length;
+      $clasificaciones_diferentes = $clasificaciones.unique().length;
 
       $cabezera = true;
     }

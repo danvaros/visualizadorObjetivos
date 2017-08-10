@@ -28,12 +28,8 @@
 
 $datos = $_POST;
 
-//var_dump($datos);
-
 $indicadores = $datos['indicadores'];
-
 $tipoSeleccion = $datos['tipoSeleccion'];
-
 $tipoFormato = $datos['tipoFormato'];
 
 //var_dump($indicadores);
@@ -42,16 +38,61 @@ $indicadores = split(',',$indicadores);
 
 //var_dump($indicadores);
 
+
 for ($i=1; $i < count($indicadores); $i++) {
    $otra = $indicadores[$i];
    $foo = split('ind',$otra);
-   echo "<br />". $foo[1];
+   $opo[] = $foo[1];
 }
 
+var_dump($opo);
 
+
+date_default_timezone_set('America/Mexico_City');
 require('lib/pclzip.lib.php');
-$zip = new PclZip('DM.zip');
+$fecha = date('Y-m-d--His');
+$nameFile = 'Agenda2030_DescargaMasiva-'.$fecha.'.zip';
+$zip = new PclZip('zip/'.$nameFile);
 $zip->create('acerca.html,app.js');
+
+
+
+//echo nombreIndicador(26);
+
+
+function nombreIndicador($indicador){
+  // create curl resource
+        $ch = curl_init();
+
+        $data = array (
+            "PCveInd" => $indicador,
+            "PIdioma" => "ES"
+          );
+
+          // Setup cURL
+          $ch = curl_init('https://ods.org.mx/API/AtrIndicador/PorClave');
+          curl_setopt_array($ch, array(
+              CURLOPT_POST => TRUE,
+              CURLOPT_RETURNTRANSFER => TRUE,
+              CURLOPT_HTTPHEADER => array(
+                  'Content-Type: application/json'
+              ),
+              CURLOPT_POSTFIELDS => json_encode($data)
+          ));
+
+          // Send the request
+          $response = curl_exec($ch);
+
+          // Check for errors
+          if($response === FALSE){
+              die(curl_error($ch));
+          }
+
+          // Decode the response
+          $responseData = json_decode($response, TRUE);
+
+          return $responseData['Codigo_des'] . " " . $responseData['DescripInd_des'];
+}
 
 
 
@@ -94,11 +135,8 @@ function creaDoc($indicador,$tipoDato, $formato){
           var_dump($responseData);
 
           // Print the date from the response
-          echo $responseData['published'];
+          // echo $responseData['published'];
 }
-
-
-$PCveInd = 26;
 
 function leer_contenido_completo($url){
    $fichero_url = fopen ($url, "r");
