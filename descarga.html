@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Objetivos de Desarrollo Sostenible</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
@@ -128,6 +129,34 @@
       width: 300px;
     }
 
+    #loaderDescarga {
+      display: block;
+      background: rgba(62, 60, 60, 0.6);
+      color: white;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+    }
+
+    #loaderDescarga p {
+      display: block;
+      font-size: 40px;
+      position: absolute;
+      top: -70px;
+      /* left: 0; */
+      bottom: 0;
+      right: 15px;
+      color: #fff !important /*margin: auto;*/;
+      text-align: right;
+    }
+
+    #loaderDescarga p #tex{
+      width: 300px;
+    }
+
     form p{
       margin:15px;
     }
@@ -136,14 +165,22 @@
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-
+    <!-- <script src="lib/jquery.table2excel.js"></script>
+    <script src="lib/jquery.tabletoCSV.js"></script> -->
+    <!-- <script type="text/javascript" src="lib/tableExport.js"></script>
+    <script type="text/javascript" src="lib/jquery.base64.js"></script> -->
+    <script src="lib/table2download.js"></script>
 
     <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
   </span>
+  <span id="loaderDescarga">
+  <p style="color:#333; padding-top: 100px; ">Generando archivos<br>para su descarga</p>
+</span>
 <script>
 
 $('#loader').show();
+$('#loaderDescarga').hide();
 </script>
 
 
@@ -168,8 +205,7 @@ $('#loader').show();
               <input id="cam_bus" type="text" name="buscar" style="display: none; background-color: rgba(0, 0, 0, 0.4); background-position: 95% 50%; background-repeat: no-repeat;border-bottom: 0 none; border-radius: 8px;color: #ffffff !important;padding: 0 0px;height:35px;" onfocusout="esconder()"/>
             </li>
             <li class="tamps">
-              <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png"
-                  alt="" /></a>
+              <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a>
             </li>
             <!-- <li class="tamps">
               <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
@@ -192,29 +228,42 @@ $('#loader').show();
     </div>
 <!-- menu -->
 
+<form action="descargaMasiva.php" method="post" id="formulario">
 
     <div class="container" id="objetivo0">
       <div class="row">
         <div class="col s12 l12">
-          <h3 class="fuerte t_principal">DESCARGA MASIVA</h3>
+          <h3 class="fuerte t_principal" id="desca">DESCARGA MASIVA</h3>
           <li class="divider"></li>
         </div>
         <div class="col s12 l12">
           <br />
           <h5>Elementos a exportar</h5>
           <br />
-          <div class="input-field col s12 l8" style="margin-left:0px;">
-            <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
+          <div class="input-field col s12 l3" style="margin-left:0px;">
+            <select id="tipoSeleccion" name="tipoSeleccion">
+              <option id="indicadorDescarga" value="01" selected>Indicador</option>
+              <option id="metadatoDescarga" value="02">Metadato</option>
+              <option id="calculoDescarga" value="03">Datos para el cálculo</option>
+            </select>
+            <label>Selección</label>
+            <!-- <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="metadatoDescarga" class="validate caja_d metadatoDescarga" style="padding-left: 12px;">&nbsp;Metadato&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp; -->
           </div>
           <div class="input-field col s12 l2">
-                  <b>Formato:</b>
-                <input type="checkbox" id="tipoCSV" class="valdidate caja_d" name="formato" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp;
+                  <!-- <b>Formato:</b> -->
+                  <select id="tipoFormato" name="tipoFormato">
+                    <option id="tipoXLS" value="xls" selected>XLS</option>
+                    <option id="tipoCSV" value="csv">CSV</option>
+                  </select>
+                  <label>Formato</label>
+                <!-- <input type="checkbox" id="tipoCSV" class="valdidate caja_d" name="formato" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp; -->
           </div>
           <div class="input-field col s12 l2">
-              <button id="enviaDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;" >Descargar</button>
+              <!-- <input type="submit" value="Descargar" id="enviarDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;color:#ffffff;" /> -->
+              <button id="enviarDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;" >Descargar</button>
           </div>
         </div>
         <!-- <div class="col s12">
@@ -226,7 +275,6 @@ $('#loader').show();
         </div> -->
       </div>
       <div class="row">
-        <form action="#">
         <div class="col s12">
           <ul id="objetivos" class="" data-collapsible="accordion">
            <li id="objetivo1" class="objetivos">
@@ -473,11 +521,10 @@ $('#loader').show();
            </li>
          </ul>
         </div>
-      </form>
+        <input type="hidden" value="" id="indPost" name="indicadores" />
       </div>
     </div>
-
-
+</form>
 <!-- footer -->
     <footer class="page-footer id">
       <div class="container">
@@ -519,13 +566,15 @@ $('#loader').show();
     </footer>
 <!-- footer -->
 
-<div class="tabla_completa" style="display:none;height:0 !important;"></div>
+<div class="tabla_completa" style="display:block;height:0 !important;"></div>
 
 <div class="disclaimer pop">
   <h1>Aviso</h1>
   <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
 </div>
+<div id="resp">
 
+</div>
 <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
 
 <script src="cobertura.js"></script>
@@ -535,9 +584,7 @@ $('#loader').show();
 <script src="tablas.js"></script>
 <script src='funcionesApi.js'></script>
 <script src="appDescarga.js"></script>
-
-<script src="lib/excellentexport.js"></script>
-
+<!-- <script src="lib/excellentexport.js"></script> -->
 
     <script type="text/javascript">
     var objetivoId = getParameterByName('objetivoId');
@@ -547,42 +594,89 @@ $('#loader').show();
 
     $(document).ready(function(){
 
-      // $('#tipoCSV').change(function() {//do something when the user clicks the box
-      //   if($('#tipoCSV').attr('checked')){
-      //     $('#tipoXLS').removeAttr('checked');
-      //   }else{
-      //     $('#tipoXLS').attr('checked');
-      //   }
-      // });
-      //
-      // $('#tipoXLS').change(function() {//do something when the user clicks the box
-      //   if($('#tipoXLS').attr('checked')){
-      //     $('#tipoCSV').removeAttr('checked');
-      //   }else{
-      //     $('#tipoCSV').attr('checked');
-      //   }
-      // });
+        $('select').material_select();
 
-      // if( $('.indi1').attr('checked') ) {
-      //   //$('#fin_pobreza_cont input.child[name="'+$(this).attr('name')+'"]:checked');
-      //     alert('Seleccionado');
-      // }
+        $('#enviarDescarga').on('click',function(){
 
-      $('#enviaDescarga').on('click',function(){
+          var indica = [];
+          var valor='';
+          var n = $('input[type=checkbox]:checked');
+          console.log(n);
 
-        // alert('Enviar');
-        // descargaSeleccion();
+           $.each(n, function(){
+              //indica.push($('input[type="checkbox"]:checked').attr('name'));
+              //valor += valor + val + ',';
+                console.log($(this).attr('name'));
+                valor  +=  ',' + $(this).attr('name');
+           });
+           console.log(valor);
 
-        if(descargaSeleccion()){
+          //indica.push($('input[type="checkbox"]:checked').val());
 
-          var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
+          console.log('asdansjdnasjdasdasd');
+          console.log(indica);
 
-          exportTableToCSV.apply(this, args);
-          
-        }
-            // var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
-            //
-            // exportTableToCSV.apply(this, args);
+          $('#indPost').val(valor);
+
+
+
+        var url = "descargaMasiva.php";
+        $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#formulario").serialize(),
+           success: function(data)
+           {
+             $('#resp').html(data);
+           }
+       });
+
+
+
+        $('#loaderDescarga').show();
+        //descargaSeleccion();
+        //if(descargaSeleccion()){
+          //Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
+        //}
+        //$(".tablaArmada").tableToCSV({filename: "Nombre"});
+
+        // $('.tablaArmada').tableExport({
+        //   type:'xls',
+        //   escape:'false',
+        //   htmlContent:'true'
+        // });
+
+        // $( ".tablaArmada" ).table_download({
+        //   format: "xls",
+        //   separator: ",",
+        //   filename: Codigo_ind + ' ' + Descrip_ind,
+        //   linkname: "Descargar Excel",
+        //   quotes: "\""
+        // });
+
+
+
+
+
+        // $(".tablaArmada").table2excel({
+        //   exclude: ".noExl",
+        //   name: Codigo_ind + ' ' + Descrip_ind,
+	      //   filename: Codigo_ind + ' ' + Descrip_ind + ".xls" //do not include extension
+        // });
+
+
+
+        // $('#desca').on('click',function(){
+        //   alert('Hace algo');
+        //   Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
+        //     //var args = [$('.tabla_completa table'), 'DescargaMasiva.csv'];
+        //     //exportTableToCSV.apply(this, args);
+        // });
+        $('#loaderDescarga').hide();
+
+        //$('.table_download_xls_link').trigger("click");
+
+
 
       });
 
@@ -592,7 +686,7 @@ $('#loader').show();
         var indDesc = [];
         var tipoDescarga = [];
         var tempId;
-        var indSel = $('#indicadorDescarga').attr('checked');
+        var indSel = $('#indicadorDescarga').is(':selected');
 
         $(".child").each(function (index) {
           classDescarga = $(this).is(':checked');
@@ -617,40 +711,30 @@ $('#loader').show();
           console.log('Se agrega' + indDesc[k]);
         }
 
-
-
         if(indSel){
           //alert('Enviar');
-          $('#indicadorDescarga').attr('checked');
-          $('#metadatoDescarga').attr('checked');
-          $('#calculoDescarga').attr('checked');
+          $('#indicadorDescarga').is(':selected');
+          $('#metadatoDescarga').is(':selected');
+          $('#calculoDescarga').is(':selected');
         }else{
           alert('Debe seleccionar al menos un tipo de descarga');
         }
+
+
 
       }
 
       function items(item, index) {
           return item;
       }
-
-
-
       //Termina función descargaSeleccion
-
 
       //   var res = str.split("ind");
       //   document.getElementById("demo").innerHTML = res[1];
-      //
-      //
-      //
+
       // $('.indi1').change(function() {//do something when the user clicks the box
       //   alert(this.checked);
       // });
-
-
-
-
 
       $('#cam_bus').keypress(function(e) {
           if(e.which == 13) {
@@ -670,20 +754,19 @@ $('#loader').show();
         });
       }
 
-      $("#contact").hover(
-       function() {
-         if($(this).hasClass('selected')) {
-           deselect($(this));
-         } else {
-           $(this).addClass('selected');
-           $('.pop').slideFadeToggle();
-         }
-         return false;
-       }, function() {
-         deselect($('#contact'));
-         return false;
-       }
-     );
+      // $("#contact").hover(
+      //  function() {
+      //    if($(this).hasClass('selected')) {
+      //      deselect($(this));
+      //    } else {
+      //      $(this).addClass('selected');
+      //      $('.pop').slideFadeToggle();
+      //    }
+      //    return false;
+      //  }, function() {
+      //    deselect($('#contact'));
+      //    return false;
+      //  });
 
 
      $.fn.slideFadeToggle = function(easing, callback) {
@@ -694,11 +777,9 @@ $('#loader').show();
         accordion : true
       });
 
-      console.log($('#objetivos').find('li.active').children().children());
       $(".button-collapse").sideNav();
 
-
-              $("#sti").hide();
+      $("#sti").hide();
 
         window.onload = function () {
 
@@ -732,7 +813,8 @@ $('#loader').show();
     }
 
     function llamada(indicador, ser){
-      var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
+      var url = 'https://ods.org.mx/API/Tematica/Todos';
+			//var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}
       //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
@@ -788,7 +870,7 @@ $('#loader').show();
             {
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
-                  '<input type="checkbox" id="ind' + clave_arb + '" class="child " /> <b class="buscar" href="#">'+
+                  '<input type="checkbox" name="ind'+clave_arb+'" id="ind' + clave_arb + '" class="child " /> <b class="buscar" href="#">'+
                     codigo_des +' '+ descrip_des +
                   '</b>'+
                   '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
@@ -803,7 +885,7 @@ $('#loader').show();
                   '<span class="buscar" >'+
                     codigo_des +' '+ descrip_des +
                   '</span>'+
-                  '<input type="checkbox" id="ind' + clave_arb + '" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
+                  '<input type="checkbox" name="ind'+clave_arb+'" id="ind' + clave_arb + '" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
@@ -815,7 +897,7 @@ $('#loader').show();
             else{
               if(datos[i].Meta[j].Indicador[k].TieneValores){
                  contenido = contenido +
-                  '<input type="checkbox" id="ind' + clave_arb + '" class="child" /> <b class="buscar" href="#">'+
+                  '<input type="checkbox" name="ind'+clave_arb+'" id="ind' + clave_arb + '" class="child" /> <b class="buscar" href="#">'+
                     codigo_des +' '+ descrip_des +
                   '</b>'+
                   '<a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
@@ -830,7 +912,7 @@ $('#loader').show();
                   '<span class="buscar" >'+
                     codigo_des +' '+ descrip_des +
                   '</span>'+
-                  '<input type="checkbox" id="ind' + clave_arb + '" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
+                  '<input type="checkbox" name="ind'+clave_arb+'" id="ind' + clave_arb + '" class="child" /> <a class="buscar fond_global tooltipped" data-position="bottom" data-delay="50" data-tooltip="'+ ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].DescripS_tatr : "n/A" )+'"> &nbsp;&nbsp; '+
                     ((typeof datos[i].Meta[j].Indicador[k].TipoInd[0] != "undefined") ? datos[i].Meta[j].Indicador[k].TipoInd[0].Cve_tatr : "n/A" )+
                   '</a>' +
                   '&nbsp;&nbsp;'+
@@ -1174,8 +1256,53 @@ $(".exportXLS").on('click', function (event) {
     $("#descargaXLS").attr('download',Descrip_ind+'.xls');
 
 
+    // $(document).ready(function () {
+    //     Html2CSV('testbed_results', 'myfilename','export');
+    // });
 
 
+
+    function Html2CSV(tableId, filename,alinkButtonId) {
+        var array = [];
+        var headers = [];
+        var arrayItem = [];
+        var csvData = new Array();
+        $('.' + tableId + ' th').each(function (index, item) {
+            headers[index] = '"' + $(item).html() + '"';
+        });
+        csvData.push(headers);
+        $('.' + tableId + ' tr').has('td').each(function () {
+
+            $('td', $(this)).each(function (index, item) {
+                arrayItem[index] = '"' + $(item).html() + '"';
+            });
+            array.push(arrayItem);
+            csvData.push(arrayItem);
+        });
+
+        var fileName = filename + '.csv';
+        var buffer = csvData.join("\n");
+        var blob = new Blob([buffer], {
+            "type": "text/csv;charset=utf8;"
+        });
+        var link = document.getElementById(alinkButtonId);
+
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            link.setAttribute("href", window.URL.createObjectURL(blob));
+            link.setAttribute("download", fileName);
+        }
+        else if (navigator.msSaveBlob) { // IE 10+
+            link.setAttribute("href", "#");
+            link.addEventListener("click", function (event) {
+                navigator.msSaveBlob(blob, fileName);
+            }, false);
+        }
+        else {
+            // it needs to implement server side export
+            link.setAttribute("href", "http://www.example.com/export");
+        }
+    }
 
     </script>
   </body>

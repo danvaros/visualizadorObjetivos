@@ -144,7 +144,7 @@ $('#loader').show();
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
              <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <!-- 
+            <!--
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
@@ -195,7 +195,7 @@ $('#loader').show();
 
       <div class="row" >
         <ul class="collection" id="resultado">
-          
+
         </ul>
       </div>
     </div>
@@ -263,13 +263,13 @@ $('#loader').show();
     $(document).ready(function(){
       $('#cam_bus').keypress(function(e) {
           if(e.which == 13) {
-            buscar($('#cam_bus').val());  
+            buscar($('#cam_bus').val());
           }
       });
 
       $('#icon_prefix').keypress(function(e) {
           if(e.which == 13) {
-            buscar($('#icon_prefix').val());  
+            buscar($('#icon_prefix').val());
           }
       });
 
@@ -333,12 +333,12 @@ $('#loader').show();
     });
 
     function buscar(busqueda){
-      $('.collection-item').hide();     
+      $('.collection-item').hide();
       if(busqueda != ''){
         var res = busqueda.split(" ");
         console.log(res);
         for (var i = 0; i < res.length; i++) {
-          $('.collection-item:Contains("'+ res[i] +'")').show();     
+          $('.collection-item:Contains("'+ res[i] +'")').show();
         }
       }else{
         $('.objetivos').show();
@@ -346,7 +346,7 @@ $('#loader').show();
     }
 
     function llamada(indicador, ser){
-      var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
+      var url = 'https://ods.org.mx/API/Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}
       //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
@@ -379,7 +379,7 @@ $('#loader').show();
         var codigo = datos[i].Codigo_des;
         codigo = codigo.replace(".","");
 
-        lista_resultados = lista_resultados + '<li class="collection-item">' + 
+        lista_resultados = lista_resultados + '<li class="collection-item">' +
                           '<a href="objetivos.html?objetivoId='+ codigo +'">' + datos[i].Codigo_des + datos[i].Abrevia_des +' : <span class="descripcion"> '+datos[i].Descrip_des + '</span> </a></li>';
 
         for (var j = 0; j < datos[i].Meta.length; j++) {
@@ -400,7 +400,7 @@ $('#loader').show();
             }else if(clave_arb == 333)
             {
               if(datos[i].Meta[j].Indicador[k].TieneValores){
-               
+
                 lista_resultados = lista_resultados + '<li class="collection-item">' +
                   '<a class="buscar" href="indicadores333.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
                     codigo_des +' '+ descrip_des +
@@ -427,7 +427,7 @@ $('#loader').show();
             }
             else{
               if(datos[i].Meta[j].Indicador[k].TieneValores){
-               
+
                 lista_resultados = lista_resultados + '<li class="collection-item">' + '<span class="buscar" >'+ '<a class="buscar" href="indicadores.html?objetivo='+datos[i].Codigo_des+'&meta='+datos[i].Meta[j].Clave_arb+'&indicador='+ clave_arb+'&codigo='+codigo_dg+'&obj='+datos[i].Clave_arb+'">'+
                     codigo_des +' '+ descrip_des +
                   '</a>'+
