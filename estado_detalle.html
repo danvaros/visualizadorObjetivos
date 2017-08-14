@@ -613,7 +613,7 @@ border-bottom-width: 0px !important;
   //funcion para crear la tabla de resultado
   function OMITabla(claveCobertura,label){
     $('#loader').show();
-    var url = 'https://operativos.inegi.org.mx/datos/api/Tematica/PorCobertura';
+    var url = 'https://ods.org.mx/API/Tematica/PorCobertura';
     var parametros =  {'PIdioma':'ES', 'PCveCob':claveCobertura}
     //stringEstados[claveCobertura]
     var dataItems =  '<div class="container">'+
@@ -681,7 +681,7 @@ border-bottom-width: 0px !important;
   }
 
   function getMasReciente(indicador,serie,cobertura){
-    var url = "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla";
+    var url = "https://ods.org.mx/API/Valores/PorCobCla";
     var parametros = {"PCveInd":indicador, "PAnoFin":"0", "PCveSer":serie, "PCveCob":cobertura,
 "PCveAgrupaCla":"99", "POrden":"DESC", "PIdioma":"ES"};
     var reciente;
@@ -709,7 +709,7 @@ border-bottom-width: 0px !important;
   }
 
   function getClaveSerie(indicador){
-    var url = "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorClave";
+    var url = "https://ods.org.mx/API/AtrIndicador/PorClave";
     var parametros = {"PCveInd": indicador, "PIdioma":"ES"};
     var claveSerie;
     $.ajax({

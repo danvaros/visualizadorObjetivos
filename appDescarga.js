@@ -25,7 +25,7 @@
   var Algoritmo_ft = '';
 
   var data_local = '';
-  var tabulado ;
+  var tabulado;
   var tipoTabulado;
   var armaTabulado;
   var clasif;
@@ -34,7 +34,7 @@ function listadoTablas(PCveInd){
   $('#loader').delay(2000).fadeOut("slow");
   $.ajax({
     type: 'POST',
-    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
+    url: "https://ods.org.mx/API/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -42,32 +42,7 @@ function listadoTablas(PCveInd){
 
       cason = data.ClaveAgrupaClas_atr;
 
-      switch(tipoTabulado){
-        case 'CoS':
-          tabulado = tablaCoS(data);
-        break;
-        case 'CoCl':
-          if(clasif > 1){
-            tabulado = CoClanidada(data);
-          }else{
-            tabulado = tablaCoCl(data);
-          }
-        break;
-        case 'ACl':
-          if(clasif > 1){
-            tabulado = AClanidada(data);
-          }else{
-            tabulado = tablaACl(data);
-          }
-        break;
-        case 'AS':
-          tabulado = tablaAS(data);
-          //alert('si entra');
-        break;
-        case 'ClA':
-          tabulado = tablaClA(data);
-        break;
-      }
+      tabulado = get_tabulado(tipoTabulado,data.Series[0]);
 
       //tabulado = tablaCoS(data);
       Codigo_ind  = data.Codigo_ind;
@@ -124,7 +99,7 @@ function listadoTablas(PCveInd){
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
+    url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
     data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
     success: function( data, textStatus, jqxhr ) {
     //data.Series[1] = data1.Series[0];
@@ -141,7 +116,7 @@ function listadoTablas(PCveInd){
   $.ajax({
     type: 'POST',
     // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
-    url: "http://agenda2030.mx/datos/api/Tematica/PorClave",
+    url: "https://ods.org.mx/API/Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -170,13 +145,13 @@ function listadoTablas(PCveInd){
 if(PCveInd == 118){
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+    url: "https://ods.org.mx/API/Valores/PorCobCla",
     data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       $.ajax({
         type: 'POST',
-        url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+        url: "https://ods.org.mx/API/Valores/PorCobCla",
         data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"595","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
         success: function( data1, textStatus, jqxhr ) {
           data.Series[1] = data1.Series[0];
@@ -189,7 +164,7 @@ if(PCveInd == 118){
 
       $.ajax({
         type: 'POST',
-        url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+        url: "https://ods.org.mx/API/Valores/PorCobCla",
         data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"596","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
         success: function( data2, textStatus, jqxhr ) {
           data.Series[2] = data2.Series[0];
@@ -275,7 +250,7 @@ else
 
   $.ajax({
     type: 'POST',
-    url: "http://agenda2030.mx/datos/api/Valores/PorClave",
+    url: "https://ods.org.mx/API/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -383,6 +358,39 @@ else
     async:false
   });
 }
+
+function get_tabulado(tTabulado, serie){
+    var t;
+    switch(tTabulado){
+      case 'CoS':
+        t = tablaCoS(serie);
+      break;
+      case 'CoCl':
+        if(clasif > 1){
+          t = CoClanidada(serie);
+        }else{
+          t = tablaCoCl(serie);
+        }
+      break;
+      case 'ACl':
+        if(clasif > 1){
+          t = AClanidada(serie);
+        }else{
+          t = tablaACl(serie);
+        }
+      break;
+      case 'AS':
+        t = tablaAS(serie);
+      break;
+      case 'ClA':
+        t = tablaClA(serie);
+      break;
+    }
+    return t;
+}
+
+
+
   $(document).ready(function()
   {
     $('.tabla_completa').html(tabulado);

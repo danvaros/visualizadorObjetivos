@@ -614,7 +614,7 @@
             <div id="chart2"></div>
             <div class="pie_cuadro2">
               <div>
-                <strong>Nota:</strong> 
+                <strong>Nota:</strong>
               </div>
               <div><strong>Fuente:</strong> </div>
               <div><strong>Fecha de actualización:</strong></div>
@@ -1997,7 +1997,7 @@
   }
 
   brew.setSeries(values);
-  brew.setNumClasses(4);
+  brew.setNumClasses(3);
   brew.setColorCode("Blues");
   brew.classify('jenks');
   var alfr=brew.getBreaks();
@@ -2029,7 +2029,7 @@
       //console.log(from,from+1,res,grades);
       labels.push(
         '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-        from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
+        from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+')+'</div>');
       }
       div.innerHTML = labels.join('');
       return div;
@@ -2051,8 +2051,13 @@
           cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
+
       }
 
+      console.log('asdasdasdfmbsdamnasansbjbbfmsbfdsbdfbsdfbsdkjfbsdfhbsj');
+      for (var i = 0; i < estados.length; i++) {
+        console.log(estados[i][3]);
+      }
 
       if(cadena !=  ''){
         cadena='<div class="col s12"><a class="waves-effect waves-light btn color  black-text t_sm sin_sombra marg_top" style="border-style: none;cursor:none;float: left;padding-bottom: 0;padding-left: 8px;margin-top:6px;">Selecciona un año</a></div>'+'<div class="col s12 l12"><div class="owl-carousel owl-theme">'+cadena+'</div></div>';
@@ -2201,6 +2206,8 @@
         var municipios = []; //arreglo con los valores de la llamada a la api
         var valuesMunicipio = [];
         var brew = new classyBrew();
+        console.log(cadena);
+        var anioo = cadena.split('-');
 
         $('#anios').hide();
         valorDato(dataLocal);
@@ -2215,7 +2222,7 @@
         }
 
         brew.setSeries(valuesMunicipio);
-        brew.setNumClasses(4);
+        brew.setNumClasses(3);
         brew.setColorCode("Blues");
         brew.classify('jenks');
         var alfr=brew.getBreaks();
@@ -2245,8 +2252,9 @@
           //this._div = L.DomUtil.create('div', 'infos');
           $('.infos').removeClass('hide');
           $('.info2').removeClass('hide');
+          console.log(props);
           if (props != undefined) {
-            this._div.innerHTML = '<div><h5 style="font-weight:bold">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun).toFixed(1)/*props.density*/ + '</b><p style="position: absolute; bottom: 57%; left: 35%; font-size: 15px;">'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
             //console.log("aca ---> ",estados[busqueda_indice(props.nom_ent)]);
             // gen(estados[props.cve]);
             gen(municipios[busqueda_indice(props.nom_mun)]);
@@ -2270,7 +2278,7 @@
             //console.log(from, from + 1, res, grades);
             labels.push(
               '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-              from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+') + '</div>');
+              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
           }
           div.innerHTML = labels.join('');
           return div;
@@ -2282,7 +2290,7 @@
             var temporal = [];
             var Descrip_ind = data.Descrip_ind;
 
-            temporal.push('Munisipio');
+            temporal.push('Municipio');
             for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
               temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
             }
@@ -2427,6 +2435,9 @@
         }
       }//fin if
       else{
+        $("#boton_municipal").show();
+        $("#boton_estatal").hide();
+
         for(var j=1;j<=25;j++){
           $('#anio_'+j).removeClass('active_anio');
           $('#anio_'+j).addClass('inactive_anio');
@@ -2478,7 +2489,7 @@
             opacity: 1,
             color: '#000',
             dashArray: '1',
-            fillOpacity: 0.6,
+            fillOpacity: 1,
             fillColor: getColoR(busqueda_estado_posicion(feature.properties.nom_ent,posi)),
             className: "c"+res[1]
           };
@@ -2492,7 +2503,7 @@
               weight: 2,
               color: '#ccc',
               dashArray: '',
-              fillOpacity: 0.7
+              fillOpacity: 1
             });
             if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
               layer.bringToFront();
@@ -2572,7 +2583,7 @@
         }
 
         brew.setSeries(values);
-        brew.setNumClasses(4);
+        brew.setNumClasses(3);
         brew.setColorCode("Blues");
         brew.classify('jenks');
         var alfr=brew.getBreaks();
@@ -2604,7 +2615,7 @@
             //console.log(from,from+1,res,grades);
             labels.push(
               '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c'+ res[1] +'\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-              from.toFixed(1) + (to.toFixed(1) ? '&ndash;' + to.toFixed(1) : '+')+'</div>');
+              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+')+'</div>');
             }
             div.innerHTML = labels.join('');
             return div;
@@ -2618,6 +2629,7 @@
               }
             }
           }
+          console.log(estados);
         }
       }
 
@@ -2948,7 +2960,7 @@
           });
         }
       }
-
+console.log(arrray_anios);
       //---------------------------------- codigo nuevo -----------//
       function init_geojson(){
         console.log(geojson.options);

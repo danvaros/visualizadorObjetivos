@@ -7,7 +7,7 @@ $(document).ready(function(){
 });
 
 function get_tematica(){
-	var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
+	var url = 'https://ods.org.mx/API/Tematica/Todos';
     var parametros =  {"PIdioma":"ES"}
     $.ajax({
       type: 'POST',

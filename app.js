@@ -31,7 +31,7 @@
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/AtrIndicador/PorDesglose",
+    url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
     data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
     success: function( data, textStatus, jqxhr ) {
     //data.Series[1] = data1.Series[0];
@@ -48,7 +48,7 @@
   $.ajax({
     type: 'POST',
     // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
-    url: "http://agenda2030.mx/datos/api/Tematica/PorClave",
+    url: "https://ods.org.mx/API/Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -77,13 +77,13 @@
 if(PCveInd == 118){
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+    url: "https://ods.org.mx/API/Valores/PorCobCla",
     data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       $.ajax({
         type: 'POST',
-        url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+        url: "https://ods.org.mx/API/Valores/PorCobCla",
         data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"595","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
         success: function( data1, textStatus, jqxhr ) {
           data.Series[1] = data1.Series[0];
@@ -96,7 +96,7 @@ if(PCveInd == 118){
 
       $.ajax({
         type: 'POST',
-        url: "https://operativos.inegi.org.mx/datos/api/Valores/PorCobCla",
+        url: "https://ods.org.mx/API/Valores/PorCobCla",
         data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"596","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
         success: function( data2, textStatus, jqxhr ) {
           data.Series[2] = data2.Series[0];
@@ -160,7 +160,7 @@ else
 
   $.ajax({
     type: 'POST',
-    url: "https://operativos.inegi.org.mx/datos/api/Valores/PorClave",
+    url: "https://ods.org.mx/API/Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -1098,7 +1098,7 @@ else
       select += '<option value="'+idx+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div>';
+    select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
@@ -1124,7 +1124,7 @@ else
       select += '<option value="'+(idx)+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;"></div>';
+    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;height:510px;overflow:scroll;"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);

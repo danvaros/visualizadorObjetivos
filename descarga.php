@@ -1,7 +1,92 @@
+<?php
+/**
+ * PHPExcel
+ *
+ * Copyright (c) 2006 - 2015 PHPExcel
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ * @category   PHPExcel
+ * @package    PHPExcel
+ * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
+ * @version    ##VERSION##, ##DATE##
+ */
+
+/** Error reporting */
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
+date_default_timezone_set('Europe/London');
+
+define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+
+date_default_timezone_set('Europe/London');
+
+//include "Classes/05featuredemo.inc.php";
+
+/** PHPExcel_IOFactory */
+require_once dirname(__FILE__) . '/Classes/PHPExcel/IOFactory.php';
+
+
+echo date('H:i:s') , " Write to HTML format" , EOL;
+$callStartTime = microtime(true);
+
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'HTML');
+$objWriter->setSheetIndex(0);
+//$objWriter->setImagesRoot('http://www.example.com');
+$objWriter->save(str_replace('.php', '.htm', __FILE__));
+$callEndTime = microtime(true);
+$callTime = $callEndTime - $callStartTime;
+echo date('H:i:s') , " File written to " , str_replace('.php', '.htm', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+// Echo memory usage
+echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
+
+
+// Echo memory peak usage
+echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
+
+// Echo done
+echo date('H:i:s') , " Done writing file" , EOL;
+echo 'File has been created in ' , getcwd() , EOL;
+
+
+// Redirect output to a client’s web browser (Excel5)
+header('Content-Type: application/vnd.ms-excel');
+header('Content-Disposition: attachment;filename="01simple.xls"');
+header('Cache-Control: max-age=0');
+// If you're serving to IE 9, then the following may be needed
+header('Cache-Control: max-age=1');
+
+// If you're serving to IE over SSL, then the following may be needed
+header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+header ('Pragma: public'); // HTTP/1.0
+
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+$objWriter->save('php://output');
+exit;
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Objetivos de Desarrollo Sostenible</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
@@ -128,6 +213,34 @@
       width: 300px;
     }
 
+    #loaderDescarga {
+display: block;
+background: rgba(62, 60, 60, 0.6);
+color: white;
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 10000;
+}
+
+#loaderDescarga p {
+display: block;
+font-size: 40px;
+position: absolute;
+top: -70px;
+/* left: 0; */
+bottom: 0;
+right: 15px;
+color: #fff !important /*margin: auto;*/;
+text-align: right;
+}
+
+#loaderDescarga p #tex{
+width: 300px;
+}
+
     form p{
       margin:15px;
     }
@@ -136,14 +249,22 @@
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-
+    <!-- <script src="lib/jquery.table2excel.js"></script>
+    <script src="lib/jquery.tabletoCSV.js"></script> -->
+    <!-- <script type="text/javascript" src="lib/tableExport.js"></script>
+    <script type="text/javascript" src="lib/jquery.base64.js"></script> -->
+    <script src="lib/table2download.js"></script>
 
     <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
   </span>
+  <span id="loaderDescarga">
+  <p style="color:#333; padding-top: 100px; ">Generando archivos<br>para su descarga</p>
+</span>
 <script>
 
 $('#loader').show();
+$('#loaderDescarga').hide();
 </script>
 
 
@@ -195,22 +316,33 @@ $('#loader').show();
     <div class="container" id="objetivo0">
       <div class="row">
         <div class="col s12 l12">
-          <h3 class="fuerte t_principal">DESCARGA MASIVA</h3>
+          <h3 class="fuerte t_principal" id="desca">DESCARGA MASIVA</h3>
           <li class="divider"></li>
         </div>
         <div class="col s12 l12">
           <br />
           <h5>Elementos a exportar</h5>
           <br />
-          <div class="input-field col s12 l8" style="margin-left:0px;">
-            <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
+          <div class="input-field col s12 l3" style="margin-left:0px;">
+            <select id="tipoSeleccion">
+              <option id="indicadorDescarga" value="01" selected>Indicador</option>
+              <option id="metadatoDescarga" value="02">Metadato</option>
+              <option id="calculoDescarga" value="03">Datos para el cálculo</option>
+            </select>
+            <label>Selección</label>
+            <!-- <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="metadatoDescarga" class="validate caja_d metadatoDescarga" style="padding-left: 12px;">&nbsp;Metadato&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp; -->
           </div>
           <div class="input-field col s12 l2">
-                  <b>Formato:</b>
-                <input type="checkbox" id="tipoCSV" class="valdidate caja_d" name="formato" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp;
+                  <!-- <b>Formato:</b> -->
+                  <select id="tipoFormato">
+                    <option id="tipoXLS" value="xls" selected>XLS</option>
+                    <option id="tipoCSV" value="csv">CSV</option>
+                  </select>
+                  <label>Formato</label>
+                <!-- <input type="checkbox" id="tipoCSV" class="valdidate caja_d" name="formato" style="padding-left:12px;" checked />&nbsp;CSV&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="tipoXLS" class="valdidate caja_d" name="formato" style="padding-left:12px;" />&nbsp;XLS&nbsp;&nbsp;&nbsp; -->
           </div>
           <div class="input-field col s12 l2">
               <button id="enviaDescarga" class="valdidate caja_d waves-effect waves-light btn blue white-text" style="padding-left:12px;" >Descargar</button>
@@ -517,7 +649,7 @@ $('#loader').show();
     </footer>
 <!-- footer -->
 
-<div class="tabla_completa" style="display:none;height:0 !important;"></div>
+<div class="tabla_completa" style="display:block;height:0 !important;"></div>
 
 <div class="disclaimer pop">
   <h1>Aviso</h1>
@@ -533,7 +665,7 @@ $('#loader').show();
 <script src="tablas.js"></script>
 <script src='funcionesApi.js'></script>
 <script src="appDescarga.js"></script>
-<script src="lib/excellentexport.js"></script>
+<!-- <script src="lib/excellentexport.js"></script> -->
 
     <script type="text/javascript">
     var objetivoId = getParameterByName('objetivoId');
@@ -543,28 +675,54 @@ $('#loader').show();
 
     $(document).ready(function(){
 
-      // $('#tipoCSV').change(function() {//do something when the user clicks the box
-      //   if($('#tipoCSV').attr('checked')){
-      //     $('#tipoXLS').removeAttr('checked');
-      //   }else{
-      //     $('#tipoXLS').attr('checked');
-      //   }
-      // });
-      // $('#tipoXLS').change(function() {//do something when the user clicks the box
-      //   if($('#tipoXLS').attr('checked')){
-      //     $('#tipoCSV').removeAttr('checked');
-      //   }else{
-      //     $('#tipoCSV').attr('checked');
-      //   }
-      // });
+        $('select').material_select();
 
       $('#enviaDescarga').on('click',function(){
+        $('#loaderDescarga').show();
         descargaSeleccion();
         //if(descargaSeleccion()){
-          Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
+          //Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
         //}
-            // var args = [$('.tabla_completa .tablaArmada'), 'DescargaMasiva.csv'];
-            // exportTableToCSV.apply(this, args);
+        //$(".tablaArmada").tableToCSV({filename: "Nombre"});
+
+        // $('.tablaArmada').tableExport({
+        //   type:'xls',
+        //   escape:'false',
+        //   htmlContent:'true'
+        // });
+
+        $( ".tablaArmada" ).table_download({
+          format: "xls",
+          separator: ",",
+          filename: Codigo_ind + ' ' + Descrip_ind,
+          linkname: "Descargar Excel",
+          quotes: "\""
+        });
+
+
+
+
+
+        // $(".tablaArmada").table2excel({
+        //   exclude: ".noExl",
+        //   name: Codigo_ind + ' ' + Descrip_ind,
+	      //   filename: Codigo_ind + ' ' + Descrip_ind + ".xls" //do not include extension
+        // });
+
+
+
+        // $('#desca').on('click',function(){
+        //   alert('Hace algo');
+        //   Html2CSV('tablaArmada', 'descargaMasiva', 'enviaDescarga');
+        //     //var args = [$('.tabla_completa table'), 'DescargaMasiva.csv'];
+        //     //exportTableToCSV.apply(this, args);
+        // });
+        $('#loaderDescarga').hide();
+
+        $('.table_download_xls_link').trigger("click");
+
+
+
       });
 
       function descargaSeleccion(){
@@ -573,7 +731,7 @@ $('#loader').show();
         var indDesc = [];
         var tipoDescarga = [];
         var tempId;
-        var indSel = $('#indicadorDescarga').attr('checked');
+        var indSel = $('#indicadorDescarga').is(':selected');
 
         $(".child").each(function (index) {
           classDescarga = $(this).is(':checked');
@@ -600,12 +758,15 @@ $('#loader').show();
 
         if(indSel){
           //alert('Enviar');
-          $('#indicadorDescarga').attr('checked');
-          $('#metadatoDescarga').attr('checked');
-          $('#calculoDescarga').attr('checked');
+          $('#indicadorDescarga').is(':selected');
+          $('#metadatoDescarga').is(':selected');
+          $('#calculoDescarga').is(':selected');
         }else{
           alert('Debe seleccionar al menos un tipo de descarga');
         }
+
+
+
       }
 
       function items(item, index) {
@@ -697,7 +858,8 @@ $('#loader').show();
     }
 
     function llamada(indicador, ser){
-      var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
+      var url = 'https://ods.org.mx/API/Tematica/Todos';
+			//var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}
       //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
