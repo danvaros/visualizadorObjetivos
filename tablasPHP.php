@@ -218,6 +218,11 @@ function creaXLSCoS($data){
 
           //$dato =  '34.6';
           $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue('A2', 'Entidad Federativa');
+
+          $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
+
+          $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue($a.'2', $valores[$k]['AADato_ser']);
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
@@ -256,7 +261,8 @@ function creaXLSCoS($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-  $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
+  $objWriter->save('xlscsv/'.$data['Codigo_ind'].$data['Descrip_ind'].'.xlsx');
+  // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
   $callTime = $callEndTime - $callStartTime;
