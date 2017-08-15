@@ -429,6 +429,15 @@ else
       cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
     });
 
+    $('#sel_estados').change(function(){
+        var seleccionado = $(this).val();
+        jQuery.each( coor_estado, function( i, val ){
+          if(seleccionado == val.estado){
+              map.setView([val.lat, val.long], val.zoom);
+          }
+        });
+     });
+
   });//fin document ready
 
   function arma_tabla_insumo(arreglo_datos,num_cobertura){
