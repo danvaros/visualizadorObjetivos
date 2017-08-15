@@ -176,7 +176,7 @@ function tablaAS(data){
   var tabuladoAS =  '<table class="tablaArmada centered striped "><thead><tr><th>Periodo</th><th>'+ data.Descrip_ser +'</th></tr></thead>';
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].ValorDato.length; j++) {
-      var terna = (data.Coberturas[i].ValorDato[j].Leyenda_ser != null || data.Coberturas[i].ValorDato[j].Leyenda_ser != '') ? data.Coberturas[i].ValorDato[j].Leyenda_ser : data.Coberturas[i].ValorDato[j].AADato_ser;
+      var terna = (data.Coberturas[i].ValorDato[j].Leyenda_ser == null || data.Coberturas[i].ValorDato[j].Leyenda_ser == '') ? data.Coberturas[i].ValorDato[j].AADato_ser : data.Coberturas[i].ValorDato[j].Leyenda_ser;
       tabuladoAS += '<tr><td>'+ terna +'</td><td>' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
     }//fin for J
   }//fin for i
