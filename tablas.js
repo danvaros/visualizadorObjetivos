@@ -35,9 +35,9 @@ function tablaCoS(data){
     tabuladoCoS += '</tr></thead><tr><td>' +  '<span style="display:none;">'+data.Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Coberturas[i].ValorDato.length; j++) {
       if(data.Coberturas[i].ValorDato[j].Dato_Formato == ""){
-        tabuladoCoS += '<td> ND </td>';
+        tabuladoCoS += '<td style="text-align:right;"> ND </td>';
       }else{
-        tabuladoCoS += '<td>' + data.Coberturas[i].ValorDato[j].Dato_Formato + '</td>';
+        tabuladoCoS += '<td style="text-align:right;">' + data.Coberturas[i].ValorDato[j].Dato_Formato + '</td>';
       }
     }//fin for j
     tabuladoCoS += '</tr>';
@@ -82,9 +82,9 @@ function tablaCoCl(data){
     tabuladoCoCl   +=  '<tr ><td>' +  '<span style="display:none;">'+data.Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
-        tabuladoCoCl   +=  '<td> ND </td>';
+        tabuladoCoCl   +=  '<td style="text-align:right;"> ND </td>';
       }else{
-        tabuladoCoCl   +=  '<td>'+ data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td>';
+        tabuladoCoCl   +=  '<td style="text-align:right;">'+ data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td>';
       }
     }//fin for j
       tabuladoCoCl   += '</tr>';
@@ -109,11 +109,11 @@ function AClanidada(data){
         tabuladoAnidado += '<td>' + data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato + '</td>';
     }else if(primera){
       primera=false;
-      tabuladoAnidado += '<tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td>'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
+      tabuladoAnidado += '<tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td style="text-align:right;">'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
       labelYear = data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser;
     }
     else{
-      tabuladoAnidado += '</tr><tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td>'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
+      tabuladoAnidado += '</tr><tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td style="text-align:right;">'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
       labelYear = data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser;
     }
   }//fin for i
@@ -148,11 +148,11 @@ function tablaACl(data){
         tabuladoAnidado += '<td>' + data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato + '</td>';
     }else if(primera){
       primera=false;
-      tabuladoAnidado += '<tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td>'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
+      tabuladoAnidado += '<tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td style="text-align:right;">'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
       labelYear = data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser;
     }
     else{
-      tabuladoAnidado += '</tr><tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td>'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
+      tabuladoAnidado += '</tr><tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td style="text-align:right;">'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
       labelYear = data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser;
     }
   }//fin for i
@@ -177,7 +177,7 @@ function tablaAS(data){
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].ValorDato.length; j++) {
       var terna = (data.Coberturas[i].ValorDato[j].Leyenda_ser == null || data.Coberturas[i].ValorDato[j].Leyenda_ser == '') ? data.Coberturas[i].ValorDato[j].AADato_ser : data.Coberturas[i].ValorDato[j].Leyenda_ser;
-      tabuladoAS += '<tr><td>'+ terna +'</td><td>' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
+      tabuladoAS += '<tr><td>'+ terna +'</td><td style="text-align:right;">' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
     }//fin for J
   }//fin for i
   tabuladoAS += '</table>';
@@ -190,9 +190,9 @@ function tablaClA(data){
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
-        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td> ND </td></tr>';
+        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;"> ND </td></tr>';
       }else{
-        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td>' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td></tr>';
+        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;">' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td></tr>';
       }
     }//fin for J
   }//fin for i
@@ -224,9 +224,9 @@ function CoClanidada(data){
     tabulado += '<tr><td>'+  '<span style="display:none;">'+data.Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Coberturas[i].Descrip_cg + '</td>';
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
-          tabulado += '<td> ND </td>';
+          tabulado += '<td style="text-align:right;"> ND </td>';
       }else{
-        tabulado += '<td>' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato + '</td>';
+        tabulado += '<td style="text-align:right;">' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato + '</td>';
       }
     }
     tabulado += '</tr>' ;
