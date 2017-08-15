@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#sel_estados').hide();
 	get_tematica(PCveInd);
 	$('#listado_indicadores').change(function(){
 		//alert( $('#listado_indicadores select').val() );
