@@ -505,6 +505,10 @@
         </div>
       </div>
 
+      <div id="mensajeNEM" style="display:none;">
+
+      </div>
+
       <div class="row">
         <div class="col s12 center-align">
           <a id="indicador" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps indicadores-taps-active" style =" border-radius: 5px 0px 0px 5px;">INDICADOR</a>
@@ -742,7 +746,7 @@
       <div id="tabla_export" style="display: none;"></div>
       <div id="tabla_export2" style="display: none;"></div>
 
-      <div class="row scrollable-section" data-section-title="Descarga de datos">
+      <div class="row scrollable-section" id="DescargaDatos" data-section-title="Descarga de datos">
         <div class="col s12 l12">
           <h3 class="fuerte t_principal">Descargar datos</h3>
           <li class="divider"></li>
@@ -1217,6 +1221,24 @@
           $('#chart2').hide();
         }
       }
+
+      if(codigoDg.replace(/\s/g,'') == 'NEM' ){
+        $('#tabla_nacional').hide();
+        $('#indicador-panel').hide();
+        $('#mapas_hide').hide();
+        $('#botonera_nacional').hide();
+        $('#chart2').hide();
+        $('#indicador-grafica').hide();
+        $('#DescargaDatos').hide();
+        $('#indicador').hide();
+        $('#metadato').hide();
+        $('#serie').hide();
+        $('#datos').hide();
+        $('#mensajeNEM').show();
+        $('#mensajeNEM').html('<h5 style="text-align:center;">Indicador no disponible por el momento.</h5>');
+      }
+
+
 
       $('#metadato-panel').hide();
       $('#serie-panel').hide();
