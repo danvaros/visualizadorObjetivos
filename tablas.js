@@ -27,7 +27,12 @@ function tablaCoS(data){
     if(!cabezera){
       tabuladoCoS += '<th> Entidad Federativa </th>';
       for (var j = 0; j < data.Coberturas[i].ValorDato.length; j++) {
-        tabuladoCoS += '<th>' + data.Coberturas[i].ValorDato[j].AADato_ser + '</th>';
+        if(data.Coberturas[i].ValorDato[j].Leyenda_ser == '' || data.Coberturas[i].ValorDato[j].Leyenda_ser == null){
+          tabuladoCoS += '<th>' + data.Coberturas[i].ValorDato[j].AADato_ser + '</th>';
+        }else{
+          tabuladoCoS += '<th>' + data.Coberturas[i].ValorDato[j].Leyenda_ser + '</th>';
+        }
+
       }//fin for j
       cabezera = true;
     }
@@ -177,7 +182,12 @@ function tablaAS(data){
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].ValorDato.length; j++) {
       var terna = (data.Coberturas[i].ValorDato[j].Leyenda_ser == null || data.Coberturas[i].ValorDato[j].Leyenda_ser == '') ? data.Coberturas[i].ValorDato[j].AADato_ser : data.Coberturas[i].ValorDato[j].Leyenda_ser;
-      tabuladoAS += '<tr><td>'+ terna +'</td><td style="text-align:right;">' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
+
+      if(data.Coberturas[i].ValorDato[j].Dato_Formato == '' || data.Coberturas[i].ValorDato[j].Dato_Formato == null){
+        tabuladoAS += '<tr><td>'+ terna +'</td><td> NA </td></tr>';
+      }else{
+        tabuladoAS += '<tr><td>'+ terna +'</td><td>' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
+      }
     }//fin for J
   }//fin for i
   tabuladoAS += '</table>';
@@ -189,8 +199,8 @@ function tablaClA(data){
   var tabuladoClA =  '<table class="tablaArmada striped"><thead><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr></thead>';
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
-      if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
-        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;"> ND </td></tr>';
+      if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == "" || data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == null){
+        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td> NA </td></tr>';
       }else{
         tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;">' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td></tr>';
       }
