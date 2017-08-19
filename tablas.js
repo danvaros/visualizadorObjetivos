@@ -200,7 +200,7 @@ function tablaClA(data){
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == "" || data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == null){
-        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td> NA </td></tr>';
+        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;"> NA </td></tr>';
       }else{
         tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;">' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td></tr>';
       }
