@@ -2240,6 +2240,7 @@
       if(cadena  == 'municipal'){
         $("#boton_municipal").hide();
         $("#boton_estatal").show();
+        $("#sel_estados").show();
         //PCveInd indecacdor 118
         var municipios = []; //arreglo con los valores de la llamada a la api
         var valuesMunicipio = [];
@@ -2475,7 +2476,8 @@
       else{
         $("#boton_municipal").show();
         $("#boton_estatal").hide();
-
+        $("#sel_estados").hide();
+        
         for(var j=1;j<=25;j++){
           $('#anio_'+j).removeClass('active_anio');
           $('#anio_'+j).addClass('inactive_anio');
