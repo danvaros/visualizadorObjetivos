@@ -450,7 +450,7 @@ $('#descargaZip').hide();
                <div class="obj_icon center-align id_11" id="id_11">
                  <img class="ico_obj" src="img/ods-11.png" alt="" />
                </div>
-               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi11" style="padding-left: 12px;"> 11- Ciudades y comunidades sustentables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><!-- <input type="checkbox" class="validate caja_d indi11" style="padding-left: 12px;">--> 11- Ciudades y comunidades sustentables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="ciudades_comunidades_cont">
                 <div class="row" >
@@ -466,7 +466,7 @@ $('#descargaZip').hide();
                <div class="obj_icon center-align id_12" id="id_12">
                  <img class="ico_obj" src="img/ods-12.png" alt="" />
                </div>
-               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi12" style="padding-left: 12px;"> 12- Producción y consumo responsables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><!-- <input type="checkbox" class="validate caja_d indi12" style="padding-left: 12px;">--> 12- Producción y consumo responsables<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="produccion_consumo_cont">
                 <div class="row" >
@@ -482,7 +482,7 @@ $('#descargaZip').hide();
                <div class="obj_icon center-align id_13" id="id_13">
                  <img class="ico_obj" src="img/ods-13.png" alt="" />
                </div>
-               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi13" style="padding-left: 12px;"> 13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><!-- <input type="checkbox" class="validate caja_d indi13" style="padding-left: 12px;">--> 13- Acción por el clima<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="accion_clima_cont">
                <div class="row" >
@@ -598,14 +598,11 @@ $('#descargaZip').hide();
   <h1>Aviso</h1>
   <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
 </div>
-<div id="resp">
-
-</div>
 
 <div id="descargaZip">
   <div class="caja">
       <h3>Se está generando su carpeta de descarga</h3>
-      <div style="margin:0 auto;text-align:center;">
+      <div style="margin:0 auto;text-align:center;" class="loadload">
         <div class="preloader-wrapper big active">
           <div class="spinner-layer spinner-blue">
             <div class="circle-clipper left">
@@ -619,6 +616,13 @@ $('#descargaZip').hide();
             </div>
           </div>
       </div>
+    </div>
+    <div id="resp">
+
+    </div>
+
+    <div class="cerrar">
+        <button id="cerrarBoton" class="valdidate caja_d waves-effect waves-light btn blue white-text">Cerrar</button>
     </div>
   </div>
 </div>
@@ -643,9 +647,11 @@ $('#descargaZip').hide();
     $(document).ready(function(){
 
         $('select').material_select();
+        $('.cerrar').hide();
 
-        $('#enviarDescarga').on('click',function(){
-
+        $('#enviarDescarga').on('click',function(e){
+          $('#descargaZip').show();
+          e.preventDefault();
           var indica = [];
           var valor='';
           var n = $('input[type=checkbox]:checked');
@@ -676,9 +682,17 @@ $('#descargaZip').hide();
            success: function(data)
            {
              $('#resp').html(data);
-           }
+             $('.loadload').hide();
+             $('.cerrar').show();
+             //exit();
+
+           },
+           async: false
        });
 
+       $('#cerrarBoton').on('click',function(e){
+          $('#descargaZip').hide();
+       });
 
 
         $('#loaderDescarga').show();

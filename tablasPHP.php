@@ -292,7 +292,7 @@ function get_tabuladoCSV($indicador){
 //$indicadorres = array(208,210,365,366,367,212,213,224,48,227,228,368,369,236);
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4);
-$indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,333,350,351,352,353,354,140,141,334,361);
+//$indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,333,350,351,352,353,354,140,141,334,361);
 
 
 // ----------- Crea todos los XLS de Indicador ---------//
@@ -303,9 +303,9 @@ $indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,3
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
-  for ($i=0; $i < count($indicadorres); $i++) {
-    get_tabuladoCSV($indicadorres[$i]);
-  }
+  // for ($i=0; $i < count($indicadorres); $i++) {
+  //   get_tabuladoCSV($indicadorres[$i]);
+  // }
 
 
 // ----------- Crea todos los XLS de Metadatos ---------//
@@ -325,7 +325,7 @@ $indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,3
 //creaXLSCoS(datos(26));
 
 
-//metadato(datosMetadato(26));
+metadato(datosMetadato(1));
 
 
 function abecedario($posicion){
