@@ -1487,40 +1487,7 @@
 
      $('#sel_municipios').change(function(){
        var seleccionado = $(this).val();
-       $('.infos').remove();
-       $('.info2').remove();
-       map.removeLayer(geojson);
-
-       //PCveInd indecacdor 118
-       var municipios = []; //arreglo con los valores de la llamada a la api
-       var geo_mun = [];
-       var features = [];
-       var valuesMunicipio = [];
-       var brew = new classyBrew();
-
-       //++sacar la clave del estado y sacar el indicador que se esta manejando
-      //  var cl =  get_clave_estado(seleccionado);
-      //  valorDato(get_estado_municipios(cl+'%',118));
-
-       for(var i = 0; i < municipio.features.length; i++){
-         if(seleccionado == municipio.features[i].properties.nom_mun){
-           features.push(municipio.features[i]);
-          //  if (municipio.features[i].properties.nom_mun == null) continue;
-           //
-          //  valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun));
-         }
-       }
-
-       geo_mun={'features':features,'type':"FeatureCollection"};
-
-       console.log(valorDato);
-       console.log(valuesMunicipio);
-
-       geojson = L.geoJson(geo_mun, {
-         style: style,
-         onEachFeature: onEachFeature
-       }).addTo(map);
-
+       munisipal_ind(seleccionado);
      });
 
   });//fin del document ready
@@ -3384,6 +3351,54 @@ console.log(arrray_anios);
         }
         return clave;
       }
+
+      function munisipal_ind(seleccionado){
+        $('.infos').remove();
+        $('.info2').remove();
+        map.removeLayer(geojson);
+        var clave =  get_clave_estado(seleccionado);
+
+        //PCveInd indecacdor 118
+        var municipios = []; //arreglo con los valores de la llamada a la api
+        var geo_mun = [];
+        var features = [];
+        var valuesMunicipio = [];
+        var brew = new classyBrew();
+
+        //++sacar la clave del estado y sacar el indicador que se esta manejando
+       //  var cl =  get_clave_estado(seleccionado);
+       //  valorDato(get_estado_municipios(cl+'%',118));
+
+        for(var i = 0; i < municipio.features.length; i++){
+          if(seleccionado == municipio.features[i].properties.nom_mun){
+            features.push(municipio.features[i]);
+            if (municipio.features[i].properties.nom_mun == null) continue;
+            console.log(busqueda_municipio(municipio.features[i].properties.nom_mun));
+            valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun));
+          }
+        }
+
+        geo_mun={'features':features,'type':"FeatureCollection"};
+
+        console.log(valorDato);
+        console.log(valuesMunicipio);
+
+        geojson = L.geoJson(geo_mun, {
+          style: style,
+          onEachFeature: onEachFeature
+        }).addTo(map);
+
+        function busqueda_municipio(cadena) {
+          //console.log("super log",cadena,estados);
+          for (var i = 0; i < municipios.length; i++) {
+            if (municipios[i][0] == cadena) {
+              //console.log(cadena,municipios[i][1],i);
+              return parseFloat(municipios[i][1]);
+            }
+          }
+        }
+      }
+
 
     </script>
   </body>
