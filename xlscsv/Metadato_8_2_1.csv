@@ -1,0 +1,52 @@
+"8_2_1Tasa de crecimiento del PIB por persona ocupada",""
+"Objetivo","Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos"
+"Meta","Lograr niveles más elevados de productividad económica mediante la diversificación, la modernización tecnológica y la innovación, entre otras cosas centrándose en los sectores con gran valor añadido y un uso intensivo de la mano de obra"
+"Nombre del Indicador","Tasa de crecimiento del PIB por persona ocupada"
+"Definición","Variación anual del Producto Interno Bruto (PIB) -ajustado por paridad de poder de compra- por persona ocupada."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Resulta de dividir el Producto Interno Bruto -ajustado por paridad de poder de compra- por persona ocupada en un año específico entre el Producto Interno Bruto -ajustado por paridad de poder de compra- por persona ocupada en el año inmediato anterior, menos 1, y el resultado se multiplica por 100."
+"Unidad de medida","Porcentaje"
+"Cobertura geográfica","Nacional"
+"Referencia temporal","1996-2016"
+"Oportunidad","Tres meses."
+"Periodicidad del indicador","Anual."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI) y Secretaría del Trabajo y Previsión Social (STPS). 1995-2004: Encuesta Nacional de Empleo (ENE), con proyecciones de población basadas en el Conteo de Población y Vivienda 2005. A partir de 2005: Encuesta Nacional de Ocupación y Empleo (ENOE), con proyecciones de población basadas en el Censo de Población y Vivienda 2010. (12 de febrero de 2016).Instituto Nacional de Estadística y Geografía (INEGI). Sistema de Cuentas Nacionales de México, Base 2008. Producto Interno Bruto Anual a precios corrientes.Organización para la Cooperación y el Desarrollo Económicos (OCDE). ""PPPs for GDP - Historical series"" (Series históricas de la Paridad de Poder de Compra). (23 de febrero de 2016)."
+"Fecha de actualización del indicador","25 de abril de 2017"
+"Fecha de próxima actualización del indicador","Abril de 2017"
+"Unidad de Estado (UE) responsable de calcular el indicador","Secretaría del Trabajo y Previsión Social (STPS)
+STPS"
+"Importancia y utilidad del indicador","La medición de la productividad laboral contribuye al conocimiento y evaluación de las posibilidades de la economía de un país para crear y mantener oportunidades de empleo con remuneración justa y equitativa."
+"Referencia nacional y/o internacional","Programa de las Naciones Unidas para el Desarrollo (PNUD). ""Soporte del PNUD para la implementación de la Agenda 2030 para el Desarrollo Sostenible""  Grupo de Naciones Unidas para el Desarrollo
+
+Organización Internacional del Trabajo (OIT). Indicadores Clave del Mercado de Trabajo, 2015. OIT, Ginebra, Suiza. http://www.ilo.org/global/statistics-and-databases/research-and-databases/kilm/WCMS_498940/lang--es/index.htm"
+"Observaciones","1. La información de la Encuesta Nacional de Empleo está conceptualmente homologada a la Encuesta Nacional de Ocupación y Empleo.
+
+2. Los datos de población ocupada se refieren a las personas ocupadas de 15 años y más: i) Los de 1995 a 2000 corresponden al segundo trimestre de cada año; ii) A partir de 2001, los datos resultan del promedio aritmético de los cuatro trimestres de cada año.
+
+3. La paridad poder de compra (PPC) -o paridad de poder adquisitivo- es un tipo de cambio que resulta de un ajuste cuyo propósito es eliminar las diferencias de niveles de precios que prevalecen entre países. Al efectuar la conversión a términos de PPC, el PIB de los diversos países se expresa para un mismo conjunto de precios, de tal forma que las comparaciones de esta medida entre países reflejan sólo las diferencias en el volumen de bienes y servicios comprados.
+Este tipo de cambio se expresa en términos del dólar estadounidense, por lo que el PIB a PPC mide el valor del gasto de un país, referido al nivel de precios vigente en Estados Unidos.
+
+4. Los datos del PIB tienen base 2008 y están expresadas en precios corrientes.
+
+Nota: Las cifras del PIB y las estimaciones del tipo de cambio de Paridad de Poder de Compra están sujetas a revisiones periódicas por parte de las instituciones que las generan, por lo que es posible que se registren cambios frecuentes en el numerador de este indicador, lo cual repercute en el valor final del mismo.
+
+5. Las cifras absolutas de población ocupada para el periodo 1995-2004 fueron generadas con el factor de expansión correspondiente a las proyecciones de población elaboradas con base en el Conteo de Población y Vivienda 2005.
+
+Las cifras absolutas de la misma variable correspondientes al periodo 2005-2015 se generaron con el factor de expansión correspondiente a las proyecciones de población revisadas por el Consejo Nacional de Población (CONAPO), las cuales se basaron en el Censo de Población y Vivienda 2010 y se difundieron en abril de 2013.
+
+Debido a lo anterior, el dato de la tasa de crecimiento del PIB por persona ocupada de 2005 (7.0%) resultó de aplicar las cifras de población ocupada de 2005 y de 2004, correspondientes a la serie anterior, las cuales están ajustadas a las proyecciones de población basadas en el Conteo de Población y Vivienda 2005.
+<img src=""IconosFT/O1M1B-1_4_1.png"">
+
+Por su parte, la tasa de crecimiento del PIB por persona ocupada de 2006 (7.4%) utilizó las cifras de población ocupada de 2006 y de 2005 de las proyecciones de población basadas en el Censo de Población y Vivienda 2010. Esta misma serie fue también utilizada para calcular las tasas de crecimiento de los años siguientes.
+
+<img src=""IconosFT/O1M1B-1_4_2.png"">"
+"Contacto","Lic. Antonio Amerlinck Assereto
+Director de Estudios e Investigación Laboral Dirección General de Investigación y Estadísticas del Trabajo
+Teléfono: Dir.(55) 2000 5463¬2000 5300, ext. 63263
+Email: aamerlinck@stps.gob.mx
+Dirección: Paseo de la Reforma 93 Colonia Tabacalera, 06030 Cuauhtémoc, Cuauhtémoc, Ciudad de México"
+"",""
+"",""
+"",""
+"",""

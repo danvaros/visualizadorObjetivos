@@ -1,0 +1,61 @@
+"11_1_3Proporción de la población urbana que habita en viviendas precarias",""
+"Objetivo","Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles"
+"Meta","De aquí a 2030, asegurar el acceso de todas las personas a viviendas y servicios básicos adecuados, seguros y asequibles y mejorar los barrios marginales"
+"Nombre del Indicador","Proporción de la población urbana que habita en viviendas precarias"
+"Definición","Es el porcentaje de ocupantes en viviendas particulares ubicadas en localidades urbanas (más de 15 mil habitantes) que presentan al menos una de las siguientes características:
+
+1) falta de acceso a fuentes de agua mejoradas,
+2) carencia de drenaje y saneamiento adecuado, 
+3) deficiencias en los materiales de construcción de sus viviendas (piso de tierra, muro o techo frágil)
+4) carencia de espacio suficiente para vivir."
+"Tipo de Indicador","Nacional"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Este indicador resulta de dividir a los ocupantes de viviendas particulares ubicadas en localidades urbanas que habitan en viviendas precarias en un año determinado, entre el total de ocupantes de viviendas particulares ubicadas en localidades urbanas en el mismo año. El resultado se expresa en porcentaje."
+"Unidad de medida","Porcentaje"
+"Cobertura geográfica","Nacional, entidad federativa y municipio (para localidades con 15 mil habitantes o más)."
+"Referencia temporal","1992-2014"
+"Oportunidad","2 años"
+"Periodicidad del indicador","Nacional y entidad federativa: Bienal. Municipios: Decenal."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Para el dato nacional: Instituto Nacional de Estadística y Geografía (INEGI). Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 1992-2014. Para entidad federativa: Instituto Nacional de Estadística y Geografía (INEGI). Módulo de Condiciones Socioeconómicas de la ENIGH (MCS-ENIGH) 2008, 2010, 2012 y 2014. Para municipios: Instituto Nacional de Estadística y Geografía (INEGI). Muestra del Censo de Población y Vivienda 2000 y 2010."
+"Fecha de actualización del indicador","28 de julio de 2017"
+"Fecha de próxima actualización del indicador","Septiembre de 2017"
+"Unidad de Estado (UE) responsable de calcular el indicador","Secretaría de Desarrollo Agrario, Territorial y Urbano (SEDATU).
+SEDATU"
+"Importancia y utilidad del indicador","Este indicador describe el porcentaje de personas que habitan en viviendas precarias lo que permite identificar a la población urbana vulnerable a problemas de salud, de vivienda y que presenta un riesgo mayor frente a los fenómenos naturales."
+"Referencia nacional y/o internacional","Organización Mundial de la Salud (OMS) Agua, saneamiento e higiene"
+"Observaciones","Según la definición de la ONU una vivienda de tugurio es aquella que carece de al menos una de las siguientes condiciones:
+
+1. Acceso a fuentes mejoradas de agua.
+2. Acceso a servicios de saneamiento mejorados.
+3. Durabilidad de la vivienda.
+4. Espacio suficiente para vivir.
+5. Seguridad de la tenencia de la tierra.
+
+En este caso se presenta la proporción de la población urbana que vive en viviendas precarias debido a la carencia de fuentes para medir adecuadamente la seguridad de la tenencia de la tierra. El indicador se construyó a partir de la identificación de las viviendas con al menos una carencia, las cuales se midieron de la siguiente manera.
+1) Se consideran fuentes mejoradas de agua aquellas fuentes que están protegidas de la contaminación exterior, particularmente de la contaminación con excrementos por lo que se identificaron a las viviendas que carecen de acceso a agua de la red pública, ya sea en la vivienda, en el terreno o a través de una llave pública.
+2) Las instalaciones de saneamiento mejorado separan higiénicamente los excrementos humanos del contacto con humanos, animales e insectos, por lo que en este apartado se identificaron dos rubros:
+a) Las viviendas que no cuentan con drenaje a la red pública o a fosa séptica y,
+b) Las que carecen de excusado de uso exclusivo de sus habitantes.
+3) Se considera que una vivienda es durable si se construye en un lugar no peligroso y tiene una estructura lo suficientemente resistente y adecuada para proteger a sus habitantes de condiciones climáticas extremas como lluvia, calor, frío y humedad. Dado que no se cuenta con información sobre la ubicación de las viviendas solo pudieron identificarse las siguientes características:
+a) Piso de tierra.
+b) Muro frágil (construido a partir de materiales de desecho, lámina de cartón, lámina metálica o de asbesto, carrizo, bambú, palma, embarro o bajareque).
+c) Techo frágil (construido a partir de materiales de desecho, lámina de cartón o palma).
+4) Se considera que una vivienda cuenta con suficiente espacio habitable si no más de tres personas comparten un mismo dormitorio (mínimo 4m2). Por lo que se identificaron las viviendas con más de tres miembros del hogar por cuarto.
+
+*Para el año 2005 se realizó una medición.
+La ENIGH 2005, a diferencia de los levantamientos llevados a cabo en años anteriores de manera bienal, corresponde a una edición especial, por lo que la serie continuará actualizándose cada dos años.
+
+Las cifras por entidad federativa provienen del Módulo de Condiciones Socioeconómicas de la Encuesta Nacional de Ingresos y Gastos de los Hogares (MCS-ENIGH).
+
+Las cifras a nivel municipal provienen de la Muestra del Censo de Población y Vivienda.
+
+Los Municipios de - Mezcalapa, El Parral, Emiliano Zapata y Belisario Domínguez - del Estado de Chiapas, no se incluyen en el Marco Geoestadístico Nacional y en el Catálogo Único de Claves de Áreas Geoestadísticas Estatales, Municipales y Localidades, hasta en tanto la Suprema Corte de Justicia de la Nación resuelva lo correspondiente."
+"Contacto","Mtra. Maria Eugenia García Velarde
+Directora de Operación Urbana
+Teléfono: 41 23 71 00, ext. 52100
+Email: eugenia.garcia@sedatu.gob.mx
+Dirección:"
+"",""
+"",""
+"",""
+"",""

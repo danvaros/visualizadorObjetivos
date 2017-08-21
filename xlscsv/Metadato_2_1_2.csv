@@ -1,0 +1,34 @@
+"2_1_2Proporción de la población con inseguridad alimentaria moderada o severa (carencia por acceso a la alimentación)",""
+"Objetivo","Poner fin al hambre, lograr la seguridad alimentaria y la mejora de la nutrición y promover la agricultura sostenible"
+"Meta","De aquí a 2030, poner fin al hambre y asegurar el acceso de todas las personas, en particular los pobres y las personas en situaciones de vulnerabilidad, incluidos los niños menores de 1 año, a una alimentación sana, nutritiva y suficiente durante todo el año"
+"Nombre del Indicador","Proporción de la población con inseguridad alimentaria moderada o severa (carencia por acceso a la alimentación)"
+"Definición","La inseguridad alimentaria moderada o severa son los grados de inseguridad alimentaria que reflejan la existencia de limitaciones en la cantidad de alimentos en el hogar y experiencias de hambre en la alimentación de los integrantes de los hogares. La clasificación de la situación de seguridad o inseguridad alimentaria se hace con base en la Escala Mexicana de Seguridad Alimentaria (EMSA)."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Se determina a partir de una distinción entre los hogares con población menor de dieciocho años y los hogares sin población menor de dieciocho años. Para el total de hogares donde no habitan menores de dieciocho años de edad se identifican aquellos en los que algún adulto, por falta de dinero o recursos, al menos: no tuvo una alimentación variada; dejó de desayunar, comer o cenar; comió menos de lo que debería comer; se quedaron sin comida; sintió hambre, pero no comió; o hizo sólo una comida o dejó de comer durante todo el día. En el caso del total de hogares donde habitan menores de dieciocho años de edad se identifican aquellos en los que por falta de dinero o recursos, tanto las personas mayores como las menores de dieciocho años: tuvieron una alimentación variada; comieron menos de lo necesario; se les disminuyeron las cantidades servidas en la comida; sintieron hambre, pero no comieron; o hicieron una comida o dejaron de comer durante todo el día."
+"Unidad de medida","Porcentaje"
+"Cobertura geográfica","Nacional, entidad federativa y municipio."
+"Referencia temporal","2010-2014"
+"Oportunidad","1 año."
+"Periodicidad del indicador","Nacional y entidad federativa: Bienal. Municipios: Quinquenal."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI). Módulo de Condiciones Socioeconómicas de la Encuesta de Ingresos y Gastos de los Hogares (MCS-ENIGH), 2010 - 2014. http://www.inegi.org.mx/est/contenidos/proyectos/encuestas/hogares/modulos/mcs/default.aspxConsejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL).  Metodología para la medición multidimensional de la pobreza en México"
+"Fecha de actualización del indicador","11 de abril de 2017"
+"Fecha de próxima actualización del indicador","2018"
+"Unidad de Estado (UE) responsable de calcular el indicador","Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL). Dirección General Adjunta de Análisis de la Pobreza.
+CONEVAL"
+"Importancia y utilidad del indicador","El Indicador describe el  porcentaje de personas que han visto reducida la cantidad de alimentos y han experimentado episodios de hambre en su hogar. El indicador ha sido utilizado para evaluar el impacto de algunos programas de ayuda alimentaria que forman parte de la Cruzada Nacional Contra el Hambre."
+"Referencia nacional y/o internacional","Se emplea una escala de seguridad alimentaria basada en una propuesta de Pérez-Escamilla, Melgar-Quiñonez, Nord, Álvarez y Segall-Correa. Esta escala reconoce cuatro posibles niveles de inseguridad alimentaria: inseguridad alimentaria severa, inseguridad alimentaria moderada, inseguridad alimentaria leve y seguridad alimentaria. Para mayor detalle consultar la siguiente metodología: http://www.coneval.gob.mx/Informes/Coordinacion/Publicaciones%20oficiales/MEDICION_MULTIDIMENSIONAL_SEGUNDA_EDICION.pdf
+
+Datos de CONEVAL sobre acceso a la alimentación: http://www.coneval.gob.mx/Medicion/Paginas/PobrezaInicio.aspx"
+"Observaciones","A fin de contar con una medida que refleje con la mayor precisión posible la existencia de limitaciones significativas en el ejercicio del derecho a la alimentación, se considera en situación de carencia por acceso a la alimentación a los hogares que presenten un grado de inseguridad alimentaria moderada o severa.
+
+Las escalas de seguridad alimentaria evalúan aspectos como la preocupación por la falta de alimentos, los cambios en la calidad y cantidad de estos, e incluso las experiencias de hambre. Para el caso latinoamericano, un grupo de especialistas en nutrición ha venido desarrollando una adaptación de esta escala, la cual ha sido validada para el caso mexicano después de una serie de estudios y levantamientos de información en el país."
+"Contacto","Mtro. Ricardo Cesar Aparicio Jiménez
+Director General Adjunto de Análisis de la Pobreza
+Teléfono: 55 5481 7200, ext. 70003
+Email: rcaparicio@coneval.org.mx
+Dirección: Boulevard Adolfo López Mateos 160, Piso 2 Colonia San Ángel Inn, 01060 Álvaro Obregón, Álvaro Obregón, Ciudad de México"
+"",""
+"",""
+"",""
+"",""

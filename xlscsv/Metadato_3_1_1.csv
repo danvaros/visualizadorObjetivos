@@ -1,0 +1,53 @@
+"3_1_1Razón de mortalidad materna",""
+"Objetivo","Garantizar una vida sana y promover el bienestar de todos a todas las edades"
+"Meta","De aquí a 2030, reducir la tasa mundial de mortalidad materna a menos de 70 por cada 100,000 nacidos vivos"
+"Nombre del Indicador","Razón de mortalidad materna"
+"Definición","Es el número de defunciones de mujeres mientras se encuentren embarazadas o dentro de los 42 días siguientes a la terminación del embarazo, debida a cualquier causa relacionada con o agravada por el embarazo mismo o su atención (con exclusión de las muertes accidentales o incidentales), en un determinado año, por cada 100 mil nacidos vivos en ese mismo año. Representa el riesgo obstétrico."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Este indicador resulta de dividir el número de muertes maternas en un determinado año, entre el total de nacidos vivos en el mismo periodo, multiplicado por 100 mil. "
+"Unidad de medida","Defunciones de mujeres por cada 100 mil  nacidos vivos"
+"Cobertura geográfica","Nacional y entidad federativa."
+"Referencia temporal","1990-2015"
+"Oportunidad","1 año."
+"Periodicidad del indicador","Anual."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Secretaría de Salud (SS). Sistema Nacional de Información en Salud (SINAIS). Base de datos del Subsistema de información sobre nacimientos (SINAC)**.Instituto Nacional de Estadística y Geografía (INEGI) y Secretaría de Salud (SS). Bases de datos de Mortalidad.Consejo Nacional de Población (CONAPO). Proyecciones de la población de México 2010-2050 y estimaciones 1990-2009. Abril de 2013*. http://www.conapo.gob.mx/es/CONAPO/Proyecciones (20 de octubre de 2016)."
+"Fecha de actualización del indicador","17 de abril de 2017"
+"Fecha de próxima actualización del indicador","Noviembre de 2017"
+"Unidad de Estado (UE) responsable de calcular el indicador","Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).
+SS"
+"Importancia y utilidad del indicador","La disminución de la mortalidad materna es un desafío enorme para el sistema de salud, su importancia radica en  su vinculación con la desigualdad, el rezago social y económico del país. En las últimas décadas, mejorar la salud materna y en especial reducir las muertes  se ha convertido en una prioridad para el sector salud con la implementación de diversas estrategias como: El Hospital Amigo del Niño y de la Madre, el programa Arranque Parejo en la vida, la vigilancia del embarazo y la dotación de suplemento alimenticio a mujeres embarazadas y en periodo de lactancia, a través del programa de Desarrollo Humano Prospera y la estrategia Embarazo Saludable, a través del Seguro Popular de Salud.  El combate de la  mortalidad materna no es tarea exclusiva de los servicios de salud, por lo que es necesario involucrar a otros actores como la familia, la comunidad y la sociedad civil organizada, a fin de sentar las bases de una nueva cultura del cuidado a la salud y con ello reducir los riesgos durante el embarazo, parto y puerperio."
+"Referencia nacional y/o internacional","Organización Panamericana de la Salud (OPS).  http://www.paho.org/Spanish/DD/PUB/PC_591.htm
+
+Organización Mundial de la Salud (OMS). http://www.who.int/mediacentre/factsheets/fs348/es/"
+"Observaciones","Los datos del periodo 1990-2001 corresponden a razones de mortalidad materna estimadas. Para este periodo, la estimación a nivel nacional se basó en diversos estudios nacionales e internacionales sobre el subregistro de la mortalidad materna, y en datos de la Encuesta Nacional de la Dinámica Demográfica. La estimación para las entidades federativas se calculó respecto a la estimación nacional, tomando en cuenta la distribución porcentual de las muertes maternas observadas, por lo que los datos no consideraron la heterogeneidad del subregistro entre entidades.
+
+Sin embargo, a partir de 2002, este indicador se calcula considerando para el numerador el número de defunciones maternas de 10 a 54 años ocurridas en el año por entidad de residencia habitual, según las estadísticas vitales de defunciones del INEGI/SS que corresponden a los resultados de la ""Búsqueda Intencionada y Reclasificación de Muertes Maternas"".
+
+A partir de 2007 se excluyen defunciones con residencia en el extranjero y a partir de 2009 se excluyen  las muertes maternas registradas de manera extemporánea.
+
+Para 1990- 2010, los nacimientos (denominador) son los estimados por el CONAPO que corresponden a las proyecciones de la población de México, 2010-2050 y  estimaciones 1990-2009, basadas en el Censo de Población y Vivienda 2010. Esta información se actualizará cada vez que el CONAPO publique oficialmente nuevas proyecciones de población elaboradas con base en un ejercicio censal y la conciliación demográfica.
+
+** A partir de 2011, los nacimientos corresponden a los nacidos vivos ocurridos del Subsistema de Información sobre Nacimientos (SINAC) que capta la información a través del Certificado de Nacimiento y ha logrado una mejora en su cobertura, proporciona información de manera oportuna, con diferentes desagregaciones y mide el hecho vital al momento de la ocurrencia del mismo.  Además, la Junta de Gobierno del INEGI determinó, el 23 de mayo de 2013, al SINAC en el marco del sector salud como Información de Interés Nacional, y por tanto, es oficial y de uso obligatorio para el cálculo de los indicadores que se incluyan en el Catálogo Nacional de Indicadores. 
+
+Los nacidos vivos ocurridos del SINAC son corregidos con respecto a los nacimientos estimados por el CONAPO en las siguientes entidades según año: Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca, San Luis Potosí, Sonora, Veracruz y Yucatán (2011); Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca, San Luis Potosí, Yucatán (2012); Colima, Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca, San Luis Potosí, Sonora, Yucatán (2013); y Baja California, Colima, Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca,  San Luis Potosí, Sinaloa, Sonora, Yucatán (2014). La corrección de los nacidos vivos, se obtiene a partir de la tendencia de las diferencias porcentuales entre los nacimientos estimados del CONAPO y los nacidos vivos ocurridos del SINAC. 
+Según la Clasificación Internacional de Enfermedades 10a rev. (CIE-10) se considera una defunción materna a la clasificada en los códigos O00-O99, A34, D392, F53, M830 y embarazadas con B20-B24. Excluye muertes maternas tardías (O96 y O97) y defunciones por coriocarcinoma (C58). Los códigos CIE9 correspondientes son 630-679. 
+
+La descripción de los códigos de la Clasificación Internacional de Enfermedades 10a rev. (CIE-10) se encuentra disponible en la siguiente dirección: <a target=""_blank"" class=""liga3"" href=""http://www.who.int/classifications/apps/icd/icd10online/""> http://www.who.int/classifications/apps/icd/icd10online/</a>
+
+Para información adicional sobre defunciones maternas puede consultar:
+
+<a target=""_blank"" class=""liga3"" href=""http://www.dgis.salud.gob.mx/descargas/pdf/BIRMM_Informe2011.pdf"">Búsqueda Intencionada y Reclasificación de Muertes Maternas en México, Informe 2011</a>
+
+La metodología para ajustar los nacidos vivos puede consultarse en: <a target=""_blank"" class=""liga3"" href=""http://www.dgis.salud.gob.mx/"">http://www.dgis.salud.gob.mx/</a>
+
+En algunas entidades se presentan variaciones significativas en la RMM de un año a otro. Tal es el caso de Durango, Hidalgo, Querétaro, Tlaxcala y Veracruz donde la RMM disminuyó considerablemente de 2014 a 2015. Caso contario ocurrió en estados como Campeche, Morelos y Nayarit donde la RMM incrementó notablemente para el mismo periodo. Sin embargo,  esto se debe a la sensibilidad del indicador ya que no se presentan variaciones considerables en el número de muertes maternas."
+"Contacto","Mtra. Amparo de María Solís Cuevas
+Directora de Información Demográfica
+Teléfono: 55 6392 2300, ext. 52594
+Email: amparo.solis@salud.gob.mx
+Dirección: Paseo de la Reforma 450 Colonia Juárez, 06600 Cuauhtémoc, Cuauhtémoc, Ciudad de México"
+"",""
+"",""
+"",""
+"",""

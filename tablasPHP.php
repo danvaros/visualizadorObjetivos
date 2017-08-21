@@ -1,4 +1,6 @@
 <?php
+ini_set('memory_limit', '256M');
+
 
 function indicadores(){
   // create curl resource
@@ -44,15 +46,19 @@ foreach($bar as $meta){
     foreach($indis as $indi){
       $india = $indi['Indicador'];
 
-      $indicas = count($india);
-      for ($i=0; $i < $indicas; $i++) {
-        $ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
-        //echo ' '.$india[$i]['ClaveInd_arb'].'<br/>';
+      if($india[$i]['DesGeo']['Codigo_dg'] != 'NEM  '){
+
+        $indicas = count($india);
+        for ($i=0; $i < $indicas; $i++) {
+          $ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
+          //echo ' '.$india[$i]['ClaveInd_arb'].'<br/>';
+        }
       }
 
     }// Foreach Indicador
 }// Foreach Metas
 
+//var_dump($ClaveInd_arb);
 
 
 function datos($indicador){
@@ -272,18 +278,33 @@ function get_tabuladoCSV($indicador){
     return $t;
 }
 
+
+
 //get_tabulado(208);
+
+
+//$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
+
+//$indicadorres = array(208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
+
+//$indicadorres = array(343,266,269,103,272,276,101,304,307,311,312);
+//csv
+//$indicadorres = array(208,210,365,366,367,212,213,224,48,227,228,368,369,236);
+
+//$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4);
+$indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,333,350,351,352,353,354,140,141,334,361);
+
 
 // ----------- Crea todos los XLS de Indicador ---------//
 
-  for ($i=0; $i < count($ClaveInd_arb); $i++) {
-    get_tabulado($ClaveInd_arb[$i]);
-  }
+  // for ($i=0; $i < count($indicadorres); $i++) {
+  //   get_tabulado($indicadorres[$i]);
+  // }
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
-  for ($i=0; $i < count($ClaveInd_arb); $i++) {
-    get_tabuladoCSV($ClaveInd_arb[$i]);
+  for ($i=0; $i < count($indicadorres); $i++) {
+    get_tabuladoCSV($indicadorres[$i]);
   }
 
 
@@ -340,6 +361,18 @@ function abecedario($posicion){
   for ($p=65; $p <=90 ; $p++) {
     $letra8 = chr($p);
     $arr[] = 'G'.$letra8;
+  }
+  for ($q=65; $q <=90 ; $q++) {
+    $letra9 = chr($q);
+    $arr[] = 'H'.$letra9;
+  }
+  for ($r=65; $r <=90 ; $r++) {
+    $letra10 = chr($r);
+    $arr[] = 'I'.$letra10;
+  }
+  for ($s=65; $s <=90 ; $s++) {
+    $letra11 = chr($s);
+    $arr[] = 'J'.$letra11;
   }
   //var_dump($arr);
   return $arr[$posicion];
