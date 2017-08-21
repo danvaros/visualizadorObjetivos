@@ -1,0 +1,44 @@
+"1_2_1Proporción de la población que vive por debajo del umbral nacional de la pobreza, desglosada por sexo y edad",""
+"Objetivo","Poner fin a la pobreza en todas sus formas y en todo el mundo"
+"Meta","De aquí a 2030, reducir al menos a la mitad la proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones con arreglo a las definiciones nacionales"
+"Nombre del Indicador","Proporción de la población que vive por debajo del umbral nacional de la pobreza, desglosada por sexo y edad"
+"Definición","Es el porcentaje de la población de referencia que tiene un ingreso corriente total per cápita inferior al valor monetario de la línea de bienestar (canasta alimentaria y no alimentaria)."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Este indicador resulta de identificar a la población de referencia que cuenta con un ingreso corriente total per cápita inferior al valor monetario de la línea de bienestar (canasta alimentaria y no alimentaria), dividir dicho número de personas entre la población de referencia total y de multiplicar el cociente por 100."
+"Unidad de medida","Porcentaje"
+"Cobertura geográfica","Nacional, entidad federativa, grupos de edad y sexo"
+"Referencia temporal","2010-2014"
+"Oportunidad","1 año<sup>a/</sup>."
+"Periodicidad del indicador","Bienal (2010-2014)"
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI).  Módulo de Condiciones Socioeconómicas de la Encuesta de Ingresos y Gastos de los Hogares, 2010 - 2014Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL).  Metodología para la medición multidimensional de la pobreza en México(1 de marzo de 2017)."
+"Fecha de actualización del indicador","25 de abril de 2017"
+"Fecha de próxima actualización del indicador","Segundo semestre de 2017"
+"Unidad de Estado (UE) responsable de calcular el indicador","Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL).
+CONEVAL
+http://www.coneval.org.mx/"
+"Importancia y utilidad del indicador","Este indicador está ligado a la Meta 1.2 de reducir al menos a la mitad la proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones de acuerdo con las definiciones nacionales. Permite dar seguimiento a la evolución de la población que carece de un ingreso suficiente para satisfacer sus necesidades alimentarias y no alimentarias, como insumo para la generación de estrategias, políticas y acciones de generación de ingreso."
+"Referencia nacional y/o internacional","Banco Mundial (BM)"
+"Observaciones","Metodología para la construcción de las líneas de bienestar en México:
+
+Esta metodología de construcción de línea de pobreza se basa en los patrones de gasto de los hogares para aproximar el consumo de energía y micronutrientes de la población. Posteriormente, se ubica un estrato poblacional de referencia en el cual el consumo de energía coincide con las recomendaciones nutricionales. Una vez ubicado el estrato poblacional de referencia, se delimita el patrón de consumo de alimentos de acuerdo a criterios de mayor participación en el gasto y mayor frecuencia. De forma adicional, se determina la cantidad de alimentos que satisfagan requerimientos nutricionales de vitaminas, minerales y proteínas. El valor de dicha canasta se obtiene del gasto reportado por el estrato de referencia y dicho valor monetario se actualiza con el Índice de Precios al Consumidor.
+
+Una vez que se tiene el umbral de referencia, se define el indicador de ingreso que se utiliza en la medición de la pobreza. El ingreso corriente total per cápita considera los ingresos corrientes monetarios y no monetarios de los integrantes de un hogar. Al sumar todos los ingresos de todos miembros del hogar y dividirlos entre el tamaño del mismo ajustado por adulto equivalente y economías de escala, se obtiene el ingreso corriente total per cápita ajustado.
+
+Para mayor detalle consultar:
+
+<a target=""_blank"" class=""liga3"" href=""http://www.coneval.org.mx/Informes/Coordinacion/INFORMES_Y_PUBLICACIONES_PDF/Construccion_lineas_bienestar.pdf"">Construcción de las Líneas de Bienestar. Documento Metodológico </a>
+
+Datos de CONEVAL sobre la pobreza multidimensional:
+<a target=""_blank"" class=""liga3"" href=""http://www.coneval.org.mx/Informes/Coordinacion/Publicaciones%20oficiales/MEDICION_MULTIDIMENSIONAL_SEGUNDA_EDICION.pdf"">Metodología para la medición multidimensional de la pobreza en México</a>
+
+<sup>a/</sup> La actualización del indicador está sujeta a la publicación de los microdatos por parte de INEGI."
+"Contacto","Dra. Alida Marcela Gutiérrez Landeros
+Directora de Medición de Pobreza y Análisis de Seguimiento de Indicadores
+Teléfono: 54 81 72 75 o 00, ext. 70075
+Email: amgutierrez@coneval.org.mx
+Dirección: Boulevard Adolfo López Mateos #160, Colonia San Ángel Inn, C.P. 01060, Álvaro Obregón, Álvaro Obregón Ciudad de México"
+"",""
+"",""
+"",""
+"",""

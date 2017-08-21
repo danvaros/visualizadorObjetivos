@@ -1,0 +1,36 @@
+"9_C_2Número de suscripciones telefónicas fijas por cada 100 habitantes",""
+"Objetivo","Construir infraestructuras resilientes, promover la industrialización inclusiva y sostenible y fomentar la innovación"
+"Meta","Aumentar significativamente el acceso a la tecnología de la información y las comunicaciones y esforzarse por proporcionar acceso universal y asequible a Internet en los países menos adelantados de aquí a 2020"
+"Nombre del Indicador","Número de suscripciones telefónicas fijas por cada 100 habitantes"
+"Definición","Es el número de suscripciones telefónicas fijas en servicio por cada 100 habitantes en el país, al 31 de diciembre de cada año."
+"Tipo de Indicador","Nacional"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Este indicador resulta de dividir el número de suscripciones telefónicas fijas en servicio en un año específico entre la población total de dicho año, multiplicado por 100. Se expresa por cada 100 habitantes."
+"Unidad de medida","Suscripciones telefónicas fijas por cada 100 habitantes"
+"Cobertura geográfica","Nacional y entidad federativa."
+"Referencia temporal","1990-2016"
+"Oportunidad","1 año."
+"Periodicidad del indicador","Anual."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Federal de Telecomunicaciones (IFT). Coordinación General de Planeación Estratégica, Base de Datos de archivos electrónicos de la DIEM, se publica en el portal del IFT y se puede consultar en el Sistema de Información Estadística de Mercados de Telecomunicaciones (SIEMT)Consejo Nacional de Población (CONAPO). Proyecciones de la población de México 2010-2050 y estimaciones 1990-2009. Abril de 2013"
+"Fecha de actualización del indicador","28 de julio de 2017"
+"Fecha de próxima actualización del indicador","Abril de 2018"
+"Unidad de Estado (UE) responsable de calcular el indicador","Instituto Federal de Telecomunicaciones (IFT). Coordinación General de Planeación Estratégica.
+IFT"
+"Importancia y utilidad del indicador","Este indicador permite medir el nivel de acceso de la población al servicio de telefonía fija, y en el caso de la desagregación por Entidad Federativa, la distribución de dicho acceso."
+"Referencia nacional y/o internacional","Unión Internacional de Telecomunicaciones (UIT). http://www.itu.int/es/pages/default.aspx"
+"Observaciones","Las Suscripciones Telefónicas Fijas incluyen:
+Líneas telefónicas analógicas fijas activas, suscripciones VoIP, suscripciones locales fijas inalámbricas, ISDN equivalentes a canales de voz fijos y teléfonos públicos.
+
+Este indicador se llamaba anteriormente líneas telefónicas fijas en servicio.
+
+Con base en la información poblacional disponible por año, en lugar de la población estimada al cierre del año t, se utiliza la estimación poblacional al 1<sup>o</sup> de enero del año t+1 difundida por CONAPO.
+"
+"Contacto","Lic. Jorge Eduardo Ponce Leyva
+Coordinador General de Planeación Estratégica
+Teléfono: 55 5015 4368
+Email: jorge.ponce@ift.org.mx
+Dirección: Avenida Insurgentes sur 1143, Piso 5 Colonia Noche Buena, 03720 Benito Juárez, Benito Juárez, Ciudad de México"
+"",""
+"",""
+"",""
+"",""

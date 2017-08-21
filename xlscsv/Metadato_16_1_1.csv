@@ -1,0 +1,43 @@
+"16_1_1Número de defunciones por homicidio por cada 100 000 habitantes, desglosado por sexo y edad",""
+"Objetivo","Promover sociedades pacíficas e inclusivas para el desarrollo sostenible, facilitar el acceso a la justicia para todos y construir a todos los niveles instituciones eficaces e inclusivas que rindan cuentas"
+"Meta","Reducir significativamente todas las formas de violencia y las correspondientes tasas de mortalidad en todo el mundo"
+"Nombre del Indicador","Número de defunciones por homicidio por cada 100 000 habitantes, desglosado por sexo y edad"
+"Definición","Es el número de defunciones por homicidio por entidad de ocurrencia durante el año, dividido entre el total de la población a mitad del año, por 100 000."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","El indicador se calcula como el número de defunciones por homicidio (por entidad de ocurrencia) en el año, dividido entre el total de población a mitad de año, multiplicado por cien mil. Se considera un desglose por sexo y por grupos de edad: personas menores de 15 años; 15-24; 25-64; 65 o más años."
+"Unidad de medida","Casos por cada 100 000 habitantes"
+"Cobertura geográfica","Nacional"
+"Referencia temporal","2010-2015"
+"Oportunidad","Las cifras preliminares de un determinado año se publican durante el mes de julio del año siguiente.
+Las cifras definitivas  de un determinado año se publican en el último trimestre del año siguiente."
+"Periodicidad del indicador","Anual."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI), Dirección General de Estadísticas Sociodemográficas (DGES), Dirección General Adjunta de Encuestas Sociodemográficas y Registros Administrativos (DGAESRA); Dirección de Registros Administrativos (DRA). Mortalidad. Defunciones por homicidio. Información de 1990 a 2015. http://www.inegi.org.mx/est/lista_cubos/consulta.aspx?p=adm&c=4Consejo Nacional de Población (CONAPO). Proyecciones de la población de México 2010-2050 y estimaciones 1990-2009. Abril de 2013"
+"Fecha de actualización del indicador","18 de julio de 2017"
+"Fecha de próxima actualización del indicador","31 de octubre de 2017"
+"Unidad de Estado (UE) responsable de calcular el indicador","Instituto Nacional de Estadística y Geografía (INEGI).
+INEGI
+http://www.inegi.org.mx/inegi/default.aspx"
+"Importancia y utilidad del indicador","Este indicador se utiliza ampliamente a nivel nacional e internacional para medir la forma más extrema de los crímenes violentos y también proporciona un indicio directo de la falta de seguridad. La seguridad frente a la violencia es un requisito previo para que las personas disfruten de una vida segura y eficaz, y para que las sociedades y las economías se desarrollen libremente. Los homicidios intencionales ocurren en todos los países del mundo y este indicador tiene una aplicabilidad a escala mundial.
+Para el caso de México, el Instituto Nacional de Estadística y Geografía recopila la información sobre las defunciones por homicidio provenientes de los registros administrativos (certificados de defunción), los cuales se basan en la Clasificación Estadística Internacional  de Enfermedades y Problemas Relacionados con la Salud, Décima Revisión (CIE-10).
+De acuerdo con la CIE-10 el homicidio se define como las ""lesiones ocasionadas por otra persona con intento de lesionar o matar, por cualquier medio"" y abarca los códigos X85 a Y09.
+Desde su adopción por los países miembros de la Organización Mundial de la Salud (OMS) en 1994, la CIE-10 constituye uno de los estándares más usados a nivel internacional para elaborar estadísticas de morbilidad y mortalidad en el mundo; cuyo propósito es permitir el registro sistemático, el análisis, la interpretación y la comparación de los datos de mortalidad y morbilidad recolectados en diferentes países o áreas, y en diferentes momentos."
+"Referencia nacional y/o internacional","Oficina de Naciones Unidas contra la Droga y el Delito (UNODC).
+
+Organización Mundial de la Salud (OMS).
+
+Clasificación Estadística Internacional de Enfermedades y Problemas Relacionados con la Salud, Décima Revisión (CIE-10)."
+"Observaciones","1. Los resultados se derivan de la información sobre las estadísticas vitales captada de los registros administrativos de defunciones accidentales y violentas, generados por las entidades federativas.
+
+Comprende el total de registros con códigos de causa básica para homicidios (X85-Y09) según la Clasificación Estadística Internacional de Enfermedades y Problemas Relacionados con la Salud, Décima Revisión. (CIE-10).
+
+2. Se consideran homicidios por año de registro."
+"Contacto","Centro de atención a usuarios INEGI
+Horario de lunes a domingo de 8:00 a 23:00 horas (tiempo del centro de México).
+Teléfono: Nacional sin costo: 01 800 111 46 34¬Internacional: (código internacional) + (52)+(449) 910 53 00, ext. 5301
+Email: atencion.usuarios@inegi.org.mx
+Dirección: Avenida Héroe de Nacozari Sur 2301 Fraccionamiento Jardines del Parque, 20276, Aguascalientes, Aguascalientes, Aguascalientes, Entre Calle INEGI y Avenida del Lago, Avenida Paseo de las Garzas."
+"",""
+"",""
+"",""
+"",""
