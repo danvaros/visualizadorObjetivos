@@ -1,0 +1,38 @@
+"3_2_6Tasa de mortalidad en niños menores de 5 años por enfermedades respiratorias agudas (defunciones por cada 100 mil menores de 5 años)",""
+"Objetivo","Garantizar una vida sana y promover el bienestar de todos a todas las edades"
+"Meta","De aquí a 2030, poner fin a las muertes evitables de recién nacidos y de niños menores de 5 años, logrando que todos los países intenten reducir la mortalidad neonatal al menos a 12 por cada 1,000 nacidos vivos y la mortalidad de los niños menores de 5 años al menos a 25 por cada 1,000 nacidos vivos"
+"Nombre del Indicador","Tasa de mortalidad en niños menores de 5 años por enfermedades respiratorias agudas (defunciones por cada 100 mil menores de 5 años)"
+"Definición","Es el número de defunciones en menores de 5 años de edad por enfermedades respiratorias agudas por cada 100 000 niños menores de 5 años en el año t."
+"Tipo de Indicador","Nacional"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","El indicador resulta de dividir el número defunciones de niños menores de 5 años de edad por enfermedades respiratorias agudas entre la población menor de 5 años, multiplicando el cociente por 100."
+"Unidad de medida","Por cien mil"
+"Cobertura geográfica","Nacional y entidad federativa."
+"Referencia temporal","1990-2015"
+"Oportunidad","1 año."
+"Periodicidad del indicador","Anual."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI). Estadísticas Vitales. Bases de datos de Mortalidad.Consejo Nacional de Población (CONAPO). Proyecciones de la población de México 2010-2050 y estimaciones 1990-2009. Abril de 2013"
+"Fecha de actualización del indicador","28 de julio de 2017"
+"Fecha de próxima actualización del indicador","Por definir"
+"Unidad de Estado (UE) responsable de calcular el indicador","Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).
+SS"
+"Importancia y utilidad del indicador","Representa el riesgo de morir de los menores de 5 años por infecciones respiratorias agudas (IRAS) en el país es siempre preocupante debido a que esta causa es considerada prevenible si se tiene acceso a los servicios de salud de manera oportuna. Por esta razón, es necesario mantener y reforzar las acciones prioritarias de prevención e infecciones respiratorias agudas (IRAS)."
+"Referencia nacional y/o internacional","Pan American Health Organization"
+"Observaciones","Para el periodo 1990-2010, el indicador es calculado con las defunciones y la población menor de cinco años (población media) que son estimados por el CONAPO y corresponden a las proyecciones de la población de México, 2010-2050 y estimaciones 1990-2009, basadas en el Censo de Población y Vivienda 2010. Esta información se actualizará cada vez que el CONAPO publique oficialmente nuevas proyecciones de población elaboradas con base en un ejercicio censal y la conciliación demográfica. Para las defunciones, se calcula un ""factor de ajuste"" derivado de la diferencia porcentual entre las estimadas por el CONAPO y las registradas por INEGI/SS, y este se aplica a las defunciones de niños menores de cinco años por enfermedades respiratorias agudas.
+
+A partir de 2011 la fuente de información son las defunciones registradas de INEGI/SS de niños menores de cinco años y éstas se corrigen por subregistro, la corrección se realiza por un lado para el grupo de niños menores de 1 año en las siguientes entidades: Chiapas, Guerrero, Hidalgo, Nayarit, Nuevo León, Oaxaca, San Luis Potosí, Sinaloa y Zacatecas y por otro lado se ajustan las defunciones de niños de 1 a 4 años para: Baja California, Coahuila, Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca, San Luis Potosí y Veracruz, de manera que las defunciones para niños menores de 5 años se obtiene de la suma de defunciones de menores de 1 y de 1 a 4 años.
+
+La corrección de las defunciones se basa en el cálculo de un factor de ajuste que se obtiene a través de la tendencia de las diferencias porcentuales entre las defunciones estimadas del CONAPO y las defunciones registradas del INEGI/SS. El factor de ajuste de las defunciones de cada entidad se aplica a las defunciones registradas por enfermedades respiratorias agudas. Para esta causa de mortalidad se utilizaron los códigos: CIE9: 460 - 466, 480 - 487 y CIE10: J00 - J22.
+
+Las defunciones registradas de INEGI/SS se reportan por entidad de residencia y año de registro.
+El 25 de agosto de 2015, el INEGI actualizó la cifra de defunciones generales 2013.
+El 18 de febrero de 2016 el INEGI actualizó las cifras de defunciones generales 2014."
+"Contacto","Mtra. Amparo de María Solís Cuevas
+Directora de Información Demográfica
+Teléfono: 55 6392 2300, ext. 52594
+Email: amparo.solis@salud.gob.mx
+Dirección: Paseo de la Reforma 450 Colonia Juárez, 06600 Cuauhtémoc, Cuauhtémoc, Ciudad de México"
+"",""
+"",""
+"",""
+"",""

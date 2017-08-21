@@ -1,0 +1,40 @@
+"3_1_2Proporción de partos con asistencia de personal sanitario especializado",""
+"Objetivo","Garantizar una vida sana y promover el bienestar de todos a todas las edades"
+"Meta","De aquí a 2030, reducir la tasa mundial de mortalidad materna a menos de 70 por cada 100,000 nacidos vivos"
+"Nombre del Indicador","Proporción de partos con asistencia de personal sanitario especializado"
+"Definición","Es el porcentaje de partos con asistencia de personal calificado para ofrecer la necesaria supervisión, atención y asesoramiento a las mujeres durante el embarazo, el parto y el posparto con respecto al total de partos atendidos durante un periodo determinado."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Este indicador resulta de dividir el número de partos atendidos por personal calificado en un determinado año, entre el total de partos atendidos en el mismo periodo, multiplicado por 100."
+"Unidad de medida","Porcentaje"
+"Cobertura geográfica","Nacional y entidad federativa."
+"Referencia temporal","1990-2016"
+"Oportunidad","1 año."
+"Periodicidad del indicador","Anual."
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI). Base de datos de nacimientos.Secretaría de Salud (SS). Sistema Nacional de Información en Salud (SINAIS). Base de datos del Subsistema de Información sobre Nacimientos (SINAC)."
+"Fecha de actualización del indicador","20 de julio de 2017"
+"Fecha de próxima actualización del indicador","Por definir"
+"Unidad de Estado (UE) responsable de calcular el indicador","Secretaría de Salud (SS). Dirección General de Información en Salud (DGIS).
+SS"
+"Importancia y utilidad del indicador","Permite conocer el número de mujeres atendidas por médicos en el momento del parto, lo cual implica una mayor calidad en la atención y con ello menos riesgo de fallecer por una causa materna. Un bajo nivel de este indicador mostraría la necesidad de contar con un mayor número de médicos gineco-obstetras, clínicas de salud y mejorar la atención durante el embarazo."
+"Referencia nacional y/o internacional","Banco Mundial (BM). http://data.worldbank.org/indicator/SH.STA.BRTC.ZS/countries/1W?display=graph"
+"Observaciones","Las Naciones Unidas mencionan que el indicador puede expresarse como el número de nacimientos en presencia de personal de salud capacitado con respecto al total de nacimientos.
+
+Se entiende por personal calificado (sanitario capacitado) a aquellas personas debidamente capacitadas y que tienen equipo y medicamentos adecuados. No se incluyen los asistentes de tipo tradicional, aún cuando hayan recibido un breve curso de capacitación.
+
+Para 1990 a 2010, debido al registro tardío en los nacimientos registrados en la base de datos del INEGI, se utiliza el número de nacimientos ocurridos y registrados en el año n, más los nacimientos ocurridos en el año n pero registrados en el año n+1 y n+2 (reconstrucción de nacimientos).
+
+A partir de 2011 se utilizan los nacidos vivos ocurridos del Subsistema de Información sobre Nacimientos (SINAC) que capta la información a través del certificado de nacimiento y ha logrado una mejora en su cobertura, proporciona información de manera oportuna, con diferentes desagregaciones y mide el hecho vital al momento de la ocurrencia del mismo. Además, la Junta de Gobierno del INEGI determinó, el 23 de mayo de 2013, al SINAC en el marco del sector salud como Información de Interés Nacional, y por tanto, es oficial y de uso obligatorio para el cálculo de los indicadores que se incluyan en el Catálogo Nacional de Indicadores. Sin embargo, los nacidos vivos ocurridos del SINAC son corregidos con respecto a los nacimientos estimados por el CONAPO en las siguientes entidades según año: Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca, San Luis Potosí, Sonora, Veracruz y Yucatán (2011); Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca, San Luis Potosí, Yucatán (2012); Colima, Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca, San Luis Potosí, Sonora, Yucatán (2013); y Baja California, Colima, Chiapas, Chihuahua, Guerrero, Hidalgo, Oaxaca,  San Luis Potosí, Sinaloa, Sonora, Yucatán (2014). Las cifras se corrigen a través de un factor de ajuste por entidad federativa, que se obtiene a partir de la tendencia de las diferencias porcentuales entre los nacimientos estimados del CONAPO y los nacidos vivos ocurridos del SINAC. Las entidades federativas a las que se les aplica el factor de ajuste presentan subregistro en los nacidos vivos ocurridos fuera de la unidad médica, por tanto, los nacidos vivos ocurridos en la unidad médica y atendidos por personal sanitario capacitado (médicos) tienen una cobertura confiable y no son ajustados para evitar una sobreestimación.
+
+El cálculo del indicador a nivel entidad federativa se hace por entidad de ocurrencia del parto. 
+
+La metodología para ajustar los nacidos vivos y las defunciones de niños menores de cinco años puede consultarse en: <a target=""_blank"" class=""liga3"" href=""http://www.dgis.salud.gob.mx/"">http://www.dgis.salud.gob.mx/</a>"
+"Contacto","Mtra. Amparo de María Solís Cuevas
+Directora de Información Demográfica
+Teléfono: 55 6392 2300, ext. 52594
+Email: amparo.solis@salud.gob.mx
+Dirección: Paseo de la Reforma 450 Colonia Juárez, 06600 Cuauhtémoc, Cuauhtémoc, Ciudad de México"
+"",""
+"",""
+"",""
+"",""
