@@ -280,7 +280,7 @@ function get_tabuladoCSV($indicador){
 
 
 
-//get_tabulado(208);
+//get_tabulado(342);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -292,14 +292,14 @@ function get_tabuladoCSV($indicador){
 //$indicadorres = array(208,210,365,366,367,212,213,224,48,227,228,368,369,236);
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4);
-//$indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,333,350,351,352,353,354,140,141,334,361);
+$indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,333,350,351,352,353,354,140,141,334,361);
 
 
 // ----------- Crea todos los XLS de Indicador ---------//
 
-  // for ($i=0; $i < count($indicadorres); $i++) {
-  //   get_tabulado($indicadorres[$i]);
-  // }
+  for ($i=0; $i < count($indicadorres); $i++) {
+    get_tabulado($indicadorres[$i]);
+  }
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
@@ -325,7 +325,7 @@ function get_tabuladoCSV($indicador){
 //creaXLSCoS(datos(26));
 
 
-metadato(datosMetadato(1));
+//metadato(datosMetadato(1));
 
 
 function abecedario($posicion){
@@ -846,8 +846,9 @@ function creaXLSCoS($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['Dato_Formato'] == null || $valores[$k]['Dato_Formato'] == '') ? 'NA' : $valores[$k]['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celda, $valores[$k]['Dato_Formato']);
+                      ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -968,8 +969,9 @@ function creaCSVCoS($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['Dato_Formato'] == null || $valores[$k]['Dato_Formato'] == '') ? 'NA' : $valores[$k]['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celda, $valores[$k]['Dato_Formato']);
+                      ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -1115,8 +1117,9 @@ function creaXLSCoCl($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celda, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -1295,8 +1298,9 @@ function creaCSVCoCl($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celda, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -1473,8 +1477,9 @@ function creaXLSCoClAnidada($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celda, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -1651,8 +1656,9 @@ function creaCSVCoClAnidada($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celda, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -1814,8 +1820,9 @@ function creaXLSClA($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('B'.$vv, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue('B'.$vv, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -1944,8 +1951,9 @@ function creaCSVClA($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('B'.$vv, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue('B'.$vv, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -2073,8 +2081,10 @@ function creaXLSAS($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+
+          $datoAS = ($valores[$k]['Dato_Formato'] == null || $valores[$k]['Dato_Formato'] == '') ? 'NA' : $valores[$k]['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('B'.$vv, $valores[$k]['Dato_Formato']);
+                      ->setCellValue('B'.$vv, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -2202,8 +2212,9 @@ function creaCSVAS($data){
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
+          $datoAS = ($valores[$k]['Dato_Formato'] == null || $valores[$k]['Dato_Formato'] == '') ? 'NA' : $valores[$k]['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('B'.$vv, $valores[$k]['Dato_Formato']);
+                      ->setCellValue('B'.$vv, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -2328,8 +2339,11 @@ function creaXLSACl($data){
           $celdo = $k + 3;
           $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
+
+
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celdo, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -2453,8 +2467,10 @@ function creaCSVACl($data){
           $celdo = $k + 3;
           $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
+
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celdo, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -2578,8 +2594,10 @@ function creaXLSAClanidada($data){
           $celdo = $k + 3;
           $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
+
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celdo, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -2703,8 +2721,10 @@ function creaCSVAClanidada($data){
           $celdo = $k + 3;
           $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
+
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celdo, $valores[$k]['ValorDato']['Dato_Formato']);
+                      ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
