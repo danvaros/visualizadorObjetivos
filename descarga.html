@@ -601,7 +601,7 @@ $('#descargaZip').hide();
 
 <div id="descargaZip">
   <div class="caja">
-      <h3 id="mensajeDescarga">Se está generando su carpeta de descarga</h3>
+      <h5 id="mensajeDescarga">Se está generando su carpeta de descarga</h5>
       <div style="margin:0 auto;text-align:center;" class="loadload">
         <div class="preloader-wrapper big active">
           <div class="spinner-layer spinner-blue-only">
@@ -692,6 +692,7 @@ $('#descargaZip').hide();
 
        $('#cerrarBoton').on('click',function(e){
           $('#descargaZip').hide();
+          location.reload();
        });
 
 
