@@ -30,7 +30,7 @@ if($tipoFormato == 'xls' && $tipoSeleccion == 01){
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 if($tipoFormato == 'csv' && $tipoSeleccion == 01){
@@ -49,7 +49,7 @@ if($tipoFormato == 'csv' && $tipoSeleccion == 01){
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 if($tipoFormato == 'xls' && $tipoSeleccion == 02){
@@ -76,7 +76,7 @@ if($tipoFormato == 'xls' && $tipoSeleccion == 02){
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 if($tipoFormato == 'csv' && $tipoSeleccion == 02){
@@ -103,7 +103,7 @@ if($tipoFormato == 'csv' && $tipoSeleccion == 02){
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 
