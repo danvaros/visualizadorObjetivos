@@ -344,7 +344,7 @@ $('#descargaZip').hide();
                <div class="obj_icon center-align id_4" id="id_4">
                  <img class="ico_obj" src="img/ods-04.png" alt="" />
                </div>
-               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi4" style="padding-left: 12px;"> 4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><!-- <input type="checkbox" class="validate caja_d indi4" style="padding-left: 12px;">--> 4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="educacion_calidad_cont">
                <div class="row" >
@@ -601,26 +601,25 @@ $('#descargaZip').hide();
 
 <div id="descargaZip">
   <div class="caja">
-      <h3>Se está generando su carpeta de descarga</h3>
+      <h3 id="mensajeDescarga">Se está generando su carpeta de descarga</h3>
       <div style="margin:0 auto;text-align:center;" class="loadload">
         <div class="preloader-wrapper big active">
-          <div class="spinner-layer spinner-blue">
+          <div class="spinner-layer spinner-blue-only">
             <div class="circle-clipper left">
               <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
+            </div><div class="gap-patch">
               <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
+            </div><div class="circle-clipper right">
               <div class="circle"></div>
             </div>
           </div>
-      </div>
+        </div>
     </div>
     <div id="resp">
 
     </div>
-
+    <br/>
+    <br/>
     <div class="cerrar">
         <button id="cerrarBoton" class="valdidate caja_d waves-effect waves-light btn blue white-text">Cerrar</button>
     </div>
@@ -684,6 +683,7 @@ $('#descargaZip').hide();
              $('#resp').html(data);
              $('.loadload').hide();
              $('.cerrar').show();
+             $('#mensajeDescarga').html('Se ha generado su carpeta de descarga. Haga click en el siguiente enlace para descargar.<br/><br/>');
              //exit();
 
            },

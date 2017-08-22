@@ -46,7 +46,7 @@ foreach($bar as $meta){
     foreach($indis as $indi){
       $india = $indi['Indicador'];
 
-      if($india[$i]['DesGeo']['Codigo_dg'] != 'NEM  '){
+      if($india[$i]['DesGeo']['Clave_dg'] != 3 || $india[$i]['DesGeo']['Clave_dg'] != 3){
 
         $indicas = count($india);
         for ($i=0; $i < $indicas; $i++) {
@@ -58,7 +58,7 @@ foreach($bar as $meta){
     }// Foreach Indicador
 }// Foreach Metas
 
-//var_dump($ClaveInd_arb);
+var_dump($ClaveInd_arb);
 
 
 function datos($indicador){
@@ -297,9 +297,9 @@ $indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,20
 
 // ----------- Crea todos los XLS de Indicador ---------//
 
-  for ($i=0; $i < count($indicadorres); $i++) {
-    get_tabulado($indicadorres[$i]);
-  }
+  // for ($i=0; $i < count($indicadorres); $i++) {
+  //   get_tabulado($indicadorres[$i]);
+  // }
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
