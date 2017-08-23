@@ -3463,7 +3463,7 @@
         $.ajax({
           type: 'POST',
           url: "https://ods.org.mx/API/Valores/PorCobCla",
-          data:{"PCveInd":i,"PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":covertura,"PCveAgrupaCla": "0","POrden":"ASC","PIdioma":"ES"},
+          data:{"PCveInd":i,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":covertura,"PCveAgrupaCla": "0","POrden":"ASC","PIdioma":"ES"},
           success: function( data, textStatus, jqxhr ) {
             resultado = data;
           },

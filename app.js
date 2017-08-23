@@ -10,34 +10,37 @@
 
   var query_string = {};
   var query = window.location.search.substring(1);
-  var vars = getParameterByName("indicador");
   var obj = getParameterByName("objetivo");
   var objetivo = getParameterByName("obj");
   var meta = getParameterByName("meta");
   var codigoDg = getParameterByName("codigo");
-  var PCveInd = vars;
+  var PCveInd = getParameterByName("indicador");
+  var vars = getParameterByName("indicador");
+  var GloSerie = [];
   var Codigo_ind = '';
   var Descrip_ind = '';
   var tituloObjetivo = '';
   var titulo ;
   var pie ;
   var Algoritmo_ft = '';
-
   var data_local = '';
   var tabulado ;
   var tabulado_series = [];
   var tipoTabulado;
   var clasif;
 
+
+  //llama los parametros del indicador
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
     data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
     success: function( data, textStatus, jqxhr ) {
-    //data.Series[1] = data1.Series[0];
       clasif = data.AgrupaClas.TotalNivAgrupa_cla;
-      console.log('pspspsps');
-      console.log(clasif);
+      for (var i = 0; i < data.Serie.length; i++) {
+        GloSerie.push(data.Serie[i].ClaveSer_ats);
+      }
+      console.log(GloSerie);
     },
     error: function() {
             //alert('Error occured');
@@ -45,15 +48,15 @@
     async:false
   });
 
+  //llama la tematica
   $.ajax({
     type: 'POST',
     // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
     url: "https://ods.org.mx/API/Tematica/PorClave",
-    data: {'PClave':objetivo , 'PIdioma':'ES'},
+    data: {'PClave':meta , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
       nombreObj = data.Abrevia_des;
-
       for (var i = 0; i < data.Meta.length; i++) {
         if( data.Meta[i].Clave_arb ==  meta){
           Codigo_meta   = data.Meta[i].Codigo_des;
@@ -74,38 +77,27 @@
     async:true
   });
 
-if(PCveInd == 118){
+if(codigoDg == "NEM  "){
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorCobCla",
-    data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+    data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
-      $.ajax({
-        type: 'POST',
-        url: "https://ods.org.mx/API/Valores/PorCobCla",
-        data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"595","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
-        success: function( data1, textStatus, jqxhr ) {
-          data.Series[1] = data1.Series[0];
-        },
-        error: function() {
-                //alert('Error occured');
-            },
-        async:false
-      });
-
-      $.ajax({
-        type: 'POST',
-        url: "https://ods.org.mx/API/Valores/PorCobCla",
-        data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"596","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
-        success: function( data2, textStatus, jqxhr ) {
-          data.Series[2] = data2.Series[0];
-        },
-        error: function() {
-                //alert('Error occured');
-            },
-        async:false
-      });
+      // for (var i = 1; i < GloSerie.length; i++) {
+      //   $.ajax({
+      //     type: 'POST',
+      //     url: "https://ods.org.mx/API/Valores/PorCobCla",
+      //     data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[i],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+      //     success: function( data1, textStatus, jqxhr ) {
+      //       data.Series[i] = data1.Series[0];
+      //     },
+      //     error: function() {
+      //             //alert('Error occured');
+      //         },
+      //     async:false
+      //   });
+      // }
 
       Codigo_ind  = data.Codigo_ind;
       Descrip_ind = data.Descrip_ind;
