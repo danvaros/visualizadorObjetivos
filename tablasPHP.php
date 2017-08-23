@@ -46,14 +46,16 @@ foreach($bar as $meta){
     foreach($indis as $indi){
       $india = $indi['Indicador'];
 
-      if($india[$i]['DesGeo']['Clave_dg'] != 3 || $india[$i]['DesGeo']['Clave_dg'] != 3){
-
+      //if($india[$i]['DesGeo']['Clave_dg'] != 3 || $india[$i]['DesGeo']['Clave_dg'] != 3){
+      if($india[$i]['ClaveInd_arb'] != 356 || $india[$i]['ClaveInd_arb'] != 357 || $india[$i]['ClaveInd_arb'] != 358 || $india[$i]['ClaveInd_arb'] != 359 || $india[$i]['ClaveInd_arb'] != 360 || $india[$i]['ClaveInd_arb'] != 361 || $india[$i]['ClaveInd_arb'] != 343){
         $indicas = count($india);
         for ($i=0; $i < $indicas; $i++) {
           $ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
           //echo ' '.$india[$i]['ClaveInd_arb'].'<br/>';
         }
       }
+
+      //}
 
     }// Foreach Indicador
 }// Foreach Metas
