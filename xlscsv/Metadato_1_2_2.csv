@@ -1,0 +1,47 @@
+"1_2_2Proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones, con arreglo a las definiciones nacionales",""
+"Objetivo","Poner fin a la pobreza en todas sus formas y en todo el mundo"
+"Meta","De aquí a 2030, reducir al menos a la mitad la proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones con arreglo a las definiciones nacionales"
+"Nombre del Indicador","Proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones, con arreglo a las definiciones nacionales"
+"Definición","Es el porcentaje de la población de referencia que tiene al menos una carencia social (rezago educativo, acceso a los servicios de salud, acceso a la seguridad social, calidad y espacios de la vivienda, servicios básicos en la vivienda y acceso a la alimentación) y su ingreso es insuficiente para adquirir los bienes y servicios que requiere para satisfacer sus necesidades alimentarias y no alimentarias (línea de bienestar)."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Este indicador resulta de identificar a la población de referencia que cuenta con al menos una carencia social y que su ingreso es insuficiente para satisfacer sus necesidades alimentarias y no alimentarias, dividir dicho número de personas entre la población de referencia total y multiplicar el cociente por 100."
+"Unidad de medida","Porcentaje"
+"Cobertura geográfica","Nacional, entidad federativa, grupos de edad y sexo"
+"Referencia temporal","2010-2014"
+"Oportunidad","1 año<sup>a/</sup>."
+"Periodicidad del indicador","Bienal (2010-2014)"
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI).  Módulo de Condiciones Socioeconómicas de la Encuesta de Ingresos y Gastos de los Hogares, 2010 - 2014Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL).  Metodología para la medición multidimensional de la pobreza en México(1 de marzo de 2017)."
+"Fecha de actualización del indicador","25 de abril de 2017"
+"Fecha de próxima actualización del indicador","Segundo semestre de 2017"
+"Unidad de Estado (UE) responsable de calcular el indicador","Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL).
+CONEVAL
+http://www.coneval.org.mx/"
+"Importancia y utilidad del indicador","Este indicador está ligado a la Meta 1.2 de reducir al menos a la mitad la proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones con arreglo a las definiciones nacionales. Permite dar seguimiento a la evolución de la pobreza en México a través del tiempo, como insumo para la generación de estrategias, políticas y acciones de combate a la pobreza."
+"Referencia nacional y/o internacional","Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL)"
+"Observaciones","La metodología para la medición multidimensional de la pobreza en México:
+
+Esta metodología adopta como espacios analíticos el espacio de bienestar económico y el espacio de los derechos sociales: 
+
+Bienestar económico. Se identifica a la población cuyos ingresos son insuficientes para adquirir los bienes y servicios que requiere para satisfacer sus necesidades.
+
+Derechos sociales. Se identifica a la población con al menos una carencia social en los indicadores asociados a este espacio (rezago educativo, acceso a los servicios de salud, acceso a la seguridad social, calidad y espacios de la vivienda, acceso a los servicios básicos en la vivienda y acceso a la alimentación). A la medida agregada de estas carencias se le denomina Índice de Privación Social.
+""Una persona se encuentra en situación de pobreza multidimensional cuando no tiene garantizado el ejercicio de al menos uno de sus derechos para el desarrollo social, y si sus ingresos son insuficientes para adquirir los bienes y servicios que requiere para satisfacer sus necesidades"".
+
+Para mayor detalle consultar:
+
+<a target=""_blank"" class=""liga3"" href=""http://www.coneval.org.mx/Informes/Coordinacion/Publicaciones%20oficiales/MEDICION_MULTIDIMENSIONAL_SEGUNDA_EDICION.pdf"">Metodología para la medición multidimensional de la pobreza en México</a>
+
+Datos de CONEVAL sobre la pobreza multidimensional:
+<a target=""_blank"" class=""liga3"" href=""http://www.coneval.org.mx/Medicion/Paginas/PobrezaInicio.aspx"">Medición de la pobreza</a>
+
+<sup>a/</sup> La actualización del indicador está sujeta a la publicación de los microdatos por parte de INEGI."
+"Contacto","Dra. Alida Marcela Gutiérrez Landeros
+Directora de Medición de Pobreza y Análisis de Seguimiento de Indicadores
+Teléfono: 54 81 72 75 o 00, ext. 70075
+Email: amgutierrez@coneval.org.mx
+Dirección: Boulevard Adolfo López Mateos #160, Colonia San Ángel Inn, C.P. 01060, Álvaro Obregón, Álvaro Obregón Ciudad de México"
+"",""
+"",""
+"",""
+"",""

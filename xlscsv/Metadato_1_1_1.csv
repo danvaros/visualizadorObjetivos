@@ -1,0 +1,43 @@
+"1_1_1Proporción de la población que vive por debajo del umbral internacional de la pobreza, desglosada por sexo, edad, situación laboral y ubicación geográfica (urbana o rural)",""
+"Objetivo","Poner fin a la pobreza en todas sus formas y en todo el mundo"
+"Meta","De aquí a 2030, erradicar para todas las personas y en todo el mundo la pobreza extrema (actualmente se considera que sufren pobreza extrema las personas que viven con menos de 1.25 dólares de los Estados Unidos al día)"
+"Nombre del Indicador","Proporción de la población que vive por debajo del umbral internacional de la pobreza, desglosada por sexo, edad, situación laboral y ubicación geográfica (urbana o rural)"
+"Definición","Es el porcentaje de la población que en el año del cálculo vive con menos del equivalente a 1.90 dólares diarios a precios de 2011, según la paridad del poder adquisitivo."
+"Tipo de Indicador","Global"
+"Algoritmo",""
+"Descripción narrativa del cálculo del indiciador","Este indicador resulta de dividir el número de personas con ingreso per cápita inferior a 1.90 dólares diarios a precios de 2011, entre la población de referencia total, multiplicado por 100."
+"Unidad de medida","Porcentaje"
+"Cobertura geográfica","Nacional"
+"Referencia temporal","1994-2014"
+"Oportunidad","1 año<sup>a/</sup>."
+"Periodicidad del indicador","Bienal (1992-2014); 2005 <sup>b/</sup>"
+"Fuente generadora de la información estadística utilizada para el cálculo del indicador","Instituto Nacional de Estadística y Geografía (INEGI). Índice Nacional de Precios al Consumidor.Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL). Medición de la pobreza por ingresos.Banco Mundial (BM). Global Purchasing Power Parities and Real Expenditures. 2011 International Comparison Program. http://icp.worldbank.org/Instituto Nacional de Estadística y Geografía (INEGI). Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 1992-2012 y Banco de Información Económica (BIE). Serie de datos para PIB y Consumo Privado.Para entidad federativa: Instituto Nacional de Estadística y Geografía (INEGI). Módulo de Condiciones Socioeconómicas de la ENIGH (MCS-ENIGH) 2008, 2010, 2012 y 2014.(1 de marzo de 2017)."
+"Fecha de actualización del indicador","25 de abril de 2017"
+"Fecha de próxima actualización del indicador","Segundo semestre de 2017"
+"Unidad de Estado (UE) responsable de calcular el indicador","Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL).
+CONEVAL
+http://www.coneval.org.mx/"
+"Importancia y utilidad del indicador","Este indicador busca medir la pobreza con los estándares de los países pobres, por ello generalmente se asocia a la población que vive en pobreza extrema. El indicador está directamente ligado al Objetivo 1 de poner fin a la pobreza en todas sus formas y en todo el mundo y, de la misma forma, está ligado a la Meta 1.1 de erradicar para todas las personas y en todo el mundo la pobreza extrema. Además, el indicador permite dar seguimiento a la evolución de la pobreza a través del tiempo y realizar comparaciones internacionales de los niveles de pobreza en los países."
+"Referencia nacional y/o internacional","Banco Mundial (BM)"
+"Observaciones","1. Cálculo del ingreso per cápita ajustado.- 
+En primer lugar, se utiliza el ingreso corriente total de la medición de pobreza por ingresos reportada por CONEVAL (para mayor información sobre su composición consultar <a target=""_blank"" class=""liga3"" href=""http://www.coneval.org.mx"">http://www.coneval.org.mx</a>. En segundo lugar, se deflacta el ingreso con el Índice Nacional de Precios al Consumidor (INPC, base 2Q de diciembre de 2010=100) al mes de agosto de cada año en que INEGI capta la información de ingresos y gastos de los hogares. Posteriormente, se realiza un ajuste a los ingresos multiplicándolos por la propensión marginal al consumo. Esta propensión se estima a partir de la razón entre el Consumo Privado y el Producto Interno Bruto (PIB) con series originales base 2008 a precios corrientes. 
+
+2. Construcción de la línea de referencia.- La línea de la pobreza de $1.90 dólares se construye a partir del tipo de cambio de paridad de poder adquisitivo (PPA) de 2011 publicado por el Banco Mundial (7.673013 pesos por cada dólar americano a precios internacionales). El resultado se lleva a precios de agosto de cada año de medición, utilizando el Índice Nacional de Precios al Consumidor (INPC) publicado por el INEGI. Finalmente, se multiplica por 30 para obtener la línea de referencia mensual.
+
+3. Cálculo del número de personas con ingresos ajustados por debajo de la línea. Se compara el ingreso per cápita ajustado mensual con la línea de referencia, identificando y contabilizando el número de personas cuyo ingreso es menor a la línea. Se crea el factor de expansión de personas multiplicando el tamaño del hogar por el factor de expansión y se usa para calcular el porcentaje total de personas con ingresos por debajo de la línea de referencia.
+
+La ENIGH 2005, a diferencia de las llevadas a cabo en años anteriores de manera bienal, corresponde a una edición especial, por lo que la ENIGH continuará actualizándose cada dos años.
+
+Las cifras por entidad federativa provienen del Módulo de Condiciones Socioeconómicas de la Encuesta Nacional de Ingresos y Gastos de los Hogares (MCS-ENIGH).
+
+<sup>a/</sup> La actualización del indicador está sujeta a la publicación de los microdatos por parte de INEGI.
+<sup>b/</sup> Para el año 2005 se realizó una medición."
+"Contacto","Dra. Alida Marcela Gutiérrez Landeros
+Directora de Medición de Pobreza y Análisis de Seguimiento de Indicadores
+Teléfono: 54 81 72 75 o 00, ext. 70075
+Email: amgutierrez@coneval.org.mx
+Dirección: Boulevard Adolfo López Mateos #160, Colonia San Ángel Inn, C.P. 01060, Álvaro Obregón, Álvaro Obregón Ciudad de México"
+"",""
+"",""
+"",""
+"",""
