@@ -58,7 +58,7 @@ foreach($bar as $meta){
     }// Foreach Indicador
 }// Foreach Metas
 
-var_dump($ClaveInd_arb);
+//var_dump($ClaveInd_arb);
 
 
 function datos($indicador){
@@ -167,8 +167,6 @@ function datosMetadato($indicador){
     return $responseData;
 }
 
-
-
 function nombreIndicador($indicador){
   // create curl resource
         $ch = curl_init();
@@ -202,7 +200,6 @@ function nombreIndicador($indicador){
 
           return $responseData['Codigo_des'] . " " . $responseData['DescripInd_des'];
 }
-
 
 function get_tabulado($indicador){
 
@@ -279,8 +276,7 @@ function get_tabuladoCSV($indicador){
 }
 
 
-
-//get_tabulado(342);
+get_tabulado(2);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -291,7 +287,7 @@ function get_tabuladoCSV($indicador){
 //csv
 //$indicadorres = array(208,210,365,366,367,212,213,224,48,227,228,368,369,236);
 
-$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
+//$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
 //$indicadorres = array(1,340,341,342,2,105,118,345,26,27,23,346,347,348,349,132,333,350,351,352,353,354,140,141,334);
 
 
@@ -306,6 +302,19 @@ $indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,20
   // for ($i=0; $i < count($indicadorres); $i++) {
   //   get_tabuladoCSV($indicadorres[$i]);
   // }
+
+
+  // ----------- Crea todos los XLS de Indicador ---------//
+
+    for ($i=0; $i < count($ClaveInd_arb); $i++) {
+      get_tabulado($ClaveInd_arb[$i]);
+    }
+
+  // ----------- Crea todos los CSV de Indicador ---------//
+
+    for ($i=0; $i < count($ClaveInd_arb); $i++) {
+      get_tabuladoCSV($ClaveInd_arb[$i]);
+    }
 
 
 // ----------- Crea todos los XLS de Metadatos ---------//
@@ -545,7 +554,7 @@ function metadato($data){
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Algoritmo_ft'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Algoritmo_ft'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -745,7 +754,7 @@ function metadatoCSV($data){
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Algoritmo_ft'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Algoritmo_ft'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -791,6 +800,7 @@ function creaXLSCoS($data){
 
   /** Include PHPExcel */
   require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
+  //include dirname(__FILE__) . 'Classes/PHPExcel/Writer/Excel2007.php';
 
   // Create new PHPExcel object
   //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
@@ -812,7 +822,7 @@ function creaXLSCoS($data){
   $objPHPExcel->setActiveSheetIndex(0);
 
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('B1', $data['Codigo_ind'].$data['Descrip_ind']);
+              ->setCellValue('A1', $data['Codigo_ind'].$data['Descrip_ind']);
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -830,34 +840,25 @@ function creaXLSCoS($data){
         for ($k=0; $k < count($valores); $k++) {
           $a = abecedario($k+1);
           $b = abecedario(count($valores)+1);
-          // var_dump($valores[$k]);
-          // var_dump($valores[$k]['Dato_Formato']);
-          //$dato =  (string)$valores[$k]['Dato_Formato'];
-          //var_dump($dato);
 
-          //$dato =  '34.6';
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue('A2', 'Entidad Federativa');
 
           $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue($a.'2', $valores[$k]['AADato_ser']);
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
           $datoAS = ($valores[$k]['Dato_Formato'] == null || $valores[$k]['Dato_Formato'] == '') ? 'NA' : $valores[$k]['Dato_Formato'];
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue($a.$celda, $datoAS);
 
-          //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
-
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
+            //$objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
 
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
-        //var_dump(count($dato));
-        //var_dump($valores);
       }
 
 
@@ -866,39 +867,22 @@ function creaXLSCoS($data){
     }
   }
 
-  // Rename worksheet
-  //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+
+  $objPHPExcel->getActiveSheet()->mergeCells('A1:'.$b.'1');
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
 
-  // Save Excel 2007 file
-  //echo date('H:i:s') , " Write to Excel format" , EOL;
-  $callStartTime = microtime(true);
-
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
-  PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
+  //PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
+  ob_start();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
-  // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  $callEndTime = microtime(true);
-  $callTime = $callEndTime - $callStartTime;
-
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
-  // Echo memory usage
-  //echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo memory peak usage
-  //echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo done
-  //echo date('H:i:s') , " Done writing files" , EOL;
-  echo 'Files have been created in ' , getcwd() , EOL;
+  echo 'File "Indicador_'.$data["Codigo_ind"].'.xlsx" have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
 
@@ -975,7 +959,6 @@ function creaCSVCoS($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
 
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
@@ -989,9 +972,11 @@ function creaCSVCoS($data){
     }
   }
 
+
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -1086,15 +1071,6 @@ function creaXLSCoCl($data){
 
           $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue($a.'3', $valores[$k]['Descrip_cla']);
-          // var_dump($valores[$k]);
-          // var_dump($valores[$k]['Dato_Formato']);
-          //$dato =  (string)$valores[$k]['Dato_Formato'];
-          //var_dump($dato);
-
-          //$dato =  '34.6';
-          // $objPHPExcel->setActiveSheetIndex(0)
-          //             ->setCellValue('A2', 'Entidad Federativa');
-
 
           $periodo = count($valores[$k]['ClaveAgrupa_ac']);
           $per[] = $valores[$k]['ClaveAgrupa_ac'];
@@ -1122,10 +1098,6 @@ function creaXLSCoCl($data){
                       ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
-
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
-
-            $objPHPExcel->getActiveSheet()->mergeCells('A2:A3');// Merge para Entidad Federativa
 
             //$objPHPExcel->getActiveSheet()->mergeCells($a.'2:'.$d.'2'); // Merge para periodo
 
@@ -1157,21 +1129,23 @@ function creaXLSCoCl($data){
     }
   }
 
-  //  $foo = count($valores) / count(array_unique($per));
-  // //  var_dump($foo);
-  // //  var_dump($per);
-  // for ($m=1; $m < $foo; $m++) {
-  //   $f = $f + $periodon;
-  //   $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-  //   $e = $f+1;
-  // }
+   $foo = count($valores) / count(array_unique($per));
+  var_dump($foo);
+  var_dump($per);
+  for ($m=1; $m < $foo; $m++) {
+    $f = $f + $periodon;
+    $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
+    $e = $f+1;
+  }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
 
+  $objPHPExcel->getActiveSheet()->mergeCells('A2:A3');// Merge para Entidad Federativa
 
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -1184,6 +1158,7 @@ function creaXLSCoCl($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -1201,7 +1176,7 @@ function creaXLSCoCl($data){
 
   // Echo done
   //echo date('H:i:s') , " Done writing files" , EOL;
-  echo 'Files have been created in ' , getcwd() , EOL;
+  echo 'Files '.'Indicador_'.$data['Codigo_ind'].'.xlsx'.' have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
 
@@ -1303,11 +1278,6 @@ function creaCSVCoCl($data){
                       ->setCellValue($a.$celda, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
-
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
-
-            $objPHPExcel->getActiveSheet()->mergeCells('A2:A3');// Merge para Entidad Federativa
-
             //$objPHPExcel->getActiveSheet()->mergeCells($a.'2:'.$d.'2'); // Merge para periodo
 
 
@@ -1347,12 +1317,14 @@ function creaCSVCoCl($data){
   //   $e = $f+1;
   // }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
 
+  $objPHPExcel->getActiveSheet()->mergeCells('A2:A3');// Merge para Entidad Federativa
 
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -1526,12 +1498,14 @@ function creaXLSCoClAnidada($data){
   //   $e = $f+1;
   // }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
 
+  $objPHPExcel->getActiveSheet()->mergeCells('A2:A5');// Merge para Entidad Federativa
 
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -1544,6 +1518,8 @@ function creaXLSCoClAnidada($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
+
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -1662,10 +1638,6 @@ function creaCSVCoClAnidada($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
-
-            $objPHPExcel->getActiveSheet()->mergeCells('A2:A5');// Merge para Entidad Federativa
-
             //$objPHPExcel->getActiveSheet()->mergeCells($a.'2:'.$d.'2'); // Merge para periodo
 
 
@@ -1705,12 +1677,14 @@ function creaCSVCoClAnidada($data){
   //   $e = $f+1;
   // }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
 
+  $objPHPExcel->getActiveSheet()->mergeCells('A2:A5');// Merge para Entidad Federativa
 
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -1826,8 +1800,6 @@ function creaXLSClA($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -1840,9 +1812,10 @@ function creaXLSClA($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -1855,6 +1828,7 @@ function creaXLSClA($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -1957,8 +1931,6 @@ function creaCSVClA($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -1971,9 +1943,10 @@ function creaCSVClA($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -2088,8 +2061,6 @@ function creaXLSAS($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells('A1:B1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -2102,9 +2073,10 @@ function creaXLSAS($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells('A1:B1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -2117,6 +2089,7 @@ function creaXLSAS($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -2218,8 +2191,6 @@ function creaCSVAS($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells('A1:B1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -2232,9 +2203,10 @@ function creaCSVAS($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells('A1:B1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -2346,9 +2318,6 @@ function creaXLSACl($data){
                       ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
-
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -2361,9 +2330,10 @@ function creaXLSACl($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -2376,6 +2346,7 @@ function creaXLSACl($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -2474,8 +2445,6 @@ function creaCSVACl($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -2488,9 +2457,10 @@ function creaCSVACl($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -2601,8 +2571,6 @@ function creaXLSAClanidada($data){
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -2615,9 +2583,10 @@ function creaXLSAClanidada($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -2630,6 +2599,7 @@ function creaXLSAClanidada($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -2727,9 +2697,6 @@ function creaCSVAClanidada($data){
                       ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
-
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
         //var_dump(count($dato));
@@ -2742,9 +2709,10 @@ function creaCSVAClanidada($data){
     }
   }
 
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 31));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
