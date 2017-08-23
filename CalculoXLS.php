@@ -984,7 +984,7 @@ function creaCSVCoS($data){
         PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.csv');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 
         echo 'Files have been created in ' , getcwd() , EOL;
@@ -1131,7 +1131,7 @@ function creaXLSCoCl($data){
      $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
      ob_end_clean();
      //$nomArc = $data['Codigo_ind']
-     $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+     $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.xlsx');
      // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 
      echo 'Files '.'Indicador_'.$data['Codigo_ind'].'.xlsx'.' have been created in ' , getcwd() , EOL;
@@ -1296,7 +1296,7 @@ function creaCSVCoCl($data){
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.csv');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
         $callEndTime = microtime(true);
@@ -1444,7 +1444,7 @@ function creaXLSCoClAnidada($data){
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         ob_end_clean();
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.xlsx');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
 
@@ -1597,7 +1597,7 @@ function creaCSVCoClAnidada($data){
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.csv');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
         $callEndTime = microtime(true);
@@ -1729,7 +1729,7 @@ function creaXLSClA($data){
       $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
       ob_end_clean();
       //$nomArc = $data['Codigo_ind']
-      $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+      $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.xlsx');
       // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
       //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
       $callEndTime = microtime(true);
@@ -1861,7 +1861,7 @@ function creaCSVClA($data){
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.xlsx');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
         $callEndTime = microtime(true);
@@ -1993,7 +1993,7 @@ function creaXLSAS($data){
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         ob_end_clean();
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.xlsx');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
         $callEndTime = microtime(true);
@@ -2123,7 +2123,7 @@ function creaCSVAS($data){
 
       $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
       //$nomArc = $data['Codigo_ind']
-      $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
+      $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.csv');
       // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
       //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
       $callEndTime = microtime(true);
@@ -2254,7 +2254,7 @@ function creaXLSACl($data){
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         ob_end_clean();
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.xlsx');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
         $callEndTime = microtime(true);
@@ -2383,7 +2383,7 @@ function creaCSVACl($data){
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.csv');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
         $callEndTime = microtime(true);
@@ -2513,7 +2513,7 @@ function creaXLSAClanidada($data){
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         ob_end_clean();
         //$nomArc = $data['Codigo_ind']
-        $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+        $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.xlsx');
         // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
         //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
         $callEndTime = microtime(true);
@@ -2639,7 +2639,7 @@ function creaCSVAClanidada($data){
 
       $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
       //$nomArc = $data['Codigo_ind']
-      $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
+      $objWriter->save('xlscsv/DatosCalculo_T'.$i.'_'.$data['Codigo_ind'].'.csv');
       // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
       //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
       $callEndTime = microtime(true);
