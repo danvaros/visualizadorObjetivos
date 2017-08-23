@@ -28,6 +28,7 @@
   var tabulado_series = [];
   var tipoTabulado;
   var clasif;
+  var ban_mun =  false;
 
 
   //llama los parametros del indicador
@@ -79,10 +80,11 @@
 
 
 if(codigoDg == "NEM  "){
+  $('#row_filtros').show();
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorCobCla",
-    data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+    data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"ASC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       // for (var i = 1; i < GloSerie.length; i++) {
@@ -421,6 +423,8 @@ else
       //console.log('------------------------ analisis de datos que se enstan mostrando --------------');
       cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
     });
+
+
   });//fin document ready
 
   function arma_tabla_insumo(arreglo_datos,num_cobertura){
