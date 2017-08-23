@@ -281,7 +281,7 @@ function get_tabuladoCSV($indicador){
 }
 
 
-get_tabulado(2);
+get_tabulado(210);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -311,15 +311,15 @@ get_tabulado(2);
 
   // ----------- Crea todos los XLS de Indicador ---------//
 
-    for ($i=0; $i < count($ClaveInd_arb); $i++) {
-      get_tabulado($ClaveInd_arb[$i]);
-    }
+    // for ($i=0; $i < count($ClaveInd_arb); $i++) {
+    //   get_tabulado($ClaveInd_arb[$i]);
+    // }
 
   // ----------- Crea todos los CSV de Indicador ---------//
 
-    for ($i=0; $i < count($ClaveInd_arb); $i++) {
-      get_tabuladoCSV($ClaveInd_arb[$i]);
-    }
+    // for ($i=0; $i < count($ClaveInd_arb); $i++) {
+    //   get_tabuladoCSV($ClaveInd_arb[$i]);
+    // }
 
 
 // ----------- Crea todos los XLS de Metadatos ---------//
@@ -1053,8 +1053,8 @@ function creaXLSCoCl($data){
 
 
 
-              $e = 2;
-              $f = 2;
+              $e = 1;
+              $f = 0;
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -1135,13 +1135,16 @@ function creaXLSCoCl($data){
   }
 
    $foo = count($valores) / count(array_unique($per));
-  var_dump($foo);
-  var_dump($per);
-  for ($m=1; $m < $foo; $m++) {
-    $f = $f + $periodon;
-    $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-    $e = $f+1;
-  }
+    var_dump($foo);
+    $bar = count($valores) / $foo;
+    var_dump($bar);
+    //exit();
+
+    for ($m=0; $m < $foo; $m++) {
+      $f = $f + $bar;
+      $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
+      $e = $f+1;
+    }
 
   $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
 
@@ -1395,13 +1398,13 @@ function creaXLSCoClAnidada($data){
   //var_dump($serie);
   $objPHPExcel->setActiveSheetIndex(0);
 
-  $objPHPExcel->setActiveSheetIndex(0)
+  $objPHPExcel->getActiveSheet()
               ->setCellValue('B1', $data['Codigo_ind'].$data['Descrip_ind']);
-  $objPHPExcel->setActiveSheetIndex(0)
+  $objPHPExcel->getActiveSheet()
               ->setCellValue('A2', 'Entidad Federativa');
 
-              $e = 2;
-              $f = 2;
+              $e = 1;
+              $f = 0;
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -1413,99 +1416,58 @@ function creaXLSCoClAnidada($data){
         $valores = $coberturas[$j]['Clasificaciones'];
         $celda = $j + 5;
 
-        $objPHPExcel->setActiveSheetIndex(0)
+        $objPHPExcel->getActiveSheet()
                     ->setCellValue('A'.$celda, $cobertura);
         $per = array();
         for ($k=0; $k < count($valores); $k++) {
           $a = abecedario($k+1);
           $b = abecedario(count($valores)+1);
 
-
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue($a.'4', $valores[$k]['Descrip_cla']);
-          // var_dump($valores[$k]);
-          // var_dump($valores[$k]['Dato_Formato']);
-          //$dato =  (string)$valores[$k]['Dato_Formato'];
-          //var_dump($dato);
-
-          //$dato =  '34.6';
-          // $objPHPExcel->setActiveSheetIndex(0)
-          //             ->setCellValue('A2', 'Entidad Federativa');
-
 
           $periodo = count($valores[$k]['ClaveAgrupa_ac']);
           $per[] = $valores[$k]['ClaveAgrupa_ac'];
 
           $valorDato = $valores[$k]['ValorDato'];
           $periodon = count($valores);
-          //var_dump($periodon);
-          //var_dump($periodo);
-          $d = abecedario(count($valores)+count($periodo));
-          //var_dump($valorDato);
-          $c = abecedario(count($valorDato)+1);
 
+          $d = abecedario(count($valores)+count($periodo));
+          $c = abecedario(count($valorDato)+1);
 
           $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
-
-
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue(abecedario($k+$periodo).'2', $valores[$k]['ValorDato']['AADato_ser']);
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
           $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue($a.$celda, $datoAS);
-
-          //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
-
-            $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
-
-            $objPHPExcel->getActiveSheet()->mergeCells('A2:A5');// Merge para Entidad Federativa
-
-            //$objPHPExcel->getActiveSheet()->mergeCells($a.'2:'.$d.'2'); // Merge para periodo
-
-
-            // $foo = count($valores) / $periodo;
-            //   //var_dump(count($valorDato));
-            // for ($m=1; $m < $foo; $m++) {
-            //   $f = $f + $periodon;
-            //   $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-            //   $e = $f+1;
-            // }
-
-            //  $foo = count($valores) / count(array_unique($per));
-            // //  var_dump($foo);
-            // //  var_dump($per);
-            // for ($m=1; $m < $foo; $m++) {
-            //   $f = $f + $periodon;
-            //   $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-            //   $e = $f+1;
-            // }
-
-          //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
       }
-
 
     }else if($serie[$i]['Tipo_ser'] == 'I'){
       echo 'Tipo Insumo';
     }
   }
 
-  //  $foo = count($valores) / count(array_unique($per));
-  // //  var_dump($foo);
-  // //  var_dump($per);
-  // for ($m=1; $m < $foo; $m++) {
-  //   $f = $f + $periodon;
-  //   $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-  //   $e = $f+1;
-  // }
+  $foo = count($valores) / count(array_unique($per));
+   var_dump($foo);
+   $bar = count($valores) / $foo;
+   var_dump($bar);
+   //exit();
 
-  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
+   for ($m=0; $m < $foo; $m++) {
+     $f = $f + $bar;
+     //$objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
+     $e = $f+1;
+   }
 
-  $objPHPExcel->getActiveSheet()->mergeCells('A2:A5');// Merge para Entidad Federativa
+  //$objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
+
+  //$objPHPExcel->getActiveSheet()->mergeCells('A2:A5');// Merge para Entidad Federativa
 
 
   // Rename worksheet
@@ -1524,26 +1486,12 @@ function creaXLSCoClAnidada($data){
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
   ob_end_clean();
-
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  $callEndTime = microtime(true);
-  $callTime = $callEndTime - $callStartTime;
 
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
-  // Echo memory usage
-  //echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo memory peak usage
-  //echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo done
-  //echo date('H:i:s') , " Done writing files" , EOL;
   echo 'Files have been created in ' , getcwd() , EOL;
-  //var_dump($data);
 }
 
 function creaCSVCoClAnidada($data){
@@ -1583,8 +1531,8 @@ function creaCSVCoClAnidada($data){
   $objPHPExcel->setActiveSheetIndex(0)
               ->setCellValue('A2', 'Entidad Federativa');
 
-              $e = 2;
-              $f = 2;
+              $e = 1;
+              $f = 0;
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -1646,23 +1594,6 @@ function creaCSVCoClAnidada($data){
             //$objPHPExcel->getActiveSheet()->mergeCells($a.'2:'.$d.'2'); // Merge para periodo
 
 
-            // $foo = count($valores) / $periodo;
-            //   //var_dump(count($valorDato));
-            // for ($m=1; $m < $foo; $m++) {
-            //   $f = $f + $periodon;
-            //   $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-            //   $e = $f+1;
-            // }
-
-            //  $foo = count($valores) / count(array_unique($per));
-            // //  var_dump($foo);
-            // //  var_dump($per);
-            // for ($m=1; $m < $foo; $m++) {
-            //   $f = $f + $periodon;
-            //   $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-            //   $e = $f+1;
-            // }
-
           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
       }
@@ -1673,14 +1604,17 @@ function creaCSVCoClAnidada($data){
     }
   }
 
-  //  $foo = count($valores) / count(array_unique($per));
-  // //  var_dump($foo);
-  // //  var_dump($per);
-  // for ($m=1; $m < $foo; $m++) {
-  //   $f = $f + $periodon;
-  //   $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
-  //   $e = $f+1;
-  // }
+  $foo = count($valores) / count(array_unique($per));
+   var_dump($foo);
+   $bar = count($valores) / $foo;
+   var_dump($bar);
+   //exit();
+
+   for ($m=0; $m < $foo; $m++) {
+     $f = $f + $bar;
+     $objPHPExcel->getActiveSheet()->mergeCells(abecedario($e).'2:'.abecedario($f).'2'); // Merge para periodo
+     $e = $f+1;
+   }
 
   $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1'); // Merge para título de Indicador
 
