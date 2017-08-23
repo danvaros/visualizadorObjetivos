@@ -50,10 +50,12 @@ foreach($bar as $meta){
       //if($india[$i]['ClaveInd_arb'] != 356 || $india[$i]['ClaveInd_arb'] != 357 || $india[$i]['ClaveInd_arb'] != 358 || $india[$i]['ClaveInd_arb'] != 359 || $india[$i]['ClaveInd_arb'] != 360 || $india[$i]['ClaveInd_arb'] != 361 || $india[$i]['ClaveInd_arb'] != 343){
         $indicas = count($india);
         for ($i=0; $i < $indicas; $i++) {
-          if($india[$i]['ClaveInd_arb'] != 356 || $india[$i]['ClaveInd_arb'] != 357 || $india[$i]['ClaveInd_arb'] != 358 || $india[$i]['ClaveInd_arb'] != 359 || $india[$i]['ClaveInd_arb'] != 360 || $india[$i]['ClaveInd_arb'] != 361 || $india[$i]['ClaveInd_arb'] != 343){
+          if($india[$i]['ClaveInd_arb'] == 118 || $india[$i]['ClaveInd_arb'] == 356 || $india[$i]['ClaveInd_arb'] == 357 || $india[$i]['ClaveInd_arb'] == 358 || $india[$i]['ClaveInd_arb'] == 359 || $india[$i]['ClaveInd_arb'] == 360 || $india[$i]['ClaveInd_arb'] == 361 || $india[$i]['ClaveInd_arb'] == 343){
 
-            $ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
+            //$ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
             //echo ' '.$india[$i]['ClaveInd_arb'].'<br/>';
+          }else{
+            $ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
           }
         }
       //}
@@ -281,7 +283,7 @@ function get_tabuladoCSV($indicador){
 }
 
 
-get_tabulado(210);
+//get_tabulado(210);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -298,9 +300,9 @@ get_tabulado(210);
 
 // ----------- Crea todos los XLS de Indicador ---------//
 
-  // for ($i=0; $i < count($indicadorres); $i++) {
-  //   get_tabulado($indicadorres[$i]);
-  // }
+  for ($i=0; $i < count($indicadorres); $i++) {
+    get_tabulado($indicadorres[$i]);
+  }
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
