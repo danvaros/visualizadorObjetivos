@@ -10,12 +10,12 @@
 
   var query_string = {};
   var query = window.location.search.substring(1);
+  var vars = getParameterByName("indicador");
   var obj = getParameterByName("objetivo");
   var objetivo = getParameterByName("obj");
   var meta = getParameterByName("meta");
   var codigoDg = getParameterByName("codigo");
-  var PCveInd = getParameterByName("indicador");
-  var GloSerie = [];
+  var PCveInd = vars;
   var Codigo_ind = '';
   var Descrip_ind = '';
   var tituloObjetivo = '';
@@ -29,19 +29,15 @@
   var tipoTabulado;
   var clasif;
 
-  //llama los atributos del indicador
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
     data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
     success: function( data, textStatus, jqxhr ) {
+    //data.Series[1] = data1.Series[0];
       clasif = data.AgrupaClas.TotalNivAgrupa_cla;
       console.log('pspspsps');
       console.log(clasif);
-      console.log(data.Serie[0].ClaveSer_ats);
-      for (var i = 0; i < data.Serie.length; i++) {
-        GloSerie.push(data.Serie[i].ClaveSer_ats);
-      }
     },
     error: function() {
             //alert('Error occured');
@@ -49,7 +45,6 @@
     async:false
   });
 
-  //llama la tematica del indicador
   $.ajax({
     type: 'POST',
     // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
@@ -79,13 +74,13 @@
     async:true
   });
 
-// filtramos en los indicadores con desglose municipal
 if(PCveInd == 118 ){
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorCobCla",
-    data: {"PCveInd":PCveInd, "PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+    data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
+
       $.ajax({
         type: 'POST',
         url: "https://ods.org.mx/API/Valores/PorCobCla",
