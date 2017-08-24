@@ -31,7 +31,6 @@ var clasif;
 var ban_mun =  false;
 var datos_calculo = [];
 
-
 //llama los parametros del indicador
 $.ajax({
   type: 'POST',
@@ -45,7 +44,9 @@ $.ajax({
     console.log(GloSerie);
     if(codigoDg == "NEM  "){
       for (var i = 0; i < data.Serie.length; i++) {
-        datos_calculo.push(data.Serie[i].DescripSer_des);
+        if(data.Serie[i].Tipo_ats == "I"){
+          datos_calculo.push(data.Serie[i]);
+        }
       }
     }
   },
@@ -83,7 +84,6 @@ $.ajax({
   },
   async:true
 });
-
 
 if(codigoDg == "NEM  "){
   $('#row_filtros').show();
@@ -137,7 +137,6 @@ if(codigoDg == "NEM  "){
       titulos(PCveInd);
       $('#tabla_nacional').hide();
 
-
       tipoTabulado = data.TipoCua_atr;
       cason = data.ClaveAgrupaClas_atr;
 
@@ -156,8 +155,7 @@ if(codigoDg == "NEM  "){
     async:false
   });
 }
-else
-{
+else{
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorClave",
@@ -366,10 +364,10 @@ $(document).ready(function(){
   });
 
   $('#insumo_change').on('change',function(){
-    put_tabla_insumo($(this).val());
-    $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
-    $('#insumos_cont').hide();
-    $('#este2').hide();
+      put_tabla_insumo($(this).val());
+      $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
+      $('#insumos_cont').hide();
+      $('#este2').hide();
   });
 
   $('#insumo_change_cob').on('change',function(){
@@ -430,8 +428,29 @@ $(document).ready(function(){
     cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
   });
 
-
 });//fin document ready
+
+function camino_dos(){
+  console.log('llego');
+  var  val_serie = $(this).val();
+  var cob = 99;
+  if(ban_mun == true){
+    cob =  get_clave_estado($('#sel_estados').val());
+  }
+
+    $.ajax({
+      type: 'POST',
+      url: "https://ods.org.mx/API/Valores/PorCobCla",
+      data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":val_serie,"PCveCob":cob,"PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+      success: function( data, textStatus, jqxhr ) {
+        console.log(data);
+      },
+      error: function() {
+              //alert('Error occured');
+          },
+      async:false
+    });
+}
 
 function arma_tabla_insumo(arreglo_datos,num_cobertura){
   var cobertura_tabla = [];
@@ -1085,12 +1104,13 @@ function valorDatoInsumos(data){
   }
 
   //Armamos el select para que tenga todas las series que pueden existir
-  var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos browser-default" style="display:block !important; background-color: #f2f2f2;">';
+  var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
   select += '<option value="-1"> Selecciona una opción </option>';
-  $.each(lista_insumos, function(idx, value){
-    select += '<option value="'+idx+'">'+value+'</option>';
-  });
+
+    $.each(lista_insumos, function(idx, value){
+      select += '<option value="'+idx+'">'+value+'</option>';
+    });
 
   select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div>';
 
@@ -1122,6 +1142,7 @@ function coberturaInsumos(data){
 
   //sin pie y cabezera de la pagina
   $('#datos-panel').html(select);
+
 }
 
 function actualiza_grafica(){

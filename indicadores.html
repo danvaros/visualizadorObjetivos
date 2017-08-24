@@ -413,8 +413,6 @@
   <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
 </span>
 <body>
-
-
   <!-- menu -->
   <div class="navbar-fixed">
     <nav>
@@ -562,7 +560,7 @@
           </div>
           <div class="input-field col s6 m2 l2" >
             <select class="browser-default" id="sel_municipios" name="municipios" style="display:none">
-                <option value="">Selecciona un municipio</option>
+              <option value="">Selecciona un municipio</option>
             </select>
           </div>
         </div>
@@ -1344,6 +1342,10 @@
       $('#datos').addClass('indicadores-taps-active');
       $('#metadato').removeClass('indicadores-taps-active');
 
+      if(codigoDg == "NEM  "){
+        put_isumo_sel_mun();
+      }
+
       colorObjetivo(obj);
     });
 
@@ -1482,50 +1484,55 @@
     });
     //ocultamos el boton de municipios si no es para el 118
     if(PCveInd != 118){
-        $("#boton_municipal").show();
+      $("#boton_municipal").show();
     }
 
 
     $('#sel_estados').change(function(){
-        var seleccionado = $(this).val();
-        $('#sel_municipios').html(get_sel_municipal(seleccionado));
-        $('#sel_municipios').show();
-        jQuery.each( coor_estado, function( i, val ){
-          if(seleccionado == val.estado){
-            map.setView([val.lat, val.long], val.zoom-1);
-            mun_mapa(seleccionado,arrray_anios[0],0);
-          }
-        });
-     });
+      var seleccionado = $(this).val();
+      $('#sel_municipios').html(get_sel_municipal(seleccionado));
+      $('#sel_municipios').show();
+      jQuery.each( coor_estado, function( i, val ){
+        if(seleccionado == val.estado){
+          map.setView([val.lat, val.long], val.zoom-1);
+          mun_mapa(seleccionado,arrray_anios[0],1);
+        }
+      });
+    });
 
-     $('#sel_municipios').change(function(){
-       var sel_mun = $(this).val();
-       var sel_est = $('#sel_estados').val();
+    $('#sel_municipios').change(function(){
+      var sel_mun = $(this).val();
+      var sel_est = $('#sel_estados').val();
 
-       munisipal_ind(sel_mun,sel_est);
-     });
+      munisipal_ind(sel_mun,sel_est);
+    });
 
-     $('#boton_estatal').click(function(){
-       $("#boton_municipal").show();
-       $("#boton_estatal").hide();
-       $("#sel_estados").hide();
-       $("#sel_municipios").hide();
-       ban_mun = false;
-       cambio_anio(estados[0][1]);
+    $('#boton_estatal').click(function(){
+      $("#boton_municipal").show();
+      $("#boton_estatal").hide();
+      $("#sel_estados").hide();
+      $("#sel_municipios").hide();
+      ban_mun = false;
+      cambio_anio(estados[0][1]);
 
-       console.log('cambio municipal');
-     });
+      console.log('cambio municipal');
+    });
 
-     $('#boton_municipal').click(function(){
-       $("#boton_municipal").hide();
-       $("#boton_estatal").show();
-       $("#sel_estados").show();
-       $("#sel_municipios").show();
-       ban_mun = true;
-       cambio_anio(estados[0][1]);
-       put_grafica_municipal(arrray_anios[0]);
-       console.log('cambio estatal');
-     });
+    $('#boton_municipal').click(function(){
+      $("#boton_municipal").hide();
+      $("#boton_estatal").show();
+      $("#sel_estados").show();
+      $("#sel_municipios").show();
+      ban_mun = true;
+      cambio_anio(estados[0][1]);
+      put_grafica_municipal(arrray_anios[0]);
+      console.log('cambio estatal');
+    });
+
+    $('#insumo_change2').on('change',function(){
+      alert('hola');
+    })
+
   });//fin del document ready
 
   // ------------------------------------------ //
@@ -2887,7 +2894,7 @@
               dato_formato = d.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
             }
             else {
-                 dato_formato = 'null';
+              dato_formato = 'null';
             }
             temp.push(dato_formato);
           }
@@ -2977,91 +2984,91 @@
         });
       }
 
-var posi2;
+      var posi2;
       function mun_mapa(e,anioo,posi){
-          $('.infos').remove();
-          $('.info2').remove();
-          map.removeLayer(geojson);
-          posi2 = posi;
-          //PCveInd indecacdor 118
-          var municipios = []; //arreglo con los valores de la llamada a la api
-          var geo_mun = [];
-          var features = [];
-          var valuesMunicipio = [];
-          var brew = new classyBrew();
+        $('.infos').remove();
+        $('.info2').remove();
+        map.removeLayer(geojson);
+        posi2 = posi;
+        //PCveInd indecacdor 118
+        var municipios = []; //arreglo con los valores de la llamada a la api
+        var geo_mun = [];
+        var features = [];
+        var valuesMunicipio = [];
+        var brew = new classyBrew();
 
-          //++sacar la clave del estado y sacar el indicador que se esta manejando
-          var cl =  get_clave_estado(e);
-          var datos_brutos = get_estado_municipios(cl+'%',PCveInd);
-          put_tabla_municipal(datos_brutos);
-          valorDato(datos_brutos);
+        //++sacar la clave del estado y sacar el indicador que se esta manejando
+        var cl =  get_clave_estado(e);
+        var datos_brutos = get_estado_municipios(cl+'%',PCveInd);
+        put_tabla_municipal(datos_brutos);
+        valorDato(datos_brutos);
 
-          for(var i = 0; i < municipio.features.length; i++){
-            if(e == municipio.features[i].properties.nom_ent){
-              features.push(municipio.features[i]);
-              if (municipio.features[i].properties.nom_mun == null) continue;
+        for(var i = 0; i < municipio.features.length; i++){
+          if(e == municipio.features[i].properties.nom_ent){
+            features.push(municipio.features[i]);
+            if (municipio.features[i].properties.nom_mun == null) continue;
 
-              valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi));
-            }
+            valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi));
           }
+        }
 
-          geo_mun={'features':features,'type':"FeatureCollection"};
+        geo_mun={'features':features,'type':"FeatureCollection"};
 
-          brew.setSeries(valuesMunicipio);
-          brew.setNumClasses(3);
-          brew.setColorCode("Blues");
-          brew.classify('jenks');
-          var alfr=brew.getBreaks();
-          var brea =[];
-          for(var ii=0;ii<alfr.length;ii++)
+        brew.setSeries(valuesMunicipio);
+        brew.setNumClasses(3);
+        brew.setColorCode("Blues");
+        brew.classify('jenks');
+        var alfr=brew.getBreaks();
+        var brea =[];
+        for(var ii=0;ii<alfr.length;ii++)
+        {
+          if(alfr[ii] != -1)
           {
-            if(alfr[ii] != -1)
-            {
-              brea.push(alfr[ii]);
-            }
+            brea.push(alfr[ii]);
           }
+        }
 
-          geojson = L.geoJson(geo_mun, {
-            style: style,
-            onEachFeature: onEachFeature
-          }).addTo(map);
+        geojson = L.geoJson(geo_mun, {
+          style: style,
+          onEachFeature: onEachFeature
+        }).addTo(map);
 
-          map.attributionControl.addAttribution('');
+        map.attributionControl.addAttribution('');
 
-          var info = L.control();
-          info.onAdd = function (map) {
-            this._div = L.DomUtil.create('div', 'infos hide');
-            this.update();
-            return this._div;
-          };
+        var info = L.control();
+        info.onAdd = function (map) {
+          this._div = L.DomUtil.create('div', 'infos hide');
+          this.update();
+          return this._div;
+        };
 
-          info.update = function (props) {
-            //this._div = L.DomUtil.create('div', 'infos');
-            $('.infos').removeClass('hide');
-            $('.info2').removeClass('hide');
-            console.log(props);
-            if (props != undefined) {
-              this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
-              gen(municipios[busqueda_indice(props.nom_mun)]);
-              $(".crop").dotdotdot();
-            }
+        info.update = function (props) {
+          //this._div = L.DomUtil.create('div', 'infos');
+          $('.infos').removeClass('hide');
+          $('.info2').removeClass('hide');
+          console.log(props);
+          if (props != undefined) {
+            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+            gen(municipios[busqueda_indice(props.nom_mun)]);
+            $(".crop").dotdotdot();
           }
-          info.addTo(map);
+        }
+        info.addTo(map);
 
-          var legend = L.control();
-          legend.onAdd = function (map) {
-            var div = L.DomUtil.create('div', 'info2 legend hide'),
-              grades = brew.getBreaks(),//[0, 20, 50, 100],
-              labels = [],
-              from, to;
-            for (var i = 0; i < grades.length - 1; i++) {
-              from = grades[i];
-              to = grades[i + 1];
-              var res = String(getColoR(from)).split(",");
-              //console.log(from, from + 1, res, grades);
-              labels.push(
-                '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-                from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
+        var legend = L.control();
+        legend.onAdd = function (map) {
+          var div = L.DomUtil.create('div', 'info2 legend hide'),
+          grades = brew.getBreaks(),//[0, 20, 50, 100],
+          labels = [],
+          from, to;
+          for (var i = 0; i < grades.length - 1; i++) {
+            from = grades[i];
+            to = grades[i + 1];
+            var res = String(getColoR(from)).split(",");
+            //console.log(from, from + 1, res, grades);
+            labels.push(
+              '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
             }
             div.innerHTML = labels.join('');
             return div;
@@ -3070,37 +3077,37 @@ var posi2;
 
 
           function valorDato(data){
-              var temporal = [];
-              var Descrip_ind = data.Descrip_ind;
+            var temporal = [];
+            var Descrip_ind = data.Descrip_ind;
 
-              temporal.push('Municipio');
-              for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
-                temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
+            temporal.push('Municipio');
+            for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
+              temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
+            }
+            municipios.push(temporal);
+            var imprime = false;
+
+            for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
+
+              var temporal = [];
+              var categories2 = [];
+              categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
+              temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
+
+              for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
+                var dato_formato;
+                if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
+                {
+                  dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
+                }
+                else {
+                  dato_formato = 0;
+                }
+                temporal.push(dato_formato);
               }
               municipios.push(temporal);
-              var imprime = false;
-
-              for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
-
-                var temporal = [];
-                var categories2 = [];
-                categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
-                temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
-
-                for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-                  var dato_formato;
-                  if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
-                  {
-                    dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
-                  }
-                  else {
-                    dato_formato = 0;
-                  }
-                  temporal.push(dato_formato);
-                }
-                municipios.push(temporal);
-              }
-            }//fin funcion valorDato
+            }
+          }//fin funcion valorDato
 
           function busqueda_municipio(cadena,posicion) {
             //console.log("super log",cadena,estados);
@@ -3216,323 +3223,341 @@ var posi2;
               }
             }
           }
-      }//fin mun
+        }//fin mun
 
-      function sacar_lista_municipios(){
-        var esta_mun = [];
-        var new_esta = [];
-        var new_mun  = [];
+        function sacar_lista_municipios(){
+          var esta_mun = [];
+          var new_esta = [];
+          var new_mun  = [];
 
-        var preba = [{estado:'aguas',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]},{estado:'aguas negras',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]},{estado:'aguas muy negras',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]}]
-        console.log(dataLocal);
-        console.log(preba);
+          var preba = [{estado:'aguas',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]},{estado:'aguas negras',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]},{estado:'aguas muy negras',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]}]
+          console.log(dataLocal);
+          console.log(preba);
 
 
-        for (var i = 0; i < dataLocal.Series[0].Coberturas.length; i++) {
-          if(dataLocal.Series[0].Coberturas[i].ClaveCobGeo_cg < 1001){
-            console.log(dataLocal.Series[0].Coberturas[i].Descrip_cg);
-            var tem = { estado :  dataLocal.Series[0].Coberturas[i].Descrip_cg , municipios : [] };
-            esta_mun.push(tem);
-          }else{
-            var tem  =  {nombre : dataLocal.Series[0].Coberturas[i].Descrip_cg };
-            esta_mun[esta_mun.length-1].municipios.push(tem);
-          }
-        }
-        console.log(esta_mun);
-      }
-
-      function get_sel_municipal(e){
-        var mun_arry = get_muni_estado(e);
-        var options = '<option value"00" >Selecciona un Municipio</option>';
-        for (var i = 0; i < mun_arry.length; i++) {
-          options += '<option value"' + mun_arry[i].nombre + '" >' + mun_arry[i].nombre +'</option>'
-        }
-        return options;
-      }
-
-      function get_muni_estado(e){
-        var r ;
-        for (var i = 0; i < sel_municipal.length; i++) {
-          if(e == sel_municipal[i].estado){
-            r = sel_municipal[i].municipios;
-            break;
-          }
-        }
-        return r;
-      }
-
-      function get_estado_municipios(c,i){
-        var covertura = c+'%';
-        var resultado;
-        $.ajax({
-          type: 'POST',
-          url: "https://ods.org.mx/API/Valores/PorCobCla",
-          data:{"PCveInd":i,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":covertura,"PCveAgrupaCla": "0","POrden":"ASC","PIdioma":"ES"},
-          success: function( data, textStatus, jqxhr ) {
-            resultado = data;
-          },
-          error: function() {
-            //alert('Error occured');
-          },
-          async:false
-        });
-        console.log(resultado);
-        return resultado;
-      }
-
-      function get_clave_estado(estado){
-        var clave = '';
-        for (var i = 0; i < cod_estados.length; i++) {
-          if(cod_estados[i].estado ==  estado){
-            clave =  cod_estados[i].clave;
-            break;
-          }
-        }
-        return clave;
-      }
-
-      function munisipal_ind(sel_mun,sel_est){
-        $('.infos').remove();
-        $('.info2').remove();
-        map.removeLayer(geojson);
-
-        //PCveInd indecacdor 118
-        var municipios = []; //arreglo con los valores de la llamada a la api
-        var geo_mun = [];
-        var features = [];
-        var valuesMunicipio = [];
-        var brew = new classyBrew();
-       //++sacar la clave del estado y sacar el indicador que se esta manejando
-       var cl =  get_clave_estado(sel_est);
-       valorDato(get_estado_municipios(cl+'%',118));
-
-        for(var i = 0; i < municipio.features.length; i++){
-          if(sel_mun == municipio.features[i].properties.nom_mun && sel_est == municipio.features[i].properties.nom_ent)
-          {
-            features.push(municipio.features[i]);
-          }
-
-          if(sel_est == municipio.features[i].properties.nom_ent){
-            if (municipio.features[i].properties.nom_mun == null) continue;
-            valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi2));
-          }
-        }
-
-        brew.setSeries(valuesMunicipio);
-        brew.setNumClasses(3);
-        brew.setColorCode("Blues");
-        brew.classify('jenks');
-        var alfr=brew.getBreaks();
-        var brea =[];
-        for(var ii=0;ii<alfr.length;ii++)
-        {
-          if(alfr[ii] != -1)
-          {
-            brea.push(alfr[ii]);
-          }
-        }
-
-        geo_mun={'features':features,'type':"FeatureCollection"};
-
-        console.log(valorDato);
-        console.log(valuesMunicipio);
-
-        geojson = L.geoJson(geo_mun, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-
-        function busqueda_municipio(cadena,posicion) {
-          //console.log("super log",cadena,estados);
-          for (var i = 0; i < municipios.length; i++) {
-            if (municipios[i][0] == cadena) {
-              //console.log(cadena,municipios[i][1],i);
-              return parseFloat(municipios[i][posicion]);
+          for (var i = 0; i < dataLocal.Series[0].Coberturas.length; i++) {
+            if(dataLocal.Series[0].Coberturas[i].ClaveCobGeo_cg < 1001){
+              console.log(dataLocal.Series[0].Coberturas[i].Descrip_cg);
+              var tem = { estado :  dataLocal.Series[0].Coberturas[i].Descrip_cg , municipios : [] };
+              esta_mun.push(tem);
+            }else{
+              var tem  =  {nombre : dataLocal.Series[0].Coberturas[i].Descrip_cg };
+              esta_mun[esta_mun.length-1].municipios.push(tem);
             }
           }
+          console.log(esta_mun);
         }
 
-        map.attributionControl.addAttribution('');
-
-        var info = L.control();
-        info.onAdd = function (map) {
-          this._div = L.DomUtil.create('div', 'infos hide');
-          this.update();
-          return this._div;
-        };
-
-        info.update = function (props) {
-          //this._div = L.DomUtil.create('div', 'infos');
-          $('.infos').removeClass('hide');
-          $('.info2').removeClass('hide');
-          console.log(props);
-          if (props != undefined) {
-            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi2).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
-            gen(municipios[busqueda_indice(props.nom_mun)]);
+        function get_sel_municipal(e){
+          var mun_arry = get_muni_estado(e);
+          var options = '<option value"00" >Selecciona un Municipio</option>';
+          for (var i = 0; i < mun_arry.length; i++) {
+            options += '<option value"' + mun_arry[i].nombre + '" >' + mun_arry[i].nombre +'</option>'
           }
+          return options;
         }
-        info.addTo(map);
 
-        var legend = L.control();
-        legend.onAdd = function (map) {
-          var div = L.DomUtil.create('div', 'info2 legend hide'),
+        function get_muni_estado(e){
+          var r ;
+          for (var i = 0; i < sel_municipal.length; i++) {
+            if(e == sel_municipal[i].estado){
+              r = sel_municipal[i].municipios;
+              break;
+            }
+          }
+          return r;
+        }
+
+        function get_estado_municipios(c,i){
+          var covertura = c+'%';
+          var resultado;
+          $.ajax({
+            type: 'POST',
+            url: "https://ods.org.mx/API/Valores/PorCobCla",
+            data:{"PCveInd":i,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":covertura,"PCveAgrupaCla": "0","POrden":"ASC","PIdioma":"ES"},
+            success: function( data, textStatus, jqxhr ) {
+              resultado = data;
+            },
+            error: function() {
+              //alert('Error occured');
+            },
+            async:false
+          });
+          console.log(resultado);
+          return resultado;
+        }
+
+        function get_clave_estado(estado){
+          var clave = '';
+          for (var i = 0; i < cod_estados.length; i++) {
+            if(cod_estados[i].estado ==  estado){
+              clave =  cod_estados[i].clave;
+              break;
+            }
+          }
+          return clave;
+        }
+
+        function munisipal_ind(sel_mun,sel_est){
+          $('.infos').remove();
+          $('.info2').remove();
+          map.removeLayer(geojson);
+
+          //PCveInd indecacdor 118
+          var municipios = []; //arreglo con los valores de la llamada a la api
+          var geo_mun = [];
+          var features = [];
+          var valuesMunicipio = [];
+          var brew = new classyBrew();
+          //++sacar la clave del estado y sacar el indicador que se esta manejando
+          var cl =  get_clave_estado(sel_est);
+          valorDato(get_estado_municipios(cl+'%',118));
+
+          for(var i = 0; i < municipio.features.length; i++){
+            if(sel_mun == municipio.features[i].properties.nom_mun && sel_est == municipio.features[i].properties.nom_ent)
+            {
+              features.push(municipio.features[i]);
+            }
+
+            if(sel_est == municipio.features[i].properties.nom_ent){
+              if (municipio.features[i].properties.nom_mun == null) continue;
+              valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi2));
+            }
+          }
+
+          brew.setSeries(valuesMunicipio);
+          brew.setNumClasses(3);
+          brew.setColorCode("Blues");
+          brew.classify('jenks');
+          var alfr=brew.getBreaks();
+          var brea =[];
+          for(var ii=0;ii<alfr.length;ii++)
+          {
+            if(alfr[ii] != -1)
+            {
+              brea.push(alfr[ii]);
+            }
+          }
+
+          geo_mun={'features':features,'type':"FeatureCollection"};
+
+          console.log(valorDato);
+          console.log(valuesMunicipio);
+
+          geojson = L.geoJson(geo_mun, {
+            style: style,
+            onEachFeature: onEachFeature
+          }).addTo(map);
+
+          function busqueda_municipio(cadena,posicion) {
+            //console.log("super log",cadena,estados);
+            for (var i = 0; i < municipios.length; i++) {
+              if (municipios[i][0] == cadena) {
+                //console.log(cadena,municipios[i][1],i);
+                return parseFloat(municipios[i][posicion]);
+              }
+            }
+          }
+
+          map.attributionControl.addAttribution('');
+
+          var info = L.control();
+          info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'infos hide');
+            this.update();
+            return this._div;
+          };
+
+          info.update = function (props) {
+            //this._div = L.DomUtil.create('div', 'infos');
+            $('.infos').removeClass('hide');
+            $('.info2').removeClass('hide');
+            console.log(props);
+            if (props != undefined) {
+              this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi2).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+              gen(municipios[busqueda_indice(props.nom_mun)]);
+            }
+          }
+          info.addTo(map);
+
+          var legend = L.control();
+          legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info2 legend hide'),
             grades = brew.getBreaks(),//[0, 20, 50, 100],
             labels = [],
             from, to;
-          for (var i = 0; i < grades.length - 1; i++) {
-            from = grades[i];
-            to = grades[i + 1];
-            var res = String(getColoR(from)).split(",");
-            //console.log(from, from + 1, res, grades);
-            labels.push(
-              '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
-          }
-          div.innerHTML = labels.join('');
-          return div;
-        };
-        legend.addTo(map);
+            for (var i = 0; i < grades.length - 1; i++) {
+              from = grades[i];
+              to = grades[i + 1];
+              var res = String(getColoR(from)).split(",");
+              //console.log(from, from + 1, res, grades);
+              labels.push(
+                '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+                from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
+              }
+              div.innerHTML = labels.join('');
+              return div;
+            };
+            legend.addTo(map);
 
 
-        function valorDato(data){
-            var temporal = [];
-            var Descrip_ind = data.Descrip_ind;
-
-            temporal.push('Municipio');
-            for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
-              temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
-            }
-            municipios.push(temporal);
-            var imprime = false;
-
-            for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
-
+            function valorDato(data){
               var temporal = [];
-              var categories2 = [];
-              categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
-              temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
+              var Descrip_ind = data.Descrip_ind;
 
-              for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-                var dato_formato;
-                if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
-                {
-                  dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
-                }
-                else {
-                  dato_formato = 0;
-                }
-                temporal.push(dato_formato);
+              temporal.push('Municipio');
+              for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
+                temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
               }
               municipios.push(temporal);
-            }
-          }//fin funcion valorDato
+              var imprime = false;
 
-        function getColoR(number){
-          return brew.getColorInRange(number);
-        }
+              for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
 
-        function style(feature) {
-          var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun,posi2))).split(",");
-          //console.log(res, 'hhhh', "c" + res[1]);
-          //console.log("hola->",res[1]);
-          return {
-            weight: 0.5,
-            opacity: 1,
-            color: '#000',
-            dashArray: '1',
-            fillOpacity: 1,
-            // fillColor: getColoR(feature.properties.density),
-            fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun,posi2)),
-            className: "c" + res[1]
-          };
-        }
+                var temporal = [];
+                var categories2 = [];
+                categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
+                temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
 
-        function highlightFeature(e) {
-          if(locked == false)
-          {
-            var layer = e.target;
-            layer.setStyle({
-              weight: 2,
-              color: '#ccc',
-              dashArray: '',
-              fillOpacity: 0.7
-            });
-            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-              layer.bringToFront();
-            }
-            info.update(layer.feature.properties);
-          }
-        }
-
-        function resetHighlight(e) {
-          geojson.resetStyle(e.target);
-          info.update();
-        }
-
-        function zoomToFeature(e) {
-          map.fitBounds(e.target.getBounds());
-        }
-
-        function onEachFeature(feature, layer){
-          layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
-            mousedown: function(e)
-            {
-              if (locked == true) {
-                locked = false;
-                (function ($) {
-                  $(".info2").css("border","none");
-                  $(".infos").css("border","none");
-                }(jQuery));
+                for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
+                  var dato_formato;
+                  if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
+                  {
+                    dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
+                  }
+                  else {
+                    dato_formato = 0;
+                  }
+                  temporal.push(dato_formato);
+                }
+                municipios.push(temporal);
               }
-              else {
-                locked = true;
-                (function ($) {
-                  $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
-                  $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
-                  $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
-                  $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
-                  $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
-                  $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
-                }(jQuery));
+            }//fin funcion valorDato
+
+            function getColoR(number){
+              return brew.getColorInRange(number);
+            }
+
+            function style(feature) {
+              var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun,posi2))).split(",");
+              //console.log(res, 'hhhh', "c" + res[1]);
+              //console.log("hola->",res[1]);
+              return {
+                weight: 0.5,
+                opacity: 1,
+                color: '#000',
+                dashArray: '1',
+                fillOpacity: 1,
+                // fillColor: getColoR(feature.properties.density),
+                fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun,posi2)),
+                className: "c" + res[1]
+              };
+            }
+
+            function highlightFeature(e) {
+              if(locked == false)
+              {
+                var layer = e.target;
+                layer.setStyle({
+                  weight: 2,
+                  color: '#ccc',
+                  dashArray: '',
+                  fillOpacity: 0.7
+                });
+                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                  layer.bringToFront();
+                }
+                info.update(layer.feature.properties);
               }
-            },
-          });
-        }
-
-        function highlightFromLegend(e){
-          (function ($) {
-            $("svg path."+e).addClass("highlighted");
-            var r=$("svg path."+e);
-            for(var i=0;i<r.length;i++)
-            {
-              r[i].classList.add("highlighted");
             }
-          }(jQuery));
-        }
 
-        function clearHighlight() {
-          (function ($) {
-
-            $("path").removeClass("highlighted");
-            var r=$("path");
-            for(var i=0;i<r.length;i++)
-            {
-              r[i].classList.remove("highlighted");
+            function resetHighlight(e) {
+              geojson.resetStyle(e.target);
+              info.update();
             }
-          }(jQuery));
-        }
 
-        function busqueda_indice(cadena) {
-          for (var i = 0; i < municipios.length; i++) {
-            if (municipios[i][0] == cadena) {
-              return parseFloat(i);
+            function zoomToFeature(e) {
+              map.fitBounds(e.target.getBounds());
             }
+
+            function onEachFeature(feature, layer){
+              layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                mousedown: function(e)
+                {
+                  if (locked == true) {
+                    locked = false;
+                    (function ($) {
+                      $(".info2").css("border","none");
+                      $(".infos").css("border","none");
+                    }(jQuery));
+                  }
+                  else {
+                    locked = true;
+                    (function ($) {
+                      $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+                      $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+                      $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+                      $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+                      $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+                      $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+                    }(jQuery));
+                  }
+                },
+              });
+            }
+
+            function highlightFromLegend(e){
+              (function ($) {
+                $("svg path."+e).addClass("highlighted");
+                var r=$("svg path."+e);
+                for(var i=0;i<r.length;i++)
+                {
+                  r[i].classList.add("highlighted");
+                }
+              }(jQuery));
+            }
+
+            function clearHighlight() {
+              (function ($) {
+
+                $("path").removeClass("highlighted");
+                var r=$("path");
+                for(var i=0;i<r.length;i++)
+                {
+                  r[i].classList.remove("highlighted");
+                }
+              }(jQuery));
+            }
+
+            function busqueda_indice(cadena) {
+              for (var i = 0; i < municipios.length; i++) {
+                if (municipios[i][0] == cadena) {
+                  return parseFloat(i);
+                }
+              }
+            }
+          }//fin de la funcion munisipal_ind
+
+          function put_isumo_sel_mun(){
+            //Armamos el select para que tenga todas las series que pueden existir
+            var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change2" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
+
+            select += '<option value="-1"> Selecciona una opción </option>';
+
+            for (var i = 0; i < datos_calculo.length; i++) {
+              select += '<option value="'+datos_calculo[i].ClaveSer_ats+'">'+datos_calculo[i].DescripSer_des+'</option>';
+            }
+
+            select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div>';
+
+            //sin pie y cabezera de la pagina
+            $('#datos-panel').html(select);
+
           }
-        }
-      }//fin de la funcion munisipal_ind
+        </script>
 
-    </script>
+
   </body>
 </html>
