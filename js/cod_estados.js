@@ -15,7 +15,7 @@ var cod_estados = [
   { estado : "Hidalgo", "clave" : "13" },
   { estado : "Jalisco", "clave" : "14" },
   { estado : "México", "clave" : "15" },
-  { estado : "Michoacán de Ocampo de Ocampo", "clave" : "16" },
+  { estado : "Michoacán de Ocampo", "clave" : "16" },
   { estado : "Morelos", "clave" : "17" },
   { estado : "Nayarit", "clave" : "18" },
   { estado : "Nuevo León", "clave" : "19" },
