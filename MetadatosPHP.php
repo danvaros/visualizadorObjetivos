@@ -50,13 +50,13 @@ foreach($bar as $meta){
       //if($india[$i]['ClaveInd_arb'] != 356 || $india[$i]['ClaveInd_arb'] != 357 || $india[$i]['ClaveInd_arb'] != 358 || $india[$i]['ClaveInd_arb'] != 359 || $india[$i]['ClaveInd_arb'] != 360 || $india[$i]['ClaveInd_arb'] != 361 || $india[$i]['ClaveInd_arb'] != 343){
         $indicas = count($india);
         for ($i=0; $i < $indicas; $i++) {
-          if($india[$i]['ClaveInd_arb'] == 118 || $india[$i]['ClaveInd_arb'] == 356 || $india[$i]['ClaveInd_arb'] == 357 || $india[$i]['ClaveInd_arb'] == 358 || $india[$i]['ClaveInd_arb'] == 359 || $india[$i]['ClaveInd_arb'] == 360 || $india[$i]['ClaveInd_arb'] == 361 || $india[$i]['ClaveInd_arb'] == 343){
+          //if($india[$i]['ClaveInd_arb'] == 118 || $india[$i]['ClaveInd_arb'] == 356 || $india[$i]['ClaveInd_arb'] == 357 || $india[$i]['ClaveInd_arb'] == 358 || $india[$i]['ClaveInd_arb'] == 359 || $india[$i]['ClaveInd_arb'] == 360 || $india[$i]['ClaveInd_arb'] == 361 || $india[$i]['ClaveInd_arb'] == 343){
 
             //$ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
             //echo ' '.$india[$i]['ClaveInd_arb'].'<br/>';
-          }else{
+          //}else{
             $ClaveInd_arb[] = $india[$i]['ClaveInd_arb'];
-          }
+          //}
         }
       //}
 
@@ -582,6 +582,7 @@ function metadatoCSV($data){
 
   /** Include PHPExcel */
   require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
+  require_once dirname(__FILE__) . '/Classes/PHPExcel/Writer/CSV.php';
 
   // Create new PHPExcel object
   //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
@@ -594,9 +595,11 @@ function metadatoCSV($data){
   							 ->setTitle("Objetivo")
   							 ->setSubject($data['Algoritmo_ft'].$data['Descrip_ind'])
   							 ->setDescription("Archivo creado para la Descarga Masiva de Agenda 2030")
-  							 ->setKeywords("agenda2030 descarga masiva xls")
+  							 ->setKeywords("agenda2030 descarga masiva csv")
   							 ->setCategory("Objetivos de Desarrollo Sostenible");
 
+                 //$objPHPExcel->setInputEncoding('utf-8');
+                 //$objPHPExcel->setIncludeCharts(TRUE);
 
   //$metadato = $data['Series'];
   //var_dump($serie);
@@ -707,35 +710,6 @@ function metadatoCSV($data){
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B21', utf8_decode($richText4));//Array
 
-  $objPHPExcel->getActiveSheet()->mergeCells('A1:B1');
-  $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(40);
-  $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(100);
-  $objPHPExcel->getActiveSheet()->getRowDimension('2')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('3')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('4')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('5')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('6')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('7')->setRowHeight(200);
-  $objPHPExcel->getActiveSheet()->getRowDimension('8')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('9')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('10')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('11')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('12')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('13')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('14')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('15')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('16')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('17')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('18')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('19')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('20')->setRowHeight(-1);
-  $objPHPExcel->getActiveSheet()->getRowDimension('21')->setRowHeight(-1);
-
-   $objPHPExcel->getActiveSheet()->getStyle("A1:B1")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-   $objPHPExcel->getActiveSheet()->getStyle("A1:B1")->getFont()->setBold(true);
-   $objPHPExcel->getActiveSheet()->getStyle("A1:B1")->getFont()->setSize(18);
-   $objPHPExcel->getActiveSheet()->getStyle('A1:B25')->getAlignment()->setWrapText(true);
-
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
   $objPHPExcel->getActiveSheet()->setTitle(substr($data['Algoritmo_ft'].$data['Descrip_ind'], 0, 25));
@@ -751,6 +725,8 @@ function metadatoCSV($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  header("Content-Type: text/html;charset=utf-8");
+  //$objWriter = new PHPExcel_Writer_CSV($objPHPExcel);
   $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
@@ -770,7 +746,6 @@ function metadatoCSV($data){
   echo 'Files have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
-
 
 function creaXLSCoS($data){
 
@@ -1636,7 +1611,6 @@ function creaCSVCoClAnidada($data){
   //var_dump($data);
 }
 
-
 function creaXLSClA($data){
 
   /** Error reporting */
@@ -2157,7 +2131,6 @@ function creaCSVAS($data){
   echo 'Files have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
-
 
 function creaXLSACl($data){
 

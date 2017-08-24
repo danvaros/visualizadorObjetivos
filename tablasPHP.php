@@ -283,7 +283,7 @@ function get_tabuladoCSV($indicador){
 }
 
 
-get_tabulado(101);
+get_tabulado(224);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -2654,22 +2654,22 @@ function creaCSVAClanidada($data){
           //var_dump($dato);
 
           //$dato =  '34.6';
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue('A2', 'Periodo');
 
           $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue($a.'2', $valores[$k]['Descrip_cla']);
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
           $celdo = $k + 3;
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
 
           $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
-          $objPHPExcel->setActiveSheetIndex(0)
+          $objPHPExcel->getActiveSheet()
                       ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
