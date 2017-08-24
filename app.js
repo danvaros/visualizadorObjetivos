@@ -43,9 +43,13 @@ $.ajax({
       GloSerie.push(data.Serie[i].ClaveSer_ats);
     }
     console.log(GloSerie);
+    console.log(data);
+
     if(codigoDg == "NEM  "){
       for (var i = 0; i < data.Serie.length; i++) {
-        datos_calculo.push(data.Serie[i].DescripSer_des);
+        if(data.Serie[i].Tipo_ats == "I"){
+          datos_calculo.push(data.Serie[i]);
+        }
       }
     }
   },
@@ -126,7 +130,6 @@ if(codigoDg == "NEM  "){
         poner_filtros_serie();
         $('#row_filtros_serie').show();
         cobertura_notas = true;
-
       }
       var codigo_indicador = data.Codigo_ind;
       var descripcion = data.Descrip_ind;
@@ -366,10 +369,15 @@ $(document).ready(function(){
   });
 
   $('#insumo_change').on('change',function(){
-    put_tabla_insumo($(this).val());
-    $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
-    $('#insumos_cont').hide();
-    $('#este2').hide();
+    if(codigoDg == "NEM  "){
+      datos_calculo_mun($(this).val());
+    }
+    else{
+      put_tabla_insumo($(this).val());
+      $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
+      $('#insumos_cont').hide();
+      $('#este2').hide();
+    }
   });
 
   $('#insumo_change_cob').on('change',function(){
@@ -432,6 +440,27 @@ $(document).ready(function(){
 
 
 });//fin document ready
+
+function datos_calculo_mun(ser){
+    var es =  99;
+    if(ban_mun == true){
+      es = get_clave_estado($('#sel_estados').val())+'%';
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: "https://ods.org.mx/API/Valores/PorCobCla",
+      data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":ser,"PCveCob":es,"PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+      success: function( data, textStatus, jqxhr ) {
+        console.log(data);
+        put_tabla_municipal_datos(data);
+      },
+      error: function() {
+              //alert('Error occured');
+          },
+      async:false
+    });
+}
 
 function arma_tabla_insumo(arreglo_datos,num_cobertura){
   var cobertura_tabla = [];
@@ -1038,59 +1067,65 @@ function put_tabla_insumo(insumo){
 }
 
 function valorDatoInsumos(data){
-  //console.log("comparacion1");
-  lista_insumos = [];
-  var temporal = [];
-  var individual = [];
-
-  for (var i = 0; i < data.Series.length; i++) {
-    var temporal = [];
-    if(data.Series[i].Tipo_ser == "I"){
-
-      lista_insumos.push(data.Series[i].Descrip_ser);
-      temporal.push('Entidad');
-
-      for (var j = 0; j < data.Series[i].Coberturas[0].ValorDato.length; j++) {
-        temporal.push(data.Series[i].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
-      }
-      individual.push(temporal);
-
-      for (var j = 0; j < data.Series[i].Coberturas.length; j++) {
-        temporal = [];
-        categories2 = [];
-
-        categories2.push(data.Series[i].Coberturas[j].Abrevia_cg);
-        temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
-        for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
-          //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-          if(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato != ''){
-
-            var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato)
-
-            var dato_formato2 = Math.round(flot * 10) / 10;
-
-            var dato_formato = +dato_formato2.toFixed(1);
-          }else{
-            var dato_formato =  'ND' ;
-            /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
-          }
-
-          //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-          temporal.push(dato_formato);
-        }
-        individual.push(temporal);
-      }
-      insumos_general.push(individual);
-    }
-  }
-
   //Armamos el select para que tenga todas las series que pueden existir
   var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos browser-default" style="display:block !important; background-color: #f2f2f2;">';
-
   select += '<option value="-1"> Selecciona una opción </option>';
-  $.each(lista_insumos, function(idx, value){
-    select += '<option value="'+idx+'">'+value+'</option>';
-  });
+
+  if(codigoDg == "NEM  "){
+    for (var i = 0; i < datos_calculo.length; i++) {
+      select += '<option value="'+datos_calculo[i].ClaveSer_ats+'">'+datos_calculo[i].DescripSer_des+'</option>';
+    }
+  }else{
+    //console.log("comparacion1");
+    lista_insumos = [];
+    var temporal = [];
+    var individual = [];
+
+    for (var i = 0; i < data.Series.length; i++) {
+      var temporal = [];
+      if(data.Series[i].Tipo_ser == "I"){
+
+        lista_insumos.push(data.Series[i].Descrip_ser);
+        temporal.push('Entidad');
+
+        for (var j = 0; j < data.Series[i].Coberturas[0].ValorDato.length; j++) {
+          temporal.push(data.Series[i].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
+        }
+        individual.push(temporal);
+
+        for (var j = 0; j < data.Series[i].Coberturas.length; j++) {
+          temporal = [];
+          categories2 = [];
+
+          categories2.push(data.Series[i].Coberturas[j].Abrevia_cg);
+          temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
+          for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
+            //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato != ''){
+
+              var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato)
+
+              var dato_formato2 = Math.round(flot * 10) / 10;
+
+              var dato_formato = +dato_formato2.toFixed(1);
+            }else{
+              var dato_formato =  'ND' ;
+              /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
+            }
+
+            //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            temporal.push(dato_formato);
+          }
+          individual.push(temporal);
+        }
+        insumos_general.push(individual);
+      }
+    }
+
+    $.each(lista_insumos, function(idx, value){
+      select += '<option value="'+idx+'">'+value+'</option>';
+    });
+  }
 
   select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div>';
 
@@ -1099,24 +1134,29 @@ function valorDatoInsumos(data){
 }
 
 function coberturaInsumos(data){
-  lista_insumos = [];
-
-  for (var i = 0; i < data.Series.length; i++) {
-    if(data.Series[i].Tipo_ser == "I"){
-      lista_insumos.push(data.Series[i].Descrip_ser);
-      insumos_cobertura.push(cobertura_series(data,i));
-      insumo_cober_clasifica.push(clasificaciones(data,i));
-      //insumo_cober_clasifica_tipo.push();
-    }
-  }
-
   //Armamos el select para que tenga todas las series que pueden existir
   var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
-  select += '<option value="-1"> Selecciona una opción </option>';
-  $.each(lista_insumos, function(idx, value){
-    select += '<option value="'+(idx)+'">'+value+'</option>';
-  });
+  if(codigoDg == "NEM  "){
+    for (var i = 0; i < datos_calculo.length; i++) {
+      console.log('--------');
+      console.log(datos_calculo);
+    }
+  }else{
+    lista_insumos = [];
+
+    for (var i = 0; i < data.Series.length; i++) {
+      if(data.Series[i].Tipo_ser == "I"){
+        lista_insumos.push(data.Series[i].Descrip_ser);
+        insumos_cobertura.push(cobertura_series(data,i));
+        insumo_cober_clasifica.push(clasificaciones(data,i));
+      }
+    }
+    select += '<option value="-1"> Selecciona una opción </option>';
+    $.each(lista_insumos, function(idx, value){
+      select += '<option value="'+(idx)+'">'+value+'</option>';
+    });
+  }
 
   select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;height:510px;overflow:scroll;"></div>';
 
@@ -1369,7 +1409,7 @@ function generar_titulos(){
 }
 
 function titulos(indicador){
-  var serie_insumo =  $('insumo_change').val();
+  var serie_insumo =  $('#insumo_change').val();
   atributos_general = getAtributos(indicador);
   atributos = atributos_general;
 
@@ -1894,4 +1934,11 @@ function mapa_333()
       return div;
     };
     legend.addTo(map);
+  }
+
+
+  function put_tabla_municipal_datos(datos_brutos){
+    $('#nueva_tabla_serie').html(tablaCoS(datos_brutos.Series[0]));
+    $('#insumos_cont').hide();
+    $('#este2').hide();
   }

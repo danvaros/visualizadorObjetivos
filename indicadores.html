@@ -1487,6 +1487,15 @@
 
 
     $('#sel_estados').change(function(){
+
+      for(var j=1;j<=40;j++){
+        $('#anio_'+j).removeClass('active_anio');
+        $('#anio_'+j).addClass('inactive_anio');
+      }
+
+      $('#anio_1').addClass('active_anio');
+      $('#nueva_tabla_serie').html('');
+
         var seleccionado = $(this).val();
         $('#sel_municipios').html(get_sel_municipal(seleccionado));
         $('#sel_municipios').show();
@@ -1927,7 +1936,6 @@
     {
       if(estados[i][0] == cadena)
       {
-        console.log(estados[i][1]);
         if(estados[i][1] == "ND") return 0;
         return parseFloat(estados[i][1]);
       }
@@ -2167,12 +2175,6 @@
           cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
-
-      }
-
-      console.log('asdasdasdfmbsdamnasansbjbbfmsbfdsbdfbsdfbsdkjfbsdfhbsj');
-      for (var i = 0; i < estados.length; i++) {
-        console.log(estados[i][3]);
       }
 
       if(cadena !=  ''){
@@ -2880,7 +2882,7 @@
 
         tabla_municipal.push(temp);
 
-        for (var i = 0; i < d.Series[0].Coberturas.length; i++) {
+        for (var i = 1; i < d.Series[0].Coberturas.length; i++) {
           var temp = [];
           var categories2 = [];
           categories2.push(d.Series[0].Coberturas[i].Abrevia_cg);
