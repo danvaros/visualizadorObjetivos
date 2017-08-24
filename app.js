@@ -90,7 +90,7 @@ if(codigoDg == "NEM  "){
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorCobCla",
-    data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"ASC", "PIdioma":"ES"},
+    data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       // for (var i = 1; i < GloSerie.length; i++) {

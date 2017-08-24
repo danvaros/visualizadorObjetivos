@@ -1493,7 +1493,8 @@
         jQuery.each( coor_estado, function( i, val ){
           if(seleccionado == val.estado){
             map.setView([val.lat, val.long], val.zoom-1);
-            mun_mapa(seleccionado,arrray_anios[0],0);
+            mun_mapa(seleccionado,arrray_anios[0],1);
+            put_grafica_municipal(arrray_anios[0]);
           }
         });
      });
@@ -1926,6 +1927,8 @@
     {
       if(estados[i][0] == cadena)
       {
+        console.log(estados[i][1]);
+        if(estados[i][1] == "ND") return 0;
         return parseFloat(estados[i][1]);
       }
     }
@@ -1957,6 +1960,7 @@
     {
       if(estados[i][0] == cadena)
       {
+        if("ND" == estados[i][posicion]) return 0;
         return parseFloat(estados[i][posicion]);
       }
     }
@@ -2102,10 +2106,11 @@
   }
 
   for (var i = 0; i < statesData.features.length; i++){
-    //console.log(statesData.features[i].properties.nom_ent);
     if (statesData.features[i].properties.nom_ent == null) continue;
     values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
   }
+
+  console.log(values);
 
   brew.setSeries(values);
   brew.setNumClasses(3);
@@ -2310,7 +2315,7 @@
       $('.infos').remove();
       $('.info2').remove();
 
-      for(var j=1;j<=25;j++){
+      for(var j=1;j<=40;j++){
         $('#anio_'+j).removeClass('active_anio');
         $('#anio_'+j).addClass('inactive_anio');
       }
@@ -2977,7 +2982,7 @@
         });
       }
 
-var posi2;
+      var posi2;
       function mun_mapa(e,anioo,posi){
           $('.infos').remove();
           $('.info2').remove();
@@ -3080,8 +3085,7 @@ var posi2;
               municipios.push(temporal);
               var imprime = false;
 
-              for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
-
+              for (var i = 1; i < data.Series[0].Coberturas.length; i++) {
                 var temporal = [];
                 var categories2 = [];
                 categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
@@ -3262,12 +3266,15 @@ var posi2;
       }
 
       function get_estado_municipios(c,i){
-        var covertura = c+'%';
+        var covertura = c;
         var resultado;
+        console.log(i);
+        console.log(GloSerie[0]);
+        console.log(covertura);
         $.ajax({
           type: 'POST',
           url: "https://ods.org.mx/API/Valores/PorCobCla",
-          data:{"PCveInd":i,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":covertura,"PCveAgrupaCla": "0","POrden":"ASC","PIdioma":"ES"},
+          data:{"PCveInd":i,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":covertura,"PCveAgrupaCla": "0","POrden":"DESC","PIdioma":"ES"},
           success: function( data, textStatus, jqxhr ) {
             resultado = data;
           },
@@ -3304,7 +3311,7 @@ var posi2;
         var brew = new classyBrew();
        //++sacar la clave del estado y sacar el indicador que se esta manejando
        var cl =  get_clave_estado(sel_est);
-       valorDato(get_estado_municipios(cl+'%',118));
+       valorDato(get_estado_municipios(cl+'%',PCveInd));
 
         for(var i = 0; i < municipio.features.length; i++){
           if(sel_mun == municipio.features[i].properties.nom_mun && sel_est == municipio.features[i].properties.nom_ent)
@@ -3405,7 +3412,7 @@ var posi2;
             municipios.push(temporal);
             var imprime = false;
 
-            for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
+            for (var i = 1; i < data.Series[0].Coberturas.length; i++) {
 
               var temporal = [];
               var categories2 = [];
