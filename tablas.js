@@ -197,7 +197,7 @@ function tablaAS(data){
 }
 
 function tablaClA(data){
-  var tabuladoClA =  '<table class="tablaArmada striped"><thead><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr></thead>';
+  var tabuladoClA =  '<table class="tablaArmada striped"><thead><tr><th>'+ data.Descrip_ser +'</th><th>'+ data.Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr></thead>';
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == "" || data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == null){
