@@ -1501,6 +1501,7 @@
      $('#sel_municipios').change(function(){
        var sel_mun = $(this).val();
        var sel_est = $('#sel_estados').val();
+
        munisipal_ind(sel_mun,sel_est);
      });
 
@@ -2976,12 +2977,12 @@
         });
       }
 
-
+var posi2;
       function mun_mapa(e,anioo,posi){
           $('.infos').remove();
           $('.info2').remove();
           map.removeLayer(geojson);
-
+          posi2 = posi;
           //PCveInd indecacdor 118
           var municipios = []; //arreglo con los valores de la llamada a la api
           var geo_mun = [];
@@ -3313,7 +3314,7 @@
 
           if(sel_est == municipio.features[i].properties.nom_ent){
             if (municipio.features[i].properties.nom_mun == null) continue;
-            valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi));
+            valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi2));
           }
         }
 
@@ -3366,7 +3367,7 @@
           $('.info2').removeClass('hide');
           console.log(props);
           if (props != undefined) {
-            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi2).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
             gen(municipios[busqueda_indice(props.nom_mun)]);
           }
         }
@@ -3431,7 +3432,7 @@
         }
 
         function style(feature) {
-          var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun,posi))).split(",");
+          var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun,posi2))).split(",");
           //console.log(res, 'hhhh', "c" + res[1]);
           //console.log("hola->",res[1]);
           return {
@@ -3441,7 +3442,7 @@
             dashArray: '1',
             fillOpacity: 1,
             // fillColor: getColoR(feature.properties.density),
-            fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun,posi)),
+            fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun,posi2)),
             className: "c" + res[1]
           };
         }
