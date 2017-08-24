@@ -1,6 +1,6 @@
 <?php
 ini_set('memory_limit', '256M');
-
+header("Content-Type: text/html;charset=utf-8");
 
 function indicadores(){
   // create curl resource
@@ -576,6 +576,8 @@ function metadatoCSV($data){
   error_reporting(E_ALL);
   ini_set('display_errors', TRUE);
   ini_set('display_startup_errors', TRUE);
+  ini_set('mbstring.internal_encoding', 'UTF-8');
+
   date_default_timezone_set('America/Mexico_City');
 
   define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
@@ -725,7 +727,9 @@ function metadatoCSV($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
-  header("Content-Type: text/html;charset=utf-8");
+  header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  header('Content-Disposition: attachment;filename="nombreFichero.xlsx"');
+  header('Cache-Control: max-age=0');
   //$objWriter = new PHPExcel_Writer_CSV($objPHPExcel);
   $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
