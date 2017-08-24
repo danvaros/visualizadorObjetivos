@@ -300,15 +300,15 @@ function get_tabuladoCSV($indicador){
 
 // ----------- Crea todos los XLS de Indicador ---------//
 
-  for ($i=0; $i < count($ClaveInd_arb); $i++) {
-    get_tabulado($ClaveInd_arb[$i]);
-  }
+  // for ($i=0; $i < count($ClaveInd_arb); $i++) {
+  //   get_tabulado($ClaveInd_arb[$i]);
+  // }
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
-  // for ($i=0; $i < count($ClaveInd_arb); $i++) {
-  //   get_tabuladoCSV($ClaveInd_arb[$i]);
-  // }
+  for ($i=0; $i < count($ClaveInd_arb); $i++) {
+    get_tabuladoCSV($ClaveInd_arb[$i]);
+  }
 
 
   // ----------- Crea todos los XLS de Indicador ---------//

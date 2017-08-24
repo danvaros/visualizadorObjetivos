@@ -1,5 +1,8 @@
 <?php
 
+date_default_timezone_set('America/Mexico_City');
+require('lib/pclzip.lib.php');
+
 $datos = $_POST;
 
 $indicadores = $datos['indicadores'];
@@ -23,14 +26,12 @@ if($tipoFormato == 'xls' && $tipoSeleccion == 01){
   }
   $resultado =  trim($codigos, ',');
 
-  date_default_timezone_set('America/Mexico_City');
-  require('lib/pclzip.lib.php');
   $fecha = date('Y-m-d-His');
   $nameFile = 'Agenda2030_DescargaMasiva-'.$fecha.'.zip';
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 if($tipoFormato == 'csv' && $tipoSeleccion == 01){
@@ -42,14 +43,12 @@ if($tipoFormato == 'csv' && $tipoSeleccion == 01){
   }
   $resultado =  trim($codigos, ',');
 
-  date_default_timezone_set('America/Mexico_City');
-  require('lib/pclzip.lib.php');
   $fecha = date('Y-m-d-His');
   $nameFile = 'Agenda2030_DescargaMasiva-'.$fecha.'.zip';
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 if($tipoFormato == 'xls' && $tipoSeleccion == 02){
@@ -69,14 +68,12 @@ if($tipoFormato == 'xls' && $tipoSeleccion == 02){
   }
   $resultado =  trim($codigos, ',');
 
-  date_default_timezone_set('America/Mexico_City');
-  require('lib/pclzip.lib.php');
   $fecha = date('Y-m-d-His');
   $nameFile = 'Agenda2030_DescargaMasiva-'.$fecha.'.zip';
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 if($tipoFormato == 'csv' && $tipoSeleccion == 02){
@@ -96,14 +93,52 @@ if($tipoFormato == 'csv' && $tipoSeleccion == 02){
   }
   $resultado =  trim($codigos, ',');
 
-  date_default_timezone_set('America/Mexico_City');
-  require('lib/pclzip.lib.php');
   $fecha = date('Y-m-d-His');
   $nameFile = 'Agenda2030_DescargaMasiva-'.$fecha.'.zip';
   $zip = new PclZip('zip/'.$nameFile);
   //var_dump($codigos);
   $zip->create($resultado);
-  echo '<a href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+}
+
+if($tipoFormato == 'xls' && $tipoSeleccion == 03){
+  $codigos = '';
+  for ($i=0; $i < count($opo); $i++) {
+    //var_dump($opo[$i]);
+    //var_dump(codigoIndicador($opo[$i]));
+    for ($j=0; $j < count(datoscalculo($opo[$i])); $j++) {
+      $f = $j + 1;
+      $codigos .= 'xlscsv/DatosCalculo_T'.$f.'_'.codigoIndicador($opo[$i]).'.xlsx,';
+    }
+  }
+  $resultado =  trim($codigos, ',');
+
+  $fecha = date('Y-m-d-His');
+  $nameFile = 'Agenda2030_DescargaMasiva-'.$fecha.'.zip';
+  $zip = new PclZip('zip/'.$nameFile);
+  //var_dump($codigos);
+  $zip->create($resultado);
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
+}
+
+if($tipoFormato == 'csv' && $tipoSeleccion == 03){
+  $codigos = '';
+  for ($i=0; $i < count($opo); $i++) {
+    //var_dump($opo[$i]);
+    //var_dump(codigoIndicador($opo[$i]));
+    for ($j=0; $j < count(datoscalculo($opo[$i])); $j++) {
+      $f = $j + 1;
+      $codigos .= 'xlscsv/DatosCalculo_T'.$f.'_'.codigoIndicador($opo[$i]).'.csv,';
+    }
+  }
+  $resultado =  trim($codigos, ',');
+
+  $fecha = date('Y-m-d-His');
+  $nameFile = 'Agenda2030_DescargaMasiva-'.$fecha.'.zip';
+  $zip = new PclZip('zip/'.$nameFile);
+  //var_dump($codigos);
+  $zip->create($resultado);
+  echo '<a style="font-size:18px;" href="zip/'.$nameFile.'">'.$nameFile.'</a>';
 }
 
 
@@ -140,6 +175,52 @@ function codigoIndicador($indicador){
 
           return $responseData['Codigo_des'];
 }
+
+function datoscalculo($indicador){
+  // create curl resource
+        $ch = curl_init();
+
+        $data = array (
+            "PCveInd" => $indicador,
+            "POpcion" => "Cl",
+            "PIdioma" => "ES"
+          );
+
+          // Setup cURL
+          $ch = curl_init('https://ods.org.mx/API/AtrIndicador/PorDesglose');
+          curl_setopt_array($ch, array(
+              CURLOPT_POST => TRUE,
+              CURLOPT_RETURNTRANSFER => TRUE,
+              CURLOPT_HTTPHEADER => array(
+                  'Content-Type: application/json'
+              ),
+              CURLOPT_POSTFIELDS => json_encode($data)
+          ));
+
+          // Send the request
+          $response = curl_exec($ch);
+
+          // Check for errors
+          if($response === FALSE){
+              die(curl_error($ch));
+          }
+
+          // Decode the response
+          $responseData = json_decode($response, TRUE);
+
+          $foo = $responseData['Serie'];
+
+          $bar = array();
+          for ($i=0; $i < count($foo); $i++) {
+            if($foo[$i]['Tipo_ats'] == 'I'){
+              $bar[] = $foo[$i]['DescripSer_des'];
+            }
+          }
+          //var_dump($bar);
+          return $bar;
+
+}
+
 
 function nombreIndicador($indicador){
   // create curl resource

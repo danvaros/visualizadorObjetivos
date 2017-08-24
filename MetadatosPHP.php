@@ -300,9 +300,9 @@ function get_tabuladoCSV($indicador){
 
 // ----------- Crea todos los XLS de Indicador ---------//
 
-  for ($i=0; $i < count($ClaveInd_arb); $i++) {
-    get_tabulado($ClaveInd_arb[$i]);
-  }
+  // for ($i=0; $i < count($ClaveInd_arb); $i++) {
+  //   get_tabulado($ClaveInd_arb[$i]);
+  // }
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
@@ -326,15 +326,15 @@ function get_tabuladoCSV($indicador){
 
 // ----------- Crea todos los XLS de Metadatos ---------//
 
-// for ($i=0; $i < count($ClaveInd_arb); $i++) {
-//   metadato(datosMetadato($ClaveInd_arb[$i]));
-// }
+for ($i=0; $i < count($ClaveInd_arb); $i++) {
+  metadato(datosMetadato($ClaveInd_arb[$i]));
+}
 
 // ----------- Crea todos los CSV de Metadatos ---------//
 
-// for ($i=0; $i < count($ClaveInd_arb); $i++) {
-//   metadatoCSV(datosMetadato($ClaveInd_arb[$i]));
-// }
+for ($i=0; $i < count($ClaveInd_arb); $i++) {
+  metadatoCSV(datosMetadato($ClaveInd_arb[$i]));
+}
 
 
 
@@ -420,9 +420,6 @@ function metadato($data){
   							 ->setKeywords("agenda2030 descarga masiva xls")
   							 ->setCategory("Objetivos de Desarrollo Sostenible");
 
-
-  //$metadato = $data['Series'];
-  //var_dump($serie);
   $objPHPExcel->setActiveSheetIndex(0);
 
   $objPHPExcel->setActiveSheetIndex(0)
@@ -484,7 +481,6 @@ function metadato($data){
     for ($i=0; $i < count($fuente); $i++) {
       $fuen .= $fuente[$i]['Descrip_fue'];
     }
-  //var_dump($fuen);
   $wizard = new PHPExcel_Helper_HTML;
   $richText = $wizard->toRichTextObject($fuen);
 
@@ -566,32 +562,13 @@ function metadato($data){
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
 
-  // Save Excel 2007 file
-  //echo date('H:i:s') , " Write to Excel format" , EOL;
-  $callStartTime = microtime(true);
-
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
   $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  $callEndTime = microtime(true);
-  $callTime = $callEndTime - $callStartTime;
-
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
-  // Echo memory usage
-  //echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo memory peak usage
-  //echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo done
-  //echo date('H:i:s') , " Done writing files" , EOL;
   echo 'Files have been created in ' , getcwd() , EOL;
-  //var_dump($data);
 }
 
 function metadatoCSV($data){
