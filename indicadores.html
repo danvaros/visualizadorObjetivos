@@ -518,6 +518,56 @@
         </div>
       </div>
 
+      <div class="row card tablaPadding ocultar" id="row_filtros" style="display: none;">
+        <div class="col s12 s12">
+          <a id="boton_municipal" style="margin-top: 42px; float: left;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge">Cambiar a municipal</a>
+          <a id="boton_estatal" style="margin-top: 42px; float: left; display:none;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge">Cambiar a estatal</a>
+        </div>
+        <div class="col s12">
+          <div class="input-field col s6 m2 l2">
+            <select  name="estados" id="sel_estados" class="browser-default">
+              <option value="Aguascalientes">Aguascalientes</option>
+              <option value="Baja California">Baja California</option>
+              <option value="Baja California Sur">Baja California Sur</option>
+              <option value="Campeche">Campeche</option>
+              <option value="Chiapas">Chiapas</option>
+              <option value="Chihuahua">Chihuahua</option>
+              <option value="Ciudad de México">Ciudad de México</option>
+              <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+              <option value="Colima">Colima</option>
+              <option value="Durango">Durango</option>
+              <option value="Guanajuato">Guanajuato</option>
+              <option value="Guerrero">Guerrero</option>
+              <option value="Hidalgo">Hidalgo</option>
+              <option value="Jalisco">Jalisco</option>
+              <option value="México">México</option>
+              <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+              <option value="Morelos">Morelos</option>
+              <option value="Nayarit">Nayarit</option>
+              <option value="Nuevo León">Nuevo León</option>
+              <option value="Oaxaca">Oaxaca</option>
+              <option value="Puebla">Puebla</option>
+              <option value="Querétaro">Querétaro</option>
+              <option value="Quintana Roo">Quintana Roo</option>
+              <option value="San Luis Potosí">San Luis Potosí</option>
+              <option value="Sinaloa">Sinaloa</option>
+              <option value="Sonora">Sonora</option>
+              <option value="Tabasco">Tabasco</option>
+              <option value="Tamaulipas">Tamaulipas</option>
+              <option value="Tlaxcala">Tlaxcala</option>
+              <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+              <option value="Yucatán">Yucatán</option>
+              <option value="Zacatecas">Zacatecas</option>
+            </select>
+          </div>
+          <div class="input-field col s6 m2 l2" >
+            <select class="browser-default" id="sel_municipios" name="municipios" style="display:none">
+                <option value="">Selecciona un municipio</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       <div class="row card tablaPadding" id="datos-panel">
         <div class="col s12 l6">PERIODO</div>
         <div class="col s12 l6"></div>
@@ -590,60 +640,7 @@
 
 
       <div id="mapas_hide">
-        <div class="row" id="row_filtros" style="display: none;">
-          <div class="col s12 l2 " >
-            <p class="claro t_sm" style="display: inline-table; margin-top: 25px; margin-right: 63px;">Filtros</p>
-          </div>
-          <div class="col s12 l4 " >
-            <div class="input-field col s12 caja_s">
-              <select id="filtros_es"></select>
-            </div>
-          </div>
-        </div>
         <div class="row card tablaPadding ocultar">
-          <div class="col s12 s12">
-            <!-- <a class="btn waves-effect waves-light" onclick="cambio_anio('municipal',1)"> Cambiar a municipal </a> -->
-            <a id="boton_municipal" style="margin-top: 42px; float: left;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge" onclick="cambio_anio('municipal',1)">Cambiar a municipal</a>
-            <a id="boton_estatal" style="margin-top: 42px; float: left; display:none;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge" onclick="cambio_anio('2014-01-01',1)">Cambiar a estatal</a>
-          </div>
-          <div class="col s12">
-            <div class="input-field col s6 m2 l2">
-              <select  name="estados" id="sel_estados" class="browser-default">
-                <option value="Aguascalientes">Aguascalientes</option>
-                <option value="Baja California">Baja California</option>
-                <option value="Baja California Sur">Baja California Sur</option>
-                <option value="Campeche">Campeche</option>
-                <option value="Chiapas">Chiapas</option>
-                <option value="Chihuahua">Chihuahua</option>
-                <option value="Ciudad de México">Ciudad de México</option>
-                <option value="Coahuila de Zaragoza2">Coahuila de Zaragoza2</option>
-                <option value="Colima">Colima</option>
-                <option value="Durango">Durango</option>
-                <option value="Guanajuato">Guanajuato</option>
-                <option value="Guerrero">Guerrero</option>
-                <option value="Hidalgo">Hidalgo</option>
-                <option value="Jalisco">Jalisco</option>
-                <option value="México">México</option>
-                <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
-                <option value="Morelos">Morelos</option>
-                <option value="Nayarit">Nayarit</option>
-                <option value="Nuevo León">Nuevo León</option>
-                <option value="Oaxaca">Oaxaca</option>
-                <option value="Puebla">Puebla</option>
-                <option value="Querétaro de Arteaga">Querétaro de Arteaga</option>
-                <option value="Quintana Roo">Quintana Roo</option>
-                <option value="San Luis Potosí">San Luis Potosí</option>
-                <option value="Sinaloa">Sinaloa</option>
-                <option value="Sonora">Sonora</option>
-                <option value="Tabasco">Tabasco</option>
-                <option value="Tamaulipas">Tamaulipas</option>
-                <option value="Tlaxcala">Tlaxcala</option>
-                <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
-                <option value="Yucatán">Yucatán</option>
-                <option value="Zacatecas">Zacatecas</option>
-              </select>
-            </div>
-          </div>
           <div class="col s12 l12">
             <div class="cuadro_titulo">
               <h4>Nombre del Indicador</h4>
@@ -928,12 +925,15 @@
     <script src="classybrew/build/classybrew.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
     <script src="listado_indicadores.js"></script>
-    <script type="text/javascript" charset="utf-8" src="municipio.json"></script>
+
 
     <!--  ayuda para el mapa municipal y geojson -->
     <script type="text/javascript" charset="utf-8" src="municipio.json"></script>
     <script type="text/javascript" src="consulta_municipal.json"></script>
     <script src="js/estados_mexico.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/cod_estados.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/sel_mun.js" type="text/javascript" charset="utf-8"></script>
+
 
     <script>
     var titulo_des_graf="Razón de mortalidad materna";
@@ -1222,21 +1222,21 @@
         }
       }
 
-      if(codigoDg.replace(/\s/g,'') == 'NEM' ){
-        $('#tabla_nacional').hide();
-        $('#indicador-panel').hide();
-        $('#mapas_hide').hide();
-        $('#botonera_nacional').hide();
-        $('#chart2').hide();
-        $('#indicador-grafica').hide();
-        $('#DescargaDatos').hide();
-        $('#indicador').hide();
-        $('#metadato').hide();
-        $('#serie').hide();
-        $('#datos').hide();
-        $('#mensajeNEM').show();
-        $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
-      }
+      // if(codigoDg.replace(/\s/g,'') == 'NEM' ){
+      //   $('#tabla_nacional').hide();
+      //   $('#indicador-panel').hide();
+      //   $('#mapas_hide').hide();
+      //   $('#botonera_nacional').hide();
+      //   $('#chart2').hide();
+      //   $('#indicador-grafica').hide();
+      //   $('#DescargaDatos').hide();
+      //   $('#indicador').hide();
+      //   $('#metadato').hide();
+      //   $('#serie').hide();
+      //   $('#datos').hide();
+      //   $('#mensajeNEM').show();
+      //   $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
+      // }
 
 
 
@@ -1482,9 +1482,60 @@
     });
     //ocultamos el boton de municipios si no es para el 118
     if(PCveInd != 118){
-        $("#boton_municipal").hide();
+        $("#boton_municipal").show();
     }
 
+
+    $('#sel_estados').change(function(){
+
+      for(var j=1;j<=40;j++){
+        $('#anio_'+j).removeClass('active_anio');
+        $('#anio_'+j).addClass('inactive_anio');
+      }
+
+      $('#anio_1').addClass('active_anio');
+      $('#nueva_tabla_serie').html('');
+
+        var seleccionado = $(this).val();
+        $('#sel_municipios').html(get_sel_municipal(seleccionado));
+        $('#sel_municipios').show();
+        jQuery.each( coor_estado, function( i, val ){
+          if(seleccionado == val.estado){
+            map.setView([val.lat, val.long], val.zoom-1);
+            mun_mapa(seleccionado,arrray_anios[0],1);
+            put_grafica_municipal(arrray_anios[0]);
+          }
+        });
+     });
+
+     $('#sel_municipios').change(function(){
+       var sel_mun = $(this).val();
+       var sel_est = $('#sel_estados').val();
+
+       munisipal_ind(sel_mun,sel_est);
+     });
+
+     $('#boton_estatal').click(function(){
+       $("#boton_municipal").show();
+       $("#boton_estatal").hide();
+       $("#sel_estados").hide();
+       $("#sel_municipios").hide();
+       ban_mun = false;
+       cambio_anio(estados[0][1]);
+
+       console.log('cambio municipal');
+     });
+
+     $('#boton_municipal').click(function(){
+       $("#boton_municipal").hide();
+       $("#boton_estatal").show();
+       $("#sel_estados").show();
+       $("#sel_municipios").show();
+       ban_mun = true;
+       cambio_anio(estados[0][1]);
+       put_grafica_municipal(arrray_anios[0]);
+       console.log('cambio estatal');
+     });
   });//fin del document ready
 
   // ------------------------------------------ //
@@ -1598,7 +1649,12 @@
     if((anio_activo+1)  < arrray_anios.length){
       anio_activo++;
       $('.numero').html(arrray_anios[anio_activo]);
-      datosGrafica(arrray_anios[anio_activo]);
+
+      if(codigoDg == "NEM  " && ban_mun == true){
+        put_grafica_municipal(arrray_anios[anio_activo]);
+      }else{
+        datosGrafica(arrray_anios[anio_activo]);
+      }
     }
   }
 
@@ -1608,7 +1664,12 @@
       anio_activo--;
       $('.numero').html(arrray_anios[anio_activo]);
       var array_Graficas = atributos.Grafica;
-      datosGrafica(arrray_anios[anio_activo]);
+
+      if(codigoDg == "NEM  " && ban_mun == true){
+        put_grafica_municipal(arrray_anios[anio_activo]);
+      }else{
+        datosGrafica(arrray_anios[anio_activo]);
+      }
     }
   }
 
@@ -1875,6 +1936,7 @@
     {
       if(estados[i][0] == cadena)
       {
+        if(estados[i][1] == "ND") return 0;
         return parseFloat(estados[i][1]);
       }
     }
@@ -1906,6 +1968,7 @@
     {
       if(estados[i][0] == cadena)
       {
+        if("ND" == estados[i][posicion]) return 0;
         return parseFloat(estados[i][posicion]);
       }
     }
@@ -2051,10 +2114,11 @@
   }
 
   for (var i = 0; i < statesData.features.length; i++){
-    //console.log(statesData.features[i].properties.nom_ent);
     if (statesData.features[i].properties.nom_ent == null) continue;
     values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
   }
+
+  console.log(values);
 
   brew.setSeries(values);
   brew.setNumClasses(3);
@@ -2111,12 +2175,6 @@
           cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
-
-      }
-
-      console.log('asdasdasdfmbsdamnasansbjbbfmsbfdsbdfbsdfbsdkjfbsdfhbsj');
-      for (var i = 0; i < estados.length; i++) {
-        console.log(estados[i][3]);
       }
 
       if(cadena !=  ''){
@@ -2124,7 +2182,6 @@
         //  cadena = cadena +'<div class="owl-carousel">'+cadena+'</div>';
 
         $('#anios').html(cadena);
-
         $('#'+anio_mas_actual).trigger( "click" );
       }
       else{
@@ -2252,263 +2309,36 @@
 
     //cosas por acomodar las deja aqui por el tiempo :)
 
-
-
     function cambio_anio(cadena, i){
+      var anio_buscar = $('#opciones_anio').val();
+      var posi = busqueda_anio(cadena);
+      var anioo = cadena.split('-');
+
       $('.infos').remove();
       $('.info2').remove();
+
+      for(var j=1;j<=40;j++){
+        $('#anio_'+j).removeClass('active_anio');
+        $('#anio_'+j).addClass('inactive_anio');
+      }
+
+      $('#anio_'+i).removeClass('inactive_anio');
+      $('#anio_'+i).addClass('active_anio');
+
       map.removeLayer(geojson);
 
-      if(cadena  == 'municipal'){
-        $("#boton_municipal").hide();
-        $("#boton_estatal").show();
-        //PCveInd indecacdor 118
-        var municipios = []; //arreglo con los valores de la llamada a la api
-        var valuesMunicipio = [];
-        var brew = new classyBrew();
-        console.log(cadena);
-        var anioo = cadena.split('-');
-
-        $('#anios').hide();
-        valorDato(dataLocal);
-
-        for (var i = 0; i < municipio.features.length; i++){
-          //console.log(statesData.features[i].properties.nom_ent);
-          if (municipio.features[i].properties.nom_mun == null) continue;
-          valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun));
-          if(busqueda_municipio(municipio.features[i].properties.nom_mun) == undefined){
-            //console.log(municipio.features[i].properties.nom_mun);
+      if(codigoDg == "NEM  " && ban_mun == true){
+        var seleccionado = $('#sel_estados').val();
+        $('#sel_municipios').html(get_sel_municipal(seleccionado));
+        jQuery.each( coor_estado, function( i, val ){
+          if(seleccionado == val.estado){
+            map.setView([val.lat, val.long], val.zoom-1);
+            mun_mapa(seleccionado,anioo,posi);
           }
-        }
-
-        brew.setSeries(valuesMunicipio);
-        brew.setNumClasses(3);
-        brew.setColorCode("Blues");
-        brew.classify('jenks');
-        var alfr=brew.getBreaks();
-        var brea =[];
-        for(var ii=0;ii<alfr.length;ii++)
-        {
-          if(alfr[ii] != -1)
-          {
-            brea.push(alfr[ii]);
-          }
-        }
-
-        geojson = L.geoJson(municipio, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-
-        map.attributionControl.addAttribution('');
-
-        var info = L.control();
-        info.onAdd = function (map) {
-          this._div = L.DomUtil.create('div', 'infos hide');
-          this.update();
-          return this._div;
-        };
-        info.update = function (props) {
-          //this._div = L.DomUtil.create('div', 'infos');
-          $('.infos').removeClass('hide');
-          $('.info2').removeClass('hide');
-          console.log(props);
-          if (props != undefined) {
-            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
-            //console.log("aca ---> ",estados[busqueda_indice(props.nom_ent)]);
-            // gen(estados[props.cve]);
-            gen(municipios[busqueda_indice(props.nom_mun)]);
-            //console.log("busqueda",busqueda_mexico());
-            //console.log("--->>>>>>>",titulo_des_graf);
-            //console.log("props",props);
-          }
-        }
-        info.addTo(map);
-
-        var legend = L.control();
-        legend.onAdd = function (map) {
-          var div = L.DomUtil.create('div', 'info2 legend hide'),
-            grades = brew.getBreaks(),//[0, 20, 50, 100],
-            labels = [],
-            from, to;
-          for (var i = 0; i < grades.length - 1; i++) {
-            from = grades[i];
-            to = grades[i + 1];
-            var res = String(getColoR(from)).split(",");
-            //console.log(from, from + 1, res, grades);
-            labels.push(
-              '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
-              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
-          }
-          div.innerHTML = labels.join('');
-          return div;
-        };
-        legend.addTo(map);
-
-
-        function valorDato(data){
-            var temporal = [];
-            var Descrip_ind = data.Descrip_ind;
-
-            temporal.push('Municipio');
-            for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
-              temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
-            }
-            municipios.push(temporal);
-            var imprime = false;
-
-            for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
-
-              var temporal = [];
-              var categories2 = [];
-              categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
-              temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
-
-              for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-                var dato_formato;
-                if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
-                {
-                  dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
-                }
-                else {
-                  dato_formato = 0;
-                }
-                temporal.push(dato_formato);
-              }
-              municipios.push(temporal);
-            }
-          }//fin funcion valorDato
-
-        function busqueda_municipio(cadena) {
-          //console.log("super log",cadena,estados);
-          for (var i = 0; i < municipios.length; i++) {
-            if (municipios[i][0] == cadena) {
-              //console.log(cadena,municipios[i][1],i);
-              return parseFloat(municipios[i][1]);
-            }
-          }
-        }
-
-        function getColoR(number){
-          return brew.getColorInRange(number);
-        }
-
-        function style(feature) {
-          var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun))).split(",");
-          //console.log(res, 'hhhh', "c" + res[1]);
-          //console.log("hola->",res[1]);
-          return {
-            weight: 0.5,
-            opacity: 1,
-            color: '#000',
-            dashArray: '1',
-            fillOpacity: 1,
-            // fillColor: getColoR(feature.properties.density),
-            fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun)),
-            className: "c" + res[1]
-          };
-        }
-
-        function highlightFeature(e) {
-          if(locked == false)
-          {
-            var layer = e.target;
-            layer.setStyle({
-              weight: 2,
-              color: '#ccc',
-              dashArray: '',
-              fillOpacity: 0.7
-            });
-            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-              layer.bringToFront();
-            }
-            info.update(layer.feature.properties);
-          }
-        }
-
-        function resetHighlight(e) {
-          geojson.resetStyle(e.target);
-          info.update();
-        }
-
-        function zoomToFeature(e) {
-          map.fitBounds(e.target.getBounds());
-        }
-
-        function onEachFeature(feature, layer){
-          layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
-            mousedown: function(e)
-            {
-              if (locked == true) {
-                locked = false;
-                (function ($) {
-                  $(".info2").css("border","none");
-                  $(".infos").css("border","none");
-                }(jQuery));
-              }
-              else {
-                locked = true;
-                (function ($) {
-                  $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
-                  $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
-                  $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
-                  $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
-                  $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
-                  $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
-                }(jQuery));
-              }
-            },
-          });
-        }
-
-        function highlightFromLegend(e){
-          (function ($) {
-            $("svg path."+e).addClass("highlighted");
-            var r=$("svg path."+e);
-            for(var i=0;i<r.length;i++)
-            {
-              r[i].classList.add("highlighted");
-            }
-          }(jQuery));
-        }
-
-        function clearHighlight() {
-          (function ($) {
-
-            $("path").removeClass("highlighted");
-            var r=$("path");
-            for(var i=0;i<r.length;i++)
-            {
-              r[i].classList.remove("highlighted");
-            }
-          }(jQuery));
-        }
-
-        function busqueda_indice(cadena) {
-          for (var i = 0; i < municipios.length; i++) {
-            if (municipios[i][0] == cadena) {
-              return parseFloat(i);
-            }
-          }
-        }
+        });
       }//fin if
       else{
-        $("#boton_municipal").show();
-        $("#boton_estatal").hide();
-
-        for(var j=1;j<=25;j++){
-          $('#anio_'+j).removeClass('active_anio');
-          $('#anio_'+j).addClass('inactive_anio');
-        }
-
-        $('#anio_'+i).removeClass('inactive_anio');
-        $('#anio_'+i).addClass('active_anio');
-
-        var anio_buscar=$('#opciones_anio').val();
-        var posi = busqueda_anio(cadena);
-        var anioo = cadena.split('-');
+        map.setView([24.8, -100], 5);
 
         locked =false;
 
@@ -2609,8 +2439,7 @@
           });
         }
 
-        function highlightFromLegend(e)
-        {
+        function highlightFromLegend(e){
           (function ($) {
             $("svg path."+e).addClass("highlighted");
             var r=$("svg path."+e);
@@ -2691,7 +2520,7 @@
           }
           console.log(estados);
         }
-      }
+      }//fin cambio anio
 
       function isScrolledIntoView(elem){
 
@@ -3020,15 +2849,699 @@
           });
         }
       }
-console.log(arrray_anios);
-      //---------------------------------- codigo nuevo -----------//
-      function init_geojson(){
-        console.log(geojson.options);
-        map.removeLayer(geojson);
-        geojson = L.geoJson(municipio, {
-          style: style
-        }).addTo(map);
+
+      //---------------------------------- codigo nuevo -----------/
+
+
+      function put_tabla_municipal(datos_brutos){
+        $('.tabla_completa').html(tablaCoS(datos_brutos.Series[0]));
+        $('.tabla_completa').css('overflow-y','scroll');
+        $('.tabla_completa').css('height','900px');
       }
+
+      function put_grafica_municipal(anio){
+
+        var cl =  get_clave_estado($('#sel_estados').val());
+        var datos_brutos = get_estado_municipios(cl+'%',PCveInd);
+
+        arma_tabla_municipal(datos_brutos);
+        console.log(tabla_municipal);
+        datosGrafica_mun(anio);
+      }
+
+      var tabla_municipal = [];
+      function arma_tabla_municipal(d){
+        var temp = [];
+        tabla_municipal = [];
+        Descrip_ind = d.Descrip_ind;
+
+        temp.push('Entidad');
+        for (var i = 0; i < d.Series[0].Coberturas[0].ValorDato.length; i++) {
+          temp.push(d.Series[0].Coberturas[0].ValorDato[i].AADato_ser+'-01-01');
+        }
+
+        tabla_municipal.push(temp);
+
+        for (var i = 1; i < d.Series[0].Coberturas.length; i++) {
+          var temp = [];
+          var categories2 = [];
+          categories2.push(d.Series[0].Coberturas[i].Abrevia_cg);
+          temp.push(d.Series[0].Coberturas[i].Descrip_cg);
+          for (var j = 0; j < d.Series[0].Coberturas[i].ValorDato.length; j++) {
+            var dato_formato;
+            if(d.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
+            {
+              dato_formato = d.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
+            }
+            else {
+                 dato_formato = 'null';
+            }
+            temp.push(dato_formato);
+          }
+          tabla_municipal.push(temp);
+        }
+      }
+
+      function datosGrafica_mun(year){
+        var array_Graficas = atributos.Grafica;
+        var indice = 0;
+        var serie = [];
+        var nuevos_estados_dobles = new Array();
+        var tabla_nueva = '';
+        var tabla_uno = '';
+
+        for (var i = 0; i < tabla_municipal[0].length; i++) {
+          if(tabla_municipal[0][i].includes(year)){
+            indice = i;
+          }
+        }
+
+
+        console.log(indice);
+
+        console.log(tabla_municipal[0].length);
+        tabla_nueva += '<thead><tr><th>Entidad Federativa</th>';
+        for (var i = 0; i < tabla_municipal.length; i++) {
+          if(i==0){
+            serie.push(Descrip_ind);
+          }
+          else{
+            if(i < tabla_municipal.length){
+              var unods = (tabla_municipal[i][indice] == 'ND') ? 'ND' : parseFloat(tabla_municipal[i][indice]);//.toFixed(1);
+
+              for(k=0; k < arrray_anios.length; k++){
+                tabla_nueva += '<th>'+ arrray_anios[k] +'</th>';
+              }
+
+              tabla_nueva += '</tr></thead>';
+              tabla_nueva += '<tbody class="tabla_uno"><tr><td>'+tabla_municipal[i][0]+'</td>';
+              tabla_nueva += '<td>' + unods + '</td></tr></tbody>';
+            }
+
+            if(tabla_municipal[i][indice] == 'ND'){
+              var numero =  0;
+            }
+            else{
+              var numero =  parseFloat(tabla_municipal[i][indice]);//.toFixed(1);
+            }
+
+
+            var valueToPush = {'numero':numero, 'estado':tabla_municipal[i][0], 'abrevia':abrevia_edo(tabla_municipal[i][0])};
+            nuevos_estados_dobles.push(valueToPush);
+
+            serie.push(parseFloat(tabla_municipal[i][indice]));
+          }
+        }
+
+        nuevos_estados_dobles.sort(sortFunction);
+
+        var categories = [];
+        var categories2 = [];
+        var series = [];
+
+        //separar el arreglo
+        series.push(Descrip_ind);
+        categories.push(Descrip_ind);
+
+        for (var i = 0; i < nuevos_estados_dobles.length; i++) {
+          if('Estados Unidos Mexicanos' == nuevos_estados_dobles[i].estado ){
+            index_estados = i;
+          }
+          categories[i] = nuevos_estados_dobles[i].estado;
+          categories2[i] = nuevos_estados_dobles[i].abrevia;
+
+          series.push(parseFloat(nuevos_estados_dobles[i].numero));
+        }
+
+        console.log(series);
+        console.log(categories);
+        console.log(nuevos_estados_dobles);
+        cat_global = categories;
+        chartBarras.load({
+          columns: [series],
+          categories: categories,
+          unload: [Descrip_ind],
+        });
+      }
+
+      var posi2;
+      function mun_mapa(e,anioo,posi){
+          $('.infos').remove();
+          $('.info2').remove();
+          map.removeLayer(geojson);
+          posi2 = posi;
+          //PCveInd indecacdor 118
+          var municipios = []; //arreglo con los valores de la llamada a la api
+          var geo_mun = [];
+          var features = [];
+          var valuesMunicipio = [];
+          var brew = new classyBrew();
+
+          //++sacar la clave del estado y sacar el indicador que se esta manejando
+          var cl =  get_clave_estado(e);
+          var datos_brutos = get_estado_municipios(cl+'%',PCveInd);
+          put_tabla_municipal(datos_brutos);
+          valorDato(datos_brutos);
+
+          for(var i = 0; i < municipio.features.length; i++){
+            if(e == municipio.features[i].properties.nom_ent){
+              features.push(municipio.features[i]);
+              if (municipio.features[i].properties.nom_mun == null) continue;
+
+              valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi));
+            }
+          }
+
+          geo_mun={'features':features,'type':"FeatureCollection"};
+
+          brew.setSeries(valuesMunicipio);
+          brew.setNumClasses(3);
+          brew.setColorCode("Blues");
+          brew.classify('jenks');
+          var alfr=brew.getBreaks();
+          var brea =[];
+          for(var ii=0;ii<alfr.length;ii++)
+          {
+            if(alfr[ii] != -1)
+            {
+              brea.push(alfr[ii]);
+            }
+          }
+
+          geojson = L.geoJson(geo_mun, {
+            style: style,
+            onEachFeature: onEachFeature
+          }).addTo(map);
+
+          map.attributionControl.addAttribution('');
+
+          var info = L.control();
+          info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'infos hide');
+            this.update();
+            return this._div;
+          };
+
+          info.update = function (props) {
+            //this._div = L.DomUtil.create('div', 'infos');
+            $('.infos').removeClass('hide');
+            $('.info2').removeClass('hide');
+            console.log(props);
+            if (props != undefined) {
+              this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">('+anioo[0]+')</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+              gen(municipios[busqueda_indice(props.nom_mun)]);
+              $(".crop").dotdotdot();
+            }
+          }
+          info.addTo(map);
+
+          var legend = L.control();
+          legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info2 legend hide'),
+              grades = brew.getBreaks(),//[0, 20, 50, 100],
+              labels = [],
+              from, to;
+            for (var i = 0; i < grades.length - 1; i++) {
+              from = grades[i];
+              to = grades[i + 1];
+              var res = String(getColoR(from)).split(",");
+              //console.log(from, from + 1, res, grades);
+              labels.push(
+                '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+                from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
+            }
+            div.innerHTML = labels.join('');
+            return div;
+          };
+          legend.addTo(map);
+
+
+          function valorDato(data){
+              var temporal = [];
+              var Descrip_ind = data.Descrip_ind;
+
+              temporal.push('Municipio');
+              for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
+                temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
+              }
+              municipios.push(temporal);
+              var imprime = false;
+
+              for (var i = 1; i < data.Series[0].Coberturas.length; i++) {
+                var temporal = [];
+                var categories2 = [];
+                categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
+                temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
+
+                for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
+                  var dato_formato;
+                  if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
+                  {
+                    dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
+                  }
+                  else {
+                    dato_formato = 0;
+                  }
+                  temporal.push(dato_formato);
+                }
+                municipios.push(temporal);
+              }
+            }//fin funcion valorDato
+
+          function busqueda_municipio(cadena,posicion) {
+            //console.log("super log",cadena,estados);
+            for (var i = 0; i < municipios.length; i++) {
+              if (municipios[i][0] == cadena) {
+                //console.log(cadena,municipios[i][1],i);
+                return parseFloat(municipios[i][posicion]);
+              }
+            }
+          }
+
+          function getColoR(number){
+            return brew.getColorInRange(number);
+          }
+
+          function style(feature) {
+            var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun,posi))).split(",");
+            //console.log(res, 'hhhh', "c" + res[1]);
+            //console.log("hola->",res[1]);
+            return {
+              weight: 0.5,
+              opacity: 1,
+              color: '#000',
+              dashArray: '1',
+              fillOpacity: 1,
+              // fillColor: getColoR(feature.properties.density),
+              fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun,posi)),
+              className: "c" + res[1]
+            };
+          }
+
+          function highlightFeature(e) {
+            if(locked == false)
+            {
+              var layer = e.target;
+              layer.setStyle({
+                weight: 2,
+                color: '#ccc',
+                dashArray: '',
+                fillOpacity: 0.7
+              });
+              if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                layer.bringToFront();
+              }
+              info.update(layer.feature.properties);
+            }
+          }
+
+          function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+            info.update();
+          }
+
+          function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+          }
+
+          function onEachFeature(feature, layer){
+            layer.on({
+              mouseover: highlightFeature,
+              mouseout: resetHighlight,
+              mousedown: function(e)
+              {
+                if (locked == true) {
+                  locked = false;
+                  (function ($) {
+                    $(".info2").css("border","none");
+                    $(".infos").css("border","none");
+                  }(jQuery));
+                }
+                else {
+                  locked = true;
+                  (function ($) {
+                    $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+                    $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+                    $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+                    $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+                    $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+                    $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+                  }(jQuery));
+                }
+              },
+            });
+          }
+
+          function highlightFromLegend(e){
+            (function ($) {
+              $("svg path."+e).addClass("highlighted");
+              var r=$("svg path."+e);
+              for(var i=0;i<r.length;i++)
+              {
+                r[i].classList.add("highlighted");
+              }
+            }(jQuery));
+          }
+
+          function clearHighlight() {
+            (function ($) {
+
+              $("path").removeClass("highlighted");
+              var r=$("path");
+              for(var i=0;i<r.length;i++)
+              {
+                r[i].classList.remove("highlighted");
+              }
+            }(jQuery));
+          }
+
+          function busqueda_indice(cadena) {
+            for (var i = 0; i < municipios.length; i++) {
+              if (municipios[i][0] == cadena) {
+                return parseFloat(i);
+              }
+            }
+          }
+      }//fin mun
+
+      function sacar_lista_municipios(){
+        var esta_mun = [];
+        var new_esta = [];
+        var new_mun  = [];
+
+        var preba = [{estado:'aguas',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]},{estado:'aguas negras',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]},{estado:'aguas muy negras',municipios:[{nombre:'mun1'},{nombre:'mun2'},{nombre:'mun3'}]}]
+        console.log(dataLocal);
+        console.log(preba);
+
+
+        for (var i = 0; i < dataLocal.Series[0].Coberturas.length; i++) {
+          if(dataLocal.Series[0].Coberturas[i].ClaveCobGeo_cg < 1001){
+            console.log(dataLocal.Series[0].Coberturas[i].Descrip_cg);
+            var tem = { estado :  dataLocal.Series[0].Coberturas[i].Descrip_cg , municipios : [] };
+            esta_mun.push(tem);
+          }else{
+            var tem  =  {nombre : dataLocal.Series[0].Coberturas[i].Descrip_cg };
+            esta_mun[esta_mun.length-1].municipios.push(tem);
+          }
+        }
+        console.log(esta_mun);
+      }
+
+      function get_sel_municipal(e){
+        var mun_arry = get_muni_estado(e);
+        var options = '<option value"00" >Selecciona un Municipio</option>';
+        for (var i = 0; i < mun_arry.length; i++) {
+          options += '<option value"' + mun_arry[i].nombre + '" >' + mun_arry[i].nombre +'</option>'
+        }
+        return options;
+      }
+
+      function get_muni_estado(e){
+        var r ;
+        for (var i = 0; i < sel_municipal.length; i++) {
+          if(e == sel_municipal[i].estado){
+            r = sel_municipal[i].municipios;
+            break;
+          }
+        }
+        return r;
+      }
+
+      function get_estado_municipios(c,i){
+        var covertura = c;
+        var resultado;
+        console.log(i);
+        console.log(GloSerie[0]);
+        console.log(covertura);
+        $.ajax({
+          type: 'POST',
+          url: "https://ods.org.mx/API/Valores/PorCobCla",
+          data:{"PCveInd":i,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":covertura,"PCveAgrupaCla": "0","POrden":"DESC","PIdioma":"ES"},
+          success: function( data, textStatus, jqxhr ) {
+            resultado = data;
+          },
+          error: function() {
+            //alert('Error occured');
+          },
+          async:false
+        });
+        console.log(resultado);
+        return resultado;
+      }
+
+      function get_clave_estado(estado){
+        var clave = '';
+        for (var i = 0; i < cod_estados.length; i++) {
+          if(cod_estados[i].estado ==  estado){
+            clave =  cod_estados[i].clave;
+            break;
+          }
+        }
+        return clave;
+      }
+
+      function munisipal_ind(sel_mun,sel_est){
+        $('.infos').remove();
+        $('.info2').remove();
+        map.removeLayer(geojson);
+
+        //PCveInd indecacdor 118
+        var municipios = []; //arreglo con los valores de la llamada a la api
+        var geo_mun = [];
+        var features = [];
+        var valuesMunicipio = [];
+        var brew = new classyBrew();
+       //++sacar la clave del estado y sacar el indicador que se esta manejando
+       var cl =  get_clave_estado(sel_est);
+       valorDato(get_estado_municipios(cl+'%',PCveInd));
+
+        for(var i = 0; i < municipio.features.length; i++){
+          if(sel_mun == municipio.features[i].properties.nom_mun && sel_est == municipio.features[i].properties.nom_ent)
+          {
+            features.push(municipio.features[i]);
+          }
+
+          if(sel_est == municipio.features[i].properties.nom_ent){
+            if (municipio.features[i].properties.nom_mun == null) continue;
+            valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi2));
+          }
+        }
+
+        brew.setSeries(valuesMunicipio);
+        brew.setNumClasses(3);
+        brew.setColorCode("Blues");
+        brew.classify('jenks');
+        var alfr=brew.getBreaks();
+        var brea =[];
+        for(var ii=0;ii<alfr.length;ii++)
+        {
+          if(alfr[ii] != -1)
+          {
+            brea.push(alfr[ii]);
+          }
+        }
+
+        geo_mun={'features':features,'type':"FeatureCollection"};
+
+        console.log(valorDato);
+        console.log(valuesMunicipio);
+
+        geojson = L.geoJson(geo_mun, {
+          style: style,
+          onEachFeature: onEachFeature
+        }).addTo(map);
+
+        function busqueda_municipio(cadena,posicion) {
+          //console.log("super log",cadena,estados);
+          for (var i = 0; i < municipios.length; i++) {
+            if (municipios[i][0] == cadena) {
+              //console.log(cadena,municipios[i][1],i);
+              return parseFloat(municipios[i][posicion]);
+            }
+          }
+        }
+
+        map.attributionControl.addAttribution('');
+
+        var info = L.control();
+        info.onAdd = function (map) {
+          this._div = L.DomUtil.create('div', 'infos hide');
+          this.update();
+          return this._div;
+        };
+
+        info.update = function (props) {
+          //this._div = L.DomUtil.create('div', 'infos');
+          $('.infos').removeClass('hide');
+          $('.info2').removeClass('hide');
+          console.log(props);
+          if (props != undefined) {
+            this._div.innerHTML = '<div><h5 style="font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">' + props.nom_mun + '</h5><br><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 20px;color: #00aeef;">' + busqueda_municipio(props.nom_mun,posi2).toFixed(1)/*props.density*/ + '</b><br/><b style="padding-left:20px;color:#999999;">(2010)</b><p style="bottom: 71%;font-size: 15px;left: 30%;overflow: hidden;position: absolute;text-overflow: ellipsis;white-space: nowrap;width: 195px;" >'+titulo_des_graf+'</p></div></div><div class="info"></div>';
+            gen(municipios[busqueda_indice(props.nom_mun)]);
+          }
+        }
+        info.addTo(map);
+
+        var legend = L.control();
+        legend.onAdd = function (map) {
+          var div = L.DomUtil.create('div', 'info2 legend hide'),
+            grades = brew.getBreaks(),//[0, 20, 50, 100],
+            labels = [],
+            from, to;
+          for (var i = 0; i < grades.length - 1; i++) {
+            from = grades[i];
+            to = grades[i + 1];
+            var res = String(getColoR(from)).split(",");
+            //console.log(from, from + 1, res, grades);
+            labels.push(
+              '<div style="float:left; text-align: center;"><i class="leyenda" onmouseover="highlightFromLegend(\'c' + res[1] + '\')" onmouseout="clearHighlight();" style="width:100%; background:' + getColoR(from) + '"></i><br>' +
+              from.toFixed(2) + (to.toFixed(2) ? '&ndash;' + to.toFixed(2) : '+') + '</div>');
+          }
+          div.innerHTML = labels.join('');
+          return div;
+        };
+        legend.addTo(map);
+
+
+        function valorDato(data){
+            var temporal = [];
+            var Descrip_ind = data.Descrip_ind;
+
+            temporal.push('Municipio');
+            for (var j = 0; j < data.Series[0].Coberturas[0].ValorDato.length; j++) {
+              temporal.push(data.Series[0].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
+            }
+            municipios.push(temporal);
+            var imprime = false;
+
+            for (var i = 1; i < data.Series[0].Coberturas.length; i++) {
+
+              var temporal = [];
+              var categories2 = [];
+              categories2.push(data.Series[0].Coberturas[i].Abrevia_cg);
+              temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
+
+              for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
+                var dato_formato;
+                if(data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato != '')
+                {
+                  dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato;
+                }
+                else {
+                  dato_formato = 0;
+                }
+                temporal.push(dato_formato);
+              }
+              municipios.push(temporal);
+            }
+          }//fin funcion valorDato
+
+        function getColoR(number){
+          return brew.getColorInRange(number);
+        }
+
+        function style(feature) {
+          var res = String(getColoR(busqueda_municipio(feature.properties.nom_mun,posi2))).split(",");
+          //console.log(res, 'hhhh', "c" + res[1]);
+          //console.log("hola->",res[1]);
+          return {
+            weight: 0.5,
+            opacity: 1,
+            color: '#000',
+            dashArray: '1',
+            fillOpacity: 1,
+            // fillColor: getColoR(feature.properties.density),
+            fillColor: getColoR(busqueda_municipio(feature.properties.nom_mun,posi2)),
+            className: "c" + res[1]
+          };
+        }
+
+        function highlightFeature(e) {
+          if(locked == false)
+          {
+            var layer = e.target;
+            layer.setStyle({
+              weight: 2,
+              color: '#ccc',
+              dashArray: '',
+              fillOpacity: 0.7
+            });
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+              layer.bringToFront();
+            }
+            info.update(layer.feature.properties);
+          }
+        }
+
+        function resetHighlight(e) {
+          geojson.resetStyle(e.target);
+          info.update();
+        }
+
+        function zoomToFeature(e) {
+          map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer){
+          layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            mousedown: function(e)
+            {
+              if (locked == true) {
+                locked = false;
+                (function ($) {
+                  $(".info2").css("border","none");
+                  $(".infos").css("border","none");
+                }(jQuery));
+              }
+              else {
+                locked = true;
+                (function ($) {
+                  $(".info2").css("border-bottom","5px solid rgb(107, 174, 214)");
+                  $(".info2").css("border-left","5px solid rgb(107, 174, 214)");
+                  $(".info2").css("border-right","5px solid rgb(107, 174, 214)");
+                  $(".infos").css("border-top","5px solid rgb(107, 174, 214)");
+                  $(".infos").css("border-left","5px solid rgb(107, 174, 214)");
+                  $(".infos").css("border-right","5px solid rgb(107, 174, 214)");
+                }(jQuery));
+              }
+            },
+          });
+        }
+
+        function highlightFromLegend(e){
+          (function ($) {
+            $("svg path."+e).addClass("highlighted");
+            var r=$("svg path."+e);
+            for(var i=0;i<r.length;i++)
+            {
+              r[i].classList.add("highlighted");
+            }
+          }(jQuery));
+        }
+
+        function clearHighlight() {
+          (function ($) {
+
+            $("path").removeClass("highlighted");
+            var r=$("path");
+            for(var i=0;i<r.length;i++)
+            {
+              r[i].classList.remove("highlighted");
+            }
+          }(jQuery));
+        }
+
+        function busqueda_indice(cadena) {
+          for (var i = 0; i < municipios.length; i++) {
+            if (municipios[i][0] == cadena) {
+              return parseFloat(i);
+            }
+          }
+        }
+      }//fin de la funcion munisipal_ind
+
     </script>
   </body>
 </html>

@@ -21,6 +21,7 @@ Array.prototype.unique=function(a){
 function tablaCoS(data){
   var tabuladoCoS =  '<table class="striped tablaArmada"><thead><tr>';
   var cabezera =  false;
+  console.log(data);
   for (var i = 0; i < data.Coberturas.length; i++) {
 
     //tomamos las cabezeras, años del primer dato
