@@ -31,6 +31,7 @@ var clasif;
 var ban_mun =  false;
 var datos_calculo = [];
 
+
 //llama los parametros del indicador
 $.ajax({
   type: 'POST',
@@ -87,6 +88,7 @@ $.ajax({
   async:true
 });
 
+
 if(codigoDg == "NEM  "){
   $('#row_filtros').show();
   $.ajax({
@@ -138,6 +140,7 @@ if(codigoDg == "NEM  "){
       titulos(PCveInd);
       $('#tabla_nacional').hide();
 
+
       tipoTabulado = data.TipoCua_atr;
       cason = data.ClaveAgrupaClas_atr;
 
@@ -156,7 +159,8 @@ if(codigoDg == "NEM  "){
     async:false
   });
 }
-else{
+else
+{
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorClave",
@@ -434,6 +438,7 @@ $(document).ready(function(){
     cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
   });
 
+
 });//fin document ready
 
 function datos_calculo_mun(ser){
@@ -442,7 +447,6 @@ function datos_calculo_mun(ser){
       es = get_clave_estado($('#sel_estados').val())+'%';
     }
 
-
     $.ajax({
       type: 'POST',
       url: "https://ods.org.mx/API/Valores/PorCobCla",
@@ -450,7 +454,6 @@ function datos_calculo_mun(ser){
       success: function( data, textStatus, jqxhr ) {
         console.log(data);
         put_tabla_municipal_datos(data);
-
       },
       error: function() {
               //alert('Error occured');
@@ -1119,12 +1122,10 @@ function valorDatoInsumos(data){
       }
     }
 
-
     $.each(lista_insumos, function(idx, value){
       select += '<option value="'+idx+'">'+value+'</option>';
     });
   }
-
 
   select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div>';
 
@@ -1161,7 +1162,6 @@ function coberturaInsumos(data){
 
   //sin pie y cabezera de la pagina
   $('#datos-panel').html(select);
-
 }
 
 function actualiza_grafica(){
