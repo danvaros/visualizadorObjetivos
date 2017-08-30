@@ -2215,7 +2215,7 @@ function creaXLSACl($data){
   $objPHPExcel->setActiveSheetIndex(0);
 
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('B1', $data['Codigo_ind'].$data['Descrip_ind']);
+              ->setCellValue('A1', $data['Codigo_ind'].$data['Descrip_ind']);
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -2227,18 +2227,6 @@ function creaXLSACl($data){
         $valores = $coberturas[$j]['Clasificaciones'];
         $celda = $j + 3;
 
-        // $objPHPExcel->setActiveSheetIndex(0)
-        //             ->setCellValue('A'.$celda, $cobertura);
-
-        //var_dump($cobertura);
-        // for ($y=0; $y < count($cobertura); $y++) {
-        //   $celdo = $y + 3;
-        //   $objPHPExcel->setActiveSheetIndex(0)
-        //               ->setCellValue('A'.$celdo, $valores[$y]['ValorDato']['AADato_ser']);
-        //
-        // }
-        //var_dump(count(array_unique($valores)));
-
         $periodos = array();
         $clasifi = array();
 
@@ -2246,109 +2234,57 @@ function creaXLSACl($data){
 
           $clasifi[$k] = $valores[$k]['Descrip_cla'];
           $periodos[$k] = $valores[$k]['ValorDato']['AADato_ser'];
+          $datosVal[$k] = $valores[$k]['ValorDato']['Dato_Formato'];
 
         }
 
         $clasifi2 = array_unique($clasifi);
         $periodos2 = array_unique($periodos);
 
-        var_dump($clasifi2);
-        var_dump($periodos2);
-
+        //var_dump($clasifi2);
+        //var_dump($periodos2);
+        $unique = array();
         for ($oo=0; $oo < count($clasifi2); $oo++) {
           $a = abecedario($oo+1);
           $b = abecedario(count($valores)+1);
           $objPHPExcel->setActiveSheetIndex(0)
                      ->setCellValue('A2', 'Periodo');
 
-          $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
+          //$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
           $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue($a.'2', $clasifi2[$oo]);
 
-          $celdo = 3;
+          $bor = count($periodos)/count($periodos2);
+          //var_dump($bor);
 
-          $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('A3' , $periodos2[0]);
-                      $objPHPExcel->setActiveSheetIndex(0)
-                                  ->setCellValue('A4' , $periodos2[1]);
-                                  $objPHPExcel->setActiveSheetIndex(0)
-                                              ->setCellValue('A5' , $periodos2[2]);
-                                              $objPHPExcel->setActiveSheetIndex(0)
-                                                          ->setCellValue('A6' , $periodos2[3]);
-                                                          $objPHPExcel->setActiveSheetIndex(0)
-                                                                      ->setCellValue('A7' , $periodos2[4]);
-                                                                      $objPHPExcel->setActiveSheetIndex(0)
-                                                                                  ->setCellValue('A8' , $periodos2[5]);
-                                                                                  $objPHPExcel->setActiveSheetIndex(0)
-                                                                                              ->setCellValue('A9' , $periodos2[6]);
-                                                                                              for ($ggg=0; $ggg < count($periodos2); $ggg++) {
-                                                                                                echo 'Valor '.$periodos2[$ggg].'<br/>';
-                                                                                              }
+          $rrr = 0;
+          for ($ggg=0; $ggg < count($periodos2); $ggg++) {
+            // echo 'Valor '.$periodos2[$ggg].'<br/>';
+            $unique[] = $periodos2[$rrr];
+            $rrr = $rrr + $bor;
+
+          }
+
+          for ($eee=0; $eee < count($periodos2); $eee++) {
+            $celdo = 3+$eee;
+            $objPHPExcel->setActiveSheetIndex(0)
+                        ->setCellValue('A'.$celdo , $unique[$eee]);
+          }
 
 
-          // for ($y=0; $y < count($periodos2); $y++) {
-          //   $bar = (3+$y);
-          //   var_dump($bar);
-          //     $objPHPExcel->setActiveSheetIndex(0)
-          //                 ->setCellValue('A'.$bar , $periodos2[$y]);
-          //
-          //   }
+          $www = 0;
+          for ($fff=0; $fff < count($periodos2); $fff++) {
+            $celdo = 3+$fff;
+            $objPHPExcel->setActiveSheetIndex(0)
+                        ->setCellValue($a.$celdo, $datosVal[$www+$oo]);
+            $www = $www + $bor;
+          }
+
 
 
         }
 
-//           $a = abecedario($k+1);
-//           $b = abecedario(count($valores)+1);
-//           // var_dump($valores[$k]);
-//           // var_dump($valores[$k]['Dato_Formato']);
-//           //$dato =  (string)$valores[$k]['Dato_Formato'];
-//           //var_dump($dato);
-//
-//           //$dato =  '34.6';
-//           $objPHPExcel->setActiveSheetIndex(0)
-//                       ->setCellValue('A2', 'Periodo');
-//
-//           $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
-//
-//
-//
-//           $fr = count(array_unique($valores[$k]['Descrip_cla']));
-//
-//           var_dump($fr);
-//           for ($hk=0; $hk < $fr; $hk++) {
-//             # code...
-//           }
-//
-//           $objPHPExcel->setActiveSheetIndex(0)
-//                       ->setCellValue($a.'2', $valores[$k]['Descrip_cla']);
-//
-//
-//
-//
-//
-//
-//
-//
-//           //$objPHPExcel->getActiveSheet()
-//             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
-// var_dump(count($valores[$k]['Descrip_cla']));
-//             for ($y=0; $y < count($valores[$k]['Descrip_cla']); $y++) {
-//               $celdo = $y + 3;
-//               $objPHPExcel->setActiveSheetIndex(0)
-//                           ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
-//
-//             }
-//
-//           $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
-//           $objPHPExcel->setActiveSheetIndex(0)
-//                       ->setCellValue($a.$celdo, $datoAS);
-//
-//           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
-//           //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
-         //}
-        //var_dump(count($dato));
-        //var_dump($valores);
       }
 
 
@@ -2554,7 +2490,7 @@ function creaXLSAClanidada($data){
   $objPHPExcel->setActiveSheetIndex(0);
 
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('B1', $data['Codigo_ind'].$data['Descrip_ind']);
+              ->setCellValue('A1', $data['Codigo_ind'].$data['Descrip_ind']);
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -2576,15 +2512,23 @@ function creaXLSAClanidada($data){
           $range[$hh] = $valores[$hh]['ClaveAgrupa_ac'];
         }
 
+
         $unicoPeriods = array_unique($periods);
+        $uniquePeriod = array();
+        $bor = count($periods)/count($unicoPeriods);
+
+        var_dump($bor);
+        for ($tt=0; $tt < count($unicoPeriods); $tt++) {
+
+        }
+
         for ($gg=0; $gg < count($unicoPeriods); $gg++) {
           // $objPHPExcel->setActiveSheetIndex(0)
           //             ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
           $pp = $gg + 4;
-          $objPHPExcel->getActiveSheet()
-                      ->setCellValue('A'.$pp, $unicoPeriods[$gg]);
+          $objPHPExcel->getActiveSheet()->setCellValue('A'.$pp, $unicoPeriods[$gg]);
         }
-        var_dump($unicoPeriods);
+        //var_dump($unicoPeriods);
         // $objPHPExcel->setActiveSheetIndex(0)
         //             ->setCellValue('A'.$celda, $cobertura);
         //$rr = count($valores) / 3;
@@ -2625,8 +2569,8 @@ function creaXLSAClanidada($data){
           $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue($a.$celda, $datoAS);
-                      var_dump($a);
-                      var_dump($celda);
+                      //var_dump($a);
+                      //var_dump($celda);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
