@@ -294,7 +294,7 @@ $(document).ready(function(){
     arre.push(i);
   }
 
-  if(nColumnas > 12){
+  if(nColumnas > 15){
     $('.tabla_completa').css('height', '700px');
     $('.tablaArmada').DataTable( {
       scrollY:        "510px",
@@ -302,6 +302,7 @@ $(document).ready(function(){
       scrollCollapse: true,
       paging:         false,
       responsive:      false,
+      autoWidth: true,
       searching: false,
       aoColumnDefs: [
         { 'bSortable': false,
@@ -313,7 +314,9 @@ $(document).ready(function(){
     } );
   }else{
     var alto =  (nFilas+2) * 47;
-    $('.tabla_completa').css('height', alto + 'px');
+    //$('.tabla_completa').css('height', alto + 'px');
+    $('.tabla_completa').css('height','510px');
+    $('.tabla_completa').css('overflow-y','scroll');
   }
 
 

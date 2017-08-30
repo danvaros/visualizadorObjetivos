@@ -531,11 +531,11 @@
               <option value="Baja California">Baja California</option>
               <option value="Baja California Sur">Baja California Sur</option>
               <option value="Campeche">Campeche</option>
+              <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+              <option value="Colima">Colima</option>
               <option value="Chiapas">Chiapas</option>
               <option value="Chihuahua">Chihuahua</option>
               <option value="Ciudad de México">Ciudad de México</option>
-              <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
-              <option value="Colima">Colima</option>
               <option value="Durango">Durango</option>
               <option value="Guanajuato">Guanajuato</option>
               <option value="Guerrero">Guerrero</option>
@@ -2176,7 +2176,7 @@
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
         else if(i <= estados[0].length-1){
-          cadena='<a id="anio_'+i+'" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
+          cadena='<a id="anio_'+i+'" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra" onclick="cambio_anio(\''+estados[0][i]+'\','+i+')" style ="margin-right: -1px; border-color: black; border-width: 1px; border-radius: 5px;">'+estados[0][i].split('-')[0]+'</a>'+cadena;
           arrray_anios.push(estados[0][i].split('-')[0]);
         }
       }
