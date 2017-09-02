@@ -2538,7 +2538,7 @@ function creaXLSAClanidada($data){
         $clasifi2 = array_unique($clasifi);
         $periodos2 = array_unique($periodos);
 
-        var_dump($periodos2);
+        //var_dump($periodos2);
         //var_dump($clasifi2);
         //var_dump($periodos2);
         for ($qwe=0; $qwe < count($cobertu2); $qwe++) {
@@ -2557,14 +2557,21 @@ function creaXLSAClanidada($data){
 
           //$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
-          $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.'3', $clasifi2[$oo]);
+
+          // for ($hghg=0; $hghg < count(); $hghg++) {
+          //
+          // }
+
 
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.'2', $cobertu2[$oo]);
+                      ->setCellValue($a.'3', $clasifi[$oo]);
 
+          // $objPHPExcel->setActiveSheetIndex(0)
+          //             ->setCellValue($a.'2', $cobertu2[$oo]);
+          var_dump(count($periodos));
+          var_dump(count($periodos2));
           $bor = count($periodos)/count($periodos2);
-          //var_dump($bor);
+          var_dump($bor);
 
           $rrr = 0;
           for ($ggg=0; $ggg < count($periodos2); $ggg++) {
@@ -2574,6 +2581,7 @@ function creaXLSAClanidada($data){
 
           }
           var_dump($unique);
+
           $xxx = 0;
           for ($eee=0; $eee < count($unique); $eee++) {
             // $celdo = 1+$eee;
@@ -2582,16 +2590,13 @@ function creaXLSAClanidada($data){
             $xxx = $xxx + $eee;
           }
 
-
           $www = 0;
-          for ($fff=0; $fff < count($periodos2); $fff++) {
-            $celdo = 4+$fff;
+          for ($fff=0; $fff < count($periodos); $fff++) {
+            $celdo = 4+$j;
             $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.$celdo, $datosVal[$www+$oo]);
-            $www = $www + $bor;
+                        ->setCellValue($a.$celdo, $datosVal[$fff]);
+            //$www = $www + $periodos2;
           }
-
-
 
         }
 
@@ -2640,6 +2645,7 @@ function creaXLSAClanidada($data){
   echo 'Files have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
+
 
 
 function JJJJcreaXLSAClanidada($data){
