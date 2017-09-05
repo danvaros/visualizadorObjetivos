@@ -2541,10 +2541,19 @@ function creaXLSAClanidada($data){
         //var_dump($periodos2);
         //var_dump($clasifi2);
         //var_dump($periodos2);
-        for ($qwe=0; $qwe < count($cobertu2); $qwe++) {
+        $anios = array();
+        $rrrr = 0;
+        for ($gggg=0; $gggg < count($periodos2); $gggg++) {
+          // echo 'Valor '.$periodos2[$ggg].'<br/>';
+          $anios[$gggg] = $periodos2[$rrr];
+          $rrrr = $rrrr+1;
+
+        }
+        var_dump($anios);
+        for ($qwe=0; $qwe < count($anios); $qwe++) {
           $celdos = 4+$qwe;
           $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A'.$celdos, $cobertu2[$qwe]);
+                     ->setCellValue('A'.$celdos, $anios[$qwe+$eee]);
         }
 
 
@@ -2553,7 +2562,7 @@ function creaXLSAClanidada($data){
           $a = abecedario($oo+1);
           $b = abecedario(count($valores)+1);
           $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A3', 'Entidad Federativa');
+                     ->setCellValue('A3', 'Periodo');
 
           //$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
@@ -2564,12 +2573,11 @@ function creaXLSAClanidada($data){
 
 
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.'3', $clasifi[$oo]);
+                      ->setCellValue($a.'3', $clasifi2[$oo]);
 
           // $objPHPExcel->setActiveSheetIndex(0)
           //             ->setCellValue($a.'2', $cobertu2[$oo]);
           var_dump(count($periodos));
-          var_dump(count($periodos2));
           $bor = count($periodos)/count($periodos2);
           var_dump($bor);
 
@@ -2591,11 +2599,11 @@ function creaXLSAClanidada($data){
           }
 
           $www = 0;
-          for ($fff=0; $fff < count($periodos); $fff++) {
-            $celdo = 4+$j;
+          for ($fff=0; $fff < count($periodos2); $fff++) {
+            $celdo = 4+$fff;
             $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.$celdo, $datosVal[$fff]);
-            //$www = $www + $periodos2;
+                        ->setCellValue($a.$celdo, $datosVal[$www+$oo+$eere]);
+            $www = $www + $bor;
           }
 
         }
