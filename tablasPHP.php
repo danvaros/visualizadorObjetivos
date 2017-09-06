@@ -2553,7 +2553,7 @@ function creaXLSAClanidada($data){
         for ($qwe=0; $qwe < count($anios); $qwe++) {
           $celdos = 4+$qwe;
           $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A'.$celdos, $anios[$qwe+$eee]);
+                     ->setCellValue('A'.$celdos, $anios[$qwe]);
         }
 
 
