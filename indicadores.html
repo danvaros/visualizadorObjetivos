@@ -25,6 +25,7 @@
     html{
       font-size: 14px !important;
     }
+
     p{
       font-size: 28px !important;
     }
@@ -1493,6 +1494,7 @@
         $('#anio_'+j).addClass('inactive_anio');
       }
 
+      $('#anio_1').removeClass('inactive_anio');
       $('#anio_1').addClass('active_anio');
       $('#nueva_tabla_serie').html('');
 
@@ -1535,6 +1537,8 @@
        cambio_anio(estados[0][1]);
        put_grafica_municipal(arrray_anios[0]);
        console.log('cambio estatal');
+       $('#anio_1').removeClass('inactive_anio');
+       $('#anio_1').addClass('active_anio');
      });
   });//fin del document ready
 
