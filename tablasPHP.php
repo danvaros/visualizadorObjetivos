@@ -2602,7 +2602,7 @@ function creaXLSAClanidada($data){
           for ($fff=0; $fff < count($periodos2); $fff++) {
             $celdo = 4+$fff;
             $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.$celdo, $datosVal[$www+$oo+$eere]);
+                        ->setCellValue($a.$celdo, $datosVal[$www+$oo]);
             $www = $www + $bor;
           }
 
