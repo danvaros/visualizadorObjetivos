@@ -1112,7 +1112,7 @@ function valorDatoInsumos(data){
 
               var dato_formato = +dato_formato2.toFixed(1);
             }else{
-              var dato_formato =  'ND' ;
+              var dato_formato =  data.Series[0].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd ;
               /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
             }
 
@@ -1306,7 +1306,8 @@ function valorDato(data){
         //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
       }
       else {
-        dato_formato = 'ND';
+        dato_formato = data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;//'ND';
+        console.log(data.Series[0].Coberturas[i].ValorDato[j].NoDatos);
       }
       temporal.push(dato_formato);
     }

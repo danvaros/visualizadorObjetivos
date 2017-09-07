@@ -67,7 +67,7 @@ function cobertura(data){
 		  				//varios problemas
 		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato;
               if(dato_formato == ''){
-                dato_formato = 'ND';
+                dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.NoDatos.Codigo_nd;//'ND';
               }
 		  				temporal.push(dato_formato);
 		  			}
@@ -185,7 +185,7 @@ function cobertura_series(data,i){
 		  			for (var j = 0; j < cober_inter[i].Clasificaciones.length; j++) {
 		  				var dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.Dato_Formato;
               if(dato_formato == ''){
-                dato_formato = 'ND';
+                dato_formato = cober_inter[i].Clasificaciones[j].ValorDato.NoDatos.Codigo_nd;//'ND';
               }
 		  				temporal2.push(dato_formato);
 		  			}
@@ -245,7 +245,7 @@ function cobertura_101(data){
 			  				//varios problemas
 			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
                 if(dato_formato == ''){
-                  dato_formato = 'ND';
+                  dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.NoDatos.Codigo_nd;//'ND';
                 }
 			  				temporal.push(dato_formato);
 			  			}
@@ -272,7 +272,7 @@ function cobertura_101(data){
 			  				//varios problemas
 			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
                 if(dato_formato == ''){
-                  dato_formato = 'ND';
+                  dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.NoDatos.Codigo_nd;//'ND';
                 }
 			  				temporal.push(dato_formato);
 			  			}
@@ -299,7 +299,7 @@ function cobertura_101(data){
 			  				//varios problemas
 			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
                 if(dato_formato == ''){
-                  dato_formato = 'ND';
+                  dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.NoDatos.Codigo_nd;//'ND';
                 }
 			  				temporal.push(dato_formato);
 			  			}
@@ -367,7 +367,7 @@ function cobertura_101_insumos(data,serie){
 			  				//varios problemas
 			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
                 if(dato_formato == ''){
-                  dato_formato = 'ND';
+                  dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.NoDatos.Codigo_nd;//'ND';
                 }
 			  				temporal.push(dato_formato);
 			  			}
@@ -394,7 +394,7 @@ function cobertura_101_insumos(data,serie){
 			  				//varios problemas
 			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
                 if(dato_formato == ''){
-                  dato_formato = 'ND';
+                  dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.NoDatos.Codigo_nd;//'ND';
                 }
 			  				temporal.push(dato_formato);
 			  			}
@@ -421,7 +421,7 @@ function cobertura_101_insumos(data,serie){
 			  				//varios problemas
 			  				var dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.Dato_Formato;
                 if(dato_formato == ''){
-                  dato_formato = 'ND';
+                  dato_formato = cober_inter[j].Clasificaciones[k].ValorDato.NoDatos.Codigo_nd;//'ND';
                 }
 			  				temporal.push(dato_formato);
 			  			}
