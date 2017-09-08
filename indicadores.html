@@ -1661,7 +1661,7 @@
             }
         }
 
-        function datosGrafica(year) {
+        function datosGrafica(year, types = 'bar') {
             var indice = 0;
             var serie = [];
             var nuevos_estados_dobles = new Array();
@@ -1692,7 +1692,7 @@
                         tabla_nueva += '<td>' + unods + '</td></tr></tbody>';
                     }
 
-                    if (estados[i][indice] == 'ND') {
+                    if (estados[i][indice] == 'ND' || estados[i][indice] == 'NA') {
                         var numero = 0;
                     } else {
                         var numero = parseFloat(estados[i][indice]); //.toFixed(1);
@@ -1731,11 +1731,16 @@
             }
 
             cat_global = categories;
+
             chartBarras.load({
                 columns: [series],
                 categories: categories2,
                 unload: [Descrip_ind],
             });
+            console.log('tipo de grafica');
+            console.log(types);
+            //chartBarras.transform(types);
+
         }
 
         //abreviaciones de estados
@@ -2198,23 +2203,24 @@
                         $('#indicador-grafica').hide();
                     } else if (array_Graficas[g].Clave_gra == 1) {
                         console.log(array_Graficas[g].Descrip_gra);
-                        datosGrafica(arrray_anios[0]);
+                        datosGrafica(arrray_anios[0], 'bar');
+                        chart2.transform('bar');
                     } else if (array_Graficas[g].Clave_gra == 2) {
                         console.log(array_Graficas[g].Descrip_gra);
                         $('#chart2').show();
-                        datosGrafica(arrray_anios[0]);
+                        datosGrafica(arrray_anios[0], 'line');
                     } else if (array_Graficas[g].Clave_gra == 3) {
                         console.log(array_Graficas[g].Descrip_gra);
-                        datosGrafica(arrray_anios[0]);
+                        datosGrafica(arrray_anios[0], 'bar');
                     } else if (array_Graficas[g].Clave_gra == 4) {
                         console.log(array_Graficas[g].Descrip_gra);
-                        datosGrafica(arrray_anios[0]);
+                        datosGrafica(arrray_anios[0], 'circle');
                     } else if (array_Graficas[g].Clave_gra == 5) {
                         console.log(array_Graficas[g].Descrip_gra);
-                        datosGrafica(arrray_anios[0]);
+                        datosGrafica(arrray_anios[0], 'pie');
                     } else if (array_Graficas[g].Clave_gra == 7) {
                         console.log(array_Graficas[g].Descrip_gra);
-                        datosGrafica(arrray_anios[0]);
+                        datosGrafica(arrray_anios[0], 'bar');
                     }
                 }
             }
