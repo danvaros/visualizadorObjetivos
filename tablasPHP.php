@@ -283,7 +283,7 @@ function get_tabuladoCSV($indicador){
 }
 
 
-get_tabulado(101);
+get_tabuladoCSV(164);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -2341,6 +2341,7 @@ function creaCSVACl($data){
 
   /** Include PHPExcel */
   require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
+  require_once dirname(__FILE__) . '/Classes/PHPExcel/Writer/CSV.php';
 
   // Create new PHPExcel object
   //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
@@ -2448,34 +2449,17 @@ function creaCSVACl($data){
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
 
-  // Save Excel 2007 file
-  //echo date('H:i:s') , " Write to Excel format" , EOL;
-  $callStartTime = microtime(true);
-
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
-
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter->setUseBOM(false);
   ob_end_clean();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  $callEndTime = microtime(true);
-  $callTime = $callEndTime - $callStartTime;
 
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
-  // Echo memory usage
-  //echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo memory peak usage
-  //echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo done
-  //echo date('H:i:s') , " Done writing files" , EOL;
   echo 'Files have been created in ' , getcwd() , EOL;
-  //var_dump($data);
+
 }
 
 function creaXLSAClanidada($data){
