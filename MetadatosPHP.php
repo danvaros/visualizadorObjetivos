@@ -620,9 +620,9 @@ function metadatoCSV($data){
   for ($ede=0; $ede < count($nInd) - 1; $ede++) {
     $nds .= $nInd[$ede] . '.';
   }
-  
+
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Algoritmo_ft'].$data['Descrip_ind']);
+              ->setCellValue('A1', $nds.' '.$data['Descrip_ind']);
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A2', 'Objetivo');
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A3', 'Meta');
@@ -728,7 +728,7 @@ function metadatoCSV($data){
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Algoritmo_ft'].$data['Descrip_ind'], 0, 25));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($nds.' '.$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
