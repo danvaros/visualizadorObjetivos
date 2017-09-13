@@ -751,6 +751,8 @@ $('#descargaZip').hide();
         var tipoDescarga = [];
         var tempId;
         var indSel = $('#indicadorDescarga').is(':selected');
+        var selecciones = $('#formulario #objetivos input[type=checkbox]').is(':selected');
+
 
         $(".child").each(function (index) {
           classDescarga = $(this).is(':checked');
@@ -781,7 +783,13 @@ $('#descargaZip').hide();
           $('#metadatoDescarga').is(':selected');
           $('#calculoDescarga').is(':selected');
         }else{
-          alert('Debe seleccionar al menos un tipo de descarga');
+          alert('Debe seleccionar al menos un tipo de descarga.');
+        }
+
+        if (selecciones) {
+          
+        }else {
+          alert('Debe seleccionar al menos un indicador.');
         }
 
 
