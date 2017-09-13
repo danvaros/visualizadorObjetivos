@@ -87,7 +87,7 @@ function getSerie(indicador)
 
   $.ajax({
   	  type: 'POST',
-  	  url: "http://agenda2030.mx/datos/api/AtrIndicador/PorClave",
+  	  url: "https://ods.org.mx/API/AtrIndicador/PorClave",
   	  data: {'PCveInd':indicador, 'PIdioma':'ES'},
   	  success: function( data, textStatus, jqxhr )
     {
@@ -121,7 +121,7 @@ function getIndicador(indicador,ser){
   console.log("Indicador",indicador," -> Serie",ser);
 	$.ajax({
 	  type: 'POST',
-	  url: "http://agenda2030.mx/datos/api/Valores/PorClaveSerie",
+	  url: "https://ods.org.mx/API/Valores/PorClaveSerie",
 	  data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'},
 	  success: function( data, textStatus, jqxhr ) {
 	  		//alert( "Exito" );
