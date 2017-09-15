@@ -601,6 +601,8 @@ function metadato($data){
   //var_dump($data);
 }
 
+//datos-panel-dos
+
 function metadatoCSV($data){
   /** Error reporting */
   error_reporting(E_ALL);
