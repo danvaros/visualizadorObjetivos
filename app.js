@@ -295,7 +295,7 @@ $(document).ready(function(){
   }
 
   if(nColumnas > 15){
-    $('.tabla_completa').css('height', '700px');
+    $('.tabla_completa').css('height', '750px');
     $('.tablaArmada').DataTable( {
       scrollY:        "510px",
       scrollX:        true,
