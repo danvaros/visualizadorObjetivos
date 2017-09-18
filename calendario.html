@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Objetivos de Desarrollo Sostenible</title>
+    <title>Calendario - Objetivos de Desarrollo Sostenible</title>
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css"
     />
@@ -283,9 +283,9 @@
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="image.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
+    <!-- <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+    <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script> -->
 
     <!--     <script type="text/javascript" src="lib/jquery.section-scroll.js"></script> -->
 
@@ -302,7 +302,7 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down nav_sticky">
             <li class="tam t_sm"><a class="t_sm" href="objetivos.html">Indicadores</a></li>
              <li class="tam t_sm"><a href="estados.html" style="line-height: 21px; padding-top: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;Indicadores con<br>desglose geográfico</a></li>
-            <!-- 
+            <!--
             <li class="tam t_sm"><a class="t_sm" href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li class="tam t_sm"><a class="t_sm" href="explora.html">Explora</a></li>
             <!-- <li class="tam t_sm"><a class="t_sm" href="compara.html">Compara</a></li> -->
@@ -431,11 +431,11 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
   var lupa = false;
-  
+
   $(document).ready(function() {
     $('#cam_bus').keypress(function(e) {
         if(e.which == 13) {
-          buscar($('#cam_bus').val());  
+          buscar($('#cam_bus').val());
         }
     });
 
@@ -455,26 +455,58 @@
     $('select').material_select();
 
     var indicadores = getIndicadores();
+    var indie = getCalendario();
+    var indies = indie.Ind_cal;
     var contenido =  '';
     var indice = 1;
     console.log(indicadores);
+    // for (var i = 0; i < indicadores.length; i++) {
+    //     for (var j = 0; j < indicadores[i].Meta.length; j++) {
+    //         for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
+    //             if(indicadores[i].Meta[j].Indicador[k].TieneValores){
+    //
+    //                 var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
+    //                 var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
+    //                 //Descrip_cla
+    //                 //console.log(atr.Descrip_cla);
+    //                 contenido =  contenido +'<tr>'+
+    //                     '<td class="center">'+ indice +'</td>'+
+    //
+    //                     '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
+    //                     +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+    //                     +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
+    //                     +'</td>'+
+    //                                         '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
+    //                                         '<td>'+ metadatos.FecProxAct_eic+'</td>'+
+    //                                         '</tr>';
+    //                                         indice++;
+    //             }
+    //         }
+    //     }
+    // }
+
+    console.log(indies.length);
     for (var i = 0; i < indicadores.length; i++) {
         for (var j = 0; j < indicadores[i].Meta.length; j++) {
             for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
                 if(indicadores[i].Meta[j].Indicador[k].TieneValores){
 
-                    var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
-                    var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
+                    //var metadatos = getMetadatos(indies[i].CveInd_cal);
+                    //var atr = getAtr(indies[i].CveInd_cal);
                     //Descrip_cla
                     //console.log(atr.Descrip_cla);
+                    console.log(indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
                     contenido =  contenido +'<tr>'+
-                        '<td class="center">'+ indice +'</td>'+
+                        '<td class="center">'+ indies[i].NumInd_cal +'</td>'+
 
-'<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb+'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg+'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'   +'</td>'+
-                                            '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
-                                            '<td>'+ metadatos.FecProxAct_eic+'</td>'+
+                        '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
+                        +'&indicador='+ indies[i].CveInd_cal + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+                        +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
+                        +'</td>'+
+                                            '<td>'+indies[i].AbreviaInsRes_cal+'</td>'+
+                                            '<td>'+ indies[i].FecProxAct_cal+'</td>'+
                                             '</tr>';
-                                            indice++;
+                                            //indice++;
                 }
             }
         }

@@ -130,3 +130,23 @@ function getAtr(indicador){
 
 	    return atr;
 }
+
+function getCalendario(){
+	var calendario = [];
+		$.ajax({
+	   	  type: 'POST',
+	   	  url: "https://ods.org.mx/API/Calendario/Todos",
+	   	  data: {"POrdenCol":"IND", "PIdioma":"ES"},
+	   	  success: function( data, textStatus, jqxhr )
+	      {
+	        calendario = data;
+	      },
+	      error:function( data, textStatus, responseJSON )
+	      {
+	        console.log(data);
+	      },
+	  	  async:false
+	    });
+
+	    return calendario;
+}

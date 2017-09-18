@@ -233,10 +233,10 @@ $('#descargaZip').hide();
             <li class="tamps">
               <a id="busca" href="calendario.html"><img data-position="bottom" data-tooltip="Ir al calendario de actualizaciones" class="tooltipped" src="img/calendario.png" alt="" /></a>
             </li>
-            <!-- <li class="tamps">
-              <a id="busca" href="exportacion.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
+            <li class="tamps">
+              <a id="busca" href="descarga.html"><img data-position="bottom" data-tooltip="Ir a la página de descargas masivas" class=" tooltipped" src="img/descarga.png"
                   alt="" /></a>
-            </li> -->
+            </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
           <li><a href="index.html">Inicio</a></li>
@@ -244,6 +244,7 @@ $('#descargaZip').hide();
             <li><a href="estado_detalle.html">Indicadores por unidad geográfica</a></li>
            <!--  <li><a href="como_vamos.html">¿C&oacute;mo vamos?</a></li> -->
             <li><a href="explora.html">Explora</a></li>
+            <li><a href="descarga.html">Descarga</a></li>
             <!-- <li><a href="compara.html">Compara</a></li> -->
          <!--    <li class="tamps">
            <a id="busca" href="calendario.html">Calendario</a>
@@ -266,16 +267,16 @@ $('#descargaZip').hide();
           <br />
           <h5>Elementos a exportar</h5>
           <br />
-          <div class="input-field col s12 l3" style="margin-left:0px;">
-            <select id="tipoSeleccion" name="tipoSeleccion">
+          <div class="input-field col s12 l4" style="margin-left:0px;">
+            <!-- <select id="tipoSeleccion" name="tipoSeleccion">
               <option id="indicadorDescarga" value="01" selected>Indicador</option>
               <option id="metadatoDescarga" value="02">Metadato</option>
               <option id="calculoDescarga" value="03">Datos para el cálculo</option>
-            </select>
-            <label>Selección</label>
-            <!-- <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
+            </select> -->
+            <!-- <label>Selección</label> -->
+            <input type="checkbox" id="indicadorDescarga" class="validate caja_d" style="padding-left: 12px;" checked>&nbsp;Indicador&nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="metadatoDescarga" class="validate caja_d metadatoDescarga" style="padding-left: 12px;">&nbsp;Metadato&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp; -->
+            <input type="checkbox" id="calculoDescarga" class="validate caja_d calculoDescarga" style="padding-left: 12px;">&nbsp;Datos para el cálculo&nbsp;&nbsp;&nbsp;
           </div>
           <div class="input-field col s12 l2">
                   <!-- <b>Formato:</b> -->
@@ -344,7 +345,7 @@ $('#descargaZip').hide();
                <div class="obj_icon center-align id_4" id="id_4">
                  <img class="ico_obj" src="img/ods-04.png" alt="" />
                </div>
-               <span class="marg_obj t_sm " style="color:#ffffff;"><input type="checkbox" class="validate caja_d indi4" style="padding-left: 12px;"> 4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
+               <span class="marg_obj t_sm " style="color:#ffffff;"><!-- <input type="checkbox" class="validate caja_d indi4" style="padding-left: 12px;">--> 4- Educación de calidad<i class="fa fa-angle-down right" aria-hidden="true"></i></span>
              </div>
              <div class=" back_gray t_sm gris" style="overflow: hidden;margin:0px;" id="educacion_calidad_cont">
                <div class="row" >
@@ -601,26 +602,25 @@ $('#descargaZip').hide();
 
 <div id="descargaZip">
   <div class="caja">
-      <h3>Se está generando su carpeta de descarga</h3>
+      <h5 id="mensajeDescarga">Se está generando su carpeta de descarga</h5>
       <div style="margin:0 auto;text-align:center;" class="loadload">
         <div class="preloader-wrapper big active">
-          <div class="spinner-layer spinner-blue">
+          <div class="spinner-layer spinner-blue-only">
             <div class="circle-clipper left">
               <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
+            </div><div class="gap-patch">
               <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
+            </div><div class="circle-clipper right">
               <div class="circle"></div>
             </div>
           </div>
-      </div>
+        </div>
     </div>
     <div id="resp">
 
     </div>
-
+    <br/>
+    <br/>
     <div class="cerrar">
         <button id="cerrarBoton" class="valdidate caja_d waves-effect waves-light btn blue white-text">Cerrar</button>
     </div>
@@ -684,6 +684,7 @@ $('#descargaZip').hide();
              $('#resp').html(data);
              $('.loadload').hide();
              $('.cerrar').show();
+             $('#mensajeDescarga').html('Se ha generado su carpeta de descarga. Haga click en el siguiente enlace para descargar.<br/><br/>');
              //exit();
 
            },
@@ -692,6 +693,7 @@ $('#descargaZip').hide();
 
        $('#cerrarBoton').on('click',function(e){
           $('#descargaZip').hide();
+          location.reload();
        });
 
 
@@ -749,6 +751,8 @@ $('#descargaZip').hide();
         var tipoDescarga = [];
         var tempId;
         var indSel = $('#indicadorDescarga').is(':selected');
+        var selecciones = $('#formulario #objetivos input[type=checkbox]').is(':selected');
+
 
         $(".child").each(function (index) {
           classDescarga = $(this).is(':checked');
@@ -779,7 +783,13 @@ $('#descargaZip').hide();
           $('#metadatoDescarga').is(':selected');
           $('#calculoDescarga').is(':selected');
         }else{
-          alert('Debe seleccionar al menos un tipo de descarga');
+          alert('Debe seleccionar al menos un tipo de descarga.');
+        }
+
+        if (selecciones) {
+          
+        }else {
+          alert('Debe seleccionar al menos un indicador.');
         }
 
 
@@ -907,7 +917,7 @@ $('#descargaZip').hide();
       var clave_arb_meta  = datos[i].Meta[j].Indicador[0].ClaveInd_arb;
 
         if(true){
-          if(clave_arb_meta != 210){
+          if(clave_arb_meta != 2100){
           if(j > 7){
                 contenido = contenido + '<div class="row borde_b fond ocultar" >';
               }else{
@@ -926,7 +936,7 @@ $('#descargaZip').hide();
               var codigo_dg     = datos[i].Meta[j].Indicador[k].DesGeo.Codigo_dg;
               var descrip_des   = datos[i].Meta[j].Indicador[k].Descrip_des;
               var codigo_des    = datos[i].Meta[j].Indicador[k].Codigo_des;
-            if( clave_arb == 210){
+            if( clave_arb == 2100){
 
             }else if(clave_arb == 333)
             {

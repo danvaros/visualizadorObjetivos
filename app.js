@@ -31,6 +31,7 @@ var clasif;
 var ban_mun =  false;
 var datos_calculo = [];
 
+
 //llama los parametros del indicador
 $.ajax({
   type: 'POST',
@@ -42,6 +43,8 @@ $.ajax({
       GloSerie.push(data.Serie[i].ClaveSer_ats);
     }
     console.log(GloSerie);
+    console.log(data);
+
     if(codigoDg == "NEM  "){
       for (var i = 0; i < data.Serie.length; i++) {
         if(data.Serie[i].Tipo_ats == "I"){
@@ -85,12 +88,13 @@ $.ajax({
   async:true
 });
 
+
 if(codigoDg == "NEM  "){
   $('#row_filtros').show();
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorCobCla",
-    data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"ASC", "PIdioma":"ES"},
+    data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       // for (var i = 1; i < GloSerie.length; i++) {
@@ -126,7 +130,6 @@ if(codigoDg == "NEM  "){
         poner_filtros_serie();
         $('#row_filtros_serie').show();
         cobertura_notas = true;
-
       }
       var codigo_indicador = data.Codigo_ind;
       var descripcion = data.Descrip_ind;
@@ -136,6 +139,7 @@ if(codigoDg == "NEM  "){
 
       titulos(PCveInd);
       $('#tabla_nacional').hide();
+
 
       tipoTabulado = data.TipoCua_atr;
       cason = data.ClaveAgrupaClas_atr;
@@ -155,7 +159,8 @@ if(codigoDg == "NEM  "){
     async:false
   });
 }
-else{
+else
+{
   $.ajax({
     type: 'POST',
     url: "https://ods.org.mx/API/Valores/PorClave",
@@ -289,7 +294,7 @@ $(document).ready(function(){
     arre.push(i);
   }
 
-  if(nColumnas > 12){
+  if(nColumnas > 15){
     $('.tabla_completa').css('height', '700px');
     $('.tablaArmada').DataTable( {
       scrollY:        "510px",
@@ -297,6 +302,7 @@ $(document).ready(function(){
       scrollCollapse: true,
       paging:         false,
       responsive:      false,
+      autoWidth: true,
       searching: false,
       aoColumnDefs: [
         { 'bSortable': false,
@@ -308,7 +314,9 @@ $(document).ready(function(){
     } );
   }else{
     var alto =  (nFilas+2) * 47;
-    $('.tabla_completa').css('height', alto + 'px');
+    //$('.tabla_completa').css('height', alto + 'px');
+    $('.tabla_completa').css('height','510px');
+    $('.tabla_completa').css('overflow-y','scroll');
   }
 
 
@@ -364,10 +372,15 @@ $(document).ready(function(){
   });
 
   $('#insumo_change').on('change',function(){
+    if(codigoDg == "NEM  "){
+      datos_calculo_mun($(this).val());
+    }
+    else{
       put_tabla_insumo($(this).val());
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
       $('#insumos_cont').hide();
       $('#este2').hide();
+    }
   });
 
   $('#insumo_change_cob').on('change',function(){
@@ -428,22 +441,22 @@ $(document).ready(function(){
     cobertura_101_insumos(data_local,$('#insumo_change_cob').val());
   });
 
+
 });//fin document ready
 
-function camino_dos(){
-  console.log('llego');
-  var  val_serie = $(this).val();
-  var cob = 99;
-  if(ban_mun == true){
-    cob =  get_clave_estado($('#sel_estados').val());
-  }
+function datos_calculo_mun(ser){
+    var es =  99;
+    if(ban_mun == true){
+      es = get_clave_estado($('#sel_estados').val())+'%';
+    }
 
     $.ajax({
       type: 'POST',
       url: "https://ods.org.mx/API/Valores/PorCobCla",
-      data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":val_serie,"PCveCob":cob,"PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
+      data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":ser,"PCveCob":es,"PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
       success: function( data, textStatus, jqxhr ) {
         console.log(data);
+        put_tabla_municipal_datos(data);
       },
       error: function() {
               //alert('Error occured');
@@ -1057,60 +1070,65 @@ function put_tabla_insumo(insumo){
 }
 
 function valorDatoInsumos(data){
-  //console.log("comparacion1");
-  lista_insumos = [];
-  var temporal = [];
-  var individual = [];
+  //Armamos el select para que tenga todas las series que pueden existir
+  var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos browser-default" style="display:block !important; background-color: #f2f2f2;">';
+  select += '<option value="-1"> Selecciona una opción </option>';
 
-  for (var i = 0; i < data.Series.length; i++) {
+  if(codigoDg == "NEM  "){
+    for (var i = 0; i < datos_calculo.length; i++) {
+      select += '<option value="'+datos_calculo[i].ClaveSer_ats+'">'+datos_calculo[i].DescripSer_des+'</option>';
+    }
+  }else{
+    //console.log("comparacion1");
+    lista_insumos = [];
     var temporal = [];
-    if(data.Series[i].Tipo_ser == "I"){
+    var individual = [];
 
-      lista_insumos.push(data.Series[i].Descrip_ser);
-      temporal.push('Entidad');
+    for (var i = 0; i < data.Series.length; i++) {
+      var temporal = [];
+      if(data.Series[i].Tipo_ser == "I"){
 
-      for (var j = 0; j < data.Series[i].Coberturas[0].ValorDato.length; j++) {
-        temporal.push(data.Series[i].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
-      }
-      individual.push(temporal);
+        lista_insumos.push(data.Series[i].Descrip_ser);
+        temporal.push('Entidad');
 
-      for (var j = 0; j < data.Series[i].Coberturas.length; j++) {
-        temporal = [];
-        categories2 = [];
-
-        categories2.push(data.Series[i].Coberturas[j].Abrevia_cg);
-        temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
-        for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
-          //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-          if(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato != ''){
-
-            var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato)
-
-            var dato_formato2 = Math.round(flot * 10) / 10;
-
-            var dato_formato = +dato_formato2.toFixed(1);
-          }else{
-            var dato_formato =  'ND' ;
-            /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
-          }
-
-          //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
-          temporal.push(dato_formato);
+        for (var j = 0; j < data.Series[i].Coberturas[0].ValorDato.length; j++) {
+          temporal.push(data.Series[i].Coberturas[0].ValorDato[j].AADato_ser+'-01-01');
         }
         individual.push(temporal);
+
+        for (var j = 0; j < data.Series[i].Coberturas.length; j++) {
+          temporal = [];
+          categories2 = [];
+
+          categories2.push(data.Series[i].Coberturas[j].Abrevia_cg);
+          temporal.push(data.Series[i].Coberturas[j].Descrip_cg);
+          for (var k = 0; k < data.Series[i].Coberturas[j].ValorDato.length; k++) {
+            //var dato_formato = data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            if(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato != ''){
+
+              var flot = parseFloat(data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato)
+
+              var dato_formato2 = Math.round(flot * 10) / 10;
+
+              var dato_formato = +dato_formato2.toFixed(1);
+            }else{
+              var dato_formato =  data.Series[0].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd ;
+              /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
+            }
+
+            //var dato_formato = (data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato === '') ? data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd : data.Series[i].Coberturas[j].ValorDato[k].Dato_Formato.replace(",", "");
+            temporal.push(dato_formato);
+          }
+          individual.push(temporal);
+        }
+        insumos_general.push(individual);
       }
-      insumos_general.push(individual);
     }
-  }
-
-  //Armamos el select para que tenga todas las series que pueden existir
-  var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
-
-  select += '<option value="-1"> Selecciona una opción </option>';
 
     $.each(lista_insumos, function(idx, value){
       select += '<option value="'+idx+'">'+value+'</option>';
     });
+  }
 
   select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div>';
 
@@ -1119,30 +1137,34 @@ function valorDatoInsumos(data){
 }
 
 function coberturaInsumos(data){
-  lista_insumos = [];
-
-  for (var i = 0; i < data.Series.length; i++) {
-    if(data.Series[i].Tipo_ser == "I"){
-      lista_insumos.push(data.Series[i].Descrip_ser);
-      insumos_cobertura.push(cobertura_series(data,i));
-      insumo_cober_clasifica.push(clasificaciones(data,i));
-      //insumo_cober_clasifica_tipo.push();
-    }
-  }
-
   //Armamos el select para que tenga todas las series que pueden existir
   var select='<div class="input-field col s12" style="margin-bottom:20px;"><select id="insumo_change_cob" class="select_datos" style="display:block !important; background-color: #f2f2f2;">';
 
-  select += '<option value="-1"> Selecciona una opción </option>';
-  $.each(lista_insumos, function(idx, value){
-    select += '<option value="'+(idx)+'">'+value+'</option>';
-  });
+  if(codigoDg == "NEM  "){
+    for (var i = 0; i < datos_calculo.length; i++) {
+      console.log('--------');
+      console.log(datos_calculo);
+    }
+  }else{
+    lista_insumos = [];
+
+    for (var i = 0; i < data.Series.length; i++) {
+      if(data.Series[i].Tipo_ser == "I"){
+        lista_insumos.push(data.Series[i].Descrip_ser);
+        insumos_cobertura.push(cobertura_series(data,i));
+        insumo_cober_clasifica.push(clasificaciones(data,i));
+      }
+    }
+    select += '<option value="-1"> Selecciona una opción </option>';
+    $.each(lista_insumos, function(idx, value){
+      select += '<option value="'+(idx)+'">'+value+'</option>';
+    });
+  }
 
   select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;height:510px;overflow:scroll;"></div>';
 
   //sin pie y cabezera de la pagina
   $('#datos-panel').html(select);
-
 }
 
 function actualiza_grafica(){
@@ -1284,7 +1306,8 @@ function valorDato(data){
         //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
       }
       else {
-        dato_formato = 'ND';
+        dato_formato = data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;//'ND';
+        console.log(data.Series[0].Coberturas[i].ValorDato[j].NoDatos);
       }
       temporal.push(dato_formato);
     }
@@ -1390,7 +1413,7 @@ function generar_titulos(){
 }
 
 function titulos(indicador){
-  var serie_insumo =  $('insumo_change').val();
+  var serie_insumo =  $('#insumo_change').val();
   atributos_general = getAtributos(indicador);
   atributos = atributos_general;
 
@@ -1402,8 +1425,8 @@ function titulos(indicador){
     '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
     '<p id="no_va_serie"><strong>Total<strong></p>';
 
-    //pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-    pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
+    pie  = ' <div> '+ ((atributos.Descrip_not == null || atributos.Descrip_not == "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
+    //pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
     '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
     ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
     ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
@@ -1417,8 +1440,8 @@ function titulos(indicador){
     '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>';
 
 
-    //pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-    pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
+    pie  = ' <div> '+ ((atributos.Descrip_not == null || atributos.Descrip_not == "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
+    //pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
     '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
     ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
     ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
@@ -1429,8 +1452,8 @@ function titulos(indicador){
     '<p> '+ atributos.CobTemporal_ser +' </p>' +
     '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
-    //pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
-    pie  = ' <div> '+ '<strong>Nota: </strong> ' + atributos.Descrip_not+
+    pie  = ' <div> '+ ((atributos.Descrip_not == null || atributos.Descrip_not == "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
+    //pie  = ' <div> '+ '<strong>Nota: </strong> ' + atributos.Descrip_not+
     '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
     ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
     ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
@@ -1915,4 +1938,11 @@ function mapa_333()
       return div;
     };
     legend.addTo(map);
+  }
+
+
+  function put_tabla_municipal_datos(datos_brutos){
+    $('#nueva_tabla_serie').html(tablaCoS(datos_brutos.Series[0]));
+    $('#insumos_cont').hide();
+    $('#este2').hide();
   }

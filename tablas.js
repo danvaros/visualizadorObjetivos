@@ -41,7 +41,7 @@ function tablaCoS(data){
     tabuladoCoS += '</tr></thead><tr><td>' +  '<span style="display:none;">'+data.Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Coberturas[i].ValorDato.length; j++) {
       if(data.Coberturas[i].ValorDato[j].Dato_Formato == ""){
-        tabuladoCoS += '<td style="text-align:right;"> ND </td>';
+        tabuladoCoS += '<td style="text-align:right;"> '+ data.Coberturas[i].ValorDato[j].NoDatos.Codigo_nd +' </td>';
       }else{
         tabuladoCoS += '<td style="text-align:right;">' + data.Coberturas[i].ValorDato[j].Dato_Formato + '</td>';
       }
@@ -88,7 +88,7 @@ function tablaCoCl(data){
     tabuladoCoCl   +=  '<tr ><td>' +  '<span style="display:none;">'+data.Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Coberturas[i].Descrip_cg +'</td>';
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
-        tabuladoCoCl   +=  '<td style="text-align:right;"> ND </td>';
+        tabuladoCoCl   +=  '<td style="text-align:right;"> '+ data.Coberturas[i].Clasificaciones[j].ValorDato.NoDatos.Codigo_nd +' </td>';
       }else{
         tabuladoCoCl   +=  '<td style="text-align:right;">'+ data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td>';
       }
@@ -197,7 +197,7 @@ function tablaAS(data){
 }
 
 function tablaClA(data){
-  var tabuladoClA =  '<table class="tablaArmada striped"><thead><tr><th>'+ data.Descrip_ind +'</th><th>'+ data.Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr></thead>';
+  var tabuladoClA =  '<table class="tablaArmada striped"><thead><tr><th>'+ data.Descrip_ser +'</th><th>'+ data.Coberturas[0].Clasificaciones[0].ValorDato.AADato_ser+'</th></tr></thead>';
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == "" || data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == null){
@@ -235,7 +235,8 @@ function CoClanidada(data){
     tabulado += '<tr><td>'+  '<span style="display:none;">'+data.Coberturas[i].ClaveCobGeo_cg+ '</span>' + data.Coberturas[i].Descrip_cg + '</td>';
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == ""){
-          tabulado += '<td style="text-align:right;"> ND </td>';
+        console.log(data.Coberturas[i].Clasificaciones[j].ValorDato.NoDatos.Codigo_nd);
+          tabulado += '<td style="text-align:right;"> '+ data.Coberturas[i].Clasificaciones[j].ValorDato.NoDatos.Codigo_nd +' </td>';
       }else{
         tabulado += '<td style="text-align:right;">' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato + '</td>';
       }

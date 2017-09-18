@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit', '256M');
+ini_set('memory_limit', '512M');
 
 
 function indicadores(){
@@ -283,7 +283,7 @@ function get_tabuladoCSV($indicador){
 }
 
 
-//get_tabuladoCSV(164);
+//get_tabulado(210);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -306,9 +306,9 @@ function get_tabuladoCSV($indicador){
 
 // ----------- Crea todos los CSV de Indicador ---------//
 
-  // for ($i=0; $i < count($ClaveInd_arb); $i++) {
-  //   get_tabuladoCSV($ClaveInd_arb[$i]);
-  // }
+  for ($i=0; $i < count($ClaveInd_arb); $i++) {
+    get_tabuladoCSV($ClaveInd_arb[$i]);
+  }
 
 
   // ----------- Crea todos los XLS de Indicador ---------//
@@ -341,7 +341,7 @@ function get_tabuladoCSV($indicador){
 //creaXLSCoS(datos(26));
 
 
-metadato(datosMetadato(1));
+//metadato(datosMetadato(1));
 
 
 function abecedario($posicion){
@@ -425,15 +425,8 @@ function metadato($data){
   //var_dump($serie);
   $objPHPExcel->setActiveSheetIndex(0);
 
-  $numInd = $data['Algoritmo_ft'];
-  $nInd = explode('_',$numInd);
-  $nds = '';
-  for ($ede=0; $ede < count($nInd) - 1; $ede++) {
-    $nds .= $nInd[$ede] . '.';
-  }
-
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $nds.' '.$data['Descrip_ind']);
+              ->setCellValue('A1', $data['Algoritmo_ft'].$data['Descrip_ind']);
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A2', 'Objetivo');
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A3', 'Meta');
@@ -581,7 +574,7 @@ function metadato($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-  $objWriter->save('xlscsv/Metadato_'.$nds.'.xlsx');
+  $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
@@ -600,8 +593,6 @@ function metadato($data){
   echo 'Files have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
-
-//datos-panel-dos
 
 function metadatoCSV($data){
   /** Error reporting */
@@ -634,15 +625,8 @@ function metadatoCSV($data){
   //var_dump($serie);
   $objPHPExcel->setActiveSheetIndex(0);
 
-  $numInd = $data['Algoritmo_ft'];
-  $nInd = explode('_',$numInd);
-  $nds = '';
-  for ($ede=0; $ede < count($nInd) - 1; $ede++) {
-    $nds .= $nInd[$ede] . '.';
-  }
-
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $nds.' '.$data['Descrip_ind']);
+              ->setCellValue('A1', $data['Algoritmo_ft'].$data['Descrip_ind']);
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A2', 'Objetivo');
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A3', 'Meta');
@@ -789,8 +773,8 @@ function metadatoCSV($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-  $objWriter->save('xlscsv/Metadato_'.$nds.'.csv');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
@@ -1011,7 +995,7 @@ function creaCSVCoS($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
@@ -1362,7 +1346,7 @@ function creaCSVCoCl($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -1653,7 +1637,7 @@ function creaCSVCoClAnidada($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -1674,6 +1658,7 @@ function creaCSVCoClAnidada($data){
   echo 'Files have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
+
 
 function creaXLSClA($data){
 
@@ -1914,9 +1899,9 @@ function creaCSVClA($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
-  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
@@ -2174,7 +2159,7 @@ function creaCSVAS($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -2195,6 +2180,7 @@ function creaCSVAS($data){
   echo 'Files have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
+
 
 function creaXLSACl($data){
 
@@ -2229,7 +2215,7 @@ function creaXLSACl($data){
   $objPHPExcel->setActiveSheetIndex(0);
 
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Codigo_ind'].$data['Descrip_ind']);
+              ->setCellValue('B1', $data['Codigo_ind'].$data['Descrip_ind']);
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -2237,68 +2223,46 @@ function creaXLSACl($data){
       //var_dump($coberturas);
 
       for ($j=0; $j < count($coberturas); $j++) {
-        //$cobertura = $coberturas[$j]['Descrip_cla'];
+        $cobertura = $coberturas[$j]['Descrip_cg'];
         $valores = $coberturas[$j]['Clasificaciones'];
         $celda = $j + 3;
 
-        $periodos = array();
-        $clasifi = array();
+        // $objPHPExcel->setActiveSheetIndex(0)
+        //             ->setCellValue('A'.$celda, $cobertura);
 
         for ($k=0; $k < count($valores); $k++) {
-
-          $clasifi[$k] = $valores[$k]['Descrip_cla'];
-          $periodos[$k] = $valores[$k]['ValorDato']['AADato_ser'];
-          $datosVal[$k] = $valores[$k]['ValorDato']['Dato_Formato'];
-
-        }
-
-        $clasifi2 = array_unique($clasifi);
-        $periodos2 = array_unique($periodos);
-
-        //var_dump($clasifi2);
-        //var_dump($periodos2);
-        $unique = array();
-        for ($oo=0; $oo < count($clasifi2); $oo++) {
-          $a = abecedario($oo+1);
+          $a = abecedario($k+1);
           $b = abecedario(count($valores)+1);
+          // var_dump($valores[$k]);
+          // var_dump($valores[$k]['Dato_Formato']);
+          //$dato =  (string)$valores[$k]['Dato_Formato'];
+          //var_dump($dato);
+
+          //$dato =  '34.6';
           $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A2', 'Periodo');
+                      ->setCellValue('A2', 'Periodo');
 
-          //$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
+          $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.'2', $clasifi2[$oo]);
+                      ->setCellValue($a.'2', $valores[$k]['Descrip_cla']);
+          //$objPHPExcel->getActiveSheet()
+            //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
-          $bor = count($periodos)/count($periodos2);
-          //var_dump($bor);
-
-          $rrr = 0;
-          for ($ggg=0; $ggg < count($periodos2); $ggg++) {
-            // echo 'Valor '.$periodos2[$ggg].'<br/>';
-            $unique[] = $periodos2[$rrr];
-            $rrr = $rrr + $bor;
-
-          }
-
-          for ($eee=0; $eee < count($periodos2); $eee++) {
-            $celdo = 3+$eee;
-            $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue('A'.$celdo , $unique[$eee]);
-          }
+          $celdo = $k + 3;
+          $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
 
 
-          $www = 0;
-          for ($fff=0; $fff < count($periodos2); $fff++) {
-            $celdo = 3+$fff;
-            $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.$celdo, $datosVal[$www+$oo]);
-            $www = $www + $bor;
-          }
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
+          $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue($a.$celdo, $datoAS);
 
-
-
+          //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
+          //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
         }
-
+        //var_dump(count($dato));
+        //var_dump($valores);
       }
 
 
@@ -2357,7 +2321,6 @@ function creaCSVACl($data){
 
   /** Include PHPExcel */
   require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
-  require_once dirname(__FILE__) . '/Classes/PHPExcel/Writer/CSV.php';
 
   // Create new PHPExcel object
   //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
@@ -2379,317 +2342,7 @@ function creaCSVACl($data){
   $objPHPExcel->setActiveSheetIndex(0);
 
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Codigo_ind'].$data['Descrip_ind']);
-
-  for ($i=0; $i < count($serie); $i++) {
-    if($serie[$i]['Tipo_ser'] == 'R'){
-      $coberturas = $serie[$i]['Coberturas'];
-      //var_dump($coberturas);
-
-      for ($j=0; $j < count($coberturas); $j++) {
-        //$cobertura = $coberturas[$j]['Descrip_cla'];
-        $valores = $coberturas[$j]['Clasificaciones'];
-        $celda = $j + 3;
-
-        $periodos = array();
-        $clasifi = array();
-
-        for ($k=0; $k < count($valores); $k++) {
-
-          $clasifi[$k] = $valores[$k]['Descrip_cla'];
-          $periodos[$k] = $valores[$k]['ValorDato']['AADato_ser'];
-          $datosVal[$k] = $valores[$k]['ValorDato']['Dato_Formato'];
-
-        }
-
-        $clasifi2 = array_unique($clasifi);
-        $periodos2 = array_unique($periodos);
-
-        //var_dump($clasifi2);
-        //var_dump($periodos2);
-        $unique = array();
-        for ($oo=0; $oo < count($clasifi2); $oo++) {
-          $a = abecedario($oo+1);
-          $b = abecedario(count($valores)+1);
-          $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A2', 'Periodo');
-
-          //$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
-
-          $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.'2', $clasifi2[$oo]);
-
-          $bor = count($periodos)/count($periodos2);
-          //var_dump($bor);
-
-          $rrr = 0;
-          for ($ggg=0; $ggg < count($periodos2); $ggg++) {
-            // echo 'Valor '.$periodos2[$ggg].'<br/>';
-            $unique[] = $periodos2[$rrr];
-            $rrr = $rrr + $bor;
-
-          }
-
-          for ($eee=0; $eee < count($periodos2); $eee++) {
-            $celdo = 3+$eee;
-            $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue('A'.$celdo , $unique[$eee]);
-          }
-
-
-          $www = 0;
-          for ($fff=0; $fff < count($periodos2); $fff++) {
-            $celdo = 3+$fff;
-            $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.$celdo, $datosVal[$www+$oo]);
-            $www = $www + $bor;
-          }
-
-
-
-        }
-
-      }
-
-
-    }else if($serie[$i]['Tipo_ser'] == 'I'){
-      echo 'Tipo Insumo';
-    }
-  }
-
-  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-  // Rename worksheet
-  //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
-
-  // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-  $objPHPExcel->setActiveSheetIndex(0);
-
-  // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
-  PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-  //$objWriter->setUseBOM(false);
-  ob_end_clean();
-  //$nomArc = $data['Codigo_ind']
-  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
-  // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-
-  echo 'Files have been created in ' , getcwd() , EOL;
-
-}
-
-function creaXLSAClanidada($data){
-
-  /** Error reporting */
-  error_reporting(E_ALL);
-  ini_set('display_errors', TRUE);
-  ini_set('display_startup_errors', TRUE);
-  date_default_timezone_set('America/Mexico_City');
-
-  define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
-
-  /** Include PHPExcel */
-  require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
-
-  // Create new PHPExcel object
-  //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
-  $objPHPExcel = new PHPExcel();
-
-  // Set document properties
-  //echo date('H:i:s') , " Set document properties" , EOL;
-  $objPHPExcel->getProperties()->setCreator("Agenda2030")
-  							 ->setLastModifiedBy("Daniel H. Vargas")
-  							 ->setTitle("Objetivo")
-  							 ->setSubject($data['Codigo_ind'].$data['Descrip_ind'])
-  							 ->setDescription("Archivo creado para la Descarga Masiva de Agenda 2030")
-  							 ->setKeywords("agenda2030 descarga masiva xls")
-  							 ->setCategory("Objetivos de Desarrollo Sostenible");
-
-
-  $serie = $data['Series'];
-  //var_dump($serie);
-  $objPHPExcel->setActiveSheetIndex(0);
-
-  $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Codigo_ind'].$data['Descrip_ind']);
-
-  for ($i=0; $i < count($serie); $i++) {
-    if($serie[$i]['Tipo_ser'] == 'R'){
-      $coberturas = $serie[$i]['Coberturas'];
-      //var_dump($coberturas);
-
-      for ($j=0; $j < count($coberturas); $j++) {
-        //$cobertura = $coberturas[$j]['Descrip_cla'];
-        $valores = $coberturas[$j]['Clasificaciones'];
-        $celda = $j + 4;
-
-        $periodos = array();
-        $clasifi = array();
-        $cobertu = array();
-
-        for ($k=0; $k < count($valores); $k++) {
-          $cobertu[$k] = $coberturas[$i]['Descrip_cg'];
-          $clasifi[$k] = $valores[$k]['Descrip_cla'];
-          $periodos[$k] = $valores[$k]['ValorDato']['AADato_ser'];
-          $datosVal[$k] = $valores[$k]['ValorDato']['Dato_Formato'];
-        }
-
-        $cobertu2 = array_unique($cobertu);
-        $clasifi2 = array_unique($clasifi);
-        $periodos2 = array_unique($periodos);
-
-        //var_dump($periodos2);
-        //var_dump($clasifi2);
-        //var_dump($periodos2);
-        $anios = array();
-        $rrrr = 0;
-        for ($gggg=0; $gggg < count($periodos2); $gggg++) {
-          // echo 'Valor '.$periodos2[$ggg].'<br/>';
-          $anios[$gggg] = $periodos2[$rrr];
-          $rrrr = $rrrr+1;
-
-        }
-        var_dump($anios);
-        for ($qwe=0; $qwe < count($anios); $qwe++) {
-          $celdos = 4+$qwe;
-          $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A'.$celdos, $anios[$qwe]);
-        }
-
-
-        $unique = array();
-        for ($oo=0; $oo < count($clasifi2); $oo++){
-          $a = abecedario($oo+1);
-          $b = abecedario(count($valores)+1);
-          $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A3', 'Periodo');
-
-          //$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
-
-
-          // for ($hghg=0; $hghg < count(); $hghg++) {
-          //
-          // }
-
-
-          $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.'3', $clasifi2[$oo]);
-
-          // $objPHPExcel->setActiveSheetIndex(0)
-          //             ->setCellValue($a.'2', $cobertu2[$oo]);
-          var_dump(count($periodos));
-          $bor = count($periodos)/count($periodos2);
-          var_dump($bor);
-
-          $rrr = 0;
-          for ($ggg=0; $ggg < count($periodos2); $ggg++) {
-            // echo 'Valor '.$periodos2[$ggg].'<br/>';
-            $unique[$ggg] = $periodos2[$rrr];
-            $rrr = $rrr + $bor;
-
-          }
-          var_dump($unique);
-
-          $xxx = 0;
-          for ($eee=0; $eee < count($unique); $eee++) {
-            // $celdo = 1+$eee;
-            $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.'2' , $unique[$eee]);
-            $xxx = $xxx + $eee;
-          }
-
-          $www = 0;
-          for ($fff=0; $fff < count($periodos2); $fff++) {
-            $celdo = 4+$fff;
-            $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.$celdo, $datosVal[$www+$oo]);
-            $www = $www + $bor;
-          }
-
-        }
-
-      }
-
-
-    }else if($serie[$i]['Tipo_ser'] == 'I'){
-      echo 'Tipo Insumo';
-    }
-  }
-
-  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-  // Rename worksheet
-  //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
-
-  // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-  $objPHPExcel->setActiveSheetIndex(0);
-
-  // Save Excel 2007 file
-  //echo date('H:i:s') , " Write to Excel format" , EOL;
-  $callStartTime = microtime(true);
-
-  // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
-  PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
-
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-  ob_end_clean();
-  //$nomArc = $data['Codigo_ind']
-  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
-  // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  $callEndTime = microtime(true);
-  $callTime = $callEndTime - $callStartTime;
-
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
-  // Echo memory usage
-  //echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo memory peak usage
-  //echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo done
-  //echo date('H:i:s') , " Done writing files" , EOL;
-  echo 'Files have been created in ' , getcwd() , EOL;
-  //var_dump($data);
-}
-
-
-
-function JJJJcreaXLSAClanidada($data){
-
-  /** Error reporting */
-  error_reporting(E_ALL);
-  ini_set('display_errors', TRUE);
-  ini_set('display_startup_errors', TRUE);
-  date_default_timezone_set('America/Mexico_City');
-
-  define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
-
-  /** Include PHPExcel */
-  require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
-
-  // Create new PHPExcel object
-  //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
-  $objPHPExcel = new PHPExcel();
-
-  // Set document properties
-  //echo date('H:i:s') , " Set document properties" , EOL;
-  $objPHPExcel->getProperties()->setCreator("Agenda2030")
-  							 ->setLastModifiedBy("Daniel H. Vargas")
-  							 ->setTitle("Objetivo")
-  							 ->setSubject($data['Codigo_ind'].$data['Descrip_ind'])
-  							 ->setDescription("Archivo creado para la Descarga Masiva de Agenda 2030")
-  							 ->setKeywords("agenda2030 descarga masiva xls")
-  							 ->setCategory("Objetivos de Desarrollo Sostenible");
-
-
-  $serie = $data['Series'];
-  //var_dump($serie);
-  $objPHPExcel->setActiveSheetIndex(0);
-
-  $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Codigo_ind'].$data['Descrip_ind']);
+              ->setCellValue('B1', $data['Codigo_ind'].$data['Descrip_ind']);
 
   for ($i=0; $i < count($serie); $i++) {
     if($serie[$i]['Tipo_ser'] == 'R'){
@@ -2699,77 +2352,37 @@ function JJJJcreaXLSAClanidada($data){
       for ($j=0; $j < count($coberturas); $j++) {
         $cobertura = $coberturas[$j]['Descrip_cg'];
         $valores = $coberturas[$j]['Clasificaciones'];
-        $celda = $j + 4;
+        $celda = $j + 3;
 
-        $periods = array();
-        for ($ll=0; $ll < count($valores); $ll++) {
-          $periods[$ll] = $valores[$ll]['ValorDato']['AADato_ser'];
-        }
-
-        $range = array();
-        for ($hh=0; $hh < count($valores); $hh++) {
-          $range[$hh] = $valores[$hh]['ClaveAgrupa_ac'];
-        }
-
-
-        $unicoPeriods = array_unique($periods);
-        $uniquePeriod = array();
-        $bor = count($periods)/count($unicoPeriods);
-
-        var_dump($bor);
-        for ($tt=0; $tt < count($unicoPeriods); $tt++) {
-
-        }
-
-        for ($gg=0; $gg < count($unicoPeriods); $gg++) {
-          // $objPHPExcel->setActiveSheetIndex(0)
-          //             ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
-          $pp = $gg + 4;
-          $objPHPExcel->getActiveSheet()->setCellValue('A'.$pp, $unicoPeriods[$gg]);
-        }
-        //var_dump($unicoPeriods);
         // $objPHPExcel->setActiveSheetIndex(0)
         //             ->setCellValue('A'.$celda, $cobertura);
-        //$rr = count($valores) / 3;
 
         for ($k=0; $k < count($valores); $k++) {
           $a = abecedario($k+1);
           $b = abecedario(count($valores)+1);
+          // var_dump($valores[$k]);
+          // var_dump($valores[$k]['Dato_Formato']);
+          //$dato =  (string)$valores[$k]['Dato_Formato'];
+          //var_dump($dato);
 
+          //$dato =  '34.6';
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('A3', 'Periodo');
-
-          $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('B2', 'Total');
-
-          $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('G2', 'Hombres');
-
-          $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue('L2', 'Mujeres');
+                      ->setCellValue('A2', 'Periodo');
 
           $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.'3', $valores[$k]['Descrip_cla']);
+                      ->setCellValue($a.'2', $valores[$k]['Descrip_cla']);
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
           $celdo = $k + 3;
-          // $unicoPeriods = array_unique($periods);
-          // for ($gg=0; $gg < count($unicoPeriods); $gg++) {
-          //   // $objPHPExcel->setActiveSheetIndex(0)
-          //   //             ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
-          //   $pp = $gg + 4;
-          //   $objPHPExcel->getActiveSheet()
-          //               ->setCellValue('A'.$pp, $unicoPeriods[$gg]);
-          // }
+          $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
 
           $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
           $objPHPExcel->setActiveSheetIndex(0)
-                      ->setCellValue($a.$celda, $datoAS);
-                      //var_dump($a);
-                      //var_dump($celda);
+                      ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
 
@@ -2786,9 +2399,6 @@ function JJJJcreaXLSAClanidada($data){
   }
 
   $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
-  $objPHPExcel->getActiveSheet()->mergeCells('B2:F2');
-  $objPHPExcel->getActiveSheet()->mergeCells('G2:K2');
-  $objPHPExcel->getActiveSheet()->mergeCells('L2:P2');
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
   $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
@@ -2803,10 +2413,9 @@ function JJJJcreaXLSAClanidada($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-  ob_end_clean();
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
-  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
@@ -2826,7 +2435,7 @@ function JJJJcreaXLSAClanidada($data){
   //var_dump($data);
 }
 
-function JJJJcreaCSVAClanidada($data){
+function creaXLSAClanidada($data){
 
   /** Error reporting */
   error_reporting(E_ALL);
@@ -2883,22 +2492,149 @@ function JJJJcreaCSVAClanidada($data){
           //var_dump($dato);
 
           //$dato =  '34.6';
-          $objPHPExcel->getActiveSheet()
+          $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue('A2', 'Periodo');
 
           $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
 
-          $objPHPExcel->getActiveSheet()
+          $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue($a.'2', $valores[$k]['Descrip_cla']);
           //$objPHPExcel->getActiveSheet()
             //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
 
           $celdo = $k + 3;
-          $objPHPExcel->getActiveSheet()
+          $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
 
           $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
-          $objPHPExcel->getActiveSheet()
+          $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue($a.$celdo, $datoAS);
+
+          //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
+
+          //$objPHPExcel->setActiveSheetIndex(0)->setCellValue($a.'2', count($valores));
+        }
+        //var_dump(count($dato));
+        //var_dump($valores);
+      }
+
+
+    }else if($serie[$i]['Tipo_ser'] == 'I'){
+      echo 'Tipo Insumo';
+    }
+  }
+
+  $objPHPExcel->getActiveSheet()->mergeCells($a.'1:'.$b.'1');
+  // Rename worksheet
+  //echo date('H:i:s') , " Rename worksheet" , EOL;
+  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Codigo_ind'].$data['Descrip_ind'], 0, 25));
+
+  // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+  $objPHPExcel->setActiveSheetIndex(0);
+
+  // Save Excel 2007 file
+  //echo date('H:i:s') , " Write to Excel format" , EOL;
+  $callStartTime = microtime(true);
+
+  // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
+  PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
+
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  ob_end_clean();
+  //$nomArc = $data['Codigo_ind']
+  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+  // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
+  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
+  $callEndTime = microtime(true);
+  $callTime = $callEndTime - $callStartTime;
+
+  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
+  //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+  // Echo memory usage
+  //echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
+
+  // Echo memory peak usage
+  //echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
+
+  // Echo done
+  //echo date('H:i:s') , " Done writing files" , EOL;
+  echo 'Files have been created in ' , getcwd() , EOL;
+  //var_dump($data);
+}
+
+function creaCSVAClanidada($data){
+
+  /** Error reporting */
+  error_reporting(E_ALL);
+  ini_set('display_errors', TRUE);
+  ini_set('display_startup_errors', TRUE);
+  date_default_timezone_set('America/Mexico_City');
+
+  define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+
+  /** Include PHPExcel */
+  require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
+
+  // Create new PHPExcel object
+  //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
+  $objPHPExcel = new PHPExcel();
+
+  // Set document properties
+  //echo date('H:i:s') , " Set document properties" , EOL;
+  $objPHPExcel->getProperties()->setCreator("Agenda2030")
+  							 ->setLastModifiedBy("Daniel H. Vargas")
+  							 ->setTitle("Objetivo")
+  							 ->setSubject($data['Codigo_ind'].$data['Descrip_ind'])
+  							 ->setDescription("Archivo creado para la Descarga Masiva de Agenda 2030")
+  							 ->setKeywords("agenda2030 descarga masiva xls")
+  							 ->setCategory("Objetivos de Desarrollo Sostenible");
+
+
+  $serie = $data['Series'];
+  //var_dump($serie);
+  $objPHPExcel->setActiveSheetIndex(0);
+
+  $objPHPExcel->setActiveSheetIndex(0)
+              ->setCellValue('B1', $data['Codigo_ind'].$data['Descrip_ind']);
+
+  for ($i=0; $i < count($serie); $i++) {
+    if($serie[$i]['Tipo_ser'] == 'R'){
+      $coberturas = $serie[$i]['Coberturas'];
+      //var_dump($coberturas);
+
+      for ($j=0; $j < count($coberturas); $j++) {
+        $cobertura = $coberturas[$j]['Descrip_cg'];
+        $valores = $coberturas[$j]['Clasificaciones'];
+        $celda = $j + 3;
+
+        // $objPHPExcel->setActiveSheetIndex(0)
+        //             ->setCellValue('A'.$celda, $cobertura);
+
+        for ($k=0; $k < count($valores); $k++) {
+          $a = abecedario($k+1);
+          $b = abecedario(count($valores)+1);
+          // var_dump($valores[$k]);
+          // var_dump($valores[$k]['Dato_Formato']);
+          //$dato =  (string)$valores[$k]['Dato_Formato'];
+          //var_dump($dato);
+
+          //$dato =  '34.6';
+          $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue('A2', 'Periodo');
+
+          $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
+
+          $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue($a.'2', $valores[$k]['Descrip_cla']);
+          //$objPHPExcel->getActiveSheet()
+            //          ->setCellValue($a.'3', $valores[$k]['Dato_ser']);
+
+          $celdo = $k + 3;
+          $objPHPExcel->setActiveSheetIndex(0)
+                      ->setCellValue('A'.$celdo, $valores[$k]['ValorDato']['AADato_ser']);
+
+          $datoAS = ($valores[$k]['ValorDato']['Dato_Formato'] == null || $valores[$k]['ValorDato']['Dato_Formato'] == '') ? 'NA' : $valores[$k]['ValorDato']['Dato_Formato'];
+          $objPHPExcel->setActiveSheetIndex(0)
                       ->setCellValue($a.$celdo, $datoAS);
 
           //$objPHPExcel->getActiveSheet()->setCellValueExplicit($a.'3', (string)$valores[$k]['Dato_Formato'], PHPExcel_Cell_DataType::TYPE_STRING);
@@ -2929,7 +2665,7 @@ function JJJJcreaCSVAClanidada($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
