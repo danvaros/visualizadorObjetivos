@@ -460,57 +460,57 @@
     var contenido =  '';
     var indice = 1;
     console.log(indicadores);
-    // for (var i = 0; i < indicadores.length; i++) {
-    //     for (var j = 0; j < indicadores[i].Meta.length; j++) {
-    //         for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
-    //             if(indicadores[i].Meta[j].Indicador[k].TieneValores){
-    //
-    //                 var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
-    //                 var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
-    //                 //Descrip_cla
-    //                 //console.log(atr.Descrip_cla);
-    //                 contenido =  contenido +'<tr>'+
-    //                     '<td class="center">'+ indice +'</td>'+
-    //
-    //                     '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-    //                     +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
-    //                     +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
-    //                     +'</td>'+
-    //                                         '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
-    //                                         '<td>'+ metadatos.FecProxAct_eic+'</td>'+
-    //                                         '</tr>';
-    //                                         indice++;
-    //             }
-    //         }
-    //     }
-    // }
-
-    console.log(indies.length);
     for (var i = 0; i < indicadores.length; i++) {
         for (var j = 0; j < indicadores[i].Meta.length; j++) {
             for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
                 if(indicadores[i].Meta[j].Indicador[k].TieneValores){
 
-                    //var metadatos = getMetadatos(indies[i].CveInd_cal);
-                    //var atr = getAtr(indies[i].CveInd_cal);
+                    var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
+                    var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
                     //Descrip_cla
                     //console.log(atr.Descrip_cla);
-                    console.log(indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
                     contenido =  contenido +'<tr>'+
-                        '<td class="center">'+ indies[i].NumInd_cal +'</td>'+
+                        '<td class="center">'+ indice +'</td>'+
 
                         '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-                        +'&indicador='+ indies[i].CveInd_cal + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+                        +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
                         +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
                         +'</td>'+
-                                            '<td>'+indies[i].AbreviaInsRes_cal+'</td>'+
-                                            '<td>'+ indies[i].FecProxAct_cal+'</td>'+
+                                            '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
+                                            '<td>'+ metadatos.FecProxAct_eic+'</td>'+
                                             '</tr>';
-                                            //indice++;
+                                            indice++;
                 }
             }
         }
     }
+
+    // console.log(indies.length);
+    // for (var i = 0; i < indicadores.length; i++) {
+    //     for (var j = 0; j < indicadores[i].Meta.length; j++) {
+    //         for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
+    //             if(indicadores[i].Meta[j].Indicador[k].TieneValores){
+    //
+    //                 //var metadatos = getMetadatos(indies[i].CveInd_cal);
+    //                 //var atr = getAtr(indies[i].CveInd_cal);
+    //                 //Descrip_cla
+    //                 //console.log(atr.Descrip_cla);
+    //                 console.log(indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
+    //                 contenido =  contenido +'<tr>'+
+    //                     '<td class="center">'+ indies[i].NumInd_cal +'</td>'+
+    //
+    //                     '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
+    //                     +'&indicador='+ indies[i].CveInd_cal + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+    //                     +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
+    //                     +'</td>'+
+    //                                         '<td>'+indies[i].AbreviaInsRes_cal+'</td>'+
+    //                                         '<td>'+ indies[i].FecProxAct_cal+'</td>'+
+    //                                         '</tr>';
+    //                                         //indice++;
+    //             }
+    //         }
+    //     }
+    // }
 
 $('#cuerpo').html(contenido);
 
