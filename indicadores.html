@@ -2611,7 +2611,8 @@
                 '<tr><th>Contacto</th><td>';
 
             for (var i = 0; i < metadatosArr.Contacto.length; i++) {
-                tablaMeta = tablaMeta + metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + nl2br(metadatosArr.Contacto[i].Domicilio_con) + '<br> <b>Teléfono(s): </b>' + metadatosArr.Contacto[i].Telefono_con + '<br>';
+                tablaMeta = tablaMeta + metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + nl2br(metadatosArr.Contacto[i].Domicilio_con) + '<br>';
+                tablaMeta += (metadatosArr.Contacto[i].Telefono_con == '' || metadatosArr.Contacto[i].Telefono_con == null) ? '' : '<b>Teléfono(s): </b>' + metadatosArr.Contacto[i].Telefono_con + '<br>';
                 tablaMeta += (metadatosArr.Contacto[i].Correo_con == '' || metadatosArr.Contacto[i].Correo_con == null) ? '<br  /><br  />' : '<b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con + '<br  /><br  />';
             }
 
