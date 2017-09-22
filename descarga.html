@@ -597,7 +597,7 @@ $('#descargaZip').hide();
 
 <div class="disclaimer pop">
   <h1>Aviso</h1>
-  <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+  <p>Esta es una versión beta de la Plataforma oficial para el seguimiento de los indicadores de los Objetivos de Desarrollo Sostenible. El INEGI y el Gobierno de la República trabajan para actualizar la información constantemente.</p>
 </div>
 
 <div id="descargaZip">
@@ -657,12 +657,18 @@ $('#descargaZip').hide();
           var n = $('input[type=checkbox]:checked');
           console.log(n);
 
-           $.each(n, function(){
-              //indica.push($('input[type="checkbox"]:checked').attr('name'));
-              //valor += valor + val + ',';
-                console.log($(this).attr('name'));
-                valor  +=  ',' + $(this).attr('name');
-           });
+
+          if(n != '' || n != null){
+            $.each(n, function(){
+               //indica.push($('input[type="checkbox"]:checked').attr('name'));
+               //valor += valor + val + ',';
+                 console.log($(this).attr('name'));
+                 valor  +=  ',' + $(this).attr('name');
+            });
+          }else{
+            alert('Debes seleccionar al menos 1 indicador.');
+          }
+
            console.log(valor);
 
           //indica.push($('input[type="checkbox"]:checked').val());
@@ -787,7 +793,7 @@ $('#descargaZip').hide();
         }
 
         if (selecciones) {
-          
+
         }else {
           alert('Debe seleccionar al menos un indicador.');
         }

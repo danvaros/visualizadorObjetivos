@@ -338,7 +338,7 @@
     <div class="container">
         <div class="row">
             <div class="col s8">
-                <h3 class="fuerte t_principal">CALENDARIO DE ACTUALIZACIONES</h3>
+                <h3 class="fuerte t_principal" id="tituloCal"></h3>
             </div>
             <div class="input-field col s4">
                 <i class="material-icons prefix caja_i">search</i>
@@ -422,7 +422,7 @@
 
     <div class="disclaimer pop">
       <h1>Aviso</h1>
-      <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+      <p>Esta es una versión beta de la Plataforma oficial para el seguimiento de los indicadores de los Objetivos de Desarrollo Sostenible. El INEGI y el Gobierno de la República trabajan para actualizar la información constantemente.</p>
   </div>
 
   <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
@@ -457,60 +457,68 @@
     var indicadores = getIndicadores();
     var indie = getCalendario();
     var indies = indie.Ind_cal;
+    $("#tituloCal").html(indie.SubTitulo_cal);
     var contenido =  '';
     var indice = 1;
-    console.log(indicadores);
-    for (var i = 0; i < indicadores.length; i++) {
-        for (var j = 0; j < indicadores[i].Meta.length; j++) {
-            for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
-                if(indicadores[i].Meta[j].Indicador[k].TieneValores){
 
-                    var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
-                    var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
-                    //Descrip_cla
-                    //console.log(atr.Descrip_cla);
-                    contenido =  contenido +'<tr>'+
-                        '<td class="center">'+ indice +'</td>'+
-
-                        '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-                        +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
-                        +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
-                        +'</td>'+
-                                            '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
-                                            '<td>'+ metadatos.FecProxAct_eic+'</td>'+
-                                            '</tr>';
-                                            indice++;
-                }
-            }
-        }
-    }
-
-    // console.log(indies.length);
+    // console.log(indicadores);
     // for (var i = 0; i < indicadores.length; i++) {
     //     for (var j = 0; j < indicadores[i].Meta.length; j++) {
     //         for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
     //             if(indicadores[i].Meta[j].Indicador[k].TieneValores){
     //
-    //                 //var metadatos = getMetadatos(indies[i].CveInd_cal);
-    //                 //var atr = getAtr(indies[i].CveInd_cal);
+    //                 var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
+    //                 var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
     //                 //Descrip_cla
     //                 //console.log(atr.Descrip_cla);
-    //                 console.log(indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
     //                 contenido =  contenido +'<tr>'+
-    //                     '<td class="center">'+ indies[i].NumInd_cal +'</td>'+
+    //                     '<td class="center">'+ indice +'</td>'+
     //
     //                     '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-    //                     +'&indicador='+ indies[i].CveInd_cal + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+    //                     +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
     //                     +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
     //                     +'</td>'+
-    //                                         '<td>'+indies[i].AbreviaInsRes_cal+'</td>'+
-    //                                         '<td>'+ indies[i].FecProxAct_cal+'</td>'+
+    //                                         '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
+    //                                         '<td>'+ metadatos.FecProxAct_eic+'</td>'+
     //                                         '</tr>';
-    //                                         //indice++;
+    //                                         indice++;
     //             }
     //         }
     //     }
     // }
+
+    console.log(indies.length);
+    //for (var i = 0; i < indicadores.length; i++) {
+      for (var ii = 0; ii < indies.length; ii++) {
+        //for (var i = 0; i < indicadores.length; i++) {
+          //for (var j = 0; j < indicadores[i].Meta.length; j++) {
+            //for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
+                //if(indicadores[i].Meta[j].Indicador[k].TieneValores){
+
+                    //var metadatos = getMetadatos(indies[i].CveInd_cal);
+                    //var atr = getAtr(indies[i].CveInd_cal);
+                    //Descrip_cla
+                    //console.log(atr.Descrip_cla);
+                        contenido =  contenido +'<tr>'+
+                        '<td class="center">'+ indies[ii].NumInd_cal +'</td>';
+
+                        // contenido =  contenido + '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
+                        // +'&indicador='+ indies[ii].CveInd_cal + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+                        // +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
+                        // +'</td>';
+
+                        contenido =  contenido + '<td>'+ indies[ii].CodInd_cal +' '+ indies[ii].NomInd_cal + '</a>'
+                        +'</td>';
+
+                        contenido =  contenido + '<td>'+indies[ii].AbreviaInsRes_cal+'</td>'+
+                        '<td>'+ indies[ii].FecProxAct_cal+'</td>'+
+                        '</tr>';
+                  //}
+                                            //indice++;
+                //}
+            //}
+        //}
+    }
 
 $('#cuerpo').html(contenido);
 
