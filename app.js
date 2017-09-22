@@ -1307,7 +1307,7 @@ function valorDato(data){
       }
       else {
         dato_formato = data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;//'ND';
-        console.log(data.Series[0].Coberturas[i].ValorDato[j].NoDatos);
+        //console.log(data.Series[0].Coberturas[i].ValorDato[j].NoDatos);
       }
       temporal.push(dato_formato);
     }
