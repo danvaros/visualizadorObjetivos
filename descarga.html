@@ -657,12 +657,18 @@ $('#descargaZip').hide();
           var n = $('input[type=checkbox]:checked');
           console.log(n);
 
-           $.each(n, function(){
-              //indica.push($('input[type="checkbox"]:checked').attr('name'));
-              //valor += valor + val + ',';
-                console.log($(this).attr('name'));
-                valor  +=  ',' + $(this).attr('name');
-           });
+
+          if(n != '' || n != null){
+            $.each(n, function(){
+               //indica.push($('input[type="checkbox"]:checked').attr('name'));
+               //valor += valor + val + ',';
+                 console.log($(this).attr('name'));
+                 valor  +=  ',' + $(this).attr('name');
+            });
+          }else{
+            alert('Debes seleccionar al menos 1 indicador.');
+          }
+
            console.log(valor);
 
           //indica.push($('input[type="checkbox"]:checked').val());
@@ -787,7 +793,7 @@ $('#descargaZip').hide();
         }
 
         if (selecciones) {
-          
+
         }else {
           alert('Debe seleccionar al menos un indicador.');
         }
