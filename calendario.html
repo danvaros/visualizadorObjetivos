@@ -436,6 +436,11 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
   var lupa = false;
+  var Codigond = "";
+  var Codigo_meta = "";
+  var Descrip_meta = "";
+  var Codigo_Cob = "";
+  var temas = tematicas();
 
   $(document).ready(function() {
     $('#cam_bus').keypress(function(e) {
@@ -492,63 +497,40 @@
     //     }
     // }
 
-    console.log(indies.length);
     //for (var i = 0; i < indicadores.length; i++) {
       for (var ii = 0; ii < indies.length; ii++) {
-        //for (var i = 0; i < indicadores.length; i++) {
-          //for (var j = 0; j < indicadores[i].Meta.length; j++) {
-            //for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
-                //if(indicadores[i].Meta[j].Indicador[k].TieneValores){
-
-                    //var metadatos = getMetadatos(indies[i].CveInd_cal);
-                    //var atr = getAtr(indies[i].CveInd_cal);
-                    //Descrip_cla
-                    //console.log(atr.Descrip_cla);
-                        contenido =  contenido +'<tr>'+
-                        '<td class="center">'+ indies[ii].NumInd_cal +'</td>';
-
-                        // contenido =  contenido + '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-                        // +'&indicador='+ indies[ii].CveInd_cal + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
-                        // +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
-                        // +'</td>';
-
-                        contenido =  contenido + '<td><a href="#">'+ indies[ii].CodInd_cal +' '+ indies[ii].NomInd_cal + '</a>'
-                        +'</td>';
-
-                        contenido =  contenido + '<td>'+indies[ii].AbreviaInsRes_cal+'</td>'+
-                        '<td>'+ indies[ii].FecProxAct_cal+'</td>'+
-                        '</tr>';
-                  //}
-                                            //indice++;
-                //}
-            //}
-        //}
+          contenido =  contenido +'<tr>'+
+          '<td class="center">'+ indies[ii].NumInd_cal +'</td>';
+          contenido =  contenido + '<td><a href="'+linkInd(indies[ii].CveInd_cal)+'">'+ indies[ii].CodInd_cal +' '+ indies[ii].NomInd_cal + '</a>'
+          +'</td>';
+          contenido =  contenido + '<td>'+indies[ii].AbreviaInsRes_cal+'</td>'+
+          '<td>'+ indies[ii].FecProxAct_cal+'</td>'+
+          '</tr>';
     }
 
 
-function linkInd(indicador){
-  var dato;
-  var objetivo = "ODS0010";// str 7
-  var meta = "ODS00100010";// str 11
-  var obj = objetivo.split("", 7);
-  var met = meta.split("", 11);
+  function linkInd(indicador){
 
-  for (var i = 0; i < indicadores.length; i++) {
-    for (var j = 0; j < indicadores[i].Meta.length; j++) {
-      for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
-        if(indicadores[i].Meta[j].Indicador[k].TieneValores){
-          dato = 'indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-          +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
-          +'&obj='+indicadores[i].Clave_arb;
-        }
+    for (var i = 0; i < temas.length; i++) {
+      if( temas[i].ClaveInd_arb ==  indicador){
+        Codigo_meta   = temas[i].Clave_arb;
+        Descrip_meta = temas[i].Descrip_des;
+        Codigond 	=	temas[i].Codigo_des;
+        Codigo_Cob = temas[i].DesGeo.Codigo_dg;
       }
     }
-  }
+
+  var dato;
+  var objetivo = Codigond.split(".");// str 7
+  var obj = Codigo_meta.substring(0,7);
+  var met = Codigo_meta.substring(0,11);
+
+          dato = 'indicadores.html?objetivo='+objetivo[0]+'.&meta='+met
+          +'&indicador='+ indicador + '&codigo='+Codigo_Cob
+          +'&obj='+obj;
+
   return dato;
 }
-
-
-
 
 $('#cuerpo').html(contenido);
 
