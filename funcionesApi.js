@@ -131,6 +131,26 @@ function getAtr(indicador){
 	    return atr;
 }
 
+function tematicas(){
+		var tematica = [];
+	//llama la tematica
+	$.ajax({
+		type: 'POST',
+		url: "https://ods.org.mx/API/Tematica/PorClave",
+		data: {'PClave':'I' , 'PIdioma':'ES'},
+		success: function( data, textStatus, jqxhr ) {
+			tematica = data;
+		},
+		error:function( data, textStatus, responseJSON )
+		{
+			console.log(data);
+		},
+		async:false
+	});
+
+	return tematica;
+}
+
 function getCalendario(){
 	var calendario = [];
 		$.ajax({
