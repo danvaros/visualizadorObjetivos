@@ -512,7 +512,7 @@
                         // +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
                         // +'</td>';
 
-                        contenido =  contenido + '<td>'+ indies[ii].CodInd_cal +' '+ indies[ii].NomInd_cal + '</a>'
+                        contenido =  contenido + '<td><a href="#">'+ indies[ii].CodInd_cal +' '+ indies[ii].NomInd_cal + '</a>'
                         +'</td>';
 
                         contenido =  contenido + '<td>'+indies[ii].AbreviaInsRes_cal+'</td>'+
@@ -524,6 +524,31 @@
             //}
         //}
     }
+
+
+function linkInd(indicador){
+  var dato;
+  var objetivo = "ODS0010";// str 7
+  var meta = "ODS00100010";// str 11
+  var obj = objetivo.split("", 7);
+  var met = meta.split("", 11);
+
+  for (var i = 0; i < indicadores.length; i++) {
+    for (var j = 0; j < indicadores[i].Meta.length; j++) {
+      for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
+        if(indicadores[i].Meta[j].Indicador[k].TieneValores){
+          dato = 'indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
+          +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+          +'&obj='+indicadores[i].Clave_arb;
+        }
+      }
+    }
+  }
+  return dato;
+}
+
+
+
 
 $('#cuerpo').html(contenido);
 
