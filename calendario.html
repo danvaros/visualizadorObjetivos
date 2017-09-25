@@ -377,7 +377,14 @@
             </div>
             <div class="col s12">
                 <div class="notasCal">
+                    <p>
 
+<a href="#">1/</a> La actualización del indicador está sujeta a la publicación de los microdatos por parte de INEGI.<br/>
+<a href="#">2/</a> La actualización se realizará en la segunda quincena de septiembre.<br/>
+<a href="#">3/</a> Dependerá del año en que se levante y en el que se publique.<br/>
+<a href="#">4/</a> La actualización se hará cuando se publique el siguiente inventario de emisiones (no existe una periodicidad definida para la publicación de los inventarios).
+
+                    </p>
                 </div>
             </div>
         </div>
@@ -504,8 +511,20 @@
           contenido =  contenido + '<td><a href="'+linkInd(indies[ii].CveInd_cal)+'">'+ indies[ii].CodInd_cal +' '+ indies[ii].NomInd_cal + '</a>'
           +'</td>';
           contenido =  contenido + '<td>'+indies[ii].AbreviaInsRes_cal+'</td>'+
-          '<td>'+ indies[ii].FecProxAct_cal+'</td>'+
-          '</tr>';
+          '<td>'+ indies[ii].FecProxAct_cal;
+          if(indies[ii].CveNotaFecProx_cal == 0){
+            contenido =  contenido + '</td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 238){
+            contenido =  contenido + ' <sup><a href="#">1/</a></sup></td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 304){
+            contenido =  contenido + ' <sup><a href="#">2/</a></sup></td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 268){
+            contenido =  contenido + ' <sup><a href="#">3/</a></sup></td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 211){
+            contenido =  contenido + ' <sup><a href="#">4/</a></sup></td>';
+          }
+
+          contenido =  contenido + '</tr>';
     }
 
 
