@@ -338,7 +338,7 @@
     <div class="container">
         <div class="row">
             <div class="col s8">
-                <h3 class="fuerte t_principal">CALENDARIO DE ACTUALIZACIONES</h3>
+                <h3 class="fuerte t_principal" id="tituloCal"></h3>
             </div>
             <div class="input-field col s4">
                 <i class="material-icons prefix caja_i">search</i>
@@ -374,6 +374,18 @@
 
                     </tbody>
                 </table>
+            </div>
+            <div class="col s12">
+                <div class="notasCal">
+                    <p>
+
+<a href="#">1/</a> La actualización del indicador está sujeta a la publicación de los microdatos por parte de INEGI.<br/>
+<a href="#">2/</a> La actualización se realizará en la segunda quincena de septiembre.<br/>
+<a href="#">3/</a> Dependerá del año en que se levante y en el que se publique.<br/>
+<a href="#">4/</a> La actualización se hará cuando se publique el siguiente inventario de emisiones (no existe una periodicidad definida para la publicación de los inventarios).
+
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -422,7 +434,7 @@
 
     <div class="disclaimer pop">
       <h1>Aviso</h1>
-      <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+      <p>Esta es una versión beta de la Plataforma oficial para el seguimiento de los indicadores de los Objetivos de Desarrollo Sostenible. El INEGI y el Gobierno de la República trabajan para actualizar la información constantemente.</p>
   </div>
 
   <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
@@ -431,6 +443,11 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
   var lupa = false;
+  var Codigond = "";
+  var Codigo_meta = "";
+  var Descrip_meta = "";
+  var Codigo_Cob = "";
+  var temas = tematicas();
 
   $(document).ready(function() {
     $('#cam_bus').keypress(function(e) {
@@ -457,54 +474,29 @@
     var indicadores = getIndicadores();
     var indie = getCalendario();
     var indies = indie.Ind_cal;
+    $("#tituloCal").html(indie.SubTitulo_cal);
     var contenido =  '';
     var indice = 1;
-    console.log(indicadores);
-    for (var i = 0; i < indicadores.length; i++) {
-        for (var j = 0; j < indicadores[i].Meta.length; j++) {
-            for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
-                if(indicadores[i].Meta[j].Indicador[k].TieneValores){
 
-                    var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
-                    var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
-                    //Descrip_cla
-                    //console.log(atr.Descrip_cla);
-                    contenido =  contenido +'<tr>'+
-                        '<td class="center">'+ indice +'</td>'+
-
-                        '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-                        +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
-                        +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
-                        +'</td>'+
-                                            '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
-                                            '<td>'+ metadatos.FecProxAct_eic+'</td>'+
-                                            '</tr>';
-                                            indice++;
-                }
-            }
-        }
-    }
-
-    // console.log(indies.length);
+    // console.log(indicadores);
     // for (var i = 0; i < indicadores.length; i++) {
     //     for (var j = 0; j < indicadores[i].Meta.length; j++) {
     //         for (var k = 0; k < indicadores[i].Meta[j].Indicador.length; k++) {
     //             if(indicadores[i].Meta[j].Indicador[k].TieneValores){
     //
-    //                 //var metadatos = getMetadatos(indies[i].CveInd_cal);
-    //                 //var atr = getAtr(indies[i].CveInd_cal);
+    //                 var metadatos = getMetadatos($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
+    //                 var atr = getAtr($.trim(indicadores[i].Meta[j].Indicador[k].ClaveInd_arb));
     //                 //Descrip_cla
     //                 //console.log(atr.Descrip_cla);
-    //                 console.log(indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg);
     //                 contenido =  contenido +'<tr>'+
     //                     '<td class="center">'+ indice +'</td>'+
     //
     //                     '<td>'+ '<a href="indicadores.html?objetivo='+indicadores[i].Codigo_des+'&meta='+indicadores[i].Meta[j].Clave_arb
-    //                     +'&indicador='+ indies[i].CveInd_cal + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
+    //                     +'&indicador='+ indicadores[i].Meta[j].Indicador[k].ClaveInd_arb + '&codigo='+indicadores[i].Meta[j].Indicador[k].DesGeo.Codigo_dg
     //                     +'&obj='+indicadores[i].Clave_arb+'">'+ indicadores[i].Meta[j].Indicador[k].Codigo_des +' '+ indicadores[i].Meta[j].Indicador[k].Descrip_des+'</a>'
     //                     +'</td>'+
-    //                                         '<td>'+indies[i].AbreviaInsRes_cal+'</td>'+
-    //                                         '<td>'+ indies[i].FecProxAct_cal+'</td>'+
+    //                                         '<td>'+metadatos.InsResp[0].Abrevia_ins+'</td>'+
+    //                                         '<td>'+ metadatos.FecProxAct_eic+'</td>'+
     //                                         '</tr>';
     //                                         indice++;
     //             }
@@ -512,7 +504,56 @@
     //     }
     // }
 
+    //for (var i = 0; i < indicadores.length; i++) {
+      for (var ii = 0; ii < indies.length; ii++) {
+          contenido =  contenido +'<tr>'+
+          '<td class="center">'+ indies[ii].NumInd_cal +'</td>';
+          contenido =  contenido + '<td><a href="'+linkInd(indies[ii].CveInd_cal)+'">'+ indies[ii].CodInd_cal +' '+ indies[ii].NomInd_cal + '</a>'
+          +'</td>';
+          contenido =  contenido + '<td>'+indies[ii].AbreviaInsRes_cal+'</td>'+
+          '<td>'+ indies[ii].FecProxAct_cal;
+          if(indies[ii].CveNotaFecProx_cal == 0){
+            contenido =  contenido + '</td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 238){
+            contenido =  contenido + ' <sup><a href="#">1/</a></sup></td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 304){
+            contenido =  contenido + ' <sup><a href="#">2/</a></sup></td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 268){
+            contenido =  contenido + ' <sup><a href="#">3/</a></sup></td>';
+          }else if(indies[ii].CveNotaFecProx_cal == 211){
+            contenido =  contenido + ' <sup><a href="#">4/</a></sup></td>';
+          }
+
+          contenido =  contenido + '</tr>';
+    }
+
+
+  function linkInd(indicador){
+
+    for (var i = 0; i < temas.length; i++) {
+      if( temas[i].ClaveInd_arb ==  indicador){
+        Codigo_meta   = temas[i].Clave_arb;
+        Descrip_meta = temas[i].Descrip_des;
+        Codigond 	=	temas[i].Codigo_des;
+        Codigo_Cob = temas[i].DesGeo.Codigo_dg;
+      }
+    }
+
+  var dato;
+  var objetivo = Codigond.split(".");// str 7
+  var obj = Codigo_meta.substring(0,7);
+  var met = Codigo_meta.substring(0,11);
+
+          dato = 'indicadores.html?objetivo='+objetivo[0]+'.&meta='+met
+          +'&indicador='+ indicador + '&codigo='+Codigo_Cob
+          +'&obj='+obj;
+
+          return dato;
+  }
+
 $('#cuerpo').html(contenido);
+
+$('.notaCal').html();
 
 $('#example').DataTable({
     "language": {

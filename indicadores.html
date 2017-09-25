@@ -833,7 +833,7 @@
 
     <div class="disclaimer pop">
         <h1>Aviso</h1>
-        <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+        <p>Esta es una versión beta de la Plataforma oficial para el seguimiento de los indicadores de los Objetivos de Desarrollo Sostenible. El INEGI y el Gobierno de la República trabajan para actualizar la información constantemente.</p>
     </div>
 
     <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
@@ -953,6 +953,8 @@
         var anio_activo = 0;
         var anio_mas_actual;
         var lupa = false;
+        var categories = [];
+        var categories2 = [];
 
         var map = L.map('map', {
             scrollWheelZoom: false,
@@ -973,6 +975,40 @@
             $('#share_grafica').attr('href', urlTwitterGrafica);
             $('#share_mapa').attr('href', urlTwitterMapa);
             $('#chart2btn').hide();
+
+
+            function tooltip_contents(d, defaultTitleFormat, defaultValueFormat, color) {
+                var $$ = this, config = $$.config, CLASS = $$.CLASS,
+                    titleFormat = config.tooltip_format_title || defaultTitleFormat,
+                    nameFormat = config.tooltip_format_name || function (name) { return name; },
+                    valueFormat = config.tooltip_format_value || defaultValueFormat,
+                    text, i, title, value, name, bgcolor;
+
+                // You can access all of data like this:
+                console.log($$.data.targets);
+
+                for (i = 0; i < d.length; i++) {
+                    if (! (d[i] && (d[i].value || d[i].value === 0))) { continue; }
+
+                    // ADD
+                    if (d[i].name === 'data2') { continue; }
+
+                    if (! text) {
+                        title = 'MY TOOLTIP'
+                        text = "<table class='" + CLASS.tooltip + "'>" + (title || title === 0 ? "<tr><th colspan='2'>" + title + "</th></tr>" : "");
+                    }
+
+                    name = nameFormat(d[i].name);
+                    value = valueFormat(d[i].value, d[i].ratio, d[i].id, d[i].index);
+                    bgcolor = $$.levelColor ? $$.levelColor(d[i].value) : color(d[i].id);
+
+                    text += "<tr class='" + CLASS.tooltipName + "-" + d[i].id + "'>";
+                    text += "<td class='name'><span style='background-color:" + bgcolor + "'></span>" + name + "</td>";
+                    text += "<td class='value'>" + value + "</td>";
+                    text += "</tr>";
+                }
+                return text + "</table>";
+            }
 
             chartBarras = c3.generate({
                 legend: {
@@ -1001,6 +1037,9 @@
                     // title: function (d) { return d.name; },
                     //title: function (d) { return '' + d.name; },
                     //},
+                    format:{
+                      title: function (d) { return categories[d]; },
+                    },
                     contents: function(d, defaultTitleFormat, defaultValueFormat, color) {
                         color = function() {
                             //return (d[0].value >= 45) ? '#00ff00' : '#ff0000';
@@ -1203,22 +1242,22 @@
                     }
                 }
 
-                // if(codigoDg.replace(/\s/g,'') == 'NEM' ){
-                //   $('#tabla_nacional').hide();
-                //   $('#indicador-panel').hide();
-                //   $('#mapas_hide').hide();
-                //   $('#botonera_nacional').hide();
-                //   $('#chart2').hide();
-                //   $('#indicador-grafica').hide();
-                //   $('#DescargaDatos').hide();
-                //   $('#indicador').hide();
-                //   $('#metadato').hide();
-                //   $('#serie').hide();
-                //   $('#datos').hide();
-                //   $('#row_filtros').hide();
-                //   $('#mensajeNEM').show();
-                //   $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
-                // }
+                if(codigoDg.replace(/\s/g,'') == 'NEM' ){
+                  $('#tabla_nacional').hide();
+                  $('#indicador-panel').hide();
+                  $('#mapas_hide').hide();
+                  $('#botonera_nacional').hide();
+                  $('#chart2').hide();
+                  $('#indicador-grafica').hide();
+                  $('#DescargaDatos').hide();
+                  $('#indicador').hide();
+                  $('#metadato').hide();
+                  $('#serie').hide();
+                  $('#datos').hide();
+                  $('#row_filtros').hide();
+                  $('#mensajeNEM').show();
+                  $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
+                }
 
 
 
@@ -1713,8 +1752,7 @@
 
             nuevos_estados_dobles.sort(sortFunction);
 
-            var categories = [];
-            var categories2 = [];
+
             var series = [];
 
             //separar el arreglo
@@ -1736,6 +1774,7 @@
             chartBarras.load({
                 columns: [series],
                 categories: categories2,
+                tooltip: categories,
                 unload: [Descrip_ind],
             });
             console.log('tipo de grafica');
@@ -2572,7 +2611,9 @@
                 '<tr><th>Contacto</th><td>';
 
             for (var i = 0; i < metadatosArr.Contacto.length; i++) {
-                tablaMeta = tablaMeta + metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + nl2br(metadatosArr.Contacto[i].Domicilio_con) + '<br> <b>Teléfono: </b>' + metadatosArr.Contacto[i].Telefono_con + '<br><b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con + '<br  /><br  />';
+                tablaMeta = tablaMeta + metadatosArr.Contacto[i].Nombre_con + '<br>' + metadatosArr.Contacto[i].Puesto_con + '<br><b>Dirección:</b> ' + nl2br(metadatosArr.Contacto[i].Domicilio_con) + '<br>';
+                tablaMeta += (metadatosArr.Contacto[i].Telefono_con == '' || metadatosArr.Contacto[i].Telefono_con == null) ? '' : '<b>Teléfono(s): </b>' + metadatosArr.Contacto[i].Telefono_con + '<br>';
+                tablaMeta += (metadatosArr.Contacto[i].Correo_con == '' || metadatosArr.Contacto[i].Correo_con == null) ? '<br  /><br  />' : '<b>Correo: </b>' + metadatosArr.Contacto[i].Correo_con + '<br  /><br  />';
             }
 
             tablaMeta = tablaMeta + '</td></tr></tbody></table></p>';

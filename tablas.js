@@ -112,10 +112,10 @@ function AClanidada(data){
     labels.push(data.Coberturas[0].Clasificaciones[i].Descrip_cla);
 
     if(labelYear == data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser){
-        tabuladoAnidado += '<td>' + data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato + '</td>';
+        tabuladoAnidado += '<td style="text-align:right;">' + data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato + '</td>';
     }else if(primera){
       primera=false;
-      tabuladoAnidado += '<tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td style="text-align:right;">'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
+      tabuladoAnidado += '<tr><td style="text-align:right;">'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td style="text-align:right;">'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
       labelYear = data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser;
     }
     else{
@@ -129,7 +129,7 @@ function AClanidada(data){
   subTabuladoAnidado += '<tr>';
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < labels.length; j++) {
-        subTabuladoAnidado += '<td>'+labels[j]+'</td>';
+        subTabuladoAnidado += '<td style="text-align:right;">'+labels[j]+'</td>';
     }
   }
   subTabuladoAnidado += '</tr></thead>';
@@ -151,7 +151,7 @@ function tablaACl(data){
     labels.push(data.Coberturas[0].Clasificaciones[i].Descrip_cla);
 
     if(labelYear == data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser){
-        tabuladoAnidado += '<td>' + data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato + '</td>';
+        tabuladoAnidado += '<td style="text-align:right;">' + data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato + '</td>';
     }else if(primera){
       primera=false;
       tabuladoAnidado += '<tr><td>'+ data.Coberturas[0].Clasificaciones[i].ValorDato.AADato_ser +'</td><td style="text-align:right;">'+data.Coberturas[0].Clasificaciones[i].ValorDato.Dato_Formato+'</td>';
@@ -169,7 +169,7 @@ function tablaACl(data){
   subTabuladoAnidado += '<tr><td>Periodo</td>';
 
     for (var j = 0; j < labels.length; j++) {
-        subTabuladoAnidado += '<td>'+labels[j]+'</td>';
+        subTabuladoAnidado += '<td style="text-align:right;">'+labels[j]+'</td>';
     }
 
   subTabuladoAnidado += '</tr></thead>';
@@ -185,9 +185,9 @@ function tablaAS(data){
       var terna = (data.Coberturas[i].ValorDato[j].Leyenda_ser == null || data.Coberturas[i].ValorDato[j].Leyenda_ser == '') ? data.Coberturas[i].ValorDato[j].AADato_ser : data.Coberturas[i].ValorDato[j].Leyenda_ser;
 
       if(data.Coberturas[i].ValorDato[j].Dato_Formato == '' || data.Coberturas[i].ValorDato[j].Dato_Formato == null){
-        tabuladoAS += '<tr><td>'+ terna +'</td><td> NA </td></tr>';
+        tabuladoAS += '<tr><td>'+ terna +'</td><td style="text-align:right;"> NA </td></tr>';
       }else{
-        tabuladoAS += '<tr><td>'+ terna +'</td><td>' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
+        tabuladoAS += '<tr><td>'+ terna +'</td><td style="text-align:right;">' + data.Coberturas[i].ValorDato[j].Dato_Formato +'</td></tr>';
       }
     }//fin for J
   }//fin for i
@@ -201,9 +201,9 @@ function tablaClA(data){
   for (var i = 0; i < data.Coberturas.length; i++) {
     for (var j = 0; j < data.Coberturas[i].Clasificaciones.length; j++) {
       if(data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == "" || data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato == null){
-        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;"> NA </td></tr>';
+        tabuladoClA += '<tr><td style="text-align:right;">'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;"> NA </td></tr>';
       }else{
-        tabuladoClA += '<tr><td>'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;">' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td></tr>';
+        tabuladoClA += '<tr><td style="text-align:right;">'+ data.Coberturas[i].Clasificaciones[j].Descrip_cla   +'</td><td style="text-align:right;">' + data.Coberturas[i].Clasificaciones[j].ValorDato.Dato_Formato +'</td></tr>';
       }
     }//fin for J
   }//fin for i
