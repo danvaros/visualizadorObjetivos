@@ -901,7 +901,7 @@
             </div>
         </div>
     </div>
-
+<script src='config.js'></script>
     <script src="cobertura.js"></script>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
@@ -3324,7 +3324,7 @@
             console.log(covertura);
             $.ajax({
                 type: 'POST',
-                url: "https://ods.org.mx/API/Valores/PorCobCla",
+                url: PathAPI + "Valores/PorCobCla",
                 data: {
                     "PCveInd": i,
                     "PAnoIni": "0",
