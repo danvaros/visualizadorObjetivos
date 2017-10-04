@@ -738,7 +738,7 @@
                 <div id="barras"></div>
                 <div class="pie_cuadro2">
                     <div><strong>Nota:</strong> </div>
-                    <div><strong>Fuente:</strong> )</div>
+                    <div><strong>Fuente:</strong> </div>
                     <div><strong>Fecha de actualización:</strong> </div>
                 </div>
             </div>
@@ -901,7 +901,7 @@
             </div>
         </div>
     </div>
-
+<script src='config.js'></script>
     <script src="cobertura.js"></script>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
@@ -1054,7 +1054,7 @@
                     x: {
                         type: 'category',
                         categories: ['Ags.', 'BC.', 'BCS.', 'Camp.', 'Coah.', 'Col.', 'Chis.', 'Chih.', 'CDMX.', 'Dgo.', 'Gto.', 'Gro.', 'Hgo.', 'Jal.', 'Mex.', 'Mich.',
-                            'Mor.', 'Nay.', 'NL.', 'Oax.', 'Pue.', 'Qro.', 'Q Roo.', 'SLP.', 'Sin.', 'Son.', 'Tab.', 'Tamps.', 'Tlax.', 'Ver.', 'Yuc.', 'Zac.', 'Nal.',
+                            'Mor.', 'Nay.', 'NL.', 'Oax.', 'Pue.', 'Qro.', 'Q Roo.', 'SLP.', 'Sin.', 'Son.', 'Tab.', 'Tamps.', 'Tlax.', 'Ver.', 'Yuc.', 'Zac.', 'MX',
                         ],
                         height: 50,
                         tick: {
@@ -1209,6 +1209,8 @@
             $('.scroller').scroll(function(e) {
                 $('.scroller').scrollLeft(e.target.scrollLeft);
             });
+
+
 
             $('#buscar').click(function() {
                 if (lupa) {
@@ -1787,16 +1789,16 @@
         function abrevia_edo(nombre) {
             switch (nombre) {
                 case "Estados Unidos Mexicanos":
-                    return "Nal.";
+                    return "MX";
                     break;
                 case "Aguascalientes":
                     return "Ags.";
                     break;
                 case "Baja California":
-                    return "BC.";
+                    return "BC";
                     break;
                 case "Baja California Sur":
-                    return "BCS.";
+                    return "BCS";
                     break;
                 case "Campeche":
                     return "Camp.";
@@ -1814,7 +1816,7 @@
                     return "Chih.";
                     break;
                 case "Ciudad de México":
-                    return "CDMX.";
+                    return "CDMX";
                     break;
                 case "Durango":
                     return "Dgo.";
@@ -1844,7 +1846,7 @@
                     return "Nay.";
                     break;
                 case "Nuevo León":
-                    return "NL.";
+                    return "NL";
                     break;
                 case "Oaxaca":
                     return "Oax.";
@@ -1856,10 +1858,10 @@
                     return "Qro.";
                     break;
                 case "Quintana Roo":
-                    return "Q. Roo.";
+                    return "Q. Roo";
                     break;
                 case "San Luis Potosí":
-                    return "SLP.";
+                    return "SLP";
                     break;
                 case "Sinaloa":
                     return "Sin.";
@@ -3322,7 +3324,7 @@
             console.log(covertura);
             $.ajax({
                 type: 'POST',
-                url: "https://ods.org.mx/API/Valores/PorCobCla",
+                url: PathAPI + "Valores/PorCobCla",
                 data: {
                     "PCveInd": i,
                     "PAnoIni": "0",

@@ -30,7 +30,7 @@ function getInd(indicador){
 
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorClave",
+    url: PathAPI + "Valores/PorClave",
     data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
       console.log('-------------------- valorDato ----------------');
@@ -87,7 +87,7 @@ function getSerie(indicador)
 
   $.ajax({
   	  type: 'POST',
-  	  url: "https://ods.org.mx/API/AtrIndicador/PorClave",
+  	  url: PathAPI + "AtrIndicador/PorClave",
   	  data: {'PCveInd':indicador, 'PIdioma':'ES'},
   	  success: function( data, textStatus, jqxhr )
     {
@@ -121,7 +121,7 @@ function getIndicador(indicador,ser){
   console.log("Indicador",indicador," -> Serie",ser);
 	$.ajax({
 	  type: 'POST',
-	  url: "https://ods.org.mx/API/Valores/PorClaveSerie",
+	  url: PathAPI + "Valores/PorClaveSerie",
 	  data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'},
 	  success: function( data, textStatus, jqxhr ) {
 	  		//alert( "Exito" );

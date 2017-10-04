@@ -559,7 +559,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     		  			</div>
     		  			<div class="col s3" style="margin-top: 10px;">
               				<a class="icn col s12 l3  exportCSV">CSV</a>
-                      <span class="col s12 l3" style="margin-top:10px;" id="exportarXLS"></span>
+                      <span class="col s12 l12" style="margin-top:10px;" id="exportarXLS"></span>
                       <!-- <a class="icns">XLS</a> -->
                       <!-- <a class="icnSDMX">SDMX</a>
                       <a class="icnPDF">PDF</a> -->
@@ -742,6 +742,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript" src="http://canvg.github.io/canvg/StackBlur.js"></script>
   <script type="text/javascript" src="http://canvg.github.io/canvg/canvg.js"></script>
   <script type="text/javascript" src="lib/html2canvas.js"></script>
+  <script src='config.js'></script>
   <script src='funcionesApi.js'></script>
   <script src="lib/jquery.dotdotdot.js"></script>
   <script src="cobertura.js"></script>
@@ -972,7 +973,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
 
         function llamada(indicador, ser){
-          var url = 'https://ods.org.mx/API/Tematica/Todos';
+          var url = PathAPI + 'Tematica/Todos';
           //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
           var parametros =  {"PIdioma":"ES"}
           //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
