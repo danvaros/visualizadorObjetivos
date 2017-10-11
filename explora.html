@@ -20,7 +20,6 @@
     <!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" type="text/css" href="css/section-scroll.css"> -->
-  <script src='config.js'></script>
 <style media="screen">
 
 a.selected {
@@ -745,6 +744,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script src='funcionesApi.js'></script>
   <script src="lib/jquery.dotdotdot.js"></script>
   <script src="cobertura.js"></script>
+  <script type="text/javascript" src='config.js'></script>
   <script type="text/javascript" src="appExplora.js"></script>
 
   <script type="text/javascript">
@@ -1537,6 +1537,7 @@ function setInitialMapZoom() {
 			values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
 			// if (statesData.features[i].properties.density == null) continue;
 			// values2.push(statesData.features[i].properties.density);
+      //console.log(values);
 		}
 
     console.log(values,values2);
