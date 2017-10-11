@@ -1,3 +1,4 @@
+var PathAPI = "https://ods.org.mx/API/";
 var titulo_des_graf = "";
 var inicio = 0;
 var estados = [];

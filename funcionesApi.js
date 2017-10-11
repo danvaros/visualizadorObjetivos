@@ -1,4 +1,4 @@
-
+var PathAPI = "https://ods.org.mx/API/";
 	function getIndicadorSer(indicador,ser){
 	  var estados = [];
 	  console.log("Indicador",indicador," -> Serie",ser);
