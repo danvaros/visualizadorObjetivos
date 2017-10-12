@@ -748,6 +748,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script type="text/javascript" src="appExplora.js"></script>
 
   <script type="text/javascript">
+  var PathAPI = "https://ods.org.mx/API/";
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
         var primera_carga =  true;
@@ -884,7 +885,6 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                 console.log("Meta adentro",objeto[indicador-1].Meta.length);
                 for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
                 {
-                    console.log('------------------------- wachicol ----------------');
                     console.log(objeto[indicador-1].Meta[i].Indicador[j].TieneValores);
                     console.log(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg);
 
