@@ -1244,10 +1244,14 @@
                     }
                 }
 
-                // if(codigoDg.replace(/\s/g,'') == 'NEM' ){
+                 if(codigoDg.replace(/\s/g,'') == 'NEM' ){
                 //   $('#tabla_nacional').hide();
                 //   $('#indicador-panel').hide();
-                //   $('#mapas_hide').hide();
+                   $('#mapas_hide').hide();
+                   $('#sel_municipios').hide();
+                   $('#boton_municipal').hide();
+                   $('#sel_estados').show();
+                    $('#sel_municipios').show();
                 //   $('#botonera_nacional').hide();
                 //   $('#chart2').hide();
                 //   $('#indicador-grafica').hide();
@@ -1259,7 +1263,7 @@
                 //   $('#row_filtros').hide();
                 //   $('#mensajeNEM').show();
                 //   $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
-                // }
+                 }
 
 
 
@@ -1740,7 +1744,7 @@
                         var numero = parseFloat(estados[i][indice]); //.toFixed(1);
                     }
 
-
+console.log(abrevia_edo(estados[i][0]));
                     var valueToPush = {
                         'numero': numero,
                         'estado': estados[i][0],
