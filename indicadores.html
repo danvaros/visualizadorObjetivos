@@ -2320,7 +2320,12 @@ console.log(abrevia_edo(estados[i][0]));
             $('#ver_tabla').removeClass('active_anio');
             $('#ver_tabla').addClass('inactive_anio');
 
-            $('#mapas_hide').show();
+            if(codigoDg.replace(/\s/g,'') == 'NEM' ){
+              $('#mapas_hide').hide();
+            }else{
+              $('#mapas_hide').show();
+            }
+            //$('#mapas_hide').show();
             $('#indicador-grafica').show();
             $('#indicador-panel').hide();
         }
