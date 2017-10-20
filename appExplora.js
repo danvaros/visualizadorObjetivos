@@ -1,3 +1,4 @@
+var PathAPI = "https://ods.org.mx/v2/API/";
 var estados = [];
 var clave_ser = '';
 var claveInd_ser = '';
@@ -30,7 +31,7 @@ function getInd(indicador){
 
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorClave",
+    url: PathAPI + "Valores/PorClave",
     data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
       console.log('-------------------- valorDato ----------------');
@@ -66,7 +67,7 @@ function valorDato(data){
     var temporal = [];
     temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
     for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
-      var dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+      var dato_formato = (data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "") == null || data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "") == '') ? '-1' : data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
       temporal.push(dato_formato);
     }
     estados.push(temporal);
@@ -87,7 +88,7 @@ function getSerie(indicador)
 
   $.ajax({
   	  type: 'POST',
-  	  url: "https://ods.org.mx/API/AtrIndicador/PorClave",
+  	  url: PathAPI + "AtrIndicador/PorClave",
   	  data: {'PCveInd':indicador, 'PIdioma':'ES'},
   	  success: function( data, textStatus, jqxhr )
     {
@@ -121,7 +122,7 @@ function getIndicador(indicador,ser){
   console.log("Indicador",indicador," -> Serie",ser);
 	$.ajax({
 	  type: 'POST',
-	  url: "https://ods.org.mx/API/Valores/PorClaveSerie",
+	  url: PathAPI + "Valores/PorClaveSerie",
 	  data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'},
 	  success: function( data, textStatus, jqxhr ) {
 	  		//alert( "Exito" );
@@ -156,7 +157,7 @@ function getIndicador(indicador,ser){
     				temporal.push(data.Series[0].Coberturas[i].Descrip_cg);
     				for (var j = 0; j < data.Series[0].Coberturas[i].ValorDato.length; j++) {
     					//temporal.push(data.Series[0].Coberturas[i].ValorDato[j].Dato_ser);
-              var dato_formato = data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
+              var dato_formato = (data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "") == null || data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "") == '') ? '-1' : data.Series[0].Coberturas[i].ValorDato[j].Dato_Formato.replace(",", "");
               temporal.push(dato_formato);
     				}
     				estados.push(temporal);

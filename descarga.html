@@ -628,7 +628,7 @@ $('#descargaZip').hide();
 </div>
 
 <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
-
+<script src='config.js'></script>
 <script src="cobertura.js"></script>
 
 <!-- <script type="text/javascript" src="entidad.json"></script> -->
@@ -891,7 +891,7 @@ $('#descargaZip').hide();
     }
 
     function llamada(indicador, ser){
-      var url = 'https://ods.org.mx/API/Tematica/Todos';
+      var url = PathAPI + 'Tematica/Todos';
 			//var url = 'http://agenda2030.mx/datos/api/Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}

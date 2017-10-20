@@ -12,7 +12,7 @@ $('select').material_select();
 });
 
 function get_tematica(PCveInd){
-	var url = 'https://ods.org.mx/API/Tematica/Todos';
+	var url = PathAPI + 'Tematica/Todos';
     var parametros =  {"PIdioma":"ES"}
     $.ajax({
       type: 'POST',

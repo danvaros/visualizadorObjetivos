@@ -646,7 +646,17 @@
             </div>
         </div>
 
-
+        <div class="row" id="grafs">
+            <div class="col s12 l10">
+                <a id="ver_grafica" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
+                <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER DATOS</a>
+            </div>
+            <div class="col s12 l2 right-align" style="margin-top: 60px;">
+                <a href="#!" class="col s4 right-align" onclick="atras()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                <a class="col s4 center-align numero" id="numero_anio">2015</a>
+                <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
         <div id="mapas_hide">
             <div class="row card tablaPadding ocultar">
                 <div class="col s12 l12">
@@ -738,7 +748,7 @@
                 <div id="barras"></div>
                 <div class="pie_cuadro2">
                     <div><strong>Nota:</strong> </div>
-                    <div><strong>Fuente:</strong> )</div>
+                    <div><strong>Fuente:</strong> </div>
                     <div><strong>Fecha de actualización:</strong> </div>
                 </div>
             </div>
@@ -901,7 +911,7 @@
             </div>
         </div>
     </div>
-
+<script src='config.js'></script>
     <script src="cobertura.js"></script>
     <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <!-- <script type="text/javascript" src="entidad.json"></script> -->
@@ -1054,7 +1064,7 @@
                     x: {
                         type: 'category',
                         categories: ['Ags.', 'BC.', 'BCS.', 'Camp.', 'Coah.', 'Col.', 'Chis.', 'Chih.', 'CDMX.', 'Dgo.', 'Gto.', 'Gro.', 'Hgo.', 'Jal.', 'Mex.', 'Mich.',
-                            'Mor.', 'Nay.', 'NL.', 'Oax.', 'Pue.', 'Qro.', 'Q Roo.', 'SLP.', 'Sin.', 'Son.', 'Tab.', 'Tamps.', 'Tlax.', 'Ver.', 'Yuc.', 'Zac.', 'Nal.',
+                            'Mor.', 'Nay.', 'NL.', 'Oax.', 'Pue.', 'Qro.', 'Q Roo.', 'SLP.', 'Sin.', 'Son.', 'Tab.', 'Tamps.', 'Tlax.', 'Ver.', 'Yuc.', 'Zac.', 'MX',
                         ],
                         height: 50,
                         tick: {
@@ -1210,6 +1220,8 @@
                 $('.scroller').scrollLeft(e.target.scrollLeft);
             });
 
+
+
             $('#buscar').click(function() {
                 if (lupa) {
                     $('#cam_bus').hide();
@@ -1242,22 +1254,26 @@
                     }
                 }
 
-                if(codigoDg.replace(/\s/g,'') == 'NEM' ){
-                  $('#tabla_nacional').hide();
-                  $('#indicador-panel').hide();
-                  $('#mapas_hide').hide();
-                  $('#botonera_nacional').hide();
-                  $('#chart2').hide();
-                  $('#indicador-grafica').hide();
-                  $('#DescargaDatos').hide();
-                  $('#indicador').hide();
-                  $('#metadato').hide();
-                  $('#serie').hide();
-                  $('#datos').hide();
-                  $('#row_filtros').hide();
-                  $('#mensajeNEM').show();
-                  $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
-                }
+                 if(codigoDg.replace(/\s/g,'') == 'NEM' ){
+                //   $('#tabla_nacional').hide();
+                //   $('#indicador-panel').hide();
+                   $('#mapas_hide').hide();
+                   //$('#sel_municipios').hide();
+                   //$('#boton_municipal').hide();
+                   //$('#sel_estados').show();
+                    //$('#sel_municipios').show();
+                //   $('#botonera_nacional').hide();
+                //   $('#chart2').hide();
+                //   $('#indicador-grafica').hide();
+                //   $('#DescargaDatos').hide();
+                //   $('#indicador').hide();
+                //   $('#metadato').hide();
+                //   $('#serie').hide();
+                //   $('#datos').hide();
+                   $('#row_filtros').hide();
+                //   $('#mensajeNEM').show();
+                //   $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
+                 }
 
 
 
@@ -1738,7 +1754,7 @@
                         var numero = parseFloat(estados[i][indice]); //.toFixed(1);
                     }
 
-
+console.log(abrevia_edo(estados[i][0]));
                     var valueToPush = {
                         'numero': numero,
                         'estado': estados[i][0],
@@ -1787,16 +1803,16 @@
         function abrevia_edo(nombre) {
             switch (nombre) {
                 case "Estados Unidos Mexicanos":
-                    return "Nal.";
+                    return "MX";
                     break;
                 case "Aguascalientes":
                     return "Ags.";
                     break;
                 case "Baja California":
-                    return "BC.";
+                    return "BC";
                     break;
                 case "Baja California Sur":
-                    return "BCS.";
+                    return "BCS";
                     break;
                 case "Campeche":
                     return "Camp.";
@@ -1814,7 +1830,7 @@
                     return "Chih.";
                     break;
                 case "Ciudad de México":
-                    return "CDMX.";
+                    return "CDMX";
                     break;
                 case "Durango":
                     return "Dgo.";
@@ -1844,7 +1860,7 @@
                     return "Nay.";
                     break;
                 case "Nuevo León":
-                    return "NL.";
+                    return "NL";
                     break;
                 case "Oaxaca":
                     return "Oax.";
@@ -1856,10 +1872,10 @@
                     return "Qro.";
                     break;
                 case "Quintana Roo":
-                    return "Q. Roo.";
+                    return "Q. Roo";
                     break;
                 case "San Luis Potosí":
-                    return "SLP.";
+                    return "SLP";
                     break;
                 case "Sinaloa":
                     return "Sin.";
@@ -2304,7 +2320,12 @@
             $('#ver_tabla').removeClass('active_anio');
             $('#ver_tabla').addClass('inactive_anio');
 
-            $('#mapas_hide').show();
+            if(codigoDg.replace(/\s/g,'') == 'NEM' ){
+              $('#mapas_hide').hide();
+            }else{
+              $('#mapas_hide').show();
+            }
+            //$('#mapas_hide').show();
             $('#indicador-grafica').show();
             $('#indicador-panel').hide();
         }
@@ -3322,7 +3343,7 @@
             console.log(covertura);
             $.ajax({
                 type: 'POST',
-                url: "https://ods.org.mx/API/Valores/PorCobCla",
+                url: PathAPI + "Valores/PorCobCla",
                 data: {
                     "PCveInd": i,
                     "PAnoIni": "0",

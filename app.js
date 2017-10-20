@@ -1,3 +1,4 @@
+var PathAPI = "https://ods.org.mx/API/";
 var titulo_des_graf = "";
 var inicio = 0;
 var estados = [];
@@ -35,7 +36,7 @@ var datos_calculo = [];
 //llama los parametros del indicador
 $.ajax({
   type: 'POST',
-  url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
+  url: PathAPI + "AtrIndicador/PorDesglose",
   data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
   success: function( data, textStatus, jqxhr ) {
     clasif = data.AgrupaClas.TotalNivAgrupa_cla;
@@ -63,7 +64,7 @@ $.ajax({
 $.ajax({
   type: 'POST',
   // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
-  url: "https://ods.org.mx/API/Tematica/PorClave",
+  url: PathAPI + "Tematica/PorClave",
   data: {'PClave':meta , 'PIdioma':'ES'},
   success: function( data, textStatus, jqxhr ) {
 
@@ -93,14 +94,14 @@ if(codigoDg == "NEM  "){
   $('#row_filtros').show();
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorCobCla",
+    url: PathAPI + "Valores/PorCobCla",
     data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       // for (var i = 1; i < GloSerie.length; i++) {
       //   $.ajax({
       //     type: 'POST',
-      //     url: "https://ods.org.mx/API/Valores/PorCobCla",
+      //     url: PathAPI + "Valores/PorCobCla",
       //     data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[i],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
       //     success: function( data1, textStatus, jqxhr ) {
       //       data.Series[i] = data1.Series[0];
@@ -163,7 +164,7 @@ else
 {
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorClave",
+    url: PathAPI + "Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -452,7 +453,7 @@ function datos_calculo_mun(ser){
 
     $.ajax({
       type: 'POST',
-      url: "https://ods.org.mx/API/Valores/PorCobCla",
+      url: PathAPI + "Valores/PorCobCla",
       data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":ser,"PCveCob":es,"PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
       success: function( data, textStatus, jqxhr ) {
         console.log(data);
