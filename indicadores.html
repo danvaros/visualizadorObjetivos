@@ -646,7 +646,17 @@
             </div>
         </div>
 
-
+        <div class="row" id="grafs">
+            <div class="col s12 l10">
+                <a id="ver_grafica" class="active_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_tabla()" style="margin-right: -5px; border-color: #15b5f0; border-width: 1px; border-radius: 5px 0px 0px 5px;">VER GRAFICA</a>
+                <a id="ver_tabla" class="inactive_anio waves-effect waves-light btn color  claro t_sm sin_sombra marg_top" onclick="cambio_grafica()" style="margin-right: -1px; border-color: #15b5f0; border-width: 1px; border-radius: 0px 5px 5px 0px;">VER DATOS</a>
+            </div>
+            <div class="col s12 l2 right-align" style="margin-top: 60px;">
+                <a href="#!" class="col s4 right-align" onclick="atras()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                <a class="col s4 center-align numero" id="numero_anio">2015</a>
+                <a href="#!" class="col s4 left-align" onclick="adelante()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
         <div id="mapas_hide">
             <div class="row card tablaPadding ocultar">
                 <div class="col s12 l12">
@@ -1248,10 +1258,10 @@
                 //   $('#tabla_nacional').hide();
                 //   $('#indicador-panel').hide();
                    $('#mapas_hide').hide();
-                   $('#sel_municipios').hide();
-                   $('#boton_municipal').hide();
-                   $('#sel_estados').show();
-                    $('#sel_municipios').show();
+                   //$('#sel_municipios').hide();
+                   //$('#boton_municipal').hide();
+                   //$('#sel_estados').show();
+                    //$('#sel_municipios').show();
                 //   $('#botonera_nacional').hide();
                 //   $('#chart2').hide();
                 //   $('#indicador-grafica').hide();
@@ -1260,7 +1270,7 @@
                 //   $('#metadato').hide();
                 //   $('#serie').hide();
                 //   $('#datos').hide();
-                //   $('#row_filtros').hide();
+                   $('#row_filtros').hide();
                 //   $('#mensajeNEM').show();
                 //   $('#mensajeNEM').html('<h5 style="text-align:center;">Lo sentimos, esta información aún no está disponible.</h5>');
                  }
