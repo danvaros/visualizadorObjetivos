@@ -1,31 +1,26 @@
 $(document).ready(function(){
-	$('#sel_estados').hide();
-	get_tematica(PCveInd);
+	get_tematica();
 	$('#listado_indicadores').change(function(){
 		//alert( $('#listado_indicadores select').val() );
 		window.location.href = ''+$('#listado_indicadores select').val();
-		$('#listaselect #i'+PCveInd).attr('selected','selected');
 	});
-
-$('select').material_select();
-
 });
 
-function get_tematica(PCveInd){
-	var url = PathAPI + 'Tematica/Todos';
+function get_tematica(){
+	var url = 'https://ods.org.mx/API/Tematica/Todos';
     var parametros =  {"PIdioma":"ES"}
     $.ajax({
       type: 'POST',
       url: url,
       data: parametros,
       success: function( data, textStatus, jqxhr ) {
-         crea_lista(data,PCveInd);
+         crea_lista(data);
       },
       async:false
     });
 }
 
-function crea_lista(data, PCveInd){
+function crea_lista(data){
 	var contenido =  '<select id="listaselect">';
 	var contenedor  = $('#listado_indicadores');
 	for (var i = 0; i < data.length; i++) {
@@ -36,7 +31,7 @@ function crea_lista(data, PCveInd){
 				var codigo_dg     = data[i].Meta[j].Indicador[k].DesGeo.Codigo_dg;
 				var descrip_des   = data[i].Meta[j].Indicador[k].Descrip_des;
 				var codigo_des    = data[i].Meta[j].Indicador[k].Codigo_des;
-				contenido = contenido + '<option id="i'+clave_arb+'" value="indicadores.html?objetivo='+data[i].Codigo_des+'&meta='+data[i].Meta[j].Clave_arb+'&indicador='+clave_arb+'&codigo='+codigo_dg+'&obj='+data[i].Clave_arb+'">'+data[i].Meta[j].Indicador[k].Codigo_des +' '+  data[i].Meta[j].Indicador[k].Descrip_des+'</option>';
+				contenido = contenido + '<option value="indicadores.html?objetivo='+data[i].Codigo_des+'&meta='+data[i].Meta[j].Clave_arb+'&indicador='+clave_arb+'&codigo='+codigo_dg+'&obj='+data[i].Clave_arb+'">'+data[i].Meta[j].Indicador[k].Codigo_des +' '+  data[i].Meta[j].Indicador[k].Descrip_des+'</option>';
 			}
 		}
 		contenido = contenido + '</optgroup>';
@@ -45,10 +40,6 @@ function crea_lista(data, PCveInd){
 	contenedor.html(contenido);
 
 	$('#listaselect').material_select();
-
-	$('#listaselect #i'+PCveInd).attr('selected','selected');
-
-
 }
 
 
