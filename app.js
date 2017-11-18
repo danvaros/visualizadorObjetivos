@@ -620,13 +620,11 @@ else
       var tabla_armada = arma_tabla_insumo(arreglo_datos_mujeres_insumos,filtro);
     }
 
-    var datos_doble = '<div class="cuadro_titulo"> ' + titulo_insumo +
-                      '</div>' +
+    var datos_doble = '<div class="cuadro_titulo"> ' + titulo_insumo + '</div>' +
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
 
-                      var datos_dobleDat = '<div class="cuadro_titulo"> ' + titulo +
-                                        '</div>' +
+                      var datos_dobleDat = '<div class="cuadro_titulo"> ' + titulo + '</div>' +
                                         '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                                         '<table class="bordered" id="miTablaDat" class="miTablaDat">';
 
@@ -673,11 +671,11 @@ else
                 }
                 else if(j == tabla_armada[0].length -2){
                     datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j].toString() +'</td>';
                 }
                 else{
                   datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
-                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j] +'</td>';
+                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j].toString() +'</td>';
                 }
                }
 
@@ -787,11 +785,11 @@ else
                 }
                 else if(j == tabla_armada[0].length -2){
                     datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j]  +'</td>';
+                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j].toString()  +'</td>';
                 }
                 else{
                   datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
-                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j] +'</td>';
+                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j].toString() +'</td>';
                 }
                }
 
@@ -956,11 +954,11 @@ else
                 }
                 else if(j == insumos_general[insumo][0].length -2){
                     datos_doble +=  '  <td class="laque dos">'+ insumos_general[insumo][i][j]  +'</td>';
-                    datos_dobleDat +=  '  <td class="laque dos">'+ insumos_general[insumo][i][j] +'</td>';
+                    datos_dobleDat +=  '  <td class="laque dos">'+ insumos_general[insumo][i][j].toString() +'</td>';
                 }
                 else{
                   datos_doble +=  '  <td>'+ insumos_general[insumo][i][j]  +'</td>';
-                  datos_dobleDat +=  '  <td>'+insumos_general[insumo][i][j] +'</td>';
+                  datos_dobleDat +=  '  <td>'+insumos_general[insumo][i][j].toString() +'</td>';
                 }
                }
 
