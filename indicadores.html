@@ -503,14 +503,70 @@
             <label>Listado de indicadores</label>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col s12 center-align">
-          <a id="indicador" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps indicadores-taps-active" style =" border-radius: 5px 0px 0px 5px;">INDICADOR</a>
-          <a id="metadato" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0;">METADATO</a>
-          <a id="serie" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0">SERIE HISTÓRICA</a>
-          <a id="datos" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style =" border-radius: 0px 5px 5px 0px;">DATOS PARA EL CÁLCULO</a>
+        <div id="mensajeNEM" style="display:none;">
+
+        </div>
+
+        <div class="row">
+            <div class="col s12 center-align">
+                <a id="indicador" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps indicadores-taps-active" style=" border-radius: 5px 0px 0px 5px;">INDICADOR</a>
+                <a id="metadato" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style=" border-radius: 0;">METADATO</a>
+                <a id="serie" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style=" border-radius: 0">SERIE HISTÓRICA</a>
+                <a id="datos" class="waves-effect waves-light btn color  claro t_sm sin_sombra marg_top indicadores-taps" style=" border-radius: 0px 5px 5px 0px;">DATOS PARA EL CÁLCULO</a>
+            </div>
+        </div>
+
+        <div class="row card tablaPadding ocultar" id="row_filtros" style="display: none;">
+            <div class="col s12 s12">
+                <a id="boton_municipal" style="margin-top: 42px; float: left;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge">Cambiar a municipal</a>
+                <a id="boton_estatal" style="margin-top: 42px; float: left; display:none;" class="waves-effect waves-light btn color claro t_sm sin_sombra marg_top modal-trigge">Cambiar a estatal</a>
+            </div>
+            <div class="col s12">
+                <div class="input-field col s6 m2 l2">
+                    <select name="estados" id="sel_estados" class="browser-default">
+              <option value="Selecciona un estado">Selecciona un estado</option>
+              <option value="Aguascalientes">Aguascalientes</option>
+              <option value="Baja California">Baja California</option>
+              <option value="Baja California Sur">Baja California Sur</option>
+              <option value="Campeche">Campeche</option>
+              <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+              <option value="Colima">Colima</option>
+              <option value="Chiapas">Chiapas</option>
+              <option value="Chihuahua">Chihuahua</option>
+              <option value="Ciudad de México">Ciudad de México</option>
+              <option value="Durango">Durango</option>
+              <option value="Guanajuato">Guanajuato</option>
+              <option value="Guerrero">Guerrero</option>
+              <option value="Hidalgo">Hidalgo</option>
+              <option value="Jalisco">Jalisco</option>
+              <option value="México">México</option>
+              <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+              <option value="Morelos">Morelos</option>
+              <option value="Nayarit">Nayarit</option>
+              <option value="Nuevo León">Nuevo León</option>
+              <option value="Oaxaca">Oaxaca</option>
+              <option value="Puebla">Puebla</option>
+              <option value="Querétaro">Querétaro</option>
+              <option value="Quintana Roo">Quintana Roo</option>
+              <option value="San Luis Potosí">San Luis Potosí</option>
+              <option value="Sinaloa">Sinaloa</option>
+              <option value="Sonora">Sonora</option>
+              <option value="Tabasco">Tabasco</option>
+              <option value="Tamaulipas">Tamaulipas</option>
+              <option value="Tlaxcala">Tlaxcala</option>
+              <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+              <option value="Yucatán">Yucatán</option>
+              <option value="Zacatecas">Zacatecas</option>
+            </select>
+                </div>
+                <div class="input-field col s6 m2 l2">
+                    <select class="browser-default" id="sel_municipios" name="municipios" style="display:none">
+                <option value="">Selecciona un municipio</option>
+            </select>
+                </div>
+            </div>
+
         </div>
       </div>
 
@@ -2307,7 +2363,9 @@
             municipios.push(temporal);
             var imprime = false;
 
+
             for (var i = 0; i < data.Series[0].Coberturas.length; i++) {
+
 
               var temporal = [];
               var categories2 = [];
