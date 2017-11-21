@@ -20,6 +20,7 @@
     <!-- Load c3.css -->
   	<link href="lib/c3.css" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" type="text/css" href="css/section-scroll.css"> -->
+
 <style media="screen">
 
 a.selected {
@@ -558,7 +559,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
     		  			</div>
     		  			<div class="col s3" style="margin-top: 10px;">
               				<a class="icn col s12 l3  exportCSV">CSV</a>
-                      <span class="col s12 l12" style="margin-top:10px;" id="exportarXLS"></span>
+                      <span class="col s12 l3" style="margin-top:10px;" id="exportarXLS"></span>
                       <!-- <a class="icns">XLS</a> -->
                       <!-- <a class="icnSDMX">SDMX</a>
                       <a class="icnPDF">PDF</a> -->
@@ -618,7 +619,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
     <div class="disclaimer pop">
       <h1>Aviso</h1>
-      <p>Esta es una versión beta de la Plataforma oficial para el seguimiento de los indicadores de los Objetivos de Desarrollo Sostenible. El INEGI y el Gobierno de la República trabajan para actualizar la información constantemente.</p>
+      <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
     </div>
 
     <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
@@ -744,17 +745,13 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
   <script src='funcionesApi.js'></script>
   <script src="lib/jquery.dotdotdot.js"></script>
   <script src="cobertura.js"></script>
-  <script type="text/javascript" src='config.js'></script>
   <script type="text/javascript" src="appExplora.js"></script>
 
   <script type="text/javascript">
-  var PathAPI = "https://ods.org.mx/API/";
         var titulo_des_graf="Razón de mortalidad materna";
         var objeto;
         var primera_carga =  true;
         var initialLoad = true;
-        var values = [];
-        var values2 = [];
 
 
 
@@ -885,6 +882,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
                 console.log("Meta adentro",objeto[indicador-1].Meta.length);
                 for(var j=0;j<objeto[indicador-1].Meta[i].Indicador.length;j++)
                 {
+                    console.log('------------------------- wachicol ----------------');
                     console.log(objeto[indicador-1].Meta[i].Indicador[j].TieneValores);
                     console.log(objeto[indicador-1].Meta[i].Indicador[j].DesGeo.Codigo_dg);
 
@@ -974,7 +972,7 @@ svg g.c3-chart-line g.c3-circles-Estados-Unidos-Mexicanos circle{
 
 
         function llamada(indicador, ser){
-          var url = PathAPI + 'Tematica/Todos';
+          var url = 'https://ods.org.mx/API/Tematica/Todos';
           //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
           var parametros =  {"PIdioma":"ES"}
           //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
@@ -1537,7 +1535,6 @@ function setInitialMapZoom() {
 			values.push(busqueda_estado(statesData.features[i].properties.nom_ent));
 			// if (statesData.features[i].properties.density == null) continue;
 			// values2.push(statesData.features[i].properties.density);
-      //console.log(values);
 		}
 
     console.log(values,values2);
