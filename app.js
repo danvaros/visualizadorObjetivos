@@ -918,7 +918,7 @@ console.log(insumos_general);
       for (var i = 0; i < insumos_general[insumo].length; i++) {
                if(i == 0){
                 datos_doble +=  '<thead><tr>';
-                datos_dobleDat +=  '<h2>'+calculoD[i]+'</h2><thead><tr>';
+                datos_dobleDat +=  '<p>'+calculoD[i]+'</p><thead><tr>';
               }
                else if(i == 1){
                  datos_doble +=  '<tbody><tr>';

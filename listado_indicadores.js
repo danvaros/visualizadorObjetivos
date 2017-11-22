@@ -40,6 +40,9 @@ function crea_lista(data){
 	contenedor.html(contenido);
 
 	$('#listaselect').material_select();
+
+	$('#listaselect #i'+PCveInd).attr('selected','selected');
+	
 }
 
 
