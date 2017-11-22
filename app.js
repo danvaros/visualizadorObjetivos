@@ -368,12 +368,16 @@ else
     $('#insumo_change').on('change',function(){
       put_tabla_insumo($(this).val());
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
+      $('#nueva_tabla_serieDat').append(titulo);
+      $('#nueva_tabla_serieDat').append(calculoD[$(this).val()]);
+      $('#nueva_tabla_serieDat').append(tabulado_series[($(this).val())]);
       $('#insumos_cont').hide();
       $('#este2').hide();
     });
 
     $('#insumo_change_cob').on('change',function(){
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
+      $('#nueva_tabla_serieDat').html(tabulado_series[($(this).val())]);
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
       $('#insumos_contDat').html('');
@@ -914,6 +918,7 @@ else
                                         '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_122">'+
                                         '<table class="bordered" id="miTablaDat" class="miTablaDat">';
 
+console.log(insumo);
 console.log(insumos_general);
       for (var i = 0; i < insumos_general[insumo].length; i++) {
                if(i == 0){
@@ -1077,7 +1082,7 @@ console.log(insumos_general);
 
                var dato_formato = +dato_formato2.toFixed(1);
             }else{
-             var dato_formato =  'ND' ;
+             var dato_formato =  'ND';
              /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
             }
 
@@ -1098,7 +1103,7 @@ console.log(insumos_general);
       select += '<option value="'+idx+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div>';
+    select += '</select></div><div class="col s12" id="insumos_cont"></div><div class="col s12" id="insumos_contDat" style="display:none;"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;"></div><div id="nueva_tabla_serieDat" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;display:none;"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
