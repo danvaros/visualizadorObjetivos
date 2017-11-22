@@ -7,7 +7,7 @@
   var insumo_cober_clasifica = [];
   var insumo_cober_clasifica_tipo = [];
   var cobertura_notas = false;
-
+  var calculoD = [];
   var query_string = {};
   var query = window.location.search.substring(1);
   var vars = getParameterByName("indicador");
@@ -624,7 +624,7 @@ else
                       '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                       '<table class="bordered" id="miTabla" class="miTabla">';
 
-                      var datos_dobleDat = '<div class="cuadro_titulo"> ' + titulo + '</div>' +
+                      var datos_dobleDat1 = '<div class="cuadro_titulo"> ' + titulo + '</div>' +
                                         '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_1">'+
                                         '<table class="bordered" id="miTablaDat" class="miTablaDat">';
 
@@ -637,45 +637,45 @@ else
       for (var i = 0; i < tabla_armada.length; i++) {
                if(i == 0){
                 datos_doble +=  '<thead><tr>';
-                datos_dobleDat +=  '<thead><tr>';
+                datos_dobleDat1 +=  '<thead><tr>';
               }
                else if(i == 1){
                  datos_doble +=  '<tbody><tr>';
-                 datos_dobleDat +=  '<tbody><tr>';
+                 datos_dobleDat1 +=  '<tbody><tr>';
                }
                else {
                   datos_doble +=  '<tr>';
-                  datos_dobleDat +=  '<tr>';
+                  datos_dobleDat1 +=  '<tr>';
                }
 
                for (var j = tabla_armada[0].length -1 ; j > 0 ; j--) {
                 if(i == 0 && j == tabla_armada[0].length -1){
                   //datos_doble +=  '  <th  class="headcol">'+ tabla_armada[i][0] +'</th><th>'+ tabla_armada[i][j] .split('-')[0]+'</th>';
                   datos_doble +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
-                  datos_dobleDat +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
+                  datos_dobleDat1 +=  '  <td  class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] .split('-')[0]+'</td>';
                 }
                 else if( i == 0 && j == tabla_armada[0].length -1 ){
                   //datos_doble += '<th class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</th>';
                   datos_doble += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
-                  datos_dobleDat += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                  datos_dobleDat1 += '<td class"padding-200">'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if( i == 0 ){
                   //datos_doble += '<th>'+ tabla_armada[i][j].split('-')[0] +'</th>';
                   datos_doble += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
-                  datos_dobleDat += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
+                  datos_dobleDat1 += '<td>'+ tabla_armada[i][j].split('-')[0] +'</td>';
                 }
                 else if(j == tabla_armada[0].length -1 ) {
                   var varia = '<td class="headcol">'+ tabla_armada[i][0] +'</td><td>'+ tabla_armada[i][j] +'</td>';
                   datos_doble += varia;
-                  datos_dobleDat += varia;
+                  datos_dobleDat1 += varia;
                 }
                 else if(j == tabla_armada[0].length -2){
                     datos_doble +=  '  <td class="laque">'+ tabla_armada[i][j] +'</td>';
-                    datos_dobleDat +=  '  <td class="laque">'+ tabla_armada[i][j].toString() +'</td>';
+                    datos_dobleDat1 +=  '  <td class="laque">'+ tabla_armada[i][j].toString() +'</td>';
                 }
                 else{
                   datos_doble +=  '  <td>'+ tabla_armada[i][j] +'</td>';
-                  datos_dobleDat +=  '  <td>'+ tabla_armada[i][j].toString() +'</td>';
+                  datos_dobleDat1 +=  '  <td>'+ tabla_armada[i][j].toString() +'</td>';
                 }
                }
 
@@ -683,10 +683,10 @@ else
 
                if(i == 0){
                  datos_doble +=  '</tr></thead>';
-                 datos_dobleDat +=  '</tr></thead>';
+                 datos_dobleDat1 +=  '</tr></thead>';
                }else{
                  datos_doble +=  '</tr>';
-                 datos_dobleDat +=  '</tr>';
+                 datos_dobleDat1 +=  '</tr>';
                }
              }
 
@@ -696,13 +696,13 @@ else
             ' <div class="pie_cuadro2">'+ pie_insumo +
              '</div></div>';
 
-             datos_dobleDat +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
+             datos_dobleDat1 +=  '</tbody></table></div><p class="nota" style="color:#8694a8;">'+
              ' <div class="pie_cuadro2">'+ pie +
               '</div></div>';
 
     //sin pie y cabezera de la pagina
     $('#insumos_cont').html(datos_doble);
-    $('#insumos_contDat').html(datos_dobleDat);
+    $('#insumos_contDat').html(datos_dobleDat1);
     var arre = [];
     for (var i = 0; i < tabla_armada.length[0] - 1; i++) {
       arre.push(i)
@@ -914,11 +914,11 @@ else
                                         '<div style=" width: auto; height: auto; overflow: auto;" id="datos_calculo_122">'+
                                         '<table class="bordered" id="miTablaDat" class="miTablaDat">';
 
-
+console.log(insumos_general);
       for (var i = 0; i < insumos_general[insumo].length; i++) {
                if(i == 0){
                 datos_doble +=  '<thead><tr>';
-                datos_dobleDat +=  '<thead><tr>';
+                datos_dobleDat +=  '<h2>'+calculoD[i]+'</h2><thead><tr>';
               }
                else if(i == 1){
                  datos_doble +=  '<tbody><tr>';
@@ -1047,10 +1047,12 @@ else
     var temporal = [];
     var individual = [];
 
+
     for (var i = 0; i < data.Series.length; i++) {
       var temporal = [];
       if(data.Series[i].Tipo_ser == "I"){
 
+        calculoD.push(data.Series[i].Descrip_ser);
         lista_insumos.push(data.Series[i].Descrip_ser);
         temporal.push('Entidad');
 
