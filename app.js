@@ -377,6 +377,8 @@ else
 
     $('#insumo_change_cob').on('change',function(){
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
+      $('#nueva_tabla_serieDat').append(titulo);
+      $('#nueva_tabla_serieDat').append(calculoD[$(this).val()]);
       $('#nueva_tabla_serieDat').html(tabulado_series[($(this).val())]);
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
@@ -1129,7 +1131,7 @@ console.log(insumos_general);
       select += '<option value="'+(idx)+'">'+value+'</option>';
     });
 
-    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;height:510px;overflow:scroll;"></div>';
+    select += '</select></div><div class="col s12" id="tipo_gen"><select id="este2" style="margin-bottom :15px; display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumo_filtro"><select id="este" style="display:none !important; background-color: #f2f2f2;"></select></div><div class="col s12" id="insumos_cont"></div><div id="nueva_tabla_serie" class="input-field col s12" style="margin-bottom:20px;height:510px;overflow:scroll;"></div><div id="nueva_tabla_serieDat" class="input-field col s12" style="margin-bottom:20px;overflow:scroll;height:510px;display:none;"></div>';
 
     //sin pie y cabezera de la pagina
     $('#datos-panel').html(select);
