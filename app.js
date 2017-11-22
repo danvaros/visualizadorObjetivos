@@ -367,6 +367,7 @@ else
 
     $('#insumo_change').on('change',function(){
       put_tabla_insumo($(this).val());
+      $('#nueva_tabla_serieDat').html('');
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
       $('#nueva_tabla_serieDat').append(titulo);
       $('#nueva_tabla_serieDat').append(calculoD[$(this).val()]);
@@ -376,10 +377,11 @@ else
     });
 
     $('#insumo_change_cob').on('change',function(){
+      $('#nueva_tabla_serieDat').html('');
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
       $('#nueva_tabla_serieDat').append(titulo);
       $('#nueva_tabla_serieDat').append(calculoD[$(this).val()]);
-      $('#nueva_tabla_serieDat').html(tabulado_series[($(this).val())]);
+      $('#nueva_tabla_serieDat').append(tabulado_series[($(this).val())]);
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
       $('#insumos_contDat').html('');
