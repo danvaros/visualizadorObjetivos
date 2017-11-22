@@ -1057,7 +1057,7 @@ console.log(insumos_general);
       var temporal = [];
       if(data.Series[i].Tipo_ser == "I"){
 
-        calculoD.push(data.Series[i].Descrip_ser);
+        //calculoD.push(data.Series[i].Descrip_ser);
         lista_insumos.push(data.Series[i].Descrip_ser);
         temporal.push('Entidad');
 
