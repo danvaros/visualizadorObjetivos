@@ -1534,8 +1534,8 @@
        $("#sel_estados").show();
        $("#sel_municipios").show();
        ban_mun = true;
-       //cambio_anio(estados[0][1]);
-       //put_grafica_municipal(arrray_anios[0]);
+       cambio_anio(estados[0][1]);
+       put_grafica_municipal(arrray_anios[0]);
        console.log('cambio estatal');
        $('#anio_1').removeClass('inactive_anio');
        $('#anio_1').addClass('active_anio');
@@ -3012,16 +3012,7 @@
               features.push(municipio.features[i]);
               if (municipio.features[i].properties.nom_mun == null) continue;
 
-              // valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi));
-
-              var temp = busqueda_municipio(municipio.features[i].properties.nom_mun, posi);
-
-              if(typeof temp == 'undefined'){
-                  valuesMunicipio.push(1);
-              }else{
-                  valuesMunicipio.push(temp);
-              }
-              
+              valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi));
             }
           }
 
@@ -3336,15 +3327,7 @@
 
           if(sel_est == municipio.features[i].properties.nom_ent){
             if (municipio.features[i].properties.nom_mun == null) continue;
-           // valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi2));
-
-            var temp = busqueda_municipio(municipio.features[i].properties.nom_mun, posi2);
-                    console.log(temp);
-                    if(typeof temp == 'undefined'){
-                        valuesMunicipio.push(1);
-                    }else{
-                        valuesMunicipio.push(temp);
-                    }
+            valuesMunicipio.push(busqueda_municipio(municipio.features[i].properties.nom_mun,posi2));
           }
         }
 
