@@ -283,7 +283,7 @@ function get_tabuladoCSV($indicador){
 }
 
 
-get_tabulado(101);
+//get_tabuladoCSV(164);
 
 
 //$indicadorres = array(362,363,364,162,164,324,335,336,337,185,355,344,193,204,205,4,208,210,365,366,367,212,213,224,48,227,228,368,369,236,343,266,269,103,272,276,101,304,307,311,312);
@@ -341,7 +341,7 @@ get_tabulado(101);
 //creaXLSCoS(datos(26));
 
 
-//metadato(datosMetadato(1));
+metadato(datosMetadato(1));
 
 
 function abecedario($posicion){
@@ -425,8 +425,15 @@ function metadato($data){
   //var_dump($serie);
   $objPHPExcel->setActiveSheetIndex(0);
 
+  $numInd = $data['Algoritmo_ft'];
+  $nInd = explode('_',$numInd);
+  $nds = '';
+  for ($ede=0; $ede < count($nInd) - 1; $ede++) {
+    $nds .= $nInd[$ede] . '.';
+  }
+
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Algoritmo_ft'].$data['Descrip_ind']);
+              ->setCellValue('A1', $nds.' '.$data['Descrip_ind']);
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A2', 'Objetivo');
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A3', 'Meta');
@@ -574,7 +581,7 @@ function metadato($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-  $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.xlsx');
+  $objWriter->save('xlscsv/Metadato_'.$nds.'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
@@ -593,6 +600,8 @@ function metadato($data){
   echo 'Files have been created in ' , getcwd() , EOL;
   //var_dump($data);
 }
+
+//datos-panel-dos
 
 function metadatoCSV($data){
   /** Error reporting */
@@ -625,8 +634,15 @@ function metadatoCSV($data){
   //var_dump($serie);
   $objPHPExcel->setActiveSheetIndex(0);
 
+  $numInd = $data['Algoritmo_ft'];
+  $nInd = explode('_',$numInd);
+  $nds = '';
+  for ($ede=0; $ede < count($nInd) - 1; $ede++) {
+    $nds .= $nInd[$ede] . '.';
+  }
+
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Algoritmo_ft'].$data['Descrip_ind']);
+              ->setCellValue('A1', $nds.' '.$data['Descrip_ind']);
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A2', 'Objetivo');
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A3', 'Meta');
@@ -773,8 +789,8 @@ function metadatoCSV($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
-  $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.csv');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+  $objWriter->save('xlscsv/Metadato_'.$nds.'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
@@ -2341,6 +2357,7 @@ function creaCSVACl($data){
 
   /** Include PHPExcel */
   require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
+  require_once dirname(__FILE__) . '/Classes/PHPExcel/Writer/CSV.php';
 
   // Create new PHPExcel object
   //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
@@ -2448,34 +2465,17 @@ function creaCSVACl($data){
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
 
-  // Save Excel 2007 file
-  //echo date('H:i:s') , " Write to Excel format" , EOL;
-  $callStartTime = microtime(true);
-
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
-
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+  //$objWriter->setUseBOM(false);
   ob_end_clean();
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  $callEndTime = microtime(true);
-  $callTime = $callEndTime - $callStartTime;
 
-  //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-  //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
-  // Echo memory usage
-  //echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo memory peak usage
-  //echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
-
-  // Echo done
-  //echo date('H:i:s') , " Done writing files" , EOL;
   echo 'Files have been created in ' , getcwd() , EOL;
-  //var_dump($data);
+
 }
 
 function creaXLSAClanidada($data){
@@ -2553,7 +2553,7 @@ function creaXLSAClanidada($data){
         for ($qwe=0; $qwe < count($anios); $qwe++) {
           $celdos = 4+$qwe;
           $objPHPExcel->setActiveSheetIndex(0)
-                     ->setCellValue('A'.$celdos, $anios[$qwe+$eee]);
+                     ->setCellValue('A'.$celdos, $anios[$qwe]);
         }
 
 
@@ -2602,7 +2602,7 @@ function creaXLSAClanidada($data){
           for ($fff=0; $fff < count($periodos2); $fff++) {
             $celdo = 4+$fff;
             $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue($a.$celdo, $datosVal[$www+$oo+$eere]);
+                        ->setCellValue($a.$celdo, $datosVal[$www+$oo]);
             $www = $www + $bor;
           }
 

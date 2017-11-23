@@ -1,10 +1,10 @@
-
+var PathAPI = "https://ods.org.mx/API/";
 	function getIndicadorSer(indicador,ser){
 	  var estados = [];
 	  console.log("Indicador",indicador," -> Serie",ser);
 		$.ajax({
 		  type: 'POST',
-		  url: "https://ods.org.mx/API/Valores/PorClaveSerie",
+		  url: PathAPI + "Valores/PorClaveSerie",
 		  data: {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'},
 		  success: function( data, textStatus, jqxhr ) {
 		  		//alert( "Exito" );
@@ -53,7 +53,7 @@
 		var atributos = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
+	   	  url: PathAPI + "AtrIndicador/PorDesglose",
 	   	  data: {'PCveInd':indicador, 'PIdioma':'ES', 'POpcion':'Cl'},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
@@ -74,7 +74,7 @@
 		var indicadores = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://ods.org.mx/API/Tematica/todos",
+	   	  url: PathAPI + "Tematica/todos",
 	   	  data: {'PIdioma':'ES'},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
@@ -94,7 +94,7 @@ function getMetadatos(indicador){
 	var metadatos = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://ods.org.mx/API/Metadato/PorClave",
+	   	  url: PathAPI + "Metadato/PorClave",
 	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
@@ -115,7 +115,7 @@ function getAtr(indicador){
 	var atr = [];
 		$.ajax({
 	   	  type: 'POST',
-	   	  url: "https://ods.org.mx/API/AtrIndicador/PorClave",
+	   	  url: PathAPI + "AtrIndicador/PorClave",
 	   	  data: {"PCveInd":indicador, "PIdioma":"ES"},
 	   	  success: function( data, textStatus, jqxhr )
 	      {
@@ -129,4 +129,44 @@ function getAtr(indicador){
 	    });
 
 	    return atr;
+}
+
+function tematicas(){
+		var tematica = [];
+	//llama la tematica
+	$.ajax({
+		type: 'POST',
+		url: PathAPI + "Tematica/PorClave",
+		data: {'PClave':'I' , 'PIdioma':'ES'},
+		success: function( data, textStatus, jqxhr ) {
+			tematica = data;
+		},
+		error:function( data, textStatus, responseJSON )
+		{
+			console.log(data);
+		},
+		async:false
+	});
+
+	return tematica;
+}
+
+function getCalendario(){
+	var calendario = [];
+		$.ajax({
+	   	  type: 'POST',
+	   	  url: PathAPI + "Calendario/Todos",
+	   	  data: {"POrdenCol":"IND", "PIdioma":"ES"},
+	   	  success: function( data, textStatus, jqxhr )
+	      {
+	        calendario = data;
+	      },
+	      error:function( data, textStatus, responseJSON )
+	      {
+	        console.log(data);
+	      },
+	  	  async:false
+	    });
+
+	    return calendario;
 }

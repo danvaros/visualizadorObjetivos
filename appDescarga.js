@@ -34,7 +34,7 @@ function listadoTablas(PCveInd){
   $('#loader').delay(2000).fadeOut("slow");
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorClave",
+    url: PathAPI + "Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -99,7 +99,7 @@ function listadoTablas(PCveInd){
 
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
+    url: PathAPI + "AtrIndicador/PorDesglose",
     data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
     success: function( data, textStatus, jqxhr ) {
     //data.Series[1] = data1.Series[0];
@@ -116,7 +116,7 @@ function listadoTablas(PCveInd){
   $.ajax({
     type: 'POST',
     // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
-    url: "https://ods.org.mx/API/Tematica/PorClave",
+    url: PathAPI + "Tematica/PorClave",
     data: {'PClave':objetivo , 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -145,13 +145,13 @@ function listadoTablas(PCveInd){
 if(PCveInd == 118){
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorCobCla",
+    url: PathAPI + "Valores/PorCobCla",
     data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"594","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       $.ajax({
         type: 'POST',
-        url: "https://ods.org.mx/API/Valores/PorCobCla",
+        url: PathAPI + "Valores/PorCobCla",
         data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"595","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
         success: function( data1, textStatus, jqxhr ) {
           data.Series[1] = data1.Series[0];
@@ -164,7 +164,7 @@ if(PCveInd == 118){
 
       $.ajax({
         type: 'POST',
-        url: "https://ods.org.mx/API/Valores/PorCobCla",
+        url: PathAPI + "Valores/PorCobCla",
         data: {"PCveInd":"118","PAnoIni":"0","PAnoFin":"0","PCveSer":"596","PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
         success: function( data2, textStatus, jqxhr ) {
           data.Series[2] = data2.Series[0];
@@ -250,7 +250,7 @@ else
 
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorClave",
+    url: PathAPI + "Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 

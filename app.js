@@ -1,3 +1,4 @@
+var PathAPI = "https://ods.org.mx/API/";
 var titulo_des_graf = "";
 var inicio = 0;
 var estados = [];
@@ -35,7 +36,7 @@ var datos_calculo = [];
 //llama los parametros del indicador
 $.ajax({
   type: 'POST',
-  url: "https://ods.org.mx/API/AtrIndicador/PorDesglose",
+  url: PathAPI + "AtrIndicador/PorDesglose",
   data: {"PCveInd": PCveInd, "POpcion": "Cl", "PIdioma": "ES"},
   success: function( data, textStatus, jqxhr ) {
     clasif = data.AgrupaClas.TotalNivAgrupa_cla;
@@ -63,7 +64,7 @@ $.ajax({
 $.ajax({
   type: 'POST',
   // url: "https://operativos.inegi.org.mx/datos/api/Tematica/PorClave",
-  url: "https://ods.org.mx/API/Tematica/PorClave",
+  url: PathAPI + "Tematica/PorClave",
   data: {'PClave':meta , 'PIdioma':'ES'},
   success: function( data, textStatus, jqxhr ) {
 
@@ -93,14 +94,14 @@ if(codigoDg == "NEM  "){
   $('#row_filtros').show();
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorCobCla",
+    url: PathAPI + "Valores/PorCobCla",
     data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[0],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
     success: function( data, textStatus, jqxhr ) {
 
       // for (var i = 1; i < GloSerie.length; i++) {
       //   $.ajax({
       //     type: 'POST',
-      //     url: "https://ods.org.mx/API/Valores/PorCobCla",
+      //     url: PathAPI + "Valores/PorCobCla",
       //     data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":GloSerie[i],"PCveCob":"99","PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
       //     success: function( data1, textStatus, jqxhr ) {
       //       data.Series[i] = data1.Series[0];
@@ -163,7 +164,7 @@ else
 {
   $.ajax({
     type: 'POST',
-    url: "https://ods.org.mx/API/Valores/PorClave",
+    url: PathAPI + "Valores/PorClave",
     data: {'PCveInd': PCveInd,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC', 'PIdioma':'ES'},
     success: function( data, textStatus, jqxhr ) {
 
@@ -295,7 +296,7 @@ $(document).ready(function(){
   }
 
   if(nColumnas > 15){
-    $('.tabla_completa').css('height', '700px');
+    $('.tabla_completa').css('height', '750px');
     $('.tablaArmada').DataTable( {
       scrollY:        "510px",
       scrollX:        true,
@@ -452,7 +453,7 @@ function datos_calculo_mun(ser){
 
     $.ajax({
       type: 'POST',
-      url: "https://ods.org.mx/API/Valores/PorCobCla",
+      url: PathAPI + "Valores/PorCobCla",
       data: {"PCveInd":PCveInd,"PAnoIni":"0","PAnoFin":"0","PCveSer":ser,"PCveCob":es,"PCveAgrupaCla": "0","POrden":"DESC", "PIdioma":"ES"},
       success: function( data, textStatus, jqxhr ) {
         console.log(data);
@@ -1112,7 +1113,7 @@ function valorDatoInsumos(data){
 
               var dato_formato = +dato_formato2.toFixed(1);
             }else{
-              var dato_formato =  'ND' ;
+              var dato_formato =  data.Series[0].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd ;
               /*data.Series[i].Coberturas[j].ValorDato[k].NoDatos.Codigo_nd;*/
             }
 
@@ -1306,7 +1307,8 @@ function valorDato(data){
         //data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;
       }
       else {
-        dato_formato = 'ND';
+        dato_formato = data.Series[0].Coberturas[i].ValorDato[j].NoDatos.Codigo_nd;//'ND';
+        //console.log(data.Series[0].Coberturas[i].ValorDato[j].NoDatos);
       }
       temporal.push(dato_formato);
     }
@@ -1424,8 +1426,8 @@ function titulos(indicador){
     '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
     '<p id="no_va_serie"><strong>Total<strong></p>';
 
-    //pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-    pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
+    pie  = ' <div> '+ ((atributos.Descrip_not == null || atributos.Descrip_not == "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
+    //pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
     '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
     ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
     ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
@@ -1439,8 +1441,8 @@ function titulos(indicador){
     '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>';
 
 
-    //pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
-    pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
+    pie  = ' <div> '+ ((atributos.Descrip_not == null || atributos.Descrip_not == "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
+    //pie  = ' <div> '+ '<strong>Nota:</strong> ' + atributos.Descrip_not+
     '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
     ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
     ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
@@ -1451,8 +1453,8 @@ function titulos(indicador){
     '<p> '+ atributos.CobTemporal_ser +' </p>' +
     '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
 
-    //pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
-    pie  = ' <div> '+ '<strong>Nota: </strong> ' + atributos.Descrip_not+
+    pie  = ' <div> '+ ((atributos.Descrip_not == null || atributos.Descrip_not == "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
+    //pie  = ' <div> '+ '<strong>Nota: </strong> ' + atributos.Descrip_not+
     '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
     ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
     ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+

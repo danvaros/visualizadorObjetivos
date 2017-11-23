@@ -422,8 +422,15 @@ function metadato($data){
 
   $objPHPExcel->setActiveSheetIndex(0);
 
+  $numInd = $data['Algoritmo_ft'];
+  $nInd = explode('_',$numInd);
+  $nds = '';
+  for ($ede=0; $ede < count($nInd) - 1; $ede++) {
+    $nds .= $nInd[$ede] . '.';
+  }
+
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Algoritmo_ft'].$data['Descrip_ind']);
+              ->setCellValue('A1', $nds.' '.$data['Descrip_ind']);
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A2', 'Objetivo');
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A3', 'Meta');
@@ -566,7 +573,7 @@ function metadato($data){
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-  $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.xlsx');
+  $objWriter->save('xlscsv/Metadato_'.$nds.'.xlsx');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   echo 'Files have been created in ' , getcwd() , EOL;
 }
@@ -607,8 +614,15 @@ function metadatoCSV($data){
   //var_dump($serie);
   $objPHPExcel->setActiveSheetIndex(0);
 
+  $numInd = $data['Algoritmo_ft'];
+  $nInd = explode('_',$numInd);
+  $nds = '';
+  for ($ede=0; $ede < count($nInd) - 1; $ede++) {
+    $nds .= $nInd[$ede] . '.';
+  }
+
   $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', $data['Algoritmo_ft'].$data['Descrip_ind']);
+              ->setCellValue('A1', $nds.' '.$data['Descrip_ind']);
 
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A2', 'Objetivo');
   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A3', 'Meta');
@@ -714,7 +728,7 @@ function metadatoCSV($data){
 
   // Rename worksheet
   //echo date('H:i:s') , " Rename worksheet" , EOL;
-  $objPHPExcel->getActiveSheet()->setTitle(substr($data['Algoritmo_ft'].$data['Descrip_ind'], 0, 25));
+  $objPHPExcel->getActiveSheet()->setTitle(substr($nds.' '.$data['Descrip_ind'], 0, 25));
 
   // Set active sheet index to the first sheet, so Excel opens this as the first sheet
   $objPHPExcel->setActiveSheetIndex(0);
@@ -726,12 +740,9 @@ function metadatoCSV($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
-  header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-  header('Content-Disposition: attachment;filename="nombreFichero.xlsx"');
-  header('Cache-Control: max-age=0');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$objWriter = new PHPExcel_Writer_CSV($objPHPExcel);
-  $objWriter->save('xlscsv/Metadato_'.$data['Algoritmo_ft'].'.csv');
+  $objWriter->save('xlscsv/Metadato_'.$nds.'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);

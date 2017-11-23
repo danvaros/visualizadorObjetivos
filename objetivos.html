@@ -121,7 +121,7 @@
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-
+<script src='config.js'></script>
 
     <span id="loader">
     <p style="color:#333; padding-top: 100px; ">Cargando<br>información</p>
@@ -487,7 +487,7 @@ $('#loader').show();
 
 <div class="disclaimer pop">
   <h1>Aviso</h1>
-  <p>Esta es una versión beta de la Plataforma Nacional para el seguimiento a los indicadores de los Objetivos de Desarrollo Sostenible, en donde podrás encontrar información de los primeros 25 indicadores. El INEGI y el Gobierno de la República trabajarán constantemente para actualizar la información disponible cuando ésta se genere.</p>
+  <p>Esta es una versión beta de la Plataforma oficial para el seguimiento de los indicadores de los Objetivos de Desarrollo Sostenible. El INEGI y el Gobierno de la República trabajan para actualizar la información constantemente.</p>
 </div>
 
 <a href="#" id="contact"> <img src="img/informacion.png" alt="" /> </a>
@@ -581,7 +581,7 @@ $('#loader').show();
   }
 
     function llamada(indicador, ser){
-      var url = 'https://ods.org.mx/API/Tematica/Todos';
+      var url = PathAPI + 'Tematica/Todos';
       //var url = 'https://operativos.inegi.org.mx/datos/api/Valores/PorClaveSerie';
       var parametros =  {"PIdioma":"ES"}
       //var parametros =  {'PCveInd':indicador,'PAnoIni':'0', 'PAnoFin':'0', 'POrden':'DESC','PCveSer': ser , 'PIdioma':'ES'}
