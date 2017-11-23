@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit', '256M');
+ini_set('memory_limit', '512M');
 
 
 function indicadores(){
@@ -995,7 +995,7 @@ function creaCSVCoS($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
@@ -1346,7 +1346,7 @@ function creaCSVCoCl($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -1637,7 +1637,7 @@ function creaCSVCoClAnidada($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -1899,9 +1899,9 @@ function creaCSVClA($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
-  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.xlsx');
+  $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
   //echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
   $callEndTime = microtime(true);
@@ -2159,7 +2159,7 @@ function creaCSVAS($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -2413,7 +2413,7 @@ function creaCSVACl($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
@@ -2665,7 +2665,7 @@ function creaCSVAClanidada($data){
   // Use PCLZip rather than ZipArchive to create the Excel2007 OfficeOpenXML file
   PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
-  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
   //$nomArc = $data['Codigo_ind']
   $objWriter->save('xlscsv/Indicador_'.$data['Codigo_ind'].'.csv');
   // $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
