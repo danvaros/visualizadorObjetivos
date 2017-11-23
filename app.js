@@ -369,8 +369,10 @@ else
       put_tabla_insumo($(this).val());
       $('#nueva_tabla_serieDat').html('');
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
-      $('#nueva_tabla_serieDat').append(titulo);
-      $('#nueva_tabla_serieDat').append(calculoD[$(this).val()]);
+      //tituloDat += '<span id="descrip_uni"> '+ atributos.Serie[calculoD[$('#insumo_change').val()]].DescripSer_des +'</span>';
+      console.log(calculoD[$('#insumo_change').val()]);
+      $('#nueva_tabla_serieDat').append(tituloDat);
+      $('#nueva_tabla_serieDat').append(calculoD[$('#insumo_change').val()]);
       $('#nueva_tabla_serieDat').append(tabulado_series[($(this).val())]);
       $('#insumos_cont').hide();
       $('#este2').hide();
@@ -379,8 +381,10 @@ else
     $('#insumo_change_cob').on('change',function(){
       $('#nueva_tabla_serieDat').html('');
       $('#nueva_tabla_serie').html(tabulado_series[($(this).val())]);
-      $('#nueva_tabla_serieDat').append(titulo);
-      $('#nueva_tabla_serieDat').append(calculoD[$(this).val()]);
+      //tituloDat += '<span id="descrip_uni"> '+ atributos.Serie[calculoD[$('#insumo_change_cob').val()]].DescripSer_des +'</span>';
+      $('#nueva_tabla_serieDat').append(tituloDat);
+      console.log(calculoD[$('#insumo_change_cob').val()]);
+      $('#nueva_tabla_serieDat').append(calculoD[$('#insumo_change_cob').val()]);
       $('#nueva_tabla_serieDat').append(tabulado_series[($(this).val())]);
       put_filtros_insumo_cob($(this).val());
       $('#insumos_cont').html('');
@@ -1336,6 +1340,7 @@ console.log(insumos_general);
   });
 
   var titulo;
+  var tituloDat;
   var titulo_insumo;
   var pie;
   var pie_insumo;
@@ -1385,6 +1390,7 @@ console.log(insumos_general);
 
   function titulos(indicador){
         var serie_insumo =  $('insumo_change').val();
+        var serie_insumoCob =  $('insumo_change_cob').val();
         atributos_general = getAtributos(indicador);
         atributos = atributos_general;
 
@@ -1396,11 +1402,18 @@ console.log(insumos_general);
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
                         '<p id="no_va_serie"><strong>Total<strong></p>';
 
+            tituloDat   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
+                                     '<li class="divider"></li> ' +
+                                     '<p> '+ atributos.CobTemporal_ser +' </p>';
+            tituloDat += '<span id="descrip_uni"> '+ atributos.Serie[1].DescripSer_des +'</span>';
+console.log(serie_insumoCob);
+
                          pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
                   ' <div> '+ ((atributos.FecAct_atr != null) ? '<strong>Fecha de actualización: </strong>' + atributos.FecAct_atr : "") +'</div>'+
                   ' <div><strong>Fecha de próxima actualización: </strong> '+ atributos.FecProxAct_cal +'</div>'+
                   ' </div>';
+
       }
       else if(cobertura_notas){
         titulo   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
@@ -1408,7 +1421,11 @@ console.log(insumos_general);
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>' +
                         '<p id="no_va_serie"><strong>Esta vista presenta los datos totales del indicador. Para conocer más detalles visita la sección de serie histórica.<strong></p>';
-
+        tituloDat   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
+                                     '<li class="divider"></li> ' +
+                                     '<p> '+ atributos.CobTemporal_ser +' </p>';
+        tituloDat += '<span id="descrip_uni"> '+ atributos.Serie[1].DescripSer_des +'</span>';
+console.log(serie_insumoCob);
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota:</strong>' + atributos.Descrip_not)+
                   '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
@@ -1420,6 +1437,13 @@ console.log(insumos_general);
                         '<li class="divider"></li> ' +
                         '<p> '+ atributos.CobTemporal_ser +' </p>' +
                         '<span id="descrip_uni"> '+ atributos.Descrip_uni +'</span>';
+
+
+        tituloDat   =  '<h4 id="titulo_cabezeras">'+ atributos.DescripInd_des  +'</h4>' +
+                                     '<li class="divider"></li> ' +
+                                     '<p> '+ atributos.CobTemporal_ser +' </p>';
+        tituloDat += '<span id="descrip_uni"> '+ atributos.Serie[1].DescripSer_des +'</span>';
+
 
         pie  = ' <div> '+ ((atributos.Descrip_not != null || atributos.Descrip_not != "") ? ''  : '<strong>Nota: </strong>' + atributos.Descrip_not)+
                   '<div><strong>Fuente: </strong> '+ atributos.Descrip_fue +' </div>'+
